@@ -1,0 +1,7 @@
+{
+  "name": "carsTournaments-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
