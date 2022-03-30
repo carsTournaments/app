@@ -24,3 +24,24 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    border-radius: 0  0px 20px 20px;
+    height: 90px;
+    border-bottom: 0px solid #ececec;
+}
+ion-toolbar ion-title {
+    padding-top: .8rem
+}
+
+ion-segment-button {
+    --color: var(--ion-color-dark);
+    --color-checked: var(--ion-color-primary-contrast);
+    font-size: .8rem;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+

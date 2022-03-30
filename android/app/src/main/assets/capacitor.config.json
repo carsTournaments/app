@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "carsTournaments-app",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
