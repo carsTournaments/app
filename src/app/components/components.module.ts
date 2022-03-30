@@ -7,6 +7,7 @@ import { TournamentItemComponent } from './tournament-item/tournament-item.compo
 import { PipesModule } from '../pipes/pipes.module';
 import { CarItemComponent } from './car-item/car-item.component';
 import { BrandItemComponent } from './brand-item/brand-item.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     imports: [
@@ -19,11 +20,13 @@ import { BrandItemComponent } from './brand-item/brand-item.component';
     declarations: [
         BrandItemComponent,
         CarItemComponent,
+        LoginComponent,
         TournamentItemComponent,
     ],
     exports: [
         BrandItemComponent,
         CarItemComponent,
+        LoginComponent,
         TournamentItemComponent,
     ],
     providers: [],

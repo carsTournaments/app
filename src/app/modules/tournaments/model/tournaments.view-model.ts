@@ -1,5 +1,5 @@
 import { Tournament } from "src/app/models/tournament.model";
-import { TournamentGetAllDto } from "src/app/services/tournament/tournament.dto"
+import { TournamentGetAllDto } from "src/app/services/api/tournament/tournament.dto"
 
 export class TournamentsViewModel {
     title = 'Torneos';

@@ -1,7 +1,7 @@
-import { PaginatorI } from './../../interfaces/paginator.interface';
+import { PaginatorI } from '../../../interfaces/paginator.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from '../http/http.service';
+import { HttpService } from '../../http/http.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { TournamentGetAllDto } from './tournament.dto';

@@ -1,11 +1,11 @@
-import { PaginatorI } from './../../interfaces/paginator.interface';
 import { BrandGetAllBrandsAndCarsDto, BrandGetAllDto } from './brand.dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from '../http/http.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Brand } from 'src/app/models/brand.model';
+import { PaginatorI } from 'src/app/interfaces/paginator.interface';
+import { HttpService } from '../../http/http.service';
 
 @Injectable({ providedIn: 'root' })
 export class BrandService {

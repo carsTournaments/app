@@ -1,4 +1,4 @@
-import { TournamentService } from './../../services/tournament/tournament.service';
+import { TournamentService } from '../../services/api/tournament/tournament.service';
 import { TournamentsViewModel } from './model/tournaments.view-model';
 import { Component, OnInit } from '@angular/core';
 

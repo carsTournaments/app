@@ -1,8 +1,8 @@
 import { Brand } from './../../models/brand.model';
-import { CarService } from './../../services/car/car.service';
 import { Component } from '@angular/core';
 import { CarsViewModel } from './model/cars.view-model';
-import { BrandService } from 'src/app/services/brand/brand.service';
+import { BrandService } from 'src/app/services/api/brand/brand.service';
+import { CarService } from 'src/app/services/api/car/car.service';
 
 @Component({
   selector: 'app-cars',
@@ -58,7 +58,7 @@ export class CarsPage {
 
   loadMoreData(event: any, type: string) {
     if (type === 'cars') {
-    this.vm.carsBody.page++;
+      this.vm.carsBody.page++;
       this.getCars(event);
     } else {
       this.vm.brandsBody.page++;
@@ -79,7 +79,7 @@ export class CarsPage {
     this.getCars();
   }
 
-  cleanFilter() { 
+  cleanFilter() {
     this.vm.carsBody.brand = null;
     this.vm.filter = false;
     this.vm.segments.selected = 0;

@@ -1,7 +1,7 @@
 import { Brand } from "src/app/models/brand.model";
 import { Car } from "src/app/models/car.model";
-import { BrandGetAllBrandsAndCarsDto } from "src/app/services/brand/brand.dto";
-import { CarGetAllDto } from "src/app/services/car/car.dto";
+import { BrandGetAllBrandsAndCarsDto } from "src/app/services/api/brand/brand.dto";
+import { CarGetAllDto } from "src/app/services/api/car/car.dto";
 
 export class CarsViewModel {
     title = 'Coches';
