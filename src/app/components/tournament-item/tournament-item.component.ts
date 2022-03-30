@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tournament } from 'src/app/models/tournament.model';
 
 @Component({
@@ -8,7 +8,8 @@ import { Tournament } from 'src/app/models/tournament.model';
 })
 
 export class TournamentItemComponent implements OnInit {
-    @Input() tournament: Tournament
+    @Input() tournament: Tournament;
+    @Output() onClick: EventEmitter<Tournament> = new EventEmitter<Tournament>();
     constructor() { }
 
     ngOnInit() { }

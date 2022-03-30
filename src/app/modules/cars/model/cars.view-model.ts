@@ -1,4 +1,6 @@
+import { Brand } from "src/app/models/brand.model";
 import { Car } from "src/app/models/car.model";
+import { BrandGetAllBrandsAndCarsDto } from "src/app/services/brand/brand.dto";
 import { CarGetAllDto } from "src/app/services/car/car.dto";
 
 export class CarsViewModel {
@@ -7,11 +9,17 @@ export class CarsViewModel {
         items: ['Ultimos Coches', 'Marcas'],
         selected: 0
     }
-    tournamentsBody: CarGetAllDto = {
+    carsBody: CarGetAllDto = {
         page: 1,
-        pageSize: 10,
+        pageSize: 20,
         site: 'app',
-        order: ['created', 'desc']
+        order: ['created', 'asc']
     }
-    tournaments: Car[] = [];
+    brandsBody: BrandGetAllBrandsAndCarsDto = {
+        page: 1,
+        pageSize: 20,
+        order: ['name', 'asc']
+    }
+    cars: Car[] = [];
+    brands: Brand[] = [];
 }

@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { ServicesModule } from './../services/services.module';
 import { TournamentItemComponent } from './tournament-item/tournament-item.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { CarItemComponent } from './car-item/car-item.component';
+import { BrandItemComponent } from './brand-item/brand-item.component';
 
 @NgModule({
     imports: [
@@ -15,9 +17,13 @@ import { PipesModule } from '../pipes/pipes.module';
         PipesModule
     ],
     declarations: [
+        BrandItemComponent,
+        CarItemComponent,
         TournamentItemComponent,
     ],
     exports: [
+        BrandItemComponent,
+        CarItemComponent,
         TournamentItemComponent,
     ],
     providers: [],

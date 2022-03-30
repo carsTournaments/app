@@ -1,0 +1,13 @@
+<ion-card mode="ios" class="ion-activatable" (click)="onClick.emit(car)">
+    <ion-card-content style="background-image: linear-gradient(
+            rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{car?.image?.url|image}}
+        )">
+        <div class="card-title-car">{{ car.brand.name}} {{ car.model }}</div>
+        <div class="card-driver">
+            <img class="card-driver-image" [src]="car?.driver?.image?.url | image">
+            <div class="card-driver-name">{{ car.driver.name }}</div>
+        </div>
+        <div class="card-brand-image"><img [src]="car?.brand.image.url|image"></div>
+    </ion-card-content>
+    <ion-ripple-effect></ion-ripple-effect>
+</ion-card>
