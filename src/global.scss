@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,23 +25,39 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
 ion-toolbar {
     --background: var(--ion-color-primary);
     --color: var(--ion-color-primary-contrast);
-    border-radius: 0  0px 20px 20px;
+    border-radius: 0 0px 20px 20px;
     height: 90px;
     border-bottom: 0px solid #ececec;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
 }
 ion-toolbar ion-title {
-    padding-top: .8rem
+    padding-top: 0.8rem;
+}
+
+ion-segment {
+    margin-top: .8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 ion-segment-button {
-    --color: var(--ion-color-dark);
-    --color-checked: var(--ion-color-primary-contrast);
-    font-size: .8rem;
-    font-weight: 400;
+    --border-radius: 8px;
+    --color: var(--ion-color-medium);
+    --color-checked: var(--ion-color-dark);
+      --indicator-transform: translate3d(0, 0px, 0);
+    --background: #000;
+    --background-checked: var(--ion-color-light);
+    --indicator-color: none;
+    --indicator-height: 2px;
+    border: 0px;
+    font-size: 0.7rem;
+    font-weight: 500;
     text-transform: capitalize;
+    min-height: 10px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    height: 23px;
 }
-

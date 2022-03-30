@@ -1,8 +1,11 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
-    <ion-title>
-      Coches
-    </ion-title>
+    <ion-title>{{ vm.title }}</ion-title>
+    <ion-segment mode="md" [value]="vm.segments.selected" (ionChange)="segmentChanged($event)">
+      <ion-segment-button *ngFor="let item of vm.segments.items; let i = index" [value]="i">
+        <ion-label>{{ item }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 

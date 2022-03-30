@@ -1,9 +1,6 @@
-<ion-header>
+<ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
-    <ion-title>
-      Torneos
-    </ion-title>
-
+    <ion-title>{{ vm.title }}</ion-title>
     <ion-segment mode="md" [value]="vm.segments.selected" (ionChange)="segmentChanged($event)">
       <ion-segment-button *ngFor="let item of vm.segments.items; let i = index" [value]="i">
         <ion-label>{{ item }}</ion-label>
@@ -14,8 +11,7 @@
 
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="vm.segments.selected === 0">
-    <ion-item>En curso</ion-item>
-
+    <tournament-item *ngFor="let tournament of vm.tournaments" [tournament]="tournament"></tournament-item>
   </ng-container>
   <ng-container *ngIf="vm.segments.selected === 1">
     <ion-item>Proximos</ion-item>
