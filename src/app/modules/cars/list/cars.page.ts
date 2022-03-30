@@ -1,9 +1,9 @@
-import { Car } from './../../models/car.model';
-import { Brand } from './../../models/brand.model';
 import { Component, OnInit } from '@angular/core';
-import { CarsViewModel } from './model/cars.view-model';
+import { Brand } from 'src/app/models/brand.model';
+import { Car } from 'src/app/models/car.model';
 import { BrandService } from 'src/app/services/api/brand/brand.service';
 import { CarService } from 'src/app/services/api/car/car.service';
+import { CarsViewModel } from './model/cars.view-model';
 
 @Component({
     selector: 'app-cars',
@@ -16,7 +16,7 @@ export class CarsPage implements OnInit {
     constructor(
         private carService: CarService,
         private brandService: BrandService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.getCars();
@@ -25,20 +25,22 @@ export class CarsPage implements OnInit {
 
     getCars(event?: any) {
         this.carService.getAll(this.vm.carsBody).subscribe({
-            next: (res) => {
-                if (event) {
-                    if (res.items.length > 0) {
-                        this.vm.cars = this.vm.cars.concat(res.items);
-                        event.target.complete();
-                    } else {
-                        event.target.disabled = true;
-                    }
-                } else {
-                    this.vm.cars = res.items;
-                }
-            },
+            next: (res) => this.getCarsOnSuccess(res, event),
             error: (err) => console.log(err),
         });
+    }
+
+    getCarsOnSuccess(res: any, event?: any) {
+        if (event) {
+            if (res.items.length > 0) {
+                this.vm.cars = this.vm.cars.concat(res.items);
+                event.target.complete();
+            } else {
+                event.target.disabled = true;
+            }
+        } else {
+            this.vm.cars = res.items;
+        }
     }
 
     getBrands(event?: any) {
@@ -81,10 +83,11 @@ export class CarsPage implements OnInit {
         this.getCars();
     }
 
-    onClickCar(car: Car) {}
+    onClickCar(car: Car) { }
 
     cleanFilter() {
         this.vm.carsBody.brand = null;
+        this.vm.carsBody.page = 1;
         this.vm.filter = false;
         this.vm.segments.selected = 0;
         this.getCars();

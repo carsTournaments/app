@@ -13,5 +13,7 @@ export class TournamentsViewModel {
         site: 'app',
         order: ['created', 'desc'],
     };
-    tournaments: Tournament[] = [];
+    tournamentsTodo: Tournament[] = [];
+    tournamentsInProgress: Tournament[] = [];
+    tournamentsCompleted: Tournament[] = [];
 }

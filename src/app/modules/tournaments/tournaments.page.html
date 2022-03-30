@@ -11,12 +11,12 @@
 
 <ion-content [fullscreen]="true">
   <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.segments.selected === 0">
-    <tournament-item *ngFor="let tournament of vm.tournaments" [tournament]="tournament"></tournament-item>
+    <tournament-item *ngFor="let tournament of vm.tournamentsInProgress" [tournament]="tournament" (clickItem)="goTo($event)"></tournament-item>
   </div>
   <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.segments.selected === 1">
-    <ion-item>Proximos</ion-item>
+    <tournament-item *ngFor="let tournament of vm.tournamentsTodo" [tournament]="tournament" (clickItem)="goTo($event)"></tournament-item>
   </div>
   <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.segments.selected === 2">
-    <ion-item>Completados</ion-item>
+    <tournament-item *ngFor="let tournament of vm.tournamentsCompleted" [tournament]="tournament" (clickItem)="goTo($event)"></tournament-item>
   </div>
 </ion-content>

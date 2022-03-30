@@ -18,8 +18,26 @@ ion-card-content {
 
 .card-title-tournament {
     position: absolute;
-    bottom: 2.8rem;
+    bottom: 2.2rem;
     left: 1rem;
     font-size: 1.3rem;
     font-weight: 700;
+    color: var(--ion-color-light);
+}
+
+.card-description-tournament {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ion-color-light);
+
+    ion-icon {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+    }
+    span {
+        position: absolute;
+        bottom: 0.8rem;
+        left: 2.4rem;
+    }
 }

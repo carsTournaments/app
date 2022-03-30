@@ -3,6 +3,7 @@ export interface TournamentGetAllDto {
     pageSize: number;
     site: string;
     order: string[];
+    status?: string;
 }
 
 export interface TournamentCreateDto {
