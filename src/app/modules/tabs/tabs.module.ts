@@ -25,7 +25,7 @@ import { RouterModule } from '@angular/router';
           },
           {
             path: 'account',
-            loadChildren: () => import('../account/account.module').then(m => m.Tab3PageModule)
+            loadChildren: () => import('../account/account.module').then(m => m.AccountModule)
           },
           {
             path: '',

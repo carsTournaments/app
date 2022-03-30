@@ -18,4 +18,4 @@ import { AccountPage } from './account.page';
   ],
   declarations: [AccountPage]
 })
-export class Tab3PageModule { }
+export class AccountModule { }

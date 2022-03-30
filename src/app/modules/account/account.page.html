@@ -6,6 +6,10 @@
 
 <ion-content [fullscreen]="true">
  
- <login></login>
+ <login (onLoggin)="logged = true" *ngIf="!logged"></login>
+
+ <div *ngIf="logged">
+   <ion-item (click)="logout()">Cerrar sesion</ion-item>
+ </div>
 
 </ion-content>
