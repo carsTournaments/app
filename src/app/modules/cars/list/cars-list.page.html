@@ -1,16 +1,7 @@
-<ion-header class="ion-no-border" mode="md">
-  <ion-toolbar>
-    <ion-title>{{ vm.title }}</ion-title>
-    <ion-segment mode="md" [value]="vm.segments.selected" (ionChange)="segmentChanged($event)">
-      <ion-segment-button *ngFor="let item of vm.segments.items; let i = index" [value]="i">
-        <ion-label>{{ item }}</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
+<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="vm.segments.selected === 0" class="animate__animated animate__fadeIn animate__fast">
+  <div *ngIf="vm.header.segments.selected === 0" class="animate__animated animate__fadeIn animate__fast">
     <car-item *ngFor="let car of vm.cars" [car]="car" (clickItem)="onClickCar($event)"></car-item>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'cars')">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
@@ -18,7 +9,7 @@
     </ion-infinite-scroll>
   </div>
 
-  <div *ngIf="vm.segments.selected === 1" class="animate__animated animate__fadeIn animate__fast">
+  <div *ngIf="vm.header.segments.selected === 1" class="animate__animated animate__fadeIn animate__fast">
     <brand-item *ngFor="let brand of vm.brands" [brand]="brand" (clickItem)="onClickBrand($event)"></brand-item>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'brands')">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">

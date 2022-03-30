@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Tournament } from 'src/app/models/tournament.model';
 import { TournamentService } from 'src/app/services/api/tournament/tournament.service';
 import { TournamentsListViewModel } from './model/tournaments-list.view-model';
 
@@ -10,7 +12,7 @@ import { TournamentsListViewModel } from './model/tournaments-list.view-model';
 export class TournamentsListPage implements OnInit {
     vm = new TournamentsListViewModel();
 
-    constructor(private tournamentService: TournamentService) { }
+    constructor(private tournamentService: TournamentService, private router: Router) { }
 
     async ngOnInit() {
         this.getItems(null, { status: 'InProgress', items: 'tournamentsInProgress' });
@@ -20,7 +22,7 @@ export class TournamentsListPage implements OnInit {
 
     checkFirstValues() {
         if (this.vm.tournamentsCompleted.length === 0) {
-            this.vm.segments.items = this.vm.segments.items.filter((item) => item !== 'Completados');
+            this.vm.header.segments.items = this.vm.header.segments.items.filter((item) => item !== 'Completados');
         }
     }
 
@@ -38,7 +40,7 @@ export class TournamentsListPage implements OnInit {
         if (statusForce !== undefined) {
             return statusForce;
         } else {
-            const segment = this.vm.segments.selected;
+            const segment = this.vm.header.segments.selected;
             if (segment === 0) {
                 return { status: 'InProgress', items: 'tournamentsInProgress' };
             } else if (segment === 1) {
@@ -69,7 +71,7 @@ export class TournamentsListPage implements OnInit {
 
     segmentChanged(ev: any) {
         const segment = Number(ev.detail.value)
-        this.vm.segments.selected = Number(segment);
+        this.vm.header.segments.selected = Number(segment);
         if (segment === 0 && this.vm.tournamentsInProgress.length === 0 ||
             segment === 1 && this.vm.tournamentsTodo.length === 0 ||
             segment === 2 && this.vm.tournamentsCompleted.length === 0) {
@@ -77,7 +79,8 @@ export class TournamentsListPage implements OnInit {
         }
     }
 
-    goTo(event) {
+    goTo(event: Tournament) {
         console.log(event);
+        this.router.navigate(['/tab/tournaments/one', event._id]);
     }
 }

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { TournamentsOnePage } from './one/tournaments-one.page';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
     imports: [
@@ -15,13 +16,14 @@ import { TournamentsOnePage } from './one/tournaments-one.page';
         FormsModule,
         ServicesModule,
         ComponentsModule,
+        PipesModule,
         RouterModule.forChild([
             {
                 path: '',
                 component: TournamentsListPage,
             },
             {
-                path: ':id',
+                path: 'one/:id',
                 component: TournamentsOnePage
             }
         ]),

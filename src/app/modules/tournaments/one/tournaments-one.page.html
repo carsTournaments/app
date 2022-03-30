@@ -1,0 +1,25 @@
+<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
+
+<ion-content [fullscreen]="true" *ngIf="vm.tournament">
+    
+
+    <div *ngIf="vm.header.segments.selected === 0">
+        <ion-card mode="ios">
+            <ion-card-content>
+                <ion-card-title>
+                    {{vm.tournament?.name}}
+                </ion-card-title>
+                <p>
+                    Inscripciones: {{ vm.tournament?.inscriptions.length === 0 ? 'Sin inscripciones' : vm.tournament?.inscriptions.length }}
+                </p>
+                <p>Maximos participantes: {{ vm.tournament.maxParticipants }}</p>
+                <p>Inicio: {{ vm.tournament.startDate | dateToTimeAgo:true | fistLetterCase }}</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <div *ngIf="vm.header.segments.selected === 1">
+        <car-item *ngFor="let inscription of vm.tournament.inscriptions" [car]="inscription?.car"></car-item>
+    </div>
+    <div *ngIf="vm.header.segments.selected === 2"></div>
+</ion-content>

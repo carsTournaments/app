@@ -30,7 +30,7 @@ ion-toolbar {
     --background: var(--ion-color-primary);
     --color: var(--ion-color-primary-contrast);
     border-radius: 0 0px 20px 20px;
-    height: 90px;
+    height: 95px;
     border-bottom: 0px solid #ececec;
     box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
 }
@@ -39,12 +39,13 @@ ion-toolbar ion-title {
 }
 
 ion-title {
+    z-index: 1;
     text-align: center;
     font-size: 1.25rem;
 }
 
 ion-segment {
-    margin-top: 0.8rem;
+    margin-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
 }

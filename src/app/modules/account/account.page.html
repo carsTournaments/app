@@ -1,8 +1,4 @@
-<ion-header class="ion-no-border" mode="md">
-  <ion-toolbar>
-    <ion-title>{{ vm.title }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
 
 <ion-content [fullscreen]="true">
  

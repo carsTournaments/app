@@ -3,7 +3,7 @@ import { Brand } from 'src/app/models/brand.model';
 import { Car } from 'src/app/models/car.model';
 import { BrandService } from 'src/app/services/api/brand/brand.service';
 import { CarService } from 'src/app/services/api/car/car.service';
-import { CarsViewModel } from './model/cars.view-model';
+import { CarsListViewModel } from './model/cars-list.view-model';
 
 @Component({
     selector: 'app-cars-list',
@@ -11,7 +11,7 @@ import { CarsViewModel } from './model/cars.view-model';
     styleUrls: ['cars-list.page.scss'],
 })
 export class CarsListPage implements OnInit {
-    vm = new CarsViewModel();
+    vm = new CarsListViewModel();
 
     constructor(
         private carService: CarService,
@@ -72,14 +72,14 @@ export class CarsListPage implements OnInit {
     }
 
     segmentChanged(ev: any) {
-        this.vm.segments.selected = Number(ev.detail.value);
+        this.vm.header.segments.selected = Number(ev.detail.value);
     }
 
     onClickBrand(brand: Brand) {
         this.vm.carsBody.brand = brand._id;
         this.vm.carsBody.page = 1;
         this.vm.filter = true;
-        this.vm.segments.selected = 0;
+        this.vm.header.segments.selected = 0;
         this.getCars();
     }
 
@@ -89,7 +89,7 @@ export class CarsListPage implements OnInit {
         this.vm.carsBody.brand = null;
         this.vm.carsBody.page = 1;
         this.vm.filter = false;
-        this.vm.segments.selected = 0;
+        this.vm.header.segments.selected = 0;
         this.getCars();
     }
 }
