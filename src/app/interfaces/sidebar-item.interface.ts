@@ -1,4 +1,4 @@
 export interface SidebarItemI {
-  name: string;
-  route: string;
+    name: string;
+    route: string;
 }

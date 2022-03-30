@@ -11,7 +11,6 @@ import { ActionSheetService } from './ionic/action-sheet.service';
 import { StorageService } from './ionic/storage.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
     declarations: [],
@@ -32,4 +31,4 @@ import { IonicStorageModule } from '@ionic/storage-angular';
         },
     ],
 })
-export class ServicesModule { }
+export class ServicesModule {}

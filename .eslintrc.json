@@ -20,14 +20,7 @@
             "suffixes": ["Page", "Component"]
           }
         ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ],
+        "@angular-eslint/component-selector": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -35,7 +28,10 @@
             "prefix": "app",
             "style": "camelCase"
           }
-        ]
+        ],
+        "no-underscore-dangle": "off",
+        "@typescript-eslint/naming-convention": "off"
+        
       }
     },
     {

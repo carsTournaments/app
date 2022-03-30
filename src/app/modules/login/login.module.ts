@@ -14,9 +14,9 @@ import { RouterModule } from '@angular/router';
             {
                 path: '',
                 component: LoginPage,
-            }
-        ])
+            },
+        ]),
     ],
-    declarations: [LoginPage]
+    declarations: [LoginPage],
 })
-export class LoginModule { }
+export class LoginModule {}

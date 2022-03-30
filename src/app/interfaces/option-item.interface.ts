@@ -1,5 +1,5 @@
 export interface OptionItemI {
-  name: string;
-  value: string;
-  disabled?: boolean;
+    name: string;
+    value: string;
+    disabled?: boolean;
 }

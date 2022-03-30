@@ -1,6 +1,6 @@
 export interface PaginatorI {
-  pageSize: number;
-  currentPage: number;
-  totalPages: number;
-  total: number;
+    pageSize: number;
+    currentPage: number;
+    totalPages: number;
+    total: number;
 }

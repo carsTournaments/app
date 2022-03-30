@@ -1,4 +1,4 @@
 export interface ActionForOptionI {
-  name: string;
-  value: string;
+    name: string;
+    value: string;
 }

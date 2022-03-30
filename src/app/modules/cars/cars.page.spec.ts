@@ -4,21 +4,21 @@ import { IonicModule } from '@ionic/angular';
 import { CarsPage } from './cars.page';
 
 describe('Tab2Page', () => {
-  let component: CarsPage;
-  let fixture: ComponentFixture<CarsPage>;
+    let component: CarsPage;
+    let fixture: ComponentFixture<CarsPage>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [CarsPage],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [CarsPage],
+            imports: [IonicModule.forRoot()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(CarsPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+        fixture = TestBed.createComponent(CarsPage);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

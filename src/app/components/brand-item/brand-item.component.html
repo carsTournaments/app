@@ -1,4 +1,4 @@
-<ion-card mode="ios" class="ion-activatable" (click)="onClick.emit(brand)">
+<ion-card mode="ios" class="ion-activatable" (click)="clickItem.emit(brand)">
     <ion-card-content style="background-image: linear-gradient(
             rgba(0, 0, 0, 0.73), rgba(0, 0, 0, 0.73)), url({{brand?.image?.url|image}}
         )">

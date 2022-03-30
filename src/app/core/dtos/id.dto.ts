@@ -1,3 +1,3 @@
 export interface IdDto {
-  id: string;
+    id: string;
 }

@@ -4,13 +4,13 @@ import { Tournament } from 'src/app/models/tournament.model';
 @Component({
     selector: 'tournament-item',
     templateUrl: 'tournament-item.component.html',
-    styleUrls: ['./tournament-item.component.scss']
+    styleUrls: ['./tournament-item.component.scss'],
 })
-
 export class TournamentItemComponent implements OnInit {
     @Input() tournament: Tournament;
-    @Output() onClick: EventEmitter<Tournament> = new EventEmitter<Tournament>();
-    constructor() { }
+    @Output() clickItem: EventEmitter<Tournament> =
+        new EventEmitter<Tournament>();
+    constructor() {}
 
-    ngOnInit() { }
+    ngOnInit() {}
 }

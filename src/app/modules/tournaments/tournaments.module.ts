@@ -8,19 +8,19 @@ import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ServicesModule,
-    ComponentsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: TournamentsPage,
-      }
-    ])
-  ],
-  declarations: [TournamentsPage]
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        ServicesModule,
+        ComponentsModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: TournamentsPage,
+            },
+        ]),
+    ],
+    declarations: [TournamentsPage],
 })
 export class TournamentsModule {}

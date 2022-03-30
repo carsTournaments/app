@@ -9,37 +9,38 @@ import { HttpService } from '../../http/http.service';
 
 @Injectable({ providedIn: 'root' })
 export class BrandService {
-  url = `${environment.urlApi}/brands`;
-  headers = { headers: this.httpService.getHeaderWithToken() };
-  constructor(
-    private httpClient: HttpClient,
-    private httpService: HttpService
-  ) {}
+    url = `${environment.urlApi}/brands`;
+    headers = { headers: this.httpService.getHeaderWithToken() };
+    constructor(
+        private httpClient: HttpClient,
+        private httpService: HttpService
+    ) {}
 
-  getAll(
-    data: BrandGetAllDto
-  ): Observable<{ items: Brand[]; paginator: PaginatorI }> {
-    return this.httpClient.post<{ items: Brand[]; paginator: PaginatorI }>(
-      `${this.url}/all`,
-      data,
-      this.headers
-    );
-  }
+    getAll(
+        data: BrandGetAllDto
+    ): Observable<{ items: Brand[]; paginator: PaginatorI }> {
+        return this.httpClient.post<{ items: Brand[]; paginator: PaginatorI }>(
+            `${this.url}/all`,
+            data,
+            this.headers
+        );
+    }
 
-  getAllBrandsAndCars(data: BrandGetAllBrandsAndCarsDto): Observable<{ items: Brand[]; paginator: PaginatorI }> {
-    return this.httpClient.post<{ items: Brand[]; paginator: PaginatorI }>(
-      `${this.url}/allOfAllBrandsAndCarsBrand`,
-      data,
-      this.headers
-    );
-  }
+    getAllBrandsAndCars(
+        data: BrandGetAllBrandsAndCarsDto
+    ): Observable<{ items: Brand[]; paginator: PaginatorI }> {
+        return this.httpClient.post<{ items: Brand[]; paginator: PaginatorI }>(
+            `${this.url}/allOfAllBrandsAndCarsBrand`,
+            data,
+            this.headers
+        );
+    }
 
-  getOne(id: string): Observable<Brand> {
-    return this.httpClient.post<Brand>(
-      `${this.url}/one`,
-      { id, site: 'admin' },
-      this.headers
-    );
-  }
-
+    getOne(id: string): Observable<Brand> {
+        return this.httpClient.post<Brand>(
+            `${this.url}/one`,
+            { id, site: 'admin' },
+            this.headers
+        );
+    }
 }

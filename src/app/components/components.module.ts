@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
         FormsModule,
         CommonModule,
         ServicesModule,
-        PipesModule
+        PipesModule,
     ],
     declarations: [
         BrandItemComponent,
@@ -31,4 +31,4 @@ import { LoginComponent } from './login/login.component';
     ],
     providers: [],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

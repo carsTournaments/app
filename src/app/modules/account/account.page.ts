@@ -3,28 +3,26 @@ import { AuthService } from 'src/app/services/api/auth/auth.service';
 import { AccountViewModel } from './model/account.view-model';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: 'account.page.html',
-  styleUrls: ['./account.page.scss']
+    selector: 'app-account',
+    templateUrl: 'account.page.html',
+    styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-  vm = new AccountViewModel();
-  logged = false;
-  
+    vm = new AccountViewModel();
+    logged = false;
 
-  constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService) {}
 
-  ngOnInit() { 
-    this.isAuthenticated();
-  }
+    ngOnInit() {
+        this.isAuthenticated();
+    }
 
-  async isAuthenticated() {
-    this.logged = await this.authService.isAuthenticated();
-  }
+    async isAuthenticated() {
+        this.logged = await this.authService.isAuthenticated();
+    }
 
-  logout() { 
-    this.authService.logout();
-    this.logged = false;
-  }
-
+    logout() {
+        this.authService.logout();
+        this.logged = false;
+    }
 }

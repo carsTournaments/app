@@ -11,7 +11,7 @@
 
 <ion-content [fullscreen]="true">
   <div *ngIf="vm.segments.selected === 0" class="animate__animated animate__fadeIn animate__fast">
-    <car-item *ngFor="let car of vm.cars" [car]="car"></car-item>
+    <car-item *ngFor="let car of vm.cars" [car]="car" (clickItem)="onClickCar($event)"></car-item>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'cars')">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
       </ion-infinite-scroll-content>
@@ -19,7 +19,7 @@
   </div>
 
   <div *ngIf="vm.segments.selected === 1" class="animate__animated animate__fadeIn animate__fast">
-    <brand-item *ngFor="let brand of vm.brands" [brand]="brand" (onClick)="onClickBrand($event)"></brand-item>
+    <brand-item *ngFor="let brand of vm.brands" [brand]="brand" (clickItem)="onClickBrand($event)"></brand-item>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'brands')">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
       </ion-infinite-scroll-content>

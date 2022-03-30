@@ -6,37 +6,38 @@ import { AlertService } from 'src/app/services/ionic/alert.service';
 @Component({
     selector: 'login',
     templateUrl: 'login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent {
-    @Output() onLoggin: EventEmitter<void> = new EventEmitter<void>();
+    @Output() clickLogin: EventEmitter<void> = new EventEmitter<void>();
     email = '';
     password = '';
-    constructor(private authService: AuthService, private alertService: AlertService) { }
+    constructor(
+        private authService: AuthService,
+        private alertService: AlertService
+    ) {}
 
     login() {
         console.log(this.email, this.password);
         if (this.email.length === 0 || this.password.length === 0) {
-            alert('Revisa los datos')
+            alert('Revisa los datos');
             this.alertService.presentAlert('Error', 'Revisa los datos');
         } else {
             this.authService.login(this.email, this.password).subscribe({
                 next: (response) => this.onLoginSuccess(response),
-                error: (error) => this.alertService.presentAlert('Error', error)
+                error: (error) =>
+                    this.alertService.presentAlert('Error', error),
             });
         }
     }
 
-    onLoginSuccess(response: { item: User, token: string }) {
-        this.onLoggin.emit();
+    onLoginSuccess(response: { item: User; token: string }) {
+        this.clickLogin.emit();
         this.authService.setToken(response.token);
         this.authService.setUser(response.item);
     }
 
-    register() { }
+    register() {}
 
-    isDisabled = () => {
-        return this.email.length === 0 || this.password.length === 0;
-    }
+    isDisabled = () => this.email.length === 0 || this.password.length === 0;
 }

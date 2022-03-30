@@ -8,19 +8,19 @@ import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ServicesModule,
-    ComponentsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: CarsPage,
-      }
-    ])
-  ],
-  declarations: [CarsPage]
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        ServicesModule,
+        ComponentsModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: CarsPage,
+            },
+        ]),
+    ],
+    declarations: [CarsPage],
 })
 export class CarsPageModule {}

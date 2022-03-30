@@ -8,40 +8,42 @@ import { User } from 'src/app/models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  url = `${environment.urlApi}/auth`;
+    url = `${environment.urlApi}/auth`;
 
-  constructor(private httpClient: HttpClient, private storageService: StorageService) { }
+    constructor(
+        private httpClient: HttpClient,
+        private storageService: StorageService
+    ) {}
 
-  login(email: string, password: string): Observable<LoginResponseI> {
-    return this.httpClient.post<LoginResponseI>(`${this.url}/login`, {
-      email,
-      password,
-    });
-  }
+    login(email: string, password: string): Observable<LoginResponseI> {
+        return this.httpClient.post<LoginResponseI>(`${this.url}/login`, {
+            email,
+            password,
+        });
+    }
 
-  logout() {
-    this.storageService.remove('token');
-    this.storageService.remove('user');
-  }
+    logout() {
+        this.storageService.remove('token');
+        this.storageService.remove('user');
+    }
 
-  setToken(token: string) {
-    this.storageService.set('token', token);
-  }
+    setToken(token: string) {
+        this.storageService.set('token', token);
+    }
 
-  getToken(): Promise<string> {
-    return this.storageService.get<string>('token');
-  }
+    getToken(): Promise<string> {
+        return this.storageService.get<string>('token');
+    }
 
-  setUser(user: User) {
-    this.storageService.set('user', user);
-  }
+    setUser(user: User) {
+        this.storageService.set('user', user);
+    }
 
-  getUser(): Promise<User> {
-    return this.storageService.get<User>('user');
-  }
+    getUser(): Promise<User> {
+        return this.storageService.get<User>('user');
+    }
 
-  async isAuthenticated(): Promise<boolean> {
-    return this.getToken().then((token) => token !== null);
-  }
-
+    async isAuthenticated(): Promise<boolean> {
+        return this.getToken().then((token) => token !== null);
+    }
 }
