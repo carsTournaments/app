@@ -2,10 +2,11 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TournamentsPage } from './tournaments.page';
+import { TournamentsListPage } from './list/tournaments-list.page';
 import { RouterModule } from '@angular/router';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { TournamentsOnePage } from './one/tournaments-one.page';
 
 @NgModule({
     imports: [
@@ -17,10 +18,14 @@ import { ComponentsModule } from 'src/app/components/components.module';
         RouterModule.forChild([
             {
                 path: '',
-                component: TournamentsPage,
+                component: TournamentsListPage,
             },
+            {
+                path: ':id',
+                component: TournamentsOnePage
+            }
         ]),
     ],
-    declarations: [TournamentsPage],
+    declarations: [TournamentsListPage, TournamentsOnePage],
 })
 export class TournamentsModule {}

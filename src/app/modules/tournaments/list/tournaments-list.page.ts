@@ -1,14 +1,14 @@
-import { TournamentService } from '../../services/api/tournament/tournament.service';
-import { TournamentsViewModel } from './model/tournaments.view-model';
 import { Component, OnInit } from '@angular/core';
+import { TournamentService } from 'src/app/services/api/tournament/tournament.service';
+import { TournamentsListViewModel } from './model/tournaments-list.view-model';
 
 @Component({
-    selector: 'app-tournaments',
-    templateUrl: 'tournaments.page.html',
-    styleUrls: ['tournaments.page.scss'],
+    selector: 'app-tournaments-list',
+    templateUrl: 'tournaments-list.page.html',
+    styleUrls: ['tournaments-list.page.scss'],
 })
-export class TournamentsPage implements OnInit {
-    vm = new TournamentsViewModel();
+export class TournamentsListPage implements OnInit {
+    vm = new TournamentsListViewModel();
 
     constructor(private tournamentService: TournamentService) { }
 

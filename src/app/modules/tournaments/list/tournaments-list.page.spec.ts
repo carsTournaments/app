@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { TournamentsPage } from './tournaments.page';
+import { TournamentsListPage } from './tournaments-list.page';
 
 describe('Tab1Page', () => {
-    let component: TournamentsPage;
-    let fixture: ComponentFixture<TournamentsPage>;
+    let component: TournamentsListPage;
+    let fixture: ComponentFixture<TournamentsListPage>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [TournamentsPage],
-            imports: [IonicModule.forRoot(), ExploreContainerComponentModule],
+            declarations: [TournamentsListPage],
+            imports: [IonicModule.forRoot()],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TournamentsPage);
+        fixture = TestBed.createComponent(TournamentsListPage);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));
