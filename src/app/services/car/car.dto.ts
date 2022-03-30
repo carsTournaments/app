@@ -3,5 +3,6 @@ export interface CarGetAllDto {
   pageSize: number;
   site: string;
   order: string[];
+  brand?: string;
 }
 

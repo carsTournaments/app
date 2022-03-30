@@ -72,5 +72,17 @@ export class CarsPage {
 
   onClickBrand(brand: Brand) {
     console.log(brand);
+    this.vm.carsBody.brand = brand._id;
+    this.vm.carsBody.page = 1;
+    this.vm.filter = true;
+    this.vm.segments.selected = 0;
+    this.getCars();
+  }
+
+  cleanFilter() { 
+    this.vm.carsBody.brand = null;
+    this.vm.filter = false;
+    this.vm.segments.selected = 0;
+    this.getCars();
   }
 }

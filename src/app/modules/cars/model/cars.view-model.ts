@@ -22,4 +22,5 @@ export class CarsViewModel {
     }
     cars: Car[] = [];
     brands: Brand[] = [];
+    filter = false;
 }
