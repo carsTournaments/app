@@ -18,7 +18,7 @@
 
         <ion-segment *ngIf="options.segments && options.segments.items.length > 0" mode="md"
             [value]="options.segments.selected" (ionChange)="segmentChanged.emit($event)">
-            <ion-segment-button *ngFor="let item of options.segments.items; let i = index" [value]="i">
+            <ion-segment-button class="animate__animated animate__fadeIn animate__fast" *ngFor="let item of options.segments.items; let i = index" [value]="i">
                 <ion-label>{{ item }}</ion-label>
             </ion-segment-button>
         </ion-segment>

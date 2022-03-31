@@ -3,10 +3,10 @@
 <ion-content [fullscreen]="true" *ngIf="vm.tournament">
     <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 0">
         <ion-card mode="ios">
-            <img [src]="vm.tournament?.image.url | image">
+            <img *ngIf="vm.tournament?.image" [src]="vm.tournament?.image?.url | image">
             <ion-card-content>
                 <ion-card-title>
-                    {{vm.tournament?.name}}
+                    {{ vm.tournament?.name }}
                 </ion-card-title>
                 <p>
                     Inscripciones: {{ vm.tournament?.inscriptions.length === 0 ? 'Sin inscripciones' : vm.tournament?.inscriptions.length }}
