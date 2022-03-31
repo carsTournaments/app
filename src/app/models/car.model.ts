@@ -6,6 +6,7 @@ export class Car {
     driver: any; // UserI
     brand: any; // BrandI
     model: string;
+    fuel: string;
     traction: string;
     cv: number;
     cc: number;
@@ -22,6 +23,7 @@ export class Car {
         this.driver = data?.driver || '';
         this.brand = data?.brand || '';
         this.model = data?.model || '';
+        this.fuel = data?.fuel || '';
         this.traction = data?.traction || '';
         this.cv = data?.cv || 0;
         this.cc = data?.cc || 0;

@@ -1,0 +1,48 @@
+<ion-segment mode="md" [value]="roundSelected" scrollable="true" (ionChange)="segmentChanged($event)">
+    <ion-segment-button [value]="round._id" *ngFor="let round of rounds">
+        <ion-label>{{ round.name }}</ion-label>
+    </ion-segment-button>
+</ion-segment>
+
+<div *ngFor="let round of rounds">
+    <div *ngIf="roundSelected === round._id">
+        <ion-card mode="ios">
+            <ion-card-content>
+                <p>Inicio: {{ round.startDate | dateToTimeAgo:true | fistLetterCase }}</p>
+                <p>Fin: {{ round.endDate | dateToTimeAgo:true | fistLetterCase }}</p>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card mode="ios" *ngFor="let pairing of round.pairings">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col sizeXs="6">
+                        <div class="image-car1" style="background-image:url({{pairing.car1?.image?.url|image}})">
+                        </div>
+                    </ion-col>
+                    <ion-col sizeXs="6">
+                        <div class="image-car2" style="background-image:url({{pairing.car2?.image?.url|image}})">
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col sizeXs="5">
+                        <p class="card-title">{{ pairing.car1.brand.name | truncateText: 15 }} </p>
+                        <p>{{ pairing.car1.model }}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p style="text-align: center;">VS</p>
+                    </ion-col>
+                    <ion-col sizeXs="5">
+                        <div style="text-align: right;">
+                            <p class="card-title">{{ pairing.car2.brand.name | truncateText: 15 }} </p>
+                            <p>{{ pairing.car2.model }}</p>
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+
+            </ion-card-content>
+        </ion-card>
+    </div>
+</div>

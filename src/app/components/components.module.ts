@@ -9,9 +9,12 @@ import { CarItemComponent } from './car-item/car-item.component';
 import { BrandItemComponent } from './brand-item/brand-item.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { RoundsComponent } from './rounds/rounds.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
     imports: [
+        IonicModule,
         RouterModule,
         FormsModule,
         CommonModule,
@@ -23,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
         CarItemComponent,
         HeaderComponent,
         LoginComponent,
+        RoundsComponent,
         TournamentItemComponent,
     ],
     exports: [
@@ -30,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
         CarItemComponent,
         HeaderComponent,
         LoginComponent,
+        RoundsComponent,
         TournamentItemComponent,
     ],
     providers: [],

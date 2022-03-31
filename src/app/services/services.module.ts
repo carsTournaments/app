@@ -10,6 +10,7 @@ import { TournamentService } from './api/tournament/tournament.service';
 import { ActionSheetService } from './ionic/action-sheet.service';
 import { StorageService } from './ionic/storage.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { RoundService } from './api/round/round.service';
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
@@ -19,6 +20,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
         AuthService,
         BrandService,
         CarService,
+        RoundService,
         TournamentService,
         // Ionic
         ActionSheetService,
