@@ -4,10 +4,9 @@
         )">
         <div class="card-title-car">{{ car.brand.name}} {{ car.model }}</div>
         <div class="card-driver">
-            <img class="card-driver-image" [src]="car?.driver?.image?.url | image">
-            <div class="card-driver-name">{{ car.driver.name }}</div>
+            <div class="card-driver-name">{{ car.driver?.name }}</div>
         </div>
-        <div class="card-brand-image"><img [src]="car?.brand.image.url|image"></div>
+        <div *ngIf="car.brand.image" class="card-brand-image"><img [src]="car?.brand?.image?.url|image"></div>
     </ion-card-content>
     <ion-ripple-effect></ion-ripple-effect>
 </ion-card>

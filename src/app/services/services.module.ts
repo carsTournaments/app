@@ -11,6 +11,7 @@ import { ActionSheetService } from './ionic/action-sheet.service';
 import { StorageService } from './ionic/storage.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { RoundService } from './api/round/round.service';
+import { InscriptionService } from './api/inscription/inscription.service';
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
@@ -20,6 +21,7 @@ import { RoundService } from './api/round/round.service';
         AuthService,
         BrandService,
         CarService,
+        InscriptionService,
         RoundService,
         TournamentService,
         // Ionic

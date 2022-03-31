@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { InscriptionService } from 'src/app/services/api/inscription/inscription.service';
 import { TournamentService } from 'src/app/services/api/tournament/tournament.service';
 import { TournamentsOneViewModel } from './model/tournaments-one.view-model';
 
@@ -11,11 +12,16 @@ import { TournamentsOneViewModel } from './model/tournaments-one.view-model';
 
 export class TournamentsOnePage implements OnInit {
     vm = new TournamentsOneViewModel();
-    constructor(private route: ActivatedRoute, private tournamentService: TournamentService) { }
+    constructor(
+        private route: ActivatedRoute,
+        private tournamentService: TournamentService,
+        private inscriptionService: InscriptionService
+    ) { }
 
     ngOnInit(): void {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
         this.getOne();
+        this.getInscriptionsOfTournament();
     }
 
     getOne(): void {
@@ -23,8 +29,18 @@ export class TournamentsOnePage implements OnInit {
             next: (data) => {
                 this.vm.tournament = data;
                 this.vm.header.title = data.name;
-                this.vm.header.image = data.image;
                 this.setSegments();
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    }
+
+    getInscriptionsOfTournament() {
+        this.inscriptionService.getAllOfTournament({ id: this.vm.id }).subscribe({
+            next: (data) => {
+                this.vm.inscriptions = data;
             },
             error: (err) => {
                 console.log(err);

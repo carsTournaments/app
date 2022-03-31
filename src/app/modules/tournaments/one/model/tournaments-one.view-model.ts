@@ -1,4 +1,5 @@
 import { Header } from "src/app/components/header/model/header.model";
+import { Inscription } from "src/app/models/inscription.model";
 import { Tournament } from "src/app/models/tournament.model";
 
 export class TournamentsOneViewModel {
@@ -12,4 +13,5 @@ export class TournamentsOneViewModel {
         backButton: true
     })
     tournament: Tournament;
+    inscriptions: Inscription[] = [];
 }

@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
 
 export class HeaderComponent implements OnInit {
     @Input() options: Header;
-    @Output() segmentChanged: EventEmitter<string> = new EventEmitter();
+    @Output() segmentChanged: EventEmitter<any> = new EventEmitter();
     constructor(private navCtrl: NavController) { }
 
     ngOnInit() { }
