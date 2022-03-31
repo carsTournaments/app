@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
 import { StorageService } from '../../ionic/storage.service';
 import { User } from 'src/app/models/user.model';
+import { take } from 'rxjs/internal/operators/take';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,7 +20,7 @@ export class AuthService {
         return this.httpClient.post<LoginResponseI>(`${this.url}/login`, {
             email,
             password,
-        });
+        }).pipe(take(1));
     }
 
     logout() {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { InscriptionService } from 'src/app/services/api/inscription/inscription.service';
-import { TournamentService } from 'src/app/services/api/tournament/tournament.service';
-import { TournamentsOneViewModel } from './model/tournaments-one.view-model';
+import { InscriptionService, TournamentService } from 'src/app/services';
+import { TournamentsOneViewModel } from '..';
 
 @Component({
     selector: 'tournaments-one',

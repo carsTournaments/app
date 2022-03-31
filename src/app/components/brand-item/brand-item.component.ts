@@ -1,5 +1,5 @@
-import { Brand } from './../../models/brand.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Brand } from 'src/app/models';
 
 @Component({
     selector: 'brand-item',

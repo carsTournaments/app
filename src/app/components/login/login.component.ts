@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/api/auth/auth.service';
-import { AlertService } from 'src/app/services/ionic/alert.service';
+import { User } from 'src/app/models';
+import { AlertService, AuthService } from 'src/app/services';
 
 @Component({
     selector: 'login',

@@ -2,12 +2,9 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TournamentsListPage } from './list/tournaments-list.page';
 import { RouterModule } from '@angular/router';
-import { ServicesModule } from 'src/app/services/services.module';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { TournamentsOnePage } from './one/tournaments-one.page';
-import { PipesModule } from 'src/app/pipes/pipes.module';
+import { TournamentsListPage, TournamentsOnePage } from '.';
+import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
 
 @NgModule({
     imports: [

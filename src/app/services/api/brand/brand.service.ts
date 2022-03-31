@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Brand } from 'src/app/models/brand.model';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { HttpService } from '../../http/http.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BrandService {
@@ -23,7 +24,7 @@ export class BrandService {
             `${this.url}/all`,
             data,
             this.headers
-        );
+        ).pipe(take(1));
     }
 
     getAllBrandsAndCars(
@@ -33,7 +34,7 @@ export class BrandService {
             `${this.url}/allOfAllBrandsAndCarsBrand`,
             data,
             this.headers
-        );
+        ).pipe(take(1));
     }
 
     getOne(id: string): Observable<Brand> {
@@ -41,6 +42,6 @@ export class BrandService {
             `${this.url}/one`,
             { id, site: 'admin' },
             this.headers
-        );
+        ).pipe(take(1));
     }
 }

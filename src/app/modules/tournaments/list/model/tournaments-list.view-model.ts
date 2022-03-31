@@ -1,6 +1,6 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { Tournament } from 'src/app/models/tournament.model';
-import { TournamentGetAllDto } from 'src/app/services/api/tournament/tournament.dto';
+import { Header } from "src/app/components/header/model/header.model";
+import { Tournament } from "src/app/models";
+import { TournamentGetAllDto } from "src/app/services/api/tournament/tournament.dto";
 
 export class TournamentsListViewModel {
     header = new Header({

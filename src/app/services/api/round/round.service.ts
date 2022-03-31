@@ -7,6 +7,7 @@ import { Round } from 'src/app/models/round.model';
 import { RoundGetAllDto } from './round.dto';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { HttpService } from '../../http/http.service';
+import { take } from 'rxjs/internal/operators/take';
 
 @Injectable({ providedIn: 'root' })
 export class RoundService {
@@ -24,7 +25,7 @@ export class RoundService {
       `${this.url}/all`,
       body,
       this.headers
-    );
+    ).pipe(take(1));
   }
 
   getAllOfTournament(data: IdDto): Observable<Round[]> {
@@ -32,7 +33,7 @@ export class RoundService {
       `${this.url}/allOfTournament`,
       data,
       this.headers
-    );
+    ).pipe(take(1));
   }
 
   getOne(id: string): Observable<Round> {
@@ -40,6 +41,6 @@ export class RoundService {
       `${this.url}/one`,
       { id, site: 'admin' },
       this.headers
-    );
+    ).pipe(take(1));
   }
 }

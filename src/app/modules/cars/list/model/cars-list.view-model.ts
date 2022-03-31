@@ -1,6 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
-import { Brand } from 'src/app/models/brand.model';
-import { Car } from 'src/app/models/car.model';
+import { Brand, Car } from 'src/app/models';
 import { BrandGetAllBrandsAndCarsDto } from 'src/app/services/api/brand/brand.dto';
 import { CarGetAllDto } from 'src/app/services/api/car/car.dto';
 

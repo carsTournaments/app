@@ -7,6 +7,7 @@ import { CarGetAllDto } from './car.dto';
 import { Car } from 'src/app/models/car.model';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { HttpService } from '../../http/http.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class CarService {
@@ -24,7 +25,7 @@ export class CarService {
             `${this.url}/all`,
             data,
             this.headers
-        );
+        ).pipe(take(1));
     }
 
     getAllOffBrand(data: IdDto): Observable<Car[]> {
@@ -32,7 +33,7 @@ export class CarService {
             `${this.url}/allOfBrand`,
             data,
             this.headers
-        );
+        ).pipe(take(1));
     }
 
     getAllOfDriver(data: IdDto): Observable<Car[]> {
@@ -40,7 +41,7 @@ export class CarService {
             `${this.url}/allOfDriver`,
             data,
             this.headers
-        );
+        ).pipe(take(1));
     }
 
     getOne(id: string): Observable<Car> {
@@ -48,6 +49,6 @@ export class CarService {
             `${this.url}/one`,
             { id, site: 'admin' },
             this.headers
-        );
+        ).pipe(take(1));
     }
 }

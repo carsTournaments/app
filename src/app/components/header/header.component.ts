@@ -1,6 +1,6 @@
-import { Header } from './model/header.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Header } from './model/header.model';
 
 @Component({
     selector: 'custom-header',

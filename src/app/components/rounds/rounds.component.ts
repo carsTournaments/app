@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Round } from 'src/app/models/round.model';
-import { RoundService } from 'src/app/services/api/round/round.service';
+import { Round } from 'src/app/models';
+import { RoundService } from 'src/app/services';
 
 @Component({
     selector: 'rounds',

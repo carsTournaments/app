@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/api/auth/auth.service';
+import { AuthService } from 'src/app/services';
 import { AccountViewModel } from './model/account.view-model';
 
 @Component({

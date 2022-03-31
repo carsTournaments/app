@@ -1,6 +1,5 @@
 import { Header } from "src/app/components/header/model/header.model";
-import { Inscription } from "src/app/models/inscription.model";
-import { Tournament } from "src/app/models/tournament.model";
+import { Inscription, Tournament } from "src/app/models";
 
 export class TournamentsOneViewModel {
     id: string;

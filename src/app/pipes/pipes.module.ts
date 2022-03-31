@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import { FirstLetterPipe } from './fist-letter-case.pipe';
-import { ImagePipe } from './image.pipe';
-import { DateToTimeAgoPipe } from './timeago.pipe';
-import { TruncateTextPipe } from './truncate-text.pipe';
+import { DateToTimeAgoPipe, FirstLetterPipe, ImagePipe, TruncateTextPipe } from '.';
+
 
 @NgModule({
     declarations: [ImagePipe, DateToTimeAgoPipe, TruncateTextPipe, FirstLetterPipe],
