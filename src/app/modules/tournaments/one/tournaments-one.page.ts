@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { Car } from 'src/app/models';
 import { InscriptionService, TournamentService } from 'src/app/services';
 import { TournamentsOneViewModel } from '..';
 
@@ -14,7 +16,8 @@ export class TournamentsOnePage implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private tournamentService: TournamentService,
-        private inscriptionService: InscriptionService
+        private inscriptionService: InscriptionService,
+        private navCtrl: NavController
     ) { }
 
     ngOnInit(): void {
@@ -59,5 +62,9 @@ export class TournamentsOnePage implements OnInit {
 
     segmentChanged(event: { detail: { value: any } }) {
         this.vm.header.segments.selected = Number(event.detail.value);
+    }
+
+    onClickCar(car: Car) {
+        this.navCtrl.navigateForward(`/tab/cars/one/${car._id}`);
     }
 }

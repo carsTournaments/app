@@ -18,7 +18,7 @@
     </div>
 
     <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 1">
-        <car-item *ngFor="let inscription of vm.inscriptions" [car]="inscription?.car"></car-item>
+        <car-item *ngFor="let inscription of vm.inscriptions" [car]="inscription?.car" (clickItem)="onClickCar($event)"></car-item>
     </div>
     <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 2">
         <rounds [tournamentId]="vm.tournament._id"></rounds>

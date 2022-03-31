@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Brand, Car } from 'src/app/models';
 import { BrandService, CarService } from 'src/app/services';
@@ -13,7 +14,8 @@ export class CarsListPage implements OnInit {
 
     constructor(
         private carService: CarService,
-        private brandService: BrandService
+        private brandService: BrandService,
+        private navCtrl: NavController
     ) { }
 
     ngOnInit() {
@@ -81,7 +83,9 @@ export class CarsListPage implements OnInit {
         this.getCars();
     }
 
-    onClickCar(car: Car) { }
+    onClickCar(car: Car) { 
+        this.navCtrl.navigateForward(`/tab/cars/one/${car._id}`);
+    }
 
     cleanFilter() {
         this.vm.carsBody.brand = null;

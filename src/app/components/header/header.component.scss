@@ -1,3 +1,21 @@
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    border-radius: 0 0px 10px 10px;
+    height: 95px;
+    border-bottom: 0px solid #ececec;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+}
+ion-toolbar ion-title {
+    padding-top: 0.8rem;
+}
+
+ion-title {
+    z-index: 1;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
 ion-card {
     --color: var(--ion-color-dark);
     --border-radius: 8px;

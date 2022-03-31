@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ComponentsModule, ServicesModule } from 'src/app';
+import { ComponentsModule, ServicesModule, PipesModule } from 'src/app';
 import { CarsListPage, CarsOnePage } from '.';
 @NgModule({
     imports: [
@@ -12,13 +12,14 @@ import { CarsListPage, CarsOnePage } from '.';
         FormsModule,
         ServicesModule,
         ComponentsModule,
+        PipesModule,
         RouterModule.forChild([
             {
                 path: '',
                 component: CarsListPage,
             },
             {
-                path: ':id',
+                path: 'one/:id',
                 component: CarsOnePage
             }
         ]),
