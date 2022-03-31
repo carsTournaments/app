@@ -3,8 +3,13 @@
         style="background-image: linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{tournament?.image?.url|image}})">
         <div class="card-title-tournament">{{ tournament.name}}</div>
         <div class="card-description-tournament">
+            
             <ion-icon name="people"></ion-icon> <span>{{ tournament.inscriptions.length + '/' +
                 tournament.maxParticipants }}</span>
+        </div>
+
+        <div class="currentRound" *ngIf="tournament.status === 'InProgress'">
+            Cuartos de final
         </div>
     </ion-card-content>
     <ion-ripple-effect></ion-ripple-effect>
