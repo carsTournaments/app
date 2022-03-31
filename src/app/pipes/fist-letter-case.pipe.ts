@@ -9,6 +9,6 @@ export class FirstLetterPipe implements PipeTransform {
         if (value) {
             return value.charAt(0).toUpperCase() + value.slice(1);
         }
-        
+
     }
 }

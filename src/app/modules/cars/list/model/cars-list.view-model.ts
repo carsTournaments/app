@@ -10,7 +10,7 @@ export class CarsListViewModel {
             items: ['Ultimos Coches', 'Marcas'],
             selected: 0,
         }
-    }) 
+    });
     carsBody: CarGetAllDto = {
         page: 1,
         pageSize: 20,

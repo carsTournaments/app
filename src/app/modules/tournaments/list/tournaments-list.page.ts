@@ -27,7 +27,7 @@ export class TournamentsListPage implements OnInit {
     }
 
 
-    getItems(event?: any, statusForce?: { status: string, items: string }) {
+    getItems(event?: any, statusForce?: { status: string; items: string }) {
         const statusItem = this.getItemsValueByStatus(statusForce);
         this.vm.tournamentsBody.status = statusItem.status;
         this.tournamentService.getAll(this.vm.tournamentsBody).subscribe({
@@ -36,7 +36,7 @@ export class TournamentsListPage implements OnInit {
         });
     }
 
-    getItemsValueByStatus(statusForce?: { status: string, items: string }): { status: string, items: string } {
+    getItemsValueByStatus(statusForce?: { status: string; items: string }): { status: string; items: string } {
         if (statusForce !== undefined) {
             return statusForce;
         } else {
@@ -52,7 +52,7 @@ export class TournamentsListPage implements OnInit {
 
     }
 
-    getItemsOnSuccess(res: any, statusItem: { status: string, items: string }, event?: any, ) {
+    getItemsOnSuccess(res: any, statusItem: { status: string; items: string }, event?: any, ) {
         const itemsValue: string = statusItem.items;
         if (event) {
             if (res.items.length > 0) {
@@ -70,7 +70,7 @@ export class TournamentsListPage implements OnInit {
     }
 
     segmentChanged(ev: any) {
-        const segment = Number(ev.detail.value)
+        const segment = Number(ev.detail.value);
         this.vm.header.segments.selected = Number(segment);
         if (segment === 0 && this.vm.tournamentsInProgress.length === 0 ||
             segment === 1 && this.vm.tournamentsTodo.length === 0 ||

@@ -49,15 +49,15 @@ export class TournamentsOnePage implements OnInit {
 
     setSegments() {
         if (this.vm.tournament.status === 'Todo') {
-            this.vm.header.segments.items = ['Info', 'Inscripciones']
+            this.vm.header.segments.items = ['Info', 'Inscripciones'];
         } else if (this.vm.tournament.status === 'InProgress') {
-            this.vm.header.segments.items = ['Info', 'Inscripciones', 'Rondas']
+            this.vm.header.segments.items = ['Info', 'Inscripciones', 'Rondas'];
         } else if (this.vm.tournament.status === 'Completed') {
-            this.vm.header.segments.items = ['Info', 'Rondas']
+            this.vm.header.segments.items = ['Info', 'Rondas'];
         }
     }
 
-    segmentChanged(event: { detail: { value: any; }; }) {
+    segmentChanged(event: { detail: { value: any } }) {
         this.vm.header.segments.selected = Number(event.detail.value);
     }
 }

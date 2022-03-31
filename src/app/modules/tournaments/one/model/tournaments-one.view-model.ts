@@ -1,5 +1,5 @@
-import { Header } from "src/app/components/header/model/header.model";
-import { Inscription, Tournament } from "src/app/models";
+import { Header } from 'src/app/components/header/model/header.model';
+import { Inscription, Tournament } from 'src/app/models';
 
 export class TournamentsOneViewModel {
     id: string;
@@ -10,7 +10,7 @@ export class TournamentsOneViewModel {
             selected: 0
         },
         backButton: true
-    })
+    });
     tournament: Tournament;
     inscriptions: Inscription[] = [];
 }

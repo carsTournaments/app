@@ -16,6 +16,6 @@ export class HeaderComponent implements OnInit {
     ngOnInit() { }
 
     goToBack() {
-        this.navCtrl.pop()
+        this.navCtrl.pop();
     }
 }

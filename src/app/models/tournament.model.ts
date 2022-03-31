@@ -1,6 +1,5 @@
 import { Round } from 'src/app/models/round.model';
 import { Inscription } from 'src/app/models/inscription.model';
-import * as moment from 'moment';
 import { Image } from './image.model';
 export class Tournament {
     _id?: string;
@@ -21,7 +20,7 @@ export class Tournament {
         this.name = data?.name || '';
         this.maxParticipants = data?.maxParticipants || 32;
         this.requisites = data?.requisites || [];
-        this.startDate = data?.startDate || moment().format('YYYY-MM-DD HH:mm');
+        this.startDate = data?.startDate || '';
         this.endDate = data?.endDate || '';
         this.status = data?.status || 'Todo';
         this.durationDays = data?.durationDays || 10;

@@ -10,9 +10,9 @@ import { RoundService } from 'src/app/services';
 
 export class RoundsComponent implements OnInit {
     @Input() tournamentId: string;
-    rounds: Round[] = []
-    roundSelected = "";
-    segmentsRounds = []
+    rounds: Round[] = [];
+    roundSelected = '';
+    segmentsRounds = [];
     constructor(private roundService: RoundService) { }
 
 
@@ -20,25 +20,18 @@ export class RoundsComponent implements OnInit {
         this.getAllRoundsAndPairingsOfTournament();
     }
 
-    ngAfterContentInit() {
-
-    }
-
-
-
     getAllRoundsAndPairingsOfTournament() {
         this.roundService.getAllOfTournament({ id: this.tournamentId }).subscribe({
             next: (rounds) => {
                 this.rounds = rounds;
-                this.filterRounds()
+                this.filterRounds();
             },
             error: (err) => { }
-        })
-
+        });
     }
 
     filterRounds() {
-        this.rounds = this.rounds.filter((round) => round.status === 'InProgress' || round.status === 'Completed')
+        this.rounds = this.rounds.filter((round) => round.status === 'InProgress' || round.status === 'Completed');
         this.roundSelected = this.rounds.find((round) => round.status === 'InProgress')._id;
     }
 
