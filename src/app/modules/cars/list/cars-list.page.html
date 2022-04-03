@@ -1,25 +1,29 @@
 <custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="vm.header.segments.selected === 0" class="animate__animated animate__fadeIn animate__fast">
-    <car-item *ngFor="let car of vm.cars" [car]="car" (clickItem)="onClickCar($event)"></car-item>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'cars')">
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-  </div>
+  <ion-row style="padding-top: 0">
+    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+      <div *ngIf="vm.header.segments.selected === 0" class="animate__animated animate__fadeIn animate__fast">
+        <car-item *ngFor="let car of vm.cars" [car]="car" (clickItem)="onClickCar($event)"></car-item>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'cars')">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
 
-  <div *ngIf="vm.header.segments.selected === 1" class="animate__animated animate__fadeIn animate__fast">
-    <brand-item *ngFor="let brand of vm.brands" [brand]="brand" (clickItem)="onClickBrand($event)"></brand-item>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'brands')">
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-  </div>
+      <div *ngIf="vm.header.segments.selected === 1" class="animate__animated animate__fadeIn animate__fast">
+        <brand-item *ngFor="let brand of vm.brands" [brand]="brand" (clickItem)="onClickBrand($event)"></brand-item>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event, 'brands')">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
 
-  <ion-fab *ngIf="vm.filter" vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button size="small" (click)="cleanFilter()">
-      <ion-icon name="close"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+      <ion-fab *ngIf="vm.filter" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" (click)="cleanFilter()">
+          <ion-icon name="close"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
 </ion-content>

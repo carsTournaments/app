@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Car } from 'src/app/models';
+import { ImagePipe } from 'src/app/pipes';
 import { InscriptionService, TournamentService } from 'src/app/services';
 import { TournamentsOneViewModel } from '..';
 
@@ -17,7 +18,8 @@ export class TournamentsOnePage implements OnInit {
         private route: ActivatedRoute,
         private tournamentService: TournamentService,
         private inscriptionService: InscriptionService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private imagePipe: ImagePipe
     ) { }
 
     ngOnInit(): void {
@@ -31,6 +33,9 @@ export class TournamentsOnePage implements OnInit {
             next: (data) => {
                 this.vm.tournament = data;
                 this.vm.header.title = data.name;
+                if (data.image) {
+                    this.vm.image = this.imagePipe.transform(data.image.url);
+                }
                 this.setSegments();
             },
             error: (err) => {

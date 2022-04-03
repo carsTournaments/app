@@ -8,7 +8,12 @@ export class CarsOneViewModel {
         segments: {
             items: ['Info', 'Piloto'],
             selected: 0,
+        },
+        backButton: {
+            state: true,
+            route: '/tab/cars'
         }
     });
     car: Car;
+    image: string;
 }

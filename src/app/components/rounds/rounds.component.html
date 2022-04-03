@@ -14,35 +14,25 @@
         </ion-card>
 
         <ion-card mode="ios" *ngFor="let pairing of round.pairings">
-            <ion-card-content>
-                <ion-row>
-                    <ion-col sizeXs="6">
-                        <div class="image-car1" style="background-image:url({{pairing.car1?.image?.url|image}})">
-                        </div>
-                    </ion-col>
-                    <ion-col sizeXs="6">
-                        <div class="image-car2" style="background-image:url({{pairing.car2?.image?.url|image}})">
-                        </div>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col sizeXs="5">
-                        <p class="card-title">{{ pairing.car1.brand.name | truncateText: 15 }} </p>
-                        <p>{{ pairing.car1.model }}</p>
-                    </ion-col>
-                    <ion-col>
-                        <p style="text-align: center;">VS</p>
-                    </ion-col>
-                    <ion-col sizeXs="5">
-                        <div style="text-align: right;">
-                            <p class="card-title">{{ pairing.car2.brand.name | truncateText: 15 }} </p>
-                            <p>{{ pairing.car2.model }}</p>
-                        </div>
-                    </ion-col>
-                </ion-row>
+            <div class="image-car1"
+                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{pairing.car1?.image?.url|image}})">
+            </div>
+            <div class="vs">VS</div>
+            <div class="image-car2"
+                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{pairing.car2?.image?.url|image}})">
+            </div>
+            <div class="carTitle1">
+                <p>{{ pairing.car1.brand.name | truncateText: 15 }}</p>
+              <span>{{ pairing.car1.model }}</span> 
+            </div>
+            <!-- <ion-card-content>
+
+                <div class="car-title2">
+                    {{pairing.car2.brand.name | truncateText: 15 }}
+                </div>
+            </ion-card-content> -->
 
 
-            </ion-card-content>
         </ion-card>
     </div>
 </div>

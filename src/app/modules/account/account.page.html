@@ -1,11 +1,14 @@
 <custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
 
 <ion-content [fullscreen]="true">
- 
- <login (clickLogin)="logged = true" *ngIf="!logged"></login>
+  <ion-row style="padding-top: 0">
+    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
 
- <div *ngIf="logged">
-   <ion-item (click)="logout()">Cerrar sesion</ion-item>
- </div>
+      <login (clickLogin)="logged = true" *ngIf="!logged"></login>
 
+      <div *ngIf="logged">
+        <ion-item (click)="logout()">Cerrar sesion</ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

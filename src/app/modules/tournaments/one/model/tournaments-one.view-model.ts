@@ -9,8 +9,12 @@ export class TournamentsOneViewModel {
             items: ['Info', 'Inscripciones', 'Rondas'],
             selected: 0
         },
-        backButton: true
+        backButton: {
+            state: true,
+            route: '/tab/tournaments'
+        }
     });
     tournament: Tournament;
     inscriptions: Inscription[] = [];
+    image: string;
 }

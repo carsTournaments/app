@@ -3,7 +3,7 @@
         'height': !options.segments || 
             options.segments.items.length === 0 ?  '70px' : options.image ? '220px': ''
     }">
-        <div *ngIf="options.backButton" class="back-button ion-activatable ripple-parent" (click)="goToBack()">
+        <div *ngIf="options.backButton?.state" class="back-button ion-activatable ripple-parent" (click)="goToBack()">
             <ion-icon name="arrow-back-circle-outline"></ion-icon>
             <ion-ripple-effect></ion-ripple-effect>
         </div>

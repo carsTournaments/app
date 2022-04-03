@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule, ServicesModule, PipesModule } from 'src/app';
 import { CarsListPage, CarsOnePage } from '.';
+import { ImagePipe } from 'src/app/pipes';
 @NgModule({
     imports: [
         IonicModule,
@@ -25,5 +26,6 @@ import { CarsListPage, CarsOnePage } from '.';
         ]),
     ],
     declarations: [CarsListPage, CarsOnePage],
+    providers: [ImagePipe]
 })
 export class CarsPageModule {}

@@ -7,11 +7,14 @@ export class Header {
         selected: 0
     };
     image?: Image;
-    backButton? = false;
+    backButton?: {
+        state?: boolean,
+        route?: string
+    }
     constructor(data?: Header) {
         this.title = data?.title;
         this.segments = data?.segments;
         this.image = data?.image;
-        this.backButton = data?.backButton || false;
+        this.backButton = data?.backButton;
     }
 }

@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
     ngOnInit() { }
 
     goToBack() {
-        this.navCtrl.pop();
+        if (this.options.backButton && this.options.backButton.state) {
+            this.navCtrl.navigateForward(this.options.backButton.route);
+        }
     }
 }
