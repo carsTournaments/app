@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { GaragePage, DashboardPage } from '.';
+import { InscriptionsPage } from './inscriptions/inscriptions.page';
 
 @NgModule({
     imports: [
@@ -17,8 +18,9 @@ import { GaragePage, DashboardPage } from '.';
         RouterModule.forChild([
             { path: '', component: DashboardPage },
             { path: 'garage', component: GaragePage },
+            { path: 'inscriptions', component: InscriptionsPage },
         ]),
     ],
-    declarations: [DashboardPage, GaragePage],
+    declarations: [DashboardPage, GaragePage, InscriptionsPage],
 })
 export class UserModule {}
