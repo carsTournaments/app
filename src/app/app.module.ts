@@ -14,7 +14,9 @@ import { customAnimation } from './core/animations/animations';
     entryComponents: [],
     imports: [
         BrowserModule,
-        IonicModule.forRoot({ navAnimation: customAnimation }),
+        IonicModule.forRoot({
+            navAnimation: customAnimation,
+        }),
         AppRoutingModule,
         IonicStorageModule.forRoot(),
     ],

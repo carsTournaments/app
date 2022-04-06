@@ -1,11 +1,17 @@
-<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
+<custom-header
+    [options]="vm.header"
+    (segmentChanged)="segmentChanged($event)"
+></custom-header>
 
 <ion-content [fullscreen]="true" *ngIf="vm.car">
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 0">
+            <div *ngIf="vm.header.segments.selected === 0">
                 <ion-card mode="ios">
-                    <div class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+                    <div
+                        class="div-image-one"
+                        [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
+                    ></div>
                     <ion-card-header>
                         <ion-card-title>
                             {{ vm.car.brand?.name }} {{ vm.car.model }}
@@ -21,7 +27,7 @@
                 </ion-card>
             </div>
 
-            <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 1">
+            <div *ngIf="vm.header.segments.selected === 1">
                 <ion-card mode="ios">
                     <ion-card-header>
                         <ion-card-title>

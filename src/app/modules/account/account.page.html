@@ -1,14 +1,23 @@
-<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
+<custom-header
+    [options]="vm.header"
+    (segmentChanged)="segmentChanged($event)"
+></custom-header>
 
 <ion-content [fullscreen]="true">
-  <ion-row style="padding-top: 0">
-    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+    <ion-row style="padding-top: 0">
+        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+            <login (clickLogin)="logged = true" *ngIf="!logged"></login>
 
-      <login (clickLogin)="logged = true" *ngIf="!logged"></login>
-
-      <div *ngIf="logged">
-        <ion-item (click)="logout()">Cerrar sesion</ion-item>
-      </div>
-    </ion-col>
-  </ion-row>
+            <ion-card mode="ios" *ngIf="logged">
+                <ion-card-content>
+                    <ion-item
+                        [button]="true"
+                        *ngFor="let item of vm.options"
+                        (click)="onClickOption(item)"
+                        >{{ item.name }}
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
 </ion-content>

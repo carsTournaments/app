@@ -1,20 +1,32 @@
-<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
+<custom-header
+    [options]="vm.header"
+    (segmentChanged)="segmentChanged($event)"
+></custom-header>
 
 <ion-content [fullscreen]="true">
-  <ion-row style="padding-top: 0">
-    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-      <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 0">
-        <tournament-item *ngFor="let tournament of vm.tournamentsInProgress" [tournament]="tournament"
-          (clickItem)="goTo($event)"></tournament-item>
-      </div>
-      <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 1">
-        <tournament-item *ngFor="let tournament of vm.tournamentsTodo" [tournament]="tournament"
-          (clickItem)="goTo($event)"></tournament-item>
-      </div>
-      <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 2">
-        <tournament-item *ngFor="let tournament of vm.tournamentsCompleted" [tournament]="tournament"
-          (clickItem)="goTo($event)"></tournament-item>
-      </div>
-    </ion-col>
-  </ion-row>
+    <ion-row style="padding-top: 0">
+        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+            <div *ngIf="vm.header.segments.selected === 0">
+                <tournament-item
+                    *ngFor="let tournament of vm.tournamentsInProgress"
+                    [tournament]="tournament"
+                    (clickItem)="goTo($event)"
+                ></tournament-item>
+            </div>
+            <div *ngIf="vm.header.segments.selected === 1">
+                <tournament-item
+                    *ngFor="let tournament of vm.tournamentsTodo"
+                    [tournament]="tournament"
+                    (clickItem)="goTo($event)"
+                ></tournament-item>
+            </div>
+            <div *ngIf="vm.header.segments.selected === 2">
+                <tournament-item
+                    *ngFor="let tournament of vm.tournamentsCompleted"
+                    [tournament]="tournament"
+                    (clickItem)="goTo($event)"
+                ></tournament-item>
+            </div>
+        </ion-col>
+    </ion-row>
 </ion-content>

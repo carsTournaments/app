@@ -7,7 +7,7 @@ export const getIonPageElement = (element: HTMLElement) => {
     }
 
     const ionPage = element.querySelector(
-        ':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs'
+        ':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs, :scope > ion-tab'
     );
     if (ionPage) {
         return ionPage;

@@ -1,30 +1,47 @@
-<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
+<custom-header
+    [options]="vm.header"
+    (segmentChanged)="segmentChanged($event)"
+></custom-header>
 
 <ion-content [fullscreen]="true" *ngIf="vm.tournament">
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 0">
+            <div *ngIf="vm.header.segments.selected === 0">
                 <ion-card mode="ios">
-                    <div *ngIf="vm.image" class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+                    <div
+                        *ngIf="vm.image"
+                        class="div-image-one"
+                        [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
+                    ></div>
                     <ion-card-content>
                         <ion-card-title>
                             {{ vm.tournament?.name }}
                         </ion-card-title>
                         <p>
-                            Inscripciones: {{ vm.tournament?.inscriptions.length === 0 ? 'Sin inscripciones' :
+                            Inscripciones: {{ vm.tournament?.inscriptions.length
+                            === 0 ? 'Sin inscripciones' :
                             vm.tournament?.inscriptions.length }}
                         </p>
-                        <p>Maximos participantes: {{ vm.tournament.maxParticipants }}</p>
-                        <p>Inicio: {{ vm.tournament.startDate | dateToTimeAgo:true | fistLetterCase }}</p>
+                        <p>
+                            Maximos participantes: {{
+                            vm.tournament.maxParticipants }}
+                        </p>
+                        <p>
+                            Inicio: {{ vm.tournament.startDate |
+                            dateToTimeAgo:true | fistLetterCase }}
+                        </p>
                     </ion-card-content>
                 </ion-card>
             </div>
 
-            <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 1">
-                <car-item *ngFor="let inscription of vm.inscriptions" [car]="inscription?.car"
-                    (clickItem)="onClickCar($event)"></car-item>
+            <div *ngIf="vm.header.segments.selected === 1">
+                <car-item
+                    *ngFor="let inscription of vm.inscriptions"
+                    [car]="inscription?.car"
+                    (clickItem)="onClickCar($event)"
+                ></car-item>
             </div>
-            <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 2">
+            <div *ngIf="vm.header.segments.selected === 2">
                 <rounds [tournamentId]="vm.tournament._id"></rounds>
             </div>
         </ion-col>

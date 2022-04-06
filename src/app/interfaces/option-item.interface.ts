@@ -1,5 +1,6 @@
 export interface OptionItemI {
     name: string;
-    value: string;
-    disabled?: boolean;
+    icon: string;
+    route?: string;
+    value?: string;
 }

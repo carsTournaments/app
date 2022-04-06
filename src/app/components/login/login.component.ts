@@ -18,7 +18,6 @@ export class LoginComponent {
 
     login() {
         if (this.email.length === 0 || this.password.length === 0) {
-            alert('Revisa los datos');
             this.alertService.presentAlert('Error', 'Revisa los datos');
         } else {
             this.authService.login(this.email, this.password).subscribe({
