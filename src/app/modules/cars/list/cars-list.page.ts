@@ -30,7 +30,7 @@ export class CarsListPage implements OnInit {
         });
     }
 
-    getCarsOnSuccess(res: any, event?: any) {
+    getCarsOnSuccess(res: { items: Car[] },  event?: any) {
         if (event) {
             if (res.items.length > 0) {
                 this.vm.cars = this.vm.cars.concat(res.items);
@@ -45,20 +45,22 @@ export class CarsListPage implements OnInit {
 
     getBrands(event?: any) {
         this.brandService.getAllBrandsAndCars(this.vm.brandsBody).subscribe({
-            next: (res) => {
-                if (event) {
-                    if (res.items.length > 0) {
-                        this.vm.brands = this.vm.brands.concat(res.items);
-                        event.target.complete();
-                    } else {
-                        event.target.disabled = true;
-                    }
-                } else {
-                    this.vm.brands = res.items;
-                }
-            },
+            next: (res) => this.getBrandsOnSuccess(res, event),
             error: (err) => console.log(err),
         });
+    }
+
+    getBrandsOnSuccess(res: { items: Brand[] }, event?: any) {
+        if (event) {
+            if (res.items.length > 0) {
+                this.vm.brands = this.vm.brands.concat(res.items);
+                event.target.complete();
+            } else {
+                event.target.disabled = true;
+            }
+        } else {
+            this.vm.brands = res.items;
+        }
     }
 
     loadMoreData(event: any, type: string) {
