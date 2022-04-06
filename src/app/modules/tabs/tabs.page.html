@@ -1,18 +1,9 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tournaments">
-      <ion-icon name="list"></ion-icon>
-      <ion-label>Torneos</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="cars">
-      <ion-icon name="car"></ion-icon>
-      <ion-label>Coches</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="account">
-      <ion-icon name="people"></ion-icon>
-      <ion-label>Tu cuenta</ion-label>
+    <ion-tab-button *ngFor="let item of tabs; index as i" [tab]="item?.route"
+      id="tabButton-{{ i }}">
+      <ion-icon  [name]="item?.icon"></ion-icon>
+      <ion-label >{{item?.name}}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

@@ -43,7 +43,7 @@ export class TournamentsListPage implements OnInit {
         this.vm.tournamentsBody.status = statusItem.status;
         this.tournamentService.getAll(this.vm.tournamentsBody).subscribe({
             next: (res) => this.getItemsOnSuccess(res, statusItem, event),
-            error: (err) => console.log(err),
+            error: (err) => console.error(err),
         });
     }
 
@@ -99,7 +99,6 @@ export class TournamentsListPage implements OnInit {
     }
 
     goTo(event: Tournament) {
-        console.log(event);
         this.router.navigate(['/tab/tournaments/one', event._id]);
     }
 }

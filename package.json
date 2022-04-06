@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --code-coverage",
     "e2e": "ng e2e",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix",
     "prettier:list": "prettier --list-different \"./{e2e,src}/**/*.{scss,ts}\" || ECHO .",

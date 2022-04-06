@@ -26,7 +26,7 @@ export class CarsListPage implements OnInit {
     getCars(event?: any) {
         this.carService.getAll(this.vm.carsBody).subscribe({
             next: (res) => this.getCarsOnSuccess(res, event),
-            error: (err) => console.log(err),
+            error: (err) => console.error(err),
         });
     }
 
@@ -46,7 +46,7 @@ export class CarsListPage implements OnInit {
     getBrands(event?: any) {
         this.brandService.getAllBrandsAndCars(this.vm.brandsBody).subscribe({
             next: (res) => this.getBrandsOnSuccess(res, event),
-            error: (err) => console.log(err),
+            error: (err) => console.error(err),
         });
     }
 

@@ -42,4 +42,11 @@ describe('AccountPage', () => {
             expect(component.logged).toBe(false)
         })
     })
+
+    it('logout', () => {
+        spyOn(authService, 'logout');
+        component.logout();
+        expect(authService.logout).toHaveBeenCalled();
+        expect(component.logged).toBe(false);
+    })
 });

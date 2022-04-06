@@ -17,7 +17,6 @@ export class LoginComponent {
     ) {}
 
     login() {
-        console.log(this.email, this.password);
         if (this.email.length === 0 || this.password.length === 0) {
             alert('Revisa los datos');
             this.alertService.presentAlert('Error', 'Revisa los datos');

@@ -26,15 +26,11 @@ export class CarsOnePage implements OnInit {
         this.carService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.car = data;
-                if (data.image) {
-                    console.log(data.image);
+                if (data && data.image) {
                     this.vm.image = this.imagePipe.transform(data.image.url);
-                    console.log(this.vm.image);
                 }
             },
-            error: (err) => {
-                console.log(err);
-            },
+            error: (err) => console.error(err),
         });
     }
 

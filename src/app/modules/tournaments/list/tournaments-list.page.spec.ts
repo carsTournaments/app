@@ -29,4 +29,10 @@ describe('TournamentsListPage', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('ngOnInit', () => {
+        spyOn(component, 'getItems');
+        component.ngOnInit();
+        expect(component.getItems).toHaveBeenCalled();
+    });
 });

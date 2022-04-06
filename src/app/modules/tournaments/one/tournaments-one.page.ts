@@ -38,7 +38,7 @@ export class TournamentsOnePage implements OnInit {
                 this.setSegments();
             },
             error: (err) => {
-                console.log(err);
+                console.error(err);
             },
         });
     }
@@ -51,7 +51,7 @@ export class TournamentsOnePage implements OnInit {
                     this.vm.inscriptions = data;
                 },
                 error: (err) => {
-                    console.log(err);
+                    console.error(err);
                 },
             });
     }
