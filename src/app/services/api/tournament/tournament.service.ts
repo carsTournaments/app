@@ -15,22 +15,26 @@ export class TournamentService {
     constructor(
         private httpClient: HttpClient,
         private httpService: HttpService
-    ) { }
+    ) {}
 
     getAll(
         data: TournamentGetAllDto
     ): Observable<{ items: Tournament[]; paginator: PaginatorI }> {
-        return this.httpClient.post<{
-            items: Tournament[];
-            paginator: PaginatorI;
-        }>(`${this.url}/all`, data, this.headers).pipe(take(1));
+        return this.httpClient
+            .post<{
+                items: Tournament[];
+                paginator: PaginatorI;
+            }>(`${this.url}/all`, data, this.headers)
+            .pipe(take(1));
     }
 
     getOne(id: string): Observable<Tournament> {
-        return this.httpClient.post<Tournament>(
-            `${this.url}/one`,
-            { id, site: 'admin' },
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<Tournament>(
+                `${this.url}/one`,
+                { id, site: 'admin' },
+                this.headers
+            )
+            .pipe(take(1));
     }
 }

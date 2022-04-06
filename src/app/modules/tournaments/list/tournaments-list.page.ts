@@ -12,20 +12,31 @@ import { TournamentsListViewModel } from '..';
 export class TournamentsListPage implements OnInit {
     vm = new TournamentsListViewModel();
 
-    constructor(private tournamentService: TournamentService, private router: Router) { }
+    constructor(
+        private tournamentService: TournamentService,
+        private router: Router
+    ) {}
 
     async ngOnInit() {
-        this.getItems(null, { status: 'InProgress', items: 'tournamentsInProgress' });
+        this.getItems(null, {
+            status: 'InProgress',
+            items: 'tournamentsInProgress',
+        });
         this.getItems(null, { status: 'Todo', items: 'tournamentsTodo' });
-        this.getItems(null, { status: 'Completed', items: 'tournamentsCompleted' });
+        this.getItems(null, {
+            status: 'Completed',
+            items: 'tournamentsCompleted',
+        });
     }
 
     checkFirstValues() {
         if (this.vm.tournamentsCompleted.length === 0) {
-            this.vm.header.segments.items = this.vm.header.segments.items.filter((item) => item !== 'Completados');
+            this.vm.header.segments.items =
+                this.vm.header.segments.items.filter(
+                    (item) => item !== 'Completados'
+                );
         }
     }
-
 
     getItems(event?: any, statusForce?: { status: string; items: string }) {
         const statusItem = this.getItemsValueByStatus(statusForce);
@@ -36,7 +47,10 @@ export class TournamentsListPage implements OnInit {
         });
     }
 
-    getItemsValueByStatus(statusForce?: { status: string; items: string }): { status: string; items: string } {
+    getItemsValueByStatus(statusForce?: { status: string; items: string }): {
+        status: string;
+        items: string;
+    } {
         if (statusForce !== undefined) {
             return statusForce;
         } else {
@@ -49,10 +63,13 @@ export class TournamentsListPage implements OnInit {
                 return { status: 'Completed', items: 'tournamentsCompleted' };
             }
         }
-
     }
 
-    getItemsOnSuccess(res: any, statusItem: { status: string; items: string }, event?: any, ) {
+    getItemsOnSuccess(
+        res: any,
+        statusItem: { status: string; items: string },
+        event?: any
+    ) {
         const itemsValue: string = statusItem.items;
         if (event) {
             if (res.items.length > 0) {
@@ -72,9 +89,11 @@ export class TournamentsListPage implements OnInit {
     segmentChanged(ev: any) {
         const segment = Number(ev.detail.value);
         this.vm.header.segments.selected = Number(segment);
-        if (segment === 0 && this.vm.tournamentsInProgress.length === 0 ||
-            segment === 1 && this.vm.tournamentsTodo.length === 0 ||
-            segment === 2 && this.vm.tournamentsCompleted.length === 0) {
+        if (
+            (segment === 0 && this.vm.tournamentsInProgress.length === 0) ||
+            (segment === 1 && this.vm.tournamentsTodo.length === 0) ||
+            (segment === 2 && this.vm.tournamentsCompleted.length === 0)
+        ) {
             this.getItems();
         }
     }

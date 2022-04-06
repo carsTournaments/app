@@ -9,7 +9,7 @@ export class CarsListViewModel {
         segments: {
             items: ['Ultimos Coches', 'Marcas'],
             selected: 0,
-        }
+        },
     });
     carsBody: CarGetAllDto = {
         page: 1,

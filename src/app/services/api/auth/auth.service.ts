@@ -17,10 +17,12 @@ export class AuthService {
     ) {}
 
     login(email: string, password: string): Observable<LoginResponseI> {
-        return this.httpClient.post<LoginResponseI>(`${this.url}/login`, {
-            email,
-            password,
-        }).pipe(take(1));
+        return this.httpClient
+            .post<LoginResponseI>(`${this.url}/login`, {
+                email,
+                password,
+            })
+            .pipe(take(1));
     }
 
     logout() {

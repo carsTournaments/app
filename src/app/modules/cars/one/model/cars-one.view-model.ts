@@ -1,5 +1,5 @@
-import { Header } from "src/app/components/header/model/header.model";
-import { Car } from "src/app/models";
+import { Header } from 'src/app/components/header/model/header.model';
+import { Car } from 'src/app/models';
 
 export class CarsOneViewModel {
     id: string;
@@ -11,8 +11,8 @@ export class CarsOneViewModel {
         },
         backButton: {
             state: true,
-            route: '/tab/cars'
-        }
+            route: '/tab/cars',
+        },
     });
     car: Car;
     image: string;

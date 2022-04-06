@@ -20,28 +20,30 @@ export class BrandService {
     getAll(
         data: BrandGetAllDto
     ): Observable<{ items: Brand[]; paginator: PaginatorI }> {
-        return this.httpClient.post<{ items: Brand[]; paginator: PaginatorI }>(
-            `${this.url}/all`,
-            data,
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<{ items: Brand[]; paginator: PaginatorI }>(
+                `${this.url}/all`,
+                data,
+                this.headers
+            )
+            .pipe(take(1));
     }
 
     getAllBrandsAndCars(
         data: BrandGetAllBrandsAndCarsDto
     ): Observable<{ items: Brand[]; paginator: PaginatorI }> {
-        return this.httpClient.post<{ items: Brand[]; paginator: PaginatorI }>(
-            `${this.url}/allOfAllBrandsAndCarsBrand`,
-            data,
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<{ items: Brand[]; paginator: PaginatorI }>(
+                `${this.url}/allOfAllBrandsAndCarsBrand`,
+                data,
+                this.headers
+            )
+            .pipe(take(1));
     }
 
     getOne(id: string): Observable<Brand> {
-        return this.httpClient.post<Brand>(
-            `${this.url}/one`,
-            { id, site: 'admin' },
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<Brand>(`${this.url}/one`, { id, site: 'admin' }, this.headers)
+            .pipe(take(1));
     }
 }

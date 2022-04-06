@@ -20,8 +20,8 @@ ion-card-content {
     position: absolute;
     bottom: 2.4rem;
     left: 0rem;
-     font-size: 1.2rem;
-     padding: 0.25rem .8rem;
+    font-size: 1.2rem;
+    padding: 0.25rem 0.8rem;
     border-radius: 0px 10px 10px 0px;
     font-weight: 700;
     color: #fff;
@@ -32,12 +32,12 @@ ion-card-content {
 
 .card-description {
     position: absolute;
-     left: 0;
-        position: absolute;
-        bottom: 0.4rem;
-        padding: .25rem 1rem .25rem 1rem;
-        border-radius: 0px 10px 10px 0px;
-        background: #000;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        color: #fff;
+    left: 0;
+    position: absolute;
+    bottom: 0.4rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    border-radius: 0px 10px 10px 0px;
+    background: #000;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    color: #fff;
 }

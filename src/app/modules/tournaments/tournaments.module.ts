@@ -22,11 +22,11 @@ import { ImagePipe } from 'src/app/pipes';
             },
             {
                 path: 'one/:id',
-                component: TournamentsOnePage
-            }
+                component: TournamentsOnePage,
+            },
         ]),
     ],
     declarations: [TournamentsListPage, TournamentsOnePage],
-    providers: [ImagePipe]
+    providers: [ImagePipe],
 })
 export class TournamentsModule {}

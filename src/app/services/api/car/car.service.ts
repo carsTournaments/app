@@ -21,34 +21,30 @@ export class CarService {
     getAll(
         data: CarGetAllDto
     ): Observable<{ items: Car[]; paginator: PaginatorI }> {
-        return this.httpClient.post<{ items: Car[]; paginator: PaginatorI }>(
-            `${this.url}/all`,
-            data,
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<{ items: Car[]; paginator: PaginatorI }>(
+                `${this.url}/all`,
+                data,
+                this.headers
+            )
+            .pipe(take(1));
     }
 
     getAllOffBrand(data: IdDto): Observable<Car[]> {
-        return this.httpClient.post<Car[]>(
-            `${this.url}/allOfBrand`,
-            data,
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<Car[]>(`${this.url}/allOfBrand`, data, this.headers)
+            .pipe(take(1));
     }
 
     getAllOfDriver(data: IdDto): Observable<Car[]> {
-        return this.httpClient.post<Car[]>(
-            `${this.url}/allOfDriver`,
-            data,
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<Car[]>(`${this.url}/allOfDriver`, data, this.headers)
+            .pipe(take(1));
     }
 
     getOne(id: string): Observable<Car> {
-        return this.httpClient.post<Car>(
-            `${this.url}/one`,
-            { id, site: 'admin' },
-            this.headers
-        ).pipe(take(1));
+        return this.httpClient
+            .post<Car>(`${this.url}/one`, { id, site: 'admin' }, this.headers)
+            .pipe(take(1));
     }
 }

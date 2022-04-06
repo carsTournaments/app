@@ -1,7 +1,6 @@
 import { CarService } from 'src/app/services';
 import { Component, OnInit } from '@angular/core';
 import { CarsOneViewModel } from '..';
-import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from 'src/app/pipes';
 
@@ -10,10 +9,13 @@ import { ImagePipe } from 'src/app/pipes';
     templateUrl: 'cars-one.page.html',
     styleUrls: ['./cars-one.page.scss'],
 })
-
 export class CarsOnePage implements OnInit {
     vm = new CarsOneViewModel();
-    constructor(private carService: CarService, private navCtrl: NavController, private route: ActivatedRoute, private imagePipe: ImagePipe) { }
+    constructor(
+        private carService: CarService,
+        private route: ActivatedRoute,
+        private imagePipe: ImagePipe
+    ) {}
 
     ngOnInit() {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
@@ -25,14 +27,14 @@ export class CarsOnePage implements OnInit {
             next: (data) => {
                 this.vm.car = data;
                 if (data.image) {
-                    console.log(data.image)
+                    console.log(data.image);
                     this.vm.image = this.imagePipe.transform(data.image.url);
                     console.log(this.vm.image);
                 }
             },
             error: (err) => {
                 console.log(err);
-            }
+            },
         });
     }
 

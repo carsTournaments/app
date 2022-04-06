@@ -21,11 +21,11 @@ import { ImagePipe } from 'src/app/pipes';
             },
             {
                 path: 'one/:id',
-                component: CarsOnePage
-            }
+                component: CarsOnePage,
+            },
         ]),
     ],
     declarations: [CarsListPage, CarsOnePage],
-    providers: [ImagePipe]
+    providers: [ImagePipe],
 })
 export class CarsPageModule {}

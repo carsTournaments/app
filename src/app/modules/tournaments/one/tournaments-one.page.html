@@ -5,7 +5,7 @@
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <div class="animate__animated animate__fadeIn animate__fast" *ngIf="vm.header.segments.selected === 0">
                 <ion-card mode="ios">
-                    <div class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+                    <div *ngIf="vm.image" class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
                     <ion-card-content>
                         <ion-card-title>
                             {{ vm.tournament?.name }}

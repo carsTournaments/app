@@ -11,10 +11,9 @@ import {
     TournamentService,
     ActionSheetService,
     AlertService,
-    StorageService
+    StorageService,
 } from '.';
 import { GlobalHttpInterceptor } from '../core/interceptors/global-http.interceptor';
-
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
@@ -38,4 +37,4 @@ import { GlobalHttpInterceptor } from '../core/interceptors/global-http.intercep
         },
     ],
 })
-export class ServicesModule { }
+export class ServicesModule {}

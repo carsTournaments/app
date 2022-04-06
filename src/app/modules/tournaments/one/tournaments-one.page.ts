@@ -11,7 +11,6 @@ import { TournamentsOneViewModel } from '..';
     templateUrl: 'tournaments-one.page.html',
     styleUrls: ['./tournaments-one.page.scss'],
 })
-
 export class TournamentsOnePage implements OnInit {
     vm = new TournamentsOneViewModel();
     constructor(
@@ -20,7 +19,7 @@ export class TournamentsOnePage implements OnInit {
         private inscriptionService: InscriptionService,
         private navCtrl: NavController,
         private imagePipe: ImagePipe
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
@@ -40,19 +39,21 @@ export class TournamentsOnePage implements OnInit {
             },
             error: (err) => {
                 console.log(err);
-            }
+            },
         });
     }
 
     getInscriptionsOfTournament() {
-        this.inscriptionService.getAllOfTournament({ id: this.vm.id }).subscribe({
-            next: (data) => {
-                this.vm.inscriptions = data;
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        });
+        this.inscriptionService
+            .getAllOfTournament({ id: this.vm.id })
+            .subscribe({
+                next: (data) => {
+                    this.vm.inscriptions = data;
+                },
+                error: (err) => {
+                    console.log(err);
+                },
+            });
     }
 
     setSegments() {

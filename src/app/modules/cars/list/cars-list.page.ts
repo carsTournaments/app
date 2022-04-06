@@ -16,7 +16,7 @@ export class CarsListPage implements OnInit {
         private carService: CarService,
         private brandService: BrandService,
         private navCtrl: NavController
-    ) { }
+    ) {}
 
     ngOnInit() {
         this.getCars();
@@ -83,7 +83,7 @@ export class CarsListPage implements OnInit {
         this.getCars();
     }
 
-    onClickCar(car: Car) { 
+    onClickCar(car: Car) {
         this.navCtrl.navigateForward(`/tab/cars/one/${car._id}`);
     }
 

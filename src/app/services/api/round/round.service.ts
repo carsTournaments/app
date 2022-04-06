@@ -11,36 +11,34 @@ import { take } from 'rxjs/internal/operators/take';
 
 @Injectable({ providedIn: 'root' })
 export class RoundService {
-  url = `${environment.urlApi}/rounds`;
-  headers = { headers: this.httpService.getHeaderWithToken() };
-  constructor(
-    private httpClient: HttpClient,
-    private httpService: HttpService
-  ) {}
+    url = `${environment.urlApi}/rounds`;
+    headers = { headers: this.httpService.getHeaderWithToken() };
+    constructor(
+        private httpClient: HttpClient,
+        private httpService: HttpService
+    ) {}
 
-  getAll(
-    body: RoundGetAllDto
-  ): Observable<{ items: Round[]; paginator: PaginatorI }> {
-    return this.httpClient.post<{ items: Round[]; paginator: PaginatorI }>(
-      `${this.url}/all`,
-      body,
-      this.headers
-    ).pipe(take(1));
-  }
+    getAll(
+        body: RoundGetAllDto
+    ): Observable<{ items: Round[]; paginator: PaginatorI }> {
+        return this.httpClient
+            .post<{ items: Round[]; paginator: PaginatorI }>(
+                `${this.url}/all`,
+                body,
+                this.headers
+            )
+            .pipe(take(1));
+    }
 
-  getAllOfTournament(data: IdDto): Observable<Round[]> {
-    return this.httpClient.post<Round[]>(
-      `${this.url}/allOfTournament`,
-      data,
-      this.headers
-    ).pipe(take(1));
-  }
+    getAllOfTournament(data: IdDto): Observable<Round[]> {
+        return this.httpClient
+            .post<Round[]>(`${this.url}/allOfTournament`, data, this.headers)
+            .pipe(take(1));
+    }
 
-  getOne(id: string): Observable<Round> {
-    return this.httpClient.post<Round>(
-      `${this.url}/one`,
-      { id, site: 'admin' },
-      this.headers
-    ).pipe(take(1));
-  }
+    getOne(id: string): Observable<Round> {
+        return this.httpClient
+            .post<Round>(`${this.url}/one`, { id, site: 'admin' }, this.headers)
+            .pipe(take(1));
+    }
 }

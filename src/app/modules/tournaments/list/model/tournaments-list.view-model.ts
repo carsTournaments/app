@@ -8,7 +8,7 @@ export class TournamentsListViewModel {
         segments: {
             items: ['En curso', 'Proximos', 'Completados'],
             selected: 0,
-        }
+        },
     });
     tournamentsBody: TournamentGetAllDto = {
         page: 1,

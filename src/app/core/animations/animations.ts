@@ -1,13 +1,13 @@
-import { AnimationController } from "@ionic/angular";
+import { AnimationController } from '@ionic/angular';
 const animationCtrl = new AnimationController();
 
 export const getIonPageElement = (element: HTMLElement) => {
-    if (element.classList.contains("ion-page")) {
+    if (element.classList.contains('ion-page')) {
         return element;
     }
 
     const ionPage = element.querySelector(
-        ":scope > .ion-page, :scope > ion-nav, :scope > ion-tabs"
+        ':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs'
     );
     if (ionPage) {
         return ionPage;
@@ -21,20 +21,36 @@ export const customAnimation = (_: HTMLElement, opts: any) => {
     const rootTransition = animationCtrl
         .create()
         .duration(opts.duration || 333)
-        .easing("cubic-bezier(0.7,0,0.3,1)");
+        .easing('cubic-bezier(0.7,0,0.3,1)');
 
     const enterTransition = animationCtrl.create().addElement(opts.enteringEl);
     const exitTransition = animationCtrl.create().addElement(opts.leavingEl);
 
-    enterTransition.fromTo("opacity", "0", "1");
-    exitTransition.fromTo("opacity", "1", "0");
+    enterTransition.fromTo('opacity', '0', '1');
+    exitTransition.fromTo('opacity', '1', '0');
 
-    if (opts.direction === "forward") {
-        enterTransition.fromTo("transform", "translateX(-1.5%)", "translateX(0%)");
-        exitTransition.fromTo("transform", "translateX(0%)", "translateX(1.5%)");
+    if (opts.direction === 'forward') {
+        enterTransition.fromTo(
+            'transform',
+            'translateX(-1.5%)',
+            'translateX(0%)'
+        );
+        exitTransition.fromTo(
+            'transform',
+            'translateX(0%)',
+            'translateX(1.5%)'
+        );
     } else {
-        enterTransition.fromTo("transform", "translateX(1.5%)", "translateX(0%)");
-        exitTransition.fromTo("transform", "translateX(0%)", "translateX(-1.5%)");
+        enterTransition.fromTo(
+            'transform',
+            'translateX(1.5%)',
+            'translateX(0%)'
+        );
+        exitTransition.fromTo(
+            'transform',
+            'translateX(0%)',
+            'translateX(-1.5%)'
+        );
     }
 
     rootTransition.addAnimation([enterTransition, exitTransition]);

@@ -7,12 +7,12 @@ export class TournamentsOneViewModel {
         title: 'Torneo',
         segments: {
             items: ['Info', 'Inscripciones', 'Rondas'],
-            selected: 0
+            selected: 0,
         },
         backButton: {
             state: true,
-            route: '/tab/tournaments'
-        }
+            route: '/tab/tournaments',
+        },
     });
     tournament: Tournament;
     inscriptions: Inscription[] = [];
