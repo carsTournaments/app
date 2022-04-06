@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
 import { AuthService, AlertService } from 'src/app/services';
-import { AccountViewModel } from './model/account.view-model';
+import { DashboardViewModel } from '..';
 
 @Component({
-    selector: 'app-account',
-    templateUrl: 'account.page.html',
-    styleUrls: ['./account.page.scss'],
+    selector: 'app-dashboard',
+    templateUrl: 'dashboard.page.html',
+    styleUrls: ['./dashboard.page.scss'],
 })
-export class AccountPage implements OnInit {
-    vm = new AccountViewModel();
+export class DashboardPage implements OnInit {
+    vm = new DashboardViewModel();
     logged = false;
 
     constructor(

@@ -1,11 +1,11 @@
-import { ComponentsModule } from './../../components/components.module';
-import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { ServicesModule } from 'src/app/services/services.module';
-import { AccountPage } from './account.page';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { GaragePage, DashboardPage } from '.';
 
 @NgModule({
     imports: [
@@ -14,8 +14,11 @@ import { AccountPage } from './account.page';
         FormsModule,
         ComponentsModule,
         ServicesModule,
-        RouterModule.forChild([{ path: '', component: AccountPage }]),
+        RouterModule.forChild([
+            { path: '', component: DashboardPage },
+            { path: 'garage', component: GaragePage },
+        ]),
     ],
-    declarations: [AccountPage],
+    declarations: [DashboardPage, GaragePage],
 })
-export class AccountModule {}
+export class UserModule {}

@@ -10,18 +10,18 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
 import { AuthService, AlertService } from 'src/app/services';
 
-import { AccountPage } from './account.page';
+import { DashboardPage } from './dashboard.page';
 
-describe('AccountPage', () => {
-    let component: AccountPage;
+describe('DashboardPage', () => {
+    let component: DashboardPage;
     let authService: AuthService;
     let alertService: AlertService;
     let navCtrl: NavController;
-    let fixture: ComponentFixture<AccountPage>;
+    let fixture: ComponentFixture<DashboardPage>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [AccountPage],
+            declarations: [DashboardPage],
             imports: [
                 IonicModule.forRoot(),
                 RouterTestingModule,
@@ -31,7 +31,7 @@ describe('AccountPage', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(AccountPage);
+        fixture = TestBed.createComponent(DashboardPage);
         component = fixture.componentInstance;
         authService = testbed.inject(AuthService);
         alertService = testbed.inject(AlertService);
