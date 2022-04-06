@@ -1,7 +1,12 @@
 import { ImagePipe } from 'src/app/pipes';
-import { ComponentFixture, getTestBed, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+    ComponentFixture,
+    getTestBed,
+    TestBed,
+    waitForAsync,
+} from '@angular/core/testing';
 import { IonicModule, NavController } from '@ionic/angular';
-import { RouterTestingModule } from '@angular/router/testing'
+import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of } from 'rxjs';
 import { ComponentsModule } from 'src/app';
 import { CarService, BrandService } from 'src/app/services';
@@ -12,9 +17,9 @@ import { ActivatedRoute } from '@angular/router';
 describe('CarsOnePage', () => {
     let component: CarsOnePage;
     let fixture: ComponentFixture<CarsOnePage>;
-    let carService: CarService
+    let carService: CarService;
     let navCtrl: NavController;
-    let route: ActivatedRoute
+    let route: ActivatedRoute;
     let imagePipe: ImagePipe;
 
     beforeEach(waitForAsync(() => {
@@ -24,7 +29,6 @@ describe('CarsOnePage', () => {
                 IonicModule.forRoot(),
                 RouterTestingModule,
                 ComponentsModule,
-
             ],
             providers: [
                 CarService,
@@ -34,13 +38,12 @@ describe('CarsOnePage', () => {
                     useValue: {
                         snapshot: {
                             paramMap: {
-                                get: () => "1"
-                            }
-                        }
-                    }
-                }
-
-            ]
+                                get: () => '1',
+                            },
+                        },
+                    },
+                },
+            ],
         }).compileComponents();
 
         const testbed = getTestBed();
@@ -48,7 +51,7 @@ describe('CarsOnePage', () => {
         component = fixture.componentInstance;
         carService = testbed.inject(CarService);
         route = testbed.inject(ActivatedRoute);
-        imagePipe = testbed.inject(ImagePipe)
+        imagePipe = testbed.inject(ImagePipe);
 
         fixture.detectChanges();
     }));
@@ -66,18 +69,17 @@ describe('CarsOnePage', () => {
 
     describe('getOne', () => {
         const car = new Car();
-        car._id = "1";
+        car._id = '1';
         it('success', () => {
             spyOn(carService, 'getOne').and.returnValue(of(car));
             component.getOne();
             expect(component.vm.car._id).toBe('1');
             expect(component.vm.image).toBe('assets/no-image.png');
-        })
-    })
-
-    it('segmentChanged', () => {
-        component.segmentChanged({ detail: { value: 0 } })
-        expect(component.vm.header.segments.selected).toBe(0);
+        });
     });
 
+    it('segmentChanged', () => {
+        component.segmentChanged({ detail: { value: 0 } });
+        expect(component.vm.header.segments.selected).toBe(0);
+    });
 });

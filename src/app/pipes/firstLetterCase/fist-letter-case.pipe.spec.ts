@@ -1,7 +1,6 @@
-import { FirstLetterPipe } from "./fist-letter-case.pipe";
+import { FirstLetterPipe } from './fist-letter-case.pipe';
 
 describe('FirstLetterPipe', () => {
-
     it('create an instance', () => {
         const pipe = new FirstLetterPipe();
         expect(pipe).toBeTruthy();
@@ -10,7 +9,7 @@ describe('FirstLetterPipe', () => {
     it('change first letter to uppercase', () => {
         const pipe = new FirstLetterPipe();
         const result = pipe.transform('perro');
-        const value = result == 'Perro' ? true : false
+        const value = result == 'Perro' ? true : false;
         expect(value).toBe(true);
-    })
-})
+    });
+});

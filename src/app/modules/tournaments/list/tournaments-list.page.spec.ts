@@ -1,4 +1,9 @@
-import { ComponentFixture, getTestBed, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+    ComponentFixture,
+    getTestBed,
+    TestBed,
+    waitForAsync,
+} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
@@ -9,13 +14,17 @@ import { TournamentsListPage } from './tournaments-list.page';
 describe('TournamentsListPage', () => {
     let component: TournamentsListPage;
     let fixture: ComponentFixture<TournamentsListPage>;
-    let tournamentService: TournamentService
+    let tournamentService: TournamentService;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TournamentsListPage],
-            imports: [IonicModule.forRoot(), RouterTestingModule, ComponentsModule],
-            providers: [TournamentService]
+            imports: [
+                IonicModule.forRoot(),
+                RouterTestingModule,
+                ComponentsModule,
+            ],
+            providers: [TournamentService],
         }).compileComponents();
 
         const testbed = getTestBed();

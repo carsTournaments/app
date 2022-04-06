@@ -1,4 +1,9 @@
-import { ComponentFixture, getTestBed, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+    ComponentFixture,
+    getTestBed,
+    TestBed,
+    waitForAsync,
+} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
@@ -14,8 +19,12 @@ describe('AccountPage', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AccountPage],
-            imports: [IonicModule.forRoot(), RouterTestingModule, ComponentsModule],
-            providers: [AuthService]
+            imports: [
+                IonicModule.forRoot(),
+                RouterTestingModule,
+                ComponentsModule,
+            ],
+            providers: [AuthService],
         }).compileComponents();
 
         const testbed = getTestBed();
@@ -31,22 +40,26 @@ describe('AccountPage', () => {
 
     describe('onInit', () => {
         it('isLogged', async () => {
-            spyOn(authService, 'isAuthenticated').and.returnValue(Promise.resolve(true))
+            spyOn(authService, 'isAuthenticated').and.returnValue(
+                Promise.resolve(true)
+            );
             await component.isAuthenticated();
-            expect(component.logged).toBe(true)
-        })
+            expect(component.logged).toBe(true);
+        });
 
         it('isNotLogged', async () => {
-            spyOn(authService, 'isAuthenticated').and.returnValue(Promise.resolve(false))
+            spyOn(authService, 'isAuthenticated').and.returnValue(
+                Promise.resolve(false)
+            );
             await component.isAuthenticated();
-            expect(component.logged).toBe(false)
-        })
-    })
+            expect(component.logged).toBe(false);
+        });
+    });
 
     it('logout', () => {
         spyOn(authService, 'logout');
         component.logout();
         expect(authService.logout).toHaveBeenCalled();
         expect(component.logged).toBe(false);
-    })
+    });
 });

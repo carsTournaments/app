@@ -10,18 +10,18 @@ export class TabsPage {
         {
             name: 'Torneo',
             route: 'tournaments',
-            icon: 'list-outline'
+            icon: 'list-outline',
         },
         {
             name: 'Coches',
             route: 'cars',
-            icon: 'car-outline'
+            icon: 'car-outline',
         },
         {
             name: 'Tu cuenta',
             route: 'account',
-            icon: 'person-circle-outline'
-        }
-    ]
+            icon: 'person-circle-outline',
+        },
+    ];
     constructor() {}
 }
