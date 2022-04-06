@@ -9,7 +9,7 @@ describe('FirstLetterPipe', () => {
     it('change first letter to uppercase', () => {
         const pipe = new FirstLetterPipe();
         const result = pipe.transform('perro');
-        const value = result == 'Perro' ? true : false;
+        const value = result === 'Perro' ? true : false;
         expect(value).toBe(true);
     });
 });
