@@ -24,7 +24,7 @@ export class DashboardPage implements OnInit {
     }
 
     async isAuthenticated() {
-        this.logged = await this.authService.isAuthenticated();
+        this.logged = this.authService.isAuthenticated();
     }
 
     logout() {

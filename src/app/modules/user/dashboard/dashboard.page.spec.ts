@@ -45,17 +45,13 @@ describe('DashboardPage', () => {
 
     describe('onInit', () => {
         it('isLogged', async () => {
-            spyOn(authService, 'isAuthenticated').and.returnValue(
-                Promise.resolve(true)
-            );
+            spyOn(authService, 'isAuthenticated').and.returnValue(true);
             await component.isAuthenticated();
             expect(component.logged).toBe(true);
         });
 
         it('isNotLogged', async () => {
-            spyOn(authService, 'isAuthenticated').and.returnValue(
-                Promise.resolve(false)
-            );
+            spyOn(authService, 'isAuthenticated').and.returnValue(false);
             await component.isAuthenticated();
             expect(component.logged).toBe(false);
         });
