@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { GaragePage, DashboardPage } from '.';
+import { GarageListPage, DashboardPage } from '.';
 import { InscriptionsPage } from './inscriptions/inscriptions.page';
 import { GarageOnePage } from './garage/one/garage-one.page';
 
@@ -18,12 +18,17 @@ import { GarageOnePage } from './garage/one/garage-one.page';
         ServicesModule,
         RouterModule.forChild([
             { path: '', component: DashboardPage },
-            { path: 'garage', component: GaragePage },
+            { path: 'garage', component: GarageListPage },
             { path: 'garage/one/:id', component: GarageOnePage },
             { path: 'garage/new', component: GarageOnePage },
             { path: 'inscriptions', component: InscriptionsPage },
         ]),
     ],
-    declarations: [DashboardPage, GaragePage, GarageOnePage, InscriptionsPage],
+    declarations: [
+        DashboardPage,
+        GarageListPage,
+        GarageOnePage,
+        InscriptionsPage,
+    ],
 })
 export class UserModule {}

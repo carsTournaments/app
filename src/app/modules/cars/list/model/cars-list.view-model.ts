@@ -15,7 +15,7 @@ export class CarsListViewModel {
         page: 1,
         pageSize: 20,
         site: 'app',
-        order: ['created', 'asc'],
+        order: ['created', 'desc'],
     };
     brandsBody: BrandGetAllBrandsAndCarsDto = {
         page: 1,

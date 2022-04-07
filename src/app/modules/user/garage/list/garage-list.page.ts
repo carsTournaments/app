@@ -6,11 +6,11 @@ import { CarService, StorageService } from 'src/app/services';
 import { GarageViewModel } from '../..';
 
 @Component({
-    selector: 'page-garage',
-    templateUrl: 'garage.page.html',
-    styleUrls: ['./garage.page.scss'],
+    selector: 'page-garage-list',
+    templateUrl: 'garage-list.page.html',
+    styleUrls: ['./garage-list.page.scss'],
 })
-export class GaragePage implements OnInit {
+export class GarageListPage implements OnInit {
     vm = new GarageViewModel();
     constructor(
         private carService: CarService,
