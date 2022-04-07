@@ -1,4 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
+import { Car, User } from 'src/app/models';
 
 export class GarageViewModel {
     header = new Header({
@@ -8,4 +9,6 @@ export class GarageViewModel {
             route: '/tab/account',
         },
     });
+    user: User;
+    cars: Car[];
 }
