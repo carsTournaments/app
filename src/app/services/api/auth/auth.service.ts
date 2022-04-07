@@ -9,7 +9,7 @@ import { take } from 'rxjs/internal/operators/take';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    url = `${environment.urlApi}/auth`;
+    private url = `${environment.urlApi}/auth`;
 
     constructor(
         private httpClient: HttpClient,
@@ -25,20 +25,20 @@ export class AuthService {
             .pipe(take(1));
     }
 
-    logout() {
+    logout(): void {
         this.storageService.remove('token');
         this.storageService.remove('user');
     }
 
     setToken(token: string) {
-        this.storageService.set('token', token);
+        localStorage.setItem('token', token);
     }
 
-    getToken(): Promise<string> {
-        return this.storageService.get<string>('token');
+    getToken(): string {
+        return localStorage.getItem('token');
     }
 
-    setUser(user: User) {
+    setUser(user: User): void {
         this.storageService.set('user', user);
     }
 
@@ -46,7 +46,12 @@ export class AuthService {
         return this.storageService.get<User>('user');
     }
 
-    async isAuthenticated(): Promise<boolean> {
-        return this.getToken().then((token) => token !== null);
+    isAuthenticated(): boolean {
+        const token = this.getToken();
+        if (token !== null) {
+            this.setToken(token);
+            return true;
+        }
+        return false;
     }
 }

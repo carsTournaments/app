@@ -5,17 +5,12 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Brand } from 'src/app/models/brand.model';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
-import { HttpService } from '../../http/http.service';
 import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BrandService {
     url = `${environment.urlApi}/brands`;
-    headers = { headers: this.httpService.getHeaderWithToken() };
-    constructor(
-        private httpClient: HttpClient,
-        private httpService: HttpService
-    ) {}
+    constructor(private httpClient: HttpClient) {}
 
     getAll(
         data: BrandGetAllDto
@@ -23,8 +18,7 @@ export class BrandService {
         return this.httpClient
             .post<{ items: Brand[]; paginator: PaginatorI }>(
                 `${this.url}/all`,
-                data,
-                this.headers
+                data
             )
             .pipe(take(1));
     }
@@ -35,15 +29,14 @@ export class BrandService {
         return this.httpClient
             .post<{ items: Brand[]; paginator: PaginatorI }>(
                 `${this.url}/allOfAllBrandsAndCarsBrand`,
-                data,
-                this.headers
+                data
             )
             .pipe(take(1));
     }
 
     getOne(id: string): Observable<Brand> {
         return this.httpClient
-            .post<Brand>(`${this.url}/one`, { id, site: 'admin' }, this.headers)
+            .post<Brand>(`${this.url}/one`, { id, site: 'admin' })
             .pipe(take(1));
     }
 }

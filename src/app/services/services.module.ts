@@ -14,6 +14,7 @@ import {
     StorageService,
 } from '.';
 import { GlobalHttpInterceptor } from '../core/interceptors/global-http.interceptor';
+import { TokenInterceptorService } from '../core/interceptors/token.interceptor';
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
@@ -32,9 +33,14 @@ import { GlobalHttpInterceptor } from '../core/interceptors/global-http.intercep
         StorageService,
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: GlobalHttpInterceptor,
+            useClass: TokenInterceptorService,
             multi: true,
         },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: GlobalHttpInterceptor,
+        //     multi: true,
+        // },
     ],
 })
 export class ServicesModule {}

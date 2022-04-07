@@ -18,6 +18,7 @@ export class LoginComponent {
 
     login() {
         if (this.email.length === 0 || this.password.length === 0) {
+            console.log(this.email, this.password);
             this.alertService.presentAlert('Error', 'Revisa los datos');
         } else {
             this.authService.login(this.email, this.password).subscribe({

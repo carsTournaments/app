@@ -15,6 +15,7 @@ export class StorageService {
     }
 
     set(key: string, value: any): void {
+        this.startDB();
         this.storage.set(key, value);
     }
 

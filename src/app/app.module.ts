@@ -8,12 +8,14 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { customAnimation } from './core/animations/animations';
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
     imports: [
         BrowserModule,
+        ServicesModule,
         IonicModule.forRoot({
             navAnimation: customAnimation,
         }),
