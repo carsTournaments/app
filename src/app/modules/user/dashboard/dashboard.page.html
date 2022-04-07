@@ -1,20 +1,26 @@
-<custom-header
-    [options]="vm.header"
-    (segmentChanged)="segmentChanged($event)"
-></custom-header>
+<custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true">
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <login (clickLogin)="logged = true" *ngIf="!logged"></login>
 
-            <ion-card mode="ios" *ngIf="logged">
+            <ion-card
+                mode="ios"
+                *ngIf="logged"
+                style="margin-left: 0.5rem; margin-right: 0.5rem"
+            >
                 <ion-card-content>
                     <ion-item
+                        mode="ios"
+                        color="light"
+                        lines="none"
+                        class="option-item"
                         [button]="true"
                         *ngFor="let item of vm.options"
                         (click)="onClickOption(item)"
-                        >{{ item.name }}
+                    >
+                        {{ item.name }}
                     </ion-item>
                 </ion-card-content>
             </ion-card>

@@ -1,11 +1,22 @@
-<ion-card mode="ios" class="ion-activatable" (click)="clickItem.emit(tournament)">
+<ion-card
+    mode="ios"
+    class="ion-activatable"
+    (click)="clickItem.emit(tournament)"
+    style="margin-left: 0.5rem; margin-right: 0.5rem"
+>
     <ion-card-content
-        style="background-image: linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{tournament?.image?.url|image}})">
-        <div class="card-title-tournament">{{ tournament.name}}</div>
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
+            tournament?.image?.url | image
+        }})"
+    >
+        <div class="card-title-tournament">{{ tournament.name }}</div>
         <div class="card-description-tournament">
-            
-            <ion-icon name="people"></ion-icon> <span>{{ tournament.inscriptions.length + '/' +
-                tournament.maxParticipants }}</span>
+            <ion-icon name="people"></ion-icon>
+            <span>{{
+                tournament.inscriptions.length +
+                    '/' +
+                    tournament.maxParticipants
+            }}</span>
         </div>
 
         <div class="currentRound" *ngIf="tournament.status === 'InProgress'">

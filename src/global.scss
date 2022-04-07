@@ -62,3 +62,10 @@ ion-segment-button {
     background-position: center !important;
     background-size: cover !important;
 }
+
+.option-item {
+    background: var(--ion-color-light);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
