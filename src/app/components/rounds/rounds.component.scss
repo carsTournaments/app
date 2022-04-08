@@ -46,3 +46,8 @@
     padding: 1rem;
     background: #000;
 }
+
+ion-segment-button {
+    --color-checked: var(--ion-color-light);
+    --background-checked: var(--ion-color-primary);
+}

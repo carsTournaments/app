@@ -15,4 +15,5 @@ export class DashboardViewModel {
         },
         { name: 'Cerrar sesion', icon: 'person', value: 'logout' },
     ];
+    registerMode = false;
 }

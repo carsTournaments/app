@@ -5,7 +5,12 @@
 
 <ion-content [fullscreen]="true" *ngIf="vm.car">
     <ion-row style="padding-top: 0">
-        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+        <ion-col
+            style="padding-top: 0; margin-top: -10px"
+            size="12"
+            sizeLg="8"
+            offsetLg="2"
+        >
             <div *ngIf="vm.header.segments.selected === 0">
                 <ion-card mode="ios">
                     <div

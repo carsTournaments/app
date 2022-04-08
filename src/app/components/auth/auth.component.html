@@ -1,0 +1,89 @@
+<ion-card mode="ios">
+    <ion-card-content>
+        <ng-container *ngIf="vm.loginMode">
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input
+                    name="email"
+                    type="email"
+                    [(ngModel)]="vm.email"
+                    placeholder="Introduce tu Email"
+                    ngDefaultControl
+                ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input
+                    name="password"
+                    type="password"
+                    [(ngModel)]="vm.password"
+                    placeholder="Introduce tu contraseña"
+                    ngDefaultControl
+                ></ion-input>
+            </ion-item>
+            <hr />
+            <ion-button expand="block" color="primary" (click)="login()">
+                Iniciar sesión
+            </ion-button>
+
+            <span class="divider line one-line">o</span>
+
+            <ion-button
+                expand="block"
+                color="primary"
+                (click)="vm.loginMode = false"
+            >
+                Registrate
+            </ion-button>
+        </ng-container>
+
+        <ng-container *ngIf="!vm.loginMode">
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input
+                    name="name"
+                    [(ngModel)]="vm.name"
+                    placeholder="Introduce tu nombre"
+                    ngDefaultControl
+                ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input
+                    name="email"
+                    type="email"
+                    [(ngModel)]="vm.email"
+                    placeholder="Introduce tu Email"
+                    ngDefaultControl
+                ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input
+                    name="password"
+                    type="password"
+                    [(ngModel)]="vm.password"
+                    placeholder="Introduce tu contraseña"
+                    ngDefaultControl
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Repite Contraseña</ion-label>
+                <ion-input
+                    name="password2"
+                    type="password"
+                    [(ngModel)]="vm.password2"
+                    placeholder="Repite tu contraseña"
+                    ngDefaultControl
+                ></ion-input>
+            </ion-item>
+
+            <hr />
+
+            <ion-button expand="block" color="primary" (click)="register()">
+                Registrate
+            </ion-button>
+        </ng-container>
+    </ion-card-content>
+</ion-card>

@@ -7,7 +7,7 @@ import { TournamentItemComponent } from './tournament-item/tournament-item.compo
 import { PipesModule } from '../pipes/pipes.module';
 import { CarItemComponent } from './car-item/car-item.component';
 import { BrandItemComponent } from './brand-item/brand-item.component';
-import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { RoundsComponent } from './rounds/rounds.component';
 import { IonicModule } from '@ionic/angular';
@@ -25,7 +25,7 @@ import { IonicModule } from '@ionic/angular';
         BrandItemComponent,
         CarItemComponent,
         HeaderComponent,
-        LoginComponent,
+        AuthComponent,
         RoundsComponent,
         TournamentItemComponent,
     ],
@@ -33,7 +33,7 @@ import { IonicModule } from '@ionic/angular';
         BrandItemComponent,
         CarItemComponent,
         HeaderComponent,
-        LoginComponent,
+        AuthComponent,
         RoundsComponent,
         TournamentItemComponent,
     ],

@@ -1,33 +1,39 @@
-<ion-card mode="ios">
-    <ion-card-content style="padding: 0; padding-bottom: 1rem">
-        <ion-segment
-            mode="md"
-            [value]="roundSelected"
-            scrollable="true"
-            (ionChange)="segmentChanged($event)"
-        >
-            <ion-segment-button
-                [value]="round._id"
-                *ngFor="let round of rounds"
-            >
-                <ion-label>{{ round.name }}</ion-label>
-            </ion-segment-button>
-        </ion-segment>
-    </ion-card-content>
-</ion-card>
-
 <div *ngFor="let round of rounds">
     <div *ngIf="roundSelected === round._id">
-        <ion-card mode="ios">
+        <ion-card mode="ios" style="margin-top: 15px; padding-top: 0">
             <ion-card-content>
-                <p style="text-align: center">
+                <h3
+                    class="ion-text-center"
+                    style="font-size: 18px; font-weight: 900"
+                >
+                    {{ round.name }}
+                </h3>
+                <p class="ion-text-center">
                     Inicio:
                     {{ round.startDate | dateToTimeAgo: true | fistLetterCase }}
                 </p>
-                <p style="text-align: center">
+                <p class="ion-text-center">
                     Fin:
                     {{ round.endDate | dateToTimeAgo: true | fistLetterCase }}
                 </p>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card mode="ios">
+            <ion-card-content style="padding: 0; padding-bottom: 1rem">
+                <ion-segment
+                    mode="md"
+                    [value]="roundSelected"
+                    scrollable="true"
+                    (ionChange)="segmentChanged($event)"
+                >
+                    <ion-segment-button
+                        [value]="round._id"
+                        *ngFor="let round of rounds"
+                    >
+                        <ion-label>{{ round.name }}</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
             </ion-card-content>
         </ion-card>
 

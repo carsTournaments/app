@@ -3,7 +3,10 @@
 <ion-content [fullscreen]="true">
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <login (clickLogin)="logged = true" *ngIf="!logged"></login>
+            <auth
+                (clickLogin)="logged = true"
+                *ngIf="!logged && !vm.registerMode"
+            ></auth>
 
             <ion-card
                 mode="ios"

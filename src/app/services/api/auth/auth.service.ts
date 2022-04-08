@@ -1,3 +1,4 @@
+import { AuthLogInDto, AuthRegisterDto } from './auth.dto';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -16,18 +17,21 @@ export class AuthService {
         private storageService: StorageService
     ) {}
 
-    login(email: string, password: string): Observable<LoginResponseI> {
+    login(data: AuthLogInDto): Observable<LoginResponseI> {
         return this.httpClient
-            .post<LoginResponseI>(`${this.url}/login`, {
-                email,
-                password,
-            })
+            .post<LoginResponseI>(`${this.url}/login`, data)
             .pipe(take(1));
     }
 
     logout(): void {
         this.storageService.remove('token');
         this.storageService.remove('user');
+    }
+
+    register(data: AuthRegisterDto): Observable<LoginResponseI> {
+        return this.httpClient
+            .post<LoginResponseI>(`${this.url}/register`, data)
+            .pipe(take(1));
     }
 
     setToken(token: string) {
