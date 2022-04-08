@@ -19,8 +19,8 @@ export class DashboardPage implements OnInit {
         private alertService: AlertService
     ) {}
 
-    ngOnInit() {
-        this.isAuthenticated();
+    async ngOnInit() {
+        await this.isAuthenticated();
     }
 
     async isAuthenticated() {

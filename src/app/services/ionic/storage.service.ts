@@ -3,14 +3,16 @@ import { Storage } from '@ionic/storage-angular';
 
 @Injectable({ providedIn: 'root' })
 export class StorageService {
-    constructor(private storage: Storage) {}
+    constructor(private storage: Storage) {
+        this.startDB();
+    }
 
-    startDB() {
+    async startDB(): Promise<Storage> {
         return this.storage.create();
     }
 
     async get<T>(key: string): Promise<T> {
-        await this.storage.create();
+        this.startDB();
         return this.storage.get(key);
     }
 
@@ -21,5 +23,9 @@ export class StorageService {
 
     remove(key: string): void {
         this.storage.remove(key);
+    }
+
+    clear(): void {
+        this.storage.clear();
     }
 }
