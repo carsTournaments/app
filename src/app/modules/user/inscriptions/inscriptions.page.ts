@@ -30,8 +30,28 @@ export class InscriptionsPage implements OnInit {
             id: this.vm.user._id,
         };
         this.inscriptionService.getAllForDriver(body).subscribe({
-            next: (inscriptions) => (this.vm.inscriptions = inscriptions),
+            next: (inscriptions) => {
+                this.vm.inscriptions = inscriptions;
+                console.log(this.vm.inscriptions);
+                this.setSegments();
+            },
             error: (error) => console.error(error),
         });
+    }
+
+    setSegments() {
+        if (this.vm.inscriptions.todo.length > 0) {
+            this.vm.header.segments.items.push('Proximos');
+        } else if (this.vm.inscriptions.inProgress.length > 0) {
+            this.vm.header.segments.items.push('En curso');
+        } else if (this.vm.inscriptions.completed.length > 0) {
+            this.vm.header.segments.items.push('Finalizados');
+        }
+        this.vm.header.segments.selected = 0;
+        console.log(this.vm.header.segments.items);
+    }
+
+    segmentChanged(event: any) {
+        this.vm.header.segments.selected = event.detail.value;
     }
 }

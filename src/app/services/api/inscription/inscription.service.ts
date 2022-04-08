@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { InscriptionCreateDto, InscriptionGetAllDto } from './inscription.dto';
-import { Inscription } from 'src/app/models';
+import { Car, Inscription, Tournament } from 'src/app/models';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { take } from 'rxjs/internal/operators/take';
@@ -36,9 +36,17 @@ export class InscriptionService {
             .pipe(take(1));
     }
 
-    getAllForDriver(data: IdDto): Observable<Inscription[]> {
+    getAllForDriver(data: IdDto): Observable<{
+        todo: { car: Car; tournament: Tournament }[];
+        inProgress: { car: Car; tournament: Tournament }[];
+        completed: { car: Car; tournament: Tournament }[];
+    }> {
         return this.httpClient
-            .post<Inscription[]>(`${this.url}/allForDriver`, data)
+            .post<{
+                todo: { car: Car; tournament: Tournament }[];
+                inProgress: { car: Car; tournament: Tournament }[];
+                completed: { car: Car; tournament: Tournament }[];
+            }>(`${this.url}/allForDriver`, data)
             .pipe(take(1));
     }
 

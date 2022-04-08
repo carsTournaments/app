@@ -8,6 +8,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { GarageListPage, DashboardPage } from '.';
 import { InscriptionsPage } from './inscriptions/inscriptions.page';
 import { GarageOnePage } from './garage/one/garage-one.page';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { GarageOnePage } from './garage/one/garage-one.page';
         FormsModule,
         ComponentsModule,
         ServicesModule,
+        PipesModule,
         RouterModule.forChild([
             { path: '', component: DashboardPage },
             { path: 'garage', component: GarageListPage },

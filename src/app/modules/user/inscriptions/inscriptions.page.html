@@ -2,3 +2,31 @@
     [options]="vm.header"
     (segmentChanged)="segmentChanged($event)"
 ></custom-header>
+
+<ion-content [fullscreen]="true">
+    <ion-row style="padding-top: 0">
+        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+            <ng-container *ngIf="vm.header.segments.selected === 0">
+                <div *ngFor="let inscription of vm.inscriptions?.todo">
+                    <ion-card mode="ios">
+                        <div
+                            class="image-car1"
+                            style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.tournament?.image?.url|image}})"
+                        ></div>
+                        <div
+                            class="image-car2"
+                            style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.car?.image?.url|image}})"
+                        ></div>
+                        <div class="carTitle1">
+                            <p>
+                                {{ inscription.car?.brand.name | truncateText:
+                                15 }}
+                            </p>
+                            <span>{{ inscription.car.model }}</span>
+                        </div>
+                    </ion-card>
+                </div>
+            </ng-container>
+        </ion-col>
+    </ion-row>
+</ion-content>

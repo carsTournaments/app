@@ -3,7 +3,7 @@ import { NavController } from '@ionic/angular';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
 import { CarService, StorageService } from 'src/app/services';
-import { GarageViewModel } from '../..';
+import { GarageListViewModel } from '../..';
 
 @Component({
     selector: 'page-garage-list',
@@ -11,7 +11,7 @@ import { GarageViewModel } from '../..';
     styleUrls: ['./garage-list.page.scss'],
 })
 export class GarageListPage implements OnInit {
-    vm = new GarageViewModel();
+    vm = new GarageListViewModel();
     constructor(
         private carService: CarService,
         private storageService: StorageService,
