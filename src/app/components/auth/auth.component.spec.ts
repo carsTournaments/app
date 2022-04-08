@@ -13,7 +13,7 @@ import { ComponentsModule } from '../components.module';
 import { AuthComponent } from './auth.component';
 import { Observable, of, throwError } from 'rxjs';
 
-fdescribe('AuthComponent', () => {
+describe('AuthComponent', () => {
     let component: AuthComponent;
     let authService: AuthService;
     let alertService: AlertService;
