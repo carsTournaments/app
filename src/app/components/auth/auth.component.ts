@@ -55,12 +55,7 @@ export class AuthComponent {
             return (state = false);
         }
         if (type === 'register') {
-            if (this.vm.email.length === 0 || this.vm.password.length === 0) {
-                this.alertService.presentAlert('Error', 'Revisa los datos');
-                return (state = false);
-            }
-
-            if (this.vm.name.length < 3) {
+            if (this.vm.name.length <= 3) {
                 this.alertService.presentAlert('Error', 'Revisa los datos');
                 return (state = false);
             }
