@@ -20,5 +20,5 @@ export class GarageOneViewModel {
         order: ['name', 'asc'],
     };
     brands: Brand[] = [];
-    brandIdSelected: string = '';
+    brandIdSelected = '';
 }

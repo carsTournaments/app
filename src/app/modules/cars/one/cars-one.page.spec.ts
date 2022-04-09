@@ -77,9 +77,4 @@ describe('CarsOnePage', () => {
             expect(component.vm.image).toBe('assets/no-image.png');
         });
     });
-
-    it('segmentChanged', () => {
-        component.segmentChanged({ detail: { value: 0 } });
-        expect(component.vm.header.segments.selected).toBe(0);
-    });
 });

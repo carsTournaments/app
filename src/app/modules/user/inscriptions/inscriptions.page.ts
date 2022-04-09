@@ -32,7 +32,6 @@ export class InscriptionsPage implements OnInit {
         this.inscriptionService.getAllForDriver(body).subscribe({
             next: (inscriptions) => {
                 this.vm.inscriptions = inscriptions;
-                console.log(this.vm.inscriptions);
                 this.setSegments();
             },
             error: (error) => console.error(error),
@@ -48,7 +47,6 @@ export class InscriptionsPage implements OnInit {
             this.vm.header.segments.items.push('Finalizados');
         }
         this.vm.header.segments.selected = 0;
-        console.log(this.vm.header.segments.items);
     }
 
     segmentChanged(event: any) {

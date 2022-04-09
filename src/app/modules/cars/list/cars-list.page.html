@@ -41,17 +41,11 @@
                     </ion-infinite-scroll-content>
                 </ion-infinite-scroll>
             </div>
-
-            <ion-fab
-                *ngIf="vm.filter"
-                vertical="bottom"
-                horizontal="end"
-                slot="fixed"
-            >
-                <ion-fab-button size="small" (click)="cleanFilter()">
-                    <ion-icon name="close"></ion-icon>
-                </ion-fab-button>
-            </ion-fab>
         </ion-col>
     </ion-row>
+    <ion-fab *ngIf="vm.filter" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" (click)="cleanFilter()">
+            <ion-icon name="close"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

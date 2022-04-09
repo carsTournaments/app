@@ -49,7 +49,6 @@ export class GarageOnePage implements OnInit {
         this.vm.car.brand = this.vm.brandIdSelected;
         this.carService.update(this.vm.car).subscribe({
             next: (data) => {
-                console.log(data);
                 this.alertService.presentAlert(
                     '¡Vale!',
                     'El coche se actualizo correctamente'

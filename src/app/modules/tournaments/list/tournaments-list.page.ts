@@ -67,7 +67,6 @@ export class TournamentsListPage implements OnInit {
                     (item) => item !== 'Completados'
                 );
         }
-        console.log('getItemsOnSuccess', res);
     }
 
     segmentChanged(ev: any) {

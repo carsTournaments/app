@@ -11,36 +11,66 @@
             sizeLg="8"
             offsetLg="2"
         >
-            <div *ngIf="vm.header.segments.selected === 0">
-                <ion-card mode="ios">
-                    <div
-                        class="div-image-one"
-                        [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
-                    ></div>
-                    <ion-card-header>
-                        <ion-card-title>
-                            {{ vm.car.brand?.name }} {{ vm.car.model }}
-                        </ion-card-title>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <p>{{ vm.car.year }}</p>
-                        <p>{{ vm.car.fuel }}</p>
-                        <p>{{ vm.car.traction }}</p>
-                        <p>{{ vm.car.cc }}</p>
-                        <p>{{ vm.car.cv }}</p>
-                    </ion-card-content>
-                </ion-card>
-            </div>
+            <ion-card mode="ios">
+                <div
+                    *ngIf="vm.image"
+                    class="div-image-one"
+                    [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
+                ></div>
+            </ion-card>
+            <ion-card mode="ios">
+                <ion-card-title
+                    class="ion-text-center"
+                    style="padding-top: 0.75rem"
+                >
+                    {{ vm.car.brand?.name }} {{ vm.car.model }}
+                </ion-card-title>
+                <hr />
+                <ion-card-content style="padding: 0.5rem; padding-bottom: 1rem">
+                    <ion-row>
+                        <ion-col size="4" class="ion-text-center">
+                            <small>Año</small>
+                            <p>{{ vm.car.year }}</p>
+                        </ion-col>
+                        <ion-col size="4" class="ion-text-center">
+                            <small>Combustible</small>
+                            <p>{{ vm.car.fuel }}</p>
+                        </ion-col>
+                        <ion-col size="4" class="ion-text-center">
+                            <small>Traccion</small>
+                            <p>{{ vm.car.traction }}</p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="4" class="ion-text-center">
+                            <small>CC</small>
+                            <p>{{ vm.car.cc }}</p>
+                        </ion-col>
+                        <ion-col size="4" class="ion-text-center">
+                            <small>CV</small>
+                            <p>{{ vm.car.cv }}</p>
+                        </ion-col>
+                        <ion-col size="4" class="ion-text-center">
+                            <small>De serie</small>
+                            <p>{{ vm.car.stock ? 'Si' : 'No' }}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
 
-            <div *ngIf="vm.header.segments.selected === 1">
-                <ion-card mode="ios">
-                    <ion-card-header>
-                        <ion-card-title>
-                            {{ vm.car.driver?.name }}
-                        </ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </div>
+            <ion-card mode="ios">
+                <ion-card-content style="padding: 0.5rem">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start" class="avatar-border">
+                            <img [src]="vm.car.driver.image?.url | image" />
+                        </ion-avatar>
+                        <p>
+                            <ion-label>{{ vm.car.driver.name }}</ion-label>
+                            <small>Propietario</small>
+                        </p>
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
         </ion-col>
     </ion-row>
 </ion-content>
