@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tournament } from 'src/app/models';
@@ -15,7 +16,7 @@ export class TournamentsListPage implements OnInit {
 
     constructor(
         private tournamentService: TournamentService,
-        private router: Router
+        private navCtrl: NavController
     ) {}
 
     async ngOnInit() {
@@ -27,24 +28,6 @@ export class TournamentsListPage implements OnInit {
             next: (res) => this.getItemsOnSuccess(res),
             error: (err) => console.error(err),
         });
-    }
-
-    getItemsValueByStatus(statusForce?: { status: string; items: string }): {
-        status: string;
-        items: string;
-    } {
-        if (statusForce !== undefined) {
-            return statusForce;
-        } else {
-            const segment = this.vm.header.segments.selected;
-            if (segment === 0) {
-                return { status: 'InProgress', items: 'tournamentsInProgress' };
-            } else if (segment === 1) {
-                return { status: 'Todo', items: 'tournamentsTodo' };
-            } else if (segment === 2) {
-                return { status: 'Completed', items: 'tournamentsCompleted' };
-            }
-        }
     }
 
     getItemsOnSuccess(res: TournamentGetAllOfAllStatesResponse) {
@@ -75,6 +58,6 @@ export class TournamentsListPage implements OnInit {
     }
 
     goTo(event: Tournament) {
-        this.router.navigate(['/tab/tournaments/one', event._id]);
+        this.navCtrl.navigateForward(['/tab/tournaments/one', event._id]);
     }
 }
