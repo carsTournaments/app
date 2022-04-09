@@ -38,4 +38,8 @@ export class GarageListPage implements OnInit {
     onClickCar(car: Car) {
         this.navCtrl.navigateForward(`/tab/account/garage/one/${car._id}`);
     }
+
+    onClickAddCar() {
+        this.navCtrl.navigateForward(`/tab/account/garage/create`);
+    }
 }

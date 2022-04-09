@@ -22,7 +22,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
             { path: '', component: DashboardPage },
             { path: 'garage', component: GarageListPage },
             { path: 'garage/one/:id', component: GarageOnePage },
-            { path: 'garage/new', component: GarageOnePage },
+            { path: 'garage/create', component: GarageOnePage },
             { path: 'inscriptions', component: InscriptionsPage },
         ]),
     ],

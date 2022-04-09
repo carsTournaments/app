@@ -3,7 +3,118 @@
 <ion-content [fullscreen]="true" *ngIf="vm.car">
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <ion-item> {{ vm.car.brand.name }} {{ vm.car.model }} </ion-item>
+            <ion-card mode="ios">
+                <ion-card-content>
+                    <ion-item>
+                        <ion-label position="floating">Marca</ion-label>
+                        <ion-select
+                            [(ngModel)]="vm.brandIdSelected"
+                            name="brandId"
+                            placeholder="Selecciona la marca"
+                        >
+                            <ion-select-option
+                                *ngFor="let brand of vm.brands"
+                                [value]="brand._id"
+                            >
+                                {{brand.name}}
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Modelo</ion-label>
+                        <ion-input
+                            type="text"
+                            [(ngModel)]="vm.car.model"
+                            placeholder="Introduce el modelo"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Traccion</ion-label>
+                        <ion-select
+                            [(ngModel)]="vm.car.traction"
+                            placeholder="Selecciona la traccion"
+                        >
+                            <ion-select-option>Delantera</ion-select-option>
+                            <ion-select-option>Trasera</ion-select-option>
+                            <ion-select-option>4x4</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Combustible</ion-label>
+                        <ion-select
+                            [(ngModel)]="vm.car.fuel"
+                            placeholder="Selecciona el combustible"
+                        >
+                            <ion-select-option>Gasolina</ion-select-option>
+                            <ion-select-option>Diesel</ion-select-option>
+                            <ion-select-option>Hibrido</ion-select-option>
+                            <ion-select-option>Diesel</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating"
+                            >Año de fabricacion</ion-label
+                        >
+                        <ion-input
+                            type="text"
+                            [(ngModel)]="vm.car.year"
+                            placeholder="Introduce el año"
+                        ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating"
+                            >Centimetros Cubicos (CC)</ion-label
+                        >
+                        <ion-input
+                            type="text"
+                            [(ngModel)]="vm.car.cc"
+                            placeholder="Introduce los CC"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating"
+                            >Caballos de potencia (CV)</ion-label
+                        >
+                        <ion-input
+                            type="text"
+                            [(ngModel)]="vm.car.cv"
+                            placeholder="Introduce los CV"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating"
+                            >Coche de serie</ion-label
+                        >
+                        <ion-select
+                            [(ngModel)]="vm.car.stock"
+                            placeholder="Selecciona si o no"
+                        >
+                            <ion-select-option [value]="true"
+                                >Si</ion-select-option
+                            >
+                            <ion-select-option [value]="false"
+                                >No</ion-select-option
+                            >
+                        </ion-select>
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
         </ion-col>
     </ion-row>
+    <ion-fab
+        vertical="bottom"
+        horizontal="end"
+        slot="fixed"
+        style="margin-bottom: 1rem"
+    >
+        <ion-fab-button size="small" (click)="updateItem()">
+            <ion-icon size="small" name="save"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

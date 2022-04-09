@@ -41,4 +41,16 @@ export class CarService {
             .post<Car>(`${this.url}/one`, { id, site: 'admin' })
             .pipe(take(1));
     }
+
+    create(data: Car): Observable<Car> {
+        return this.httpClient
+            .post<Car>(`${this.url}/create`, data)
+            .pipe(take(1));
+    }
+
+    update(data: Car): Observable<Car> {
+        return this.httpClient
+            .put<Car>(`${this.url}/update`, data)
+            .pipe(take(1));
+    }
 }

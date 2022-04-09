@@ -1,5 +1,6 @@
 import { Header } from 'src/app/components/header/model/header.model';
-import { Car } from 'src/app/models';
+import { Car, Brand } from 'src/app/models';
+import { BrandGetAllDto } from 'src/app/services/api/brand/brand.dto';
 
 export class GarageOneViewModel {
     header = new Header({
@@ -10,5 +11,14 @@ export class GarageOneViewModel {
         },
     });
     id: string;
-    car: Car;
+    car: Car = new Car();
+    edit = true;
+    brandsBody: BrandGetAllDto = {
+        page: 1,
+        pageSize: 100,
+        site: 'app',
+        order: ['name', 'asc'],
+    };
+    brands: Brand[] = [];
+    brandIdSelected: string = '';
 }
