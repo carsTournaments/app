@@ -4,25 +4,25 @@
 ></custom-header>
 
 <ion-content [fullscreen]="true">
-    <ion-row style="padding-top: 0">
+    <ion-row style="padding-top: 0" *ngIf="vm.tournaments">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <div *ngIf="vm.header.segments.selected === 0">
                 <tournament-item
-                    *ngFor="let tournament of vm.tournamentsInProgress"
+                    *ngFor="let tournament of vm.tournaments.inProgress"
                     [tournament]="tournament"
                     (clickItem)="goTo($event)"
                 ></tournament-item>
             </div>
             <div *ngIf="vm.header.segments.selected === 1">
                 <tournament-item
-                    *ngFor="let tournament of vm.tournamentsTodo"
+                    *ngFor="let tournament of vm.tournaments.todo"
                     [tournament]="tournament"
                     (clickItem)="goTo($event)"
                 ></tournament-item>
             </div>
             <div *ngIf="vm.header.segments.selected === 2">
                 <tournament-item
-                    *ngFor="let tournament of vm.tournamentsCompleted"
+                    *ngFor="let tournament of vm.tournaments.completed"
                     [tournament]="tournament"
                     (clickItem)="goTo($event)"
                 ></tournament-item>

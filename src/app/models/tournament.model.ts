@@ -13,6 +13,7 @@ export class Tournament {
     rounds?: Round[]; // Virtual
     inscriptions?: Inscription[]; // CarI[]
     image: Image;
+    lastRound?: string;
     created?: string;
     updated?: string;
     constructor(data?: Tournament) {
@@ -29,6 +30,7 @@ export class Tournament {
         this.image = data?.image || new Image();
         this.created = data?.created;
         this.updated = data?.updated;
+        this.lastRound = data?.lastRound;
     }
 
     getRequisitesDefault(): TournamentRequisiteI[] {

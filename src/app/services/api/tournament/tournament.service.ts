@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { TournamentGetAllDto } from './tournament.dto';
 import { Tournament } from 'src/app/models/tournament.model';
 import { take } from 'rxjs/internal/operators/take';
+import { TournamentGetAllOfAllStatesResponse } from './tournament.responses';
 
 @Injectable({ providedIn: 'root' })
 export class TournamentService {
@@ -13,14 +14,12 @@ export class TournamentService {
     headers = { headers: null };
     constructor(private httpClient: HttpClient) {}
 
-    getAll(
-        data: TournamentGetAllDto
-    ): Observable<{ items: Tournament[]; paginator: PaginatorI }> {
+    getAllOfAllStates(): Observable<TournamentGetAllOfAllStatesResponse> {
         return this.httpClient
-            .post<{
-                items: Tournament[];
-                paginator: PaginatorI;
-            }>(`${this.url}/all`, data)
+            .post<TournamentGetAllOfAllStatesResponse>(
+                `${this.url}/allOfAllStates`,
+                null
+            )
             .pipe(take(1));
     }
 

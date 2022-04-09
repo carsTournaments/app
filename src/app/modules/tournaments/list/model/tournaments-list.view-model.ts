@@ -1,6 +1,6 @@
 import { Header } from 'src/app/components/header/model/header.model';
 import { Tournament } from 'src/app/models';
-import { TournamentGetAllDto } from 'src/app/services/api/tournament/tournament.dto';
+import { TournamentGetAllOfAllStatesResponse } from 'src/app/services/api/tournament/tournament.responses';
 
 export class TournamentsListViewModel {
     header = new Header({
@@ -10,13 +10,5 @@ export class TournamentsListViewModel {
             selected: 0,
         },
     });
-    tournamentsBody: TournamentGetAllDto = {
-        page: 1,
-        pageSize: 10,
-        site: 'app',
-        order: ['created', 'desc'],
-    };
-    tournamentsTodo: Tournament[] = [];
-    tournamentsInProgress: Tournament[] = [];
-    tournamentsCompleted: Tournament[] = [];
+    tournaments: TournamentGetAllOfAllStatesResponse;
 }

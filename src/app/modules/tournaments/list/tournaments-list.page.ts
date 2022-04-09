@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tournament } from 'src/app/models';
 import { TournamentService } from 'src/app/services';
+import { TournamentGetAllOfAllStatesResponse } from 'src/app/services/api/tournament/tournament.responses';
 import { TournamentsListViewModel } from '..';
 
 @Component({
@@ -18,31 +19,12 @@ export class TournamentsListPage implements OnInit {
     ) {}
 
     async ngOnInit() {
-        this.getItems(null, {
-            status: 'InProgress',
-            items: 'tournamentsInProgress',
-        });
-        this.getItems(null, { status: 'Todo', items: 'tournamentsTodo' });
-        this.getItems(null, {
-            status: 'Completed',
-            items: 'tournamentsCompleted',
-        });
+        this.getItems();
     }
 
-    checkFirstValues() {
-        if (this.vm.tournamentsCompleted.length === 0) {
-            this.vm.header.segments.items =
-                this.vm.header.segments.items.filter(
-                    (item) => item !== 'Completados'
-                );
-        }
-    }
-
-    getItems(event?: any, statusForce?: { status: string; items: string }) {
-        const statusItem = this.getItemsValueByStatus(statusForce);
-        this.vm.tournamentsBody.status = statusItem.status;
-        this.tournamentService.getAll(this.vm.tournamentsBody).subscribe({
-            next: (res) => this.getItemsOnSuccess(res, statusItem, event),
+    getItems() {
+        this.tournamentService.getAllOfAllStates().subscribe({
+            next: (res) => this.getItemsOnSuccess(res),
             error: (err) => console.error(err),
         });
     }
@@ -65,37 +47,32 @@ export class TournamentsListPage implements OnInit {
         }
     }
 
-    getItemsOnSuccess(
-        res: any,
-        statusItem: { status: string; items: string },
-        event?: any
-    ) {
-        const itemsValue: string = statusItem.items;
-        if (event) {
-            if (res.items.length > 0) {
-                this.vm[itemsValue] = this.vm[itemsValue].concat(res.items);
-                event.target.complete();
-            } else {
-                event.target.disabled = true;
-            }
-        } else {
-            this.vm[itemsValue] = res.items;
-            if (itemsValue === 'tournamentsCompleted') {
-                this.checkFirstValues();
-            }
+    getItemsOnSuccess(res: TournamentGetAllOfAllStatesResponse) {
+        this.vm.tournaments = res;
+        if (this.vm.tournaments.todo.length === 0) {
+            this.vm.header.segments.items =
+                this.vm.header.segments.items.filter(
+                    (item) => item !== 'Proximos'
+                );
         }
+        if (this.vm.tournaments.inProgress.length === 0) {
+            this.vm.header.segments.items =
+                this.vm.header.segments.items.filter(
+                    (item) => item !== 'En curso'
+                );
+        }
+        if (this.vm.tournaments.completed.length === 0) {
+            this.vm.header.segments.items =
+                this.vm.header.segments.items.filter(
+                    (item) => item !== 'Completados'
+                );
+        }
+        console.log('getItemsOnSuccess', res);
     }
 
     segmentChanged(ev: any) {
         const segment = Number(ev.detail.value);
         this.vm.header.segments.selected = Number(segment);
-        if (
-            (segment === 0 && this.vm.tournamentsInProgress.length === 0) ||
-            (segment === 1 && this.vm.tournamentsTodo.length === 0) ||
-            (segment === 2 && this.vm.tournamentsCompleted.length === 0)
-        ) {
-            this.getItems();
-        }
     }
 
     goTo(event: Tournament) {
