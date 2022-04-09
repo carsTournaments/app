@@ -10,6 +10,7 @@ export class Tournament {
     endDate: string;
     status?: string;
     durationDays?: number;
+    info?: string;
     rounds?: Round[]; // Virtual
     inscriptions?: Inscription[]; // CarI[]
     image: Image;
@@ -25,6 +26,7 @@ export class Tournament {
         this.endDate = data?.endDate || '';
         this.status = data?.status || 'Todo';
         this.durationDays = data?.durationDays || 10;
+        this.info = data?.info || '';
         this.rounds = data?.rounds || [];
         this.inscriptions = data?.inscriptions || [];
         this.image = data?.image || new Image();

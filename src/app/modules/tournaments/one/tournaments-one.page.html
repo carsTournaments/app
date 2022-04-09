@@ -65,6 +65,19 @@
                                 <p>{{ vm.tournament.durationDays }} dias</p>
                             </ion-col>
                         </ion-row>
+
+                        <ng-container
+                            *ngIf="vm.tournament.info && vm.tournament.info !== ''"
+                        >
+                            <hr />
+                            <p
+                                style="padding-top: 1rem"
+                                class="ion-text-center"
+                                [ngStyle]="{'padding-bottom': vm.buttonInscription ? '0px' : '10px'} "
+                            >
+                                {{ vm.tournament.info }}
+                            </p>
+                        </ng-container>
                     </ion-card-content>
                     <ng-container *ngIf="vm.buttonInscription">
                         <hr />
