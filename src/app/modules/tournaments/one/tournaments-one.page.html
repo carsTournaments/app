@@ -5,36 +5,117 @@
 
 <ion-content [fullscreen]="true" *ngIf="vm.tournament">
     <ion-row style="padding-top: 0">
-        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+        <ion-col
+            style="padding-top: 0; margin-top: -10px"
+            size="12"
+            sizeLg="8"
+            offsetLg="2"
+        >
             <div *ngIf="vm.header.segments.selected === 0">
-                <ion-card mode="ios">
+                <ion-card mode="ios" *ngIf="vm.image">
                     <div
-                        *ngIf="vm.image"
                         class="div-image-one"
                         [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
                     ></div>
-                    <ion-card-content>
-                        <ion-card-title>
-                            {{ vm.tournament?.name }}
-                        </ion-card-title>
-                        <p>
-                            Inscripciones: {{ vm.tournament?.inscriptions.length
-                            === 0 ? 'Sin inscripciones' :
-                            vm.tournament?.inscriptions.length }}
-                        </p>
-                        <p>
-                            Maximos participantes: {{
-                            vm.tournament.maxParticipants }}
-                        </p>
-                        <p>
-                            Inicio: {{ vm.tournament.startDate |
-                            dateToTimeAgo:true | fistLetterCase }}
-                        </p>
+                </ion-card>
+
+                <ion-card mode="ios">
+                    <ion-card-title
+                        class="ion-text-center"
+                        style="padding-top: 1rem"
+                    >
+                        {{ vm.tournament?.name }}
+                    </ion-card-title>
+                    <hr />
+                    <ion-card-content
+                        style="padding: 0.5rem; padding-bottom: 0.5rem"
+                    >
+                        <ion-row>
+                            <ion-col size="4" class="ion-text-center">
+                                <small>Participantes</small>
+                                <p>
+                                    {{ vm.tournament?.inscriptions.length }} /
+                                    {{ vm.tournament.maxParticipants }}
+                                </p>
+                            </ion-col>
+                            <ion-col size="4" class="ion-text-center">
+                                <small>Inicio</small>
+                                <p>
+                                    {{ vm.tournament.startDate |
+                                    dateToTimeAgo:true | fistLetterCase }}
+                                </p>
+                            </ion-col>
+                            <ion-col
+                                *ngIf="vm.tournament.endDate"
+                                size="4"
+                                class="ion-text-center"
+                            >
+                                <small>Fin</small>
+                                <p>
+                                    {{ vm.tournament.endDate |
+                                    dateToTimeAgo:true | fistLetterCase }}
+                                </p>
+                            </ion-col>
+                            <ion-col
+                                *ngIf="!vm.tournament.endDate"
+                                size="4"
+                                class="ion-text-center"
+                            >
+                                <small>Duracion</small>
+                                <p>{{ vm.tournament.durationDays }} dias</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                    <ng-container *ngIf="vm.buttonInscription">
+                        <hr />
+                        <ion-button
+                            class="ion-margin"
+                            expand="block"
+                            (click)="inscriptionCar()"
+                            >Inscribirse
+                        </ion-button>
+                    </ng-container>
+                </ion-card>
+
+                <ion-card mode="ios" *ngIf="vm.myCars?.inscribed.length > 0">
+                    <ion-card-title
+                        class="ion-text-center"
+                        style="padding-top: 1rem; font-size: 18px"
+                    >
+                        Tus coches
+                    </ion-card-title>
+                    <hr />
+                    <ion-card-content style="padding: 0.5rem">
+                        <ion-list>
+                            <ion-item
+                                [button]="true"
+                                detail="false"
+                                lines="none"
+                                *ngFor="let car of vm.myCars?.inscribed"
+                                (click)="confirmDeleteInscription(car)"
+                            >
+                                <ion-avatar slot="start" class="avatar-border">
+                                    <img [src]="car.image?.url | image" />
+                                </ion-avatar>
+                                <ion-label style="font-size: 0.9rem"
+                                    >{{ car.brand.name }} {{ car.model
+                                    }}</ion-label
+                                >
+                                <ion-icon
+                                    style="font-size: 1.2rem"
+                                    slot="end"
+                                    name="close"
+                                ></ion-icon>
+                            </ion-item>
+                        </ion-list>
                     </ion-card-content>
                 </ion-card>
             </div>
 
-            <div *ngIf="vm.header.segments.selected === 1">
+            <div
+                *ngIf="vm.header.segments.selected === 1"
+                style="padding-top: 0.75rem"
+            >
                 <car-item
                     *ngFor="let inscription of vm.inscriptions"
                     [car]="inscription?.car"

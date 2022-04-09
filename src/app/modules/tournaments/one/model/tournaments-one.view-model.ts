@@ -1,8 +1,11 @@
 import { Header } from 'src/app/components/header/model/header.model';
-import { Inscription, Tournament } from 'src/app/models';
+import { Car, Inscription, Tournament, User } from 'src/app/models';
+import { InscriptionsGetMyCarsForInscriptionDto } from 'src/app/services/api/inscription/inscription.dto';
+import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 
 export class TournamentsOneViewModel {
     id: string;
+    user: User;
     header = new Header({
         title: 'Torneo',
         segments: {
@@ -17,4 +20,10 @@ export class TournamentsOneViewModel {
     tournament: Tournament;
     inscriptions: Inscription[] = [];
     image: string;
+    buttonInscription = false;
+    inscriptionsBody: InscriptionsGetMyCarsForInscriptionDto = {
+        userId: '',
+        tournamentId: '',
+    };
+    myCars: InscriptionGetMyCarsUserForInscriptionResponse;
 }
