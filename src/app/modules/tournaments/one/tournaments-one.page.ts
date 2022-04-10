@@ -18,8 +18,8 @@ import { TournamentsOneViewModel } from '..';
     styleUrls: ['./tournaments-one.page.scss'],
 })
 export class TournamentsOnePage implements OnInit {
-    vm = new TournamentsOneViewModel();
     @ViewChild(IonContent, { static: false }) content: IonContent;
+    vm = new TournamentsOneViewModel();
 
     constructor(
         private route: ActivatedRoute,
