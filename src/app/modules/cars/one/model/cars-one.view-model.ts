@@ -5,7 +5,6 @@ export class CarsOneViewModel {
     id: string;
     header = new Header({
         title: 'Coches',
-
         backButton: {
             state: true,
             route: '/tab/cars',

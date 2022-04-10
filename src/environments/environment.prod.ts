@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    urlApi: 'http://localhost:5454/api',
-    urlImages: 'http://localhost:5454/uploads',
+    urlApi: 'https://carstournaments.carsites.es/api',
+    urlImages: 'https://carstournaments.carsites.es/uploads',
 };
