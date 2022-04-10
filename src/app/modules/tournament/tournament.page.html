@@ -11,7 +11,10 @@
             sizeLg="8"
             offsetLg="2"
         >
-            <div *ngIf="vm.header.segments.selected === 0">
+            <div
+                *ngIf="vm.header.segments.selected === 0"
+                class="animate__animated animate__fadeIn"
+            >
                 <ion-card mode="ios" *ngIf="vm.image">
                     <div
                         class="div-image-one"
@@ -153,6 +156,7 @@
 
             <div
                 *ngIf="vm.header.segments.selected === 1"
+                class="animate__animated animate__fadeIn"
                 style="padding-top: 0.75rem"
             >
                 <car-item
@@ -161,7 +165,10 @@
                     (clickItem)="onClickCar($event)"
                 ></car-item>
             </div>
-            <div *ngIf="vm.header.segments.selected === 2">
+            <div
+                *ngIf="vm.header.segments.selected === 2"
+                class="animate__animated animate__fadeIn"
+            >
                 <rounds [tournamentId]="vm.tournament._id"></rounds>
             </div>
         </ion-col>

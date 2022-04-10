@@ -55,19 +55,19 @@
         <ion-card
             mode="ios"
             *ngFor="let pairing of round.pairings"
-            class="ion-activatable"
+            class="ion-activatable animate__animated animate__fadeIn"
             (click)="goToPairing(pairing)"
         >
             <div
                 class="image-car1"
-                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{
+                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
                     pairing.car1?.image?.url | image
                 }})"
             ></div>
             <div class="vs">VS</div>
             <div
                 class="image-car2"
-                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{
+                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
                     pairing.car2?.image?.url | image
                 }})"
             ></div>
