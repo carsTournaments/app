@@ -14,7 +14,7 @@ import { Car } from 'src/app/models';
 import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
 
-describe('CarsOnePage', () => {
+describe('CarPage', () => {
     let component: CarPage;
     let fixture: ComponentFixture<CarPage>;
     let carService: CarService;
@@ -74,7 +74,6 @@ describe('CarsOnePage', () => {
             spyOn(carService, 'getOne').and.returnValue(of(car));
             component.getOne();
             expect(component.vm.car._id).toBe('1');
-            expect(component.vm.image).toBe('assets/no-image.png');
         });
     });
 });

@@ -53,4 +53,10 @@ export class CarService {
             .put<Car>(`${this.url}/update`, data)
             .pipe(take(1));
     }
+
+    delete(id: string): Observable<Car> {
+        return this.httpClient
+            .delete<Car>(`${this.url}/one/${id}`)
+            .pipe(take(1));
+    }
 }

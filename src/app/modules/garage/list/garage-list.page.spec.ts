@@ -65,12 +65,12 @@ describe('GarageListPage', () => {
         });
     });
 
-    describe('onClick', () => {
-        it('viewCar', () => {
+    describe('goTo', () => {
+        it('edit', () => {
             spyOn(navCtrl, 'navigateForward');
             const car = new Car();
             car._id = '123';
-            component.onClickCar(car);
+            component.goTo('edit', car);
             expect(navCtrl.navigateForward).toHaveBeenCalledWith(
                 `garage/one/${car._id}`
             );

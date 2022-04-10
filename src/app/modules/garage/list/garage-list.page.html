@@ -21,11 +21,42 @@
                 </ion-card>
             </ng-container>
             <ng-container *ngIf="vm.cars.length > 0">
-                <car-item
-                    *ngFor="let car of vm.cars"
-                    [car]="car"
-                    (clickItem)="onClickCar($event)"
-                ></car-item>
+                <ng-container *ngFor="let car of vm.cars; let i = index">
+                    <car-item id="hover-button-{{i}}" [car]="car"> </car-item>
+                    <ion-popover
+                        mode="ios"
+                        trigger="hover-button-{{i}}"
+                        side="top"
+                    >
+                        <ng-template>
+                            <ion-content>
+                                <ion-list>
+                                    <ion-item
+                                        (click)="goTo('edit', car)"
+                                        [button]="true"
+                                        [detail]="false"
+                                    >
+                                        <ion-label>Editar</ion-label>
+                                    </ion-item>
+                                    <ion-item
+                                        (click)="goTo('image', car)"
+                                        [button]="true"
+                                        [detail]="false"
+                                    >
+                                        <ion-label>Añadir Imagen</ion-label>
+                                    </ion-item>
+                                    <ion-item
+                                        (click)="deleteCar(car)"
+                                        [button]="true"
+                                        [detail]="false"
+                                    >
+                                        <ion-label>Eliminar</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-content>
+                        </ng-template>
+                    </ion-popover>
+                </ng-container>
             </ng-container>
         </ion-col>
     </ion-row>

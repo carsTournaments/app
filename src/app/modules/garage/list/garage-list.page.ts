@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
-import { CarService, StorageService } from 'src/app/services';
+import { AlertService, CarService, StorageService } from 'src/app/services';
 import { GarageListViewModel } from './model/garage-list.view-model';
 
 @Component({
@@ -15,7 +15,8 @@ export class GarageListPage implements OnInit {
     constructor(
         private carService: CarService,
         private storageService: StorageService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private alertService: AlertService
     ) {}
 
     async ngOnInit() {
@@ -35,11 +36,44 @@ export class GarageListPage implements OnInit {
         });
     }
 
-    onClickCar(car: Car) {
-        this.navCtrl.navigateForward(`garage/one/${car._id}`);
-    }
-
     onClickAddCar() {
         this.navCtrl.navigateForward(`garage/create`);
+    }
+
+    goTo(type: string, car: Car) {
+        switch (type) {
+            case 'edit':
+                this.navCtrl.navigateForward(`garage/one/${car._id}`);
+                break;
+            case 'image':
+                break;
+        }
+    }
+
+    deleteCar(car: Car) {
+        this.alertService.presentAlertWithButtons(
+            '¡Oye!',
+            '¿Estás seguro de eliminar este coche?',
+            [
+                { text: 'No', role: 'cancel' },
+                { text: 'Sí', handler: () => this.deleteCarConfirmation(car) },
+            ]
+        );
+    }
+
+    deleteCarConfirmation(car: Car) {
+        this.carService.delete(car._id).subscribe({
+            next: () => {
+                this.getAllCars();
+                this.alertService.presentAlert(
+                    '¡Eliminado!',
+                    'El coche ha sido eliminado correctamente'
+                );
+            },
+            error: (error) => {
+                this.alertService.presentAlert('Error', error);
+                console.error(error);
+            },
+        });
     }
 }

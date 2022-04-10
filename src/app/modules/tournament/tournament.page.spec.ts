@@ -1,3 +1,5 @@
+import { User } from './../../models/user.model';
+import { StorageService } from './../../services/ionic/storage.service';
 import { Tournament } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
@@ -26,6 +28,7 @@ describe('TournamentPage', () => {
     let navCtrl: NavController;
     let route: ActivatedRoute;
     let imagePipe: ImagePipe;
+    let storageService: StorageService;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -57,6 +60,7 @@ describe('TournamentPage', () => {
         component = fixture.componentInstance;
         tournamentService = testbed.inject(TournamentService);
         inscriptionService = testbed.inject(InscriptionService);
+        storageService = testbed.inject(StorageService);
         route = testbed.inject(ActivatedRoute);
         imagePipe = testbed.inject(ImagePipe);
 
@@ -67,9 +71,12 @@ describe('TournamentPage', () => {
         expect(component).toBeTruthy();
     });
 
-    it('ngOnInit', () => {
+    it('ngOnInit', async () => {
         spyOn(component, 'getOne');
-        component.ngOnInit();
+        const user = new User();
+        user._id = '1';
+        spyOn(storageService, 'get').and.returnValue(Promise.resolve(user));
+        await component.ngOnInit();
         expect(component.vm.id).toBe('1');
         expect(component.getOne).toHaveBeenCalled();
     });

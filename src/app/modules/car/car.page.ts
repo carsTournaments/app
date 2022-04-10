@@ -26,7 +26,7 @@ export class CarPage implements OnInit {
         this.carService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.car = data;
-                this.vm.header.title = `${data.brand.name} ${data.model}`;
+                this.vm.header.title = `${data.brand?.name} ${data.model}`;
                 if (data && data.image) {
                     this.vm.image = this.imagePipe.transform(data.image.url);
                 }

@@ -12,7 +12,7 @@ import { ComponentsModule } from 'src/app';
 import { CarService, BrandService } from 'src/app/services';
 import { Brand, Car } from 'src/app/models';
 
-describe('CarsListPage', () => {
+describe('CarsPage', () => {
     let component: CarsPage;
     let fixture: ComponentFixture<CarsPage>;
     let carService: CarService;
