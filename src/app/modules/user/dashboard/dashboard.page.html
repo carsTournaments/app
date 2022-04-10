@@ -8,29 +8,19 @@
                 *ngIf="!logged && !vm.registerMode"
             ></auth>
 
-            <ion-card
-                mode="ios"
-                *ngIf="logged"
-                style="
-                    margin-left: 0.5rem;
-                    margin-right: 0.5rem;
-                    margin-top: 1rem;
-                "
-            >
-                <ion-card-content>
-                    <ion-item
-                        mode="ios"
-                        color="light"
-                        lines="none"
-                        class="option-item"
-                        [button]="true"
-                        *ngFor="let item of vm.options"
-                        (click)="onClickOption(item)"
-                    >
-                        {{ item.name }}
-                    </ion-item>
-                </ion-card-content>
-            </ion-card>
+            <div class="wrapper-option-items" *ngIf="logged">
+                <ion-item
+                    mode="ios"
+                    color="light"
+                    lines="none"
+                    class="option-item"
+                    [button]="true"
+                    *ngFor="let item of vm.options"
+                    (click)="onClickOption(item)"
+                >
+                    {{ item.name }}
+                </ion-item>
+            </div>
         </ion-col>
     </ion-row>
 </ion-content>

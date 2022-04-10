@@ -63,11 +63,19 @@ ion-segment-button {
     background-size: cover !important;
 }
 
+.wrapper-option-items {
+    margin-top: 1rem;
+}
+
 .option-item {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     background: var(--ion-color-light);
     border-radius: 10px;
     margin-bottom: 1rem;
-    padding: 0.5rem;
+    font-size: 16px;
+    padding: 0.05rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 ion-card {
@@ -78,4 +86,11 @@ ion-card {
 
 ion-item {
     background: var(--ion-color-light);
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
