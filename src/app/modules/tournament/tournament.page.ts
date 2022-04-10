@@ -10,16 +10,16 @@ import {
     StorageService,
     AlertService,
 } from 'src/app/services';
-import { TournamentsOneViewModel } from '..';
+import { TournamentViewModel } from './model/tournament.view-model';
 
 @Component({
-    selector: 'tournaments-one',
-    templateUrl: 'tournaments-one.page.html',
-    styleUrls: ['./tournaments-one.page.scss'],
+    selector: 'page-tournament',
+    templateUrl: 'tournament.page.html',
+    styleUrls: ['./tournament.page.scss'],
 })
-export class TournamentsOnePage implements OnInit {
+export class TournamentPage implements OnInit {
     @ViewChild(IonContent, { static: false }) content: IonContent;
-    vm = new TournamentsOneViewModel();
+    vm = new TournamentViewModel();
 
     constructor(
         private route: ActivatedRoute,

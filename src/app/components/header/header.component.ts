@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Header } from './model/header.model';
 
@@ -10,13 +11,14 @@ import { Header } from './model/header.model';
 export class HeaderComponent implements OnInit {
     @Input() options: Header;
     @Output() segmentChanged: EventEmitter<any> = new EventEmitter();
-    constructor(private navCtrl: NavController) {}
+    constructor(private router: Router, private navCtrl: NavController) {}
 
     ngOnInit() {}
 
     goToBack() {
         if (this.options.backButton && this.options.backButton.state) {
-            this.navCtrl.navigateForward(this.options.backButton.route);
+            console.log(this.router.getCurrentNavigation());
+            this.navCtrl.navigateBack(this.options.backButton.route);
         }
     }
 }

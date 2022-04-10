@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
-import { TournamentsPage } from './tournaments.page';
+import { PairingPage } from './pairing.page';
 
 @NgModule({
     imports: [
@@ -18,11 +18,11 @@ import { TournamentsPage } from './tournaments.page';
         RouterModule.forChild([
             {
                 path: '',
-                component: TournamentsPage,
+                component: PairingPage,
             },
         ]),
     ],
-    declarations: [TournamentsPage],
+    declarations: [PairingPage],
     providers: [ImagePipe],
 })
-export class TournamentsModule {}
+export class PairingModule {}

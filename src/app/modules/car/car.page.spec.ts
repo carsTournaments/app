@@ -1,4 +1,3 @@
-import { Tournament } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
     ComponentFixture,
@@ -10,34 +9,29 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { ComponentsModule } from 'src/app';
-import {
-    CarService,
-    InscriptionService,
-    TournamentService,
-} from 'src/app/services';
+import { CarService } from 'src/app/services';
+import { Car } from 'src/app/models';
+import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
-import { TournamentsOnePage } from '..';
 
-describe('TournamentsOnePage', () => {
-    let component: TournamentsOnePage;
-    let fixture: ComponentFixture<TournamentsOnePage>;
-    let tournamentService: TournamentService;
-    let inscriptionService: InscriptionService;
+describe('CarsOnePage', () => {
+    let component: CarPage;
+    let fixture: ComponentFixture<CarPage>;
+    let carService: CarService;
     let navCtrl: NavController;
     let route: ActivatedRoute;
     let imagePipe: ImagePipe;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [TournamentsOnePage],
+            declarations: [CarPage],
             imports: [
                 IonicModule.forRoot(),
-                RouterTestingModule.withRoutes([]),
+                RouterTestingModule,
                 ComponentsModule,
             ],
             providers: [
                 CarService,
-                InscriptionService,
                 ImagePipe,
                 {
                     provide: ActivatedRoute,
@@ -53,10 +47,9 @@ describe('TournamentsOnePage', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(TournamentsOnePage);
+        fixture = TestBed.createComponent(CarPage);
         component = fixture.componentInstance;
-        tournamentService = testbed.inject(TournamentService);
-        inscriptionService = testbed.inject(InscriptionService);
+        carService = testbed.inject(CarService);
         route = testbed.inject(ActivatedRoute);
         imagePipe = testbed.inject(ImagePipe);
 
@@ -75,28 +68,13 @@ describe('TournamentsOnePage', () => {
     });
 
     describe('getOne', () => {
-        const item = new Tournament();
-        item._id = '1';
+        const car = new Car();
+        car._id = '1';
         it('success', () => {
-            spyOn(tournamentService, 'getOne').and.returnValue(of(item));
+            spyOn(carService, 'getOne').and.returnValue(of(car));
             component.getOne();
-            expect(component.vm.tournament._id).toBe('1');
+            expect(component.vm.car._id).toBe('1');
             expect(component.vm.image).toBe('assets/no-image.png');
         });
-    });
-
-    describe('getInscriptionsOfTournament', () => {
-        it('OK', () => {
-            spyOn(inscriptionService, 'getAllOfTournament').and.returnValue(
-                of([])
-            );
-            component.getInscriptionsOfTournament();
-            expect(component.vm.inscriptions).toEqual([]);
-        });
-    });
-
-    it('segmentChanged', () => {
-        component.segmentChanged({ detail: { value: 0 } });
-        expect(component.vm.header.segments.selected).toBe(0);
     });
 });

@@ -1,18 +1,17 @@
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Tournament } from 'src/app/models';
 import { TournamentService } from 'src/app/services';
 import { TournamentGetAllOfAllStatesResponse } from 'src/app/services/api/tournament/tournament.responses';
-import { TournamentsListViewModel } from '..';
+import { TournamentsViewModel } from './model/tournaments.view-model';
 
 @Component({
-    selector: 'app-tournaments-list',
-    templateUrl: 'tournaments-list.page.html',
-    styleUrls: ['tournaments-list.page.scss'],
+    selector: 'page-tournaments',
+    templateUrl: 'tournaments.page.html',
+    styleUrls: ['tournaments.page.scss'],
 })
-export class TournamentsListPage implements OnInit {
-    vm = new TournamentsListViewModel();
+export class TournamentsPage implements OnInit {
+    vm = new TournamentsViewModel();
 
     constructor(
         private tournamentService: TournamentService,

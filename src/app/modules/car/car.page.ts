@@ -1,15 +1,15 @@
 import { CarService } from 'src/app/services';
 import { Component, OnInit } from '@angular/core';
-import { CarsOneViewModel } from '..';
+import { CarsOneViewModel } from '../cars';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from 'src/app/pipes';
 
 @Component({
-    selector: 'cars-one',
-    templateUrl: 'cars-one.page.html',
-    styleUrls: ['./cars-one.page.scss'],
+    selector: 'page-car',
+    templateUrl: 'car.page.html',
+    styleUrls: ['./car.page.scss'],
 })
-export class CarsOnePage implements OnInit {
+export class CarPage implements OnInit {
     vm = new CarsOneViewModel();
     constructor(
         private carService: CarService,

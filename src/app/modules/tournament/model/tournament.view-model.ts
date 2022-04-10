@@ -1,9 +1,9 @@
 import { Header } from 'src/app/components/header/model/header.model';
-import { Car, Inscription, Tournament, User } from 'src/app/models';
+import { Inscription, Tournament, User } from 'src/app/models';
 import { InscriptionsGetMyCarsForInscriptionDto } from 'src/app/services/api/inscription/inscription.dto';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 
-export class TournamentsOneViewModel {
+export class TournamentViewModel {
     id: string;
     user: User;
     header = new Header({

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { CarsOnePage } from './modules/cars';
-import { PairingPage, TournamentsOnePage } from './modules/tournaments';
 
 const routes: Routes = [
     {
@@ -15,20 +13,23 @@ const routes: Routes = [
             import('./modules/tabs/tabs.module').then((m) => m.TabsModule),
     },
     {
-        path: 'pairing/:id',
-        component: PairingPage,
-    },
-    {
         path: 'tournament/:id',
-        component: TournamentsOnePage,
+        loadChildren: () =>
+            import('./modules/tournament/tournament.module').then(
+                (m) => m.TournamentModule
+            ),
     },
     {
         path: 'car/:id',
-        component: CarsOnePage,
+        loadChildren: () =>
+            import('./modules/car/car.module').then((m) => m.CarModule),
     },
     {
         path: 'pairing/:id',
-        component: PairingPage,
+        loadChildren: () =>
+            import('./modules/pairing/pairing.module').then(
+                (m) => m.PairingModule
+            ),
     },
     {
         path: '',

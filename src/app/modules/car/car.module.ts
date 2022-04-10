@@ -1,12 +1,11 @@
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
+import { ComponentsModule, ServicesModule, PipesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
-import { TournamentsPage } from './tournaments.page';
-
+import { CarPage } from './car.page';
 @NgModule({
     imports: [
         IonicModule,
@@ -18,11 +17,11 @@ import { TournamentsPage } from './tournaments.page';
         RouterModule.forChild([
             {
                 path: '',
-                component: TournamentsPage,
+                component: CarPage,
             },
         ]),
     ],
-    declarations: [TournamentsPage],
+    declarations: [CarPage],
     providers: [ImagePipe],
 })
-export class TournamentsModule {}
+export class CarModule {}

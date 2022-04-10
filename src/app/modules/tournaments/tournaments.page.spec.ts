@@ -10,17 +10,17 @@ import { of } from 'rxjs';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { Tournament } from 'src/app/models';
 import { TournamentService } from 'src/app/services';
-import { TournamentsListPage } from './tournaments-list.page';
+import { TournamentsPage } from './tournaments.page';
 
 describe('TournamentsListPage', () => {
-    let component: TournamentsListPage;
-    let fixture: ComponentFixture<TournamentsListPage>;
+    let component: TournamentsPage;
+    let fixture: ComponentFixture<TournamentsPage>;
     let tournamentService: TournamentService;
     let navCtrl: NavController;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [TournamentsListPage],
+            declarations: [TournamentsPage],
             imports: [
                 IonicModule.forRoot(),
                 RouterTestingModule,
@@ -30,7 +30,7 @@ describe('TournamentsListPage', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(TournamentsListPage);
+        fixture = TestBed.createComponent(TournamentsPage);
         tournamentService = testbed.inject(TournamentService);
         navCtrl = testbed.inject(NavController);
 
