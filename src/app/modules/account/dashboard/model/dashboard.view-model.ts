@@ -7,11 +7,11 @@ export class DashboardViewModel {
     });
     options: OptionItemI[] = [
         { name: 'Mis Datos', icon: 'person', route: 'tab/account/profile' },
-        { name: 'Garaje', icon: 'person', route: 'tab/account/garage' },
+        { name: 'Garaje', icon: 'person', route: 'garage' },
         {
             name: 'Inscripciones',
             icon: 'person',
-            route: 'tab/account/inscriptions',
+            route: 'inscriptions',
         },
         { name: 'Cerrar sesion', icon: 'person', value: 'logout' },
     ];

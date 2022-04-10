@@ -9,12 +9,8 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
-import {
-    TournamentService,
-    CarService,
-    StorageService,
-} from 'src/app/services';
-import { GarageListPage } from '../..';
+import { CarService, StorageService } from 'src/app/services';
+import { GarageListPage } from './garage-list.page';
 
 describe('GarageListPage', () => {
     let component: GarageListPage;
@@ -76,7 +72,7 @@ describe('GarageListPage', () => {
             car._id = '123';
             component.onClickCar(car);
             expect(navCtrl.navigateForward).toHaveBeenCalledWith(
-                `/tab/account/garage/one/${car._id}`
+                `garage/one/${car._id}`
             );
         });
 
@@ -84,7 +80,7 @@ describe('GarageListPage', () => {
             spyOn(navCtrl, 'navigateForward');
             component.onClickAddCar();
             expect(navCtrl.navigateForward).toHaveBeenCalledWith(
-                `/tab/account/garage/create`
+                `garage/create`
             );
         });
     });

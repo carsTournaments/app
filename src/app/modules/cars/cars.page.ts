@@ -2,7 +2,7 @@ import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Brand, Car } from 'src/app/models';
 import { BrandService, CarService } from 'src/app/services';
-import { CarsListViewModel } from '..';
+import { CarsViewModel } from './model/cars.view-model';
 
 @Component({
     selector: 'page-cars',
@@ -10,7 +10,7 @@ import { CarsListViewModel } from '..';
     styleUrls: ['./cars.page.scss'],
 })
 export class CarsPage implements OnInit {
-    vm = new CarsListViewModel();
+    vm = new CarsViewModel();
 
     constructor(
         private carService: CarService,

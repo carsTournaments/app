@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule, ServicesModule, PipesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
-import { CarsPage } from './list/cars.page';
+import { CarsPage } from './cars.page';
 @NgModule({
     imports: [
         IonicModule,

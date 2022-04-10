@@ -1,8 +1,10 @@
+import { Inscription } from './../../models/inscription.model';
 import { Component, OnInit } from '@angular/core';
 import { InscriptionService, StorageService } from 'src/app/services';
-import { InscriptionsViewModel } from '..';
 import { User } from 'src/app/models';
 import { IdDto } from 'src/app/core/dtos/id.dto';
+import { NavController } from '@ionic/angular';
+import { InscriptionsViewModel } from './model/inscriptions.view-model';
 
 @Component({
     selector: 'page-inscriptions',
@@ -13,7 +15,8 @@ export class InscriptionsPage implements OnInit {
     vm = new InscriptionsViewModel();
     constructor(
         private inscriptionService: InscriptionService,
-        private storageService: StorageService
+        private storageService: StorageService,
+        private navCtrl: NavController
     ) {}
 
     async ngOnInit() {
@@ -51,5 +54,11 @@ export class InscriptionsPage implements OnInit {
 
     segmentChanged(event: any) {
         this.vm.header.segments.selected = event.detail.value;
+    }
+
+    goToTournament(inscription: Inscription) {
+        this.navCtrl.navigateForward(
+            `tournament/one/${inscription.tournament._id}`
+        );
     }
 }

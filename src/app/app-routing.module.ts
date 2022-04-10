@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './core/guards/check-token.guard';
 
 const routes: Routes = [
     {
@@ -30,6 +31,22 @@ const routes: Routes = [
             import('./modules/pairing/pairing.module').then(
                 (m) => m.PairingModule
             ),
+    },
+    {
+        path: 'garage',
+        loadChildren: () =>
+            import('./modules/garage/garage.module').then(
+                (m) => m.GarageModule
+            ),
+        canActivate: [LoginGuard],
+    },
+    {
+        path: 'inscriptions',
+        loadChildren: () =>
+            import('./modules/inscriptions/inscriptions.module').then(
+                (m) => m.InscriptionsModule
+            ),
+        canActivate: [LoginGuard],
     },
     {
         path: '',

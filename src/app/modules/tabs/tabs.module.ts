@@ -32,8 +32,8 @@ import { RouterModule } from '@angular/router';
                     {
                         path: 'account',
                         loadChildren: () =>
-                            import('../user/user.module').then(
-                                (m) => m.UserModule
+                            import('../account/account.module').then(
+                                (m) => m.AccountModule
                             ),
                     },
                     {

@@ -3,7 +3,7 @@ import { NavController } from '@ionic/angular';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
 import { CarService, StorageService } from 'src/app/services';
-import { GarageListViewModel } from '../..';
+import { GarageListViewModel } from './model/garage-list.view-model';
 
 @Component({
     selector: 'page-garage-list',
@@ -36,10 +36,10 @@ export class GarageListPage implements OnInit {
     }
 
     onClickCar(car: Car) {
-        this.navCtrl.navigateForward(`/tab/account/garage/one/${car._id}`);
+        this.navCtrl.navigateForward(`garage/one/${car._id}`);
     }
 
     onClickAddCar() {
-        this.navCtrl.navigateForward(`/tab/account/garage/create`);
+        this.navCtrl.navigateForward(`garage/create`);
     }
 }

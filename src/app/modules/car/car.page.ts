@@ -1,8 +1,8 @@
 import { CarService } from 'src/app/services';
 import { Component, OnInit } from '@angular/core';
-import { CarsOneViewModel } from '../cars';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from 'src/app/pipes';
+import { CarViewModel } from './model/car.view-model';
 
 @Component({
     selector: 'page-car',
@@ -10,7 +10,7 @@ import { ImagePipe } from 'src/app/pipes';
     styleUrls: ['./car.page.scss'],
 })
 export class CarPage implements OnInit {
-    vm = new CarsOneViewModel();
+    vm = new CarViewModel();
     constructor(
         private carService: CarService,
         private route: ActivatedRoute,

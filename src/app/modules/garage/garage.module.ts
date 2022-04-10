@@ -5,10 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { GarageListPage, DashboardPage } from '.';
-import { InscriptionsPage } from './inscriptions/inscriptions.page';
-import { GarageOnePage } from './garage/one/garage-one.page';
+import { GarageOnePage } from './one/garage-one.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { GarageListPage } from './list/garage-list.page';
 
 @NgModule({
     imports: [
@@ -19,18 +18,11 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
         ServicesModule,
         PipesModule,
         RouterModule.forChild([
-            { path: '', component: DashboardPage },
-            { path: 'garage', component: GarageListPage },
-            { path: 'garage/one/:id', component: GarageOnePage },
-            { path: 'garage/create', component: GarageOnePage },
-            { path: 'inscriptions', component: InscriptionsPage },
+            { path: '', component: GarageListPage },
+            { path: 'one/:id', component: GarageOnePage },
+            { path: 'create', component: GarageOnePage },
         ]),
     ],
-    declarations: [
-        DashboardPage,
-        GarageListPage,
-        GarageOnePage,
-        InscriptionsPage,
-    ],
+    declarations: [GarageListPage, GarageOnePage],
 })
-export class UserModule {}
+export class GarageModule {}

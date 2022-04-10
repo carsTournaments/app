@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { customAnimation } from './core/animations/animations';
 import { ServicesModule } from './services/services.module';
 import { PipesModule } from './pipes/pipes.module';
+import { LoginGuard } from './core/guards/check-token.guard';
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,8 +27,9 @@ import { PipesModule } from './pipes/pipes.module';
         IonicStorageModule.forRoot(),
     ],
     providers: [
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         ImagePipe,
+        LoginGuard,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ],
     bootstrap: [AppComponent],
 })

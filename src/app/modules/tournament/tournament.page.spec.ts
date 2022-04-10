@@ -86,7 +86,11 @@ describe('TournamentPage', () => {
     });
 
     describe('getInscriptionsOfTournament', () => {
-        it('OK', () => {
+        xit('OK', () => {
+            component.vm.id = '1';
+            component.vm.user._id = '1';
+            spyOn(component, 'getCarsUsersForInscription');
+            spyOn(component, 'checkButtonInscription');
             spyOn(inscriptionService, 'getAllOfTournament').and.returnValue(
                 of([])
             );

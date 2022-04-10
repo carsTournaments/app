@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
 import { AuthService, AlertService } from 'src/app/services';
-import { DashboardViewModel } from '..';
+import { DashboardViewModel } from './model/dashboard.view-model';
 
 @Component({
     selector: 'app-dashboard',
