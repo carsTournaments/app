@@ -3,31 +3,29 @@
         [ngStyle]="{
             height:
                 !options.segments || options.segments.items.length === 0
-                    ? '70px'
-                    : options.image
-                    ? '220px'
+                    ? '60px'
                     : ''
         }"
     >
-        <div
-            *ngIf="options.backButton?.state"
-            class="back-button ion-activatable ripple-parent"
-            (click)="goToBack()"
-        >
-            <ion-icon name="arrow-back-circle-outline"></ion-icon>
-            <ion-ripple-effect></ion-ripple-effect>
-        </div>
-
-        <ion-title>{{ options.title }}</ion-title>
-
-        <ion-card mode="ios" *ngIf="options?.image">
-            <ion-card-content
-                style="background-image: linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
-                    options?.image?.url | image
-                }}"
+        <ng-container *ngIf="options.backButton?.state">
+            <div
+                class="back-button ion-activatable ripple-parent"
+                (click)="goToBack()"
             >
-            </ion-card-content>
-        </ion-card>
+                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+        </ng-container>
+
+        <ion-title
+            [ngClass]="{
+                'ion-title-padding-top-segments':
+                    options.segments?.items.length > 0,
+                'ion-title-padding-top-no-segments': !options.segments
+            }"
+        >
+            {{ options.title }}</ion-title
+        >
 
         <ion-segment
             *ngIf="options.segments && options.segments.items.length > 0"

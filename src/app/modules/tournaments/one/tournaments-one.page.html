@@ -3,7 +3,7 @@
     (segmentChanged)="segmentChanged($event)"
 ></custom-header>
 
-<ion-content [fullscreen]="true" *ngIf="vm.tournament">
+<ion-content [fullscreen]="true" *ngIf="vm.tournament" [scrollEvents]="true">
     <ion-row style="padding-top: 0">
         <ion-col
             style="padding-top: 0; margin-top: -10px"
@@ -79,6 +79,7 @@
                             </p>
                         </ng-container>
                     </ion-card-content>
+
                     <ng-container *ngIf="vm.buttonInscription">
                         <hr />
                         <ion-button
@@ -88,6 +89,25 @@
                             >Inscribirse
                         </ion-button>
                     </ng-container>
+                </ion-card>
+
+                <ion-card
+                    mode="ios"
+                    *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Completed'"
+                >
+                    <ion-item
+                        color="light"
+                        [button]="true"
+                        lines="none"
+                        (click)="goToRounds()"
+                    >
+                        <ion-label>
+                            <h2>Rondas</h2>
+                            <small class="min-text-weight"
+                                >Accede a las rondas del torneo</small
+                            >
+                        </ion-label>
+                    </ion-item>
                 </ion-card>
 
                 <ion-card mode="ios" *ngIf="vm.myCars?.inscribed.length > 0">

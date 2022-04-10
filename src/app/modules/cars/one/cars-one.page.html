@@ -1,7 +1,4 @@
-<custom-header
-    [options]="vm.header"
-    (segmentChanged)="segmentChanged($event)"
-></custom-header>
+<custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true" *ngIf="vm.car">
     <ion-row style="padding-top: 0">
@@ -61,7 +58,7 @@
 
             <ion-card mode="ios">
                 <ion-card-content style="padding: 0.5rem">
-                    <ion-item lines="none">
+                    <ion-item mode="ios" color="light" lines="none">
                         <ion-avatar slot="start" class="avatar-border">
                             <img [src]="vm.car.driver.image?.url | image" />
                         </ion-avatar>

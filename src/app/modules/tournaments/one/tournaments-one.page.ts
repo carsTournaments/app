@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActionSheetButton, NavController } from '@ionic/angular';
+import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
 import { Car, User, Inscription } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
@@ -19,6 +19,8 @@ import { TournamentsOneViewModel } from '..';
 })
 export class TournamentsOnePage implements OnInit {
     vm = new TournamentsOneViewModel();
+    @ViewChild(IonContent, { static: false }) content: IonContent;
+
     constructor(
         private route: ActivatedRoute,
         private tournamentService: TournamentService,
@@ -114,6 +116,7 @@ export class TournamentsOnePage implements OnInit {
 
     segmentChanged(event: { detail: { value: any } }) {
         this.vm.header.segments.selected = Number(event.detail.value);
+        this.content.scrollToTop(1500);
     }
 
     onClickCar(car: Car) {
@@ -215,5 +218,10 @@ export class TournamentsOnePage implements OnInit {
                     );
                 },
             });
+    }
+
+    goToRounds() {
+        this.vm.header.segments.selected = 2;
+        this.content.scrollToTop(1500);
     }
 }
