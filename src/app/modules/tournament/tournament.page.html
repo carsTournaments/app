@@ -34,7 +34,7 @@
                         style="padding: 0.5rem; padding-bottom: 0.5rem"
                     >
                         <ion-row>
-                            <ion-col size="6" class="ion-text-center">
+                            <ion-col [size]="vm.cols" class="ion-text-center">
                                 <small>Inicio</small>
                                 <p>
                                     {{ vm.tournament.startDate |
@@ -43,7 +43,7 @@
                             </ion-col>
                             <ion-col
                                 *ngIf="vm.tournament.endDate"
-                                size="6"
+                                [size]="vm.cols"
                                 class="ion-text-center"
                             >
                                 <small>Fin</small>
@@ -54,22 +54,24 @@
                             </ion-col>
                             <ion-col
                                 *ngIf="!vm.tournament.endDate"
-                                size="6"
+                                [size]="vm.cols"
                                 class="ion-text-center"
                             >
                                 <small>Duracion</small>
                                 <p>{{ vm.tournament.durationDays }} dias</p>
                             </ion-col>
-                        </ion-row>
-                        <ion-row style="margin-top: 1rem">
-                            <ion-col size="6" class="ion-text-center">
+                            <ion-col [size]="vm.cols" class="ion-text-center">
                                 <small>Participantes</small>
                                 <p>
                                     {{ vm.tournament?.inscriptions.length }} /
                                     {{ vm.tournament.maxParticipants }}
                                 </p>
                             </ion-col>
-                            <ion-col size="6" class="ion-text-center">
+                            <ion-col
+                                *ngIf="vm.tournament.status !== 'Todo'"
+                                [size]="vm.cols"
+                                class="ion-text-center"
+                            >
                                 <small>Votos</small>
                                 <p>{{ vm.tournament?.votes.length }}</p>
                             </ion-col>
@@ -124,15 +126,17 @@
                         class="ion-text-center"
                         style="padding-top: 1rem; font-size: 18px"
                     >
-                        Tus coches
+                        Tus coches inscritos
                     </ion-card-title>
                     <hr />
-                    <ion-card-content style="padding: 0.5rem">
+                    <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
                         <ion-list>
                             <ion-item
+                                style="margin: 0.5rem; padding: 0.5rem"
+                                class="option-item"
                                 [button]="true"
-                                detail="false"
                                 lines="none"
+                                detail="false"
                                 *ngFor="let car of vm.myCars?.inscribed"
                                 (click)="confirmDeleteInscription(car)"
                             >

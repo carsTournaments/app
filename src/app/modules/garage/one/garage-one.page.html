@@ -6,7 +6,7 @@
             <ion-card mode="ios">
                 <ion-card-content>
                     <ion-item>
-                        <ion-label position="floating">Marca</ion-label>
+                        <ion-label position="stacked">Marca</ion-label>
                         <ion-select
                             [(ngModel)]="vm.brandIdSelected"
                             name="brandId"
@@ -22,7 +22,7 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Modelo</ion-label>
+                        <ion-label position="stacked">Modelo</ion-label>
                         <ion-input
                             type="text"
                             [(ngModel)]="vm.car.model"
@@ -31,7 +31,7 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Traccion</ion-label>
+                        <ion-label position="stacked">Traccion</ion-label>
                         <ion-select
                             [(ngModel)]="vm.car.traction"
                             placeholder="Selecciona la traccion"
@@ -43,7 +43,7 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Combustible</ion-label>
+                        <ion-label position="stacked">Combustible</ion-label>
                         <ion-select
                             [(ngModel)]="vm.car.fuel"
                             placeholder="Selecciona el combustible"
@@ -56,7 +56,7 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating"
+                        <ion-label position="stacked"
                             >Año de fabricacion</ion-label
                         >
                         <ion-input
@@ -66,7 +66,7 @@
                         ></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label position="floating"
+                        <ion-label position="stacked"
                             >Centimetros Cubicos (CC)</ion-label
                         >
                         <ion-input
@@ -77,7 +77,7 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating"
+                        <ion-label position="stacked"
                             >Caballos de potencia (CV)</ion-label
                         >
                         <ion-input
@@ -88,9 +88,9 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating"
-                            >Coche de serie</ion-label
-                        >
+                        <ion-label position="stacked">
+                            Coche de serie (Sin modificaciones)
+                        </ion-label>
                         <ion-select
                             [(ngModel)]="vm.car.stock"
                             placeholder="Selecciona si o no"
@@ -103,17 +103,22 @@
                             >
                         </ion-select>
                     </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked"
+                            >Informacion (Opcional)</ion-label
+                        >
+                        <ion-textarea
+                            [(ngModel)]="vm.car.info"
+                            placeholder="Introduce informacion adicional"
+                        ></ion-textarea>
+                    </ion-item>
                 </ion-card-content>
             </ion-card>
         </ion-col>
     </ion-row>
-    <ion-fab
-        vertical="bottom"
-        horizontal="end"
-        slot="fixed"
-        style="margin-bottom: 1rem"
-    >
-        <ion-fab-button size="small" (click)="updateItem()">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" (click)="createOrUpdateItem()">
             <ion-icon size="small" name="save"></ion-icon>
         </ion-fab-button>
     </ion-fab>

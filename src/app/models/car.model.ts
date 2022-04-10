@@ -20,19 +20,19 @@ export class Car {
 
     constructor(data?: Car) {
         this._id = data?._id;
-        this.driver = data?.driver || '';
-        this.brand = data?.brand || '';
-        this.model = data?.model || '';
-        this.fuel = data?.fuel || '';
-        this.traction = data?.traction || '';
-        this.cv = data?.cv || 0;
-        this.cc = data?.cc || 0;
-        this.stock = data?.stock || false;
-        this.info = data?.info || '';
-        this.year = data?.year || 0;
-        this.tournaments = data?.tournaments || [];
-        this.image = data?.image || new Image();
-        this.created = data?.created || '';
-        this.updated = data?.updated || '';
+        this.driver = data?.driver;
+        this.brand = data?.brand;
+        this.model = data?.model;
+        this.fuel = data?.fuel;
+        this.traction = data?.traction;
+        this.cv = data?.cv;
+        this.cc = data?.cc;
+        this.stock = data?.stock || true;
+        this.info = data?.info;
+        this.year = data?.year;
+        this.tournaments = data?.tournaments;
+        this.image = data?.image;
+        this.created = data?.created;
+        this.updated = data?.updated;
     }
 }

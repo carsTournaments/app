@@ -58,7 +58,7 @@ export class InscriptionsPage implements OnInit {
 
     goToTournament(inscription: Inscription) {
         this.navCtrl.navigateForward(
-            `tournament/one/${inscription.tournament._id}`
+            `tournament/${inscription.tournament._id}`
         );
     }
 }

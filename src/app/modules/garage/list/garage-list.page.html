@@ -1,6 +1,10 @@
 <custom-header [options]="vm.header"></custom-header>
 
-<ion-content [fullscreen]="true" *ngIf="vm.cars">
+<ion-content
+    [fullscreen]="true"
+    *ngIf="vm.cars"
+    class="animate__animated animate__fadeIn"
+>
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <ng-container *ngIf="vm.cars.length === 0">
@@ -26,12 +30,7 @@
         </ion-col>
     </ion-row>
 
-    <ion-fab
-        vertical="bottom"
-        horizontal="end"
-        slot="fixed"
-        style="margin-bottom: 1rem"
-    >
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button size="small" color="primary" (click)="onClickAddCar()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>

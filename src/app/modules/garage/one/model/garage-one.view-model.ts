@@ -7,7 +7,7 @@ export class GarageOneViewModel {
         title: 'Garage',
         backButton: {
             state: true,
-            route: '/tab/account/garage',
+            route: 'garage',
         },
     });
     id: string;

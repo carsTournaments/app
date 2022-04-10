@@ -34,9 +34,9 @@ export class TournamentPage implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
+        this.vm.user = await this.storageService.get<User>('user');
         this.getOne();
         this.getInscriptionsOfTournament();
-        this.vm.user = await this.storageService.get<User>('user');
     }
 
     getOne(): void {
@@ -46,6 +46,11 @@ export class TournamentPage implements OnInit {
                 this.vm.header.title = data.name;
                 if (data.image) {
                     this.vm.image = this.imagePipe.transform(data.image.url);
+                }
+                if (this.vm.tournament.status === 'Todo') {
+                    this.vm.cols = '4';
+                } else {
+                    this.vm.cols = '6';
                 }
                 this.setSegments();
             },

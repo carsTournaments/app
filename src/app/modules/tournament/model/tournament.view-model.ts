@@ -26,4 +26,5 @@ export class TournamentViewModel {
         tournamentId: '',
     };
     myCars: InscriptionGetMyCarsUserForInscriptionResponse;
+    cols = '6';
 }
