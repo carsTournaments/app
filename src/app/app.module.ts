@@ -1,3 +1,4 @@
+import { ImagePipe } from './pipes/image/image.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -9,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { customAnimation } from './core/animations/animations';
 import { ServicesModule } from './services/services.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -16,13 +18,17 @@ import { ServicesModule } from './services/services.module';
     imports: [
         BrowserModule,
         ServicesModule,
+        PipesModule,
         IonicModule.forRoot({
             navAnimation: customAnimation,
         }),
         AppRoutingModule,
         IonicStorageModule.forRoot(),
     ],
-    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        ImagePipe,
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

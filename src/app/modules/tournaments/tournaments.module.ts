@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { TournamentsListPage, TournamentsOnePage } from '.';
+import { PairingPage, TournamentsListPage, TournamentsOnePage } from '.';
 import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
 
@@ -20,13 +20,9 @@ import { ImagePipe } from 'src/app/pipes';
                 path: '',
                 component: TournamentsListPage,
             },
-            {
-                path: 'one/:id',
-                component: TournamentsOnePage,
-            },
         ]),
     ],
-    declarations: [TournamentsListPage, TournamentsOnePage],
+    declarations: [TournamentsListPage, TournamentsOnePage, PairingPage],
     providers: [ImagePipe],
 })
 export class TournamentsModule {}

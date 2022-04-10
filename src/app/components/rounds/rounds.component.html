@@ -52,7 +52,12 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card mode="ios" *ngFor="let pairing of round.pairings">
+        <ion-card
+            mode="ios"
+            *ngFor="let pairing of round.pairings"
+            class="ion-activatable"
+            (click)="goToPairing(pairing)"
+        >
             <div
                 class="image-car1"
                 style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{
@@ -76,6 +81,7 @@
                     {{pairing.car2.brand.name | truncateText: 15 }}
                 </div>
             </ion-card-content> -->
+            <ion-ripple-effect></ion-ripple-effect>
         </ion-card>
     </div>
 </div>

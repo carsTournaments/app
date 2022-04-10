@@ -1,5 +1,6 @@
+import { NavController } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
-import { Round } from 'src/app/models';
+import { Pairing, Round } from 'src/app/models';
 import { RoundService } from 'src/app/services';
 
 @Component({
@@ -12,7 +13,10 @@ export class RoundsComponent implements OnInit {
     rounds: Round[] = [];
     roundSelected = '';
     segmentsRounds = [];
-    constructor(private roundService: RoundService) {}
+    constructor(
+        private roundService: RoundService,
+        private navCtrl: NavController
+    ) {}
 
     ngOnInit() {
         this.getAllRoundsAndPairingsOfTournament();
@@ -42,5 +46,9 @@ export class RoundsComponent implements OnInit {
 
     segmentChanged(event) {
         this.roundSelected = event.target.value;
+    }
+
+    goToPairing(pairing: Pairing) {
+        this.navCtrl.navigateForward(`/pairing/${pairing._id}`);
     }
 }

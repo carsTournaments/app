@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="ion-content">
+    <div class="ion-content" *ngIf="!loading">
         <div class="ion-text-center">
             <p class="title">Cars<br />Tournaments</p>
             <hr />
@@ -15,9 +15,10 @@
                 mode="ios"
                 color="dark"
                 expand="block"
-                [routerLink]="['/tab']"
-                >Entrar</ion-button
+                (click)="enter()"
             >
+                Entrar
+            </ion-button>
         </div>
     </div>
 </ion-content>

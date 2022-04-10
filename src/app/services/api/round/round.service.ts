@@ -32,7 +32,7 @@ export class RoundService {
 
     getOne(id: string): Observable<Round> {
         return this.httpClient
-            .post<Round>(`${this.url}/one`, { id, site: 'admin' })
+            .post<Round>(`${this.url}/one`, { id, site: 'app' })
             .pipe(take(1));
     }
 }

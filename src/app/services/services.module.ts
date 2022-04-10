@@ -12,8 +12,8 @@ import {
     ActionSheetService,
     AlertService,
     StorageService,
+    PairingService,
 } from '.';
-import { GlobalHttpInterceptor } from '../core/interceptors/global-http.interceptor';
 import { TokenInterceptorService } from '../core/interceptors/token.interceptor';
 
 @NgModule({
@@ -25,6 +25,7 @@ import { TokenInterceptorService } from '../core/interceptors/token.interceptor'
         BrandService,
         CarService,
         InscriptionService,
+        PairingService,
         RoundService,
         TournamentService,
         // Ionic
@@ -36,11 +37,6 @@ import { TokenInterceptorService } from '../core/interceptors/token.interceptor'
             useClass: TokenInterceptorService,
             multi: true,
         },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: GlobalHttpInterceptor,
-        //     multi: true,
-        // },
     ],
 })
 export class ServicesModule {}

@@ -58,6 +58,6 @@ export class TournamentsListPage implements OnInit {
     }
 
     goTo(event: Tournament) {
-        this.navCtrl.navigateForward(['/tab/tournaments/one', event._id]);
+        this.navCtrl.navigateForward(['/tournament', event._id]);
     }
 }

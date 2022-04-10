@@ -19,10 +19,6 @@ import { ImagePipe } from 'src/app/pipes';
                 path: '',
                 component: CarsListPage,
             },
-            {
-                path: 'one/:id',
-                component: CarsOnePage,
-            },
         ]),
     ],
     declarations: [CarsListPage, CarsOnePage],

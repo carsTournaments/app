@@ -68,7 +68,7 @@ export class InscriptionService {
 
     getOne(id: string): Observable<Inscription> {
         return this.httpClient
-            .post<Inscription>(`${this.url}/one`, { id, site: 'admin' })
+            .post<Inscription>(`${this.url}/one`, { id, site: 'app' })
             .pipe(take(1));
     }
 

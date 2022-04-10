@@ -1,10 +1,31 @@
-import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
-    constructor() {}
+export class HomePage implements OnInit {
+    loading = true;
+    constructor(
+        private navCtrl: NavController,
+        private storageService: StorageService
+    ) {}
+
+    async ngOnInit() {
+        this.loading = true;
+        const firstTimeInApp = await this.storageService.get('home');
+        if (firstTimeInApp) {
+            this.enter();
+        } else {
+            this.loading = false;
+        }
+    }
+
+    enter() {
+        this.storageService.set('home', true);
+        this.navCtrl.navigateRoot('/tab');
+    }
 }

@@ -36,7 +36,7 @@ export class BrandService {
 
     getOne(id: string): Observable<Brand> {
         return this.httpClient
-            .post<Brand>(`${this.url}/one`, { id, site: 'admin' })
+            .post<Brand>(`${this.url}/one`, { id, site: 'app' })
             .pipe(take(1));
     }
 }

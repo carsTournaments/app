@@ -38,7 +38,7 @@ export class CarService {
 
     getOne(id: string): Observable<Car> {
         return this.httpClient
-            .post<Car>(`${this.url}/one`, { id, site: 'admin' })
+            .post<Car>(`${this.url}/one`, { id, site: 'app' })
             .pipe(take(1));
     }
 

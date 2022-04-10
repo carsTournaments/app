@@ -30,7 +30,7 @@ export class CarsListPage implements OnInit {
         });
     }
 
-    getCarsOnSuccess(res: { items: Car[] },  event?: any) {
+    getCarsOnSuccess(res: { items: Car[] }, event?: any) {
         if (event) {
             if (res.items.length > 0) {
                 this.vm.cars = this.vm.cars.concat(res.items);
@@ -86,7 +86,7 @@ export class CarsListPage implements OnInit {
     }
 
     onClickCar(car: Car) {
-        this.navCtrl.navigateForward(`/tab/cars/one/${car._id}`);
+        this.navCtrl.navigateForward(`/car/${car._id}`);
     }
 
     cleanFilter() {
