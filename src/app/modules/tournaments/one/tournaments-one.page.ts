@@ -71,8 +71,8 @@ export class TournamentsOnePage implements OnInit {
 
     async checkButtonInscription() {
         if (
-            this.vm.tournament.status === 'InProgress' ||
-            this.vm.tournament.status === 'Completed'
+            this.vm.tournament?.status === 'InProgress' ||
+            this.vm.tournament?.status === 'Completed'
         ) {
             this.vm.buttonInscription = false;
         } else {
@@ -116,7 +116,9 @@ export class TournamentsOnePage implements OnInit {
 
     segmentChanged(event: { detail: { value: any } }) {
         this.vm.header.segments.selected = Number(event.detail.value);
-        this.content.scrollToTop(1500);
+        if (this.content) {
+            this.content.scrollToTop(1500);
+        }
     }
 
     onClickCar(car: Car) {
@@ -222,6 +224,8 @@ export class TournamentsOnePage implements OnInit {
 
     goToRounds() {
         this.vm.header.segments.selected = 2;
-        this.content.scrollToTop(1500);
+        if (this.content) {
+            this.content.scrollToTop(1500);
+        }
     }
 }

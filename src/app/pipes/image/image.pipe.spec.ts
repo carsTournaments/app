@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment.prod';
 import { ImagePipe } from 'src/app/pipes';
 
 describe('ImagePipe', () => {
@@ -9,7 +10,7 @@ describe('ImagePipe', () => {
     it('show image', () => {
         const pipe = new ImagePipe();
         const result = pipe.transform('loquesea');
-        expect(result).toBe('http://localhost:5454/uploads/loquesea');
+        expect(result).toBe(`${environment.urlImages}/loquesea`);
     });
 
     it('show image', () => {
