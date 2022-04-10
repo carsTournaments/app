@@ -8,17 +8,8 @@ import { Header } from './model/header.model';
     templateUrl: 'header.component.html',
     styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
     @Input() options: Header;
     @Output() segmentChanged: EventEmitter<any> = new EventEmitter();
-    constructor(private router: Router, private navCtrl: NavController) {}
-
-    ngOnInit() {}
-
-    goToBack() {
-        if (this.options.backButton && this.options.backButton.state) {
-            console.log(this.router.getCurrentNavigation());
-            this.navCtrl.navigateBack(this.options.backButton.route);
-        }
-    }
+    constructor() {}
 }

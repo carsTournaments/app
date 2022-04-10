@@ -31,14 +31,18 @@ ion-card-content {
     padding-right: 1rem;
 }
 
-.back-button {
+.back-button-segments {
     z-index: 100;
     position: absolute;
-    left: 1rem;
-    top: 0.5rem;
-    color: #fff;
-    border-radius: 100%;
-    zoom: 1.75;
+    top: 0.1rem;
+    left: 0.5rem;
+}
+
+.back-button-no-segments {
+    z-index: 100;
+    position: absolute;
+    top: 0.3rem;
+    left: 0.5rem;
 }
 
 .ion-title-padding-top-segments {
