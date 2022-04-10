@@ -7,21 +7,21 @@ import {
 import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { CarsListPage } from './cars-list.page';
+import { CarsPage } from './cars.page';
 import { ComponentsModule } from 'src/app';
 import { CarService, BrandService } from 'src/app/services';
 import { Brand, Car } from 'src/app/models';
 
 describe('CarsListPage', () => {
-    let component: CarsListPage;
-    let fixture: ComponentFixture<CarsListPage>;
+    let component: CarsPage;
+    let fixture: ComponentFixture<CarsPage>;
     let carService: CarService;
     let brandService: BrandService;
     let navCtrl: NavController;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [CarsListPage],
+            declarations: [CarsPage],
             imports: [
                 IonicModule.forRoot(),
                 RouterTestingModule,
@@ -31,7 +31,7 @@ describe('CarsListPage', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(CarsListPage);
+        fixture = TestBed.createComponent(CarsPage);
         component = fixture.componentInstance;
         carService = testbed.inject(CarService);
         brandService = testbed.inject(BrandService);

@@ -3,7 +3,7 @@ import { Brand, Car } from 'src/app/models';
 import { BrandGetAllBrandsAndCarsDto } from 'src/app/services/api/brand/brand.dto';
 import { CarGetAllDto } from 'src/app/services/api/car/car.dto';
 
-export class CarsListViewModel {
+export class CarsViewModel {
     header = new Header({
         title: 'Coches',
         segments: {

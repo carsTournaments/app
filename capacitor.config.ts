@@ -1,10 +1,10 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'carsTournaments-app',
-  webDir: 'www',
-  bundledWebRuntime: false
+    appId: 'com.josexs.ct',
+    appName: 'CarsTournaments',
+    webDir: 'www',
+    bundledWebRuntime: false,
 };
 
 export default config;

@@ -122,7 +122,7 @@ export class TournamentPage implements OnInit {
     }
 
     onClickCar(car: Car) {
-        this.navCtrl.navigateForward(`/tab/cars/one/${car._id}`);
+        this.navCtrl.navigateForward(`/car/${car._id}`);
     }
 
     inscriptionCar() {

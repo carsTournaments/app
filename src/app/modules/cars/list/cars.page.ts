@@ -5,11 +5,11 @@ import { BrandService, CarService } from 'src/app/services';
 import { CarsListViewModel } from '..';
 
 @Component({
-    selector: 'app-cars-list',
-    templateUrl: 'cars-list.page.html',
-    styleUrls: ['cars-list.page.scss'],
+    selector: 'page-cars',
+    templateUrl: 'cars.page.html',
+    styleUrls: ['./cars.page.scss'],
 })
-export class CarsListPage implements OnInit {
+export class CarsPage implements OnInit {
     vm = new CarsListViewModel();
 
     constructor(

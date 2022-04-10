@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule, ServicesModule, PipesModule } from 'src/app';
-import { CarsListPage, CarsOnePage } from '.';
 import { ImagePipe } from 'src/app/pipes';
+import { CarsPage } from './list/cars.page';
 @NgModule({
     imports: [
         IonicModule,
@@ -17,11 +17,11 @@ import { ImagePipe } from 'src/app/pipes';
         RouterModule.forChild([
             {
                 path: '',
-                component: CarsListPage,
+                component: CarsPage,
             },
         ]),
     ],
-    declarations: [CarsListPage, CarsOnePage],
+    declarations: [CarsPage],
     providers: [ImagePipe],
 })
 export class CarsPageModule {}
