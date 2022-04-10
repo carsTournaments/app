@@ -1,6 +1,4 @@
-import { Round } from 'src/app/models/round.model';
-import { Inscription } from 'src/app/models/inscription.model';
-import { Image } from './image.model';
+import { Vote, Image, Inscription, Round } from '.';
 export class Tournament {
     _id?: string;
     name: string;
@@ -13,6 +11,7 @@ export class Tournament {
     info?: string;
     rounds?: Round[]; // Virtual
     inscriptions?: Inscription[]; // CarI[]
+    votes?: Vote[];
     image: Image;
     lastRound?: string;
     created?: string;
@@ -29,6 +28,7 @@ export class Tournament {
         this.info = data?.info || '';
         this.rounds = data?.rounds || [];
         this.inscriptions = data?.inscriptions || [];
+        this.votes = data?.votes || [];
         this.image = data?.image || new Image();
         this.created = data?.created;
         this.updated = data?.updated;

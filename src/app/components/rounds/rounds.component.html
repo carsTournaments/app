@@ -1,26 +1,41 @@
 <div *ngFor="let round of rounds">
     <div *ngIf="roundSelected === round._id">
         <ion-card mode="ios">
-            <ion-card-content>
-                <h3
-                    class="ion-text-center"
-                    style="font-size: 18px; font-weight: 900"
-                >
-                    {{ round.name }}
-                </h3>
-                <p class="ion-text-center">
-                    Inicio:
-                    {{ round.startDate | dateToTimeAgo: true | fistLetterCase }}
-                </p>
-                <p class="ion-text-center">
-                    Fin:
-                    {{ round.endDate | dateToTimeAgo: true | fistLetterCase }}
-                </p>
-            </ion-card-content>
-        </ion-card>
-
-        <ion-card mode="ios">
-            <ion-card-content style="padding: 0; padding-bottom: 1rem">
+            <ion-card-title
+                class="ion-text-center"
+                style="padding-top: 0.75rem"
+            >
+                {{ round.name }}
+            </ion-card-title>
+            <hr />
+            <ion-card-content style="padding: 0.5rem; padding-bottom: 1rem">
+                <ion-row>
+                    <ion-col size="4" class="ion-text-center item-block-resume">
+                        <small>Inicio</small>
+                        <p>
+                            {{
+                                round.startDate
+                                    | dateToTimeAgo: true
+                                    | fistLetterCase
+                            }}
+                        </p>
+                    </ion-col>
+                    <ion-col size="4" class="ion-text-center item-block-resume">
+                        <small>Votos</small>
+                        <p>{{ round.votes.length }}</p>
+                    </ion-col>
+                    <ion-col size="4" class="ion-text-center item-block-resume">
+                        <small>Fin</small>
+                        <p>
+                            {{
+                                round.endDate
+                                    | dateToTimeAgo: true
+                                    | fistLetterCase
+                            }}
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <hr />
                 <ion-segment
                     mode="md"
                     [value]="roundSelected"

@@ -1,4 +1,4 @@
-import { Pairing } from './pairing.model';
+import { Vote, Pairing } from '.';
 
 export class Round {
     _id?: string;
@@ -9,6 +9,7 @@ export class Round {
     endDate: string;
     status: string;
     pairings?: Pairing[]; // Virtual
+    votes?: Vote[];
     created?: string;
     updated?: string;
     constructor(data?: Round) {
@@ -20,6 +21,7 @@ export class Round {
         this.endDate = data?.endDate || '';
         this.status = data?.status || 'Todo';
         this.pairings = data?.pairings || [];
+        this.votes = data?.votes || [];
         this.created = data?.created;
         this.updated = data?.updated;
     }

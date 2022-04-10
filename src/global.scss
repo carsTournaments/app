@@ -33,7 +33,7 @@ ion-segment {
 }
 
 ion-segment-button {
-    --border-radius: 8px;
+    --border-radius: 10px;
     --color: var(--ion-color-medium);
     --color-checked: var(--ion-color-dark);
     --indicator-transform: translate3d(0, 0px, 0);
@@ -93,4 +93,10 @@ hr {
     margin-bottom: 0.5rem;
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item-block-resume {
+    small {
+        font-weight: 900;
+    }
 }
