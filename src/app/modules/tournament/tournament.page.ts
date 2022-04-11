@@ -149,7 +149,7 @@ export class TournamentPage implements OnInit {
     inscriptionConfirmation(car: Car) {
         this.alertService.presentAlertWithButtons(
             'Confirmación',
-            '¿Estás seguro de inscribirte en este torneo?',
+            `¿Estás seguro de inscribirte en este torneo con el coche ${car.brand.name} ${car.model}?`,
             [
                 {
                     text: 'Cancelar',
