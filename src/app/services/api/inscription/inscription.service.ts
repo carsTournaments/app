@@ -11,7 +11,7 @@ import {
 import { Car, Inscription, Tournament } from 'src/app/models';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
-import { take } from 'rxjs/internal/operators/take';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class InscriptionService {

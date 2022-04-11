@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
 import { StorageService } from '../../ionic/storage.service';
 import { User } from 'src/app/models/user.model';
-import { take } from 'rxjs/internal/operators/take';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

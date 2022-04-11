@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { TournamentGetAllDto } from './tournament.dto';
 import { Tournament } from 'src/app/models/tournament.model';
-import { take } from 'rxjs/internal/operators/take';
+import { take } from 'rxjs/operators';
 import { TournamentGetAllOfAllStatesResponse } from './tournament.responses';
 
 @Injectable({ providedIn: 'root' })

@@ -1,9 +1,8 @@
-import { PaginatorI } from '../../../interfaces/paginator.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { take } from 'rxjs/internal/operators/take';
+import { take } from 'rxjs/operators';
 import { Pairing } from 'src/app/models';
 
 @Injectable({ providedIn: 'root' })

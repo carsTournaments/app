@@ -50,7 +50,7 @@ export class PairingPage implements OnInit {
             mode: 'ios',
             cssClass: 'modal-pairing',
             componentProps: {
-                car: car,
+                car,
             },
         };
         const popover = await this.modalCtrl.create(options);

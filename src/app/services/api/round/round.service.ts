@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Round } from 'src/app/models/round.model';
 import { RoundGetAllDto } from './round.dto';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
-import { take } from 'rxjs/internal/operators/take';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class RoundService {
