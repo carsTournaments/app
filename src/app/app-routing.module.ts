@@ -49,6 +49,14 @@ const routes: Routes = [
         canActivate: [LoginGuard],
     },
     {
+        path: 'my-data',
+        loadChildren: () =>
+            import('./modules/my-data/my-data.module').then(
+                (m) => m.MyDataModule
+            ),
+        canActivate: [LoginGuard],
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',

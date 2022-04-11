@@ -6,7 +6,7 @@ export class DashboardViewModel {
         title: 'Tu Cuenta',
     });
     options: OptionItemI[] = [
-        { name: 'Mis Datos', icon: 'person', route: 'tab/account/profile' },
+        { name: 'Mis Datos', icon: 'person', route: 'my-data' },
         { name: 'Garaje', icon: 'person', route: 'garage' },
         {
             name: 'Inscripciones',
