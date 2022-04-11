@@ -11,4 +11,5 @@ export class PairingViewModel {
         },
     });
     pairing: Pairing;
+    totalHeight = 500;
 }

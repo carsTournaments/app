@@ -1,1 +1,91 @@
 <custom-header [options]="vm.header"></custom-header>
+
+<ion-content
+    [fullscreen]="true"
+    *ngIf="vm.pairing"
+    class="animate__animated animate__fadeIn"
+>
+    <ion-row style="padding-top: 0">
+        <ion-col
+            style="
+                padding-top: 0;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                margin-top: -10px;
+            "
+            size="12"
+            sizeLg="8"
+            offsetLg="2"
+        >
+            <ion-card
+                [ngStyle]="{'height': vm.totalHeight + 'px'}"
+                mode="ios"
+                style="margin-bottom: 0"
+                class="animate__animated animate__fadeIn"
+            >
+                <div
+                    class="image-car1"
+                    style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
+                    vm.pairing.car1?.image?.url | image
+                }})"
+                ></div>
+                <div
+                    class="vs"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 31) + 'px'}"
+                >
+                    VS
+                </div>
+                <div
+                    class="image-car2"
+                    style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
+                    vm.pairing.car2?.image?.url | image
+                }})"
+                ></div>
+
+                <div
+                    class="car-title1 ion-activatable"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 100) + 'px'}"
+                    (click)="openPopover($event, vm.pairing.car1)"
+                >
+                    {{ vm.pairing.car1.brand.name | uppercase }} {{
+                    vm.pairing.car1.model | truncateText: 15 | uppercase }}
+                    <ion-ripple-effect></ion-ripple-effect>
+                </div>
+                <div
+                    class="car-title2 ion-activatable"
+                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 110) + 'px'}"
+                    (click)="openPopover($event, vm.pairing.car2)"
+                >
+                    {{ vm.pairing.car2.brand.name | uppercase }} {{
+                    vm.pairing.car2.model | truncateText: 15 | uppercase }}
+                    <ion-ripple-effect></ion-ripple-effect>
+                </div>
+
+                <div
+                    class="button-love1 ion-activatable"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 185) + 'px'}"
+                    (click)="vote('car1')"
+                >
+                    <ion-icon
+                        name="heart"
+                        class="animate__animated animate__heartBeat"
+                    >
+                    </ion-icon>
+                    <ion-ripple-effect></ion-ripple-effect>
+                </div>
+                <div
+                    class="button-love2 ion-activatable"
+                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}"
+                    (click)="vote('car2')"
+                >
+                    <ion-icon
+                        name="heart"
+                        class="animate__animated animate__heartBeat"
+                    >
+                    </ion-icon>
+                    <ion-ripple-effect></ion-ripple-effect>
+                </div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

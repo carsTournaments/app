@@ -53,14 +53,12 @@ export class GarageListPage implements OnInit {
             mode: 'ios',
             cssClass: 'popover-garage',
             reference: 'event',
-            componentProps: {
-                cars: this.vm.cars,
-            },
+            // componentProps: {
+            //     cars: this.vm.cars,
+            // },
         };
         const popover = await this.popoverCtrl.create(options);
-
         popover.present();
-
         popover.onDidDismiss().then((data) => {
             if (data.data) {
                 if (data.data === 'edit' || data.data === 'image') {

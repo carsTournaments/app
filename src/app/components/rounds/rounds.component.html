@@ -71,15 +71,17 @@
                     pairing.car2?.image?.url | image
                 }})"
             ></div>
-            <div class="carTitle1">
-                <p>{{ pairing.car1.brand.name | truncateText: 15 }}</p>
-                <span>{{ pairing.car1.model }}</span>
+
+            <div class="car-title1">
+                {{ pairing.car1.brand.name | uppercase }}
+                {{ pairing.car1.model | truncateText: 15 | uppercase }}
+            </div>
+            <div class="car-title2">
+                {{ pairing.car2.brand.name | uppercase }}
+                {{ pairing.car2.model | truncateText: 15 | uppercase }}
             </div>
             <!-- <ion-card-content>
 
-                <div class="car-title2">
-                    {{pairing.car2.brand.name | truncateText: 15 }}
-                </div>
             </ion-card-content> -->
             <ion-ripple-effect></ion-ripple-effect>
         </ion-card>
