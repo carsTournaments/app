@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import {
+    NavController,
+    PopoverController,
+    PopoverOptions,
+} from '@ionic/angular';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
 import { AlertService, CarService, StorageService } from 'src/app/services';
+import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
 
 @Component({
@@ -16,7 +21,8 @@ export class GarageListPage implements OnInit {
         private carService: CarService,
         private storageService: StorageService,
         private navCtrl: NavController,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private popoverCtrl: PopoverController
     ) {}
 
     async ngOnInit() {
@@ -38,6 +44,32 @@ export class GarageListPage implements OnInit {
 
     onClickAddCar() {
         this.navCtrl.navigateForward(`garage/create`);
+    }
+
+    async openPopover(e: any, car: Car) {
+        const options: PopoverOptions = {
+            component: GaragePopoverComponent,
+            event: e,
+            mode: 'ios',
+            cssClass: 'popover-garage',
+            reference: 'event',
+            componentProps: {
+                cars: this.vm.cars,
+            },
+        };
+        const popover = await this.popoverCtrl.create(options);
+
+        popover.present();
+
+        popover.onDidDismiss().then((data) => {
+            if (data.data) {
+                if (data.data === 'edit' || data.data === 'image') {
+                    this.goTo(data.data, car);
+                } else {
+                    this.deleteCar(car);
+                }
+            }
+        });
     }
 
     goTo(type: string, car: Car) {

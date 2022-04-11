@@ -8,6 +8,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { GarageOnePage } from './one/garage-one.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { GarageListPage } from './list/garage-list.page';
+import { GaragePopoverComponent } from './popover/garage-popover.component';
 
 @NgModule({
     imports: [
@@ -23,6 +24,6 @@ import { GarageListPage } from './list/garage-list.page';
             { path: 'create', component: GarageOnePage },
         ]),
     ],
-    declarations: [GarageListPage, GarageOnePage],
+    declarations: [GarageListPage, GarageOnePage, GaragePopoverComponent],
 })
 export class GarageModule {}

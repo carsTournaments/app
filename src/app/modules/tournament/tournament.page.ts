@@ -77,7 +77,8 @@ export class TournamentPage implements OnInit {
     async checkButtonInscription() {
         if (
             this.vm.tournament?.status === 'InProgress' ||
-            this.vm.tournament?.status === 'Completed'
+            this.vm.tournament?.status === 'Completed' ||
+            !this.vm.user
         ) {
             this.vm.buttonInscription = false;
         } else {
