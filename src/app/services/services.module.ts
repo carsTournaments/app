@@ -13,6 +13,7 @@ import {
     AlertService,
     StorageService,
     PairingService,
+    VoteService,
 } from '.';
 import { TokenInterceptorService } from '../core/interceptors/token.interceptor';
 
@@ -28,6 +29,7 @@ import { TokenInterceptorService } from '../core/interceptors/token.interceptor'
         PairingService,
         RoundService,
         TournamentService,
+        VoteService,
         // Ionic
         ActionSheetService,
         AlertService,

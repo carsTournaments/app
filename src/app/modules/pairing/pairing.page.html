@@ -43,47 +43,47 @@
                 ></div>
 
                 <div
-                    class="car-title1 ion-activatable"
+                    class="car-title1 ion-activatable ripple-parent"
                     [ngStyle]="{'top': (vm.totalHeight / 2 - 100) + 'px'}"
-                    (click)="openPopover($event, vm.pairing.car1)"
+                    (click)="openModal(vm.pairing.car1)"
                 >
                     {{ vm.pairing.car1.brand.name | uppercase }} {{
                     vm.pairing.car1.model | truncateText: 15 | uppercase }}
-                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
                 <div
-                    class="car-title2 ion-activatable"
+                    class="car-title2 ion-activatable ripple-parent"
                     [ngStyle]="{'bottom': (vm.totalHeight / 2 - 110) + 'px'}"
-                    (click)="openPopover($event, vm.pairing.car2)"
+                    (click)="openModal(vm.pairing.car2)"
                 >
                     {{ vm.pairing.car2.brand.name | uppercase }} {{
                     vm.pairing.car2.model | truncateText: 15 | uppercase }}
-                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
 
                 <div
-                    class="button-love1 ion-activatable"
+                    class="button-love1 ion-activatable ripple-parent"
                     [ngStyle]="{'top': (vm.totalHeight / 2 - 185) + 'px'}"
                     (click)="vote('car1')"
                 >
                     <ion-icon
                         name="heart"
-                        class="animate__animated animate__heartBeat"
+                        class="animate__animated animate__fadeIn"
                     >
                     </ion-icon>
-                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
                 <div
-                    class="button-love2 ion-activatable"
+                    class="button-love2 ion-activatable ripple-parent"
                     [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}"
                     (click)="vote('car2')"
                 >
                     <ion-icon
                         name="heart"
-                        class="animate__animated animate__heartBeat"
+                        class="animate__animated animate__fadeIn"
                     >
                     </ion-icon>
-                    <ion-ripple-effect></ion-ripple-effect>
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
             </ion-card>
         </ion-col>

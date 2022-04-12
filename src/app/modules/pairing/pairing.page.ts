@@ -1,16 +1,15 @@
-import { Car } from './../../models/car.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-    ModalController,
-    ModalOptions,
-    Platform,
-    PopoverController,
-    PopoverOptions,
-} from '@ionic/angular';
-import { PairingService } from 'src/app/services/api/pairing/pairing.service';
+import { ModalController, ModalOptions, Platform } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import { PairingModalComponent } from './modal/pairing-modal.component';
+import {
+    AlertService,
+    PairingService,
+    StorageService,
+    VoteService,
+} from 'src/app/services';
+import { Car, Vote } from 'src/app/models';
 
 @Component({
     selector: 'page-pairing',
@@ -24,7 +23,9 @@ export class PairingPage implements OnInit {
         private route: ActivatedRoute,
         private pairingService: PairingService,
         private platform: Platform,
-        private modalCtrl: ModalController
+        private modalCtrl: ModalController,
+        private voteService: VoteService,
+        private alertService: AlertService
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -44,7 +45,7 @@ export class PairingPage implements OnInit {
         });
     }
 
-    async openPopover(e: any, car: Car) {
+    async openModal(car: Car) {
         const options: ModalOptions = {
             component: PairingModalComponent,
             mode: 'ios',
@@ -57,5 +58,31 @@ export class PairingPage implements OnInit {
         popover.present();
     }
 
-    vote(type: string) {}
+    async vote(type: string) {
+        const vote = new Vote({
+            pairing: this.vm.id,
+            round: this.vm.pairing.round._id,
+            tournament: this.vm.pairing.tournament._id,
+            car: this.vm.pairing[type]._id,
+        });
+        if (await this.voteService.isValidVote(vote)) {
+            this.voteService.create(vote).subscribe({
+                next: (item) => this.onVoteSuccess(item),
+                error: (error) => console.error(error),
+            });
+        } else {
+            this.alertService.presentAlert(
+                'Error',
+                'Ya has votado en este emparejamiento'
+            );
+        }
+    }
+
+    onVoteSuccess(vote: Vote) {
+        this.voteService.setValidVote(vote);
+        this.alertService.presentAlert(
+            'Voto registrado',
+            'El Voto se ha registrado correctamente, ¡gracias!'
+        );
+    }
 }
