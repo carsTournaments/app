@@ -4,9 +4,8 @@ export class Pairing {
     tournament: any;
     winner: string;
     car1: any;
-    votes1: number;
+    votes: any;
     car2: any;
-    votes2: number;
     created?: string;
     updated?: string;
 
@@ -15,9 +14,8 @@ export class Pairing {
         this.round = data?.round;
         this.tournament = data?.tournament;
         this.winner = data?.winner;
-        this.votes1 = data?.votes1;
+        this.votes = data?.votes;
         this.car1 = data?.car1;
-        this.votes2 = data?.votes2;
         this.car2 = data?.car2;
         this.created = data?.created;
         this.updated = data?.updated;

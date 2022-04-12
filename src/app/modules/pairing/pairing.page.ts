@@ -3,12 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController, ModalOptions, Platform } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import { PairingModalComponent } from './modal/pairing-modal.component';
-import {
-    AlertService,
-    PairingService,
-    StorageService,
-    VoteService,
-} from 'src/app/services';
+import { AlertService, PairingService, VoteService } from 'src/app/services';
 import { Car, Vote } from 'src/app/models';
 
 @Component({
@@ -35,14 +30,27 @@ export class PairingPage implements OnInit {
 
     getOne() {
         this.pairingService.getOne(this.vm.id).subscribe({
-            next: (item) => {
+            next: async (item) => {
                 this.vm.pairing = item;
                 const height = this.platform.height() - 90;
                 this.vm.totalHeight = height;
                 this.vm.header.backButton.route = `tournament/${this.vm.pairing.tournament._id}`;
+                await this.setPercentages();
             },
             error: (error) => console.error(error),
         });
+    }
+
+    async setPercentages() {
+        this.setObjectVotes();
+        this.vm.voteBody.pairing = this.vm.pairing._id;
+        this.vm.voteBody.tournament = this.vm.pairing.tournament._id;
+        this.vm.voteBody.round = this.vm.pairing.round._id;
+        if (await this.voteService.isValidVote(this.vm.voteBody)) {
+            this.vm.voted = false;
+        } else {
+            this.vm.voted = true;
+        }
     }
 
     async openModal(car: Car) {
@@ -59,30 +67,50 @@ export class PairingPage implements OnInit {
     }
 
     async vote(type: string) {
-        const vote = new Vote({
-            pairing: this.vm.id,
-            round: this.vm.pairing.round._id,
-            tournament: this.vm.pairing.tournament._id,
-            car: this.vm.pairing[type]._id,
+        this.vm.voteBody.car = this.vm.pairing[type]._id;
+        this.voteService.create(this.vm.voteBody).subscribe({
+            next: (item) => this.onVoteSuccess(item),
+            error: (error) => console.error(error),
         });
-        if (await this.voteService.isValidVote(vote)) {
-            this.voteService.create(vote).subscribe({
-                next: (item) => this.onVoteSuccess(item),
-                error: (error) => console.error(error),
-            });
-        } else {
-            this.alertService.presentAlert(
-                'Error',
-                'Ya has votado en este emparejamiento'
-            );
-        }
     }
 
     onVoteSuccess(vote: Vote) {
+        const car = vote.car === this.vm.pairing.car1._id ? 'car1' : 'car2';
         this.voteService.setValidVote(vote);
+        this.vm.pairing.votes.push(vote);
+        this.setObjectVotes(car);
+        this.vm.voted = true;
         this.alertService.presentAlert(
             'Voto registrado',
             'El Voto se ha registrado correctamente, ¡gracias!'
         );
+    }
+
+    setObjectVotes(force?: any): void {
+        const cars = {
+            car1: { votes: 0, percentage: 0 },
+            car2: { votes: 0, percentage: 0 },
+        };
+        for (const vote of this.vm.pairing.votes) {
+            if (
+                vote.car === this.vm.pairing.car1 ||
+                vote.car === this.vm.pairing.car1._id
+            ) {
+                cars.car1.votes++;
+            } else {
+                cars.car2.votes++;
+            }
+        }
+        if (force) {
+            cars[force].votes++;
+        }
+        // generate percentage of votes
+        cars.car1.percentage = Math.round(
+            (cars.car1.votes * 100) / (cars.car1.votes + cars.car2.votes)
+        );
+        cars.car2.percentage = Math.round(
+            (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes)
+        );
+        this.vm.votes = cars;
     }
 }

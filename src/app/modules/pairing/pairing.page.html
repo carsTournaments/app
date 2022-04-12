@@ -62,6 +62,7 @@
                 </div>
 
                 <div
+                    *ngIf="!vm.voted"
                     class="button-love1 ion-activatable ripple-parent"
                     [ngStyle]="{'top': (vm.totalHeight / 2 - 185) + 'px'}"
                     (click)="vote('car1')"
@@ -74,6 +75,15 @@
                     <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
                 <div
+                    *ngIf="vm.voted"
+                    class="button-love1 ion-activatable ripple-parent"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 185) + 'px'}"
+                >
+                    {{ vm.votes.car1.percentage}}%
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                </div>
+                <div
+                    *ngIf="!vm.voted"
                     class="button-love2 ion-activatable ripple-parent"
                     [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}"
                     (click)="vote('car2')"
@@ -83,6 +93,14 @@
                         class="animate__animated animate__fadeIn"
                     >
                     </ion-icon>
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                </div>
+                <div
+                    *ngIf="vm.voted"
+                    class="button-love2 ion-activatable ripple-parent"
+                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}"
+                >
+                    {{ vm.votes.car2.percentage}}%
                     <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
             </ion-card>
