@@ -63,8 +63,14 @@
                             <ion-col [size]="vm.cols" class="ion-text-center">
                                 <small>Participantes</small>
                                 <p>
-                                    {{ vm.tournament?.inscriptions.length }} /
-                                    {{ vm.tournament.maxParticipants }}
+                                    <span
+                                        [countUp]=" vm.tournament?.inscriptions.length"
+                                        [duration]="1500"
+                                    ></span
+                                    >/<span
+                                        [countUp]=" vm.tournament.maxParticipants"
+                                        [duration]="1500"
+                                    ></span>
                                 </p>
                             </ion-col>
                             <ion-col
@@ -73,7 +79,12 @@
                                 class="ion-text-center"
                             >
                                 <small>Votos</small>
-                                <p>{{ vm.tournament?.votes.length }}</p>
+                                <p>
+                                    <span
+                                        [countUp]=" vm.tournament?.votes.length"
+                                        [duration]="1500"
+                                    ></span>
+                                </p>
                             </ion-col>
                         </ion-row>
 

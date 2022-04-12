@@ -44,7 +44,7 @@
 
                 <div
                     class="car-title1 ion-activatable ripple-parent"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 100) + 'px'}"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 110) + 'px'}"
                     (click)="openModal(vm.pairing.car1)"
                 >
                     {{ vm.pairing.car1.brand.name | uppercase }} {{
@@ -64,7 +64,7 @@
                 <div
                     *ngIf="!vm.voted"
                     class="button-love1 ion-activatable ripple-parent"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 185) + 'px'}"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 200) + 'px'}"
                     (click)="vote('car1')"
                 >
                     <ion-icon
@@ -76,11 +76,16 @@
                 </div>
                 <div
                     *ngIf="vm.voted"
-                    class="button-love1 ion-activatable ripple-parent"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 185) + 'px'}"
+                    class="button-love1"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 200) + 'px'}"
                 >
-                    {{ vm.votes.car1.percentage}}%
-                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    <p class="label-percentage">
+                        <span
+                            [countUp]="vm.votes.car1.percentage"
+                            [duration]="1500"
+                        ></span
+                        >%
+                    </p>
                 </div>
                 <div
                     *ngIf="!vm.voted"
@@ -97,11 +102,16 @@
                 </div>
                 <div
                     *ngIf="vm.voted"
-                    class="button-love2 ion-activatable ripple-parent"
-                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}"
+                    class="button-love2"
+                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 200) + 'px'}"
                 >
-                    {{ vm.votes.car2.percentage}}%
-                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    <p class="label-percentage">
+                        <span
+                            [countUp]="vm.votes.car2.percentage"
+                            [duration]="1500"
+                        ></span
+                        >%
+                    </p>
                 </div>
             </ion-card>
         </ion-col>
