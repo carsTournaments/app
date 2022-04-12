@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { RoundsComponent } from './rounds/rounds.component';
 import { IonicModule } from '@ionic/angular';
+import { CountUpDirective } from '../directives/count-up/count-up.directive';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import { IonicModule } from '@ionic/angular';
         PipesModule,
     ],
     declarations: [
+        CountUpDirective,
         BrandItemComponent,
         CarItemComponent,
         HeaderComponent,
@@ -30,6 +32,7 @@ import { IonicModule } from '@ionic/angular';
         TournamentItemComponent,
     ],
     exports: [
+        CountUpDirective,
         BrandItemComponent,
         CarItemComponent,
         HeaderComponent,
