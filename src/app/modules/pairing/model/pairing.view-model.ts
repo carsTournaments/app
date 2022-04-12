@@ -16,6 +16,6 @@ export class PairingViewModel {
         car1: { votes: number; percentage: number };
         car2: { votes: number; percentage: number };
     };
-    voted: boolean = false;
+    voted = false;
     voteBody = new Vote();
 }
