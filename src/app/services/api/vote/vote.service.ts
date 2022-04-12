@@ -34,7 +34,7 @@ export class VoteService {
     }
 
     async isValidVote(vote: Vote): Promise<boolean> {
-        let status = true;
+        const status = true;
         const votes = await this.storageService.get<Vote[]>(`votes`);
         if (votes) {
             const voted = votes.find((v) => v.pairing === vote.pairing);
