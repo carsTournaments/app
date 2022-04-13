@@ -13,7 +13,8 @@
         "prettier:list": "prettier --list-different \"./{e2e,src}/**/*.{scss,ts}\" || ECHO .",
         "prettier:write": "prettier --write \"./{e2e,src}/**/*.{scss,ts}\"",
         "prepare": "husky install",
-        "generate:apk": "ng build --configuration production && ionic capacitor copy android && cd android && ./gradlew assembleDebug"
+        "generate:apk": "ng build --configuration production && npx cap sync && cd android && ./gradlew assembleDebug",
+        "generate:apk:run": "ionic capacitor run android --prod && cd android && ./gradlew assembleDebug"
     },
     "private": true,
     "dependencies": {
