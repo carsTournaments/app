@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.josexs.ct;
 
 import com.getcapacitor.BridgeActivity;
 
