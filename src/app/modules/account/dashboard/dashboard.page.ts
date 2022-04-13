@@ -45,7 +45,15 @@ export class DashboardPage implements OnInit {
 
     onClickOption(item: OptionItemI) {
         if (item.value) {
-            if (item.value === 'logout') {
+            if (
+                item.value === 'changeName' ||
+                item.value === 'changePassword'
+            ) {
+                this.alertService.presentAlert(
+                    '¡Vaya!',
+                    'Esta función aún no está disponible.'
+                );
+            } else if (item.value === 'logout') {
                 this.logout();
             }
         } else {

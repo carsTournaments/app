@@ -14,7 +14,7 @@
         "prettier:write": "prettier --write \"./{e2e,src}/**/*.{scss,ts}\"",
         "prepare": "husky install",
         "generate:apk": "ng build --configuration production && npx cap sync && cd android && ./gradlew assembleDebug",
-        "generate:apk:run": "ionic capacitor run android --prod && cd android && ./gradlew assembleDebug"
+        "generate:apk:run": "ionic capacitor run android --prod"
     },
     "private": true,
     "dependencies": {
@@ -26,17 +26,19 @@
         "@angular/router": "~13.2.2",
         "@capacitor/android": "3.4.3",
         "@capacitor/app": "1.1.1",
+        "@capacitor/camera": "^1.3.1",
         "@capacitor/core": "3.4.3",
         "@capacitor/haptics": "1.1.4",
         "@capacitor/ios": "3.4.3",
         "@capacitor/keyboard": "1.2.2",
         "@capacitor/status-bar": "1.0.8",
         "@ionic/angular": "^6.0.0",
+        "@ionic/pwa-elements": "^3.1.1",
         "@ionic/storage-angular": "3.0.6",
         "animate.css": "^4.1.1",
+        "husky": "^7.0.4",
         "moment": "^2.29.1",
         "rxjs": "~6.6.0",
-        "husky": "^7.0.4",
         "storage": "0.2.0",
         "tslib": "^2.2.0",
         "zone.js": "~0.11.4"

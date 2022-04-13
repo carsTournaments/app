@@ -6,7 +6,8 @@ export class DashboardViewModel {
         title: 'Tu Cuenta',
     });
     options: OptionItemI[] = [
-        { name: 'Mis Datos', icon: 'person', route: 'my-data' },
+        { name: 'Cambiar nombre', icon: 'person', value: 'changeName' },
+        { name: 'Cambiar contraseña', icon: 'person', value: 'changePassword' },
         { name: 'Garaje', icon: 'person', route: 'garage' },
         {
             name: 'Inscripciones',

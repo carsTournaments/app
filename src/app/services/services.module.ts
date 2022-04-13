@@ -16,6 +16,7 @@ import {
     VoteService,
 } from '.';
 import { TokenInterceptorService } from '../core/interceptors/token.interceptor';
+import { ImageService } from './api/image/image.service';
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
@@ -25,6 +26,7 @@ import { TokenInterceptorService } from '../core/interceptors/token.interceptor'
         AuthService,
         BrandService,
         CarService,
+        ImageService,
         InscriptionService,
         PairingService,
         RoundService,

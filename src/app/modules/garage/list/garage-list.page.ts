@@ -7,6 +7,7 @@ import {
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
 import { AlertService, CarService, StorageService } from 'src/app/services';
+import { ImageService } from 'src/app/services/api/image/image.service';
 import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
 
@@ -22,7 +23,8 @@ export class GarageListPage implements OnInit {
         private storageService: StorageService,
         private navCtrl: NavController,
         private alertService: AlertService,
-        private popoverCtrl: PopoverController
+        private popoverCtrl: PopoverController,
+        private imageService: ImageService
     ) {}
 
     async ngOnInit() {
@@ -53,16 +55,15 @@ export class GarageListPage implements OnInit {
             mode: 'ios',
             cssClass: 'popover-garage',
             reference: 'event',
-            // componentProps: {
-            //     cars: this.vm.cars,
-            // },
         };
         const popover = await this.popoverCtrl.create(options);
         popover.present();
         popover.onDidDismiss().then((data) => {
             if (data.data) {
-                if (data.data === 'edit' || data.data === 'image') {
+                if (data.data === 'edit') {
                     this.goTo(data.data, car);
+                } else if (data.data === 'image') {
+                    this.addImage(car);
                 } else {
                     this.deleteCar(car);
                 }
@@ -78,6 +79,17 @@ export class GarageListPage implements OnInit {
             case 'image':
                 break;
         }
+    }
+
+    addImage(car: Car) {
+        this.imageService
+            .addNewToGallery('car', car._id)
+            .then(() => {
+                window.location.reload();
+            })
+            .catch((error) => {
+                this.alertService.presentAlert('Error', error);
+            });
     }
 
     deleteCar(car: Car) {
