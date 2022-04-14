@@ -6,7 +6,7 @@ import {
 } from '@ionic/angular';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
-import { AlertService, CarService, StorageService } from 'src/app/services';
+import { AlertService, CarService, AuthService } from 'src/app/services';
 import { ImageService } from 'src/app/services/api/image/image.service';
 import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
@@ -20,28 +20,29 @@ export class GarageListPage implements OnInit {
     vm = new GarageListViewModel();
     constructor(
         private carService: CarService,
-        private storageService: StorageService,
         private navCtrl: NavController,
         private alertService: AlertService,
         private popoverCtrl: PopoverController,
-        private imageService: ImageService
+        private imageService: ImageService,
+        private authService: AuthService
     ) {}
 
     async ngOnInit() {
-        await this.getMyUser();
         this.getAllCars();
     }
 
-    async getMyUser() {
-        this.vm.user = await this.storageService.get('user');
-    }
-
-    getAllCars() {
-        const body: IdDto = { id: this.vm.user._id };
-        this.carService.getAllOfDriver(body).subscribe({
-            next: (response) => (this.vm.cars = response),
-            error: (error) => console.error(error),
-        });
+    async getAllCars() {
+        this.vm.user = await this.authService.getUser();
+        if (this.vm.user) {
+            const body: IdDto = { id: this.vm.user._id };
+            this.carService.getAllOfDriver(body).subscribe({
+                next: (response) => (this.vm.cars = response),
+                error: () => {
+                    this.vm.loading = false;
+                    this.vm.error = true;
+                },
+            });
+        }
     }
 
     onClickAddCar() {
@@ -72,28 +73,27 @@ export class GarageListPage implements OnInit {
     }
 
     goTo(type: string, car: Car) {
-        switch (type) {
-            case 'edit':
-                this.navCtrl.navigateForward(`garage/one/${car._id}`);
-                break;
-            case 'image':
-                break;
+        if (type === 'edit') {
+            this.navCtrl.navigateForward(`garage/one/${car._id}`);
         }
     }
 
-    addImage(car: Car) {
-        this.imageService
-            .addNewToGallery('car', car._id)
-            .then(() => {
-                window.location.reload();
-            })
-            .catch((error) => {
+    async addImage(car: Car): Promise<void> {
+        this.vm.loading = true;
+        this.imageService.addNewToGallery('car', car._id).then(
+            () => {
+                this.reloadPage();
+                this.vm.loading = false;
+            },
+            (error) => {
+                this.vm.loading = false;
                 this.alertService.presentAlert('Error', error);
-            });
+            }
+        );
     }
 
-    deleteCar(car: Car) {
-        this.alertService.presentAlertWithButtons(
+    async deleteCar(car: Car): Promise<void> {
+        await this.alertService.presentAlertWithButtons(
             '¡Oye!',
             '¿Estás seguro de eliminar este coche?',
             [
@@ -114,8 +114,11 @@ export class GarageListPage implements OnInit {
             },
             error: (error) => {
                 this.alertService.presentAlert('Error', error);
-                console.error(error);
             },
         });
+    }
+
+    reloadPage(): void {
+        window.location.reload();
     }
 }

@@ -1,3 +1,4 @@
+import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
 import { AuthRegisterDto } from './../../services/api/auth/auth.dto';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/models';
@@ -71,9 +72,10 @@ export class AuthComponent {
         return state;
     }
 
-    onLoginOrRegisterSuccess(response: { item: User; token: string }) {
+    onLoginOrRegisterSuccess(response: LoginResponseI) {
         this.authService.setToken(response.token);
-        this.authService.setUser(response.item);
+        this.authService.setUser(response.user);
+        console.log(response);
         this.clickLogin.emit();
     }
 }

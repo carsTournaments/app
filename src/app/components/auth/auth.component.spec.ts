@@ -47,7 +47,7 @@ describe('AuthComponent', () => {
             spyOn(authService, 'setToken');
             spyOn(authService, 'setUser');
             const response: LoginResponseI = {
-                item: new User(),
+                user: new User(),
                 token: 'token',
             };
             spyOn(authService, 'login').and.returnValue(of(response));
@@ -73,7 +73,7 @@ describe('AuthComponent', () => {
     describe('register', () => {
         it('OK', () => {
             const response: LoginResponseI = {
-                item: new User(),
+                user: new User(),
                 token: 'token',
             };
             spyOn(authService, 'setToken');

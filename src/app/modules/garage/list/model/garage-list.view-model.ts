@@ -11,4 +11,6 @@ export class GarageListViewModel {
     });
     user: User;
     cars: Car[];
+    error = false;
+    loading = true;
 }
