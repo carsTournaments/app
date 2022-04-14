@@ -39,7 +39,7 @@ export class AuthService {
     }
 
     getToken(): string {
-        return localStorage.getItem('token');
+        return localStorage.getItem('token') as string;
     }
 
     setUser(user: User): void {
