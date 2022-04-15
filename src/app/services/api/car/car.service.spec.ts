@@ -22,7 +22,7 @@ const res = {
     paginator,
 };
 
-fdescribe('CarService', () => {
+describe('CarService', () => {
     let httpTestingController: HttpTestingController;
     let service: CarService;
 

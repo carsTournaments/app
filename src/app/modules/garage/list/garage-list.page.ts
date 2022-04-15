@@ -4,7 +4,7 @@ import {
     PopoverController,
     PopoverOptions,
 } from '@ionic/angular';
-import { IdDto } from 'src/app/core/dtos/id.dto';
+import { OverlayEventDetail } from '@ionic/core';
 import { Car } from 'src/app/models';
 import { AlertService, CarService, AuthService } from 'src/app/services';
 import { ImageService } from 'src/app/services/api/image/image.service';
@@ -33,20 +33,14 @@ export class GarageListPage implements OnInit {
 
     async getAllCars() {
         this.vm.user = await this.authService.getUser();
-        if (this.vm.user) {
-            const body: IdDto = { id: this.vm.user._id };
-            this.carService.getAllOfDriver(body).subscribe({
-                next: (response) => (this.vm.cars = response),
-                error: () => {
-                    this.vm.loading = false;
-                    this.vm.error = true;
-                },
-            });
-        }
-    }
-
-    onClickAddCar() {
-        this.navCtrl.navigateForward(`garage/create`);
+        this.vm.bodyCars.id = this.vm.user._id;
+        this.carService.getAllOfDriver(this.vm.bodyCars).subscribe({
+            next: (response) => (this.vm.cars = response),
+            error: () => {
+                this.vm.loading = false;
+                this.vm.error = true;
+            },
+        });
     }
 
     async openPopover(e: any, car: Car) {
@@ -59,23 +53,25 @@ export class GarageListPage implements OnInit {
         };
         const popover = await this.popoverCtrl.create(options);
         popover.present();
-        popover.onDidDismiss().then((data) => {
-            if (data.data) {
-                if (data.data === 'edit') {
-                    this.goTo(data.data, car);
-                } else if (data.data === 'image') {
-                    this.addImage(car);
-                } else {
-                    this.deleteCar(car);
-                }
-            }
-        });
+        popover
+            .onDidDismiss()
+            .then((data) => this.onDidDismissPopover(data, car));
     }
 
-    goTo(type: string, car: Car) {
-        if (type === 'edit') {
-            this.navCtrl.navigateForward(`garage/one/${car._id}`);
+    onDidDismissPopover(data: OverlayEventDetail<any>, car) {
+        if (data.data) {
+            if (data.data === 'edit') {
+                this.editCar(car);
+            } else if (data.data === 'image') {
+                this.addImage(car);
+            } else {
+                this.deleteCar(car);
+            }
         }
+    }
+
+    editCar(car: Car) {
+        this.navCtrl.navigateForward(`garage/one/${car._id}`);
     }
 
     async addImage(car: Car): Promise<void> {
@@ -103,7 +99,7 @@ export class GarageListPage implements OnInit {
         );
     }
 
-    deleteCarConfirmation(car: Car) {
+    async deleteCarConfirmation(car: Car): Promise<void> {
         this.carService.delete(car._id).subscribe({
             next: () => {
                 this.getAllCars();
@@ -120,5 +116,9 @@ export class GarageListPage implements OnInit {
 
     reloadPage(): void {
         window.location.reload();
+    }
+
+    onClickAddCar() {
+        this.navCtrl.navigateForward(`garage/create`);
     }
 }

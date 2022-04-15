@@ -13,7 +13,7 @@ import { ComponentsModule } from '../components.module';
 import { AuthComponent } from './auth.component';
 import { of, throwError } from 'rxjs';
 
-fdescribe('AuthComponent', () => {
+describe('AuthComponent', () => {
     let component: AuthComponent;
     let fixture: ComponentFixture<AuthComponent>;
     const alertService = jasmine.createSpyObj('AlertService', ['presentAlert']);
@@ -38,7 +38,7 @@ fdescribe('AuthComponent', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(AuthComponent);
+        fixture = testbed.createComponent(AuthComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));

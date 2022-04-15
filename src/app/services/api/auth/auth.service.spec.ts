@@ -1,24 +1,15 @@
 import { environment } from 'src/environments/environment';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
-import { CarGetAllDto } from 'src/app/services/api/car/car.dto';
 import { TestBed } from '@angular/core/testing';
 import {
     HttpClientTestingModule,
     HttpTestingController,
 } from '@angular/common/http/testing';
 import { AuthService, StorageService } from '../..';
-import { Car, User } from 'src/app/models';
+import { User } from 'src/app/models';
 import { AuthLogInDto, AuthRegisterDto } from './auth.dto';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Storage } from '@ionic/storage-angular';
 import { ServicesModule } from '../../services.module';
-
-const paginator: PaginatorI = {
-    pageSize: 0,
-    currentPage: 0,
-    totalPages: 0,
-    total: 0,
-};
 
 const item = new User();
 const res = {
@@ -26,17 +17,21 @@ const res = {
     token: 'token',
 };
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
     let httpTestingController: HttpTestingController;
     let service: AuthService;
-    const storageService = jasmine.createSpyObj('StorageService', ['clear']);
+    const storageService = jasmine.createSpyObj('StorageService', [
+        'get',
+        'clear',
+        'set',
+    ]);
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 AuthService,
                 {
-                    provider: StorageService,
+                    provide: StorageService,
                     useValue: storageService,
                 },
             ],

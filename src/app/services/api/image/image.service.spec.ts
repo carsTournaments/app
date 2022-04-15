@@ -21,7 +21,7 @@ const res = {
     paginator,
 };
 
-fdescribe('ImageService', () => {
+describe('ImageService', () => {
     let httpTestingController: HttpTestingController;
     let service: ImageService;
     // const Camera = jasmine.createSpyObj('Camera', ['getPhoto']);

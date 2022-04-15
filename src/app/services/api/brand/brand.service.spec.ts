@@ -23,7 +23,7 @@ const responsePaginator = {
     paginator,
 };
 
-fdescribe('BrandService', () => {
+describe('BrandService', () => {
     let httpTestingController: HttpTestingController;
     let service: BrandService;
 

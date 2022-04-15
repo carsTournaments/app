@@ -25,7 +25,7 @@ const res = {
     paginator,
 };
 
-fdescribe('InscriptionService', () => {
+describe('InscriptionService', () => {
     let httpTestingController: HttpTestingController;
     let service: InscriptionService;
 

@@ -27,4 +27,6 @@ export class TournamentViewModel {
     };
     myCars: InscriptionGetMyCarsUserForInscriptionResponse;
     cols = '6';
+    loading = true;
+    error = false;
 }

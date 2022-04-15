@@ -23,7 +23,7 @@ const responsePaginator = {
     paginator,
 };
 
-fdescribe('RoundService', () => {
+describe('RoundService', () => {
     let httpTestingController: HttpTestingController;
     let service: RoundService;
 

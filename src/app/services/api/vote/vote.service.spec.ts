@@ -19,7 +19,7 @@ const paginator: PaginatorI = {
 const item = new Vote();
 item.pairing = '1';
 
-fdescribe('VoteService', () => {
+describe('VoteService', () => {
     let httpTestingController: HttpTestingController;
     let service: VoteService;
     const storageService = jasmine.createSpyObj('StorageService', [
@@ -32,7 +32,7 @@ fdescribe('VoteService', () => {
             providers: [
                 VoteService,
                 {
-                    provider: StorageService,
+                    provide: StorageService,
                     useValue: storageService,
                 },
             ],

@@ -1,71 +1,90 @@
-import { ImageService } from 'src/app/services/api/image/image.service';
-import { of, throwError } from 'rxjs';
-import { User, Car, Image } from 'src/app/models';
+import { Car, User } from 'src/app/models';
 import {
     ComponentFixture,
-    fakeAsync,
     getTestBed,
     TestBed,
+    waitForAsync,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NavController, PopoverController } from '@ionic/angular';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { AlertService, AuthService, CarService } from 'src/app/services';
+import { IonicModule, NavController, PopoverController } from '@ionic/angular';
+import {
+    AlertService,
+    AuthService,
+    CarService,
+    ImageService,
+} from 'src/app/services';
+import { of, throwError } from 'rxjs';
 import { GarageListPage } from './garage-list.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { InjectionToken } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-export const WINDOW = new InjectionToken('Window');
+const user = new User({
+    _id: '123',
+    name: 'prueba',
+    email: 'prueba@prueba.es',
+    role: 'USER',
+});
 
-fdescribe('GarageListPage', () => {
+const car = new Car({
+    _id: '123',
+    brand: 'prueba',
+    model: 'prueba',
+    driver: '1',
+    year: 2020,
+    cc: 1,
+    cv: 1,
+    stock: false,
+    fuel: '',
+    traction: '',
+    info: '',
+});
+
+describe('GarageListComponent', () => {
     let component: GarageListPage;
     let fixture: ComponentFixture<GarageListPage>;
-    let alertService: AlertService;
-    let navCtrl: NavController;
-    const car = new Car();
-    car._id = '1';
-    const carServiceMock = jasmine.createSpyObj('CarService', [
+
+    const alertService = jasmine.createSpyObj('AlertService', [
+        'presentAlert',
+        'presentAlertWithButtons',
+    ]);
+    const authService = jasmine.createSpyObj('AuthService', [
+        'login',
+        'getUser',
+        'setToken',
+    ]);
+    const carService = jasmine.createSpyObj('CarService', [
         'getAllOfDriver',
         'delete',
     ]);
-    const authServiceMock = jasmine.createSpyObj('AuthService', ['getUser']);
-    const imageServiceMock = jasmine.createSpyObj('ImageService', ['addImage']);
-    const alertServiceMock = jasmine.createSpyObj('AlertService', [
-        'pressentAlert',
+    const imageService = jasmine.createSpyObj('ImageService', [
+        'addNewToGallery',
     ]);
-    const popoverCtrlMock = jasmine.createSpyObj('PopoverController', [
-        'create',
-    ]);
-    beforeEach(async () => {
+    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
+    const popoverCtrl = jasmine.createSpyObj('PopoverController', ['create']);
+
+    authService.getUser = jasmine.createSpy().and.returnValue(user);
+    carService.getAllOfDriver = jasmine.createSpy().and.returnValue(of([]));
+
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [GarageListPage],
-            imports: [RouterTestingModule, ComponentsModule],
+            imports: [RouterTestingModule, HttpClientTestingModule],
             providers: [
-                { provider: CarService, useValue: carServiceMock },
-                { provider: AuthService, useValue: authServiceMock },
-                { provider: ImageService, useValue: imageServiceMock },
-                { provider: AlertService, useValue: alertServiceMock },
-                { provider: PopoverController, useValue: popoverCtrlMock },
-                NavController,
+                { provide: AuthService, useValue: authService },
+                { provide: AlertService, useValue: alertService },
+                { provide: CarService, useValue: carService },
+                { provide: ImageService, useValue: imageService },
+                { provide: NavController, useValue: navCtrl },
+                { provide: PopoverController, useValue: popoverCtrl },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
-    });
 
-    beforeEach(() => {
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(GarageListPage);
+        fixture = testbed.createComponent(GarageListPage);
         component = fixture.componentInstance;
-        navCtrl = testbed.inject(NavController);
-        alertService = testbed.inject(AlertService);
-        authServiceMock.getUser = jasmine
-            .createSpy()
-            .and.returnValue(Promise.resolve(new User()));
         fixture.detectChanges();
-        const user = new User();
-        user._id = '123';
-        component['authService'].getUser = () => Promise.resolve(user);
-    });
+    }));
 
     it('should create', () => {
         expect(component).toBeTruthy();
@@ -79,38 +98,22 @@ fdescribe('GarageListPage', () => {
 
     describe('getAllCars', () => {
         it('OK', async () => {
-            component['carService'].getAllOfDriver = () => of([]);
+            authService.getUser = jasmine.createSpy().and.returnValue(user);
+            carService.getAllOfDriver = jasmine
+                .createSpy()
+                .and.returnValue(of([]));
             const response: Car[] = [];
             await component.getAllCars();
+            expect(component.vm.user).not.toBeUndefined();
             expect(component.vm.cars).toEqual(response);
         });
-        it('KO', fakeAsync(async () => {
-            const user = new User();
-            user._id = '123';
-            component['authService'].getUser = () => Promise.resolve(user);
-            component['carService'].getAllOfDriver = () =>
-                throwError({ error: 'Error' });
+        it('KO', async () => {
+            carService.getAllOfDriver = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ error: 'Error' }));
             await component.getAllCars();
             expect(component.vm.error).toEqual(true);
             expect(component.vm.loading).toEqual(false);
-        }));
-    });
-
-    describe('goTo', () => {
-        it('edit', () => {
-            spyOn(navCtrl, 'navigateForward');
-            component.goTo('edit', car);
-            expect(navCtrl.navigateForward).toHaveBeenCalledWith(
-                `garage/one/${car._id}`
-            );
-        });
-
-        it('addCar', () => {
-            spyOn(navCtrl, 'navigateForward');
-            component.onClickAddCar();
-            expect(navCtrl.navigateForward).toHaveBeenCalledWith(
-                `garage/create`
-            );
         });
     });
 
@@ -123,10 +126,12 @@ fdescribe('GarageListPage', () => {
                         data: 'edit',
                     }),
             };
-            spyOn(component, 'goTo');
-            component['popoverCtrl'].create = () => Promise.resolve(popover);
+            spyOn(component, 'editCar');
+            popoverCtrl.create = jasmine
+                .createSpy()
+                .and.returnValue(Promise.resolve(popover));
             await component.openPopover('', car);
-            expect(component.goTo).toHaveBeenCalled();
+            expect(component.editCar).toHaveBeenCalled();
         });
 
         it('popover -> image', async () => {
@@ -138,7 +143,9 @@ fdescribe('GarageListPage', () => {
                     }),
             };
             spyOn(component, 'addImage');
-            component['popoverCtrl'].create = () => Promise.resolve(popover);
+            popoverCtrl.create = jasmine
+                .createSpy()
+                .and.returnValue(Promise.resolve(popover));
             await component.openPopover('', car);
             expect(component.addImage).toHaveBeenCalled();
         });
@@ -152,25 +159,35 @@ fdescribe('GarageListPage', () => {
                     }),
             };
             spyOn(component, 'deleteCar');
-            component['popoverCtrl'].create = () => Promise.resolve(popover);
+            popoverCtrl.create = jasmine
+                .createSpy()
+                .and.returnValue(Promise.resolve(popover));
             await component.openPopover('', car);
             expect(component.deleteCar).toHaveBeenCalled();
         });
+    });
+
+    it('editCar', () => {
+        component.editCar(car);
+        expect(navCtrl.navigateForward).toHaveBeenCalledWith(
+            `garage/one/${car._id}`
+        );
     });
 
     describe('addImage', () => {
         it('OK', async () => {
             const image = new Image();
             spyOn(component, 'reloadPage');
-            component['imageService'].addNewToGallery = () =>
-                Promise.resolve(image);
+            imageService.addNewToGallery = jasmine
+                .createSpy()
+                .and.returnValue(Promise.resolve(image));
             await component.addImage(car);
             expect(component.vm.loading).toEqual(false);
         });
         it('KO', async () => {
-            spyOn(alertService, 'presentAlert');
-            component['imageService'].addNewToGallery = () =>
-                Promise.reject({ error: 'error' });
+            imageService.addNewToGallery = jasmine
+                .createSpy()
+                .and.returnValue(Promise.reject({ error: 'error' }));
             await component.addImage(car);
             expect(component.vm.loading).toEqual(false);
         });
@@ -185,19 +202,21 @@ fdescribe('GarageListPage', () => {
     describe('deleteCarConfirmation', () => {
         it('OK', () => {
             spyOn(component, 'getAllCars');
-            spyOn(alertService, 'presentAlert');
             component['carService'].delete = () => of(car);
             component.deleteCarConfirmation(car);
             expect(component.getAllCars).toHaveBeenCalled();
-            expect(alertService.presentAlert).toHaveBeenCalled();
         });
         it('KO', () => {
             spyOn(component, 'getAllCars');
-            spyOn(alertService, 'presentAlert');
             component['carService'].delete = () =>
                 throwError({ error: 'Error' });
             component.deleteCarConfirmation(car);
-            expect(alertService.presentAlert).toHaveBeenCalled();
+            expect(true).toBe(true);
         });
+    });
+
+    it('onClickCar', () => {
+        component.onClickAddCar();
+        expect(navCtrl.navigateForward).toHaveBeenCalledWith(`garage/create`);
     });
 });

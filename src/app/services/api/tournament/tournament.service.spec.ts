@@ -21,7 +21,7 @@ const res = {
     paginator,
 };
 
-fdescribe('TournamentService', () => {
+describe('TournamentService', () => {
     let httpTestingController: HttpTestingController;
     let service: TournamentService;
 

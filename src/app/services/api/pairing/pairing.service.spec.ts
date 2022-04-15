@@ -9,7 +9,7 @@ import { Pairing } from 'src/app/models';
 
 const item = new Pairing();
 
-fdescribe('PairingService', () => {
+describe('PairingService', () => {
     let httpTestingController: HttpTestingController;
     let service: PairingService;
 

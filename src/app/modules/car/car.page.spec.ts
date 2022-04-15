@@ -7,32 +7,53 @@ import {
 } from '@angular/core/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
-import { ComponentsModule } from 'src/app';
+import { of, throwError } from 'rxjs';
 import { CarService } from 'src/app/services';
 import { Car } from 'src/app/models';
 import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+const car = new Car({
+    _id: '123',
+    brand: 'prueba',
+    model: 'prueba',
+    driver: '1',
+    year: 2020,
+    cc: 1,
+    cv: 1,
+    stock: false,
+    fuel: '',
+    traction: '',
+    info: '',
+    image: {
+        url: 'perro',
+    },
+});
 
 describe('CarPage', () => {
     let component: CarPage;
     let fixture: ComponentFixture<CarPage>;
-    let carService: CarService;
-    let navCtrl: NavController;
+    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
+    const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
+    const carService = jasmine.createSpyObj('CarService', ['getOne']);
+
+    carService.getOne = jasmine.createSpy().and.returnValue(of(car));
     let route: ActivatedRoute;
-    let imagePipe: ImagePipe;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [CarPage],
+            declarations: [CarPage, ImagePipe],
             imports: [
                 IonicModule.forRoot(),
                 RouterTestingModule,
-                ComponentsModule,
+                HttpClientTestingModule,
             ],
             providers: [
-                CarService,
-                ImagePipe,
+                { provide: CarService, useValue: carService },
+                { provide: NavController, useValue: navCtrl },
+                { provide: ImagePipe, useValue: imagePipe },
                 {
                     provide: ActivatedRoute,
                     useValue: {
@@ -44,14 +65,13 @@ describe('CarPage', () => {
                     },
                 },
             ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
         const testbed = getTestBed();
         fixture = TestBed.createComponent(CarPage);
         component = fixture.componentInstance;
-        carService = testbed.inject(CarService);
         route = testbed.inject(ActivatedRoute);
-        imagePipe = testbed.inject(ImagePipe);
 
         fixture.detectChanges();
     }));
@@ -68,12 +88,20 @@ describe('CarPage', () => {
     });
 
     describe('getOne', () => {
-        const car = new Car();
-        car._id = '1';
-        it('success', () => {
-            spyOn(carService, 'getOne').and.returnValue(of(car));
+        it('OK', () => {
+            carService.getOne = jasmine.createSpy().and.returnValue(of(car));
             component.getOne();
-            expect(component.vm.car._id).toBe('1');
+            expect(component.vm.car._id).toBe('123');
+            expect(component.vm.loading).toBe(false);
+        });
+        it('KO', () => {
+            carService.getOne = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ error: '400' }));
+            component.getOne();
+            expect(component.vm.car._id).toBe('123');
+            expect(component.vm.loading).toBe(false);
+            expect(component.vm.error).toBe(true);
         });
     });
 });

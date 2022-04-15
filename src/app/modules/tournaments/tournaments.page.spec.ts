@@ -6,17 +6,28 @@ import {
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, NavController } from '@ionic/angular';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { Tournament } from 'src/app/models';
 import { TournamentService } from 'src/app/services';
 import { TournamentsPage } from './tournaments.page';
 
-describe('TournamentsListPage', () => {
+describe('TournamentsPage', () => {
     let component: TournamentsPage;
     let fixture: ComponentFixture<TournamentsPage>;
-    let tournamentService: TournamentService;
-    let navCtrl: NavController;
+    const tournamentService = jasmine.createSpyObj('TournamentService', [
+        'getAllOfAllStates',
+        'delete',
+    ]);
+    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
+
+    tournamentService.getAllOfAllStates = jasmine.createSpy().and.returnValue(
+        of({
+            todo: [],
+            inProgress: [],
+            completed: [],
+        })
+    );
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -26,13 +37,14 @@ describe('TournamentsListPage', () => {
                 RouterTestingModule,
                 ComponentsModule,
             ],
-            providers: [TournamentService, NavController],
+            providers: [
+                { provide: TournamentService, useValue: tournamentService },
+                { provide: NavController, useValue: navCtrl },
+            ],
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(TournamentsPage);
-        tournamentService = testbed.inject(TournamentService);
-        navCtrl = testbed.inject(NavController);
+        fixture = testbed.createComponent(TournamentsPage);
 
         component = fixture.componentInstance;
         fixture.detectChanges();
@@ -49,23 +61,23 @@ describe('TournamentsListPage', () => {
     });
 
     describe('getItems', () => {
-        it('should get all tournaments', () => {
+        it('OK', () => {
             component.vm.header.segments.items = [
                 'Proximos',
                 'En curso',
                 'Completados',
             ];
-            spyOn(component, 'getItemsOnSuccess');
-            spyOn(tournamentService, 'getAllOfAllStates').and.returnValue(
-                of({
-                    todo: [],
-                    inProgress: [],
-                    completed: [],
-                })
-            );
             component.getItems();
-            expect(tournamentService.getAllOfAllStates).toHaveBeenCalled();
-            expect(component.getItemsOnSuccess).toHaveBeenCalled();
+            expect(component.vm.loading).toBe(false);
+        });
+
+        it('OK', () => {
+            tournamentService.getAllOfAllStates = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ error: 'Error' }));
+            component.getItems();
+            expect(component.vm.loading).toBe(false);
+            expect(component.vm.error).toBe(true);
         });
     });
 
@@ -75,7 +87,6 @@ describe('TournamentsListPage', () => {
     });
 
     it('goTo', () => {
-        spyOn(navCtrl, 'navigateForward');
         const tournament = new Tournament();
         tournament._id = '1';
         component.goTo(tournament);
