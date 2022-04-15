@@ -12,7 +12,7 @@ export class Tournament {
     rounds?: Round[]; // Virtual
     inscriptions?: Inscription[]; // CarI[]
     votes?: Vote[];
-    image?: Image;
+    image?: any;
     lastRound?: string;
     created?: string;
     updated?: string;
@@ -29,7 +29,7 @@ export class Tournament {
         this.rounds = data?.rounds || [];
         this.inscriptions = data?.inscriptions || [];
         this.votes = data?.votes || [];
-        this.image = data?.image || new Image();
+        this.image = data?.image;
         this.created = data?.created;
         this.updated = data?.updated;
         this.lastRound = data?.lastRound;

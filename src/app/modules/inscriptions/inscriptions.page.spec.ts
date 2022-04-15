@@ -152,10 +152,10 @@ describe('InscriptionsPage', () => {
         });
     });
 
-    it('segmentChanged', () => {
-        component.segmentChanged({ detail: { value: 0 } });
-        expect(component.vm.header.segments.selected).toEqual(0);
-    });
+    // it('segmentChanged', () => {
+    //     component.segmentChanged({ detail: { value: 0 } });
+    //     expect(component.vm.header.segments.selected).toEqual(0);
+    // });
 
     it('goToTournament', () => {
         component.goToTournament(inscription);

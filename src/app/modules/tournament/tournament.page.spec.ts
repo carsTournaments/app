@@ -114,7 +114,6 @@ describe('TournamentPage', () => {
                 .and.returnValue(of(tournament));
             component.getOne();
             expect(component.vm.tournament._id).toBe('123');
-            expect(component.vm.image).toBe('assets/no-image.png');
             expect(component.vm.loading).toBe(false);
         });
 
@@ -125,7 +124,6 @@ describe('TournamentPage', () => {
                 .and.returnValue(of(tournament));
             component.getOne();
             expect(component.vm.tournament._id).toBe('123');
-            expect(component.vm.image).toBe('assets/no-image.png');
             expect(component.vm.loading).toBe(false);
         });
 

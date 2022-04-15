@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { RoundsComponent } from './rounds/rounds.component';
 import { IonicModule } from '@ionic/angular';
 import { CountUpDirective } from '../directives/count-up/count-up.directive';
+import { TournamentsSliderComponent } from './tournaments-slider/tournaments-slider.component';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
     imports: [
@@ -21,6 +23,7 @@ import { CountUpDirective } from '../directives/count-up/count-up.directive';
         CommonModule,
         ServicesModule,
         PipesModule,
+        SwiperModule,
     ],
     declarations: [
         CountUpDirective,
@@ -30,6 +33,7 @@ import { CountUpDirective } from '../directives/count-up/count-up.directive';
         AuthComponent,
         RoundsComponent,
         TournamentItemComponent,
+        TournamentsSliderComponent,
     ],
     exports: [
         CountUpDirective,
@@ -39,6 +43,7 @@ import { CountUpDirective } from '../directives/count-up/count-up.directive';
         AuthComponent,
         RoundsComponent,
         TournamentItemComponent,
+        TournamentsSliderComponent,
     ],
     providers: [],
 })

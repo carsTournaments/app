@@ -55,15 +55,15 @@ export class InscriptionsPage implements OnInit {
         }
         if (items.length > 0) {
             this.vm.header.segments = {
-                items: items,
+                items,
                 selected: 0,
             };
         }
     }
 
-    segmentChanged(event: any) {
-        this.vm.header.segments.selected = event.detail.value;
-    }
+    // segmentChanged(event: any) {
+    //     this.vm.header.segments.selected = event.detail.value;
+    // }
 
     goToTournament(inscription: Inscription) {
         this.navCtrl.navigateForward(

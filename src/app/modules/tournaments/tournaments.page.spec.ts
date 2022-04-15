@@ -62,11 +62,6 @@ describe('TournamentsPage', () => {
 
     describe('getItems', () => {
         it('OK', () => {
-            component.vm.header.segments.items = [
-                'Proximos',
-                'En curso',
-                'Completados',
-            ];
             component.getItems();
             expect(component.vm.loading).toBe(false);
         });
@@ -79,11 +74,6 @@ describe('TournamentsPage', () => {
             expect(component.vm.loading).toBe(false);
             expect(component.vm.error).toBe(true);
         });
-    });
-
-    it('segmentChanged', () => {
-        component.segmentChanged({ detail: { value: 0 } });
-        expect(component.vm.header.segments.selected).toEqual(0);
     });
 
     it('goTo', () => {

@@ -6,36 +6,23 @@
 <ion-content [fullscreen]="true">
     <ion-row style="padding-top: 0" *ngIf="vm.tournaments">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <div
-                *ngIf="vm.header.segments.selected === 0"
-                class="animate__animated animate__fadeIn"
+            <tournaments-slider
+                title="Torneos en curso"
+                [tournaments]="vm.tournaments.inProgress"
+                (clickItem)="goTo($event)"
+            ></tournaments-slider>
+            <tournaments-slider
+                title="Torneos proximos"
+                [tournaments]="vm.tournaments.todo"
+                (clickItem)="goTo($event)"
             >
-                <tournament-item
-                    *ngFor="let tournament of vm.tournaments.inProgress"
-                    [tournament]="tournament"
-                    (clickItem)="goTo($event)"
-                ></tournament-item>
-            </div>
-            <div
-                *ngIf="vm.header.segments.selected === 1"
-                class="animate__animated animate__fadeIn"
+            </tournaments-slider>
+            <tournaments-slider
+                title="Torneos completados"
+                [tournaments]="vm.tournaments.completed"
+                (clickItem)="goTo($event)"
             >
-                <tournament-item
-                    *ngFor="let tournament of vm.tournaments.todo"
-                    [tournament]="tournament"
-                    (clickItem)="goTo($event)"
-                ></tournament-item>
-            </div>
-            <div
-                *ngIf="vm.header.segments.selected === 2"
-                class="animate__animated animate__fadeIn"
-            >
-                <tournament-item
-                    *ngFor="let tournament of vm.tournaments.completed"
-                    [tournament]="tournament"
-                    (clickItem)="goTo($event)"
-                ></tournament-item>
-            </div>
+            </tournaments-slider>
         </ion-col>
     </ion-row>
 </ion-content>
