@@ -4,23 +4,48 @@
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <auth
-                (clickLogin)="logged = true"
+                (clickLogin)="onLogged()"
                 *ngIf="!logged && !vm.registerMode"
             ></auth>
 
-            <div class="wrapper-option-items" *ngIf="logged">
-                <ion-item
-                    mode="ios"
-                    color="light"
-                    lines="none"
-                    class="option-item"
-                    [button]="true"
-                    *ngFor="let item of vm.options"
-                    (click)="onClickOption(item)"
-                >
-                    {{ item.name }}
-                </ion-item>
-            </div>
+            <ng-container *ngIf="logged && !vm.registerMode">
+                <div class="dashboard-image">
+                    <img src="assets/no-image.png" alt="" />
+                </div>
+
+                <h1 class="dashboard-title">{{ vm.user.name | uppercase }}</h1>
+
+                <ion-row class="">
+                    <ion-col size="4">
+                        <p class="dashboard-resume-title">Coches</p>
+                        <p class="dashboard-resume-value">6</p>
+                    </ion-col>
+                    <ion-col size="4">
+                        <p class="dashboard-resume-title">Coches</p>
+                        <p class="dashboard-resume-value">6</p>
+                    </ion-col>
+                    <ion-col size="4">
+                        <p class="dashboard-resume-title">Coches</p>
+                        <p class="dashboard-resume-value">6</p>
+                    </ion-col>
+                </ion-row>
+
+                <hr />
+
+                <div class="wrapper-option-items">
+                    <ion-item
+                        mode="ios"
+                        color="light"
+                        lines="none"
+                        class="option-item"
+                        [button]="true"
+                        *ngFor="let item of vm.options"
+                        (click)="onClickOption(item)"
+                    >
+                        {{ item.name }}
+                    </ion-item>
+                </div>
+            </ng-container>
         </ion-col>
     </ion-row>
 </ion-content>

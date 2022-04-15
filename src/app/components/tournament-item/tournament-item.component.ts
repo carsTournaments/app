@@ -19,15 +19,13 @@ export class TournamentItemComponent implements OnInit {
     }
 
     setImageForBackground() {
-        if (this.tournament.image) {
-            this.tournament.image.url = this.imagePipe.transform(
-                this.tournament.image.url ?? ''
-            );
-        } else {
-            this.tournament.image = {
-                url: 'assets/images/no-image.png',
-                name: '',
-            };
-        }
+        const image = {
+            url: this.imagePipe.transform(
+                this.tournament.image && this.tournament.image.url
+                    ? this.tournament.image.url
+                    : null
+            ),
+        };
+        this.tournament.image = image;
     }
 }

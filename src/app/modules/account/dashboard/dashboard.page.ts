@@ -25,6 +25,9 @@ export class DashboardPage implements OnInit {
 
     async isAuthenticated() {
         this.logged = this.authService.isAuthenticated();
+        if (this.logged) {
+            this.vm.user = await this.authService.getUser();
+        }
     }
 
     logout() {
@@ -59,5 +62,9 @@ export class DashboardPage implements OnInit {
         } else {
             this.navCtrl.navigateForward(item.route);
         }
+    }
+
+    onLogged() {
+        this.isAuthenticated();
     }
 }

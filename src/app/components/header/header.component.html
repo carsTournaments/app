@@ -8,13 +8,6 @@
         }"
     >
         <ng-container *ngIf="options.backButton?.state">
-            <!-- <div
-                class="back-button ion-activatable ripple-parent"
-                (click)="goToBack()"
-            >
-                <ion-icon name="arrow-back-circle-outline"></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
-            </div> -->
             <ion-back-button
                 [ngClass]="{
                     'back-button-segments': options.segments?.items.length > 0,

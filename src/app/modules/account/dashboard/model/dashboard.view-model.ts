@@ -1,5 +1,6 @@
 import { Header } from 'src/app/components/header/model/header.model';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
+import { User } from 'src/app/models';
 
 export class DashboardViewModel {
     header = new Header({
@@ -17,4 +18,5 @@ export class DashboardViewModel {
         { name: 'Cerrar sesion', icon: 'person', value: 'logout' },
     ];
     registerMode = false;
+    user: User;
 }

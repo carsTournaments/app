@@ -1,0 +1,46 @@
+.dashboard-image {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+
+    img {
+        border: 1px solid #ececec;
+        border-radius: 100%;
+    }
+}
+
+.dashboard-title {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.dashboard-resume {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.dashboard-resume-title {
+    text-align: center;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.dashboard-resume-value {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}

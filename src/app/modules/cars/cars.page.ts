@@ -96,4 +96,8 @@ export class CarsPage implements OnInit {
         this.vm.header.segments.selected = 0;
         this.getCars();
     }
+
+    doRefresh(event: any) {
+        this.getCars(event);
+    }
 }

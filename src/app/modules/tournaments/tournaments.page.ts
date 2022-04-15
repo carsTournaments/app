@@ -21,11 +21,14 @@ export class TournamentsPage implements OnInit {
         this.getItems();
     }
 
-    getItems() {
+    getItems(event?: any) {
         this.tournamentService.getAllOfAllStates().subscribe({
             next: (res) => {
                 this.vm.tournaments = res;
                 this.vm.loading = false;
+                if (event) {
+                    event.target.complete();
+                }
             },
             error: () => {
                 this.vm.loading = false;
@@ -41,5 +44,9 @@ export class TournamentsPage implements OnInit {
 
     goTo(event: Tournament) {
         this.navCtrl.navigateForward(['/tournament', event._id]);
+    }
+
+    doRefresh(event: any) {
+        this.getItems(event);
     }
 }

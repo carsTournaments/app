@@ -4,6 +4,16 @@
 ></custom-header>
 
 <ion-content [fullscreen]="true">
+    <ion-refresher
+        *ngIf="vm.header.segments.selected === 0"
+        slot="fixed"
+        (ionRefresh)="doRefresh($event)"
+        pullFactor="0.8"
+        pullMin="60"
+        pullMax="120"
+    >
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-row style="padding-top: 0">
         <ion-col
             class="ion-no-padding"
