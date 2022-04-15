@@ -7,6 +7,7 @@ import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { DashboardPage } from './dashboard/dashboard.page';
+import { DashboardResumeComponent } from './dashboard/components/dashboard-resume/dashboard-resume.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,6 @@ import { DashboardPage } from './dashboard/dashboard.page';
         PipesModule,
         RouterModule.forChild([{ path: '', component: DashboardPage }]),
     ],
-    declarations: [DashboardPage],
+    declarations: [DashboardPage, DashboardResumeComponent],
 })
 export class AccountModule {}

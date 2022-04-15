@@ -1,6 +1,7 @@
 import { Header } from 'src/app/components/header/model/header.model';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
 import { User } from 'src/app/models';
+import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses';
 
 export class DashboardViewModel {
     header = new Header({
@@ -19,5 +20,5 @@ export class DashboardViewModel {
     ];
     registerMode = false;
     user: User;
-    resume: { cars: number; inscriptions: number; winner: number };
+    resume: UserGetResumeResponse;
 }
