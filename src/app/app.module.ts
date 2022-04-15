@@ -14,6 +14,7 @@ import { PipesModule } from './pipes/pipes.module';
 import { LoginGuard } from './core/guards/check-token.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
     declarations: [AppComponent],

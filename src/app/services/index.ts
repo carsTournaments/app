@@ -14,3 +14,4 @@ export { VoteService } from './api/vote/vote.service';
 export { AlertService } from './ionic/alert.service';
 export { ActionSheetService } from './ionic/action-sheet.service';
 export { StorageService } from './ionic/storage.service';
+export { SpinnerHandlerService } from './ionic/spinner-handler.service';

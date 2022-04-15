@@ -15,6 +15,7 @@ import {
     PairingService,
     VoteService,
     UserService,
+    SpinnerHandlerService,
 } from '.';
 import { TokenInterceptorService } from '../core/interceptors/token.interceptor';
 import { ImageService } from './api/image/image.service';
@@ -38,6 +39,7 @@ import { ImageService } from './api/image/image.service';
         ActionSheetService,
         AlertService,
         StorageService,
+        SpinnerHandlerService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptorService,
