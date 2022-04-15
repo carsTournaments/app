@@ -24,7 +24,8 @@
                 "@angular-eslint/directive-selector": 0,
                 "no-underscore-dangle": "off",
                 "@typescript-eslint/naming-convention": 0,
-                "@typescript-eslint/member-ordering": 0
+                "@typescript-eslint/member-ordering": 0,
+                "@typescript-eslint/dot-notation": 0
             }
         },
         {

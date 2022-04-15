@@ -25,7 +25,10 @@ export class TournamentsPage implements OnInit {
     getItems() {
         this.tournamentService.getAllOfAllStates().subscribe({
             next: (res) => this.getItemsOnSuccess(res),
-            error: (err) => console.error(err),
+            error: () => {
+                this.vm.loading = false;
+                this.vm.error = true;
+            },
         });
     }
 
@@ -49,6 +52,7 @@ export class TournamentsPage implements OnInit {
                     (item) => item !== 'Completados'
                 );
         }
+        this.vm.loading = false;
     }
 
     segmentChanged(ev: any) {

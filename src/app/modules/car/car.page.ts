@@ -23,6 +23,7 @@ export class CarPage implements OnInit {
     }
 
     getOne() {
+        this.vm.loading = true;
         this.carService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.car = data;
@@ -30,8 +31,12 @@ export class CarPage implements OnInit {
                 if (data && data.image) {
                     this.vm.image = this.imagePipe.transform(data.image.url);
                 }
+                this.vm.loading = false;
             },
-            error: (err) => console.error(err),
+            error: () => {
+                this.vm.loading = false;
+                this.vm.error = true;
+            },
         });
     }
 }

@@ -11,4 +11,6 @@ export class TournamentsViewModel {
         },
     });
     tournaments: TournamentGetAllOfAllStatesResponse;
+    loading = true;
+    error = false;
 }

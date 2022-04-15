@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
 import { TournamentPage } from './tournament.page';
+import { TournamentRequisitesComponent } from './components/tournament-requisites.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,7 @@ import { TournamentPage } from './tournament.page';
             },
         ]),
     ],
-    declarations: [TournamentPage],
+    declarations: [TournamentPage, TournamentRequisitesComponent],
     providers: [ImagePipe],
 })
 export class TournamentModule {}

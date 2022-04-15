@@ -1,43 +1,47 @@
-import {
-    ComponentFixture,
-    getTestBed,
-    TestBed,
-    waitForAsync,
-} from '@angular/core/testing';
-import { IonicModule, NavController } from '@ionic/angular';
+import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
+import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { CarsPage } from './cars.page';
-import { ComponentsModule } from 'src/app';
 import { CarService, BrandService } from 'src/app/services';
 import { Brand, Car } from 'src/app/models';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CarsPage', () => {
     let component: CarsPage;
     let fixture: ComponentFixture<CarsPage>;
-    let carService: CarService;
-    let brandService: BrandService;
-    let navCtrl: NavController;
 
-    beforeEach(waitForAsync(() => {
+    const carService = jasmine.createSpyObj('CarService', ['getAll', 'delete']);
+    const brandService = jasmine.createSpyObj('BrandService', [
+        'getAllBrandsAndCars',
+        'delete',
+    ]);
+    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
+    carService.getAll = jasmine.createSpy().and.returnValue(of([]));
+    brandService.getAllBrandsAndCars = jasmine
+        .createSpy()
+        .and.returnValue(of([]));
+
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [CarsPage],
-            imports: [
-                IonicModule.forRoot(),
-                RouterTestingModule,
-                ComponentsModule,
+            imports: [RouterTestingModule, HttpClientTestingModule],
+            providers: [
+                { provide: CarService, useValue: carService },
+                { provide: BrandService, useValue: brandService },
+                { provide: NavController, useValue: navCtrl },
             ],
-            providers: [CarService, BrandService],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
+    });
 
+    beforeEach(() => {
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(CarsPage);
+        fixture = testbed.createComponent(CarsPage);
         component = fixture.componentInstance;
-        carService = testbed.inject(CarService);
-        brandService = testbed.inject(BrandService);
-        navCtrl = testbed.inject(NavController);
         fixture.detectChanges();
-    }));
+    });
 
     it('should create', () => {
         expect(component).toBeTruthy();
@@ -62,7 +66,9 @@ describe('CarsPage', () => {
                     total: 20,
                 },
             };
-            spyOn(carService, 'getAll').and.returnValue(of(response));
+            carService.getAll = jasmine
+                .createSpy()
+                .and.returnValue(of(response));
             spyOn(component, 'getCarsOnSuccess');
             component.getCars();
             expect(component.getCarsOnSuccess).toHaveBeenCalled();
@@ -95,9 +101,9 @@ describe('CarsPage', () => {
                     total: 20,
                 },
             };
-            spyOn(brandService, 'getAllBrandsAndCars').and.returnValue(
-                of(response)
-            );
+            brandService.getAllBrandsAndCars = jasmine
+                .createSpy()
+                .and.returnValue(of(response));
             spyOn(component, 'getBrandsOnSuccess');
             component.getBrands();
             expect(component.getBrandsOnSuccess).toHaveBeenCalled();
@@ -153,7 +159,6 @@ describe('CarsPage', () => {
         });
 
         it('onClickCar', () => {
-            spyOn(navCtrl, 'navigateForward');
             const car = new Car();
             car._id = '1';
             component.onClickCar(car);

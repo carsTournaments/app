@@ -8,7 +8,7 @@ describe('AppComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
-            imports: [IonicStorageModule.forRoot(),],
+            imports: [IonicStorageModule.forRoot()],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
     }));

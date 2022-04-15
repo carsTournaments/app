@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
-import { Car, User, Inscription } from 'src/app/models';
+import { Car, Inscription } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
     ActionSheetService,
     InscriptionService,
     TournamentService,
-    StorageService,
     AlertService,
+    AuthService,
 } from 'src/app/services';
 import { TournamentViewModel } from './model/tournament.view-model';
 
@@ -25,7 +25,7 @@ export class TournamentPage implements OnInit {
         private route: ActivatedRoute,
         private tournamentService: TournamentService,
         private inscriptionService: InscriptionService,
-        private storageService: StorageService,
+        private authService: AuthService,
         private navCtrl: NavController,
         private imagePipe: ImagePipe,
         private actionSheetService: ActionSheetService,
@@ -34,12 +34,13 @@ export class TournamentPage implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
-        this.vm.user = await this.storageService.get<User>('user');
+        this.vm.user = await this.authService.getUser();
         this.getOne();
         this.getInscriptionsOfTournament();
     }
 
     getOne(): void {
+        this.vm.loading = true;
         this.tournamentService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.tournament = data;
@@ -53,9 +54,11 @@ export class TournamentPage implements OnInit {
                     this.vm.cols = '6';
                 }
                 this.setSegments();
+                this.vm.loading = false;
             },
             error: (err) => {
-                console.error(err);
+                this.vm.loading = false;
+                this.vm.error = true;
             },
         });
     }

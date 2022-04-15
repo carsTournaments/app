@@ -12,4 +12,6 @@ export class CarViewModel {
     });
     car: Car;
     image: string;
+    loading = true;
+    error = false;
 }
