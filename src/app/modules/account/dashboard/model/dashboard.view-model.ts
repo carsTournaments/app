@@ -19,4 +19,5 @@ export class DashboardViewModel {
     ];
     registerMode = false;
     user: User;
+    resume: { cars: number; inscriptions: number; winner: number };
 }

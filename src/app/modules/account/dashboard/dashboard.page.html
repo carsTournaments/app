@@ -15,18 +15,24 @@
 
                 <h1 class="dashboard-title">{{ vm.user.name | uppercase }}</h1>
 
-                <ion-row class="">
+                <ion-row *ngIf="vm.resume">
                     <ion-col size="4">
                         <p class="dashboard-resume-title">Coches</p>
-                        <p class="dashboard-resume-value">6</p>
+                        <p class="dashboard-resume-value">
+                            {{ vm.resume.cars }}
+                        </p>
                     </ion-col>
                     <ion-col size="4">
-                        <p class="dashboard-resume-title">Coches</p>
-                        <p class="dashboard-resume-value">6</p>
+                        <p class="dashboard-resume-title">Inscripciones</p>
+                        <p class="dashboard-resume-value">
+                            {{ vm.resume.inscriptions }}
+                        </p>
                     </ion-col>
                     <ion-col size="4">
-                        <p class="dashboard-resume-title">Coches</p>
-                        <p class="dashboard-resume-value">6</p>
+                        <p class="dashboard-resume-title">Ganados</p>
+                        <p class="dashboard-resume-value">
+                            {{ vm.resume.winner }}
+                        </p>
                     </ion-col>
                 </ion-row>
 

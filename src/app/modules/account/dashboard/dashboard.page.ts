@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
-import { AuthService, AlertService } from 'src/app/services';
+import { AuthService, AlertService, UserService } from 'src/app/services';
 import { DashboardViewModel } from './model/dashboard.view-model';
 
 @Component({
@@ -15,6 +15,7 @@ export class DashboardPage implements OnInit {
 
     constructor(
         private authService: AuthService,
+        private userService: UserService,
         private navCtrl: NavController,
         private alertService: AlertService
     ) {}
@@ -27,6 +28,7 @@ export class DashboardPage implements OnInit {
         this.logged = this.authService.isAuthenticated();
         if (this.logged) {
             this.vm.user = await this.authService.getUser();
+            this.getResume();
         }
     }
 
@@ -44,6 +46,13 @@ export class DashboardPage implements OnInit {
     onLogoutClick() {
         this.logged = false;
         this.authService.logout();
+    }
+
+    getResume() {
+        this.userService.getResume().subscribe({
+            next: (res) => (this.vm.resume = res),
+            error: (err) => console.error(err),
+        });
     }
 
     onClickOption(item: OptionItemI) {
