@@ -22,102 +22,12 @@
                     ></div>
                 </ion-card>
 
-                <ion-card mode="ios" style="margin-top: -10px">
-                    <ion-card-title
-                        class="ion-text-center"
-                        style="padding-top: 1rem"
-                    >
-                        {{ vm.tournament?.name }}
-                    </ion-card-title>
-                    <hr />
-                    <ion-card-content
-                        style="padding: 0.5rem; padding-bottom: 0.5rem"
-                    >
-                        <ion-row>
-                            <ion-col [size]="vm.cols" class="ion-text-center">
-                                <small>Inicio</small>
-                                <p>
-                                    {{ vm.tournament.startDate |
-                                    dateToTimeAgo:true | fistLetterCase }}
-                                </p>
-                            </ion-col>
-                            <ion-col
-                                *ngIf="vm.tournament.endDate"
-                                [size]="vm.cols"
-                                class="ion-text-center"
-                            >
-                                <small>Fin</small>
-                                <p>
-                                    {{ vm.tournament.endDate |
-                                    dateToTimeAgo:true | fistLetterCase }}
-                                </p>
-                            </ion-col>
-                            <ion-col
-                                *ngIf="!vm.tournament.endDate"
-                                [size]="vm.cols"
-                                class="ion-text-center"
-                            >
-                                <small>Duracion</small>
-                                <p>{{ vm.tournament.durationDays }} dias</p>
-                            </ion-col>
-                            <ion-col [size]="vm.cols" class="ion-text-center">
-                                <small>Participantes</small>
-                                <p>
-                                    <span
-                                        [countUp]=" vm.tournament?.inscriptions.length"
-                                        [duration]="1500"
-                                    ></span
-                                    >/<span
-                                        [countUp]=" vm.tournament.maxParticipants"
-                                        [duration]="1500"
-                                    ></span>
-                                </p>
-                            </ion-col>
-                            <ion-col
-                                *ngIf="vm.tournament.status !== 'Todo'"
-                                [size]="vm.cols"
-                                class="ion-text-center"
-                            >
-                                <small>Votos</small>
-                                <p>
-                                    <span
-                                        [countUp]=" vm.tournament?.votes.length"
-                                        [duration]="1500"
-                                    ></span>
-                                </p>
-                            </ion-col>
-                        </ion-row>
-
-                        <ng-container
-                            *ngIf="vm.tournament.info && vm.tournament.info !== ''"
-                        >
-                            <hr />
-                            <p
-                                style="padding-top: 1rem"
-                                class="ion-text-center"
-                                [ngStyle]="{'padding-bottom': vm.buttonInscription ? '0px' : '10px'} "
-                            >
-                                {{ vm.tournament.info }}
-                            </p>
-                        </ng-container>
-
-                        <tournament-requisites
-                            [buttonInscription]="vm.buttonInscription"
-                            [tournament]="vm.tournament"
-                        >
-                        </tournament-requisites>
-                    </ion-card-content>
-
-                    <ng-container *ngIf="vm.buttonInscription">
-                        <hr />
-                        <ion-button
-                            class="ion-margin"
-                            expand="block"
-                            (click)="inscriptionCar()"
-                            >Inscribirse
-                        </ion-button>
-                    </ng-container>
-                </ion-card>
+                <tournament-info
+                    [cols]="vm.cols"
+                    [buttonInscription]="vm.buttonInscription"
+                    [tournament]="vm.tournament"
+                    (inscriptionCarClick)="inscriptionCar()"
+                ></tournament-info>
 
                 <ion-card
                     mode="ios"
@@ -139,43 +49,10 @@
                     </ion-item>
                 </ion-card>
 
-                <ion-card mode="ios" *ngIf="vm.myCars?.inscribed.length > 0">
-                    <ion-card-title
-                        class="ion-text-center"
-                        style="padding-top: 1rem; font-size: 18px"
-                    >
-                        {{vm.myCars?.inscribed.length > 1 ? 'Tus coches
-                        inscritos' : 'Tu coche inscrito'}}
-                    </ion-card-title>
-                    <hr />
-                    <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
-                        <ion-list>
-                            <ion-item
-                                color="light"
-                                style="margin: 0.5rem"
-                                class="option-item"
-                                [button]="true"
-                                lines="none"
-                                detail="false"
-                                *ngFor="let car of vm.myCars?.inscribed"
-                                (click)="confirmDeleteInscription(car)"
-                            >
-                                <ion-avatar slot="start" class="avatar-border">
-                                    <img [src]="car.image?.url | image" />
-                                </ion-avatar>
-                                <ion-label style="font-size: 0.9rem"
-                                    >{{ car.brand.name }} {{ car.model
-                                    }}</ion-label
-                                >
-                                <ion-icon
-                                    style="font-size: 1.2rem"
-                                    slot="end"
-                                    name="close"
-                                ></ion-icon>
-                            </ion-item>
-                        </ion-list>
-                    </ion-card-content>
-                </ion-card>
+                <tournament-my-inscriptions
+                    [myCars]="vm.myCars"
+                    (confirmDeleteInscriptionClick)="confirmDeleteInscription($event)"
+                ></tournament-my-inscriptions>
             </div>
 
             <div

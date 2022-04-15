@@ -8,7 +8,7 @@
                 *ngIf="!logged && !vm.registerMode"
             ></auth>
 
-            <ng-container *ngIf="logged && !vm.registerMode">
+            <ng-container *ngIf="logged && !vm.registerMode && vm.user">
                 <div class="dashboard-image">
                     <img src="assets/no-image.png" alt="" />
                 </div>

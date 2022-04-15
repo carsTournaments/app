@@ -6,7 +6,9 @@ import { RouterModule } from '@angular/router';
 import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
 import { TournamentPage } from './tournament.page';
-import { TournamentRequisitesComponent } from './components/tournament-requisites.component';
+import { TournamentInfoComponent } from './components/tournament-info/tournament-info.component';
+import { TournamentRequisitesComponent } from './components/tournament-requisites/tournament-requisites.component';
+import { TournamentMyInscriptionsComponent } from './components/tournament-my-inscriptions/tournament-my-inscriptions.component';
 
 @NgModule({
     imports: [
@@ -23,7 +25,12 @@ import { TournamentRequisitesComponent } from './components/tournament-requisite
             },
         ]),
     ],
-    declarations: [TournamentPage, TournamentRequisitesComponent],
+    declarations: [
+        TournamentPage,
+        TournamentRequisitesComponent,
+        TournamentInfoComponent,
+        TournamentMyInscriptionsComponent,
+    ],
     providers: [ImagePipe],
 })
 export class TournamentModule {}
