@@ -7,6 +7,7 @@ export { InscriptionService } from './api/inscription/inscription.service';
 export { PairingService } from './api/pairing/pairing.service';
 export { RoundService } from './api/round/round.service';
 export { TournamentService } from './api/tournament/tournament.service';
+export { UserService } from './api/user/user.service';
 export { VoteService } from './api/vote/vote.service';
 
 // Ionic

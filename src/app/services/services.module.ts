@@ -14,6 +14,7 @@ import {
     StorageService,
     PairingService,
     VoteService,
+    UserService,
 } from '.';
 import { TokenInterceptorService } from '../core/interceptors/token.interceptor';
 import { ImageService } from './api/image/image.service';
@@ -31,6 +32,7 @@ import { ImageService } from './api/image/image.service';
         PairingService,
         RoundService,
         TournamentService,
+        UserService,
         VoteService,
         // Ionic
         ActionSheetService,
