@@ -1,6 +1,5 @@
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
 import { ImageUploadDto } from './image.dto';
 import { environment } from 'src/environments/environment';
@@ -19,20 +18,22 @@ export class ImageService {
                 quality: 100,
                 allowEditing: false,
             });
-            const blobData = this.b64toBlob(
-                image.base64String,
-                `image/${image.format}`
-            );
-            const file = new File([blobData], 'file.jpg');
-            const formData = new FormData();
-            formData.append('file', file, file.name);
-            return this.upload({ type, id }, file);
+            if (image) {
+                const blobData = this.b64toBlob(
+                    image.base64String,
+                    `image/${image.format}`
+                );
+                const file = new File([blobData], 'file.jpg');
+                const formData = new FormData();
+                formData.append('file', file, file.name);
+                return this.upload({ type, id }, file);
+            }
         } catch (error) {
             console.error(error);
         }
     }
 
-    private b64toBlob(b64Data: any, contentType = '', sliceSize = 512) {
+    b64toBlob(b64Data: any, contentType = '', sliceSize = 512) {
         const byteCharacters = atob(b64Data);
         const byteArrays = [];
 

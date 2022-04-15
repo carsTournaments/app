@@ -75,7 +75,6 @@ export class AuthComponent {
     onLoginOrRegisterSuccess(response: LoginResponseI) {
         this.authService.setToken(response.token);
         this.authService.setUser(response.user);
-        console.log(response);
         this.clickLogin.emit();
     }
 }

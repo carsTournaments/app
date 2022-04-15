@@ -7,17 +7,21 @@ import {
     waitForAsync,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule, NavController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { AlertService, AuthService } from 'src/app/services';
 import { ComponentsModule } from '../components.module';
 import { AuthComponent } from './auth.component';
-import { Observable, of, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
-describe('AuthComponent', () => {
+fdescribe('AuthComponent', () => {
     let component: AuthComponent;
-    let authService: AuthService;
-    let alertService: AlertService;
     let fixture: ComponentFixture<AuthComponent>;
+    const alertService = jasmine.createSpyObj('AlertService', ['presentAlert']);
+    const authService = jasmine.createSpyObj('AuthService', [
+        'login',
+        'setUser',
+        'setToken',
+    ]);
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -27,14 +31,15 @@ describe('AuthComponent', () => {
                 RouterTestingModule,
                 ComponentsModule,
             ],
-            providers: [AuthService, AlertService],
+            providers: [
+                { provide: AuthService, useValue: authService },
+                { provide: AlertService, useValue: alertService },
+            ],
         }).compileComponents();
 
         const testbed = getTestBed();
         fixture = TestBed.createComponent(AuthComponent);
         component = fixture.componentInstance;
-        authService = testbed.inject(AuthService);
-        alertService = testbed.inject(AlertService);
         fixture.detectChanges();
     }));
 
@@ -44,25 +49,24 @@ describe('AuthComponent', () => {
 
     describe('login', () => {
         it('OK', () => {
-            spyOn(authService, 'setToken');
-            spyOn(authService, 'setUser');
+            spyOn(component, 'onLoginOrRegisterSuccess');
             const response: LoginResponseI = {
                 user: new User(),
                 token: 'token',
             };
-            spyOn(authService, 'login').and.returnValue(of(response));
+            authService.login = jasmine
+                .createSpy()
+                .and.returnValue(of(response));
             component.vm.email = 'prueba@prueba.es';
             component.vm.password = '123456';
             component.login();
-            expect(authService.setToken).toHaveBeenCalled();
-            expect(authService.setUser).toHaveBeenCalled();
+            expect(component.onLoginOrRegisterSuccess).toHaveBeenCalled();
         });
 
         it('KO', () => {
-            spyOn(alertService, 'presentAlert');
-            spyOn(authService, 'login').and.returnValue(
-                throwError({ status: 400 })
-            );
+            authService.login = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ status: 400 }));
             component.vm.email = 'prueba@prueba.es';
             component.vm.password = '123456';
             component.login();
@@ -76,9 +80,9 @@ describe('AuthComponent', () => {
                 user: new User(),
                 token: 'token',
             };
-            spyOn(authService, 'setToken');
-            spyOn(authService, 'setUser');
-            spyOn(authService, 'register').and.returnValue(of(response));
+            authService.register = jasmine
+                .createSpy()
+                .and.returnValue(of(response));
             component.vm.name = 'prueba';
             component.vm.email = 'prueba@prueba.es';
             component.vm.password = '123456';
@@ -89,7 +93,6 @@ describe('AuthComponent', () => {
         });
 
         it('KO Validation invalid passwords', () => {
-            spyOn(alertService, 'presentAlert');
             component.vm.name = 'prueba';
             component.vm.email = 'prueba@prueba.es';
             component.vm.password = '123456';
@@ -99,7 +102,6 @@ describe('AuthComponent', () => {
         });
 
         it('KO Validation invalid data', () => {
-            spyOn(alertService, 'presentAlert');
             component.vm.name = 'prueba';
             component.vm.email = '';
             component.vm.password = '123456';
@@ -109,7 +111,6 @@ describe('AuthComponent', () => {
         });
 
         it('KO Validation invalid name', () => {
-            spyOn(alertService, 'presentAlert');
             component.vm.name = 'pep';
             component.vm.email = 'pep@gmail.com';
             component.vm.password = '123456';
@@ -119,10 +120,9 @@ describe('AuthComponent', () => {
         });
 
         it('KO', () => {
-            spyOn(alertService, 'presentAlert');
-            spyOn(authService, 'register').and.returnValue(
-                throwError({ status: 400 })
-            );
+            authService.register = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ status: 400 }));
             component.vm.name = 'prueba';
             component.vm.email = 'prueba@prueba.es';
             component.vm.password = '123456';
