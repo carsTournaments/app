@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root',
 })
 export class SpinnerHandlerService {
-    public numberOfRequests: number = 0;
+    public numberOfRequests = 0;
     public showSpinner: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
         false
     );

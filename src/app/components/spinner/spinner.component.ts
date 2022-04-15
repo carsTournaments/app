@@ -7,7 +7,7 @@ import { SpinnerHandlerService } from 'src/app/services';
     styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent {
-    spinnerActive: boolean = true;
+    spinnerActive = true;
 
     constructor(public spinnerHandler: SpinnerHandlerService) {
         this.spinnerHandler.showSpinner.subscribe(this.showSpinner.bind(this));
