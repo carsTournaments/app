@@ -14,7 +14,7 @@ export class Car {
     info: string;
     year: number;
     tournaments?: Tournament[];
-    image?: Image;
+    image?: any;
     created?: string;
     updated?: string;
 
