@@ -12,6 +12,8 @@ import { customAnimation } from './core/animations/animations';
 import { ServicesModule } from './services/services.module';
 import { PipesModule } from './pipes/pipes.module';
 import { LoginGuard } from './core/guards/check-token.guard';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,6 +27,10 @@ import { LoginGuard } from './core/guards/check-token.guard';
         }),
         AppRoutingModule,
         IonicStorageModule.forRoot(),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
     ],
     providers: [
         ImagePipe,
