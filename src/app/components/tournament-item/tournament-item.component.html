@@ -5,9 +5,11 @@
     style="margin-left: 0.5rem; margin-right: 0.5rem"
 >
     <ion-card-content
-        style="background-image: linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url({{
-            tournament?.image?.url | image
-        }})"
+        style="
+            background-image: linear-gradient(rgba(0, 0, 0, 0.43), 
+            rgba(0, 0, 0, 0.43)), 
+            url({{ tournament?.image?.url }})
+        "
     >
         <div class="card-title-tournament">{{ tournament.name }}</div>
         <div class="card-description-tournament">
@@ -15,6 +17,14 @@
             <span>{{
                 tournament.inscriptions + '/' + tournament.maxParticipants
             }}</span>
+        </div>
+
+        <div *ngIf="!tournament.lastRound" class="startDate">
+            <span class="day">{{
+                tournament.startDate | date: 'dd/MM/yy'
+            }}</span>
+            <!-- <span class="month">{{ tournament.startDate | date: 'MM' }}</span> -->
+            <!-- <span class="year">{{ tournament.startDate | date: 'yy' }}</span> -->
         </div>
 
         <div class="currentRound" *ngIf="tournament.lastRound">

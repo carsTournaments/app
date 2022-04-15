@@ -1,0 +1,22 @@
+<ng-container *ngIf="tournaments.length > 0">
+    <p class="title">{{ title }}</p>
+    <ng-container *ngIf="tournaments.length === 1">
+        <tournament-item
+            (clickItem)="clickItem.emit(tournament)"
+            *ngFor="let tournament of tournaments"
+            [tournament]="tournament"
+        ></tournament-item>
+    </ng-container>
+
+    <ng-container *ngIf="tournaments.length > 1">
+        <ion-slides mode="ios" [options]="slideOpts">
+            <ion-slide *ngFor="let tournament of tournaments">
+                <tournament-item
+                    (clickItem)="clickItem.emit(tournament)"
+                    [tournament]="tournament"
+                    style="width: 100%"
+                ></tournament-item>
+            </ion-slide>
+        </ion-slides>
+    </ng-container>
+</ng-container>

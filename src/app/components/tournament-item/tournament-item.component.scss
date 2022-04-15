@@ -69,3 +69,38 @@ ion-card-content {
     border-radius: 0px 0 0 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
+.startDate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 0px 0 0 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+    span {
+    }
+
+    .day {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #fff;
+    }
+    .month {
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--ion-color-primary);
+    }
+
+    .year {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+    }
+}

@@ -2,7 +2,6 @@ import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/models';
 import { TournamentService } from 'src/app/services';
-import { TournamentGetAllOfAllStatesResponse } from 'src/app/services/api/tournament/tournament.responses';
 import { TournamentsViewModel } from './model/tournaments.view-model';
 
 @Component({
@@ -24,35 +23,15 @@ export class TournamentsPage implements OnInit {
 
     getItems() {
         this.tournamentService.getAllOfAllStates().subscribe({
-            next: (res) => this.getItemsOnSuccess(res),
+            next: (res) => {
+                this.vm.tournaments = res;
+                this.vm.loading = false;
+            },
             error: () => {
                 this.vm.loading = false;
                 this.vm.error = true;
             },
         });
-    }
-
-    getItemsOnSuccess(res: TournamentGetAllOfAllStatesResponse) {
-        this.vm.tournaments = res;
-        if (this.vm.tournaments.todo.length === 0) {
-            this.vm.header.segments.items =
-                this.vm.header.segments.items.filter(
-                    (item) => item !== 'Proximos'
-                );
-        }
-        if (this.vm.tournaments.inProgress.length === 0) {
-            this.vm.header.segments.items =
-                this.vm.header.segments.items.filter(
-                    (item) => item !== 'En curso'
-                );
-        }
-        if (this.vm.tournaments.completed.length === 0) {
-            this.vm.header.segments.items =
-                this.vm.header.segments.items.filter(
-                    (item) => item !== 'Completados'
-                );
-        }
-        this.vm.loading = false;
     }
 
     segmentChanged(ev: any) {

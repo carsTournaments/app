@@ -5,10 +5,6 @@ import { TournamentGetAllOfAllStatesResponse } from 'src/app/services/api/tourna
 export class TournamentsViewModel {
     header = new Header({
         title: 'Torneos',
-        segments: {
-            items: ['En curso', 'Proximos', 'Completados'],
-            selected: 0,
-        },
     });
     tournaments: TournamentGetAllOfAllStatesResponse;
     loading = true;
