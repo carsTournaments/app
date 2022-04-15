@@ -8,12 +8,12 @@
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <ng-container *ngIf="vm.cars.length === 0">
-                <ion-card>
+                <ion-card mode="ios">
                     <ion-card-content>
+                        <ion-card-title>
+                            <p>¡No tienes ningun coche en tu garage!</p>
+                        </ion-card-title>
                         <p>
-                            ¡No tienes ningun coche en tu garage!
-                            <br />
-                            <br />
                             Puedes usar el boton de abajo a la derecha para
                             añadir tu primer coche.
                         </p>

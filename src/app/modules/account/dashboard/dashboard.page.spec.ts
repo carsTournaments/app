@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
     ComponentFixture,
     getTestBed,
@@ -28,6 +29,7 @@ describe('DashboardPage', () => {
                 ComponentsModule,
             ],
             providers: [AuthService, AlertService],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
         const testbed = getTestBed();

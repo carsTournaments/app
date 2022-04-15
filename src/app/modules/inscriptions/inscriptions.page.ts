@@ -1,10 +1,9 @@
-import { Inscription } from './../../models/inscription.model';
 import { Component, OnInit } from '@angular/core';
-import { InscriptionService, StorageService } from 'src/app/services';
-import { User } from 'src/app/models';
+import { AuthService, InscriptionService } from 'src/app/services';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { NavController } from '@ionic/angular';
 import { InscriptionsViewModel } from './model/inscriptions.view-model';
+import { Inscription } from 'src/app/models';
 
 @Component({
     selector: 'page-inscriptions',
@@ -15,7 +14,7 @@ export class InscriptionsPage implements OnInit {
     vm = new InscriptionsViewModel();
     constructor(
         private inscriptionService: InscriptionService,
-        private storageService: StorageService,
+        private authService: AuthService,
         private navCtrl: NavController
     ) {}
 
@@ -25,7 +24,7 @@ export class InscriptionsPage implements OnInit {
     }
 
     async getUser() {
-        this.vm.user = await this.storageService.get<User>('user');
+        this.vm.user = await this.authService.getUser();
     }
 
     getAll() {
@@ -36,20 +35,30 @@ export class InscriptionsPage implements OnInit {
             next: (inscriptions) => {
                 this.vm.inscriptions = inscriptions;
                 this.setSegments();
+                this.vm.loading = false;
             },
-            error: (error) => console.error(error),
+            error: () => {
+                this.vm.loading = false;
+                this.vm.error = true;
+            },
         });
     }
 
     setSegments() {
+        const items = [];
         if (this.vm.inscriptions.todo.length > 0) {
-            this.vm.header.segments.items.push('Proximos');
+            items.push('Proximos');
         } else if (this.vm.inscriptions.inProgress.length > 0) {
-            this.vm.header.segments.items.push('En curso');
+            items.push('En curso');
         } else if (this.vm.inscriptions.completed.length > 0) {
-            this.vm.header.segments.items.push('Finalizados');
+            items.push('Finalizados');
         }
-        this.vm.header.segments.selected = 0;
+        if (items.length > 0) {
+            this.vm.header.segments = {
+                items: items,
+                selected: 0,
+            };
+        }
     }
 
     segmentChanged(event: any) {
