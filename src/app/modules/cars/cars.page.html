@@ -25,7 +25,7 @@
             <ng-container *ngIf="vm.header.segments.selected === 0">
                 <ion-row
                     style="padding-top: 1rem"
-                    class="animate__animated animate__fadeIn ion-no-padding"
+                    class="animate__animated animate__fadeIn animate__faster ion-no-padding"
                 >
                     <ion-col
                         size="12"
@@ -57,7 +57,7 @@
 
             <div
                 *ngIf="vm.header.segments.selected === 1"
-                class="animate__animated animate__fadeIn"
+                class="animate__animated animate__fadeIn animate__faster"
             >
                 <brand-item
                     *ngFor="let brand of vm.brands"

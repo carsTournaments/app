@@ -13,7 +13,7 @@
         >
             <div
                 *ngIf="vm.header.segments.selected === 0"
-                class="animate__animated animate__fadeIn"
+                class="animate__animated animate__fadeIn animate__faster"
             >
                 <ion-card
                     mode="ios"
@@ -69,7 +69,7 @@
 
             <div
                 *ngIf="vm.header.segments.selected === 1"
-                class="animate__animated animate__fadeIn"
+                class="animate__animated animate__fadeIn animate__faster"
                 style="padding-top: 0.75rem"
             >
                 <car-item
@@ -80,7 +80,7 @@
             </div>
             <div
                 *ngIf="vm.header.segments.selected === 2"
-                class="animate__animated animate__fadeIn"
+                class="animate__animated animate__fadeIn animate__faster"
             >
                 <rounds [tournamentId]="vm.tournament._id"></rounds>
             </div>

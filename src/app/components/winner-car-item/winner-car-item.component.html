@@ -1,4 +1,10 @@
-<ion-item class="option-item" lines="none" button (click)="clickItem.emit(car)">
+<ion-item
+    class="option-item"
+    detail="false"
+    lines="none"
+    button
+    (click)="clickItem.emit(car)"
+>
     <ion-avatar slot="start">
         <img [src]="car.image?.url | image" />
     </ion-avatar>
@@ -11,7 +17,7 @@
     </ion-avatar>
     <ion-label>
         <h2>
-            {{ car.brand.name }}<br />
+            {{ car.brand.name }} {{ car.model }}<br />
             <small>{{ car.driver.name }}</small>
         </h2>
     </ion-label>
