@@ -1,20 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ServicesModule } from './../services/services.module';
-import { TournamentItemComponent } from './tournament-item/tournament-item.component';
-import { PipesModule } from '../pipes/pipes.module';
-import { CarItemComponent } from './car-item/car-item.component';
-import { BrandItemComponent } from './brand-item/brand-item.component';
-import { AuthComponent } from './auth/auth.component';
-import { HeaderComponent } from './header/header.component';
-import { RoundsComponent } from './rounds/rounds.component';
-import { IonicModule } from '@ionic/angular';
-import { CountUpDirective } from '../directives/count-up/count-up.directive';
-import { SwiperModule } from 'swiper/angular';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { TournamentsSliderComponent } from './tournaments-slider/tournaments-slider.component';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {ServicesModule} from './../services/services.module';
+import {TournamentItemComponent} from './tournament-item/tournament-item.component';
+import {PipesModule} from '../pipes/pipes.module';
+import {CarItemComponent} from './car-item/car-item.component';
+import {BrandItemComponent} from './brand-item/brand-item.component';
+import {AuthComponent} from './auth/auth.component';
+import {HeaderComponent} from './header/header.component';
+import {RoundsComponent} from './rounds/rounds.component';
+import {IonicModule} from '@ionic/angular';
+import {CountUpDirective} from '../directives/count-up/count-up.directive';
+import {SwiperModule} from 'swiper/angular';
+import {SpinnerComponent} from './spinner/spinner.component';
+import {TournamentsSliderComponent} from './tournaments-slider/tournaments-slider.component';
+import {WinnersComponent} from './winners/winners.component';
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import { TournamentsSliderComponent } from './tournaments-slider/tournaments-sli
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,
+        WinnersComponent,
     ],
     exports: [
         CountUpDirective,
@@ -47,6 +49,7 @@ import { TournamentsSliderComponent } from './tournaments-slider/tournaments-sli
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,
+        WinnersComponent,
     ],
     providers: [],
 })

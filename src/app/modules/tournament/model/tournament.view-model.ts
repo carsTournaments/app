@@ -1,7 +1,8 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { Inscription, Tournament, User } from 'src/app/models';
-import { InscriptionsGetMyCarsForInscriptionDto } from 'src/app/services/api/inscription/inscription.dto';
-import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
+import {Header} from 'src/app/components/header/model/header.model';
+import {Inscription, Tournament, User} from 'src/app/models';
+import {InscriptionsGetMyCarsForInscriptionDto} from 'src/app/services/api/inscription/inscription.dto';
+import {InscriptionGetMyCarsUserForInscriptionResponse} from 'src/app/services/api/inscription/inscription.responses';
+import {WinnerGetOfTournamentComplete} from 'src/app/services/api/winner/winner.responses';
 
 export class TournamentViewModel {
     id: string;
@@ -29,4 +30,5 @@ export class TournamentViewModel {
     cols = '6';
     loading = true;
     error = false;
+    winners: WinnerGetOfTournamentComplete;
 }

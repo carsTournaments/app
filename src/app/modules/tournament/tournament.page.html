@@ -30,6 +30,8 @@
                     (inscriptionCarClick)="inscriptionCar()"
                 ></tournament-info>
 
+                <winners *ngIf="vm.winners" [winners]="vm.winners"></winners>
+
                 <ion-card
                     mode="ios"
                     *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Completed'"

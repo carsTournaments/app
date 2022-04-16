@@ -1,4 +1,5 @@
 <ion-card
+    *ngIf="car"
     mode="ios"
     class="ion-activatable"
     style="padding-top: 0; padding-bottom: 0"
@@ -8,7 +9,7 @@
         style="
             background-image: linear-gradient(rgba(0, 0, 0, 0.43), 
             rgba(0, 0, 0, 0.43)), 
-            url({{ car?.image?.url }})
+            url({{ image?.url }})
         "
     >
         <div class="card-title-car">{{ car.brand.name }} {{ car.model }}</div>

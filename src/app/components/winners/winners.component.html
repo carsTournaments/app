@@ -1,0 +1,14 @@
+<ion-card mode="ios" *ngIf="winners">
+    <ion-card-title
+        class="ion-text-center"
+        style="padding-top: 1rem; font-size: 18px"
+    >
+        <span class="ion-text-center">Ganadores</span>
+    </ion-card-title>
+    <hr />
+    <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
+        <car-item [car]="winners?.gold.car" winner="gold"></car-item>
+        <car-item [car]="winners?.silver.car" winner="silver"></car-item>
+        <car-item [car]="winners?.bronze.car" winner="bronze"></car-item>
+    </ion-card-content>
+</ion-card>

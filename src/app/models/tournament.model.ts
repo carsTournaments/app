@@ -1,4 +1,4 @@
-import { Vote, Image, Inscription, Round } from '.';
+import {Vote, Image, Inscription, Round} from '.';
 export class Tournament {
     _id?: string;
     name: string;
@@ -13,6 +13,7 @@ export class Tournament {
     inscriptions?: Inscription[]; // CarI[]
     votes?: Vote[];
     image?: any;
+    winners?: any;
     lastRound?: string;
     created?: string;
     updated?: string;
@@ -33,6 +34,7 @@ export class Tournament {
         this.created = data?.created;
         this.updated = data?.updated;
         this.lastRound = data?.lastRound;
+        this.winners = data?.winners;
     }
 }
 

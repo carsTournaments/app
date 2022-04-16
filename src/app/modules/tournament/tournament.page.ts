@@ -1,16 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
-import { Car, Inscription } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ActionSheetButton, IonContent, NavController} from '@ionic/angular';
+import {Car, Inscription} from 'src/app/models';
+import {ImagePipe} from 'src/app/pipes';
 import {
     ActionSheetService,
     InscriptionService,
     TournamentService,
     AlertService,
     AuthService,
+    WinnerService,
 } from 'src/app/services';
-import { TournamentViewModel } from './model/tournament.view-model';
+import {TournamentViewModel} from './model/tournament.view-model';
 
 @Component({
     selector: 'page-tournament',
@@ -18,7 +19,7 @@ import { TournamentViewModel } from './model/tournament.view-model';
     styleUrls: ['./tournament.page.scss'],
 })
 export class TournamentPage implements OnInit {
-    @ViewChild(IonContent, { static: false }) content: IonContent;
+    @ViewChild(IonContent, {static: false}) content: IonContent;
     vm = new TournamentViewModel();
 
     constructor(
@@ -29,7 +30,8 @@ export class TournamentPage implements OnInit {
         private navCtrl: NavController,
         private imagePipe: ImagePipe,
         private actionSheetService: ActionSheetService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private winnerService: WinnerService
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -54,6 +56,9 @@ export class TournamentPage implements OnInit {
                     this.vm.cols = '6';
                 }
                 this.setSegments();
+
+                this.getWinners();
+
                 this.vm.loading = false;
             },
             error: (err) => {
@@ -64,17 +69,15 @@ export class TournamentPage implements OnInit {
     }
 
     getInscriptionsOfTournament() {
-        this.inscriptionService
-            .getAllOfTournament({ id: this.vm.id })
-            .subscribe({
-                next: (data) => {
-                    this.vm.inscriptions = data;
-                    this.checkButtonInscription();
-                },
-                error: (err) => {
-                    console.error(err);
-                },
-            });
+        this.inscriptionService.getAllOfTournament({id: this.vm.id}).subscribe({
+            next: (data) => {
+                this.vm.inscriptions = data;
+                this.checkButtonInscription();
+            },
+            error: (err) => {
+                console.error(err);
+            },
+        });
     }
 
     async checkButtonInscription() {
@@ -123,10 +126,25 @@ export class TournamentPage implements OnInit {
         }
     }
 
-    segmentChanged(event: { detail: { value: any } }) {
+    segmentChanged(event: {detail: {value: any}}) {
         this.vm.header.segments.selected = Number(event.detail.value);
         if (this.content) {
             this.content.scrollToTop(1500);
+        }
+    }
+
+    getWinners() {
+        if (this.vm.tournament.status === 'Completed') {
+            this.winnerService
+                .getForTournamentComplete({id: this.vm.id})
+                .subscribe({
+                    next: (data) => {
+                        this.vm.winners = data;
+                    },
+                    error: (err) => {
+                        console.error(err);
+                    },
+                });
         }
     }
 

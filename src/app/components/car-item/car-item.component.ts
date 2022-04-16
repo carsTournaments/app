@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Car } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
+import {Image} from './../../models/image.model';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Car} from 'src/app/models';
+import {ImagePipe} from 'src/app/pipes';
 
 @Component({
     selector: 'car-item',
@@ -9,7 +10,9 @@ import { ImagePipe } from 'src/app/pipes';
 })
 export class CarItemComponent implements OnInit {
     @Input() car: Car;
+    @Input() winner: string;
     @Output() clickItem: EventEmitter<Car> = new EventEmitter<Car>();
+    image: Image;
     constructor(private imagePipe: ImagePipe) {}
 
     ngOnInit() {
@@ -17,11 +20,14 @@ export class CarItemComponent implements OnInit {
     }
 
     setImageForBackground() {
-        const image = {
-            url: this.imagePipe.transform(
-                this.car.image && this.car.image.url ? this.car.image.url : null
-            ),
-        };
-        this.car.image = image;
+        if (this.car) {
+            this.image = {
+                url: this.imagePipe.transform(
+                    this.car.image && this.car.image.url
+                        ? this.car.image.url
+                        : null
+                ),
+            };
+        }
     }
 }
