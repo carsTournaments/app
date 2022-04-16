@@ -39,9 +39,13 @@ export class RoundsComponent implements OnInit {
             (round) =>
                 round.status === 'InProgress' || round.status === 'Completed'
         );
-        this.roundSelected = this.rounds.find(
-            (round) => round.status === 'InProgress'
-        )._id;
+        let rounds = this.rounds.find((round) => round.status === 'InProgress');
+        if (rounds) {
+            this.roundSelected = rounds._id;
+        } else {
+            rounds = this.rounds.find((round) => round.name === 'Final');
+            this.roundSelected = rounds._id;
+        }
     }
 
     segmentChanged(event) {

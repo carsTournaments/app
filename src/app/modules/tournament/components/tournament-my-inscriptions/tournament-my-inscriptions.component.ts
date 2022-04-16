@@ -5,6 +5,7 @@ import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services
 @Component({
     selector: 'tournament-my-inscriptions',
     templateUrl: 'tournament-my-inscriptions.component.html',
+    styleUrls: ['./tournament-my-inscriptions.component.scss'],
 })
 export class TournamentMyInscriptionsComponent implements OnInit {
     @Input() myCars: InscriptionGetMyCarsUserForInscriptionResponse;

@@ -122,3 +122,19 @@ hr {
     --max-height: 190px;
     --border-radius: 10px;
 }
+
+.custom-chip {
+    span {
+        background: var(--ion-color-primary);
+        border-radius: 20px;
+        color: #fff;
+        padding-top: 0.25rem;
+        padding-bottom: 0.35rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0;
+        font-size: 0.7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+}

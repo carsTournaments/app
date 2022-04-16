@@ -119,7 +119,7 @@ export class TournamentPage implements OnInit {
         } else if (this.vm.tournament.status === 'InProgress') {
             this.vm.header.segments.items = ['Info', 'Inscripciones', 'Rondas'];
         } else if (this.vm.tournament.status === 'Completed') {
-            this.vm.header.segments.items = ['Info', 'Rondas'];
+            this.vm.header.segments.items = ['Info', 'Inscripciones', 'Rondas'];
         }
     }
 

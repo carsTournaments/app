@@ -1,6 +1,12 @@
 <ion-card mode="ios" style="margin-top: -10px">
-    <ion-card-title class="ion-text-center" style="padding-top: 1rem">
+    <ion-card-title class="title ion-text-center" style="padding-top: 1rem">
         {{ tournament?.name }}
+        <ng-container *ngIf="tournament.status === 'Completed'">
+            <br />
+            <div class="custom-chip">
+                <span>Completado</span>
+            </div>
+        </ng-container>
     </ion-card-title>
     <hr />
     <ion-card-content style="padding: 0.5rem; padding-bottom: 0.5rem">
