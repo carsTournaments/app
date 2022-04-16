@@ -1,0 +1,18 @@
+<ion-item class="option-item" lines="none" button (click)="clickItem.emit(car)">
+    <ion-avatar slot="start">
+        <img [src]="car.image?.url | image" />
+    </ion-avatar>
+    <ion-avatar slot="end">
+        <ion-icon
+            name="trophy"
+            style="font-size: 2rem"
+            [ngClass]="type"
+        ></ion-icon>
+    </ion-avatar>
+    <ion-label>
+        <h2>
+            {{ car.brand.name }}<br />
+            <small>{{ car.driver.name }}</small>
+        </h2>
+    </ion-label>
+</ion-item>

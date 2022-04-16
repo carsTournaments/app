@@ -1,0 +1,20 @@
+.gold {
+    color: #ffd700;
+}
+.silver {
+    color: #c0c0c0;
+}
+.bronze {
+    color: #cd7f32;
+}
+
+.option-item {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    background: var(--ion-color-light);
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    padding: 0.05rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}

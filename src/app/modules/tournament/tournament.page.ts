@@ -260,7 +260,11 @@ export class TournamentPage implements OnInit {
         }
     }
 
-    openImage(image: string) {
+    openImage(image: string): void {
         this.imageService.openImage(image);
+    }
+
+    goToCar(car: Car): void {
+        this.navCtrl.navigateForward(`/car/${car._id}`);
     }
 }

@@ -4,7 +4,6 @@
 ></custom-header>
 
 <ion-content [fullscreen]="true" *ngIf="vm.tournament" [scrollEvents]="true">
-    <spinner></spinner>
     <ion-row style="padding-top: 0">
         <ion-col
             style="padding-top: 0; margin-top: -10px"
@@ -34,7 +33,11 @@
                     (inscriptionCarClick)="inscriptionCar()"
                 ></tournament-info>
 
-                <winners *ngIf="vm.winners" [winners]="vm.winners"></winners>
+                <winners
+                    *ngIf="vm.winners"
+                    [winners]="vm.winners"
+                    (clickItem)="goToCar($event)"
+                ></winners>
 
                 <ion-card
                     mode="ios"
@@ -57,9 +60,11 @@
                 </ion-card>
 
                 <tournament-my-inscriptions
+                    *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Todo'"
                     [myCars]="vm.myCars"
                     (confirmDeleteInscriptionClick)="confirmDeleteInscription($event)"
-                ></tournament-my-inscriptions>
+                >
+                </tournament-my-inscriptions>
             </div>
 
             <div

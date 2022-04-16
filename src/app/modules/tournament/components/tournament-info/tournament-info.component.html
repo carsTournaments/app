@@ -7,9 +7,19 @@
                 <span *ngIf="tournament.status === 'Completed'">
                     Completado</span
                 >
-                <span *ngIf="tournament.status === 'InProgress'">{{
-                    tournament.rounds | lastRound
-                }}</span>
+                <span *ngIf="tournament.status === 'InProgress'">
+                    {{ tournament.rounds | lastRound }}
+                </span>
+
+                <span
+                    *ngIf="
+                        tournament.status === 'Todo' &&
+                        tournament.inscriptions.length ===
+                            tournament.maxParticipants
+                    "
+                >
+                    Inscripciones completadas
+                </span>
             </div>
         </ng-container>
     </ion-card-title>

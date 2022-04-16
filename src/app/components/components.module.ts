@@ -17,6 +17,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { TournamentsSliderComponent } from './tournaments-slider/tournaments-slider.component';
 import { WinnersComponent } from './winners/winners.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.component';
 
 @NgModule({
     imports: [
@@ -39,6 +40,7 @@ import { ViewerComponent } from './viewer/viewer.component';
         TournamentItemComponent,
         TournamentsSliderComponent,
         ViewerComponent,
+        WinnerCarItemComponent,
         WinnersComponent,
     ],
     exports: [
@@ -52,6 +54,7 @@ import { ViewerComponent } from './viewer/viewer.component';
         TournamentItemComponent,
         TournamentsSliderComponent,
         ViewerComponent,
+        WinnerCarItemComponent,
         WinnersComponent,
     ],
     providers: [],

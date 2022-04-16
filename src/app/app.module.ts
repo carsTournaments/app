@@ -1,3 +1,4 @@
+import { ComponentsModule } from './components/components.module';
 import { ImagePipe } from './pipes/image/image.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +15,6 @@ import { PipesModule } from './pipes/pipes.module';
 import { LoginGuard } from './core/guards/check-token.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,6 +23,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
         BrowserModule,
         ServicesModule,
         PipesModule,
+        ComponentsModule,
         IonicModule.forRoot({
             navAnimation: customAnimation,
         }),
