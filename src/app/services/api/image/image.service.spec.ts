@@ -7,6 +7,7 @@ import { ImageService } from '../..';
 import { Inscription } from 'src/app/models';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { Photo, Camera } from '@capacitor/camera';
+import { ModalController } from '@ionic/angular';
 
 const paginator: PaginatorI = {
     pageSize: 0,
@@ -24,11 +25,14 @@ const res = {
 describe('ImageService', () => {
     let httpTestingController: HttpTestingController;
     let service: ImageService;
-    // const Camera = jasmine.createSpyObj('Camera', ['getPhoto']);
+    const modalCtrl = jasmine.createSpyObj('ModalController', ['create']);
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [ImageService],
+            providers: [
+                ImageService,
+                { provide: ModalController, useValue: modalCtrl },
+            ],
             imports: [HttpClientTestingModule],
         });
 

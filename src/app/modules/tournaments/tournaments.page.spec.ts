@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
     ComponentFixture,
     getTestBed,
@@ -41,6 +42,7 @@ describe('TournamentsPage', () => {
                 { provide: TournamentService, useValue: tournamentService },
                 { provide: NavController, useValue: navCtrl },
             ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
         const testbed = getTestBed();
