@@ -1,4 +1,4 @@
-import { CarService } from 'src/app/services';
+import { CarService, ImageService } from 'src/app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from 'src/app/pipes';
@@ -14,7 +14,8 @@ export class CarPage implements OnInit {
     constructor(
         private carService: CarService,
         private route: ActivatedRoute,
-        private imagePipe: ImagePipe
+        private imagePipe: ImagePipe,
+        private imageService: ImageService
     ) {}
 
     ngOnInit() {
@@ -38,5 +39,9 @@ export class CarPage implements OnInit {
                 this.vm.error = true;
             },
         });
+    }
+
+    openImage(image: string) {
+        this.imageService.openImage(image);
     }
 }

@@ -13,7 +13,7 @@
             sizeLg="8"
             offsetLg="2"
         >
-            <ion-card mode="ios">
+            <ion-card mode="ios" (click)="openImage(vm.image)">
                 <div
                     *ngIf="vm.image"
                     class="div-image-one"

@@ -1,14 +1,19 @@
+import { ModalController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ImageUploadDto } from './image.dto';
 import { environment } from 'src/environments/environment';
 import { Image } from 'src/app/models';
+import { ViewerComponent } from 'src/app/components/viewer/viewer.component';
 
 @Injectable({ providedIn: 'root' })
 export class ImageService {
     url = `${environment.urlApi}/images`;
-    constructor(private httpClient: HttpClient) {}
+    constructor(
+        private httpClient: HttpClient,
+        private modalCtrl: ModalController
+    ) {}
 
     async addNewToGallery(type: 'car' | 'user', id: string): Promise<Image> {
         try {
@@ -64,5 +69,16 @@ export class ImageService {
         formData.append('type', data.type);
         formData.append('id', data.id);
         return this.httpClient.post<any>(url, formData).toPromise();
+    }
+
+    async openImage(image: string) {
+        const modal = await this.modalCtrl.create({
+            component: ViewerComponent,
+            componentProps: { image },
+            cssClass: 'transparent-modal',
+            mode: 'ios',
+        });
+
+        await modal.present();
     }
 }

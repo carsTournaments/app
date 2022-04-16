@@ -1,6 +1,7 @@
 <div
+    (click)="openImage()"
     class="dashboard-image"
-    style="background: url({{ resume.image | image }})"
+    style="background: url({{ image.url }})"
 ></div>
 
 <h1 class="dashboard-title">{{ user.name | uppercase }}</h1>

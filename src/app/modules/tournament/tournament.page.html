@@ -16,7 +16,11 @@
                 *ngIf="vm.header.segments.selected === 0"
                 class="animate__animated animate__fadeIn"
             >
-                <ion-card mode="ios" *ngIf="vm.image">
+                <ion-card
+                    mode="ios"
+                    *ngIf="vm.image"
+                    (click)="openImage(vm.image)"
+                >
                     <div
                         class="div-image-one"
                         [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
