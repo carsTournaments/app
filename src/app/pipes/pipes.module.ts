@@ -3,6 +3,7 @@ import {
     DateToTimeAgoPipe,
     FirstLetterPipe,
     ImagePipe,
+    LastRoundPipe,
     TruncateTextPipe,
 } from '.';
 
@@ -10,9 +11,16 @@ import {
     declarations: [
         ImagePipe,
         DateToTimeAgoPipe,
+        LastRoundPipe,
         TruncateTextPipe,
         FirstLetterPipe,
     ],
-    exports: [ImagePipe, DateToTimeAgoPipe, TruncateTextPipe, FirstLetterPipe],
+    exports: [
+        ImagePipe,
+        DateToTimeAgoPipe,
+        LastRoundPipe,
+        TruncateTextPipe,
+        FirstLetterPipe,
+    ],
 })
 export class PipesModule {}

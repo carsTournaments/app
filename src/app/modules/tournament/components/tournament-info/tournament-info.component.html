@@ -1,10 +1,15 @@
 <ion-card mode="ios" style="margin-top: -10px">
     <ion-card-title class="title ion-text-center" style="padding-top: 1rem">
         {{ tournament?.name }}
-        <ng-container *ngIf="tournament.status === 'Completed'">
+        <ng-container>
             <br />
             <div class="custom-chip">
-                <span>Completado</span>
+                <span *ngIf="tournament.status === 'Completed'"
+                    >Completado</span
+                >
+                <span *ngIf="tournament.status === 'InProgress'">{{
+                    tournament.rounds | lastRound
+                }}</span>
             </div>
         </ng-container>
     </ion-card-title>
