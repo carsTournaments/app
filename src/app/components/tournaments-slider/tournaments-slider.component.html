@@ -9,14 +9,14 @@
     </ng-container>
 
     <ng-container *ngIf="tournaments.length > 1">
-        <ion-slides mode="ios" [options]="slideOpts">
-            <ion-slide *ngFor="let tournament of tournaments">
+        <swiper mode="ios" [config]="slideOpts">
+            <ng-template swiperSlide *ngFor="let tournament of tournaments">
                 <tournament-item
                     (clickItem)="clickItem.emit(tournament)"
                     [tournament]="tournament"
                     style="width: 100%"
                 ></tournament-item>
-            </ion-slide>
-        </ion-slides>
+            </ng-template>
+        </swiper>
     </ng-container>
 </ng-container>

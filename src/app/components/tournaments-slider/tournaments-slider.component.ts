@@ -15,15 +15,13 @@ export class TournamentsSliderComponent {
     slideOpts: SwiperOptions = {
         slidesPerView: 1.1,
         spaceBetween: -10,
-        navigation: true,
+        navigation: false,
         zoom: {
             maxRatio: 5,
         },
         fadeEffect: {
             crossFade: true,
         },
-        pagination: { clickable: true },
-        scrollbar: { draggable: true },
     };
     constructor() {}
 }
