@@ -1,0 +1,6 @@
+{
+    "appId": "com.josexs.ct",
+    "appName": "CarsTournaments",
+    "webDir": "www",
+    "bundledWebRuntime": false
+}
