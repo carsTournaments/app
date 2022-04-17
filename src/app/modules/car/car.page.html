@@ -26,6 +26,10 @@
                     style="padding-top: 0.75rem"
                 >
                     {{ vm.car.brand?.name }} {{ vm.car.model }}
+                    <br />
+                    <div class="custom-chip custom-chip-dark">
+                        <span>{{ vm.car.driver.name }}</span>
+                    </div>
                 </ion-card-title>
                 <hr />
                 <ion-card-content style="padding: 0.5rem; padding-bottom: 1rem">
@@ -57,20 +61,6 @@
                             <p>{{ vm.car.stock ? 'Si' : 'No' }}</p>
                         </ion-col>
                     </ion-row>
-                </ion-card-content>
-            </ion-card>
-
-            <ion-card mode="ios">
-                <ion-card-content style="padding: 0.5rem">
-                    <ion-item mode="ios" color="light" lines="none">
-                        <ion-avatar slot="start" class="avatar-border">
-                            <img [src]="vm.car.driver.image?.url | image" />
-                        </ion-avatar>
-                        <p>
-                            <ion-label>{{ vm.car.driver.name }}</ion-label>
-                            <small>Propietario</small>
-                        </p>
-                    </ion-item>
                 </ion-card-content>
             </ion-card>
         </ion-col>

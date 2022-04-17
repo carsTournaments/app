@@ -129,7 +129,6 @@ hr {
 
 .custom-chip {
     span {
-        background: var(--ion-color-primary);
         border-radius: 20px;
         color: #fff;
         padding-top: 0.25rem;
@@ -140,6 +139,18 @@ hr {
         font-size: 0.7rem;
         font-weight: 900;
         text-transform: uppercase;
+    }
+}
+
+.custom-chip-primary {
+    span {
+        background: var(--ion-color-primary) !important;
+    }
+}
+
+.custom-chip-dark {
+    span {
+        background: var(--ion-color-dark) !important;
     }
 }
 

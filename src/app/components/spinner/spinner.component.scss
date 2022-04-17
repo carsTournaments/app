@@ -3,13 +3,30 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+
+    &::part(content) {
+        backdrop-filter: blur(12px);
+    }
 }
 
 ion-spinner {
-    z-index: 1000;
+    z-index: 1001;
     zoom: 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+ion-content {
+    --background: transparent;
+}
+
+ion-tabs {
+    background: rgba(0, 0, 0, 0.5);
 }

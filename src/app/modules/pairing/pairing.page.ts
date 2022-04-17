@@ -3,8 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController, ModalOptions, Platform } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import { PairingModalComponent } from './modal/pairing-modal.component';
-import { AlertService, PairingService, VoteService } from 'src/app/services';
+import {
+    AlertService,
+    ImageService,
+    PairingService,
+    VoteService,
+} from 'src/app/services';
 import { Car, Vote } from 'src/app/models';
+import { ImagePipe } from 'src/app/pipes';
 
 @Component({
     selector: 'page-pairing',
@@ -20,7 +26,9 @@ export class PairingPage implements OnInit {
         private platform: Platform,
         private modalCtrl: ModalController,
         private voteService: VoteService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private imageService: ImageService,
+        private imagePipe: ImagePipe
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -36,6 +44,7 @@ export class PairingPage implements OnInit {
                 this.vm.totalHeight = height;
                 this.vm.header.backButton.route = `tournament/${this.vm.pairing.tournament._id}`;
                 await this.setPercentages();
+                this.setImageForBackground();
             },
             error: (error) => console.error(error),
         });
@@ -112,5 +121,30 @@ export class PairingPage implements OnInit {
             (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes)
         );
         this.vm.votes = cars;
+    }
+
+    setImageForBackground() {
+        if (this.vm.pairing.car1) {
+            this.vm.image1 = {
+                url: this.imagePipe.transform(
+                    this.vm.pairing.car1.image && this.vm.pairing.car1.image.url
+                        ? this.vm.pairing.car1.image.url
+                        : null
+                ),
+            };
+        }
+        if (this.vm.pairing.car2) {
+            this.vm.image2 = {
+                url: this.imagePipe.transform(
+                    this.vm.pairing.car2.image && this.vm.pairing.car2.image.url
+                        ? this.vm.pairing.car2.image.url
+                        : null
+                ),
+            };
+        }
+    }
+
+    openImage(image: string) {
+        this.imageService.openImage(image);
     }
 }
