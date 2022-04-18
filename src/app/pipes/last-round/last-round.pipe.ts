@@ -1,4 +1,4 @@
-import { Round } from './../models/round.model';
+import { Round } from '../../models/round.model';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

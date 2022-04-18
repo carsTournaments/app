@@ -68,7 +68,7 @@ describe('TournamentsPage', () => {
             expect(component.vm.loading).toBe(false);
         });
 
-        it('OK', () => {
+        it('KO', () => {
             tournamentService.getAllOfAllStates = jasmine
                 .createSpy()
                 .and.returnValue(throwError({ error: 'Error' }));
@@ -83,5 +83,20 @@ describe('TournamentsPage', () => {
         tournament._id = '1';
         component.goTo(tournament);
         expect(navCtrl.navigateForward).toHaveBeenCalled();
+    });
+
+    it('segmentChanged', () => {
+        component.vm.header.segments = {
+            items: [],
+            selected: 0,
+        };
+        component.segmentChanged({ detail: { value: 1 } });
+        expect(component.vm.header.segments.selected).toBe(1);
+    });
+
+    it('doRefresh', () => {
+        spyOn(component, 'getItems');
+        component.doRefresh({});
+        expect(component.getItems).toHaveBeenCalled();
     });
 });
