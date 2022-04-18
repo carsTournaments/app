@@ -44,7 +44,7 @@ export class TournamentPage implements OnInit {
     }
 
     getOne(): void {
-        this.vm.loading = true;
+        this.vm.loading.getOne = true;
         this.tournamentService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.tournament = data;
@@ -61,25 +61,30 @@ export class TournamentPage implements OnInit {
 
                 this.getWinners();
 
-                this.vm.loading = false;
+                this.vm.loading.getOne = false;
+                this.vm.error.getOne = false;
             },
-            error: (err) => {
-                this.vm.loading = false;
-                this.vm.error = true;
+            error: () => {
+                this.vm.loading.getOne = false;
+                this.vm.error.getOne = true;
             },
         });
     }
 
     getInscriptionsOfTournament() {
+        this.vm.loading.getInscriptionsOfTournament = true;
         this.inscriptionService
             .getAllOfTournament({ id: this.vm.id })
             .subscribe({
                 next: (data) => {
                     this.vm.inscriptions = data;
                     this.checkButtonInscription();
+                    this.vm.loading.getInscriptionsOfTournament = false;
+                    this.vm.error.getInscriptionsOfTournament = false;
                 },
-                error: (err) => {
-                    console.error(err);
+                error: () => {
+                    this.vm.loading.getInscriptionsOfTournament = false;
+                    this.vm.error.getInscriptionsOfTournament = true;
                 },
             });
     }
@@ -97,6 +102,7 @@ export class TournamentPage implements OnInit {
     }
 
     async getCarsUsersForInscription() {
+        this.vm.loading.getCarsUsersForInscription = true;
         this.vm.inscriptionsBody.tournamentId = this.vm.id;
         this.vm.inscriptionsBody.userId = this.vm.user._id;
         this.inscriptionService
@@ -113,9 +119,12 @@ export class TournamentPage implements OnInit {
                     } else {
                         this.vm.buttonInscription = true;
                     }
+                    this.vm.loading.getCarsUsersForInscription = false;
+                    this.vm.error.getCarsUsersForInscription = true;
                 },
-                error: (err) => {
-                    console.error(err);
+                error: () => {
+                    this.vm.loading.getCarsUsersForInscription = false;
+                    this.vm.error.getCarsUsersForInscription = true;
                 },
             });
     }
@@ -139,14 +148,18 @@ export class TournamentPage implements OnInit {
 
     getWinners() {
         if (this.vm.tournament.status === 'Completed') {
+            this.vm.loading.getWinners = true;
             this.winnerService
                 .getForTournamentComplete({ id: this.vm.id })
                 .subscribe({
                     next: (data) => {
                         this.vm.winners = data;
+                        this.vm.loading.getWinners = false;
+                        this.vm.error.getWinners = false;
                     },
                     error: (err) => {
-                        console.error(err);
+                        this.vm.loading.getWinners = false;
+                        this.vm.error.getWinners = true;
                     },
                 });
         }

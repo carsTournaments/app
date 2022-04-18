@@ -1,3 +1,4 @@
+import { Inscription } from './../../models/inscription.model';
 import { Tournament, User } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
@@ -18,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TournamentPage } from './tournament.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 
 const tournament = new Tournament({
     _id: '123',
@@ -37,12 +39,26 @@ const user = new User({
     role: 'USER',
 });
 
+const inscription = new Inscription({
+    _id: '123',
+    car: '1',
+    tournament: '2',
+});
+
+const responseGetMyCarsForInscription: InscriptionGetMyCarsUserForInscriptionResponse =
+    {
+        inscribed: [],
+        availables: [],
+        notAvailables: [],
+    };
+
 describe('TournamentPage', () => {
     let component: TournamentPage;
     let fixture: ComponentFixture<TournamentPage>;
     const authService = jasmine.createSpyObj('AuthService', ['getUser']);
     const inscriptionService = jasmine.createSpyObj('InscriptionService', [
         'getAllOfTournament',
+        'getMyCarsForInscription',
     ]);
     const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
     const tournamentService = jasmine.createSpyObj('TournamentService', [
@@ -52,7 +68,10 @@ describe('TournamentPage', () => {
     authService.getUser = jasmine.createSpy().and.returnValue(user);
     inscriptionService.getAllOfTournament = jasmine
         .createSpy()
-        .and.returnValue(of([]));
+        .and.returnValue(of([inscription]));
+    inscriptionService.getMyCarsForInscription = jasmine
+        .createSpy()
+        .and.returnValue(of(responseGetMyCarsForInscription));
     tournamentService.getOne = jasmine
         .createSpy()
         .and.returnValue(of(tournament));
@@ -70,7 +89,6 @@ describe('TournamentPage', () => {
                 { provide: AuthService, useValue: authService },
                 { provide: TournamentService, useValue: tournamentService },
                 { provide: InscriptionService, useValue: inscriptionService },
-                InscriptionService,
                 ImagePipe,
                 {
                     provide: ActivatedRoute,
@@ -114,7 +132,7 @@ describe('TournamentPage', () => {
                 .and.returnValue(of(tournament));
             component.getOne();
             expect(component.vm.tournament._id).toBe('123');
-            expect(component.vm.loading).toBe(false);
+            expect(component.vm.loading.getOne).toBe(false);
         });
 
         it('OK -> col 4', () => {
@@ -124,7 +142,7 @@ describe('TournamentPage', () => {
                 .and.returnValue(of(tournament));
             component.getOne();
             expect(component.vm.tournament._id).toBe('123');
-            expect(component.vm.loading).toBe(false);
+            expect(component.vm.loading.getOne).toBe(false);
         });
 
         it('KO', () => {
@@ -132,8 +150,8 @@ describe('TournamentPage', () => {
                 .createSpy()
                 .and.returnValue(throwError({ error: 400 }));
             component.getOne();
-            expect(component.vm.loading).toBe(false);
-            expect(component.vm.error).toBe(true);
+            expect(component.vm.loading.getOne).toBe(false);
+            expect(component.vm.error.getOne).toBe(true);
         });
     });
 
@@ -142,11 +160,19 @@ describe('TournamentPage', () => {
             component.vm.id = '123';
             inscriptionService.getAllOfTournament = jasmine
                 .createSpy()
-                .and.returnValue(of([]));
+                .and.returnValue(of([inscription]));
+
             spyOn(component, 'getCarsUsersForInscription');
             spyOn(component, 'checkButtonInscription');
             component.getInscriptionsOfTournament();
-            expect(component.vm.inscriptions).toEqual([]);
+            expect(component.vm.inscriptions).toEqual([inscription]);
+        });
+        it('KO', () => {
+            spyOn(component, 'ngOnInit');
+            tournamentService.getAllOfTournament = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ error: 400 }));
+            component.getInscriptionsOfTournament();
         });
     });
 

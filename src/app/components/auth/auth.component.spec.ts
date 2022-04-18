@@ -12,6 +12,7 @@ import { AlertService, AuthService } from 'src/app/services';
 import { ComponentsModule } from '../components.module';
 import { AuthComponent } from './auth.component';
 import { of, throwError } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AuthComponent', () => {
     let component: AuthComponent;
@@ -35,6 +36,7 @@ describe('AuthComponent', () => {
                 { provide: AuthService, useValue: authService },
                 { provide: AlertService, useValue: alertService },
             ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
         const testbed = getTestBed();
