@@ -25,4 +25,12 @@ export class CarsViewModel {
     cars: Car[] = [];
     brands: Brand[] = [];
     filter = false;
+    loading = {
+        getCars: true,
+        getBrands: true,
+    };
+    error = {
+        getCars: false,
+        getBrands: false,
+    };
 }

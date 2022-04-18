@@ -1,3 +1,7 @@
-<div class="spinner-container" *ngIf="spinnerActive">
+<div
+    class="spinner-container animate__animated animate__fadeIn animate__faster"
+    *ngIf="loading !== null && loading"
+>
     <ion-spinner color="primary" name="crescent"></ion-spinner>
+    <span class="logo-spinner">CS</span>
 </div>

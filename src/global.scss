@@ -161,3 +161,36 @@ hr {
         backdrop-filter: blur(12px);
     }
 }
+
+.alert-custom {
+    --background: var(--ion-color-primary);
+    --border-radius: 10px;
+
+    .alert-wrapper {
+        --border-color: #000;
+    }
+
+    .alert-title,
+    .alert-message,
+    .alert-button {
+        color: #fff;
+    }
+
+    .alert-message {
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+    }
+
+    .alert-button-group {
+        padding: 1rem;
+    }
+
+    .alert-button {
+        background: #000;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 10px;
+        margin: -0.5rem;
+    }
+}

@@ -22,6 +22,31 @@ export class AlertService {
         await alert.present();
     }
 
+    async presentAlertWithInput(
+        header: string,
+        message: string,
+        cssClass = 'alert-custom',
+        backdropDismiss = false
+    ): Promise<HTMLIonAlertElement> {
+        const alert = await this.alertCtrl.create({
+            header,
+            message,
+            cssClass,
+            backdropDismiss,
+            mode: 'ios',
+            inputs: [
+                {
+                    name: 'input',
+                    type: 'text',
+                    placeholder: 'Introduce nuevo nombre',
+                },
+            ],
+            buttons: ['Cancelar', 'Aceptar'],
+        });
+        await alert.present();
+        return alert;
+    }
+
     async presentAlertWithButtons(
         header: string,
         message: string,

@@ -32,12 +32,18 @@ export class GarageOnePage implements OnInit {
     }
 
     getOne() {
+        this.vm.loading = true;
         this.carService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.car = data;
                 this.vm.brandIdSelected = this.vm.car.brand._id;
+                this.vm.loading = false;
+                this.vm.error = false;
             },
-            error: (err) => console.error(err),
+            error: (err) => {
+                this.vm.loading = false;
+                this.vm.error = false;
+            },
         });
     }
 

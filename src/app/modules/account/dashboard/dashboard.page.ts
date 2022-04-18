@@ -57,10 +57,9 @@ export class DashboardPage implements OnInit {
 
     onClickOption(item: OptionItemI) {
         if (item.value) {
-            if (
-                item.value === 'changeName' ||
-                item.value === 'changePassword'
-            ) {
+            if (item.value === 'changeName') {
+                this.changeName();
+            } else if (item.value === 'changePassword') {
                 this.alertService.presentAlert(
                     '¡Vaya!',
                     'Esta función aún no está disponible.'
@@ -75,5 +74,40 @@ export class DashboardPage implements OnInit {
 
     onLogged() {
         this.isAuthenticated();
+    }
+
+    async changeName() {
+        const alert = await this.alertService.presentAlertWithInput(
+            'Cambiar nombre',
+            'Introduce nuevo nombre',
+            'alert-custom',
+            true
+        );
+
+        alert.onDidDismiss().then((data: any) => {
+            if (data.data.values.input) {
+                const inputData = data.data.values.input;
+                console.log(inputData);
+                this.vm.user.name = inputData;
+                this.updateUser();
+            }
+        });
+    }
+
+    updateUser() {
+        this.userService.update(this.vm.user).subscribe({
+            next: () => {
+                this.alertService.presentAlert(
+                    '¡Listo!',
+                    'Nombre cambiado correctamente.'
+                );
+            },
+            error: (err) => {
+                this.alertService.presentAlert(
+                    '¡Vaya!',
+                    'No se ha podido cambiar el nombre.'
+                );
+            },
+        });
     }
 }

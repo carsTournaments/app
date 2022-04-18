@@ -21,4 +21,6 @@ export class GarageOneViewModel {
     };
     brands: Brand[] = [];
     brandIdSelected = '';
+    loading = true;
+    error = false;
 }

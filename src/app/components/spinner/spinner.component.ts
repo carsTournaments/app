@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SpinnerHandlerService } from 'src/app/services';
 
 @Component({
@@ -7,13 +7,5 @@ import { SpinnerHandlerService } from 'src/app/services';
     styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent {
-    spinnerActive = true;
-
-    constructor(public spinnerHandler: SpinnerHandlerService) {
-        this.spinnerHandler.showSpinner.subscribe(this.showSpinner.bind(this));
-    }
-
-    showSpinner = (state: boolean): void => {
-        this.spinnerActive = state;
-    };
+    @Input() loading: boolean;
 }

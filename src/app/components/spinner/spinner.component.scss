@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
     width: 100%;
     position: absolute;
     top: 0;
@@ -16,11 +15,15 @@
 
 ion-spinner {
     z-index: 1001;
-    zoom: 3;
+    zoom: 3.5;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #000;
+    border-radius: 100%;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 ion-content {
@@ -29,4 +32,11 @@ ion-content {
 
 ion-tabs {
     background: rgba(0, 0, 0, 0.5);
+}
+
+.logo-spinner {
+    position: absolute;
+    z-index: 1002;
+    color: #fff;
+    font-size: 2rem;
 }

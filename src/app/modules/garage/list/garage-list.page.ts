@@ -35,7 +35,11 @@ export class GarageListPage implements OnInit {
         this.vm.user = await this.authService.getUser();
         this.vm.bodyCars.id = this.vm.user._id;
         this.carService.getAllOfDriver(this.vm.bodyCars).subscribe({
-            next: (response) => (this.vm.cars = response),
+            next: (response) => {
+                this.vm.cars = response;
+                this.vm.loading = false;
+                this.vm.error = false;
+            },
             error: () => {
                 this.vm.loading = false;
                 this.vm.error = true;

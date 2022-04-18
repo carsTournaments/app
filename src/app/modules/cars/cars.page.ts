@@ -24,9 +24,13 @@ export class CarsPage implements OnInit {
     }
 
     getCars(event?: any) {
+        this.vm.loading.getCars = true;
         this.carService.getAll(this.vm.carsBody).subscribe({
             next: (res) => this.getCarsOnSuccess(res, event),
-            error: (err) => console.error(err),
+            error: () => {
+                this.vm.loading.getCars = false;
+                this.vm.error.getCars = true;
+            },
         });
     }
 
@@ -41,12 +45,18 @@ export class CarsPage implements OnInit {
         } else {
             this.vm.cars = res.items;
         }
+        this.vm.loading.getCars = false;
+        this.vm.error.getCars = false;
     }
 
     getBrands(event?: any) {
+        this.vm.loading.getBrands = true;
         this.brandService.getAllBrandsAndCars(this.vm.brandsBody).subscribe({
             next: (res) => this.getBrandsOnSuccess(res, event),
-            error: (err) => console.error(err),
+            error: () => {
+                this.vm.loading.getBrands = false;
+                this.vm.error.getBrands = true;
+            },
         });
     }
 
@@ -61,6 +71,8 @@ export class CarsPage implements OnInit {
         } else {
             this.vm.brands = res.items;
         }
+        this.vm.loading.getBrands = false;
+        this.vm.error.getBrands = false;
     }
 
     loadMoreData(event: any, type: string) {

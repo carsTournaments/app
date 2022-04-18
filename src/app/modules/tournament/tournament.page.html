@@ -4,6 +4,7 @@
 ></custom-header>
 
 <ion-content [fullscreen]="true" *ngIf="vm.tournament" [scrollEvents]="true">
+    <spinner [loading]="vm.loading.getOne"></spinner>
     <ion-row style="padding-top: 0">
         <ion-col
             style="padding-top: 0; margin-top: -10px"
