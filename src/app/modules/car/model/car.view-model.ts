@@ -14,4 +14,5 @@ export class CarViewModel {
     image: string;
     loading = true;
     error = false;
+    liked = false;
 }

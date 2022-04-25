@@ -5,3 +5,8 @@ export interface CarGetAllDto {
     order: string[];
     brand?: string;
 }
+
+export interface CarGetOneDto {
+    id: string;
+    site: string;
+}

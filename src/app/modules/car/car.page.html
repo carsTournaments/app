@@ -6,13 +6,8 @@
 >
     <spinner [loading]="vm.loading"></spinner>
     <ion-row style="padding-top: 0" *ngIf="vm.car">
-        <ion-col
-            style="padding-top: 0; margin-top: -10px"
-            size="12"
-            sizeLg="8"
-            offsetLg="2"
-        >
-            <ion-card mode="ios" (click)="openImage(vm.image)">
+        <ion-col size="12" sizeLg="8" offsetLg="2">
+            <ion-card mode="ios" (click)="openImage(vm.image)" button>
                 <div
                     *ngIf="vm.image"
                     class="div-image-one"
@@ -61,6 +56,19 @@
                             <p>{{ vm.car.stock ? 'Si' : 'No' }}</p>
                         </ion-col>
                     </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card mode="ios" button (click)="like()" [disabled]="vm.liked">
+                <ion-card-content class="like">
+                    <ion-icon
+                        [name]="vm.liked ? 'heart': 'heart-outline'"
+                    ></ion-icon>
+                    <ion-label>Me gusta</ion-label>
+                    <small
+                        >Ayuda a {{ vm.car.driver.name }} a tener mas
+                        visibilidad</small
+                    >
                 </ion-card-content>
             </ion-card>
         </ion-col>
