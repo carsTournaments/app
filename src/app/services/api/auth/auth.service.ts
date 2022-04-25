@@ -25,7 +25,7 @@ export class AuthService {
 
     logout(): void {
         localStorage.clear();
-        this.storageService.clear();
+        this.storageService.remove('user');
     }
 
     register(data: AuthRegisterDto): Observable<LoginResponseI> {
