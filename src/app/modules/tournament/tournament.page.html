@@ -6,12 +6,7 @@
 <ion-content [fullscreen]="true" [scrollEvents]="true">
     <spinner [loading]="vm.loading.getOne"></spinner>
     <ion-row style="padding-top: 0" *ngIf="vm.tournament">
-        <ion-col
-            style="padding-top: 0; margin-top: -10px"
-            size="12"
-            sizeLg="8"
-            offsetLg="2"
-        >
+        <ion-col size="12" sizeLg="8" offsetLg="2">
             <div
                 *ngIf="vm.header.segments.selected === 0"
                 class="animate__animated animate__fadeIn animate__faster"
@@ -71,7 +66,7 @@
             <div
                 *ngIf="vm.header.segments.selected === 1"
                 class="animate__animated animate__fadeIn animate__faster"
-                style="padding-top: 0.75rem"
+                style="margin-top: -0.25rem"
             >
                 <car-item
                     *ngFor="let inscription of vm.inscriptions"
