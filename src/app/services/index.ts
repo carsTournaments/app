@@ -4,6 +4,7 @@ export { BrandService } from './api/brand/brand.service';
 export { CarService } from './api/car/car.service';
 export { ImageService } from './api/image/image.service';
 export { InscriptionService } from './api/inscription/inscription.service';
+export { LikeService } from './api/like/like.service';
 export { PairingService } from './api/pairing/pairing.service';
 export { RoundService } from './api/round/round.service';
 export { TournamentService } from './api/tournament/tournament.service';
