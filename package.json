@@ -1,6 +1,6 @@
 {
     "name": "cars-tournaments-app",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "author": "JoseXS",
     "scripts": {
         "ng": "ng",
