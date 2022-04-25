@@ -48,9 +48,11 @@ export class InscriptionsPage implements OnInit {
         const items = [];
         if (this.vm.inscriptions.todo.length > 0) {
             items.push('Proximos');
-        } else if (this.vm.inscriptions.inProgress.length > 0) {
+        }
+        if (this.vm.inscriptions.inProgress.length > 0) {
             items.push('En curso');
-        } else if (this.vm.inscriptions.completed.length > 0) {
+        }
+        if (this.vm.inscriptions.completed.length > 0) {
             items.push('Finalizados');
         }
         if (items.length > 0) {
@@ -59,11 +61,13 @@ export class InscriptionsPage implements OnInit {
                 selected: 0,
             };
         }
+        console.log(this.vm.header.segments);
     }
 
-    // segmentChanged(event: any) {
-    //     this.vm.header.segments.selected = event.detail.value;
-    // }
+    segmentChanged(ev: any) {
+        const segment = Number(ev.detail.value);
+        this.vm.header.segments.selected = Number(segment);
+    }
 
     goToTournament(inscription: Inscription) {
         this.navCtrl.navigateForward(

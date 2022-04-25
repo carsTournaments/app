@@ -4,6 +4,10 @@ import { Car, Tournament, User } from 'src/app/models';
 export class InscriptionsViewModel {
     header = new Header({
         title: 'Inscripciones',
+        segments: {
+            items: [''],
+            selected: 0,
+        },
         backButton: {
             state: true,
             route: '/tab/account',

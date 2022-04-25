@@ -1,23 +1,19 @@
-<div
-    (click)="openImage()"
-    class="dashboard-image pointer"
-    style="background: url({{ image.url }})"
-></div>
-
-<h1 class="dashboard-title">{{ user.name | uppercase }}</h1>
+<h1 class="dashboard-title">Hola, {{ user.name | uppercase }}!</h1>
 
 <ion-row>
-    <ion-col>
+    <ion-col class="ion-activatable" (click)="goTo('garage')">
         <p class="dashboard-resume-title">Coches</p>
         <p class="dashboard-resume-value">
             {{ resume.cars }}
         </p>
+        <ion-ripple-effect></ion-ripple-effect>
     </ion-col>
-    <ion-col>
+    <ion-col class="ion-activatable" (click)="goTo('inscriptions')">
         <p class="dashboard-resume-title">Inscripciones</p>
         <p class="dashboard-resume-value">
             {{ resume.inscriptions }}
         </p>
+        <ion-ripple-effect></ion-ripple-effect>
     </ion-col>
     <ion-col>
         <p class="dashboard-resume-title">Ganados</p>

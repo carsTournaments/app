@@ -28,6 +28,7 @@ export class GarageOnePage implements OnInit {
             this.vm.edit = true;
         } else {
             this.vm.edit = false;
+            this.vm.loading = false;
         }
     }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
 import { AuthService, AlertService, UserService } from 'src/app/services';
@@ -9,7 +9,7 @@ import { DashboardViewModel } from './model/dashboard.view-model';
     templateUrl: 'dashboard.page.html',
     styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage {
     vm = new DashboardViewModel();
     logged = false;
 
@@ -20,7 +20,7 @@ export class DashboardPage implements OnInit {
         private alertService: AlertService
     ) {}
 
-    async ngOnInit() {
+    async ionViewWillEnter() {
         await this.isAuthenticated();
     }
 

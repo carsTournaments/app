@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class TabsPage {
     tabs = [
         {
-            name: 'Torneo',
+            name: 'Torneos',
             route: 'tournaments',
             icon: 'list-outline',
         },

@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
 import { User, Image } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
@@ -15,7 +16,8 @@ export class DashboardResumeComponent implements OnInit {
     image: Image;
     constructor(
         private imagePipe: ImagePipe,
-        private imageService: ImageService
+        private imageService: ImageService,
+        private navCtrl: NavController
     ) {}
 
     ngOnInit() {
@@ -34,5 +36,10 @@ export class DashboardResumeComponent implements OnInit {
 
     openImage() {
         this.imageService.openImage(this.image.url);
+    }
+
+    goTo(type: string) {
+        let route = type === 'garage' ? '/garage' : '/inscriptions';
+        this.navCtrl.navigateForward([route]);
     }
 }

@@ -1,4 +1,7 @@
-<custom-header [options]="vm.header"></custom-header>
+<custom-header
+    [options]="vm.header"
+    (segmentChanged)="segmentChanged($event)"
+></custom-header>
 
 <ion-content [fullscreen]="true">
     <spinner [loading]="vm.loading"></spinner>
@@ -45,6 +48,11 @@
                     </ion-card>
                 </div>
             </div>
+
+            <div
+                *ngIf="vm.header.segments && vm.header?.segments?.selected === 1"
+                class="animate__animated animate__fadeIn animate__faster"
+            ></div>
         </ion-col>
     </ion-row>
 </ion-content>
