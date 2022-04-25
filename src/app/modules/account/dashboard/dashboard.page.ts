@@ -87,7 +87,6 @@ export class DashboardPage {
         alert.onDidDismiss().then((data: any) => {
             if (data.data.values.input) {
                 const inputData = data.data.values.input;
-                console.log(inputData);
                 this.vm.user.name = inputData;
                 this.updateUser();
             }

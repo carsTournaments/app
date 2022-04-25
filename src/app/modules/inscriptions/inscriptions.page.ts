@@ -61,7 +61,6 @@ export class InscriptionsPage implements OnInit {
                 selected: 0,
             };
         }
-        console.log(this.vm.header.segments);
     }
 
     segmentChanged(ev: any) {

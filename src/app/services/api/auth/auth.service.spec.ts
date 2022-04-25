@@ -24,6 +24,7 @@ describe('AuthService', () => {
         'get',
         'clear',
         'set',
+        'remove',
     ]);
 
     beforeEach(() => {

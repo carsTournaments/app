@@ -39,7 +39,7 @@ export class DashboardResumeComponent implements OnInit {
     }
 
     goTo(type: string) {
-        let route = type === 'garage' ? '/garage' : '/inscriptions';
+        const route = type === 'garage' ? '/garage' : '/inscriptions';
         this.navCtrl.navigateForward([route]);
     }
 }
