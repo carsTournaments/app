@@ -64,7 +64,9 @@ export class GarageListPage implements OnInit {
 
     onDidDismissPopover(data: OverlayEventDetail<any>, car) {
         if (data.data) {
-            if (data.data === 'edit') {
+            if (data.data === 'viewProfile') {
+                this.navCtrl.navigateForward(`car/${car._id}`);
+            } else if (data.data === 'edit') {
                 this.editCar(car);
             } else if (data.data === 'image') {
                 this.addImage(car);

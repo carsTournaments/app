@@ -2,6 +2,14 @@
     <ion-list>
         <ion-item
             color="primary"
+            (click)="onClick('viewProfile')"
+            [button]="true"
+            [detail]="false"
+        >
+            <ion-label>Ver perfil</ion-label>
+        </ion-item>
+        <ion-item
+            color="primary"
             (click)="onClick('edit')"
             [button]="true"
             [detail]="false"
