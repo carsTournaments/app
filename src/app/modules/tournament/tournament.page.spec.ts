@@ -20,6 +20,7 @@ import { TournamentPage } from './tournament.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const tournament = new Tournament({
     _id: '123',
@@ -84,6 +85,7 @@ describe('TournamentPage', () => {
                 IonicModule.forRoot(),
                 RouterTestingModule.withRoutes([]),
                 HttpClientTestingModule,
+                ComponentsModule,
             ],
             providers: [
                 { provide: AuthService, useValue: authService },
@@ -166,13 +168,25 @@ describe('TournamentPage', () => {
             spyOn(component, 'checkButtonInscription');
             component.getInscriptionsOfTournament();
             expect(component.vm.inscriptions).toEqual([inscription]);
+            expect(component.vm.error.getInscriptionsOfTournament).toEqual(
+                false
+            );
+            expect(component.vm.loading.getInscriptionsOfTournament).toEqual(
+                false
+            );
         });
         it('KO', () => {
             spyOn(component, 'ngOnInit');
-            tournamentService.getAllOfTournament = jasmine
+            inscriptionService.getAllOfTournament = jasmine
                 .createSpy()
                 .and.returnValue(throwError({ error: 400 }));
             component.getInscriptionsOfTournament();
+            expect(component.vm.error.getInscriptionsOfTournament).toEqual(
+                true
+            );
+            expect(component.vm.loading.getInscriptionsOfTournament).toEqual(
+                false
+            );
         });
     });
 

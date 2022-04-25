@@ -105,8 +105,9 @@ export class TournamentPage implements OnInit {
                 next: (data) => {
                     this.vm.myCars = data;
                     if (
-                        this.vm.tournament.inscriptions.length ===
-                            this.vm.tournament.maxParticipants ||
+                        (this.vm.tournament?.inscriptions &&
+                            this.vm.tournament?.inscriptions.length ===
+                                this.vm.tournament.maxParticipants) ||
                         data.availables.length === 0
                     ) {
                         this.vm.buttonInscription = false;

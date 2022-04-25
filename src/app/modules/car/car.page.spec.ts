@@ -14,6 +14,7 @@ import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const car = new Car({
     _id: '123',
@@ -49,6 +50,7 @@ describe('CarPage', () => {
                 IonicModule.forRoot(),
                 RouterTestingModule,
                 HttpClientTestingModule,
+                ComponentsModule,
             ],
             providers: [
                 { provide: CarService, useValue: carService },

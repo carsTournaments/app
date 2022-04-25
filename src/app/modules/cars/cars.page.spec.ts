@@ -7,6 +7,7 @@ import { CarService, BrandService } from 'src/app/services';
 import { Brand, Car } from 'src/app/models';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 describe('CarsPage', () => {
     let component: CarsPage;
@@ -26,7 +27,11 @@ describe('CarsPage', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [CarsPage],
-            imports: [RouterTestingModule, HttpClientTestingModule],
+            imports: [
+                RouterTestingModule,
+                HttpClientTestingModule,
+                ComponentsModule,
+            ],
             providers: [
                 { provide: CarService, useValue: carService },
                 { provide: BrandService, useValue: brandService },

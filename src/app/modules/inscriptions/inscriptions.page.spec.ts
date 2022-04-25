@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionsPage } from './inscriptions.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const car = new Car({
     _id: '123',
@@ -102,6 +103,7 @@ describe('InscriptionsPage', () => {
                 IonicModule.forRoot(),
                 RouterTestingModule,
                 HttpClientTestingModule,
+                ComponentsModule,
             ],
             providers: [
                 { provide: InscriptionService, useValue: inscriptionService },

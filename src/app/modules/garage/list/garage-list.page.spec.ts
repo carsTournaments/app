@@ -17,6 +17,7 @@ import { of, throwError } from 'rxjs';
 import { GarageListPage } from './garage-list.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const user = new User({
     _id: '123',
@@ -68,7 +69,11 @@ describe('GarageListComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [GarageListPage],
-            imports: [RouterTestingModule, HttpClientTestingModule],
+            imports: [
+                RouterTestingModule,
+                HttpClientTestingModule,
+                ComponentsModule,
+            ],
             providers: [
                 { provide: AuthService, useValue: authService },
                 { provide: AlertService, useValue: alertService },
