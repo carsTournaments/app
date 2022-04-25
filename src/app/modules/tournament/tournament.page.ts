@@ -52,15 +52,9 @@ export class TournamentPage implements OnInit {
                 if (data.image) {
                     this.vm.image = this.imagePipe.transform(data.image.url);
                 }
-                if (this.vm.tournament.status === 'Todo') {
-                    this.vm.cols = '4';
-                } else {
-                    this.vm.cols = '6';
-                }
+                this.vm.cols = this.vm.tournament.status === 'Todo' ? '4' : '6';
                 this.setSegments();
-
                 this.getWinners();
-
                 this.vm.loading.getOne = false;
                 this.vm.error.getOne = false;
             },

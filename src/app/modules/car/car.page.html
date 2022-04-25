@@ -2,11 +2,10 @@
 
 <ion-content
     [fullscreen]="true"
-    *ngIf="vm.car"
     class="animate__animated animate__fadeIn animate__faster"
 >
     <spinner [loading]="vm.loading"></spinner>
-    <ion-row style="padding-top: 0">
+    <ion-row style="padding-top: 0" *ngIf="vm.car">
         <ion-col
             style="padding-top: 0; margin-top: -10px"
             size="12"

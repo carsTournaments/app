@@ -3,9 +3,9 @@
     (segmentChanged)="segmentChanged($event)"
 ></custom-header>
 
-<ion-content [fullscreen]="true" *ngIf="vm.tournament" [scrollEvents]="true">
+<ion-content [fullscreen]="true" [scrollEvents]="true">
     <spinner [loading]="vm.loading.getOne"></spinner>
-    <ion-row style="padding-top: 0">
+    <ion-row style="padding-top: 0" *ngIf="vm.tournament">
         <ion-col
             style="padding-top: 0; margin-top: -10px"
             size="12"
