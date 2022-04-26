@@ -25,27 +25,50 @@
                 class="animate__animated animate__fadeIn animate__faster"
             >
                 <div *ngFor="let inscription of vm.inscriptions?.todo">
-                    <ion-card
-                        mode="ios"
-                        class="ion-activatable"
-                        (click)="goToTournament(inscription)"
-                    >
-                        <div
-                            class="image-car1"
-                            style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.tournament?.image?.url|image}})"
-                        ></div>
-                        <div
-                            class="image-car2"
-                            style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.car?.image?.url|image}})"
-                        ></div>
-                        <div class="carTitle1">
-                            <p>
-                                {{ inscription.car?.brand.name | truncateText:
-                                15 }}
-                            </p>
-                            <span>{{ inscription.car.model }}</span>
+                    <!-- <ion-card mode="ios" class="ion-activatable" (click)="goToTournament(inscription)">
+                        <div class="tournament-image"
+                            style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.tournament?.image?.url|image}})">
                         </div>
-                    </ion-card>
+                        <div class="car-wrapper">
+                            <div class="car-image"
+                                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.car?.image?.url|image}})">
+                            </div>
+                            <div class="car-title">
+                                <p>
+                                    {{ inscription.car?.brand.name | truncateText:
+                                    15 }} {{ inscription.car.model }}
+                                </p>
+                                <span></span>
+                            </div>
+                        </div>
+                    </ion-card> -->
+                    <ion-accordion-group>
+                        <ion-accordion>
+                            <ion-item slot="header" lines="full">
+                                <ion-avatar slot="start">
+                                    <img
+                                        [src]="inscription.tournament?.image?.url|image"
+                                    />
+                                </ion-avatar>
+                                <ion-label
+                                    >{{ inscription.tournament.name
+                                    }}</ion-label
+                                >
+                            </ion-item>
+
+                            <ion-item slot="content" lines="none">
+                                <ion-avatar slot="start">
+                                    <img
+                                        [src]="inscription.tournament?.image?.url|image"
+                                    />
+                                </ion-avatar>
+                                <ion-label
+                                    >{{ inscription.car.brand.name }} {{
+                                    inscription.car.model }}</ion-label
+                                >
+                            </ion-item>
+                        </ion-accordion>
+                    </ion-accordion-group>
                 </div>
             </div>
 

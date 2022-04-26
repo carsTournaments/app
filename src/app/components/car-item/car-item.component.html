@@ -12,7 +12,9 @@
             url({{ image?.url }})
         "
     >
-        <div class="card-title-car">{{ car.brand.name }} {{ car.model }}</div>
+        <div class="card-title-car">
+            {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
+        </div>
         <div class="card-driver">
             <div class="card-driver-name">{{ car.driver?.name }}</div>
         </div>

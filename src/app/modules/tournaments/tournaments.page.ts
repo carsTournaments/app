@@ -1,5 +1,5 @@
 import { NavController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Tournament } from 'src/app/models';
 import { TournamentService } from 'src/app/services';
 import { TournamentsViewModel } from './model/tournaments.view-model';
@@ -9,7 +9,7 @@ import { TournamentsViewModel } from './model/tournaments.view-model';
     templateUrl: 'tournaments.page.html',
     styleUrls: ['tournaments.page.scss'],
 })
-export class TournamentsPage implements OnInit {
+export class TournamentsPage {
     vm = new TournamentsViewModel();
 
     constructor(
@@ -17,7 +17,7 @@ export class TournamentsPage implements OnInit {
         private navCtrl: NavController
     ) {}
 
-    async ngOnInit() {
+    async ionViewWillEnter() {
         this.getItems();
     }
 
@@ -25,10 +25,10 @@ export class TournamentsPage implements OnInit {
         this.tournamentService.getAllOfAllStates().subscribe({
             next: (res) => {
                 this.vm.tournaments = res;
-                this.vm.loading = false;
                 if (event) {
                     event.target.complete();
                 }
+                this.vm.loading = false;
             },
             error: () => {
                 this.vm.loading = false;

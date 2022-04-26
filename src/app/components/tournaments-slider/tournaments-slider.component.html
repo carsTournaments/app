@@ -1,5 +1,6 @@
-<ng-container *ngIf="tournaments.length > 0">
+<ng-container *ngIf="tournaments && tournaments.length > 0">
     <p class="title">{{ title }}</p>
+
     <ng-container *ngIf="tournaments.length === 1">
         <tournament-item
             (clickItem)="clickItem.emit(tournament)"

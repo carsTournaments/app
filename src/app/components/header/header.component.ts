@@ -21,17 +21,18 @@ export class HeaderComponent implements OnInit {
     }
 
     getHeightToolbar() {
-        if (
-            !this.options?.segments ||
-            this.options?.segments?.items.length === 0
-        ) {
-            this.height = 60;
-        } else {
-            this.height = 90;
-        }
-        if (this.platform.is('ios')) {
-            this.height += 50;
-        }
-        this.heightPx = this.height + 'px';
+        // if (
+        //     !this.options?.segments ||
+        //     this.options?.segments?.items.length === 0
+        // ) {
+        //     this.height = 60;
+        // } else {
+        //     this.height = 90;
+        // }
+        // if (this.platform.is('ios')) {
+        //     // this.height += 20;
+        // } else {
+        //     this.heightPx = this.height + 'px';
+        // }
     }
 }
