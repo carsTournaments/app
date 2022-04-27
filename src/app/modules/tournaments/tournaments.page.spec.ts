@@ -58,7 +58,7 @@ describe('TournamentsPage', () => {
 
     it('ngOnInit', () => {
         spyOn(component, 'getItems');
-        component.ngOnInit();
+        component.ionViewWillEnter();
         expect(component.getItems).toHaveBeenCalled();
     });
 

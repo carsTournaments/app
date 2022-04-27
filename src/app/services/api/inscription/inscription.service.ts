@@ -25,19 +25,19 @@ export class InscriptionService {
             .post<{
                 items: Inscription[];
                 paginator: PaginatorI;
-            }>(`${this.url}/all`, data)
+            }>(`${this.url}/getAll`, data)
             .pipe(take(1));
     }
 
     getAllOfTournament(data: IdDto): Observable<Inscription[]> {
         return this.httpClient
-            .post<Inscription[]>(`${this.url}/allOfTournament`, data)
+            .post<Inscription[]>(`${this.url}/getAllOfTournament`, data)
             .pipe(take(1));
     }
 
     getAllOfCar(data: IdDto): Observable<Inscription[]> {
         return this.httpClient
-            .post<Inscription[]>(`${this.url}/allOfCar`, data)
+            .post<Inscription[]>(`${this.url}/getAllOfCar`, data)
             .pipe(take(1));
     }
 
@@ -51,7 +51,7 @@ export class InscriptionService {
                 todo: { car: Car; tournament: Tournament }[];
                 inProgress: { car: Car; tournament: Tournament }[];
                 completed: { car: Car; tournament: Tournament }[];
-            }>(`${this.url}/allForDriver`, data)
+            }>(`${this.url}/getAllForDriver`, data)
             .pipe(take(1));
     }
 
@@ -68,7 +68,7 @@ export class InscriptionService {
 
     getOne(id: string): Observable<Inscription> {
         return this.httpClient
-            .post<Inscription>(`${this.url}/one`, { id, site: 'app' })
+            .post<Inscription>(`${this.url}/getOne`, { id, site: 'app' })
             .pipe(take(1));
     }
 

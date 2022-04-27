@@ -59,7 +59,7 @@ describe('InscriptionService', () => {
             expect(JSON.stringify(response)).toEqual(JSON.stringify(res));
         });
         const req = httpTestingController.expectOne(
-            `${environment.urlApi}/inscriptions/all`
+            `${environment.urlApi}/inscriptions/getAll`
         );
         req.flush(res);
     });
@@ -70,7 +70,7 @@ describe('InscriptionService', () => {
             expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
         });
         const req = httpTestingController.expectOne(
-            `${environment.urlApi}/inscriptions/allOfTournament`
+            `${environment.urlApi}/inscriptions/getAllOfTournament`
         );
         req.flush([]);
     });
@@ -81,7 +81,7 @@ describe('InscriptionService', () => {
             expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
         });
         const req = httpTestingController.expectOne(
-            `${environment.urlApi}/inscriptions/allOfCar`
+            `${environment.urlApi}/inscriptions/getAllOfCar`
         );
         req.flush([]);
     });
@@ -92,7 +92,7 @@ describe('InscriptionService', () => {
             expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
         });
         const req = httpTestingController.expectOne(
-            `${environment.urlApi}/inscriptions/allForDriver`
+            `${environment.urlApi}/inscriptions/getAllForDriver`
         );
         req.flush([]);
     });
@@ -118,7 +118,7 @@ describe('InscriptionService', () => {
             expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
         });
         const req = httpTestingController.expectOne(
-            `${environment.urlApi}/inscriptions/one`
+            `${environment.urlApi}/inscriptions/getOne`
         );
         req.flush(item);
     });
