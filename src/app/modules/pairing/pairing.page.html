@@ -32,7 +32,10 @@
                         <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                     </div>
 
-                    <div *ngIf="vm.voted" class="button-love1">
+                    <div
+                        *ngIf="vm.voted"
+                        class="button-love1 animate__animated animate__backInUp"
+                    >
                         <p class="label-percentage">
                             <span
                                 [countUp]="vm.votes.car1.percentage"
@@ -83,7 +86,10 @@
                         </ion-icon>
                         <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                     </div>
-                    <div *ngIf="vm.voted" class="button-love2">
+                    <div
+                        *ngIf="vm.voted"
+                        class="button-love2 animate__animated animate__backInUp"
+                    >
                         <p class="label-percentage">
                             <span
                                 [countUp]="vm.votes.car2.percentage"
