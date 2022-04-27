@@ -40,8 +40,10 @@ export class PairingPage implements OnInit {
         this.pairingService.getOne(this.vm.id).subscribe({
             next: async (item) => {
                 this.vm.pairing = item;
-                const height = this.platform.height() - 90;
-                this.vm.totalHeight = height;
+                const headers = document.getElementsByTagName('ion-header');
+                const headerHeight =
+                    headers[headers.length - 1].clientHeight + 20;
+                this.vm.totalHeight = this.platform.height() - headerHeight;
                 this.vm.header.backButton.route = `tournament/${this.vm.pairing.tournament._id}`;
                 await this.setPercentages();
                 this.setImageForBackground();

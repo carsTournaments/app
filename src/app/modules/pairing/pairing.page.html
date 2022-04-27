@@ -7,12 +7,7 @@
 >
     <ion-row style="padding-top: 0">
         <ion-col
-            style="
-                padding-top: 0;
-                padding-top: 0px;
-                padding-bottom: 0px;
-                margin-top: -10px;
-            "
+            style="padding-top: 0; padding-top: 0px; padding-bottom: 0px"
             size="12"
             sizeLg="8"
             offsetLg="2"
@@ -23,96 +18,114 @@
                 style="margin-bottom: 0"
                 class="animate__animated animate__fadeIn animate__faster"
             >
+                <div class="box-center">
+                    <div
+                        *ngIf="!vm.voted"
+                        class="button-love1 ion-activatable ripple-parent animate__animated animate__backInUp"
+                        (click)="vote('car1')"
+                    >
+                        <ion-icon
+                            name="heart"
+                            class="animate__animated animate__fadeIn animate__faster"
+                        >
+                        </ion-icon>
+                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    </div>
+
+                    <div *ngIf="vm.voted" class="button-love1">
+                        <p class="label-percentage">
+                            <span
+                                [countUp]="vm.votes.car1.percentage"
+                                [duration]="1500"
+                            ></span
+                            >%
+                        </p>
+                    </div>
+
+                    <div
+                        class="car-title1 ion-activatable ripple-parent animate__animated animate__backInDown"
+                        (click)="openModal(vm.pairing.car1)"
+                    >
+                        <p>
+                            {{ vm.pairing.car1.brand.name | uppercase }} {{
+                            vm.pairing.car1.model | truncateText: 15 | uppercase
+                            }}
+                        </p>
+                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    </div>
+
+                    <!--  VS -->
+                    <div class="animate__animated animate__backInLeft vs">
+                        <p>VS</p>
+                    </div>
+
+                    <div
+                        class="car-title2 ion-activatable ripple-parent animate__animated animate__backInUp"
+                        (click)="openModal(vm.pairing.car2)"
+                    >
+                        <p>
+                            {{ vm.pairing.car2.brand.name | uppercase }} {{
+                            vm.pairing.car2.model | truncateText: 15 | uppercase
+                            }}
+                        </p>
+                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    </div>
+
+                    <div
+                        *ngIf="!vm.voted"
+                        class="button-love2 ion-activatable ripple-parent animate__animated animate__backInUp"
+                        (click)="vote('car2')"
+                    >
+                        <ion-icon
+                            name="heart"
+                            class="animate__animated animate__fadeIn animate__faster"
+                        >
+                        </ion-icon>
+                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    </div>
+                    <div *ngIf="vm.voted" class="button-love2">
+                        <p class="label-percentage">
+                            <span
+                                [countUp]="vm.votes.car2.percentage"
+                                [duration]="1500"
+                            ></span
+                            >%
+                        </p>
+                    </div>
+                </div>
+
+                <!--  Car 1 -->
                 <div
                     class="image-car1"
                     style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
                     url({{vm.image1?.url}})"
-                    (click)="openImage(vm.image1?.url)"
                 ></div>
-                <div
-                    class="vs"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 31) + 'px'}"
-                >
-                    VS
-                </div>
+
+                <!--  Car 2 -->
                 <div
                     class="image-car2"
                     style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
                 url({{vm.image2?.url}})"
-                    (click)="openImage(vm.image2?.url)"
                 ></div>
 
-                <div
-                    class="car-title1 ion-activatable ripple-parent"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 110) + 'px'}"
-                    (click)="openModal(vm.pairing.car1)"
-                >
-                    {{ vm.pairing.car1.brand.name | uppercase }} {{
-                    vm.pairing.car1.model | truncateText: 15 | uppercase }}
-                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-                </div>
-                <div
-                    class="car-title2 ion-activatable ripple-parent"
-                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 110) + 'px'}"
-                    (click)="openModal(vm.pairing.car2)"
-                >
-                    {{ vm.pairing.car2.brand.name | uppercase }} {{
-                    vm.pairing.car2.model | truncateText: 15 | uppercase }}
-                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-                </div>
-
-                <div
-                    *ngIf="!vm.voted"
-                    class="button-love1 ion-activatable ripple-parent"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 200) + 'px'}"
-                    (click)="vote('car1')"
-                >
-                    <ion-icon
-                        name="heart"
-                        class="animate__animated animate__fadeIn animate__faster"
-                    >
+                <!-- <div *ngIf="!vm.voted" class="button-love1 ion-activatable ripple-parent"
+                    [ngStyle]="{'top': (vm.totalHeight / 2 - 200) + 'px'}" (click)="vote('car1')">
+                    <ion-icon name="heart" class="animate__animated animate__fadeIn animate__faster">
                     </ion-icon>
                     <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
-                <div
-                    *ngIf="vm.voted"
-                    class="button-love1"
-                    [ngStyle]="{'top': (vm.totalHeight / 2 - 200) + 'px'}"
-                >
-                    <p class="label-percentage">
-                        <span
-                            [countUp]="vm.votes.car1.percentage"
-                            [duration]="1500"
-                        ></span
-                        >%
-                    </p>
-                </div>
-                <div
-                    *ngIf="!vm.voted"
-                    class="button-love2 ion-activatable ripple-parent"
-                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}"
-                    (click)="vote('car2')"
-                >
-                    <ion-icon
-                        name="heart"
-                        class="animate__animated animate__fadeIn animate__faster"
-                    >
+               
+                <div *ngIf="!vm.voted" class="button-love2 ion-activatable ripple-parent"
+                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 210) + 'px'}" (click)="vote('car2')">
+                    <ion-icon name="heart" class="animate__animated animate__fadeIn animate__faster">
                     </ion-icon>
                     <ion-ripple-effect type="unbounded"></ion-ripple-effect>
                 </div>
-                <div
-                    *ngIf="vm.voted"
-                    class="button-love2"
-                    [ngStyle]="{'bottom': (vm.totalHeight / 2 - 200) + 'px'}"
-                >
+                <div *ngIf="vm.voted" class="button-love2" [ngStyle]="{'bottom': (vm.totalHeight / 2 - 200) + 'px'}">
                     <p class="label-percentage">
-                        <span
-                            [countUp]="vm.votes.car2.percentage"
-                            [duration]="1500"
-                        ></span
-                        >%
+                        <span [countUp]="vm.votes.car2.percentage" [duration]="1500"></span>%
                     </p>
-                </div>
+                </div> -->
             </ion-card>
         </ion-col>
     </ion-row>
