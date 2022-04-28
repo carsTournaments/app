@@ -30,8 +30,9 @@ export class CarPage implements OnInit {
         private alertService: AlertService
     ) {}
 
-    ngOnInit() {
+    async ngOnInit() {
         this.vm.id = this.route.snapshot.paramMap.get('id');
+        this.vm.user = await this.authService.getUser();
         this.getOne();
     }
 
@@ -48,6 +49,7 @@ export class CarPage implements OnInit {
                     this.vm.liked = true;
                 }
                 this.checkLikedStorage();
+                this.checkIsMyCar();
                 this.vm.loading = false;
             },
             error: () => {
@@ -57,17 +59,20 @@ export class CarPage implements OnInit {
         });
     }
 
+    checkIsMyCar() {
+        this.vm.isMyCar = this.vm.car.driver._id === this.vm.user._id;
+    }
+
     openImage(image: string) {
         this.imageService.openImage(image);
     }
 
     async like() {
-        const user = await this.authService.getUser();
         const like: Like = {
             car: this.vm.id,
         };
-        if (user) {
-            like.user = user._id;
+        if (this.vm.user) {
+            like.user = this.vm.user._id;
         }
         this.likeService.create(like).subscribe({
             next: async (response) => {

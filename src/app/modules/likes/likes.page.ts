@@ -16,24 +16,38 @@ export class LikesPage {
         private navCtrl: NavController
     ) {}
 
-    ionViewWillEnter() {
-        this.getLikes();
+    async ionViewWillEnter() {
+        this.vm.user = await this.authService.getUser();
+        this.getAllReceivedForUser();
+        this.getAllSentForUser();
     }
 
-    async getLikes() {
-        const user = await this.authService.getUser();
-        this.likesService.getAllReceivedForUser({ id: user._id }).subscribe({
-            next: (response) => {
-                console.log(response);
-                this.vm.likesReceived = response;
-                this.vm.loading = false;
-                this.vm.error = false;
-            },
-            error: (error) => {
-                this.vm.loading = false;
-                this.vm.error = true;
-            },
-        });
+    getAllReceivedForUser() {
+        this.likesService
+            .getAllReceivedForUser({ id: this.vm.user._id })
+            .subscribe({
+                next: (response) => {
+                    console.log(response);
+                    this.vm.likesReceived = response;
+                    this.vm.loading = false;
+                    this.vm.error = false;
+                },
+                error: () => {
+                    this.vm.loading = false;
+                    this.vm.error = true;
+                },
+            });
+    }
+
+    async getAllSentForUser() {
+        this.likesService
+            .getAllSentForUser({ id: this.vm.user._id })
+            .subscribe({
+                next: (response) => {
+                    this.vm.likesSent = response;
+                },
+                error: (error) => {},
+            });
     }
 
     onClickCar(car: Car) {

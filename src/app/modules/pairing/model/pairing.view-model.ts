@@ -1,6 +1,5 @@
-import { Image } from './../../../models/image.model';
 import { Header } from 'src/app/components/header/model/header.model';
-import { Pairing, Vote } from 'src/app/models';
+import { Image, Pairing, Vote } from 'src/app/models';
 
 export class PairingViewModel {
     id: string;
@@ -21,4 +20,6 @@ export class PairingViewModel {
     voteBody = new Vote();
     image1: Image;
     image2: Image;
+    loading = true;
+    error = false;
 }

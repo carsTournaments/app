@@ -36,6 +36,12 @@ export class LikeService {
             .pipe(take(1));
     }
 
+    getAllSentForUser(data: IdDto): Observable<Like[]> {
+        return this.httpClient
+            .post<Like[]>(`${this.url}/getAllSentForUser`, data)
+            .pipe(take(1));
+    }
+
     create(data: Like): Observable<Like> {
         return this.httpClient
             .post<Like>(`${this.url}/create`, data)

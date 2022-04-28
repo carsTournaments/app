@@ -1,4 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
+import { Like, User } from 'src/app/models';
 import { LikeGetAllReceivedForUserResponse } from 'src/app/services/api/like/like.response';
 
 export class LikesViewModel {
@@ -13,8 +14,9 @@ export class LikesViewModel {
             route: '/tab/account',
         },
     });
+    user: User;
     likesReceived: LikeGetAllReceivedForUserResponse[] = [];
-    likesSent: any[] = [];
+    likesSent: Like[] = [];
     loading = true;
     error = false;
 }

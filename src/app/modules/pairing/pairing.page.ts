@@ -62,8 +62,10 @@ export class PairingPage implements OnInit {
         } else {
             this.vm.voted = true;
         }
-        this.vm.voted =
-            this.vm.pairing.round.status === 'Completed' ? true : false;
+
+        if (this.vm.pairing.round.status === 'Completed') {
+            this.vm.voted = true;
+        }
     }
 
     async openModal(car: Car) {
@@ -122,10 +124,18 @@ export class PairingPage implements OnInit {
             cars.car1.percentage = 50;
             cars.car2.percentage = 50;
         } else {
-            cars.car1.percentage =
-                (cars.car1.votes * 100) / (cars.car1.votes + cars.car2.votes);
-            cars.car2.percentage =
-                (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes);
+            cars.car1.percentage = Number(
+                (
+                    (cars.car1.votes * 100) /
+                    (cars.car1.votes + cars.car2.votes)
+                ).toFixed(0)
+            );
+            cars.car2.percentage = Number(
+                (
+                    (cars.car2.votes * 100) /
+                    (cars.car1.votes + cars.car2.votes)
+                ).toFixed(0)
+            );
         }
 
         this.vm.pairing.car1.votes = cars.car1.votes;
