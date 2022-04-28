@@ -56,6 +56,10 @@
                             <p>{{ vm.car.stock ? 'Si' : 'No' }}</p>
                         </ion-col>
                     </ion-row>
+                    <hr />
+                    <car-total-winners
+                        [winners]="vm.car.winners"
+                    ></car-total-winners>
                 </ion-card-content>
             </ion-card>
 

@@ -16,6 +16,11 @@ export class Car {
     tournaments?: Tournament[];
     image?: any;
     liked?: boolean;
+    winners?: {
+        gold: number;
+        silver: number;
+        bronze: number;
+    };
     created?: string;
     updated?: string;
 
@@ -34,6 +39,7 @@ export class Car {
         this.tournaments = data?.tournaments;
         this.image = data?.image;
         this.liked = data?.liked;
+        this.winners = data?.winners;
         this.created = data?.created;
         this.updated = data?.updated;
     }
