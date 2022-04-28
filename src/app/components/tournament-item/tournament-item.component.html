@@ -24,18 +24,18 @@
             class="startDate"
         >
             <span class="day">
-                {{ tournament?.startDate }}
+                Quedan {{ tournament?.startDate | dateToTimeAgo: false }}
             </span>
         </div>
 
-        <div
+        <!-- <div
             *ngIf="!tournament.lastRound && tournament.status === 'Completed'"
             class="startDate"
         >
             <span class="day">
                 {{ tournament?.endDate }}
             </span>
-        </div>
+        </div> -->
 
         <div class="currentRound" *ngIf="tournament.lastRound">
             {{ tournament.lastRound }}
