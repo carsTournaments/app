@@ -9,10 +9,11 @@ import { ImagePipe } from 'src/app/pipes';
 })
 export class CarItemComponent implements OnInit {
     @Input() car: Car;
-    @Input() type: 'normal' | 'likes' = 'normal';
-    @Input() likesOptions: {
-        likes: number;
-        lastLike: string;
+    @Input() type: 'normal' | 'likesReceived' | 'likesSent' = 'normal';
+    @Input() likesOptions?: {
+        likes?: number;
+        lastLike?: string;
+        created?: string;
     };
     @Output() clickItem: EventEmitter<Car> = new EventEmitter<Car>();
     image: Image;

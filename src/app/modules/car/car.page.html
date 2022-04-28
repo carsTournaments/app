@@ -68,18 +68,24 @@
                 *ngIf="!vm.isMyCar"
                 mode="ios"
                 button
-                (click)="like()"
-                [disabled]="vm.liked"
+                (click)="likeOrDislike()"
             >
                 <ion-card-content class="like">
                     <ion-icon
                         [name]="vm.liked ? 'heart': 'heart-outline'"
                     ></ion-icon>
-                    <ion-label>Me gusta</ion-label>
-                    <small
-                        >Ayuda a {{ vm.car.driver.name }} a tener mas
+                    <ion-label
+                        >{{ !vm.liked ? 'Me gusta' : 'Ya no me gusta'
+                        }}</ion-label
+                    >
+                    <small *ngIf="!vm.liked">
+                        Ayuda a {{ vm.car.driver.name }} a tener mas
                         visibilidad</small
                     >
+                    <small *ngIf="vm.liked">
+                        Ya no ayudaras a {{ vm.car.driver.name }} a tener
+                        visibilidad
+                    </small>
                 </ion-card-content>
             </ion-card>
         </ion-col>

@@ -67,25 +67,40 @@ export class CarPage implements OnInit {
         this.imageService.openImage(image);
     }
 
-    async like() {
+    async likeOrDislike() {
         const like: Like = {
             car: this.vm.id,
         };
         if (this.vm.user) {
             like.user = this.vm.user._id;
         }
-        this.likeService.create(like).subscribe({
-            next: async (response) => {
-                this.vm.liked = true;
-                this.setLikedStorage(response.car);
-                this.vm.car.likes += 1;
-            },
-            error: () =>
-                this.alertService.presentAlert(
-                    'Error',
-                    'Error al dar me gusta'
-                ),
-        });
+
+        if (!this.vm.liked) {
+            this.likeService.create(like).subscribe({
+                next: async () => {
+                    this.vm.liked = true;
+                    this.setLikedStorage(this.vm.car._id);
+                    this.vm.car.likes += 1;
+                },
+                error: () =>
+                    this.alertService.presentAlert(
+                        'Error',
+                        'Error al dar me gusta'
+                    ),
+            });
+        } else {
+            this.likeService.deleteByCarId(this.vm.car._id).subscribe({
+                next: async () => {
+                    this.removeLikeStorage(this.vm.car._id);
+                    this.vm.car.likes -= 1;
+                },
+                error: () =>
+                    this.alertService.presentAlert(
+                        'Error',
+                        'Error al eliminar el me gusta'
+                    ),
+            });
+        }
     }
 
     async checkLikedStorage() {
@@ -107,5 +122,14 @@ export class CarPage implements OnInit {
             likes = [id];
         }
         this.storageService.set('likes', likes);
+    }
+
+    async removeLikeStorage(id: string) {
+        let likes = await this.storageService.get<string[]>('likes');
+        if (likes) {
+            likes = likes.filter((l) => l !== id);
+        }
+        this.storageService.set('likes', likes);
+        this.vm.liked = false;
     }
 }

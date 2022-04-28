@@ -12,7 +12,7 @@
                 <div *ngFor="let item of vm.likesReceived">
                     <car-item
                         [car]="item.car"
-                        type="likes"
+                        type="likesReceived"
                         [likesOptions]="{likes: item.likes, lastLike: item.lastLike}"
                         (clickItem)="onClickCar($event)"
                     >
@@ -22,7 +22,12 @@
 
             <ng-container *ngIf="vm.header.segments.selected === 1">
                 <div *ngFor="let item of vm.likesSent">
-                    <car-item [car]="item.car" (clickItem)="onClickCar($event)">
+                    <car-item
+                        [car]="item.car"
+                        type="likesSent"
+                        [likesOptions]="{ created: item.created }"
+                        (clickItem)="onClickCar($event)"
+                    >
                     </car-item>
                 </div>
             </ng-container>

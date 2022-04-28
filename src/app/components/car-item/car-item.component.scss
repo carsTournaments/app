@@ -87,7 +87,7 @@ ion-card-content {
         text-transform: uppercase;
     }
 
-    .card-lastLike {
+    .card-top-right {
         text-align: center;
         position: absolute;
         top: 0.6rem;
@@ -97,6 +97,20 @@ ion-card-content {
         right: 0rem;
         padding: 0.25rem 1rem 0.25rem 0.8rem;
         border-radius: 10px 0px 0px 10px;
+        background: #000;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+    }
+
+    .card-driver-name {
+        position: absolute;
+        bottom: 0.6rem;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--ion-color-light);
+        left: 0rem;
+        padding: 0.25rem 1rem 0.25rem 0.8rem;
+        border-radius: 0px 10px 10px 0px;
         background: #000;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         text-transform: uppercase;

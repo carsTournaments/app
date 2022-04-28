@@ -47,4 +47,10 @@ export class LikeService {
             .post<Like>(`${this.url}/create`, data)
             .pipe(take(1));
     }
+
+    deleteByCarId(id: string): Observable<Like> {
+        return this.httpClient
+            .delete<Like>(`${this.url}/byCarId/${id}`)
+            .pipe(take(1));
+    }
 }
