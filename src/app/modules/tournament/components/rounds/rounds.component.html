@@ -53,35 +53,49 @@
         </ion-card>
 
         <ion-card
-            mode="ios"
             *ngFor="let pairing of round.pairings"
-            class="ion-activatable animate__animated animate__fadeIn animate__faster"
+            [ngStyle]="{ height: '350px' }"
+            mode="ios"
+            style="margin-bottom: 0"
+            class="animate__animated animate__fadeIn animate__faster ion-activatable"
             (click)="goToPairing(pairing)"
         >
+            <div class="box-center">
+                <div class="car-title1 animate__animated animate__backInDown">
+                    <p>
+                        {{ pairing.car1.brand.name | uppercase }}
+                        {{ pairing.car1.model | truncateText: 15 | uppercase }}
+                    </p>
+                </div>
+
+                <!--  VS -->
+                <div class="animate__animated animate__backInLeft vs">
+                    <p>VS</p>
+                </div>
+
+                <div class="car-title2 animate__animated animate__backInUp">
+                    <p>
+                        {{ pairing.car2.brand.name | uppercase }}
+                        {{ pairing.car2.model | truncateText: 15 | uppercase }}
+                    </p>
+                </div>
+            </div>
+
+            <!--  Car 1 -->
             <div
                 class="image-car1"
                 style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                url({{ pairing.car1?.image?.url | image }})"
+                            url({{ pairing.car1.image?.url | image }})"
             ></div>
-            <div class="vs">VS</div>
+
+            <!--  Car 2 -->
             <div
                 class="image-car2"
                 style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                url({{ pairing.car2?.image?.url | image }})"
+                        url({{ pairing.car2.image?.url | image }})"
             ></div>
 
-            <div class="car-title1">
-                {{ pairing.car1.brand.name | uppercase }}
-                {{ pairing.car1.model | truncateText: 15 | uppercase }}
-            </div>
-            <div class="car-title2">
-                {{ pairing.car2.brand.name | uppercase }}
-                {{ pairing.car2.model | truncateText: 15 | uppercase }}
-            </div>
-            <!-- <ion-card-content>
-
-            </ion-card-content> -->
-            <ion-ripple-effect></ion-ripple-effect>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
         </ion-card>
     </div>
 </div>
