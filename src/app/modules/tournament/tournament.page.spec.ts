@@ -190,6 +190,23 @@ describe('TournamentPage', () => {
         });
     });
 
+    describe('checkButtonInscription', () => {
+        it('InProgress || Completed', () => {
+            component.vm.tournament = tournament;
+            component.vm.tournament.status = 'Completed';
+            component.checkButtonInscription();
+            expect(component.vm.buttonInscription).toEqual(false);
+        });
+
+        it('Todo', () => {
+            spyOn(component, 'getCarsUsersForInscription');
+            component.vm.tournament = tournament;
+            component.vm.tournament.status = 'Todo';
+            component.checkButtonInscription();
+            expect(component.getCarsUsersForInscription).toHaveBeenCalled();
+        });
+    });
+
     it('segmentChanged', () => {
         component.segmentChanged({ detail: { value: 0 } });
         expect(component.vm.header.segments.selected).toBe(0);

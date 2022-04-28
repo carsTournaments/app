@@ -46,10 +46,4 @@ describe('CarItemComponent', () => {
         component.close();
         expect(component.close).toBeTruthy();
     });
-
-    it('zoom', () => {
-        // spyOn(component, 'swiper').and.returnValue(swiperRef.zoom);
-        // component.zoom({ in: () => { } });
-        // expect(component.zoom).toBeTruthy();
-    });
 });

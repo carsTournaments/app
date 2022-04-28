@@ -1,7 +1,6 @@
 import { ModalController } from '@ionic/angular';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import SwiperCore, { Zoom, Pagination, SwiperOptions } from 'swiper';
-import { SwiperComponent } from 'swiper/angular';
+import SwiperCore, { Zoom, SwiperOptions } from 'swiper';
 
 SwiperCore.use([Zoom]);
 
@@ -11,7 +10,7 @@ SwiperCore.use([Zoom]);
     styleUrls: ['./viewer.component.scss'],
 })
 export class ViewerComponent implements OnInit {
-    @ViewChild('swiper') swiper: SwiperComponent;
+    @ViewChild('swiper') swiper: any;
     @Input() image: string;
     config: SwiperOptions = {
         zoom: {

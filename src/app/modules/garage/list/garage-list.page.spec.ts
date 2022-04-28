@@ -95,9 +95,9 @@ describe('GarageListComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('ngOnInit', async () => {
+    it('ionViewWillEnter', async () => {
         spyOn(component, 'getAllCars');
-        await component.ngOnInit();
+        await component.ionViewWillEnter();
         expect(component.getAllCars).toHaveBeenCalled();
     });
 
