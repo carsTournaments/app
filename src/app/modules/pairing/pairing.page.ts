@@ -62,6 +62,8 @@ export class PairingPage implements OnInit {
         } else {
             this.vm.voted = true;
         }
+        this.vm.voted =
+            this.vm.pairing.round.status === 'Completed' ? true : false;
     }
 
     async openModal(car: Car) {
@@ -99,8 +101,8 @@ export class PairingPage implements OnInit {
 
     setObjectVotes(force?: any): void {
         const cars = {
-            car1: { votes: 0, percentage: 0 },
-            car2: { votes: 0, percentage: 0 },
+            car1: { votes: 0, percentage: 50 },
+            car2: { votes: 0, percentage: 50 },
         };
         for (const vote of this.vm.pairing.votes) {
             if (
@@ -115,13 +117,20 @@ export class PairingPage implements OnInit {
         if (force) {
             cars[force].votes++;
         }
+
         // generate percentage of votes
-        cars.car1.percentage = Math.round(
-            (cars.car1.votes * 100) / (cars.car1.votes + cars.car2.votes)
-        );
-        cars.car2.percentage = Math.round(
-            (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes)
-        );
+        if (cars.car1.votes > 0) {
+            cars.car1.percentage = Math.round(
+                (cars.car1.votes * 100) / (cars.car1.votes + cars.car2.votes)
+            );
+        }
+
+        if (cars.car2.votes > 0) {
+            cars.car2.percentage = Math.round(
+                (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes)
+            );
+        }
+        console.log(cars);
         this.vm.votes = cars;
     }
 

@@ -28,6 +28,7 @@ export class RoundsComponent implements OnInit {
             .subscribe({
                 next: (rounds) => {
                     this.rounds = rounds;
+                    console.log(this.rounds);
                     this.filterRounds();
                 },
                 error: (err) => {},
@@ -39,12 +40,10 @@ export class RoundsComponent implements OnInit {
             (round) =>
                 round.status === 'InProgress' || round.status === 'Completed'
         );
-        let rounds = this.rounds.find((round) => round.status === 'InProgress');
+        let rounds = this.rounds.find((round) => round.status === 'InProgress' || round.name === 'Final');
         if (rounds) {
             this.roundSelected = rounds._id;
-        } else {
-            rounds = this.rounds.find((round) => round.name === 'Final');
-            this.roundSelected = rounds._id;
+            console.log(this.roundSelected)
         }
     }
 
