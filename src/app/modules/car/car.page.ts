@@ -60,7 +60,7 @@ export class CarPage implements OnInit {
     }
 
     checkIsMyCar() {
-        this.vm.isMyCar = this.vm.car.driver._id === this.vm.user._id;
+        this.vm.isMyCar = this.vm.car.driver?._id === this.vm.user?._id;
     }
 
     openImage(image: string) {

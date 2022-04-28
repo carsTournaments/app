@@ -82,9 +82,9 @@ describe('CarPage', () => {
         expect(component).toBeTruthy();
     });
 
-    it('ngOnInit', () => {
+    it('ngOnInit', async () => {
         spyOn(component, 'getOne');
-        component.ngOnInit();
+        await component.ngOnInit();
         expect(component.vm.id).toBe('1');
         expect(component.getOne).toHaveBeenCalled();
     });
