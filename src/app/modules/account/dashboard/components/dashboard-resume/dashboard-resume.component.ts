@@ -1,7 +1,6 @@
 import { NavController } from '@ionic/angular';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User, Image } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
 import { ImageService } from 'src/app/services';
 import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses';
 
@@ -15,7 +14,6 @@ export class DashboardResumeComponent {
     @Input() user: User;
     image: Image;
     constructor(
-        private imagePipe: ImagePipe,
         private imageService: ImageService,
         private navCtrl: NavController
     ) {}

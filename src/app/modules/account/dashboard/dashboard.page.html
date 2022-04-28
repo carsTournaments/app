@@ -14,24 +14,33 @@
             <ng-container
                 *ngIf="logged && !vm.registerMode && vm.user && vm.resume"
             >
-                <dashboard-resume
-                    [resume]="vm.resume"
-                    [user]="vm.user"
-                ></dashboard-resume>
-                <hr />
-                <div class="wrapper-option-items">
+                <ion-card mode="ios" style="margin-bottom: 1rem">
+                    <ion-card-content>
+                        <dashboard-resume
+                            [resume]="vm.resume"
+                            [user]="vm.user"
+                        ></dashboard-resume>
+                    </ion-card-content>
+                </ion-card>
+                <!-- <div class="wrapper-option-items"> -->
+
+                <ion-card
+                    mode="ios"
+                    class="option-item"
+                    *ngFor="let item of vm.options"
+                    (click)="onClickOption(item)"
+                    style="margin-top: -0.25rem"
+                >
                     <ion-item
-                        mode="ios"
                         color="light"
-                        lines="none"
-                        class="option-item"
+                        mode="ios"
                         [button]="true"
-                        *ngFor="let item of vm.options"
-                        (click)="onClickOption(item)"
+                        lines="none"
                     >
                         {{ item.name }}
                     </ion-item>
-                </div>
+                </ion-card>
+                <!-- </div> -->
             </ng-container>
         </ion-col>
     </ion-row>
