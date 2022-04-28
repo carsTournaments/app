@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
     NavController,
     PopoverController,
@@ -16,7 +16,7 @@ import { GarageListViewModel } from './model/garage-list.view-model';
     templateUrl: 'garage-list.page.html',
     styleUrls: ['./garage-list.page.scss'],
 })
-export class GarageListPage implements OnInit {
+export class GarageListPage {
     vm = new GarageListViewModel();
     constructor(
         private carService: CarService,
@@ -27,7 +27,7 @@ export class GarageListPage implements OnInit {
         private authService: AuthService
     ) {}
 
-    async ngOnInit() {
+    async ionViewWillEnter() {
         this.getAllCars();
     }
 
