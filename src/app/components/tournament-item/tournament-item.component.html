@@ -4,13 +4,7 @@
     (click)="clickItem.emit(tournament)"
     style="margin-left: 0.5rem; margin-right: 0.5rem"
 >
-    <ion-card-content
-        style="
-            background-image: linear-gradient(rgba(0, 0, 0, 0.43), 
-            rgba(0, 0, 0, 0.43)), 
-            url({{ image?.url }})
-        "
-    >
+    <ion-card-content [ngStyle]="{ backgroundImage: backgroundImage }">
         <div class="card-title-tournament">{{ tournament.name }}</div>
         <div class="card-description-tournament">
             <ion-icon name="people"></ion-icon>
@@ -24,18 +18,18 @@
             class="startDate"
         >
             <span class="day">
-                Quedan {{ tournament?.startDate | dateToTimeAgo: false }}
+                {{ tournament?.startDate | momentFormat: 'DD-MM-YY' }}
             </span>
         </div>
 
-        <!-- <div
+        <div
             *ngIf="!tournament.lastRound && tournament.status === 'Completed'"
             class="startDate"
         >
             <span class="day">
-                {{ tournament?.endDate }}
+                {{ tournament?.endDate | momentFormat: 'DD-MM-YY' }}
             </span>
-        </div> -->
+        </div>
 
         <div class="currentRound" *ngIf="tournament.lastRound">
             {{ tournament.lastRound }}

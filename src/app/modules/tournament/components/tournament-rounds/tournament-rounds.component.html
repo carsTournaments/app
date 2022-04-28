@@ -13,11 +13,7 @@
                     <ion-col size="4" class="ion-text-center item-block-resume">
                         <small>Inicio</small>
                         <p>
-                            {{
-                                round.startDate
-                                    | dateToTimeAgo: true
-                                    | firstLetterCase
-                            }}
+                            {{ round.startDate | momentFormat: 'DD-MM-YY' }}
                         </p>
                     </ion-col>
                     <ion-col size="4" class="ion-text-center item-block-resume">
@@ -27,11 +23,7 @@
                     <ion-col size="4" class="ion-text-center item-block-resume">
                         <small>Fin</small>
                         <p>
-                            {{
-                                round.endDate
-                                    | dateToTimeAgo: true
-                                    | firstLetterCase
-                            }}
+                            {{ round.endDate | momentFormat: 'DD-MM-YY' }}
                         </p>
                     </ion-col>
                 </ion-row>

@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Image, Tournament} from 'src/app/models';
-import {ImagePipe} from 'src/app/pipes';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Image, Tournament } from 'src/app/models';
+import { ImagePipe } from 'src/app/pipes';
 
 @Component({
     selector: 'tournament-item',
@@ -12,6 +12,7 @@ export class TournamentItemComponent implements OnInit {
     @Output() clickItem: EventEmitter<Tournament> =
         new EventEmitter<Tournament>();
     image: Image;
+    backgroundImage: string;
     constructor(private imagePipe: ImagePipe) {}
 
     ngOnInit() {
@@ -27,6 +28,11 @@ export class TournamentItemComponent implements OnInit {
                         : null
                 ),
             };
+            this.backgroundImage = `
+                linear-gradient(rgba(0, 0, 0, 0.43),
+                rgba(0, 0, 0, 0.43)),
+                url('${this.image.url}')
+            `;
         }
     }
 }

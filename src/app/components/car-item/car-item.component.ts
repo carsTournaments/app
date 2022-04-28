@@ -1,6 +1,5 @@
-import { Image } from './../../models/image.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Car } from 'src/app/models';
+import { Car, Image } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 
 @Component({

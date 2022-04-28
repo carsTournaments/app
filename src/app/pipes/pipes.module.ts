@@ -4,6 +4,7 @@ import {
     FirstLetterPipe,
     ImagePipe,
     LastRoundPipe,
+    MomentFormatAgoPipe,
     TruncateTextPipe,
 } from '.';
 
@@ -12,6 +13,7 @@ import {
         ImagePipe,
         DateToTimeAgoPipe,
         LastRoundPipe,
+        MomentFormatAgoPipe,
         TruncateTextPipe,
         FirstLetterPipe,
     ],
@@ -19,6 +21,7 @@ import {
         ImagePipe,
         DateToTimeAgoPipe,
         LastRoundPipe,
+        MomentFormatAgoPipe,
         TruncateTextPipe,
         FirstLetterPipe,
     ],
