@@ -9,6 +9,7 @@ import { TournamentPage } from './tournament.page';
 import { TournamentInfoComponent } from './components/tournament-info/tournament-info.component';
 import { TournamentRequisitesComponent } from './components/tournament-requisites/tournament-requisites.component';
 import { TournamentMyInscriptionsComponent } from './components/tournament-my-inscriptions/tournament-my-inscriptions.component';
+import { TournamentRoundsComponent } from './components/tournament-rounds/tournament-rounds.component';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { TournamentMyInscriptionsComponent } from './components/tournament-my-in
         TournamentRequisitesComponent,
         TournamentInfoComponent,
         TournamentMyInscriptionsComponent,
+        TournamentRoundsComponent,
     ],
     providers: [ImagePipe],
 })

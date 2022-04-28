@@ -79,7 +79,9 @@
                 *ngIf="vm.header.segments.selected === 2"
                 class="animate__animated animate__fadeIn animate__faster"
             >
-                <rounds [tournamentId]="vm.tournament._id"></rounds>
+                <tournament-rounds
+                    [tournamentId]="vm.tournament._id"
+                ></tournament-rounds>
             </div>
         </ion-col>
     </ion-row>

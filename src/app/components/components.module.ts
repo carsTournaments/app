@@ -9,7 +9,6 @@ import { CarItemComponent } from './car-item/car-item.component';
 import { BrandItemComponent } from './brand-item/brand-item.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
-import { RoundsComponent } from '../modules/tournament/components/rounds/rounds.component';
 import { IonicModule } from '@ionic/angular';
 import { CountUpDirective } from '../directives/count-up/count-up.directive';
 import { SwiperModule } from 'swiper/angular';
@@ -35,7 +34,6 @@ import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.compon
         CarItemComponent,
         HeaderComponent,
         AuthComponent,
-        RoundsComponent,
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,
@@ -49,7 +47,6 @@ import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.compon
         CarItemComponent,
         HeaderComponent,
         AuthComponent,
-        RoundsComponent,
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,

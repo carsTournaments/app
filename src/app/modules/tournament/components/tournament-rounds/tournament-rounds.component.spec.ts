@@ -11,7 +11,7 @@ import { RoundService } from 'src/app/services';
 import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RoundsComponent } from './rounds.component';
+import { TournamentRoundsComponent } from './tournament-rounds.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
 const round = new Round({
@@ -43,8 +43,8 @@ const round3 = new Round({
 });
 
 describe('RoundsComponent', () => {
-    let component: RoundsComponent;
-    let fixture: ComponentFixture<RoundsComponent>;
+    let component: TournamentRoundsComponent;
+    let fixture: ComponentFixture<TournamentRoundsComponent>;
 
     const roundService = jasmine.createSpyObj('RoundService', [
         'getAllOfTournament',
@@ -57,7 +57,7 @@ describe('RoundsComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [RoundsComponent],
+            declarations: [TournamentRoundsComponent],
             imports: [
                 RouterTestingModule,
                 HttpClientTestingModule,
@@ -71,7 +71,7 @@ describe('RoundsComponent', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = testbed.createComponent(RoundsComponent);
+        fixture = testbed.createComponent(TournamentRoundsComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));

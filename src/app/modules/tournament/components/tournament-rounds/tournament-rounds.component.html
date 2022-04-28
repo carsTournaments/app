@@ -1,8 +1,10 @@
 <div *ngFor="let round of rounds">
-    
     <div *ngIf="roundSelected === round._id">
         <ion-card mode="ios">
-            <ion-card-title class="ion-text-center" style="padding-top: 0.75rem">
+            <ion-card-title
+                class="ion-text-center"
+                style="padding-top: 0.75rem"
+            >
                 {{ round.name }}
             </ion-card-title>
             <hr />
@@ -12,9 +14,9 @@
                         <small>Inicio</small>
                         <p>
                             {{
-                            round.startDate
-                            | dateToTimeAgo: true
-                            | fistLetterCase
+                                round.startDate
+                                    | dateToTimeAgo: true
+                                    | fistLetterCase
                             }}
                         </p>
                     </ion-col>
@@ -26,26 +28,39 @@
                         <small>Fin</small>
                         <p>
                             {{
-                            round.endDate
-                            | dateToTimeAgo: true
-                            | fistLetterCase
+                                round.endDate
+                                    | dateToTimeAgo: true
+                                    | fistLetterCase
                             }}
                         </p>
                     </ion-col>
                 </ion-row>
                 <hr />
-                <ion-segment *ngIf="rounds.length > 1" mode="md" [value]="roundSelected" scrollable="true"
-                    (ionChange)="segmentChanged($event)">
-                    <ion-segment-button [value]="round._id" *ngFor="let round of rounds">
+                <ion-segment
+                    *ngIf="rounds.length > 1"
+                    mode="md"
+                    [value]="roundSelected"
+                    scrollable="true"
+                    (ionChange)="segmentChanged($event)"
+                >
+                    <ion-segment-button
+                        [value]="round._id"
+                        *ngFor="let round of rounds"
+                    >
                         <ion-label>{{ round.name }}</ion-label>
                     </ion-segment-button>
                 </ion-segment>
             </ion-card-content>
         </ion-card>
 
-        <ion-card *ngFor="let pairing of round.pairings" [ngStyle]="{ height: '350px' }" mode="ios"
-            style="margin-bottom: 0" class="animate__animated animate__fadeIn animate__faster ion-activatable"
-            (click)="goToPairing(pairing)">
+        <ion-card
+            *ngFor="let pairing of round.pairings"
+            [ngStyle]="{ height: '350px' }"
+            mode="ios"
+            style="margin-bottom: 0"
+            class="animate__animated animate__fadeIn animate__faster ion-activatable"
+            (click)="goToPairing(pairing)"
+        >
             <div class="box-center">
                 <div class="car-title1">
                     <p>
@@ -68,12 +83,18 @@
             </div>
 
             <!--  Car 1 -->
-            <div class="image-car1" style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                            url({{ pairing.car1.image?.url | image }})"></div>
+            <div
+                class="image-car1"
+                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
+                            url({{ pairing.car1.image?.url | image }})"
+            ></div>
 
             <!--  Car 2 -->
-            <div class="image-car2" style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                        url({{ pairing.car2.image?.url | image }})"></div>
+            <div
+                class="image-car2"
+                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
+                        url({{ pairing.car2.image?.url | image }})"
+            ></div>
 
             <ion-ripple-effect type="unbounded"></ion-ripple-effect>
         </ion-card>

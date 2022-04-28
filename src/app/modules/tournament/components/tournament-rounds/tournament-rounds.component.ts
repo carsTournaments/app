@@ -4,11 +4,11 @@ import { Pairing, Round } from 'src/app/models';
 import { RoundService } from 'src/app/services';
 
 @Component({
-    selector: 'rounds',
-    templateUrl: 'rounds.component.html',
-    styleUrls: ['./rounds.component.scss'],
+    selector: 'tournament-rounds',
+    templateUrl: 'tournament-rounds.component.html',
+    styleUrls: ['./tournament-rounds.component.scss'],
 })
-export class RoundsComponent implements OnInit {
+export class TournamentRoundsComponent implements OnInit {
     @Input() tournamentId: string;
     rounds: Round[] = [];
     roundSelected = '';
@@ -40,10 +40,12 @@ export class RoundsComponent implements OnInit {
             (round) =>
                 round.status === 'InProgress' || round.status === 'Completed'
         );
-        let rounds = this.rounds.find((round) => round.status === 'InProgress' || round.name === 'Final');
+        const rounds = this.rounds.find(
+            (round) => round.status === 'InProgress' || round.name === 'Final'
+        );
         if (rounds) {
             this.roundSelected = rounds._id;
-            console.log(this.roundSelected)
+            console.log(this.roundSelected);
         }
     }
 
