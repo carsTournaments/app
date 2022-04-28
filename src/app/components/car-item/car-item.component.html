@@ -31,12 +31,16 @@
                     *ngIf="likesOptions.likes === 1 || likesOptions.likes > 1"
                 >
                     {{ likesOptions.likes }}
-                    <span *ngIf="likesOptions.likes === 1">Voto recibido</span>
-                    <span *ngIf="likesOptions.likes > 1">Votos recibidos</span>
+                    <span *ngIf="likesOptions.likes === 1"
+                        >Me gusta recibido</span
+                    >
+                    <span *ngIf="likesOptions.likes > 1"
+                        >Me gustas recibidos</span
+                    >
                 </span>
-                <span *ngIf="likesOptions.likes === 0"
-                    >Sin votos recibidos</span
-                >
+                <span *ngIf="likesOptions.likes === 0">
+                    Sin me gustas recibidos
+                </span>
             </div>
 
             <div
