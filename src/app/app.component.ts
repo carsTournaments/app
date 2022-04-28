@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     constructor(
         private storageService: StorageService,
         private platform: Platform,
-        private location: Location,
+        public location: Location,
         private alertService: AlertService
     ) {}
 
@@ -26,25 +26,29 @@ export class AppComponent implements OnInit {
     addEventBackButton() {
         this.platform.backButton.subscribeWithPriority(
             10,
-            async (processNextHandler) => {
-                if (
-                    this.location.isCurrentPathEqualTo('/tab/tournaments') ||
-                    this.location.isCurrentPathEqualTo('/tab/cars') ||
-                    this.location.isCurrentPathEqualTo('/tab/account')
-                ) {
-                    await this.alertService.presentAlertWithButtons(
-                        'Salir',
-                        '¿Estás seguro de salir?',
-                        [
-                            { text: 'No', role: 'cancel' },
-                            { text: 'Si', handler: () => App.exitApp() },
-                        ]
-                    );
-                    processNextHandler();
-                } else {
-                    this.location.back();
-                }
-            }
+            async (processNextHandler) => this.onBackButton(processNextHandler)
         );
+    }
+
+    async onBackButton(processNextHandler: any): Promise<void> {
+        if (
+            this.location.isCurrentPathEqualTo('/tab/tournaments') ||
+            this.location.isCurrentPathEqualTo('/tab/cars') ||
+            this.location.isCurrentPathEqualTo('/tab/account')
+        ) {
+            await this.alertService.presentAlertWithButtons(
+                'Salir',
+                '¿Estás seguro de salir?',
+                [
+                    { text: 'No', role: 'cancel' },
+                    { text: 'Si', handler: () => App.exitApp() },
+                ]
+            );
+            if (processNextHandler) {
+                processNextHandler();
+            }
+        } else {
+            this.location.back();
+        }
     }
 }

@@ -101,7 +101,6 @@ describe('CarPage', () => {
                 .createSpy()
                 .and.returnValue(throwError({ error: '400' }));
             component.getOne();
-            expect(component.vm.car._id).toBe('123');
             expect(component.vm.loading).toBe(false);
             expect(component.vm.error).toBe(true);
         });

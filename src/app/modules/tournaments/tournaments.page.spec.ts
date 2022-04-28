@@ -47,7 +47,6 @@ describe('TournamentsPage', () => {
 
         const testbed = getTestBed();
         fixture = testbed.createComponent(TournamentsPage);
-
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));
