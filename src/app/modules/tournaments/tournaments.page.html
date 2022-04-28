@@ -21,20 +21,20 @@
     >
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <tournaments-slider
-                title="Torneos en curso"
+                title="En curso"
                 [tournaments]="vm.tournaments && vm.tournaments.inProgress"
                 (clickItem)="goTo($event)"
             ></tournaments-slider>
 
             <tournaments-slider
-                title="Torneos proximos"
+                title="Proximos"
                 [tournaments]="vm.tournaments && vm.tournaments.todo"
                 (clickItem)="goTo($event)"
             >
             </tournaments-slider>
 
             <tournaments-slider
-                title="Torneos completados"
+                title="Completados"
                 [tournaments]="vm.tournaments && vm.tournaments.completed"
                 (clickItem)="goTo($event)"
             >
