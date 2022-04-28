@@ -10,7 +10,7 @@ import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses'
     templateUrl: 'dashboard-resume.component.html',
     styleUrls: ['./dashboard-resume.component.scss'],
 })
-export class DashboardResumeComponent implements OnInit {
+export class DashboardResumeComponent {
     @Input() resume: UserGetResumeResponse;
     @Input() user: User;
     image: Image;
@@ -19,20 +19,6 @@ export class DashboardResumeComponent implements OnInit {
         private imageService: ImageService,
         private navCtrl: NavController
     ) {}
-
-    ngOnInit() {
-        this.setImageForBackground();
-    }
-
-    setImageForBackground() {
-        if (this.resume) {
-            this.image = {
-                url: this.imagePipe.transform(
-                    this.resume.image ? this.resume.image : null
-                ),
-            };
-        }
-    }
 
     openImage() {
         this.imageService.openImage(this.image.url);

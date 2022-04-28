@@ -1,24 +1,51 @@
 <h1 class="dashboard-title">Hola, {{ user.name | uppercase }}!</h1>
 
-<ion-row>
-    <ion-col class="ion-activatable" (click)="goTo('garage')">
-        <p class="dashboard-resume-title">Coches</p>
-        <p class="dashboard-resume-value">
-            {{ resume.cars }}
-        </p>
-        <ion-ripple-effect></ion-ripple-effect>
-    </ion-col>
-    <ion-col class="ion-activatable" (click)="goTo('inscriptions')">
-        <p class="dashboard-resume-title">Inscripciones</p>
-        <p class="dashboard-resume-value">
-            {{ resume.inscriptions }}
-        </p>
-        <ion-ripple-effect></ion-ripple-effect>
-    </ion-col>
-    <ion-col>
-        <p class="dashboard-resume-title">Ganados</p>
-        <p class="dashboard-resume-value">
-            {{ resume.winner }}
-        </p>
-    </ion-col>
-</ion-row>
+<ion-card mode="ios">
+    <ion-card-content>
+        <div class="card-trophy ion-text-center">
+            <ion-row>
+                <ion-col
+                    class="ion-no-padding ion-no-margin"
+                    style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+                >
+                    <ion-icon name="car" class="car"></ion-icon>
+                    <p
+                        class="number-trophy"
+                        [countUp]="resume.cars"
+                        [duration]="1500"
+                    ></p>
+                </ion-col>
+                <ion-col
+                    class="ion-no-padding ion-no-margin"
+                    style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+                >
+                    <ion-icon name="heart" class="like"></ion-icon>
+                    <p
+                        class="number-trophy"
+                        [countUp]="resume.likes"
+                        [duration]="1500"
+                    ></p>
+                </ion-col>
+                <ion-col class="ion-no-padding ion-no-margin">
+                    <ion-icon name="trophy" class="inscriptions"></ion-icon>
+                    <p
+                        class="number-trophy"
+                        [countUp]="resume?.inscriptions"
+                        [duration]="1500"
+                    ></p>
+                </ion-col>
+                <ion-col
+                    class="ion-no-padding ion-no-margin"
+                    style="border-left: 1px solid rgba(0, 0, 0, 0.1)"
+                >
+                    <ion-icon name="trophy" class="winner"></ion-icon>
+                    <p
+                        class="number-trophy"
+                        [countUp]="resume?.winner"
+                        [duration]="1500"
+                    ></p>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-card-content>
+</ion-card>
