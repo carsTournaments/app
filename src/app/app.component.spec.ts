@@ -39,10 +39,6 @@ describe('AppComponent', () => {
         fixture.detectChanges();
     }));
 
-    it('should create the app', () => {
-        expect(app).toBeTruthy();
-    });
-
     it('ngOnInit', async () => {
         spyOn(component, 'addEventBackButton');
         await component.ngOnInit();
