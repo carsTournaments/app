@@ -12,7 +12,7 @@ export class CarViewModel {
     });
     user: User;
     car: Car;
-    isMyCar: boolean = false;
+    isMyCar = false;
     image: string;
     loading = true;
     error = false;
