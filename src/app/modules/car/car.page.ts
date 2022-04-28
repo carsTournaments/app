@@ -1,4 +1,5 @@
 import {
+    AlertService,
     AuthService,
     CarService,
     ImageService,
@@ -25,7 +26,8 @@ export class CarPage implements OnInit {
         private imageService: ImageService,
         private likeService: LikeService,
         private authService: AuthService,
-        private storageService: StorageService
+        private storageService: StorageService,
+        private alertService: AlertService
     ) {}
 
     ngOnInit() {
@@ -71,8 +73,13 @@ export class CarPage implements OnInit {
             next: async (response) => {
                 this.vm.liked = true;
                 this.setLikedStorage(response.car);
+                this.vm.car.likes += 1;
             },
-            error: () => {},
+            error: () =>
+                this.alertService.presentAlert(
+                    'Error',
+                    'Error al dar me gusta'
+                ),
         });
     }
 

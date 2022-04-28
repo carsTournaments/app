@@ -101,8 +101,8 @@ export class PairingPage implements OnInit {
 
     setObjectVotes(force?: any): void {
         const cars = {
-            car1: { votes: 0, percentage: 50 },
-            car2: { votes: 0, percentage: 50 },
+            car1: { votes: 0, percentage: 0 },
+            car2: { votes: 0, percentage: 0 },
         };
         for (const vote of this.vm.pairing.votes) {
             if (
@@ -118,19 +118,21 @@ export class PairingPage implements OnInit {
             cars[force].votes++;
         }
 
-        // generate percentage of votes
-        if (cars.car1.votes > 0) {
-            cars.car1.percentage = Math.round(
-                (cars.car1.votes * 100) / (cars.car1.votes + cars.car2.votes)
-            );
+        if (cars.car1.votes === 0 && cars.car2.votes === 0) {
+            cars.car1.percentage = 50;
+            cars.car2.percentage = 50;
+        } else {
+            cars.car1.percentage =
+                (cars.car1.votes * 100) / (cars.car1.votes + cars.car2.votes);
+            cars.car2.percentage =
+                (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes);
         }
 
-        if (cars.car2.votes > 0) {
-            cars.car2.percentage = Math.round(
-                (cars.car2.votes * 100) / (cars.car1.votes + cars.car2.votes)
-            );
-        }
-        console.log(cars);
+        this.vm.pairing.car1.votes = cars.car1.votes;
+        this.vm.pairing.car1.percentage = cars.car1.percentage;
+        this.vm.pairing.car2.votes = cars.car2.votes;
+        this.vm.pairing.car2.percentage = cars.car2.percentage;
+
         this.vm.votes = cars;
     }
 

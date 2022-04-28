@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'car-total-winners',
-    templateUrl: 'car-total-winners.component.html',
-    styleUrls: ['./car-total-winners.component.scss'],
+    selector: 'car-totals',
+    templateUrl: 'car-totals.component.html',
+    styleUrls: ['./car-totals.component.scss'],
 })
-export class CarTotalWinnersComponent implements OnInit {
+export class CarTotalsComponent implements OnInit {
+    @Input() likes: number;
     @Input() winners: {
         gold: number;
         silver: number;
