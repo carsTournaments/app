@@ -49,6 +49,12 @@ const routes: Routes = [
         canActivate: [LoginGuard],
     },
     {
+        path: 'likes',
+        loadChildren: () =>
+            import('./modules/likes/likes.module').then((m) => m.LikesModule),
+        canActivate: [LoginGuard],
+    },
+    {
         path: 'my-data',
         loadChildren: () =>
             import('./modules/my-data/my-data.module').then(

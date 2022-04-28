@@ -15,34 +15,65 @@ ion-card-content {
     padding-right: 1rem;
 }
 
-.card-title-car {
-    position: absolute;
-    bottom: 2.4rem;
-    left: 0;
-    padding: 0.25rem 0.8rem;
-    border-radius: 0px 10px 10px 0px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    background: #000;
-    color: #fff;
-    text-transform: uppercase;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-}
+.normal {
+    .card-title-car {
+        position: absolute;
+        bottom: 2.4rem;
+        left: 0;
+        padding: 0.25rem 0.8rem;
+        border-radius: 0px 10px 10px 0px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
 
-.card-brand-image img {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 40;
-    height: 40px;
-    border-radius: 100%;
-    border: 2px solid #000;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    background-color: var(--ion-color-dark);
-}
+    .card-brand-image img {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40;
+        height: 40px;
+        border-radius: 100%;
+        border: 2px solid #000;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        background-color: var(--ion-color-dark);
+    }
 
-.card-driver {
-    .card-driver-name {
+    .card-driver {
+        .card-driver-name {
+            position: absolute;
+            bottom: 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--ion-color-light);
+            left: 0rem;
+            padding: 0.25rem 1rem 0.25rem 0.8rem;
+            border-radius: 0px 10px 10px 0px;
+            background: #000;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+        }
+    }
+}
+.likes {
+    .card-title-car {
+        position: absolute;
+        bottom: 2.4rem;
+        left: 0;
+        padding: 0.25rem 0.8rem;
+        border-radius: 0px 10px 10px 0px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-likes {
         position: absolute;
         bottom: 0.6rem;
         font-size: 0.7rem;
@@ -51,6 +82,21 @@ ion-card-content {
         left: 0rem;
         padding: 0.25rem 1rem 0.25rem 0.8rem;
         border-radius: 0px 10px 10px 0px;
+        background: #000;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+    }
+
+    .card-lastLike {
+        text-align: center;
+        position: absolute;
+        top: 0.6rem;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--ion-color-light);
+        right: 0rem;
+        padding: 0.25rem 1rem 0.25rem 0.8rem;
+        border-radius: 10px 0px 0px 10px;
         background: #000;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         text-transform: uppercase;

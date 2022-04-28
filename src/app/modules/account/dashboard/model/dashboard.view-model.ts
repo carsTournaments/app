@@ -8,15 +8,12 @@ export class DashboardViewModel {
         title: 'Tu Cuenta',
     });
     options: OptionItemI[] = [
-        { name: 'Cambiar nombre', icon: 'person', value: 'changeName' },
-        { name: 'Cambiar contraseña', icon: 'person', value: 'changePassword' },
-        { name: 'Garaje', icon: 'person', route: 'garage' },
-        {
-            name: 'Inscripciones',
-            icon: 'person',
-            route: 'inscriptions',
-        },
-        { name: 'Cerrar sesion', icon: 'person', value: 'logout' },
+        { name: 'Cambiar nombre', value: 'changeName' },
+        { name: 'Cambiar contraseña', value: 'changePassword' },
+        { name: 'Garaje', route: 'garage' },
+        { name: 'Inscripciones', route: 'inscriptions' },
+        { name: 'Me gustas', route: 'likes' },
+        { name: 'Cerrar sesion', value: 'logout' },
     ];
     registerMode = false;
     user: User;

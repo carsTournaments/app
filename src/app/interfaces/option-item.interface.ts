@@ -1,6 +1,6 @@
 export interface OptionItemI {
     name: string;
-    icon: string;
+    icon?: string;
     route?: string;
     value?: string;
 }

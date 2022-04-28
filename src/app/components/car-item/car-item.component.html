@@ -5,21 +5,47 @@
     style="padding-top: 0; padding-bottom: 0"
     (click)="clickItem.emit(car)"
 >
-    <ion-card-content
-        style="
-            background-image: linear-gradient(rgba(0, 0, 0, 0.43), 
-            rgba(0, 0, 0, 0.43)), 
-            url({{ image?.url }})
-        "
-    >
-        <div class="card-title-car">
-            {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
+    <ion-card-content [ngStyle]="{ backgroundImage: backgroundImage }">
+        <!-- NORMAL -->
+        <div class="normal" *ngIf="type === 'normal'">
+            <div class="card-title-car">
+                {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
+            </div>
+            <div *ngIf="car.driver" class="card-driver">
+                <div class="card-driver-name">{{ car.driver?.name }}</div>
+            </div>
+            <div *ngIf="car.brand.image" class="card-brand-image">
+                <img [src]="car?.brand?.image?.url | image" />
+            </div>
         </div>
-        <div class="card-driver">
-            <div class="card-driver-name">{{ car.driver?.name }}</div>
-        </div>
-        <div *ngIf="car.brand.image" class="card-brand-image">
-            <img [src]="car?.brand?.image?.url | image" />
+
+        <!-- LIKES -->
+
+        <div class="likes" *ngIf="type === 'likes'">
+            <div class="card-title-car">
+                {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
+            </div>
+
+            <div *ngIf="likesOptions && likesOptions.likes" class="card-likes">
+                <span
+                    *ngIf="likesOptions.likes === 1 || likesOptions.likes > 1"
+                >
+                    {{ likesOptions.likes }}
+                    <span *ngIf="likesOptions.likes === 1">Voto recibido</span>
+                    <span *ngIf="likesOptions.likes > 1">Votos recibidos</span>
+                </span>
+                <span *ngIf="likesOptions.likes === 0"
+                    >Sin votos recibidos</span
+                >
+            </div>
+
+            <div
+                *ngIf="likesOptions && likesOptions.likes > 0"
+                class="card-lastLike"
+            >
+                Ultimo <br />
+                {{ likesOptions?.lastLike | dateToTimeAgo | uppercase }}
+            </div>
         </div>
     </ion-card-content>
     <ion-ripple-effect></ion-ripple-effect>

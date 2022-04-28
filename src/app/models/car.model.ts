@@ -17,6 +17,7 @@ export class Car {
     image?: any;
     liked?: boolean;
     likes?: number;
+    lastLike?: string;
     winners?: {
         gold: number;
         silver: number;
@@ -41,6 +42,7 @@ export class Car {
         this.image = data?.image;
         this.liked = data?.liked;
         this.likes = data?.likes;
+        this.lastLike = data?.lastLike;
         this.winners = data?.winners;
         this.created = data?.created;
         this.updated = data?.updated;
