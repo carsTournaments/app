@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     async ngOnInit() {
         await this.storageService.startDB();
         this.addEventBackButton();
-        this.getVersion();
+        this.settingsService.checkUpdateApp();
     }
 
     addEventBackButton() {
@@ -52,51 +52,5 @@ export class AppComponent implements OnInit {
         } else {
             this.location.back();
         }
-    }
-
-    async getVersion() {
-        console.log(this.platform.platforms());
-        if (this.platform.is('android') || this.platform.is('ios')) {
-            const info = await App.getInfo();
-            const version = info.version;
-            const platform = this.platform.is('android') ? 'android' : 'ios';
-            this.settingsService.checkUpdate({ platform, version }).subscribe({
-                next: (response) => {
-                    if (response.mandatory) {
-                        this.onMandatoryUpdate(platform);
-                    } else if (response.update) {
-                        this.isAvailableUpdate(platform);
-                    }
-                },
-                error: (error) => {},
-            });
-        }
-    }
-
-    onMandatoryUpdate(platform: string) {
-        this.alertService.presentAlertWithButtons(
-            'Actualización obligatoria',
-            'Es necesario actualizar la aplicación para poder continuar',
-            [{ text: 'Ok', handler: () => this.goToMarket(platform) }]
-        );
-    }
-
-    isAvailableUpdate(platform: string) {
-        this.alertService.presentAlertWithButtons(
-            'Actualización disponible',
-            '¿Quieres actualizar la aplicacion?',
-            [
-                { text: 'No', role: 'cancel' },
-                { text: 'Si', handler: () => this.goToMarket(platform) },
-            ]
-        );
-    }
-
-    goToMarket(platform: string) {
-        this.alertService.presentAlert(
-            'No disponible',
-            'Esta función no está disponible actualmente'
-        );
-        // open market in ionic
     }
 }
