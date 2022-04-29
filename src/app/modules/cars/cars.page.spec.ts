@@ -52,10 +52,10 @@ describe('CarsPage', () => {
         expect(component).toBeTruthy();
     });
 
-    it('ngOnInit', () => {
+    it('ionViewWillEnter', () => {
         spyOn(component, 'getCars');
         spyOn(component, 'getBrands');
-        component.ngOnInit();
+        component.ionViewWillEnter();
         expect(component.getCars).toHaveBeenCalled();
         expect(component.getBrands).toHaveBeenCalled();
     });

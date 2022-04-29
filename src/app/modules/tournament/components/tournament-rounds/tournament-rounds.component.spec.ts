@@ -13,6 +13,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TournamentRoundsComponent } from './tournament-rounds.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ImagePipe } from 'src/app/pipes';
 
 const round = new Round({
     _id: '123',
@@ -42,7 +43,7 @@ const round3 = new Round({
     status: 'Completed',
 });
 
-describe('RoundsComponent', () => {
+describe('TournamentRoundsComponent', () => {
     let component: TournamentRoundsComponent;
     let fixture: ComponentFixture<TournamentRoundsComponent>;
 
@@ -54,6 +55,8 @@ describe('RoundsComponent', () => {
     roundService.getAllOfTournament = jasmine
         .createSpy()
         .and.returnValue(of([round, round2, round3]));
+    const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
+    imagePipe.transform.and.returnValue('url');
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -66,6 +69,7 @@ describe('RoundsComponent', () => {
             providers: [
                 { provide: RoundService, useValue: roundService },
                 { provide: NavController, useValue: navCtrl },
+                { provide: ImagePipe, useValue: imagePipe },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
