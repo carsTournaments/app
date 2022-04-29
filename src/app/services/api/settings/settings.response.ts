@@ -1,4 +1,5 @@
-export interface VersionSettingsI {
+export interface SettingsCheckUpdateI {
     update: boolean;
     mandatory: boolean;
+    urlMarket?: string;
 }
