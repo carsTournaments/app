@@ -1,7 +1,8 @@
 import { NavController } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
-import { Pairing, Round } from 'src/app/models';
+import { Car, Pairing, Round } from 'src/app/models';
 import { RoundService } from 'src/app/services';
+import { ImagePipe } from 'src/app/pipes';
 
 @Component({
     selector: 'tournament-rounds',
@@ -15,7 +16,8 @@ export class TournamentRoundsComponent implements OnInit {
     segmentsRounds = [];
     constructor(
         private roundService: RoundService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private imagePipe: ImagePipe
     ) {}
 
     ngOnInit() {
@@ -26,9 +28,8 @@ export class TournamentRoundsComponent implements OnInit {
         this.roundService
             .getAllOfTournament({ id: this.tournamentId })
             .subscribe({
-                next: (rounds) => {
-                    this.rounds = rounds;
-                    console.log(this.rounds);
+                next: (r) => {
+                    this.rounds = r;
                     this.filterRounds();
                 },
                 error: (err) => {},
@@ -37,15 +38,14 @@ export class TournamentRoundsComponent implements OnInit {
 
     filterRounds() {
         this.rounds = this.rounds.filter(
-            (round) =>
-                round.status === 'InProgress' || round.status === 'Completed'
+            (r) => r.status === 'InProgress' || r.status === 'Completed'
         );
-        const rounds = this.rounds.find(
-            (round) => round.status === 'InProgress' || round.name === 'Final'
+        const round = this.rounds.find(
+            (r) => r.status === 'InProgress' || r.name === 'Final'
         );
-        if (rounds) {
-            this.roundSelected = rounds._id;
-            console.log(this.roundSelected);
+        if (round) {
+            this.roundSelected = round._id;
+            console.log(this.roundSelected, round);
         }
     }
 
@@ -55,5 +55,14 @@ export class TournamentRoundsComponent implements OnInit {
 
     goToPairing(pairing: Pairing) {
         this.navCtrl.navigateForward(`/pairing/${pairing._id}`);
+    }
+
+    getBackgroundImage(car: Car) {
+        const image = this.imagePipe.transform(
+            car.image && car.image.url ? car.image.url : null
+        );
+        return `linear-gradient(rgba(0, 0, 0, 0.43),
+                rgba(0, 0, 0, 0.43)),
+                url('${image}')`;
     }
 }

@@ -1,5 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
-import { Brand, Car } from 'src/app/models';
+import { Brand, Car, Like } from 'src/app/models';
 import { BrandGetAllBrandsAndCarsDto } from 'src/app/services/api/brand/brand.dto';
 import { CarGetAllDto } from 'src/app/services/api/car/car.dto';
 
@@ -7,7 +7,7 @@ export class CarsViewModel {
     header = new Header({
         title: 'Coches',
         segments: {
-            items: ['Ultimos Coches', 'Marcas'],
+            items: ['Ultimos', 'Top', 'Marcas'],
             selected: 0,
         },
     });
@@ -24,13 +24,16 @@ export class CarsViewModel {
     };
     cars: Car[] = [];
     brands: Brand[] = [];
+    topCars: Car[] = [];
     filter = false;
     loading = {
         getCars: true,
         getBrands: true,
+        getTop: true,
     };
     error = {
         getCars: false,
         getBrands: false,
+        getTop: true,
     };
 }

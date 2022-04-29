@@ -20,7 +20,6 @@
         </div>
 
         <!-- LIKES RECEIVED -->
-
         <div class="likes" *ngIf="type === 'likesReceived'">
             <div class="card-title-car">
                 {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
@@ -52,6 +51,7 @@
             </div>
         </div>
 
+        <!-- LIKES SENT -->
         <div class="likes" *ngIf="type === 'likesSent'">
             <div class="card-title-car">
                 {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
@@ -65,6 +65,24 @@
                 class="card-top-right"
             >
                 {{ likesOptions.created | dateToTimeAgo | uppercase }}
+            </div>
+        </div>
+
+        <!-- TOPCARS -->
+        <div class="topCars" *ngIf="type === 'topCars'">
+            <div class="card-title-car">
+                {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
+            </div>
+
+            <div *ngIf="car.driver" class="card-driver">
+                <div class="card-driver-name">{{ car.driver?.name }}</div>
+            </div>
+
+            <div *ngIf="car.likes" class="card-likes">
+                <p>
+                    <span>{{ car.likes }}</span>
+                    {{ car.likes === 1 ? 'me gusta' : 'me gustas' }}
+                </p>
             </div>
         </div>
     </ion-card-content>

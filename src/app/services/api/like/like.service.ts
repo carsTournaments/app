@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { LikeGetAllReceivedForUserResponse } from './like.response';
 import { IdDto } from 'src/app/core/dtos/id.dto';
+import { Car } from 'src/app/models';
 
 @Injectable({ providedIn: 'root' })
 export class LikeService {
@@ -39,6 +40,12 @@ export class LikeService {
     getAllSentForUser(data: IdDto): Observable<Like[]> {
         return this.httpClient
             .post<Like[]>(`${this.url}/getAllSentForUser`, data)
+            .pipe(take(1));
+    }
+
+    getTopCars(limit: string): Observable<Car[]> {
+        return this.httpClient
+            .post<Car[]>(`${this.url}/getTopCars`, { limit })
             .pipe(take(1));
     }
 

@@ -9,7 +9,8 @@ import { ImagePipe } from 'src/app/pipes';
 })
 export class CarItemComponent implements OnInit {
     @Input() car: Car;
-    @Input() type: 'normal' | 'likesReceived' | 'likesSent' = 'normal';
+    @Input() type: 'normal' | 'likesReceived' | 'likesSent' | 'topCars' =
+        'normal';
     @Input() likesOptions?: {
         likes?: number;
         lastLike?: string;

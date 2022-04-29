@@ -77,15 +77,17 @@
             <!--  Car 1 -->
             <div
                 class="image-car1"
-                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                            url({{ pairing.car1.image?.url | image }})"
+                [ngStyle]="{
+                    'background-image': this.getBackgroundImage(pairing.car1)
+                }"
             ></div>
 
             <!--  Car 2 -->
             <div
                 class="image-car2"
-                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                        url({{ pairing.car2.image?.url | image }})"
+                [ngStyle]="{
+                    'background-image': this.getBackgroundImage(pairing.car2)
+                }"
             ></div>
 
             <ion-ripple-effect type="unbounded"></ion-ripple-effect>
