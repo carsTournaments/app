@@ -3,21 +3,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import {
+    ActionSheetService,
+    AlertService,
     AuthService,
     BrandService,
     CarService,
     InscriptionService,
-    RoundService,
-    TournamentService,
-    ActionSheetService,
-    AlertService,
-    StorageService,
-    PairingService,
-    VoteService,
-    UserService,
-    SpinnerHandlerService,
-    WinnerService,
     LikeService,
+    PairingService,
+    RoundService,
+    SettingsService,
+    SpinnerHandlerService,
+    StorageService,
+    TournamentService,
+    UserService,
+    VoteService,
+    WinnerService,
 } from '.';
 import { HttpInterceptorService } from '../core/interceptors/http.interceptor';
 import { ImageService } from './api/image/image.service';
@@ -35,6 +36,7 @@ import { ImageService } from './api/image/image.service';
         LikeService,
         PairingService,
         RoundService,
+        SettingsService,
         TournamentService,
         UserService,
         VoteService,
