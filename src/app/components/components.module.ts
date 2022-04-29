@@ -14,7 +14,6 @@ import { CountUpDirective } from '../directives/count-up/count-up.directive';
 import { SwiperModule } from 'swiper/angular';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { TournamentsSliderComponent } from './tournaments-slider/tournaments-slider.component';
-import { WinnersComponent } from './winners/winners.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.component';
 
@@ -39,7 +38,6 @@ import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.compon
         TournamentsSliderComponent,
         ViewerComponent,
         WinnerCarItemComponent,
-        WinnersComponent,
     ],
     exports: [
         CountUpDirective,
@@ -52,7 +50,6 @@ import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.compon
         TournamentsSliderComponent,
         ViewerComponent,
         WinnerCarItemComponent,
-        WinnersComponent,
     ],
     providers: [],
 })

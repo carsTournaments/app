@@ -30,11 +30,11 @@
                     (inscriptionCarClick)="inscriptionCar()"
                 ></tournament-info>
 
-                <winners
+                <tournament-winners
                     *ngIf="vm.winners"
                     [winners]="vm.winners"
                     (clickItem)="goToCar($event)"
-                ></winners>
+                ></tournament-winners>
 
                 <ion-card
                     mode="ios"
