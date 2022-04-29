@@ -71,9 +71,7 @@
                 (click)="likeOrDislike()"
             >
                 <ion-card-content class="like">
-                    <ion-icon
-                        [name]="vm.liked ? 'heart': 'heart-outline'"
-                    ></ion-icon>
+                    <ion-icon [name]="vm.liked ? 'close': 'heart'"></ion-icon>
                     <ion-label
                         >{{ !vm.liked ? 'Me gusta' : 'Ya no me gusta'
                         }}</ion-label
@@ -83,7 +81,7 @@
                         visibilidad</small
                     >
                     <small *ngIf="vm.liked">
-                        Ya no ayudaras a {{ vm.car.driver.name }} a tener
+                        Dejaras de ayudar a {{ vm.car.driver.name }} a tener
                         visibilidad
                     </small>
                 </ion-card-content>
