@@ -2,7 +2,7 @@ import { StorageService } from './services/ionic/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { AlertService } from './services';
+import { AlertService, SettingsService } from './services';
 import { App } from '@capacitor/app';
 
 @Component({
@@ -15,12 +15,14 @@ export class AppComponent implements OnInit {
         private storageService: StorageService,
         private platform: Platform,
         public location: Location,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private settingsService: SettingsService
     ) {}
 
     async ngOnInit() {
         await this.storageService.startDB();
         this.addEventBackButton();
+        this.getVersion();
     }
 
     addEventBackButton() {
@@ -50,5 +52,51 @@ export class AppComponent implements OnInit {
         } else {
             this.location.back();
         }
+    }
+
+    async getVersion() {
+        console.log(this.platform.platforms());
+        if (this.platform.is('android') || this.platform.is('ios')) {
+            const info = await App.getInfo();
+            const version = info.version;
+            const platform = this.platform.is('android') ? 'android' : 'ios';
+            this.settingsService.checkUpdate({ platform, version }).subscribe({
+                next: (response) => {
+                    if (response.mandatory) {
+                        this.onMandatoryUpdate(platform);
+                    } else if (response.update) {
+                        this.isAvailableUpdate(platform);
+                    }
+                },
+                error: (error) => {},
+            });
+        }
+    }
+
+    onMandatoryUpdate(platform: string) {
+        this.alertService.presentAlertWithButtons(
+            'Actualización obligatoria',
+            'Es necesario actualizar la aplicación para poder continuar',
+            [{ text: 'Ok', handler: () => this.goToMarket(platform) }]
+        );
+    }
+
+    isAvailableUpdate(platform: string) {
+        this.alertService.presentAlertWithButtons(
+            'Actualización disponible',
+            '¿Quieres actualizar la aplicacion?',
+            [
+                { text: 'No', role: 'cancel' },
+                { text: 'Si', handler: () => this.goToMarket(platform) },
+            ]
+        );
+    }
+
+    goToMarket(platform: string) {
+        this.alertService.presentAlert(
+            'No disponible',
+            'Esta función no está disponible actualmente'
+        );
+        // open market in ionic
     }
 }
