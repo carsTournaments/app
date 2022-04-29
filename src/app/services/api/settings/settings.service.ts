@@ -22,7 +22,7 @@ export class SettingsService {
     ) {}
 
     async checkUpdateApp() {
-        if (this.platform.is('android') || this.platform.is('ios')) {
+        if (this.platform.is('capacitor')) {
             const info = await App.getInfo();
             const version = info.version;
             const platform = this.platform.is('android') ? 'android' : 'ios';
