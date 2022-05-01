@@ -38,7 +38,11 @@ describe('CarPage', () => {
     let fixture: ComponentFixture<CarPage>;
     const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
     const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
-    const carService = jasmine.createSpyObj('CarService', ['getOne']);
+    const carService = jasmine.createSpyObj('CarService', [
+        'getOne',
+        'create',
+        'update',
+    ]);
 
     carService.getOne = jasmine.createSpy().and.returnValue(of(car));
     let route: ActivatedRoute;

@@ -6,7 +6,12 @@ import {
 } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { Car } from 'src/app/models';
-import { AlertService, CarService, AuthService } from 'src/app/services';
+import {
+    AlertService,
+    CarService,
+    AuthService,
+    UtilsService,
+} from 'src/app/services';
 import { ImageService } from 'src/app/services/api/image/image.service';
 import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
@@ -24,7 +29,8 @@ export class GarageListPage {
         private alertService: AlertService,
         private popoverCtrl: PopoverController,
         private imageService: ImageService,
-        private authService: AuthService
+        private authService: AuthService,
+        private utilsService: UtilsService
     ) {}
 
     async ionViewWillEnter() {
@@ -84,7 +90,7 @@ export class GarageListPage {
         this.vm.loading = true;
         this.imageService.addNewToGallery('car', car._id).then(
             () => {
-                this.reloadPage();
+                this.utilsService.reloadPage();
                 this.vm.loading = false;
             },
             (error) => {
@@ -118,10 +124,6 @@ export class GarageListPage {
                 this.alertService.presentAlert('Error', error);
             },
         });
-    }
-
-    reloadPage(): void {
-        window.location.reload();
     }
 
     onClickAddCar() {

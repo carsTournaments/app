@@ -45,7 +45,6 @@ export class TournamentRoundsComponent implements OnInit {
         );
         if (round) {
             this.roundSelected = round._id;
-            console.log(this.roundSelected, round);
         }
     }
 

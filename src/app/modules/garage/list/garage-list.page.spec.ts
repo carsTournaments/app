@@ -1,4 +1,4 @@
-import { Car, User } from 'src/app/models';
+import { Car } from 'src/app/models';
 import {
     ComponentFixture,
     getTestBed,
@@ -6,63 +6,33 @@ import {
     waitForAsync,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule, NavController, PopoverController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
 import {
     AlertService,
     AuthService,
     CarService,
     ImageService,
+    UtilsService,
 } from 'src/app/services';
 import { of, throwError } from 'rxjs';
 import { GarageListPage } from './garage-list.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentsModule } from 'src/app/components/components.module';
-
-const user = new User({
-    _id: '123',
-    name: 'prueba',
-    email: 'prueba@prueba.es',
-    role: 'USER',
-});
-
-const car = new Car({
-    _id: '123',
-    brand: 'prueba',
-    model: 'prueba',
-    driver: '1',
-    year: 2020,
-    cc: 1,
-    cv: 1,
-    stock: false,
-    fuel: '',
-    traction: '',
-    info: '',
-});
+import { user, car } from 'src/app/models/models.mock.spec';
+import {
+    authService,
+    carService,
+    alertService,
+    imageService,
+    navCtrl,
+    popoverCtrl,
+    utilsService,
+} from 'src/app/services/services.mock.spec';
 
 describe('GarageListComponent', () => {
     let component: GarageListPage;
     let fixture: ComponentFixture<GarageListPage>;
-
-    const alertService = jasmine.createSpyObj('AlertService', [
-        'presentAlert',
-        'presentAlertWithButtons',
-    ]);
-    const authService = jasmine.createSpyObj('AuthService', [
-        'login',
-        'getUser',
-        'setToken',
-    ]);
-    const carService = jasmine.createSpyObj('CarService', [
-        'getAllOfDriver',
-        'delete',
-    ]);
-    const imageService = jasmine.createSpyObj('ImageService', [
-        'addNewToGallery',
-    ]);
-    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
-    const popoverCtrl = jasmine.createSpyObj('PopoverController', ['create']);
-
     authService.getUser = jasmine.createSpy().and.returnValue(user);
     carService.getAllOfDriver = jasmine.createSpy().and.returnValue(of([]));
 
@@ -81,6 +51,7 @@ describe('GarageListComponent', () => {
                 { provide: ImageService, useValue: imageService },
                 { provide: NavController, useValue: navCtrl },
                 { provide: PopoverController, useValue: popoverCtrl },
+                { provide: UtilsService, useValue: utilsService },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -182,7 +153,6 @@ describe('GarageListComponent', () => {
     describe('addImage', () => {
         it('OK', async () => {
             const image = new Image();
-            spyOn(component, 'reloadPage');
             imageService.addNewToGallery = jasmine
                 .createSpy()
                 .and.returnValue(Promise.resolve(image));

@@ -17,6 +17,7 @@ import {
     StorageService,
     TournamentService,
     UserService,
+    UtilsService,
     VoteService,
     WinnerService,
 } from '.';
@@ -46,6 +47,8 @@ import { ImageService } from './api/image/image.service';
         AlertService,
         StorageService,
         SpinnerHandlerService,
+        // Various
+        UtilsService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpInterceptorService,
