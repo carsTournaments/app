@@ -1,4 +1,4 @@
-import {Car, Vote} from 'src/app/models';
+import { Car, Vote } from 'src/app/models';
 
 export interface WinnerGetOfTournamentComplete {
     gold: {

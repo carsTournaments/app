@@ -1,4 +1,4 @@
-import {Vote, Image, Inscription, Round} from '.';
+import { Vote, Image, Inscription, Round } from '.';
 export class Tournament {
     _id?: string;
     name: string;
