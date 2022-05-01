@@ -5,6 +5,8 @@ import {
     BrandService,
     AlertService,
     AuthService,
+    ImageService,
+    UtilsService,
 } from 'src/app/services';
 import { GarageOneViewModel } from './model/garage-one.view-model';
 import { NavController } from '@ionic/angular';
@@ -21,7 +23,9 @@ export class GarageOnePage implements OnInit {
         private route: ActivatedRoute,
         private alertService: AlertService,
         private authService: AuthService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private imageService: ImageService,
+        private utilsService: UtilsService
     ) {}
 
     ngOnInit() {
@@ -170,14 +174,49 @@ export class GarageOnePage implements OnInit {
         observable.subscribe({
             next: () => {
                 this.navCtrl.navigateBack('/garage');
-                this.alertService.presentAlert(
-                    '¡Vale!',
-                    this.vm.edit
-                        ? 'El coche se actualizo correctamente'
-                        : 'El coche se creo correctamente'
-                );
+                if (!this.vm.car.image) {
+                    this.alertService.presentAlertWithButtons(
+                        '¡Listo!',
+                        `El coche se ha ${
+                            this.vm.edit ? 'actualizado' : 'creado'
+                        }, pero aun no tiene ninguna foto, ¿quieres añadir una?`,
+                        [
+                            {
+                                text: 'No',
+                                role: 'cancel',
+                            },
+                            {
+                                text: 'Sí',
+                                handler: () => this.addImage(),
+                            },
+                        ]
+                    );
+                } else {
+                    this.alertService.presentAlert(
+                        '¡Listo!',
+                        'El coche se ha actualizado correctamente'
+                    );
+                }
             },
-            error: (err) => console.error(err),
+            error: () =>
+                this.alertService.presentAlert(
+                    '¡Vaya!',
+                    'No se pudo actualizar el coche'
+                ),
         });
+    }
+
+    async addImage(): Promise<void> {
+        this.vm.loading = true;
+        this.imageService.addNewToGallery('car', this.vm.car._id).then(
+            () => {
+                this.vm.loading = false;
+                this.utilsService.reloadPage();
+            },
+            (error) => {
+                this.vm.loading = false;
+                this.alertService.presentAlert('Error', error);
+            }
+        );
     }
 }
