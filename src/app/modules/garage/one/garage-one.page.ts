@@ -1,7 +1,11 @@
-import { AuthService } from './../../../services/api/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarService, BrandService, AlertService } from 'src/app/services';
+import {
+    CarService,
+    BrandService,
+    AlertService,
+    AuthService,
+} from 'src/app/services';
 import { GarageOneViewModel } from './model/garage-one.view-model';
 import { NavController } from '@ionic/angular';
 
@@ -41,7 +45,7 @@ export class GarageOnePage implements OnInit {
                 this.vm.loading = false;
                 this.vm.error = false;
             },
-            error: (err) => {
+            error: () => {
                 this.vm.loading = false;
                 this.vm.error = false;
             },
@@ -56,19 +60,14 @@ export class GarageOnePage implements OnInit {
     }
 
     async createOrUpdateItem() {
-        this.vm.car.brand = this.vm.brandIdSelected;
-        this.vm.car.cc = this.vm.car.cc ? Number(this.vm.car.cc) : null;
-        this.vm.car.cv = this.vm.car.cv ? Number(this.vm.car.cv) : null;
-        this.vm.car.year = this.vm.car.year ? Number(this.vm.car.year) : null;
-        const validations = this.validations();
-        if (validations.state) {
+        if (this.createOrUpdateSetsAndValidations()) {
             if (this.vm.edit) {
                 this.vm.car.driver = this.vm.car.driver._id;
-                this.update();
+                this.createOrUpdate();
             } else {
                 this.vm.car.driver = (await this.authService.getUser())._id;
                 if (this.vm.car.driver) {
-                    this.create();
+                    this.createOrUpdate();
                 } else {
                     this.alertService.presentAlert(
                         'Vaya',
@@ -76,8 +75,20 @@ export class GarageOnePage implements OnInit {
                     );
                 }
             }
+        }
+    }
+
+    createOrUpdateSetsAndValidations() {
+        this.vm.car.brand = this.vm.brandIdSelected;
+        this.vm.car.cc = this.vm.car.cc ? Number(this.vm.car.cc) : null;
+        this.vm.car.cv = this.vm.car.cv ? Number(this.vm.car.cv) : null;
+        this.vm.car.year = this.vm.car.year ? Number(this.vm.car.year) : null;
+        const validations = this.validations();
+        if (validations.state) {
+            return true;
         } else {
             this.alertService.presentAlert('¡Vaya!', validations.message);
+            return false;
         }
     }
 
@@ -152,26 +163,18 @@ export class GarageOnePage implements OnInit {
         return data;
     }
 
-    update() {
-        this.carService.update(this.vm.car).subscribe({
+    createOrUpdate() {
+        const observable = this.vm.edit
+            ? this.carService.update(this.vm.car)
+            : this.carService.create(this.vm.car);
+        observable.subscribe({
             next: () => {
                 this.navCtrl.navigateBack('/garage');
                 this.alertService.presentAlert(
                     '¡Vale!',
-                    'El coche se actualizo correctamente'
-                );
-            },
-            error: (err) => console.error(err),
-        });
-    }
-
-    create() {
-        this.carService.create(this.vm.car).subscribe({
-            next: () => {
-                this.navCtrl.navigateBack('/garage');
-                this.alertService.presentAlert(
-                    '¡Vale!',
-                    'El coche se creo correctamente'
+                    this.vm.edit
+                        ? 'El coche se actualizo correctamente'
+                        : 'El coche se creo correctamente'
                 );
             },
             error: (err) => console.error(err),

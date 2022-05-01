@@ -27,7 +27,6 @@ export class LikesPage {
             .getAllReceivedForUser({ id: this.vm.user._id })
             .subscribe({
                 next: (response) => {
-                    console.log(response);
                     this.vm.likesReceived = response;
                     this.vm.loading = false;
                     this.vm.error = false;

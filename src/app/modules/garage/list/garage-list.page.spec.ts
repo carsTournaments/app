@@ -18,27 +18,7 @@ import { GarageListPage } from './garage-list.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentsModule } from 'src/app/components/components.module';
-
-const user = new User({
-    _id: '123',
-    name: 'prueba',
-    email: 'prueba@prueba.es',
-    role: 'USER',
-});
-
-const car = new Car({
-    _id: '123',
-    brand: 'prueba',
-    model: 'prueba',
-    driver: '1',
-    year: 2020,
-    cc: 1,
-    cv: 1,
-    stock: false,
-    fuel: '',
-    traction: '',
-    info: '',
-});
+import { user, car } from 'src/app/models/models.mock.spec';
 
 describe('GarageListComponent', () => {
     let component: GarageListPage;
