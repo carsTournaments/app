@@ -5,8 +5,19 @@
     style="margin-left: 0.5rem; margin-right: 0.5rem"
 >
     <ion-card-content [ngStyle]="{ backgroundImage: backgroundImage }">
-        <div class="card-title-tournament">{{ tournament.name }}</div>
-        <div class="card-description-tournament">
+        <div
+            [ngClass]="
+                type === 'normal'
+                    ? 'card-title-tournament'
+                    : 'card-title-tournament-inscriptions'
+            "
+        >
+            {{ tournament.name }}
+        </div>
+        <div
+            class="card-description-tournament"
+            *ngIf="tournament.inscriptions"
+        >
             <ion-icon name="people"></ion-icon>
             <span>{{
                 tournament.inscriptions + '/' + tournament.maxParticipants

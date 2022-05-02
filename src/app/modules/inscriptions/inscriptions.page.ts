@@ -1,24 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService, InscriptionService } from 'src/app/services';
+import { Component } from '@angular/core';
+import {
+    AlertService,
+    AuthService,
+    InscriptionService,
+} from 'src/app/services';
 import { IdDto } from 'src/app/core/dtos/id.dto';
-import { NavController } from '@ionic/angular';
+import {
+    NavController,
+    PopoverController,
+    PopoverOptions,
+} from '@ionic/angular';
 import { InscriptionsViewModel } from './model/inscriptions.view-model';
 import { Inscription } from 'src/app/models';
+import { InscriptionsPopoverComponent } from './components/popover/inscriptions-popover.component';
+import { OverlayEventDetail } from '@ionic/core';
 
 @Component({
     selector: 'page-inscriptions',
     templateUrl: 'inscriptions.page.html',
     styleUrls: ['./inscriptions.page.scss'],
 })
-export class InscriptionsPage implements OnInit {
+export class InscriptionsPage {
     vm = new InscriptionsViewModel();
     constructor(
         private inscriptionService: InscriptionService,
         private authService: AuthService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private popoverCtrl: PopoverController,
+        private alertService: AlertService
     ) {}
 
-    async ngOnInit() {
+    async ionViewWillEnter() {
         await this.getUser();
         this.getAll();
     }
@@ -34,7 +46,6 @@ export class InscriptionsPage implements OnInit {
         this.inscriptionService.getAllForDriver(body).subscribe({
             next: (inscriptions) => {
                 this.vm.inscriptions = inscriptions;
-                this.setSegments();
                 this.vm.loading = false;
             },
             error: () => {
@@ -44,33 +55,81 @@ export class InscriptionsPage implements OnInit {
         });
     }
 
-    setSegments() {
-        const items = [];
-        if (this.vm.inscriptions.todo.length > 0) {
-            items.push('Proximos');
-        }
-        if (this.vm.inscriptions.inProgress.length > 0) {
-            items.push('En curso');
-        }
-        if (this.vm.inscriptions.completed.length > 0) {
-            items.push('Finalizados');
-        }
-        if (items.length > 0) {
-            this.vm.header.segments = {
-                items,
-                selected: 0,
-            };
-        }
-    }
-
-    segmentChanged(ev: any) {
+    segmentChanged(ev: any): void {
         const segment = Number(ev.detail.value);
         this.vm.header.segments.selected = Number(segment);
     }
 
-    goToTournament(inscription: Inscription) {
+    goToTournament(inscription: Inscription): void {
         this.navCtrl.navigateForward(
             `tournament/${inscription.tournament._id}`
         );
+    }
+
+    async openPopover(body: {
+        event;
+        carId: string;
+        tournamentId: string;
+    }): Promise<void> {
+        const options: PopoverOptions = {
+            component: InscriptionsPopoverComponent,
+            event: body.event,
+            mode: 'ios',
+            cssClass: 'popover-garage',
+            reference: 'event',
+        };
+        const popover = await this.popoverCtrl.create(options);
+        popover.present();
+        popover
+            .onDidDismiss()
+            .then((data) =>
+                this.onDidDismissPopover(data, body.carId, body.tournamentId)
+            );
+    }
+
+    onDidDismissPopover(
+        data: OverlayEventDetail<any>,
+        carId: string,
+        tournamentId: string
+    ): void {
+        if (data.data) {
+            if (data.data === 'viewProfile') {
+                this.navCtrl.navigateForward(`car/${carId}`);
+            } else {
+                this.deleteInscriptionConfirmation(carId, tournamentId);
+            }
+        }
+    }
+
+    async deleteInscriptionConfirmation(carId: string, tournamentId: string) {
+        const alert = await this.alertService.presentAlertWithButtons(
+            '¿Estás seguro?',
+            'Vas a eliminar la inscripcion al torneo',
+            [
+                { text: 'No', role: 'cancel' },
+                { text: 'Si', role: 'ok' },
+            ]
+        );
+        alert.onDidDismiss().then(async (data) => {
+            if (data.role === 'ok') {
+                this.deleteInscription(carId, tournamentId);
+            }
+        });
+    }
+
+    deleteInscription(carId: string, tournamentId: string) {
+        this.inscriptionService
+            .deleteByCarAndTournament({ carId, tournamentId })
+            .subscribe({
+                next: () => {
+                    this.getAll();
+                },
+                error: () => {
+                    this.alertService.presentAlert(
+                        'Error',
+                        'No se pudo eliminar la inscripción'
+                    );
+                },
+            });
     }
 }

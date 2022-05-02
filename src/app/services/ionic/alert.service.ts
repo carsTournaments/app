@@ -53,7 +53,7 @@ export class AlertService {
         buttons: any[],
         cssClass = 'alert-custom',
         backdropDismiss = false
-    ) {
+    ): Promise<HTMLIonAlertElement> {
         const alert = await this.alertCtrl.create({
             header,
             message,
@@ -63,5 +63,6 @@ export class AlertService {
             mode: 'ios',
         });
         await alert.present();
+        return alert;
     }
 }

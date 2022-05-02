@@ -13,6 +13,7 @@ export class TournamentItemComponent implements OnInit {
         new EventEmitter<Tournament>();
     image: Image;
     backgroundImage: string;
+    @Input() type: 'normal' | 'inscriptions' = 'normal';
     constructor(private imagePipe: ImagePipe) {}
 
     ngOnInit() {

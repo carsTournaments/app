@@ -8,38 +8,15 @@ import {
 import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
-import { AuthService, CarService, InscriptionService } from 'src/app/services';
-import { Car, Inscription, Tournament, User } from 'src/app/models';
+import { AuthService, InscriptionService } from 'src/app/services';
+import { Inscription, Tournament } from 'src/app/models';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionsPage } from './inscriptions.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { car, tournament, user } from 'src/app/models/models.mock.spec';
 
-const car = new Car({
-    _id: '123',
-    brand: 'prueba',
-    model: 'prueba',
-    driver: '1',
-    year: 2020,
-    cc: 1,
-    cv: 1,
-    stock: false,
-    fuel: '',
-    traction: '',
-    info: '',
-});
-
-const tournament = new Tournament({
-    _id: '123',
-    name: 'prueba',
-    status: 'Todo',
-    startDate: '',
-    endDate: '',
-    info: '',
-    requisites: [],
-    maxParticipants: 0,
-});
 const tournament2 = new Tournament({
     _id: '123',
     name: 'prueba',
@@ -65,19 +42,13 @@ const inscription = new Inscription({
     _id: '123',
     car,
     tournament,
-});
-
-const user = new User({
-    _id: '123',
-    name: 'prueba',
-    email: 'prueba@prueba.es',
-    role: 'USER',
+    driver: user,
 });
 
 const getAllForDriverResponse = {
-    todo: [{ car, tournament }],
-    inProgress: [{ car, tournament: tournament2 }],
-    completed: [{ car, tournament: tournament3 }],
+    todo: [{ tournament, cars: [car] }],
+    inProgress: [{ tournament, cars: [car] }],
+    completed: [{ tournament, cars: [car] }],
 };
 
 describe('InscriptionsPage', () => {
@@ -137,6 +108,8 @@ describe('InscriptionsPage', () => {
 
     describe('getAll', () => {
         it('OK', () => {
+            component.vm.user = user;
+            component.vm.user._id = '1';
             inscriptionService.getAllForDriver = jasmine
                 .createSpy()
                 .and.returnValue(of(getAllForDriverResponse));
@@ -145,6 +118,8 @@ describe('InscriptionsPage', () => {
             expect(component.vm.inscriptions).toEqual(getAllForDriverResponse);
         });
         it('KO', () => {
+            component.vm.user = user;
+            component.vm.user._id = '1';
             inscriptionService.getAllForDriver = jasmine
                 .createSpy()
                 .and.returnValue(throwError('error'));

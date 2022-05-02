@@ -1,4 +1,4 @@
-import { Car, User } from '.';
+import { Car, Inscription, Tournament, User } from '.';
 
 export const user = new User({
     _id: '123',
@@ -19,4 +19,22 @@ export const car = new Car({
     fuel: 'Gasolina',
     traction: 'Delantera',
     info: 'yeah',
+});
+
+export const tournament = new Tournament({
+    _id: '123',
+    name: 'prueba',
+    status: 'Todo',
+    startDate: '',
+    endDate: '',
+    info: '',
+    requisites: [],
+    maxParticipants: 0,
+});
+
+export const inscription = new Inscription({
+    _id: '123',
+    car: '1',
+    tournament: '2',
+    driver: '1',
 });

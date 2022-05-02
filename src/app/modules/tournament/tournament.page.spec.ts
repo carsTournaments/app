@@ -21,6 +21,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { user, inscription } from 'src/app/models/models.mock.spec';
 
 const tournament = new Tournament({
     _id: '123',
@@ -31,19 +32,6 @@ const tournament = new Tournament({
     info: '',
     requisites: [],
     maxParticipants: 0,
-});
-
-const user = new User({
-    _id: '123',
-    name: 'prueba',
-    email: 'prueba@prueba.es',
-    role: 'USER',
-});
-
-const inscription = new Inscription({
-    _id: '123',
-    car: '1',
-    tournament: '2',
 });
 
 const responseGetMyCarsForInscription: InscriptionGetMyCarsUserForInscriptionResponse =
