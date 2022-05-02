@@ -12,6 +12,7 @@ import { Car, Inscription, Tournament } from 'src/app/models';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { take } from 'rxjs/operators';
+import { InscriptionGetAllForDriverI } from 'src/app/interfaces/inscription.interface';
 
 @Injectable({ providedIn: 'root' })
 export class InscriptionService {
@@ -41,17 +42,12 @@ export class InscriptionService {
             .pipe(take(1));
     }
 
-    getAllForDriver(data: IdDto): Observable<{
-        todo: { car: Car; tournament: Tournament }[];
-        inProgress: { car: Car; tournament: Tournament }[];
-        completed: { car: Car; tournament: Tournament }[];
-    }> {
+    getAllForDriver(data: IdDto): Observable<InscriptionGetAllForDriverI> {
         return this.httpClient
-            .post<{
-                todo: { car: Car; tournament: Tournament }[];
-                inProgress: { car: Car; tournament: Tournament }[];
-                completed: { car: Car; tournament: Tournament }[];
-            }>(`${this.url}/getAllForDriver`, data)
+            .post<InscriptionGetAllForDriverI>(
+                `${this.url}/getAllForDriver`,
+                data
+            )
             .pipe(take(1));
     }
 

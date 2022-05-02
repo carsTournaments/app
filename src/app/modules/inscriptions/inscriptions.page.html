@@ -6,76 +6,35 @@
 <ion-content [fullscreen]="true">
     <spinner [loading]="vm.loading"></spinner>
     <ion-row style="padding-top: 0">
-        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <ng-container *ngIf="vm.inscriptions?.todo.length === 0">
-                <ion-card mode="ios">
-                    <ion-card-content>
-                        <ion-card-title>
-                            <p>¡Aun no tienes inscripciones!</p>
-                        </ion-card-title>
-                        <p>
-                            Si ya tienes tu coche, prueba a ir a un torneo en el
-                            que cumplas los requisitos, e ¡inscribete!
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ng-container>
-            <div
-                *ngIf="vm.header.segments && vm.header?.segments?.selected === 0"
-                class="animate__animated animate__fadeIn animate__faster"
-            >
-                <div *ngFor="let inscription of vm.inscriptions?.todo">
-                    <!-- <ion-card mode="ios" class="ion-activatable" (click)="goToTournament(inscription)">
-                        <div class="tournament-image"
-                            style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.tournament?.image?.url|image}})">
-                        </div>
-                        <div class="car-wrapper">
-                            <div class="car-image"
-                                style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),url({{inscription.car?.image?.url|image}})">
-                            </div>
-                            <div class="car-title">
-                                <p>
-                                    {{ inscription.car?.brand.name | truncateText:
-                                    15 }} {{ inscription.car.model }}
-                                </p>
-                                <span></span>
-                            </div>
-                        </div>
-                    </ion-card> -->
-                    <ion-accordion-group>
-                        <ion-accordion>
-                            <ion-item slot="header" lines="full">
-                                <ion-avatar slot="start">
-                                    <img
-                                        [src]="inscription.tournament?.image?.url|image"
-                                    />
-                                </ion-avatar>
-                                <ion-label
-                                    >{{ inscription.tournament.name
-                                    }}</ion-label
-                                >
-                            </ion-item>
+        <ion-col
+            style="padding-top: 0"
+            size="12"
+            sizeLg="8"
+            offsetLg="2"
+            *ngIf="vm.inscriptions"
+            style="padding-top: 0.5rem"
+        >
+            <inscriptions-state
+                title="En progreso"
+                [items]="vm.inscriptions.inProgress"
+                [state]="vm.states.inProgress"
+                type="inProgress"
+            ></inscriptions-state>
 
-                            <ion-item slot="content" lines="none">
-                                <ion-avatar slot="start">
-                                    <img
-                                        [src]="inscription.tournament?.image?.url|image"
-                                    />
-                                </ion-avatar>
-                                <ion-label
-                                    >{{ inscription.car.brand.name }} {{
-                                    inscription.car.model }}</ion-label
-                                >
-                            </ion-item>
-                        </ion-accordion>
-                    </ion-accordion-group>
-                </div>
-            </div>
+            <inscriptions-state
+                title="Proximamente"
+                [items]="vm.inscriptions.todo"
+                [state]="vm.states.todo"
+                type="todo"
+                (openPopover)="openPopover($event)"
+            ></inscriptions-state>
 
-            <div
-                *ngIf="vm.header.segments && vm.header?.segments?.selected === 1"
-                class="animate__animated animate__fadeIn animate__faster"
-            ></div>
+            <inscriptions-state
+                title="Completados"
+                [items]="vm.inscriptions.completed"
+                [state]="vm.states.completed"
+                type="completed"
+            ></inscriptions-state>
         </ion-col>
     </ion-row>
 </ion-content>

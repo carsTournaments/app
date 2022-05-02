@@ -1,4 +1,4 @@
-import { Car } from './../../../models/car.model';
+import { Car } from 'src/app/models';
 
 export interface InscriptionGetMyCarsUserForInscriptionResponse {
     inscribed: Car[];

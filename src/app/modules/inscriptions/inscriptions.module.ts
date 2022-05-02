@@ -7,6 +7,9 @@ import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { InscriptionsPage } from './inscriptions.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { InscriptionsItemComponent } from './components/inscriptions-item/inscriptions-item.component';
+import { InscriptionsStateComponent } from './components/inscriptions-state/inscriptions-state.component';
+import { InscriptionsPopoverComponent } from './components/popover/inscriptions-popover.component';
 
 @NgModule({
     imports: [
@@ -18,6 +21,11 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
         PipesModule,
         RouterModule.forChild([{ path: '', component: InscriptionsPage }]),
     ],
-    declarations: [InscriptionsPage],
+    declarations: [
+        InscriptionsPage,
+        InscriptionsStateComponent,
+        InscriptionsItemComponent,
+        InscriptionsPopoverComponent,
+    ],
 })
 export class InscriptionsModule {}

@@ -200,6 +200,7 @@ export class TournamentPage implements OnInit {
         const inscription = new Inscription({
             car: car._id,
             tournament: this.vm.id,
+            driver: this.vm.user._id,
         });
         this.inscriptionService.create(inscription).subscribe({
             next: (response) => {

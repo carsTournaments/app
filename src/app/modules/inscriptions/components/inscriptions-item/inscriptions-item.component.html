@@ -1,0 +1,29 @@
+<ion-card mode="ios">
+    <tournament-item
+        [tournament]="item.tournament"
+        type="inscriptions"
+        (clickItem)="goToTournament($event)"
+    ></tournament-item>
+    <ion-card-content *ngIf="item">
+        <ion-list *ngIf="item.cars.length > 0">
+            <ion-item
+                class="option-item"
+                *ngFor="let car of item?.cars"
+                button
+                (click)="clickCar($event, car._id, item.tournament._id)"
+                [detail]="item.tournament.status === 'Todo' ? false : true"
+                lines="none"
+            >
+                <ion-avatar slot="start">
+                    <img [src]="car.image?.url | image" />
+                </ion-avatar>
+                <ion-label>{{ car.brand.name + ' ' + car.model }}</ion-label>
+                <ion-icon
+                    class="more"
+                    *ngIf="item.tournament.status === 'Todo'"
+                    name="ellipsis-vertical"
+                ></ion-icon>
+            </ion-item>
+        </ion-list>
+    </ion-card-content>
+</ion-card>
