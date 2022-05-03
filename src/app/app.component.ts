@@ -43,14 +43,14 @@ export class AppComponent implements OnInit {
         });
     }
 
-    private addEventBackButton() {
+    addEventBackButton() {
         this.platform.backButton.subscribeWithPriority(
             10,
             async (processNextHandler) => this.onBackButton(processNextHandler)
         );
     }
 
-    private async onBackButton(processNextHandler: any): Promise<void> {
+    async onBackButton(processNextHandler: any): Promise<void> {
         if (
             this.location.isCurrentPathEqualTo('/tab/tournaments') ||
             this.location.isCurrentPathEqualTo('/tab/cars') ||

@@ -10,18 +10,17 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { of, throwError } from 'rxjs';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { Tournament } from 'src/app/models';
-import { TournamentService } from 'src/app/services';
+import { AnalyticsService, TournamentService } from 'src/app/services';
+import {
+    analyticsService,
+    navCtrl,
+    tournamentService,
+} from 'src/app/services/services.mock.spec';
 import { TournamentsPage } from './tournaments.page';
 
 describe('TournamentsPage', () => {
     let component: TournamentsPage;
     let fixture: ComponentFixture<TournamentsPage>;
-    const tournamentService = jasmine.createSpyObj('TournamentService', [
-        'getAllOfAllStates',
-        'delete',
-    ]);
-    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
-
     tournamentService.getAllOfAllStates = jasmine.createSpy().and.returnValue(
         of({
             todo: [],
@@ -41,6 +40,7 @@ describe('TournamentsPage', () => {
             providers: [
                 { provide: TournamentService, useValue: tournamentService },
                 { provide: NavController, useValue: navCtrl },
+                { provide: AnalyticsService, useValue: analyticsService },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -82,15 +82,6 @@ describe('TournamentsPage', () => {
         tournament._id = '1';
         component.goToTournament(tournament);
         expect(navCtrl.navigateForward).toHaveBeenCalled();
-    });
-
-    it('segmentChanged', () => {
-        component.vm.header.segments = {
-            items: [],
-            selected: 0,
-        };
-        component.segmentChanged({ detail: { value: 1 } });
-        expect(component.vm.header.segments.selected).toBe(1);
     });
 
     it('doRefresh', () => {
