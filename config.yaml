@@ -1,0 +1,17 @@
+vars:
+    BUNDLE_ID:
+        default: com.josexs.ct
+    PACKAGE_NAME:
+        default: com.josexs.ct
+
+platforms:
+    ios:
+        targets:
+            App:
+                bundleId: $BUNDLE_ID
+
+                entitlements:
+                    - com.apple.developer.associated-domains:
+                          ['applinks:carstournaments.carsites.es']
+    android:
+        packageName: $PACKAGE_NAME

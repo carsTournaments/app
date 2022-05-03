@@ -1,9 +1,9 @@
 import { StorageService } from './services/ionic/storage.service';
-import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { AlertService, SettingsService } from './services';
-import { App } from '@capacitor/app';
+import { App, URLOpenListenerEvent } from '@capacitor/app';
 
 @Component({
     selector: 'app-root',
@@ -16,13 +16,31 @@ export class AppComponent implements OnInit {
         private platform: Platform,
         public location: Location,
         private alertService: AlertService,
-        private settingsService: SettingsService
-    ) {}
+        private settingsService: SettingsService,
+        private zone: NgZone,
+        private navCtrl: NavController
+    ) {
+        this.initializeApp();
+    }
 
     async ngOnInit() {
         await this.storageService.startDB();
         this.addEventBackButton();
         this.settingsService.checkUpdateApp();
+    }
+
+    initializeApp() {
+        App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
+            console.log('appUrlOpen');
+            this.zone.run(() => {
+                const domain = 'carsTournaments.carsites.es';
+                const pathArray = event.url.split(domain);
+                const appPath = pathArray.pop();
+                if (appPath) {
+                    this.navCtrl.navigateRoot(appPath);
+                }
+            });
+        });
     }
 
     addEventBackButton() {
