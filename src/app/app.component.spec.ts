@@ -11,6 +11,7 @@ import {
 import { AppComponent } from './app.component';
 import { ServicesModule } from './services/services.module';
 import { AlertService } from './services';
+import { NavController } from '@ionic/angular';
 
 describe('AppComponent', () => {
     let component: AppComponent;
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         'presentAlertWithButtons',
     ]);
     const location = jasmine.createSpyObj('Location', ['isCurrentPathEqualTo']);
+    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -30,6 +32,7 @@ describe('AppComponent', () => {
                 { provide: AlertService, useValue: alertService },
                 { provide: Location, useValue: location },
                 { provide: StorageService, useValue: storageService },
+                { provide: NavController, useValue: navCtrl },
             ],
         }).compileComponents();
 
