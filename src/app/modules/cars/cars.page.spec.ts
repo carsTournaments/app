@@ -166,7 +166,7 @@ describe('CarsPage', () => {
         it('onClickCar', () => {
             const car = new Car();
             car._id = '1';
-            component.onClickCar(car);
+            component.goToCar(car);
             expect(navCtrl.navigateForward).toHaveBeenCalled();
         });
     });

@@ -40,7 +40,7 @@
                     >
                         <car-item
                             [car]="car"
-                            (clickItem)="onClickCar($event)"
+                            (clickItem)="goToCar($event)"
                         ></car-item>
                     </ion-col>
                 </ion-row>
@@ -75,7 +75,7 @@
                         <car-item
                             [car]="car"
                             type="topCars"
-                            (clickItem)="onClickCar($event)"
+                            (clickItem)="goToCar($event)"
                         ></car-item>
                     </ion-col>
                 </ion-row>

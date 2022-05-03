@@ -1,7 +1,4 @@
-<custom-header
-    [options]="vm.header"
-    (segmentChanged)="segmentChanged($event)"
-></custom-header>
+<custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true">
     <spinner [loading]="vm.loading"></spinner>
@@ -23,20 +20,20 @@
             <tournaments-slider
                 title="En curso"
                 [tournaments]="vm.tournaments && vm.tournaments.inProgress"
-                (clickItem)="goTo($event)"
+                (clickItem)="goToTournament($event)"
             ></tournaments-slider>
 
             <tournaments-slider
                 title="Proximos"
                 [tournaments]="vm.tournaments && vm.tournaments.todo"
-                (clickItem)="goTo($event)"
+                (clickItem)="goToTournament($event)"
             >
             </tournaments-slider>
 
             <tournaments-slider
                 title="Completados"
                 [tournaments]="vm.tournaments && vm.tournaments.completed"
-                (clickItem)="goTo($event)"
+                (clickItem)="goToTournament($event)"
             >
             </tournaments-slider>
         </ion-col>

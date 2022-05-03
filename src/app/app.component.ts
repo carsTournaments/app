@@ -2,7 +2,7 @@ import { StorageService } from './services/ionic/storage.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { AlertService, SettingsService } from './services';
+import { AlertService, AnalyticsService, SettingsService } from './services';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 
 @Component({
@@ -14,11 +14,12 @@ export class AppComponent implements OnInit {
     constructor(
         private storageService: StorageService,
         private platform: Platform,
-        public location: Location,
         private alertService: AlertService,
         private settingsService: SettingsService,
         private zone: NgZone,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private analyticsService: AnalyticsService,
+        public location: Location
     ) {
         this.initializeApp();
     }
@@ -31,7 +32,6 @@ export class AppComponent implements OnInit {
 
     initializeApp() {
         App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
-            console.log('appUrlOpen');
             this.zone.run(() => {
                 const domain = 'carsTournaments.carsites.es';
                 const pathArray = event.url.split(domain);
@@ -43,28 +43,34 @@ export class AppComponent implements OnInit {
         });
     }
 
-    addEventBackButton() {
+    private addEventBackButton() {
         this.platform.backButton.subscribeWithPriority(
             10,
             async (processNextHandler) => this.onBackButton(processNextHandler)
         );
     }
 
-    async onBackButton(processNextHandler: any): Promise<void> {
+    private async onBackButton(processNextHandler: any): Promise<void> {
         if (
             this.location.isCurrentPathEqualTo('/tab/tournaments') ||
             this.location.isCurrentPathEqualTo('/tab/cars') ||
             this.location.isCurrentPathEqualTo('/tab/account')
         ) {
-            await this.alertService.presentAlertWithButtons(
+            this.analyticsService.logEvent('backButton', {});
+            const alert = await this.alertService.presentAlertWithButtons(
                 'Salir',
                 '¿Estás seguro de salir?',
                 [
                     { text: 'No', role: 'cancel' },
-                    { text: 'Si', handler: () => App.exitApp() },
+                    { text: 'Si', role: 'ok' },
                 ]
             );
-            if (processNextHandler) {
+            const data = await alert.onDidDismiss();
+            if (data.role === 'ok') {
+                this.analyticsService.logEvent('backButton_exit', {});
+                App.exitApp();
+            } else {
+                this.analyticsService.logEvent('backButton_canceled', {});
                 processNextHandler();
             }
         } else {

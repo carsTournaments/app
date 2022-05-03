@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AnalyticsService } from 'src/app/services';
 
 @Component({
     selector: 'app-tabs',
@@ -23,5 +24,13 @@ export class TabsPage {
             icon: 'person-circle-outline',
         },
     ];
-    constructor() {}
+    constructor(private analyticsService: AnalyticsService) {}
+
+    clickTab(name: string) {
+        this.analyticsService.logEvent('tabs_clickTab', {
+            params: {
+                tab_name: name,
+            },
+        });
+    }
 }

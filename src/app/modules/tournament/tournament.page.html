@@ -72,7 +72,7 @@
                 <car-item
                     *ngFor="let inscription of vm.inscriptions"
                     [car]="inscription?.car"
-                    (clickItem)="onClickCar($event)"
+                    (clickItem)="goToCar($event)"
                 ></car-item>
             </div>
             <div

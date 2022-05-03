@@ -20,4 +20,5 @@ export { StorageService } from './ionic/storage.service';
 export { SpinnerHandlerService } from './ionic/spinner-handler.service';
 
 // Various
+export { AnalyticsService } from './various/analytics.service';
 export { UtilsService } from './various/utils.service';

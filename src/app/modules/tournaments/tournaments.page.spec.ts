@@ -80,7 +80,7 @@ describe('TournamentsPage', () => {
     it('goTo', () => {
         const tournament = new Tournament();
         tournament._id = '1';
-        component.goTo(tournament);
+        component.goToTournament(tournament);
         expect(navCtrl.navigateForward).toHaveBeenCalled();
     });
 

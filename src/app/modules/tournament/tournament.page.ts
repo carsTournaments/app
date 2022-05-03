@@ -11,6 +11,7 @@ import {
     AuthService,
     WinnerService,
     ImageService,
+    AnalyticsService,
 } from 'src/app/services';
 import { TournamentViewModel } from './model/tournament.view-model';
 
@@ -33,7 +34,8 @@ export class TournamentPage implements OnInit {
         private actionSheetService: ActionSheetService,
         private alertService: AlertService,
         private winnerService: WinnerService,
-        private imageService: ImageService
+        private imageService: ImageService,
+        private analyticsService: AnalyticsService
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -135,6 +137,9 @@ export class TournamentPage implements OnInit {
     }
 
     segmentChanged(event: { detail: { value: any } }) {
+        this.analyticsService.logEvent('tournament_segmentChanged', {
+            params: { value: event.detail.value },
+        });
         this.vm.header.segments.selected = Number(event.detail.value);
         if (this.content) {
             this.content.scrollToTop(1500);
@@ -160,10 +165,6 @@ export class TournamentPage implements OnInit {
         }
     }
 
-    onClickCar(car: Car) {
-        this.navCtrl.navigateForward(`/car/${car._id}`);
-    }
-
     inscriptionCar() {
         if (this.vm.myCars.availables.length > 1) {
             const buttons: ActionSheetButton[] = [];
@@ -173,8 +174,10 @@ export class TournamentPage implements OnInit {
                     handler: () => this.createInscription(car),
                 });
             }
+            this.analyticsService.logEvent('tournament_inscriptionCarMultiple');
             this.actionSheetService.present('Elige el coche', buttons);
         } else if (this.vm.myCars.availables.length === 1) {
+            this.analyticsService.logEvent('tournament_inscriptionCarOne');
             this.inscriptionConfirmation(this.vm.myCars.availables[0]);
         }
     }
@@ -204,6 +207,12 @@ export class TournamentPage implements OnInit {
         });
         this.inscriptionService.create(inscription).subscribe({
             next: (response) => {
+                this.analyticsService.logEvent(
+                    'tournament_createInscriptionConfirmation',
+                    {
+                        params: { state: true },
+                    }
+                );
                 this.checkButtonInscription();
                 this.getInscriptionsOfTournament();
                 this.vm.tournament.inscriptions.push(response);
@@ -213,8 +222,13 @@ export class TournamentPage implements OnInit {
                 );
             },
             error: (err) => {
+                this.analyticsService.logEvent(
+                    'tournament_createInscriptionConfirmation',
+                    {
+                        params: { state: false },
+                    }
+                );
                 this.alertService.presentAlert('Error', err);
-                console.error(err);
             },
         });
     }
@@ -244,6 +258,9 @@ export class TournamentPage implements OnInit {
             })
             .subscribe({
                 next: () => {
+                    this.analyticsService.logEvent(
+                        'tournament_deleteInscription'
+                    );
                     this.getInscriptionsOfTournament();
                     this.getCarsUsersForInscription();
                     this.vm.tournament.inscriptions =
@@ -263,6 +280,7 @@ export class TournamentPage implements OnInit {
     }
 
     goToRounds() {
+        this.analyticsService.logEvent('tournament_goToRounds');
         this.vm.header.segments.selected = 2;
         if (this.content) {
             this.content.scrollToTop(1500);
@@ -270,10 +288,14 @@ export class TournamentPage implements OnInit {
     }
 
     openImage(image: string): void {
+        this.analyticsService.logEvent('tournament_openImage', {
+            params: { image },
+        });
         this.imageService.openImage(image);
     }
 
     goToCar(car: Car): void {
+        this.analyticsService.logEvent('tournament_goToCar');
         this.navCtrl.navigateForward(`/car/${car._id}`);
     }
 }

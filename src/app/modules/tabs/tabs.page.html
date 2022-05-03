@@ -3,6 +3,7 @@
         <ion-tab-button
             *ngFor="let item of tabs; index as i"
             [tab]="item?.route"
+            (click)="clickTab(item.name)"
             id="tabButton-{{ i }}"
         >
             <ion-icon [name]="item?.icon"></ion-icon>
