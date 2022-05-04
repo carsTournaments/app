@@ -70,7 +70,10 @@
                 button
                 (click)="likeOrDislike()"
             >
-                <ion-card-content class="like">
+                <ion-card-content
+                    class="like"
+                    *ngIf="!vm.liked || vm.liked && vm.user "
+                >
                     <ion-icon [name]="vm.liked ? 'close': 'heart'"></ion-icon>
                     <ion-label
                         >{{ !vm.liked ? 'Me gusta' : 'Ya no me gusta'
