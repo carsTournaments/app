@@ -79,9 +79,7 @@ export class DashboardPage {
     async changeName() {
         const alert = await this.alertService.presentAlertWithInput(
             'Cambiar nombre',
-            'Introduce nuevo nombre',
-            'alert-custom',
-            true
+            'Introduce nuevo nombre'
         );
 
         alert.onDidDismiss().then((data: any) => {
