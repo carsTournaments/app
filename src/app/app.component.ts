@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     initializeApp() {
         App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
             this.zone.run(() => {
-                const domain = 'carsTournaments.carsites.es';
+                const domain = 'carstournaments.carsites.es';
                 const pathArray = event.url.split(domain);
                 const appPath = pathArray.pop();
                 if (appPath) {

@@ -33,16 +33,12 @@ export const alertService = jasmine.createSpyObj('AlertService', [
 ]);
 alertService.presentAlertWithButtons = jasmine.createSpy().and.returnValue(
     Promise.resolve({
-        present: (): Promise<void> => {
-            return Promise.resolve();
-        },
-        onDidDismiss: () => {
-            return {
-                data: {
-                    data: {},
-                },
-            };
-        },
+        present: (): Promise<void> => Promise.resolve(),
+        onDidDismiss: () => ({
+            data: {
+                data: {},
+            },
+        }),
     })
 );
 
