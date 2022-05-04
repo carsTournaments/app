@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
 import { Car, Inscription } from 'src/app/models';
@@ -20,7 +20,7 @@ import { TournamentViewModel } from './model/tournament.view-model';
     templateUrl: 'tournament.page.html',
     styleUrls: ['./tournament.page.scss'],
 })
-export class TournamentPage implements OnInit {
+export class TournamentPage {
     @ViewChild(IonContent, { static: false }) content: IonContent;
     vm = new TournamentViewModel();
 
@@ -38,7 +38,7 @@ export class TournamentPage implements OnInit {
         private analyticsService: AnalyticsService
     ) {}
 
-    async ngOnInit(): Promise<void> {
+    async ionViewWillEnter(): Promise<void> {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
         this.vm.user = await this.authService.getUser();
         this.getOne();

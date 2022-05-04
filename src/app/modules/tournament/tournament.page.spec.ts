@@ -109,10 +109,10 @@ describe('TournamentPage', () => {
         expect(component).toBeTruthy();
     });
 
-    it('ngOnInit', async () => {
+    it('ionViewWillEnter', async () => {
         spyOn(component, 'getInscriptionsOfTournament');
         spyOn(component, 'getOne');
-        await component.ngOnInit();
+        await component.ionViewWillEnter();
         expect(component.vm.id).toBe('1');
         expect(component.getOne).toHaveBeenCalled();
     });
@@ -166,7 +166,7 @@ describe('TournamentPage', () => {
             );
         });
         it('KO', () => {
-            spyOn(component, 'ngOnInit');
+            spyOn(component, 'ionViewWillEnter');
             inscriptionService.getAllOfTournament = jasmine
                 .createSpy()
                 .and.returnValue(throwError({ error: 400 }));
