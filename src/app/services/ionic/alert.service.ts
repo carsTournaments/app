@@ -51,7 +51,7 @@ export class AlertService {
         header: string,
         message: string,
         buttons: any[],
-        cssClass = 'alert-custom',
+        cssClass = 'alert-custom-md',
         backdropDismiss = false
     ) {
         const alert = await this.alertCtrl.create({
@@ -60,7 +60,7 @@ export class AlertService {
             cssClass,
             backdropDismiss,
             buttons,
-            mode: 'ios',
+            mode: 'md',
         });
         await alert.present();
     }
