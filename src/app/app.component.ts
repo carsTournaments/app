@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
         private analyticsService: AnalyticsService,
         public location: Location
     ) {
-        this.initializeApp();
+        this.initializeDeepLinks();
+        this.analyticsService.start();
     }
 
     async ngOnInit() {
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
         this.settingsService.checkUpdateApp();
     }
 
-    initializeApp() {
+    initializeDeepLinks() {
         App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
             this.zone.run(() => {
                 const domain = 'carstournaments.carsites.es';

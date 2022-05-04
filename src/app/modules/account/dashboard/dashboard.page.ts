@@ -120,7 +120,7 @@ export class DashboardPage {
             ]
         );
         const data = await alert.onDidDismiss();
-        if (data.data.role === 'ok') {
+        if (data.role === 'ok') {
             this.analyticsService.logEvent('dashboard_logoutOk');
             this.logged = false;
             this.authService.logout();

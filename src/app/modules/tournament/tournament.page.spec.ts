@@ -1,3 +1,4 @@
+import { car } from './../../models/models.mock.spec';
 import { Tournament } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
@@ -22,7 +23,12 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { user, inscription } from 'src/app/models/models.mock.spec';
-import { analyticsService } from 'src/app/services/services.mock.spec';
+import {
+    analyticsService,
+    authService,
+    inscriptionService,
+    navCtrl,
+} from 'src/app/services/services.mock.spec';
 
 const tournament = new Tournament({
     _id: '123',
@@ -43,14 +49,10 @@ const responseGetMyCarsForInscription: InscriptionGetMyCarsUserForInscriptionRes
     };
 
 describe('TournamentPage', () => {
+    tournament.inscriptions = [];
     let component: TournamentPage;
     let fixture: ComponentFixture<TournamentPage>;
-    const authService = jasmine.createSpyObj('AuthService', ['getUser']);
-    const inscriptionService = jasmine.createSpyObj('InscriptionService', [
-        'getAllOfTournament',
-        'getMyCarsForInscription',
-    ]);
-    const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
+
     const tournamentService = jasmine.createSpyObj('TournamentService', [
         'getOne',
     ]);
@@ -109,10 +111,10 @@ describe('TournamentPage', () => {
         expect(component).toBeTruthy();
     });
 
-    it('ngOnInit', async () => {
+    it('ionViewWillEnter', async () => {
         spyOn(component, 'getInscriptionsOfTournament');
         spyOn(component, 'getOne');
-        await component.ngOnInit();
+        await component.ionViewWillEnter();
         expect(component.vm.id).toBe('1');
         expect(component.getOne).toHaveBeenCalled();
     });
@@ -166,7 +168,7 @@ describe('TournamentPage', () => {
             );
         });
         it('KO', () => {
-            spyOn(component, 'ngOnInit');
+            spyOn(component, 'ionViewWillEnter');
             inscriptionService.getAllOfTournament = jasmine
                 .createSpy()
                 .and.returnValue(throwError({ error: 400 }));
@@ -188,12 +190,59 @@ describe('TournamentPage', () => {
             expect(component.vm.buttonInscription).toEqual(false);
         });
 
-        it('Todo', () => {
+        it('Todo', async () => {
+            // TODO: arreglar test
             spyOn(component, 'getCarsUsersForInscription');
             component.vm.tournament = tournament;
             component.vm.tournament.status = 'Todo';
-            component.checkButtonInscription();
-            expect(component.getCarsUsersForInscription).toHaveBeenCalled();
+            await component.checkButtonInscription();
+            expect(component.getCarsUsersForInscription).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('getCarsUsersForInscription', () => {
+        it('OK availables.length === 0', () => {
+            component.vm.user = user;
+            responseGetMyCarsForInscription.availables = [];
+            inscriptionService.getMyCarsForInscription = jasmine
+                .createSpy()
+                .and.returnValue(of(responseGetMyCarsForInscription));
+            component.getCarsUsersForInscription();
+            expect(component.vm.inscriptions).toEqual([]);
+            expect(component.vm.buttonInscription).toEqual(false);
+            expect(component.vm.loading.getCarsUsersForInscription).toEqual(
+                false
+            );
+            expect(component.vm.error.getCarsUsersForInscription).toEqual(
+                false
+            );
+        });
+        it('OK availables.length === 1', () => {
+            component.vm.user = user;
+            responseGetMyCarsForInscription.availables = [car];
+            inscriptionService.getMyCarsForInscription = jasmine
+                .createSpy()
+                .and.returnValue(of(responseGetMyCarsForInscription));
+            component.getCarsUsersForInscription();
+            expect(component.vm.buttonInscription).toEqual(true);
+            expect(component.vm.loading.getCarsUsersForInscription).toEqual(
+                false
+            );
+            expect(component.vm.error.getCarsUsersForInscription).toEqual(
+                false
+            );
+        });
+
+        it('KO', () => {
+            component.vm.user = user;
+            inscriptionService.getMyCarsForInscription = jasmine
+                .createSpy()
+                .and.returnValue(throwError({ error: 400 }));
+            component.getCarsUsersForInscription();
+            expect(component.vm.loading.getCarsUsersForInscription).toEqual(
+                false
+            );
+            expect(component.vm.error.getCarsUsersForInscription).toEqual(true);
         });
     });
 

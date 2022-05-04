@@ -1,5 +1,6 @@
 export const authService = jasmine.createSpyObj('AuthService', [
     'login',
+    'logout',
     'getUser',
     'setToken',
     'getToken',
@@ -18,6 +19,12 @@ export const carService = jasmine.createSpyObj('CarService', [
 export const imageService = jasmine.createSpyObj('ImageService', [
     'addNewToGallery',
 ]);
+
+export const inscriptionService = jasmine.createSpyObj('InscriptionService', [
+    'getAllOfTournament',
+    'getMyCarsForInscription',
+]);
+
 export const tournamentService = jasmine.createSpyObj('TournamentService', [
     'getAllOfAllStates',
     'delete',
@@ -58,6 +65,7 @@ export const location = jasmine.createSpyObj('Location', [
 
 // Varios
 export const analyticsService = jasmine.createSpyObj('AnalyticsService', [
+    'start',
     'initFb',
     'logEvent',
 ]);
