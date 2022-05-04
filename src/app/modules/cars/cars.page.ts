@@ -1,7 +1,12 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Brand, Car } from 'src/app/models';
-import { BrandService, CarService, LikeService } from 'src/app/services';
+import {
+    AnalyticsService,
+    BrandService,
+    CarService,
+    LikeService,
+} from 'src/app/services';
 import { CarsViewModel } from './model/cars.view-model';
 
 @Component({
@@ -16,7 +21,8 @@ export class CarsPage {
         private carService: CarService,
         private likeService: LikeService,
         private brandService: BrandService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private analyticsService: AnalyticsService
     ) {}
 
     ionViewWillEnter(): void {
@@ -94,15 +100,20 @@ export class CarsPage {
 
     loadMoreData(event: any, type: string): void {
         if (type === 'cars') {
+            this.analyticsService.logEvent('cars_loadMoreCars');
             this.vm.carsBody.page++;
             this.getCars(event);
         } else {
+            this.analyticsService.logEvent('cars_loadMoreBrands');
             this.vm.brandsBody.page++;
             this.getBrands(event);
         }
     }
 
     segmentChanged(ev: any): void {
+        this.analyticsService.logEvent('tournaments_segmentChanged', {
+            params: { segment: ev.detail.value },
+        });
         this.vm.header.segments.selected = Number(ev.detail.value);
     }
 
@@ -114,11 +125,18 @@ export class CarsPage {
         this.getCars();
     }
 
-    onClickCar(car: Car): void {
-        this.navCtrl.navigateForward(`/car/${car._id}`);
+    goToCar(item: Car): void {
+        this.analyticsService.logEvent('cars_goToCar', {
+            params: {
+                car_id: item._id,
+                car_name: `${item.brand.name} ${item.model}`,
+            },
+        });
+        this.navCtrl.navigateForward(`/car/${item._id}`);
     }
 
     cleanFilter(): void {
+        this.analyticsService.logEvent('cars_cleanFilter');
         this.vm.carsBody.brand = null;
         this.vm.carsBody.page = 1;
         this.vm.filter = false;
@@ -127,6 +145,7 @@ export class CarsPage {
     }
 
     doRefresh(event: any): void {
+        this.analyticsService.logEvent('cars_refresh');
         this.getCars(event);
     }
 }

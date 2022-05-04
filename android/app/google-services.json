@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "432785685251",
+    "project_id": "carstournaments-ec272",
+    "storage_bucket": "carstournaments-ec272.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432785685251:android:504b8ce88100ecaff64736",
+        "android_client_info": {
+          "package_name": "com.josexs.ct"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGh5wfWQ6acUy5XRBOjGeQiJIbKxMMQCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "432785685251-n65naf61ooso3kmmjqid38pvb9l4kfgh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.josexs.ct"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

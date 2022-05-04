@@ -1,3 +1,4 @@
+import { AnalyticsService } from './../../services/various/analytics.service';
 import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -8,6 +9,8 @@ import { Brand, Car } from 'src/app/models';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { analyticsService } from 'src/app/services/services.mock.spec';
+import { car } from 'src/app/models/models.mock.spec';
 
 describe('CarsPage', () => {
     let component: CarsPage;
@@ -36,6 +39,7 @@ describe('CarsPage', () => {
                 { provide: CarService, useValue: carService },
                 { provide: BrandService, useValue: brandService },
                 { provide: NavController, useValue: navCtrl },
+                { provide: AnalyticsService, useValue: analyticsService },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -164,9 +168,8 @@ describe('CarsPage', () => {
         });
 
         it('onClickCar', () => {
-            const car = new Car();
             car._id = '1';
-            component.onClickCar(car);
+            component.goToCar(car);
             expect(navCtrl.navigateForward).toHaveBeenCalled();
         });
     });

@@ -1,13 +1,15 @@
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import {
     ActionSheetService,
     AlertService,
+    AnalyticsService,
     AuthService,
     BrandService,
     CarService,
+    ImageService,
     InscriptionService,
     LikeService,
     PairingService,
@@ -22,7 +24,6 @@ import {
     WinnerService,
 } from '.';
 import { HttpInterceptorService } from '../core/interceptors/http.interceptor';
-import { ImageService } from './api/image/image.service';
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, IonicStorageModule.forRoot()],
@@ -48,6 +49,7 @@ import { ImageService } from './api/image/image.service';
         StorageService,
         SpinnerHandlerService,
         // Various
+        AnalyticsService,
         UtilsService,
         {
             provide: HTTP_INTERCEPTORS,

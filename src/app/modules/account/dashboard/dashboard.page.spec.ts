@@ -9,15 +9,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { OptionItemI } from 'src/app/interfaces/option-item.interface';
-import { AuthService, AlertService } from 'src/app/services';
+import { AuthService, AlertService, AnalyticsService } from 'src/app/services';
+import {
+    alertService,
+    analyticsService,
+    authService,
+    navCtrl,
+} from 'src/app/services/services.mock.spec';
 
 import { DashboardPage } from './dashboard.page';
 
 describe('DashboardPage', () => {
     let component: DashboardPage;
-    let authService: AuthService;
-    let alertService: AlertService;
-    let navCtrl: NavController;
     let fixture: ComponentFixture<DashboardPage>;
 
     beforeEach(waitForAsync(() => {
@@ -28,16 +31,20 @@ describe('DashboardPage', () => {
                 RouterTestingModule,
                 ComponentsModule,
             ],
-            providers: [AuthService, AlertService],
+            providers: [
+                AuthService,
+                AlertService,
+                { provide: AuthService, useValue: authService },
+                { provide: AlertService, useValue: alertService },
+                { provide: AnalyticsService, useValue: analyticsService },
+                { provide: NavController, useValue: navCtrl },
+            ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
         const testbed = getTestBed();
         fixture = TestBed.createComponent(DashboardPage);
         component = fixture.componentInstance;
-        authService = testbed.inject(AuthService);
-        alertService = testbed.inject(AlertService);
-        navCtrl = testbed.inject(NavController);
         fixture.detectChanges();
     }));
 
@@ -47,34 +54,29 @@ describe('DashboardPage', () => {
 
     describe('onInit', () => {
         it('isLogged', async () => {
-            spyOn(authService, 'isAuthenticated').and.returnValue(true);
+            authService.isAuthenticated = jasmine
+                .createSpy()
+                .and.returnValue(true);
             await component.isAuthenticated();
             expect(component.logged).toBe(true);
         });
 
         it('isNotLogged', async () => {
-            spyOn(authService, 'isAuthenticated').and.returnValue(false);
+            authService.isAuthenticated = jasmine
+                .createSpy()
+                .and.returnValue(false);
             await component.isAuthenticated();
             expect(component.logged).toBe(false);
         });
     });
 
-    it('logout', () => {
-        spyOn(alertService, 'presentAlertWithButtons');
-        component.logout();
+    it('logout', async () => {
+        await component.logout();
         expect(alertService.presentAlertWithButtons).toHaveBeenCalled();
-    });
-
-    it('onLogoutClick', () => {
-        spyOn(authService, 'logout');
-        component.onLogoutClick();
-        expect(component.logged).toBe(false);
-        expect(authService.logout).toHaveBeenCalled();
     });
 
     describe('onClickOption', () => {
         it('navigateForward', () => {
-            spyOn(navCtrl, 'navigateForward');
             const item: OptionItemI = {
                 route: 'perro',
                 name: '',

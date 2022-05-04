@@ -1,5 +1,4 @@
-import { Inscription } from './../../models/inscription.model';
-import { Tournament, User } from 'src/app/models';
+import { Tournament } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
 import {
     ComponentFixture,
@@ -11,17 +10,19 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import {
+    AnalyticsService,
     AuthService,
     InscriptionService,
     TournamentService,
 } from 'src/app/services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { TournamentPage } from './tournament.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { user, inscription } from 'src/app/models/models.mock.spec';
+import { analyticsService } from 'src/app/services/services.mock.spec';
 
 const tournament = new Tournament({
     _id: '123',
@@ -53,7 +54,8 @@ describe('TournamentPage', () => {
     const tournamentService = jasmine.createSpyObj('TournamentService', [
         'getOne',
     ]);
-    const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
+    let route: ActivatedRoute;
+
     authService.getUser = jasmine.createSpy().and.returnValue(user);
     inscriptionService.getAllOfTournament = jasmine
         .createSpy()
@@ -64,7 +66,6 @@ describe('TournamentPage', () => {
     tournamentService.getOne = jasmine
         .createSpy()
         .and.returnValue(of(tournament));
-    let route: ActivatedRoute;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -79,6 +80,7 @@ describe('TournamentPage', () => {
                 { provide: AuthService, useValue: authService },
                 { provide: TournamentService, useValue: tournamentService },
                 { provide: InscriptionService, useValue: inscriptionService },
+                { provide: AnalyticsService, useValue: analyticsService },
                 ImagePipe,
                 {
                     provide: ActivatedRoute,

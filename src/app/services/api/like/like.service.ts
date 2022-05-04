@@ -9,11 +9,15 @@ import { take } from 'rxjs/operators';
 import { LikeGetAllReceivedForUserResponse } from './like.response';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { Car } from 'src/app/models';
+import { StorageService } from '../..';
 
 @Injectable({ providedIn: 'root' })
 export class LikeService {
     url = `${environment.urlApi}/likes`;
-    constructor(private httpClient: HttpClient) {}
+    constructor(
+        private httpClient: HttpClient,
+        private storageService: StorageService
+    ) {}
 
     getAll(
         data: LikeGetAllDto
@@ -59,5 +63,37 @@ export class LikeService {
         return this.httpClient
             .delete<Like>(`${this.url}/byCarId/${id}`)
             .pipe(take(1));
+    }
+
+    async checkLikedStorage(id: string): Promise<boolean> {
+        const likes = await this.storageService.get<string[]>('likes');
+        if (likes) {
+            const isLiked = likes.find((item) => item === id);
+            if (isLiked) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    async setLikedStorage(id: string) {
+        let likes = await this.storageService.get<string[]>('likes');
+        if (likes) {
+            likes.push(id);
+        } else {
+            likes = [id];
+        }
+        this.storageService.set('likes', likes);
+    }
+
+    async removeLikeStorage(id: string) {
+        let likes = await this.storageService.get<string[]>('likes');
+        if (likes) {
+            likes = likes.filter((l) => l !== id);
+        }
+        this.storageService.set('likes', likes);
     }
 }

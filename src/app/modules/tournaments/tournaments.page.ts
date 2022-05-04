@@ -1,8 +1,8 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Tournament } from 'src/app/models';
-import { TournamentService } from 'src/app/services';
 import { TournamentsViewModel } from './model/tournaments.view-model';
+import { TournamentService, AnalyticsService } from 'src/app/services';
 
 @Component({
     selector: 'page-tournaments',
@@ -14,7 +14,8 @@ export class TournamentsPage {
 
     constructor(
         private tournamentService: TournamentService,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private analyticsService: AnalyticsService
     ) {}
 
     async ionViewWillEnter() {
@@ -37,16 +38,18 @@ export class TournamentsPage {
         });
     }
 
-    segmentChanged(ev: any) {
-        const segment = Number(ev.detail.value);
-        this.vm.header.segments.selected = Number(segment);
-    }
-
-    goTo(event: Tournament) {
-        this.navCtrl.navigateForward(['/tournament', event._id]);
+    goToTournament(item: Tournament) {
+        this.analyticsService.logEvent('tournaments_goToTournament', {
+            params: {
+                tournament_id: item._id,
+                tournament_name: item.name,
+            },
+        });
+        this.navCtrl.navigateForward(['/tournament', item._id]);
     }
 
     doRefresh(event: any) {
+        this.analyticsService.logEvent('tournaments_refresh', {});
         this.getItems(event);
     }
 }
