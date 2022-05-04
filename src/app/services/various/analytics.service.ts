@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 export class AnalyticsService {
     analyticsEnabled = true;
 
-    constructor(private router: Router, private platform: Platform) {
+    constructor(private router: Router, private platform: Platform) {}
+
+    start() {
         this.initFb();
         this.router.events
             .pipe(filter((e: RouterEvent) => e instanceof NavigationEnd))
