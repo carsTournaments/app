@@ -117,7 +117,7 @@ export class TournamentPage {
                         this.vm.buttonInscription = true;
                     }
                     this.vm.loading.getCarsUsersForInscription = false;
-                    this.vm.error.getCarsUsersForInscription = true;
+                    this.vm.error.getCarsUsersForInscription = false;
                 },
                 error: () => {
                     this.vm.loading.getCarsUsersForInscription = false;
