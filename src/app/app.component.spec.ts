@@ -12,16 +12,17 @@ import { AppComponent } from './app.component';
 import { ServicesModule } from './services/services.module';
 import { AlertService, AnalyticsService } from './services';
 import { NavController } from '@ionic/angular';
-import { navCtrl, analyticsService } from './services/services.mock.spec';
+import {
+    navCtrl,
+    analyticsService,
+    alertService,
+    storageService,
+    location,
+} from './services/services.mock.spec';
 
-xdescribe('AppComponent', () => {
+describe('AppComponent', () => {
     let component: AppComponent;
     let fixture: ComponentFixture<AppComponent>;
-    const storageService = jasmine.createSpyObj('StorageService', ['startDB']);
-    const alertService = jasmine.createSpyObj('AlertService', [
-        'presentAlertWithButtons',
-    ]);
-    const location = jasmine.createSpyObj('Location', ['isCurrentPathEqualTo']);
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -54,7 +55,7 @@ xdescribe('AppComponent', () => {
             component.location.isCurrentPathEqualTo = jasmine
                 .createSpy()
                 .and.returnValue('/tab/tournaments');
-            await component.onBackButton(null);
+            await component.onBackButton(() => {});
             expect(
                 component.location.isCurrentPathEqualTo
             ).toHaveBeenCalledWith('/tab/tournaments');

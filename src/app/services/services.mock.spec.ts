@@ -6,6 +6,7 @@ export const authService = jasmine.createSpyObj('AuthService', [
     'isAuthenticated',
 ]);
 export const brandService = jasmine.createSpyObj('BrandService', ['getAll']);
+
 export const carService = jasmine.createSpyObj('CarService', [
     'getAllOfDriver',
     'getOne',
@@ -45,6 +46,14 @@ alertService.presentAlertWithButtons = jasmine.createSpy().and.returnValue(
 export const navCtrl = jasmine.createSpyObj('NavController', [
     'navigateForward',
     'navigateBack',
+]);
+
+export const storageService = jasmine.createSpyObj('StorageService', [
+    'startDB',
+]);
+
+export const location = jasmine.createSpyObj('Location', [
+    'isCurrentPathEqualTo',
 ]);
 
 // Varios
