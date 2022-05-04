@@ -25,7 +25,7 @@ export class AlertService {
     async presentAlertWithInput(
         header: string,
         message: string,
-        cssClass = 'alert-custom',
+        cssClass = 'alert-custom-with-buttons',
         backdropDismiss = false
     ): Promise<HTMLIonAlertElement> {
         const alert = await this.alertCtrl.create({
@@ -51,7 +51,7 @@ export class AlertService {
         header: string,
         message: string,
         buttons: any[],
-        cssClass = 'alert-custom',
+        cssClass = 'alert-custom-with-buttons',
         backdropDismiss = false
     ): Promise<HTMLIonAlertElement> {
         const alert = await this.alertCtrl.create({

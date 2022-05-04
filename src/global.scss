@@ -193,6 +193,80 @@ hr {
     }
 }
 
+.alert-custom-md {
+    --background: var(--ion-color-primary);
+
+    .alert-wrapper {
+        --border-color: #000;
+        border-radius: 10px;
+    }
+
+    .alert-title,
+    .alert-message,
+    .alert-button {
+        color: #fff;
+        text-align: center;
+    }
+
+    .alert-message {
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+    }
+
+    .alert-button-group {
+        padding: 0.5rem;
+    }
+
+    .alert-button {
+        background: #000 !important;
+        color: #fff;
+        border-radius: 10px;
+        margin: 1rem;
+    }
+}
+
+.alert-custom-with-buttons {
+    --background: var(--ion-color-primary);
+    --border-radius: 10px;
+
+    .alert-wrapper {
+        --border-color: #000;
+    }
+
+    .alert-title,
+    .alert-message,
+    .alert-button {
+        color: #fff;
+    }
+
+    .alert-message {
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+    }
+
+    .alert-button-group {
+        padding: 0.5rem 1.5rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: unset;
+    }
+
+    .alert-button {
+        background: #000 !important;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 10px;
+        margin: 0.5rem;
+    }
+
+    .alert-button:active {
+        color: var(--ion-color-medium);
+    }
+}
+
 .pointer {
     cursor: pointer;
 }
