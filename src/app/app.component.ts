@@ -2,7 +2,12 @@ import { StorageService } from './services/ionic/storage.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { AlertService, AnalyticsService, SettingsService } from './services';
+import {
+    AdmobService,
+    AlertService,
+    AnalyticsService,
+    SettingsService,
+} from './services';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 
 @Component({
@@ -19,9 +24,11 @@ export class AppComponent implements OnInit {
         private zone: NgZone,
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
+        private admobService: AdmobService,
         public location: Location
     ) {
         this.initializeDeepLinks();
+        this.admobService.init();
         this.analyticsService.start();
     }
 

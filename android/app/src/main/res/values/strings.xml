@@ -1,7 +1,8 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8' ?>
 <resources>
     <string name="app_name">CarsTournaments</string>
     <string name="title_activity_main">CarsTournaments</string>
     <string name="package_name">com.josexs.ct</string>
     <string name="custom_url_scheme">com.josexs.ct</string>
+    <string name="admob_app_id">ca-app-pub-1868668305627051~6315115384</string>
 </resources>

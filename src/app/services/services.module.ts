@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import {
     ActionSheetService,
+    AdmobService,
     AlertService,
     AnalyticsService,
     AuthService,
@@ -43,13 +44,15 @@ import { HttpInterceptorService } from '../core/interceptors/http.interceptor';
         UserService,
         VoteService,
         WinnerService,
+        // Capacitor
+        AdmobService,
+        AnalyticsService,
         // Ionic
         ActionSheetService,
         AlertService,
         StorageService,
         SpinnerHandlerService,
         // Various
-        AnalyticsService,
         UtilsService,
         {
             provide: HTTP_INTERCEPTORS,

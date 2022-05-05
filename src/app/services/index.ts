@@ -13,6 +13,10 @@ export { UserService } from './api/user/user.service';
 export { VoteService } from './api/vote/vote.service';
 export { WinnerService } from './api/winner/winner.service';
 
+// Capacitor
+export { AdmobService } from './capacitor/admob/admob.service';
+export { AnalyticsService } from './capacitor/analytics/analytics.service';
+
 // Ionic
 export { AlertService } from './ionic/alert.service';
 export { ActionSheetService } from './ionic/action-sheet.service';
@@ -20,5 +24,4 @@ export { StorageService } from './ionic/storage.service';
 export { SpinnerHandlerService } from './ionic/spinner-handler.service';
 
 // Various
-export { AnalyticsService } from './various/analytics.service';
 export { UtilsService } from './various/utils.service';
