@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
         this.addEventBackButton();
-        this.settingsService.getSettingsForApp();
+        this.settingsService.getSettingsDB();
     }
 
     initializeDeepLinks(): void {

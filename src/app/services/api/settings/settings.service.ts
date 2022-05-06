@@ -4,24 +4,30 @@ import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { SettingsAppDto } from './settings.dto';
 import { SettingsAppI, SettingsCheckUpdateI } from './settings.response';
-import { AdmobService, AlertService } from '../..';
+import { AdmobService, AlertService, StorageService } from '../..';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { Location } from '@angular/common';
+import { SettingsApp } from 'src/app/models/settings.model';
+import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs/internal/Subject';
+import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
     url = `${environment.urlApi}/settings`;
+    settings: SettingsAppI;
     constructor(
         private httpClient: HttpClient,
         public location: Location,
         private platform: Platform,
         private alertService: AlertService,
-        private admobService: AdmobService
+        private admobService: AdmobService,
+        private storageService: StorageService
     ) {}
 
-    async getSettingsForApp(): Promise<void> {
+    async getSettingsDB(): Promise<void> {
         let data: SettingsAppDto = {};
         if (this.platform.is('capacitor')) {
             const info = await App.getInfo();
@@ -33,10 +39,28 @@ export class SettingsService {
             .pipe(take(1))
             .subscribe({
                 next: (response: SettingsAppI) => {
+                    this.setSettings(response);
                     this.checkUpdate(response);
                     this.checkStates(response);
                 },
             });
+    }
+
+    setSettings(data: SettingsAppI): void {
+        this.storageService.set('settings', data);
+    }
+
+    async getSettings(): Promise<SettingsAppI> {
+        const settings = await this.storageService.get<SettingsAppI>(
+            'settings'
+        );
+        if (settings) {
+            this.settings = settings;
+            return this.settings;
+        } else {
+            await this.getSettingsDB();
+            this.getSettings();
+        }
     }
 
     private checkUpdate(data: SettingsAppI): void {
@@ -75,8 +99,8 @@ export class SettingsService {
     }
 
     private checkStates(data: SettingsAppI): void {
-        if (data.status) {
-            if (data.status.admob) {
+        if (data.state) {
+            if (data.state.admob) {
                 this.admobService.init();
             }
         }

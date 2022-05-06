@@ -27,7 +27,7 @@ export interface SettingsAppI {
     title: string;
     description: string;
     isNeedUpdate: SettingsIsNeedUpdateI;
-    status: SettingsStateI;
+    state: SettingsStateI;
 }
 
 export interface SettingsIsNeedUpdateI {

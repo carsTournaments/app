@@ -57,6 +57,8 @@ export const navCtrl = jasmine.createSpyObj('NavController', [
 
 export const storageService = jasmine.createSpyObj('StorageService', [
     'startDB',
+    'set',
+    'get',
 ]);
 
 export const location = jasmine.createSpyObj('Location', [
