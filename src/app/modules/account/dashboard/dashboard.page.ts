@@ -6,6 +6,8 @@ import {
     AlertService,
     UserService,
     AnalyticsService,
+    AdmobService,
+    SettingsService,
 } from 'src/app/services';
 import { DashboardViewModel } from './model/dashboard.view-model';
 
@@ -23,7 +25,9 @@ export class DashboardPage {
         private userService: UserService,
         private navCtrl: NavController,
         private alertService: AlertService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private admobService: AdmobService,
+        private settingsService: SettingsService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -127,5 +131,9 @@ export class DashboardPage {
         } else {
             this.analyticsService.logEvent('dashboard_logoutCancel');
         }
+    }
+
+    async startAnouncement() {
+        this.admobService.showInterstitial();
     }
 }

@@ -15,7 +15,9 @@
         "prepare": "husky install",
         "generate:apk": "ng build --configuration production && npx cap sync && cd android && ./gradlew assembleDebug",
         "generate:apk:release": "ng build --configuration production && npx cap sync && cd android && ./gradlew assembleRelease",
-        "generate:apk:run": "ionic capacitor run android --prod"
+        "generate:apk:run": "ionic capacitor run android --prod",
+        "livereload:android": "ionic capacitor run android --livereload --external",
+        "livereload:ios": "ionic capacitor run ios --livereload --external"
     },
     "private": true,
     "dependencies": {
@@ -26,6 +28,7 @@
         "@angular/platform-browser-dynamic": "~13.2.2",
         "@angular/router": "~13.2.2",
         "@angular/service-worker": "~13.2.2",
+        "@capacitor-community/admob": "^3.2.0",
         "@capacitor-community/firebase-analytics": "~1.0.1",
         "@capacitor/android": "3.4.3",
         "@capacitor/app": "1.1.1",

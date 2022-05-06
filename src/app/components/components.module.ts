@@ -16,23 +16,25 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { TournamentsSliderComponent } from './tournaments-slider/tournaments-slider.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.component';
+import { CanYouHelpComponent } from './can-you-help/can-you-help.component';
 
 @NgModule({
     imports: [
-        IonicModule,
-        RouterModule,
-        FormsModule,
         CommonModule,
-        ServicesModule,
+        FormsModule,
+        IonicModule,
         PipesModule,
+        RouterModule,
+        ServicesModule,
         SwiperModule,
     ],
     declarations: [
-        CountUpDirective,
-        BrandItemComponent,
-        CarItemComponent,
-        HeaderComponent,
         AuthComponent,
+        BrandItemComponent,
+        CanYouHelpComponent,
+        CarItemComponent,
+        CountUpDirective,
+        HeaderComponent,
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,
@@ -40,11 +42,12 @@ import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.compon
         WinnerCarItemComponent,
     ],
     exports: [
-        CountUpDirective,
-        BrandItemComponent,
-        CarItemComponent,
-        HeaderComponent,
         AuthComponent,
+        BrandItemComponent,
+        CanYouHelpComponent,
+        CarItemComponent,
+        CountUpDirective,
+        HeaderComponent,
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,

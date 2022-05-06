@@ -1,4 +1,4 @@
-import { AnalyticsService } from './../../services/various/analytics.service';
+import { AnalyticsService } from '../../services/capacitor/analytics/analytics.service';
 import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';

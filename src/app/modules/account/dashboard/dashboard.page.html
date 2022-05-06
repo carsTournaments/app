@@ -23,6 +23,8 @@
                     </ion-card-content>
                 </ion-card>
 
+                <can-you-help></can-you-help>
+
                 <ion-card
                     mode="ios"
                     class="option-item"
@@ -30,16 +32,15 @@
                     (click)="onClickOption(item)"
                     style="margin-top: -0.25rem"
                 >
-                    <ion-item
-                        color="light"
-                        mode="ios"
-                        [button]="true"
-                        lines="none"
-                    >
-                        {{ item.name }}
+                    <ion-item color="light" mode="ios" button lines="none">
+                        <ion-label
+                            >{{ item.name }}
+                            <small *ngIf="item.subtitle"
+                                ><br />{{ item.subtitle }}
+                            </small>
+                        </ion-label>
                     </ion-item>
                 </ion-card>
-                <!-- </div> -->
             </ng-container>
         </ion-col>
     </ion-row>

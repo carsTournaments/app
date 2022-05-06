@@ -25,13 +25,13 @@ export class AppComponent implements OnInit {
         this.analyticsService.start();
     }
 
-    async ngOnInit() {
+    async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
         this.addEventBackButton();
-        this.settingsService.checkUpdateApp();
+        this.settingsService.getSettingsDB();
     }
 
-    initializeDeepLinks() {
+    initializeDeepLinks(): void {
         App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
             this.zone.run(() => {
                 const domain = 'carstournaments.carsites.es';
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    addEventBackButton() {
+    addEventBackButton(): void {
         this.platform.backButton.subscribeWithPriority(
             10,
             async (processNextHandler) => this.onBackButton(processNextHandler)
