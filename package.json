@@ -15,7 +15,9 @@
         "prepare": "husky install",
         "generate:apk": "ng build --configuration production && npx cap sync && cd android && ./gradlew assembleDebug",
         "generate:apk:release": "ng build --configuration production && npx cap sync && cd android && ./gradlew assembleRelease",
-        "generate:apk:run": "ionic capacitor run android --prod"
+        "generate:apk:run": "ionic capacitor run android --prod",
+        "livereload:android": "ionic capacitor run android --livereload --external",
+        "livereload:ios": "ionic capacitor run ios --livereload --external"
     },
     "private": true,
     "dependencies": {

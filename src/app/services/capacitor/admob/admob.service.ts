@@ -4,11 +4,7 @@ import {
     BannerAdOptions,
     BannerAdSize,
     BannerAdPosition,
-    BannerAdPluginEvents,
-    AdMobBannerSize,
     AdOptions,
-    AdLoadInfo,
-    InterstitialAdPluginEvents,
     RewardAdOptions,
 } from '@capacitor-community/admob';
 
@@ -44,7 +40,6 @@ export class AdmobService {
             position: BannerAdPosition.CENTER,
             margin: 0,
             isTesting: false,
-            // npa: true
         };
         AdMob.showBanner(options);
     }
@@ -59,23 +54,8 @@ export class AdmobService {
     }
 
     async showRewardVideo(): Promise<void> {
-        // AdMob.addListener(RewardAdPluginEvents.Loaded, (info: AdLoadInfo) => {
-        //     // Subscribe prepared rewardVideo
-        // });
-
-        // AdMob.addListener(RewardAdPluginEvents.Rewarded, (rewardItem: AdMobRewardItem) => {
-        //     // Subscribe user rewarded
-        //     console.log(rewardItem);
-        // });
-
         const options: RewardAdOptions = {
             adId: 'ca-app-pub-1868668305627051/1719310546',
-            // isTesting: true
-            // npa: true
-            // ssv: {
-            //   userId: "A user ID to send to your SSV"
-            //   customData: JSON.stringify({ ...MyCustomData })
-            //}
         };
         await AdMob.prepareRewardVideoAd(options);
         const rewardItem = await AdMob.showRewardVideoAd();

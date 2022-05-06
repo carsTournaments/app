@@ -2,12 +2,7 @@ import { StorageService } from './services/ionic/storage.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import {
-    AdmobService,
-    AlertService,
-    AnalyticsService,
-    SettingsService,
-} from './services';
+import { AlertService, AnalyticsService, SettingsService } from './services';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 
 @Component({
@@ -24,21 +19,19 @@ export class AppComponent implements OnInit {
         private zone: NgZone,
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
-        private admobService: AdmobService,
         public location: Location
     ) {
         this.initializeDeepLinks();
-        this.admobService.init();
         this.analyticsService.start();
     }
 
-    async ngOnInit() {
+    async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
         this.addEventBackButton();
-        this.settingsService.checkUpdateApp();
+        this.settingsService.getSettingsForApp();
     }
 
-    initializeDeepLinks() {
+    initializeDeepLinks(): void {
         App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
             this.zone.run(() => {
                 const domain = 'carstournaments.carsites.es';
@@ -51,7 +44,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    addEventBackButton() {
+    addEventBackButton(): void {
         this.platform.backButton.subscribeWithPriority(
             10,
             async (processNextHandler) => this.onBackButton(processNextHandler)

@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { SettingsCheckUpdateDto } from './settings.dto';
-import { SettingsCheckUpdateI } from './settings.response';
-import { AlertService } from '../..';
+import { SettingsAppDto } from './settings.dto';
+import { SettingsAppI, SettingsCheckUpdateI } from './settings.response';
+import { AdmobService, AlertService } from '../..';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
@@ -18,35 +17,39 @@ export class SettingsService {
         private httpClient: HttpClient,
         public location: Location,
         private platform: Platform,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private admobService: AdmobService
     ) {}
 
-    async checkUpdateApp() {
+    async getSettingsForApp(): Promise<void> {
+        let data: SettingsAppDto = {};
         if (this.platform.is('capacitor')) {
             const info = await App.getInfo();
-            const version = info.version;
-            const platform = this.platform.is('android') ? 'android' : 'ios';
-            this.checkUpdateDB({ platform, version }).subscribe({
-                next: (response) => {
-                    if (response.mandatory) {
-                        this.onMandatoryUpdate(response);
-                    } else if (response.update) {
-                        this.isAvailableUpdate(response);
-                    }
+            data.version = info.version;
+            data.platform = this.platform.is('android') ? 'android' : 'ios';
+        }
+        this.httpClient
+            .post<SettingsAppI>(`${this.url}/getSettingsForApp`, data)
+            .pipe(take(1))
+            .subscribe({
+                next: (response: SettingsAppI) => {
+                    this.checkUpdate(response);
+                    this.checkStates(response);
                 },
             });
+    }
+
+    private checkUpdate(data: SettingsAppI): void {
+        if (data.isNeedUpdate) {
+            if (data.isNeedUpdate.mandatory) {
+                this.onMandatoryUpdate(data.isNeedUpdate);
+            } else if (data.isNeedUpdate.update) {
+                this.isAvailableUpdate(data.isNeedUpdate);
+            }
         }
     }
 
-    private checkUpdateDB(
-        data: SettingsCheckUpdateDto
-    ): Observable<SettingsCheckUpdateI> {
-        return this.httpClient
-            .post<SettingsCheckUpdateI>(`${this.url}/checkUpdate`, data)
-            .pipe(take(1));
-    }
-
-    onMandatoryUpdate(data: SettingsCheckUpdateI) {
+    private onMandatoryUpdate(data: SettingsCheckUpdateI) {
         this.alertService.presentAlertWithButtons(
             'Actualización obligatoria',
             'Es necesario actualizar la aplicación para poder continuar',
@@ -54,7 +57,7 @@ export class SettingsService {
         );
     }
 
-    isAvailableUpdate(data: SettingsCheckUpdateI) {
+    private isAvailableUpdate(data: SettingsCheckUpdateI): void {
         this.alertService.presentAlertWithButtons(
             'Actualización disponible',
             '¿Quieres actualizar la aplicacion?',
@@ -65,9 +68,17 @@ export class SettingsService {
         );
     }
 
-    async goToMarket(data: SettingsCheckUpdateI) {
+    private async goToMarket(data: SettingsCheckUpdateI): Promise<void> {
         Browser.open({ url: data.urlMarket }).then(() => {
             App.exitApp();
         });
+    }
+
+    private checkStates(data: SettingsAppI): void {
+        if (data.status) {
+            if (data.status.admob) {
+                this.admobService.init();
+            }
+        }
     }
 }
