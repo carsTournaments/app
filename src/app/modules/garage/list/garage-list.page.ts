@@ -87,16 +87,9 @@ export class GarageListPage {
     }
 
     async addImage(car: Car): Promise<void> {
-        this.vm.loading = true;
         this.imageService.addNewToGallery('car', car._id).then(
-            () => {
-                this.utilsService.reloadPage();
-                this.vm.loading = false;
-            },
-            (error) => {
-                this.vm.loading = false;
-                this.alertService.presentAlert('Error', error);
-            }
+            () => this.utilsService.reloadPage(),
+            (error) => this.alertService.presentAlert('Error', error)
         );
     }
 

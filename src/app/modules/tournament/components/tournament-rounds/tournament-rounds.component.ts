@@ -24,6 +24,10 @@ export class TournamentRoundsComponent implements OnInit {
         this.getAllRoundsAndPairingsOfTournament();
     }
 
+    ionViewWillEnter() {
+        this.getAllRoundsAndPairingsOfTournament();
+    }
+
     getAllRoundsAndPairingsOfTournament() {
         this.roundService
             .getAllOfTournament({ id: this.tournamentId })
