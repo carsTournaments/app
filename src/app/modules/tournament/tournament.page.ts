@@ -12,6 +12,7 @@ import {
     WinnerService,
     ImageService,
     AnalyticsService,
+    UtilsService,
 } from 'src/app/services';
 import { TournamentViewModel } from './model/tournament.view-model';
 
@@ -35,7 +36,8 @@ export class TournamentPage {
         private alertService: AlertService,
         private winnerService: WinnerService,
         private imageService: ImageService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private utilsService: UtilsService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -50,7 +52,10 @@ export class TournamentPage {
         this.tournamentService.getOne(this.vm.id).subscribe({
             next: (data) => {
                 this.vm.tournament = data;
-                this.vm.header.title = data.name;
+                this.vm.header.title = this.utilsService.truncateText(
+                    data.name,
+                    20
+                );
                 if (data.image) {
                     this.vm.image = this.imagePipe.transform(data.image.url);
                 }

@@ -28,7 +28,7 @@ export class SettingsService {
     ) {}
 
     async getSettingsDB(): Promise<void> {
-        let data: SettingsAppDto = {};
+        const data: SettingsAppDto = {};
         if (this.platform.is('capacitor')) {
             const info = await App.getInfo();
             data.version = info.version;

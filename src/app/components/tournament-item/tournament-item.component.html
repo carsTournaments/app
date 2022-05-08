@@ -12,7 +12,7 @@
                     : 'card-title-tournament-inscriptions'
             "
         >
-            {{ tournament.name }}
+            {{ tournament.name | truncateText: 23 }}
         </div>
         <div
             class="card-description-tournament"
