@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { SpinnerHandlerService } from 'src/app/services';
 
 @Component({
     selector: 'spinner',

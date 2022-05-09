@@ -16,7 +16,6 @@ import {
     PairingService,
     RoundService,
     SettingsService,
-    SpinnerHandlerService,
     StorageService,
     TournamentService,
     UserService,
@@ -51,7 +50,6 @@ import { HttpInterceptorService } from '../core/interceptors/http.interceptor';
         ActionSheetService,
         AlertService,
         StorageService,
-        SpinnerHandlerService,
         // Various
         UtilsService,
         {
