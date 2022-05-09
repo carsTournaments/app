@@ -1,5 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
-import { Image, Pairing, Vote } from 'src/app/models';
+import { Image, Pairing, User, Vote } from 'src/app/models';
 
 export class PairingViewModel {
     id: string;
@@ -9,7 +9,12 @@ export class PairingViewModel {
             state: true,
             route: '',
         },
+        rightButton: {
+            state: true,
+            icon: 'alert-circle-outline',
+        },
     });
+    user: User;
     pairing: Pairing;
     totalHeight = 500;
     votes: {

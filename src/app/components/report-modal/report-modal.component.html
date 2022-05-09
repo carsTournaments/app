@@ -1,0 +1,34 @@
+<ion-content scrollY="false">
+    <h1 class="title">Reporte</h1>
+    <ion-row>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label position="stacked"> Coche </ion-label>
+                <ion-select
+                    [(ngModel)]="report.carReported"
+                    placeholder="Selecciona"
+                >
+                    <ion-select-option [value]="pairing.car1._id">
+                        {{ pairing.car1.brand.name }} {{ pairing.car1.model }}
+                    </ion-select-option>
+                    <ion-select-option [value]="pairing.car2._id">
+                        {{ pairing.car2.brand.name }} {{ pairing.car2.model }}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked"> Motivo </ion-label>
+
+                <ion-textarea
+                    [(ngModel)]="report.reason"
+                    placeholder="¿Algo va mal? Cuentanos"
+                ></ion-textarea>
+            </ion-item>
+
+            <ion-button expand="block" (click)="createReport()"
+                >Enviar</ion-button
+            >
+        </ion-col>
+    </ion-row>
+</ion-content>
