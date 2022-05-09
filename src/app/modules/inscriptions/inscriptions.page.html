@@ -5,6 +5,16 @@
 
 <ion-content [fullscreen]="true">
     <spinner [loading]="vm.loading"></spinner>
+    <no-items
+        *ngIf="
+        !vm.loading && 
+        vm.inscriptions && 
+        vm.inscriptions.todo.length === 0 &&
+        vm.inscriptions.inProgress.length === 0 &&
+        vm.inscriptions.completed.length === 0
+        "
+        [options]="vm.noitems"
+    ></no-items>
     <ion-row style="padding-top: 0">
         <ion-col
             style="padding-top: 0"

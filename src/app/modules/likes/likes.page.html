@@ -5,19 +5,31 @@
 
 <ion-content [fullscreen]="true">
     <spinner [loading]="vm.loading"></spinner>
+    <no-items
+        *ngIf="!vm.loading && vm.likesReceived.length === 0 && vm.header.segments.selected === 0"
+        [options]="vm.noitemsReceived"
+    ></no-items>
+    <no-items
+        *ngIf="!vm.loading && vm.likesSent.length === 0 && vm.header.segments.selected === 1"
+        [options]="vm.noitemsSent"
+    ></no-items>
 
     <ion-row style="padding-top: 0">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <ng-container *ngIf="vm.header.segments.selected === 0">
-                <div *ngFor="let item of vm.likesReceived">
-                    <car-item
-                        [car]="item.car"
-                        type="likesReceived"
-                        [likesOptions]="{likes: item.likes, lastLike: item.lastLike}"
-                        (clickItem)="onClickCar($event)"
-                    >
-                    </car-item>
-                </div>
+                <ng-container
+                    *ngIf="!vm.loading && vm.likesReceived.length > 0"
+                >
+                    <div *ngFor="let item of vm.likesReceived">
+                        <car-item
+                            [car]="item.car"
+                            type="likesReceived"
+                            [likesOptions]="{likes: item.likes, lastLike: item.lastLike}"
+                            (clickItem)="onClickCar($event)"
+                        >
+                        </car-item>
+                    </div>
+                </ng-container>
             </ng-container>
 
             <ng-container *ngIf="vm.header.segments.selected === 1">

@@ -17,6 +17,7 @@ import { TournamentsSliderComponent } from './tournaments-slider/tournaments-sli
 import { ViewerComponent } from './viewer/viewer.component';
 import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.component';
 import { CanYouHelpComponent } from './can-you-help/can-you-help.component';
+import { NoItemsComponent } from './no-items/no-items.component';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { CanYouHelpComponent } from './can-you-help/can-you-help.component';
         CarItemComponent,
         CountUpDirective,
         HeaderComponent,
+        NoItemsComponent,
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,
@@ -48,6 +50,7 @@ import { CanYouHelpComponent } from './can-you-help/can-you-help.component';
         CarItemComponent,
         CountUpDirective,
         HeaderComponent,
+        NoItemsComponent,
         SpinnerComponent,
         TournamentItemComponent,
         TournamentsSliderComponent,

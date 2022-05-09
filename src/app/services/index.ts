@@ -21,7 +21,6 @@ export { AnalyticsService } from './capacitor/analytics/analytics.service';
 export { AlertService } from './ionic/alert.service';
 export { ActionSheetService } from './ionic/action-sheet.service';
 export { StorageService } from './ionic/storage.service';
-export { SpinnerHandlerService } from './ionic/spinner-handler.service';
 
 // Various
 export { UtilsService } from './various/utils.service';
