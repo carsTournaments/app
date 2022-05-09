@@ -11,10 +11,15 @@ export class Header {
         state?: boolean;
         route?: string;
     };
+    rightButton? = {
+        state: false,
+        icon: '',
+    };
     constructor(data?: Header) {
         this.title = data?.title;
         this.segments = data?.segments;
         this.image = data?.image;
         this.backButton = data?.backButton;
+        this.rightButton = data?.rightButton;
     }
 }

@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController, ModalOptions, Platform } from '@ionic/angular';
+import {
+    IonRouterOutlet,
+    ModalController,
+    ModalOptions,
+    Platform,
+} from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import { PairingModalComponent } from './modal/pairing-modal.component';
 import {
     AlertService,
+    AuthService,
     ImageService,
     PairingService,
     VoteService,
 } from 'src/app/services';
 import { Car, Vote } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
+import { ReportModalComponent } from 'src/app/components/report-modal/report-modal.component';
 
 @Component({
     selector: 'page-pairing',
@@ -28,11 +35,13 @@ export class PairingPage implements OnInit {
         private voteService: VoteService,
         private alertService: AlertService,
         private imageService: ImageService,
-        private imagePipe: ImagePipe
+        private imagePipe: ImagePipe,
+        private authService: AuthService
     ) {}
 
     async ngOnInit(): Promise<void> {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
+        this.vm.user = await this.authService.getUser();
         this.getOne();
     }
 
@@ -68,7 +77,7 @@ export class PairingPage implements OnInit {
         }
     }
 
-    async openModal(car: Car) {
+    async openInfoModal(car: Car) {
         const options: ModalOptions = {
             component: PairingModalComponent,
             mode: 'ios',
@@ -77,8 +86,8 @@ export class PairingPage implements OnInit {
                 car,
             },
         };
-        const popover = await this.modalCtrl.create(options);
-        popover.present();
+        const modal = await this.modalCtrl.create(options);
+        modal.present();
     }
 
     async vote(type: string) {
@@ -169,5 +178,19 @@ export class PairingPage implements OnInit {
 
     openImage(image: string) {
         this.imageService.openImage(image);
+    }
+
+    async openReportModal() {
+        const options: ModalOptions = {
+            component: ReportModalComponent,
+            mode: 'ios',
+            cssClass: 'modal-report',
+            componentProps: {
+                pairing: this.vm.pairing,
+                userId: this.vm.user._id,
+            },
+        };
+        const modal = await this.modalCtrl.create(options);
+        modal.present();
     }
 }

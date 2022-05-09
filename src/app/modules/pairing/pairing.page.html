@@ -1,4 +1,7 @@
-<custom-header [options]="vm.header"></custom-header>
+<custom-header
+    [options]="vm.header"
+    (clickRightIcon)="openReportModal()"
+></custom-header>
 
 <ion-content
     [fullscreen]="true"
@@ -47,7 +50,7 @@
 
                     <div
                         class="car-title1 ion-activatable ripple-parent animate__animated animate__backInDown"
-                        (click)="openModal(vm.pairing.car1)"
+                        (click)="openInfoModal(vm.pairing.car1)"
                     >
                         <p>
                             {{ vm.pairing.car1.brand.name | uppercase }} {{
@@ -64,7 +67,7 @@
 
                     <div
                         class="car-title2 ion-activatable ripple-parent animate__animated animate__backInUp"
-                        (click)="openModal(vm.pairing.car2)"
+                        (click)="openInfoModal(vm.pairing.car2)"
                     >
                         <p>
                             {{ vm.pairing.car2.brand.name | uppercase }} {{
