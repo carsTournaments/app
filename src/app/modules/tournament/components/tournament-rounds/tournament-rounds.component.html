@@ -54,10 +54,19 @@
             (click)="goToPairing(pairing)"
         >
             <div class="box-center">
-                <div class="car-title1">
+                <div
+                    class="car-title1"
+                    [ngClass]="{
+                        isWinner: pairing.car1._id === pairing.winner
+                    }"
+                >
                     <p>
                         {{ pairing.car1.brand.name | uppercase }}
                         {{ pairing.car1.model | truncateText: 15 | uppercase }}
+                        <ion-icon
+                            *ngIf="pairing.car1._id === pairing.winner"
+                            name="trophy"
+                        ></ion-icon>
                     </p>
                 </div>
 
@@ -66,10 +75,19 @@
                     <p>VS</p>
                 </div>
 
-                <div class="car-title2">
+                <div
+                    class="car-title2"
+                    [ngClass]="{
+                        isWinner: pairing.car2._id === pairing.winner
+                    }"
+                >
                     <p>
                         {{ pairing.car2.brand.name | uppercase }}
                         {{ pairing.car2.model | truncateText: 15 | uppercase }}
+                        <ion-icon
+                            *ngIf="pairing.car2._id === pairing.winner"
+                            name="trophy"
+                        ></ion-icon>
                     </p>
                 </div>
             </div>
