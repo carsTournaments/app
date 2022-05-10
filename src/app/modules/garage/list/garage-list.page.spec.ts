@@ -157,14 +157,14 @@ describe('GarageListComponent', () => {
                 .createSpy()
                 .and.returnValue(Promise.resolve(image));
             await component.addImage(car);
-            expect(component.vm.loading).toEqual(false);
+            expect(utilsService.reloadPage).toHaveBeenCalled();
         });
         it('KO', async () => {
             imageService.addNewToGallery = jasmine
                 .createSpy()
                 .and.returnValue(Promise.reject({ error: 'error' }));
             await component.addImage(car);
-            expect(component.vm.loading).toEqual(false);
+            expect(alertService.presentAlertWithButtons).toHaveBeenCalled();
         });
     });
 
