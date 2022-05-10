@@ -9,10 +9,6 @@ export class PairingViewModel {
             state: true,
             route: '',
         },
-        rightButton: {
-            state: true,
-            icon: 'alert-circle-outline',
-        },
     });
     user: User;
     pairing: Pairing;
