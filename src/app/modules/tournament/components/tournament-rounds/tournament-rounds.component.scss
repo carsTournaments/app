@@ -47,6 +47,11 @@
         color: #fff;
         border-radius: 10px;
     }
+
+    ion-icon {
+        font-size: 15px;
+        color: #ffd700;
+    }
 }
 
 .car-title2 {
@@ -60,6 +65,11 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: #fff;
         border-radius: 10px;
+    }
+
+    ion-icon {
+        font-size: 15px;
+        color: #ffd700;
     }
 }
 
@@ -79,4 +89,10 @@
 ion-segment-button {
     --color-checked: var(--ion-color-light);
     --background-checked: var(--ion-color-primary);
+}
+
+.isWinner {
+    p {
+        background: var(--ion-color-primary) !important;
+    }
 }
