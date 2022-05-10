@@ -1,11 +1,6 @@
 import { Component, ComponentRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-    IonRouterOutlet,
-    ModalController,
-    ModalOptions,
-    Platform,
-} from '@ionic/angular';
+import { ModalController, ModalOptions, Platform } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import { PairingModalComponent } from './modal/pairing-modal.component';
 import {
@@ -42,6 +37,12 @@ export class PairingPage implements OnInit {
     async ngOnInit(): Promise<void> {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
         this.vm.user = await this.authService.getUser();
+        if (this.vm.user) {
+            this.vm.header.rightButton = {
+                state: true,
+                icon: 'alert-circle-outline',
+            };
+        }
         this.getOne();
     }
 
