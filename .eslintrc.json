@@ -26,7 +26,8 @@
                 "@typescript-eslint/naming-convention": 0,
                 "@typescript-eslint/member-ordering": 0,
                 "@typescript-eslint/dot-notation": 0,
-                "@typescript-eslint/no-unused-expressions": 0
+                "@typescript-eslint/no-unused-expressions": 0,
+                "@angular-eslint/use-pipe-transform-interface": 0
             }
         },
         {
