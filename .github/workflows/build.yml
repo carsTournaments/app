@@ -3,7 +3,7 @@ name: Build Android
 on:
     push:
         branches:
-            - issue11
+            - master
 
 jobs:
     build:
