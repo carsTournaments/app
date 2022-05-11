@@ -27,8 +27,8 @@ jobs:
             - name: Install app dependencies
               run: npm install
 
-            - name: Build Svelte app
-              run: npm run build
+            - name: Build Ionic app
+              run: npm run build:prod
 
             - name: Capacitor update
               run: npx cap update
@@ -45,7 +45,7 @@ jobs:
                   base64 -d android/release.keystore.base64 > android/release.decrypted.keystore
 
             - name: Sign dev build
-              run: jarsigner -keystore android/release.decrypted.keystore -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar ./android/app/build/outputs/bundle/release/app-release-signed.aab ./android/app/build/outputs/bundle/release/app-release.aab release
+              run: jarsigner -keystore android/release.decrypted.keystore -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar ./android/app/build/outputs/bundle/release/app-release-signed.aab ./android/app/build/outputs/bundle/release/app-release.aab carsTournaments
 
             - name: Upload release bundle
               uses: actions/upload-artifact@v2
