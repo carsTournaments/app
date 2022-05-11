@@ -6,7 +6,6 @@ import {
     BannerAdPosition,
     AdOptions,
     RewardAdOptions,
-    AdLoadInfo,
 } from '@capacitor-community/admob';
 
 @Injectable({ providedIn: 'root' })
