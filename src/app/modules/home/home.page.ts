@@ -9,6 +9,7 @@ import { StorageService } from 'src/app/services';
 })
 export class HomePage implements OnInit {
     loading = true;
+    logo = 'assets/images/logo.png';
     constructor(
         private navCtrl: NavController,
         private storageService: StorageService
