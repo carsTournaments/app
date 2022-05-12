@@ -17,7 +17,7 @@ export class BrandService {
     ): Observable<{ items: Brand[]; paginator: PaginatorI }> {
         return this.httpClient
             .post<{ items: Brand[]; paginator: PaginatorI }>(
-                `${this.url}/all`,
+                `${this.url}/getAll`,
                 data
             )
             .pipe(take(1));

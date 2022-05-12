@@ -18,7 +18,7 @@ export class RoundService {
     ): Observable<{ items: Round[]; paginator: PaginatorI }> {
         return this.httpClient
             .post<{ items: Round[]; paginator: PaginatorI }>(
-                `${this.url}/all`,
+                `${this.url}/getAll`,
                 body
             )
             .pipe(take(1));

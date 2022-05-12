@@ -18,7 +18,7 @@ export class CarService {
     ): Observable<{ items: Car[]; paginator: PaginatorI }> {
         return this.httpClient
             .post<{ items: Car[]; paginator: PaginatorI }>(
-                `${this.url}/all`,
+                `${this.url}/getAll`,
                 data
             )
             .pipe(take(1));
