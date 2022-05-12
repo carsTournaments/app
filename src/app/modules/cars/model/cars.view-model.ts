@@ -10,12 +10,17 @@ export class CarsViewModel {
             items: ['Ultimos', 'Top', 'Marcas'],
             selected: 0,
         },
+        rightButton: {
+            icon: 'filter',
+            state: true,
+        },
     });
     carsBody: CarGetAllDto = {
         page: 1,
         pageSize: 20,
         site: 'app',
         order: ['created', 'desc'],
+        onlyWithPhoto: false,
     };
     brandsBody: BrandGetAllBrandsAndCarsDto = {
         page: 1,

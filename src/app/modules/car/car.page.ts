@@ -93,7 +93,7 @@ export class CarPage implements OnInit {
                 });
                 this.vm.liked = true;
                 this.likeService.setLikedStorage(this.vm.car._id);
-                this.vm.car.likes += 1;
+                this.vm.car.likes.count += 1;
             },
             error: () => {
                 this.analyticsService.logEvent('car_like', {
@@ -115,7 +115,7 @@ export class CarPage implements OnInit {
                 });
                 this.likeService.removeLikeStorage(this.vm.car._id);
                 this.vm.liked = false;
-                this.vm.car.likes -= 1;
+                this.vm.car.likes.count -= 1;
             },
             error: () => {
                 this.analyticsService.logEvent('car_dislike', {

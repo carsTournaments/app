@@ -80,8 +80,8 @@
 
             <div *ngIf="car.likes" class="card-likes">
                 <p>
-                    <span>{{ car.likes }}</span>
-                    {{ car.likes === 1 ? 'me gusta' : 'me gustas' }}
+                    <span>{{ car.likes?.count }}</span>
+                    {{ car.likes?.count === 1 ? 'me gusta' : 'me gustas' }}
                 </p>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <custom-header
     [options]="vm.header"
     (segmentChanged)="segmentChanged($event)"
+    (clickRightIcon)="openFilter()"
 ></custom-header>
 
 <ion-content [fullscreen]="true">

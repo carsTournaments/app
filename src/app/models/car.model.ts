@@ -16,13 +16,13 @@ export class Car {
     tournaments?: Tournament[];
     image?: any;
     liked?: boolean;
-    likes?: number;
+    likes?: { count: number };
     lastLike?: string;
-    winners?: {
-        gold: number;
-        silver: number;
-        bronze: number;
-    };
+    gold?: { count: number };
+    silver?: { count: number };
+    bronze?: { count: number };
+    inscriptions: { count: number };
+    votes?: { count: number };
     created?: string;
     updated?: string;
 
@@ -43,7 +43,11 @@ export class Car {
         this.liked = data?.liked;
         this.likes = data?.likes;
         this.lastLike = data?.lastLike;
-        this.winners = data?.winners;
+        this.gold = data?.gold;
+        this.silver = data?.silver;
+        this.bronze = data?.bronze;
+        this.inscriptions = data?.inscriptions;
+        this.votes = data?.votes;
         this.created = data?.created;
         this.updated = data?.updated;
     }
