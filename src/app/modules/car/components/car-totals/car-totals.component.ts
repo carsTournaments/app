@@ -6,11 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./car-totals.component.scss'],
 })
 export class CarTotalsComponent implements OnInit {
-    @Input() likes: { count: number };
-    @Input() votes: { count: number };
-    @Input() gold: { count: number };
-    @Input() silver: { count: number };
-    @Input() bronze: { count: number };
+    @Input() likes: { count: number } = { count: 0 };
+    @Input() votes: { count: number } = { count: 0 };
+    @Input() gold: { count: number } = { count: 0 };
+    @Input() silver: { count: number } = { count: 0 };
+    @Input() bronze: { count: number } = { count: 0 };
     constructor() {}
 
     ngOnInit() {}
