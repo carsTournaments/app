@@ -63,6 +63,13 @@ const routes: Routes = [
         canActivate: [LoginGuard],
     },
     {
+        path: 'privacy-policy',
+        loadChildren: () =>
+            import('./modules/privacy-policy/privacy-policy.module').then(
+                (m) => m.PrivacyPolicyModule
+            ),
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',

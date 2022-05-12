@@ -35,6 +35,12 @@
             >
                 Registrate
             </ion-button>
+
+            <div class="link-privacy-policy">
+                <a [routerLink]="['/privacy-policy']">
+                    Ver politica de privacidad</a
+                >
+            </div>
         </ng-container>
 
         <ng-container *ngIf="!vm.loginMode">
@@ -45,7 +51,8 @@
                     [(ngModel)]="vm.name"
                     placeholder="Introduce tu nombre"
                     ngDefaultControl
-                ></ion-input>
+                >
+                </ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Email</ion-label>
