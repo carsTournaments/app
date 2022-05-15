@@ -14,9 +14,14 @@
         >
             {{ tournament.name | truncateText: 23 }}
         </div>
+        {{ tournament.maxParticipants }}
         <div
             class="card-description-tournament"
-            *ngIf="tournament.inscriptions"
+            *ngIf="
+                tournament.inscriptions &&
+                tournament.inscriptions >= 0 &&
+                tournament.maxParticipants
+            "
         >
             <ion-icon name="people"></ion-icon>
             <span>{{

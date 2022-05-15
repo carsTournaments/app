@@ -120,6 +120,8 @@ export class CarsPage {
             params: { segment: ev.detail.value },
         });
         this.vm.header.segments.selected = Number(ev.detail.value);
+        this.vm.header.rightButton.state =
+            this.vm.header.segments.selected === 0 ? true : false;
     }
 
     onClickBrand(brand: Brand): void {
