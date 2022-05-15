@@ -5,6 +5,10 @@
 
 <ion-content [fullscreen]="true" [scrollEvents]="true">
     <spinner [loading]="vm.loading.getOne"></spinner>
+    <no-items
+        *ngIf="vm.header.segments.selected === 1 && !vm.loading.getInscriptionsOfTournament && vm.inscriptions.length === 0"
+        [options]="vm.noitems"
+    ></no-items>
     <ion-row style="padding-top: 0" *ngIf="vm.tournament">
         <ion-col size="12" sizeLg="8" offsetLg="2">
             <div
@@ -34,7 +38,8 @@
                     *ngIf="vm.winners"
                     [winners]="vm.winners"
                     (clickItem)="goToCar($event)"
-                ></tournament-winners>
+                >
+                </tournament-winners>
 
                 <ion-card
                     mode="ios"

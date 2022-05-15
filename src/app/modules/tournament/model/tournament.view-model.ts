@@ -1,4 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
+import { NoItemsModel } from 'src/app/components/no-items/no-items.model';
 import { Inscription, Tournament, User } from 'src/app/models';
 import { InscriptionsGetMyCarsForInscriptionDto } from 'src/app/services/api/inscription/inscription.dto';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
@@ -17,6 +18,10 @@ export class TournamentViewModel {
             state: true,
             route: '/tab/tournaments',
         },
+    });
+    noitems = new NoItemsModel({
+        title: 'No hay inscripciones',
+        subtitle: 'Todavia nadie se ha inscrito, ¿no quieres ser el primero?',
     });
     tournament: Tournament;
     inscriptions: Inscription[] = [];

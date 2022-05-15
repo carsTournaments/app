@@ -14,7 +14,7 @@ export class TournamentService {
     getAllOfAllStates(): Observable<TournamentGetAllOfAllStatesResponse> {
         return this.httpClient
             .post<TournamentGetAllOfAllStatesResponse>(
-                `${this.url}/allOfAllStates`,
+                `${this.url}/getAllOfAllStates`,
                 null
             )
             .pipe(take(1));
@@ -22,7 +22,7 @@ export class TournamentService {
 
     getOne(id: string): Observable<Tournament> {
         return this.httpClient
-            .post<Tournament>(`${this.url}/one`, { id, site: 'app' })
+            .post<Tournament>(`${this.url}/getOne`, { id, site: 'app' })
             .pipe(take(1));
     }
 }

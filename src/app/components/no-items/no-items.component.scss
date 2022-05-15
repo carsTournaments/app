@@ -1,5 +1,6 @@
 .no-items {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -30,5 +31,9 @@
         font-weight: 400;
         margin-top: 0.5rem;
         padding: 0 1rem;
+    }
+
+    img {
+        width: 200px;
     }
 }

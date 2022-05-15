@@ -24,15 +24,9 @@ export class CarService {
             .pipe(take(1));
     }
 
-    getAllOffBrand(data: IdDto): Observable<Car[]> {
-        return this.httpClient
-            .post<Car[]>(`${this.url}/allOfBrand`, data)
-            .pipe(take(1));
-    }
-
     getAllOfDriver(data: IdDto): Observable<Car[]> {
         return this.httpClient
-            .post<Car[]>(`${this.url}/allOfDriver`, data)
+            .post<Car[]>(`${this.url}/getAllOfDriver`, data)
             .pipe(take(1));
     }
 

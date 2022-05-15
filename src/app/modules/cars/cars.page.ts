@@ -2,6 +2,7 @@ import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Brand, Car } from 'src/app/models';
 import {
+    ActionSheetService,
     AnalyticsService,
     BrandService,
     CarService,
@@ -22,7 +23,8 @@ export class CarsPage {
         private likeService: LikeService,
         private brandService: BrandService,
         private navCtrl: NavController,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private actionSheetService: ActionSheetService
     ) {}
 
     ionViewWillEnter(): void {
@@ -38,6 +40,9 @@ export class CarsPage {
             error: () => {
                 this.vm.loading.getCars = false;
                 this.vm.error.getCars = true;
+                this.vm.noitems.subtitle = this.vm.filter
+                    ? 'Pulsa sobre la X para eliminar el filtro'
+                    : 'Algo por aqui no ha ido bien...';
             },
         });
     }
@@ -115,6 +120,8 @@ export class CarsPage {
             params: { segment: ev.detail.value },
         });
         this.vm.header.segments.selected = Number(ev.detail.value);
+        this.vm.header.rightButton.state =
+            this.vm.header.segments.selected === 0 ? true : false;
     }
 
     onClickBrand(brand: Brand): void {
@@ -147,5 +154,28 @@ export class CarsPage {
     doRefresh(event: any): void {
         this.analyticsService.logEvent('cars_refresh');
         this.getCars(event);
+    }
+
+    async openFilter() {
+        const buttons = [
+            {
+                text: !this.vm.carsBody.onlyWithPhoto
+                    ? 'Ver solo coches con foto'
+                    : 'Ver todos los coches',
+                data: !this.vm.carsBody.onlyWithPhoto ? 'onlyWithPhoto' : 'all',
+            },
+        ];
+        const as = await this.actionSheetService.present('Filtro', buttons);
+
+        as.onDidDismiss().then((data) => {
+            if (data) {
+                if (data.data === 'onlyWithPhoto' || data.data === 'all') {
+                    this.vm.carsBody.onlyWithPhoto =
+                        data.data === 'onlyWithPhoto' ? true : false;
+                    this.vm.carsBody.page = 1;
+                    this.getCars();
+                }
+            }
+        });
     }
 }

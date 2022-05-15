@@ -1,10 +1,13 @@
 <custom-header
     [options]="vm.header"
     (segmentChanged)="segmentChanged($event)"
-></custom-header>
+    (clickRightIcon)="openFilter()"
+>
+</custom-header>
 
 <ion-content [fullscreen]="true">
     <spinner [loading]="vm.loading.getCars"></spinner>
+
     <ion-refresher
         *ngIf="vm.header.segments.selected === 0"
         slot="fixed"
@@ -15,6 +18,7 @@
     >
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+
     <ion-row style="padding-top: 0">
         <ion-col
             class="ion-no-padding"
@@ -25,7 +29,13 @@
         >
             <!-- LATEST CARS -->
             <ng-container *ngIf="vm.header.segments.selected === 0">
+                <no-items
+                    *ngIf="!vm.loading.getCars && vm.cars.length === 0"
+                    [options]="vm.noitems"
+                ></no-items>
+
                 <ion-row
+                    *ngIf="!vm.loading.getCars && vm.cars.length > 0"
                     style="padding-top: 1rem"
                     class="animate__animated animate__fadeIn animate__faster ion-no-padding"
                 >

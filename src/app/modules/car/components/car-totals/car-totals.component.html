@@ -1,12 +1,27 @@
 <div class="card-trophy ion-text-center">
-    <ion-row>
+    <ion-row class="icons-line1">
         <ion-col
             class="ion-no-padding ion-no-margin"
             style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
         >
-            <ion-icon name="heart" class="like"></ion-icon>
-            <p class="number-trophy" [countUp]="likes" [duration]="1500"></p>
+            <ion-icon name="body" class="like"></ion-icon>
+            <p
+                class="number-trophy"
+                [countUp]="votes?.count ?? 0"
+                [duration]="1500"
+            ></p>
         </ion-col>
+        <ion-col class="ion-no-padding ion-no-margin">
+            <ion-icon name="heart" class="like"></ion-icon>
+            <p
+                class="number-trophy"
+                [countUp]="likes?.count ?? 0"
+                [duration]="1500"
+            ></p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="icons-line2">
         <ion-col
             class="ion-no-padding ion-no-margin"
             style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
@@ -14,7 +29,7 @@
             <ion-icon name="trophy" class="gold"></ion-icon>
             <p
                 class="number-trophy"
-                [countUp]="winners?.gold"
+                [countUp]="gold?.count ?? 0"
                 [duration]="1500"
             ></p>
         </ion-col>
@@ -22,7 +37,7 @@
             <ion-icon name="trophy" class="silver"></ion-icon>
             <p
                 class="number-trophy"
-                [countUp]="winners?.silver"
+                [countUp]="silver?.count ?? 0"
                 [duration]="1500"
             ></p>
         </ion-col>
@@ -33,7 +48,7 @@
             <ion-icon name="trophy" class="bronze"></ion-icon>
             <p
                 class="number-trophy"
-                [countUp]="winners?.bronze"
+                [countUp]="bronze?.count ?? 0"
                 [duration]="1500"
             ></p>
         </ion-col>

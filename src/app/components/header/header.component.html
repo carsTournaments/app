@@ -1,5 +1,5 @@
 <ion-header *ngIf="options" class="ion-no-border" mode="md">
-    <ion-toolbar [ngStyle]="{ height: heightPx }">
+    <ion-toolbar>
         <ng-container *ngIf="options.backButton?.state">
             <ion-back-button
                 [ngClass]="{
@@ -15,7 +15,7 @@
             *ngIf="options.rightButton?.state"
             color="light"
             fill="clear"
-            class="icon-right-no-segments"
+            class="icon-right-no-segments animate__animated animate__fadeIn"
             (click)="clickRightIcon.emit()"
         >
             <ion-icon
@@ -36,7 +36,7 @@
 
         <ion-segment
             *ngIf="options.segments && options.segments.items.length > 0"
-            mode="md"
+            mode="ios"
             [value]="options.segments.selected"
             (ionChange)="segmentChanged.emit($event)"
         >
