@@ -40,6 +40,9 @@ export class CarsPage {
             error: () => {
                 this.vm.loading.getCars = false;
                 this.vm.error.getCars = true;
+                this.vm.noitems.subtitle = this.vm.filter
+                    ? 'Pulsa sobre la X para eliminar el filtro'
+                    : 'Algo por aqui no ha ido bien...';
             },
         });
     }

@@ -1,4 +1,5 @@
 import { Header } from 'src/app/components/header/model/header.model';
+import { NoItemsModel } from 'src/app/components/no-items/no-items.model';
 import { Brand, Car, Like } from 'src/app/models';
 import { BrandGetAllBrandsAndCarsDto } from 'src/app/services/api/brand/brand.dto';
 import { CarGetAllDto } from 'src/app/services/api/car/car.dto';
@@ -22,6 +23,10 @@ export class CarsViewModel {
         order: ['created', 'desc'],
         onlyWithPhoto: false,
     };
+    noitems = new NoItemsModel({
+        title: '¡No hay ningun coche disponible!',
+        subtitle: '',
+    });
     brandsBody: BrandGetAllBrandsAndCarsDto = {
         page: 1,
         pageSize: 20,
