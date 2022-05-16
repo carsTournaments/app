@@ -1,13 +1,9 @@
-ion-content {
-}
-
 .ion-content {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),
         url('/assets/images/welcome.jpg');
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: cover !important;
-    // display: grid;
     height: 100%;
     width: 100%;
     align-items: center;
@@ -19,7 +15,6 @@ ion-content {
         padding: 1rem;
         width: 100%;
 
-        // media query
         @media (min-width: 768px) {
             left: 50%;
             transform: translateX(-50%);
@@ -45,12 +40,6 @@ img {
     width: 60%;
     max-width: 300px;
     height: auto;
-    // center
     left: 50%;
     transform: translateX(-50%);
-}
-
-@media (min-width: 768px) {
-    ion-button {
-    }
 }
