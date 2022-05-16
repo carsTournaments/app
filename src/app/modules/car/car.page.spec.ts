@@ -10,30 +10,13 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { AnalyticsService, CarService } from 'src/app/services';
-import { Car } from 'src/app/models';
 import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { carService, navCtrl } from 'src/app/services/services.mock.spec';
-
-const car = new Car({
-    _id: '123',
-    brand: 'prueba',
-    model: 'prueba',
-    driver: '1',
-    year: 2020,
-    cc: 1,
-    cv: 1,
-    stock: false,
-    fuel: '',
-    traction: '',
-    info: '',
-    image: {
-        url: 'perro',
-    },
-});
+import { car } from 'src/app/models/models.mock.spec';
 
 describe('CarPage', () => {
     let component: CarPage;

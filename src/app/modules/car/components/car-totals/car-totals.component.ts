@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CarTotalsComponent implements OnInit {
     @Input() votes: { count: number } = { count: 0 };
+    @Input() inscriptions: { count: number } = { count: 0 };
     @Input() likes: { count: number } = { count: 0 };
     @Input() gold: { count: number } = { count: 0 };
     @Input() silver: { count: number } = { count: 0 };

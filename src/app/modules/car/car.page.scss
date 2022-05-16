@@ -22,10 +22,11 @@ hr {
 }
 
 .like {
-    ion-icon {
+    fa-icon {
         float: right;
         zoom: 2.5;
         color: var(--ion-color-primary);
+        line-height: 1;
     }
 
     ion-label {
@@ -35,5 +36,16 @@ hr {
 
     small {
         font-weight: 400;
+    }
+}
+
+.driver {
+    span {
+        padding-top: 0.25rem;
+        font-size: 0.8rem;
+    }
+    fa-icon {
+        color: var(--ion-color-light);
+        padding-right: 0.25rem;
     }
 }

@@ -22,8 +22,11 @@
                 >
                     {{ vm.car.brand?.name }} {{ vm.car.model }}
                     <br />
-                    <div class="custom-chip custom-chip-dark">
-                        <span>{{ vm.car.driver.name }}</span>
+                    <div class="custom-chip custom-chip-dark driver">
+                        <span>
+                            <fa-icon icon="id-card"></fa-icon>
+                            {{ vm.car.driver.name }}
+                        </span>
                     </div>
                 </ion-card-title>
                 <hr />
@@ -61,10 +64,11 @@
                     <hr />
                     <car-totals
                         [likes]="vm.car?.likes"
+                        [inscriptions]="vm.car?.inscriptions"
+                        [votes]="vm.car?.votes"
                         [gold]="vm.car?.gold"
                         [silver]="vm.car?.silver"
                         [bronze]="vm.car?.bronze"
-                        [votes]="vm.car?.votes"
                     ></car-totals>
                 </ion-card-content>
             </ion-card>
@@ -79,7 +83,7 @@
                     class="like"
                     *ngIf="!vm.liked || vm.liked && vm.user "
                 >
-                    <ion-icon [name]="vm.liked ? 'close': 'heart'"></ion-icon>
+                    <fa-icon [icon]="vm.liked ? 'ban': 'thumbs-up'"></fa-icon>
                     <ion-label>
                         {{ !vm.liked ? 'Me gusta' : 'Ya no me gusta' }}
                     </ion-label>

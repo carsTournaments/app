@@ -35,6 +35,7 @@ export class PairingPage implements OnInit {
     ) {}
 
     async ngOnInit(): Promise<void> {
+        this.vm.loading = true;
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
         this.vm.user = await this.authService.getUser();
         if (this.vm.user) {
@@ -56,9 +57,14 @@ export class PairingPage implements OnInit {
                 this.vm.totalHeight = this.platform.height() - headerHeight;
                 this.vm.header.backButton.route = `tournament/${this.vm.pairing.tournament._id}`;
                 await this.setPercentages();
-                this.setImageForBackground();
+                this.setImageForBackground('car1');
+                this.setImageForBackground('car2');
+                this.vm.loading = false;
             },
-            error: (error) => console.error(error),
+            error: (error) => {
+                this.vm.loading = false;
+                console.error(error);
+            },
         });
     }
 
@@ -156,21 +162,13 @@ export class PairingPage implements OnInit {
         this.vm.votes = cars;
     }
 
-    setImageForBackground() {
-        if (this.vm.pairing.car1) {
-            this.vm.image1 = {
+    setImageForBackground(type: 'car1' | 'car2') {
+        if (this.vm.pairing[type]) {
+            this.vm[type === 'car1' ? 'image1' : 'image2'] = {
                 url: this.imagePipe.transform(
-                    this.vm.pairing.car1.image && this.vm.pairing.car1.image.url
-                        ? this.vm.pairing.car1.image.url
-                        : null
-                ),
-            };
-        }
-        if (this.vm.pairing.car2) {
-            this.vm.image2 = {
-                url: this.imagePipe.transform(
-                    this.vm.pairing.car2.image && this.vm.pairing.car2.image.url
-                        ? this.vm.pairing.car2.image.url
+                    this.vm.pairing[type].image &&
+                        this.vm.pairing[type].image.url
+                        ? this.vm.pairing[type].image.url
                         : null
                 ),
             };

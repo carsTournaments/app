@@ -7,6 +7,7 @@ import { ComponentsModule, ServicesModule, PipesModule } from 'src/app';
 import { ImagePipe } from 'src/app/pipes';
 import { CarPage } from './car.page';
 import { CarTotalsComponent } from './components/car-totals/car-totals.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
     imports: [
         IonicModule,
@@ -15,6 +16,7 @@ import { CarTotalsComponent } from './components/car-totals/car-totals.component
         ServicesModule,
         ComponentsModule,
         PipesModule,
+        FontAwesomeModule,
         RouterModule.forChild([
             {
                 path: '',

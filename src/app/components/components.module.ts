@@ -19,6 +19,13 @@ import { WinnerCarItemComponent } from './winner-car-item/winner-car-item.compon
 import { CanYouHelpComponent } from './can-you-help/can-you-help.component';
 import { NoItemsComponent } from './no-items/no-items.component';
 import { ReportModalComponent } from './report-modal/report-modal.component';
+import {
+    FontAwesomeModule,
+    FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
     imports: [
@@ -29,6 +36,7 @@ import { ReportModalComponent } from './report-modal/report-modal.component';
         RouterModule,
         ServicesModule,
         SwiperModule,
+        FontAwesomeModule,
     ],
     declarations: [
         AuthComponent,
@@ -62,4 +70,8 @@ import { ReportModalComponent } from './report-modal/report-modal.component';
     ],
     providers: [],
 })
-export class ComponentsModule {}
+export class ComponentsModule {
+    constructor(library: FaIconLibrary) {
+        library.addIconPacks(fas, fab, far);
+    }
+}
