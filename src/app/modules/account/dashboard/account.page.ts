@@ -9,7 +9,7 @@ import {
     AdmobService,
     SettingsService,
 } from 'src/app/services';
-import { DashboardViewModel } from './model/dashboard.view-model';
+import { AccountViewModel } from './model/account.view-model';
 
 @Component({
     selector: 'app-account',
@@ -17,7 +17,7 @@ import { DashboardViewModel } from './model/dashboard.view-model';
     styleUrls: ['./account.page.scss'],
 })
 export class AccountPage {
-    vm = new DashboardViewModel();
+    vm = new AccountViewModel();
     logged = false;
 
     constructor(
@@ -31,6 +31,7 @@ export class AccountPage {
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
+        this.vm.loading = true;
         await this.isAuthenticated();
     }
 
@@ -40,6 +41,7 @@ export class AccountPage {
             this.vm.user = await this.authService.getUser();
             this.getResume();
         }
+        this.vm.loading = false;
     }
 
     getResume(): void {

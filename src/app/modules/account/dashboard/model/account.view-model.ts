@@ -4,7 +4,7 @@ import { User } from 'src/app/models';
 import { SettingsApp } from 'src/app/models/settings.model';
 import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses';
 
-export class DashboardViewModel {
+export class AccountViewModel {
     header = new Header({
         title: 'Tu Cuenta',
     });
@@ -40,4 +40,5 @@ export class DashboardViewModel {
     user: User;
     resume: UserGetResumeResponse;
     settings: SettingsApp;
+    loading = true;
 }
