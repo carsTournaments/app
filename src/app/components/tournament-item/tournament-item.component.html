@@ -14,7 +14,10 @@
         >
             {{ tournament.name | truncateText: 23 }}
         </div>
-        <div class="card-description-tournament">
+        <div
+            class="card-description-tournament"
+            *ngIf="tournament.inscriptions !== undefined"
+        >
             <ion-icon name="people"></ion-icon>
             <span>{{
                 tournament.inscriptions + '/' + tournament.maxParticipants
