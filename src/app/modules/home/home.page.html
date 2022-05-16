@@ -1,18 +1,18 @@
 <ion-content>
     <div class="ion-content" *ngIf="!loading">
-        <div class="ion-text-center">
-            <img [src]="logo" />
+        <img [src]="logo" />
+        <div class="wrapper ion-text-center">
+            <!-- <p class="title">CarsTournaments</p> -->
             <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-                impedit inventore quo debitis suscipit molestiae ut? Itaque
-                soluta minus, animi rerum alias doloribus, optio ex, eligendi
-                aliquam error labore dolor.
+                Torneos de coches ficticios basados en popularidad. ¿Que como va
+                esto? <br />¡Aqui no gana el que mas corre, si no el que mas
+                apoyo tiene!
             </p>
-            <hr />
+            <br />
             <ion-button
-                style="margin-top: 1rem"
+                style="margin-top: 0.5rem"
                 mode="ios"
-                color="dark"
+                color="primary"
                 expand="block"
                 (click)="enter()"
             >
