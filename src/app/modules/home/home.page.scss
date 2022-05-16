@@ -17,6 +17,13 @@ ion-content {
         position: absolute;
         bottom: 0;
         padding: 1rem;
+        width: 100%;
+
+        // media query
+        @media (min-width: 768px) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 
     .title {
@@ -41,4 +48,9 @@ img {
     // center
     left: 50%;
     transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+    ion-button {
+    }
 }
