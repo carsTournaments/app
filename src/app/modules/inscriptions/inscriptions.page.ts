@@ -46,6 +46,7 @@ export class InscriptionsPage {
         this.inscriptionService.getAllForDriver(body).subscribe({
             next: (inscriptions) => {
                 this.vm.inscriptions = inscriptions;
+                this.checkStates();
                 this.vm.loading = false;
             },
             error: () => {
@@ -53,6 +54,16 @@ export class InscriptionsPage {
                 this.vm.error = true;
             },
         });
+    }
+
+    checkStates() {
+        if (this.vm.inscriptions.inProgress.length === 0) {
+            if (this.vm.inscriptions.completed.length === 0) {
+                this.vm.states.todo = true;
+            } else {
+                this.vm.states.completed = true;
+            }
+        }
     }
 
     segmentChanged(ev: any): void {
