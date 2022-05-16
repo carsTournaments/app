@@ -1,0 +1,30 @@
+<custom-header [options]="vm.header"></custom-header>
+
+<ion-content
+    [fullscreen]="true"
+    class="animate__animated animate__fadeIn animate__faster"
+>
+    <ion-row style="padding-top: 0.5rem">
+        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+            <auth
+                (clickLogin)="onLogged()"
+                *ngIf="!logged && !vm.registerMode"
+            ></auth>
+
+            <ng-container
+                *ngIf="logged && 
+                       !vm.registerMode && 
+                       vm.user && 
+                       vm.resume"
+            >
+                <dashboard
+                    [resume]="vm.resume"
+                    [user]="vm.user"
+                    [options]="vm.options"
+                    (onClickOption)="onClickOption($event)"
+                >
+                </dashboard>
+            </ng-container>
+        </ion-col>
+    </ion-row>
+</ion-content>

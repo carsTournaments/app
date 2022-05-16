@@ -17,15 +17,15 @@ import {
     navCtrl,
 } from 'src/app/services/services.mock.spec';
 
-import { DashboardPage } from './dashboard.page';
+import { AccountPage } from './account.page';
 
 describe('DashboardPage', () => {
-    let component: DashboardPage;
-    let fixture: ComponentFixture<DashboardPage>;
+    let component: AccountPage;
+    let fixture: ComponentFixture<AccountPage>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [DashboardPage],
+            declarations: [AccountPage],
             imports: [
                 IonicModule.forRoot(),
                 RouterTestingModule,
@@ -43,7 +43,7 @@ describe('DashboardPage', () => {
         }).compileComponents();
 
         const testbed = getTestBed();
-        fixture = TestBed.createComponent(DashboardPage);
+        fixture = TestBed.createComponent(AccountPage);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));

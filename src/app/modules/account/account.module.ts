@@ -6,8 +6,9 @@ import { IonicModule } from '@ionic/angular';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { DashboardPage } from './dashboard/dashboard.page';
+import { AccountPage } from './dashboard/account.page';
 import { DashboardResumeComponent } from './dashboard/components/dashboard-resume/dashboard-resume.component';
+import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 
 @NgModule({
     imports: [
@@ -17,8 +18,8 @@ import { DashboardResumeComponent } from './dashboard/components/dashboard-resum
         ComponentsModule,
         ServicesModule,
         PipesModule,
-        RouterModule.forChild([{ path: '', component: DashboardPage }]),
+        RouterModule.forChild([{ path: '', component: AccountPage }]),
     ],
-    declarations: [DashboardPage, DashboardResumeComponent],
+    declarations: [AccountPage, DashboardComponent, DashboardResumeComponent],
 })
 export class AccountModule {}

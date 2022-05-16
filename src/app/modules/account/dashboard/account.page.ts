@@ -12,11 +12,11 @@ import {
 import { DashboardViewModel } from './model/dashboard.view-model';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: 'dashboard.page.html',
-    styleUrls: ['./dashboard.page.scss'],
+    selector: 'app-account',
+    templateUrl: 'account.page.html',
+    styleUrls: ['./account.page.scss'],
 })
-export class DashboardPage {
+export class AccountPage {
     vm = new DashboardViewModel();
     logged = false;
 
