@@ -6,6 +6,7 @@ import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses'
 @Component({
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
     @Input() resume: UserGetResumeResponse;

@@ -1,5 +1,5 @@
 import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
-import { AuthRegisterDto } from './../../services/api/auth/auth.dto';
+import { AuthRegisterDto } from '../../../../services/api/auth/auth.dto';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/models';
 import { AlertService, AuthService } from 'src/app/services';

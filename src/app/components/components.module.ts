@@ -7,7 +7,6 @@ import { TournamentItemComponent } from './tournament-item/tournament-item.compo
 import { PipesModule } from '../pipes/pipes.module';
 import { CarItemComponent } from './car-item/car-item.component';
 import { BrandItemComponent } from './brand-item/brand-item.component';
-import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { CountUpDirective } from '../directives/count-up/count-up.directive';
@@ -39,7 +38,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
         FontAwesomeModule,
     ],
     declarations: [
-        AuthComponent,
         BrandItemComponent,
         CanYouHelpComponent,
         CarItemComponent,
@@ -54,7 +52,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
         WinnerCarItemComponent,
     ],
     exports: [
-        AuthComponent,
         BrandItemComponent,
         CanYouHelpComponent,
         CarItemComponent,

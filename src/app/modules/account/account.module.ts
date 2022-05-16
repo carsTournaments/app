@@ -6,9 +6,10 @@ import { IonicModule } from '@ionic/angular';
 import { ServicesModule } from 'src/app/services/services.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { AccountPage } from './dashboard/account.page';
-import { DashboardResumeComponent } from './dashboard/components/dashboard-resume/dashboard-resume.component';
-import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
+import { DashboardResumeComponent } from './components/dashboard-resume/dashboard-resume.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AccountPage } from './account.page';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
     imports: [
@@ -20,6 +21,11 @@ import { DashboardComponent } from './dashboard/components/dashboard/dashboard.c
         PipesModule,
         RouterModule.forChild([{ path: '', component: AccountPage }]),
     ],
-    declarations: [AccountPage, DashboardComponent, DashboardResumeComponent],
+    declarations: [
+        AccountPage,
+        DashboardComponent,
+        DashboardResumeComponent,
+        AuthComponent,
+    ],
 })
 export class AccountModule {}

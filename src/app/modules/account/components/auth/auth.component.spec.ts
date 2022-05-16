@@ -9,7 +9,7 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { AlertService, AuthService } from 'src/app/services';
-import { ComponentsModule } from '../components.module';
+import { ComponentsModule } from '../../../../components/components.module';
 import { AuthComponent } from './auth.component';
 import { of, throwError } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
