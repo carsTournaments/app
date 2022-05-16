@@ -3,4 +3,5 @@ export interface UserGetResumeResponse {
     inscriptions: number;
     winner: number;
     likes: number;
+    votes: number;
 }

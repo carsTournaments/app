@@ -23,6 +23,14 @@ ion-card-content {
     margin-top: 1rem;
     background: #fff;
     border-radius: 10px;
+
+    .line-1 {
+        padding-bottom: 1rem;
+    }
+    .line-2 {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 1rem;
+    }
 }
 
 .number-trophy {
@@ -32,11 +40,15 @@ ion-card-content {
     padding-left: 1rem;
 }
 
-ion-icon {
-    font-size: 1rem;
+fa-icon {
+    font-size: 1.1rem;
     color: var(--ion-color-primary);
 }
 
 .car {
     zoom: 1.1;
+}
+
+.border-right {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }

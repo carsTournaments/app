@@ -10,6 +10,7 @@ import { DashboardResumeComponent } from './components/dashboard-resume/dashboar
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AccountPage } from './account.page';
 import { AuthComponent } from './components/auth/auth.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { AuthComponent } from './components/auth/auth.component';
         ComponentsModule,
         ServicesModule,
         PipesModule,
+        FontAwesomeModule,
         RouterModule.forChild([{ path: '', component: AccountPage }]),
     ],
     declarations: [

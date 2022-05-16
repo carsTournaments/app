@@ -7,7 +7,6 @@ import {
     UserService,
     AnalyticsService,
     AdmobService,
-    SettingsService,
 } from 'src/app/services';
 import { AccountViewModel } from './model/account.view-model';
 
@@ -26,8 +25,7 @@ export class AccountPage {
         private navCtrl: NavController,
         private alertService: AlertService,
         private analyticsService: AnalyticsService,
-        private admobService: AdmobService,
-        private settingsService: SettingsService
+        private admobService: AdmobService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -40,13 +38,17 @@ export class AccountPage {
         if (this.logged) {
             this.vm.user = await this.authService.getUser();
             this.getResume();
+        } else {
+            this.vm.loading = false;
         }
-        this.vm.loading = false;
     }
 
     getResume(): void {
         this.userService.getResume().subscribe({
-            next: (res) => (this.vm.resume = res),
+            next: (res) => {
+                this.vm.loading = false;
+                this.vm.resume = res;
+            },
             error: (err) => console.error(err),
         });
     }

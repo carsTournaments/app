@@ -3,42 +3,61 @@
 <hr />
 
 <div class="card-trophy ion-text-center">
-    <ion-row>
+    <ion-row class="line-1">
         <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+            class="ion-no-padding ion-no-margin ion-activatable border-right"
+            [routerLink]="['/garage']"
         >
-            <ion-icon name="car-outline" class="icon"></ion-icon>
+            <fa-icon icon="car"></fa-icon>
             <p
                 class="number-trophy"
                 [countUp]="resume.cars"
                 [duration]="1500"
             ></p>
+            <ion-ripple-effect></ion-ripple-effect>
         </ion-col>
+
         <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+            class="ion-no-padding ion-no-margin ion-activatable border-right"
+            [routerLink]="['/likes']"
         >
-            <ion-icon name="heart-outline" class="icon"></ion-icon>
+            <fa-icon icon="thumbs-up"></fa-icon>
             <p
                 class="number-trophy"
                 [countUp]="resume.likes"
                 [duration]="1500"
             ></p>
+            <ion-ripple-effect></ion-ripple-effect>
         </ion-col>
-        <ion-col class="ion-no-padding ion-no-margin">
-            <ion-icon name="create-outline" class="icon"></ion-icon>
+    </ion-row>
+
+    <ion-row class="line-2">
+        <ion-col
+            class="ion-no-padding ion-no-margin ion-activatable border-right"
+            [routerLink]="['/inscriptions']"
+        >
+            <fa-icon icon="clipboard-check"></fa-icon>
             <p
                 class="number-trophy"
                 [countUp]="resume?.inscriptions"
                 [duration]="1500"
             ></p>
+            <ion-ripple-effect></ion-ripple-effect>
         </ion-col>
+
         <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-left: 1px solid rgba(0, 0, 0, 0.1)"
+            class="ion-no-padding ion-no-margin ion-activatable border-right"
         >
-            <ion-icon name="trophy-outline" class="icon"></ion-icon>
+            <fa-icon icon="heart"></fa-icon>
+            <p
+                class="number-trophy"
+                [countUp]="resume?.votes"
+                [duration]="1500"
+            ></p>
+        </ion-col>
+
+        <ion-col class="ion-no-padding ion-no-margin">
+            <fa-icon icon="trophy"></fa-icon>
             <p
                 class="number-trophy"
                 [countUp]="resume?.winner"
