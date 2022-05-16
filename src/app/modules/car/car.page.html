@@ -35,7 +35,9 @@
                         </ion-col>
                         <ion-col size="4" class="ion-text-center">
                             <small>Combustible</small>
-                            <p>{{ vm.car.fuel }}</p>
+                            <p>
+                                {{ vm.car.fuel !== '' ? vm.car.fuel : 'N/D' }}
+                            </p>
                         </ion-col>
                         <ion-col size="4" class="ion-text-center">
                             <small>Traccion</small>
@@ -78,14 +80,12 @@
                     *ngIf="!vm.liked || vm.liked && vm.user "
                 >
                     <ion-icon [name]="vm.liked ? 'close': 'heart'"></ion-icon>
-                    <ion-label
-                        >{{ !vm.liked ? 'Me gusta' : 'Ya no me gusta'
-                        }}</ion-label
-                    >
+                    <ion-label>
+                        {{ !vm.liked ? 'Me gusta' : 'Ya no me gusta' }}
+                    </ion-label>
                     <small *ngIf="!vm.liked">
-                        Ayuda a {{ vm.car.driver.name }} a tener mas
-                        visibilidad</small
-                    >
+                        Ayuda a {{ vm.car.driver.name }} a tener mas visibilidad
+                    </small>
                     <small *ngIf="vm.liked">
                         Dejaras de ayudar a {{ vm.car.driver.name }} a tener
                         visibilidad

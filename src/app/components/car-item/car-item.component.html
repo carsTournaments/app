@@ -1,9 +1,9 @@
 <ion-card
     *ngIf="car"
     mode="ios"
-    class="ion-activatable"
     style="padding-top: 0; padding-bottom: 0"
     (click)="clickItem.emit(car)"
+    button
 >
     <ion-card-content [ngStyle]="{ backgroundImage: backgroundImage }">
         <!-- NORMAL -->
@@ -86,5 +86,4 @@
             </div>
         </div>
     </ion-card-content>
-    <ion-ripple-effect></ion-ripple-effect>
 </ion-card>
