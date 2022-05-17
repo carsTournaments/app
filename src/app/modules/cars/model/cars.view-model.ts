@@ -31,6 +31,7 @@ export class CarsViewModel {
         page: 1,
         pageSize: 20,
         order: ['name', 'asc'],
+        onlyWithPhoto: false,
     };
     cars: Car[] = [];
     brands: Brand[] = [];

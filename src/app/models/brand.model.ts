@@ -6,7 +6,7 @@ export class Brand {
     name: string;
     country: string;
     continent: string;
-    cars?: Car[]; // Virtual
+    cars?: any; // Virtual
     image?: Image;
     created?: string;
     updated?: string;

@@ -1,9 +1,20 @@
 <ion-card mode="ios" class="ion-activatable" (click)="clickItem.emit(brand)">
-    <ion-card-content style="background-image: linear-gradient(
-            rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.83)), url({{brand?.image?.url|image}}
-        )">
-        <div class="card-title-brand">{{ brand.name}} </div>
-        <div class="card-description">{{ brand.cars.length }} coches disponibles</div>
+    <ion-card-content
+        style="background-image: linear-gradient(
+            rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.83)), url({{
+            brand?.image?.url | image
+        }}
+        )"
+    >
+        <div class="card-title-brand">{{ brand.name }}</div>
+        <div class="card-description">
+            {{ brand.cars.count }}
+            {{
+                brand.cars.count === 1
+                    ? 'coche disponible'
+                    : 'coches disponibles'
+            }}
+        </div>
     </ion-card-content>
     <ion-ripple-effect></ion-ripple-effect>
 </ion-card>

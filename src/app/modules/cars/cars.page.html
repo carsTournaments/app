@@ -6,7 +6,11 @@
 </custom-header>
 
 <ion-content [fullscreen]="true">
-    <spinner [loading]="vm.loading.getCars"></spinner>
+    <spinner [loading]="vm.loading.getCars && vm.loading.getBrands"></spinner>
+    <no-items
+        *ngIf="!vm.loading.getCars && vm.cars.length === 0 && vm.header.segments.selected === 0"
+        [options]="vm.noitems"
+    ></no-items>
 
     <ion-refresher
         *ngIf="vm.header.segments.selected === 0"
@@ -29,11 +33,6 @@
         >
             <!-- LATEST CARS -->
             <ng-container *ngIf="vm.header.segments.selected === 0">
-                <no-items
-                    *ngIf="!vm.loading.getCars && vm.cars.length === 0"
-                    [options]="vm.noitems"
-                ></no-items>
-
                 <ion-row
                     *ngIf="!vm.loading.getCars && vm.cars.length > 0"
                     style="padding-top: 1rem"

@@ -10,4 +10,5 @@ export interface BrandGetAllBrandsAndCarsDto {
     page: number;
     pageSize: number;
     order: string[];
+    onlyWithPhoto: boolean;
 }

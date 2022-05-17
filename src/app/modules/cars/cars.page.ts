@@ -121,7 +121,10 @@ export class CarsPage {
         });
         this.vm.header.segments.selected = Number(ev.detail.value);
         this.vm.header.rightButton.state =
-            this.vm.header.segments.selected === 0 ? true : false;
+            this.vm.header.segments.selected === 0 ||
+            this.vm.header.segments.selected === 2
+                ? true
+                : false;
     }
 
     onClickBrand(brand: Brand): void {
@@ -172,8 +175,12 @@ export class CarsPage {
                 if (data.data === 'onlyWithPhoto' || data.data === 'all') {
                     this.vm.carsBody.onlyWithPhoto =
                         data.data === 'onlyWithPhoto' ? true : false;
+                    this.vm.brandsBody.onlyWithPhoto =
+                        data.data === 'onlyWithPhoto' ? true : false;
                     this.vm.carsBody.page = 1;
+                    this.vm.brandsBody.page = 1;
                     this.getCars();
+                    this.getBrands();
                 }
             }
         });
