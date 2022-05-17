@@ -1,17 +1,5 @@
 <div class="card-trophy ion-text-center">
     <ion-row class="icons-line1">
-        <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
-        >
-            <fa-icon icon="heart" class="like"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="votes?.count ?? 0"
-                [duration]="1500"
-            ></p>
-        </ion-col>
-
         <ion-col class="ion-no-padding ion-no-margin">
             <fa-icon icon="thumbs-up" class="like"></fa-icon>
             <p
@@ -20,9 +8,7 @@
                 [duration]="1500"
             ></p>
         </ion-col>
-    </ion-row>
 
-    <ion-row class="icons-line2">
         <ion-col
             class="ion-no-padding ion-no-margin"
             style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
@@ -34,6 +20,20 @@
                 [duration]="1500"
             ></p>
         </ion-col>
+        <ion-col
+            class="ion-no-padding ion-no-margin"
+            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+        >
+            <fa-icon icon="heart" class="like"></fa-icon>
+            <p
+                class="number-trophy"
+                [countUp]="votes?.count ?? 0"
+                [duration]="1500"
+            ></p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="icons-line2">
         <ion-col
             class="ion-no-padding ion-no-margin"
             style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
