@@ -12,6 +12,6 @@ export class DashboardComponent {
     @Input() resume: UserGetResumeResponse;
     @Input() user: User;
     @Input() options: OptionItemI[];
-    @Output() onClickOption: EventEmitter<OptionItemI> = new EventEmitter();
+    @Output() goTo: EventEmitter<OptionItemI> = new EventEmitter();
     constructor() {}
 }

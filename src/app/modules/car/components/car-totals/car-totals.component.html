@@ -2,6 +2,7 @@
     <ion-row class="icons-line1">
         <ion-col
             class="ion-no-padding ion-no-margin"
+            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
             [ngClass]="{ 'ion-activatable': likes?.count > 0 }"
             (click)="likes?.count > 0 ? clickItem.emit('likes') : null"
         >
@@ -34,7 +35,6 @@
         <ion-col
             class="ion-no-padding ion-no-margin"
             [ngClass]="{ 'ion-activatable': votes?.count > 0 }"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
             (click)="votes?.count > 0 ? clickItem.emit('votes') : null"
         >
             <fa-icon icon="heart" class="like"></fa-icon>

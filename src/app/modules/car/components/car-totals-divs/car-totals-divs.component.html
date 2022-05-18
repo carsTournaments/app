@@ -6,8 +6,8 @@
     </h1>
     <ion-item color="light" lines="full" *ngFor="let item of likes">
         <ion-label slot="start">{{ item.user?.name ?? 'Anonimo' }}</ion-label>
-        <ion-label class="date" slot="end"
-            >{{ item.created | dateToTimeAgo | firstLetterCase }}
+        <ion-label class="date" slot="end">
+            {{ item.created | dateToTimeAgo: false | firstLetterCase }}
         </ion-label>
     </ion-item>
 </div>
@@ -31,7 +31,7 @@
         <ion-label
             >{{ item.tournament?.name }}<br />
             <ion-label class="date"
-                >{{ item.created | dateToTimeAgo | firstLetterCase }}
+                >{{ item.created | dateToTimeAgo: false | firstLetterCase }}
             </ion-label>
         </ion-label>
     </ion-item>
@@ -58,7 +58,7 @@
             <strong>{{ item.user?.name ?? 'Anonimo' }}</strong
             ><br />
             <ion-label class="date"
-                >{{ item.created | dateToTimeAgo | firstLetterCase }}
+                >{{ item.created | dateToTimeAgo: false | firstLetterCase }}
             </ion-label>
         </ion-label>
     </ion-item>
