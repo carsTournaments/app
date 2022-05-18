@@ -2,8 +2,14 @@ import { StorageService } from './services/ionic/storage.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { AlertService, AnalyticsService, SettingsService } from './services';
+import {
+    AlertService,
+    AnalyticsService,
+    NotificationsPushService,
+    SettingsService,
+} from './services';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
+import { User } from './models';
 
 @Component({
     selector: 'app-root',
@@ -19,6 +25,7 @@ export class AppComponent implements OnInit {
         private zone: NgZone,
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
+        private notificationsPushService: NotificationsPushService,
         public location: Location
     ) {
         this.initializeDeepLinks();
@@ -29,6 +36,7 @@ export class AppComponent implements OnInit {
         await this.storageService.startDB();
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
+        this.checkUserLogged();
     }
 
     initializeDeepLinks(): void {
@@ -77,5 +85,10 @@ export class AppComponent implements OnInit {
         } else {
             this.location.back();
         }
+    }
+
+    async checkUserLogged() {
+        const user: User = await this.storageService.get('user');
+        this.notificationsPushService.registerFCM(user ?? null);
     }
 }

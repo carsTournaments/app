@@ -1,0 +1,12 @@
+<ion-card-title class="ion-text-center title">
+    <p style="margin: 0.25rem">
+        {{ car.brand?.name }} {{ car.model | firstLetterCase }}
+    </p>
+    <div class="custom-chip custom-chip-dark driver">
+        <span>
+            <fa-icon icon="id-card"></fa-icon>
+            {{ car.driver.name }}
+        </span>
+    </div>
+    <hr style="margin-top: 1.25rem" />
+</ion-card-title>

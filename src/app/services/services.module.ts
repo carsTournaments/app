@@ -13,6 +13,7 @@ import {
     ImageService,
     InscriptionService,
     LikeService,
+    NotificationsPushService,
     PairingService,
     ReportService,
     RoundService,
@@ -51,6 +52,7 @@ import { HttpInterceptorService } from '../core/interceptors/http.interceptor';
         // Ionic
         ActionSheetService,
         AlertService,
+        NotificationsPushService,
         StorageService,
         // Various
         UtilsService,

@@ -13,9 +13,11 @@ export { TournamentService } from './api/tournament/tournament.service';
 export { UserService } from './api/user/user.service';
 export { VoteService } from './api/vote/vote.service';
 export { WinnerService } from './api/winner/winner.service';
+
 // Capacitor
 export { AdmobService } from './capacitor/admob/admob.service';
 export { AnalyticsService } from './capacitor/analytics/analytics.service';
+export { NotificationsPushService } from './capacitor/notifications-push/notifications-push.service';
 
 // Ionic
 export { AlertService } from './ionic/alert.service';

@@ -1,0 +1,32 @@
+<ng-container *ngIf="car">
+    <ion-row>
+        <ion-col size="4" class="ion-text-center">
+            <small>Año</small>
+            <p>{{ car.year }}</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+            <small>Combustible</small>
+            <p>
+                {{ car.fuel !== '' ? car.fuel : 'N/D' }}
+            </p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+            <small>Traccion</small>
+            <p>{{ car.traction }}</p>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="4" class="ion-text-center">
+            <small>CC</small>
+            <p>{{ car.cc }}</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+            <small>CV</small>
+            <p>{{ car.cv }}</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+            <small>De serie</small>
+            <p>{{ car.stock ? 'Si' : 'No' }}</p>
+        </ion-col>
+    </ion-row>
+</ng-container>

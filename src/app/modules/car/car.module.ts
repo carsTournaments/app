@@ -9,6 +9,8 @@ import { CarPage } from './car.page';
 import { CarTotalsComponent } from './components/car-totals/car-totals.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarTotalsDivsComponent } from './components/car-totals-divs/car-totals-divs.component';
+import { CarInfoComponent } from './components/car-info/car-info.component';
+import { CarTitleComponent } from './components/car-title/car-title.component';
 @NgModule({
     imports: [
         IonicModule,
@@ -25,7 +27,13 @@ import { CarTotalsDivsComponent } from './components/car-totals-divs/car-totals-
             },
         ]),
     ],
-    declarations: [CarPage, CarTotalsComponent, CarTotalsDivsComponent],
+    declarations: [
+        CarPage,
+        CarTitleComponent,
+        CarInfoComponent,
+        CarTotalsComponent,
+        CarTotalsDivsComponent,
+    ],
     providers: [ImagePipe],
 })
 export class CarModule {}
