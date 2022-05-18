@@ -12,7 +12,7 @@ import { User } from 'src/app/models';
 import { environment } from 'src/environments/environment';
 import { AlertService } from '../../ionic/alert.service';
 import { StorageService } from '../../ionic/storage.service';
-
+import { Browser } from '@capacitor/browser';
 @Injectable({ providedIn: 'root' })
 export class NotificationsPushService {
     url = `${environment.urlApi}/notifications`;
@@ -66,8 +66,6 @@ export class NotificationsPushService {
         PushNotifications.addListener(
             'pushNotificationReceived',
             async (notification: PushNotificationSchema) => {
-                const data = notification;
-
                 const alert = await this.alertService.presentAlertWithButtons(
                     JSON.stringify(notification.title).substring(
                         1,
@@ -79,11 +77,25 @@ export class NotificationsPushService {
                     ),
                     [
                         {
-                            text: 'OK',
+                            text: notification.data.titleButton,
                             handler: () => {
-                                // if (data.data.url != '' && data.data.url != undefined) {
-                                //     const browser = this.iab.create(data.data.url, '_blank', { location: 'no' });
-                                // }
+                                if (
+                                    notification.data.link &&
+                                    notification.data.linkType
+                                ) {
+                                    if (
+                                        notification.data.linkType ===
+                                        'external'
+                                    ) {
+                                        Browser.open({
+                                            url: notification.data.link,
+                                        });
+                                    } else {
+                                        this.router.navigate([
+                                            notification.data.link,
+                                        ]);
+                                    }
+                                }
                             },
                         },
                     ]
