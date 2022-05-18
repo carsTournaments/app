@@ -1,20 +1,19 @@
 import { AnimationController } from '@ionic/angular';
 const animationCtrl = new AnimationController();
 
-export const getIonPageElement = (element: HTMLElement) => {
-    if (element.classList.contains('ion-page')) {
-        return element;
-    }
+// export const getIonPageElement = (element: HTMLElement) => {
+//     if (element.classList.contains('ion-page')) {
+//         return element;
+//     }
 
-    const ionPage = element.querySelector(
-        ':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs, :scope > ion-tab'
-    );
-    if (ionPage) {
-        return ionPage;
-    }
-    // idk, return the original element so at least something animates and we don't have a null pointer
-    return element;
-};
+//     const ionPage = element.querySelector(
+//         ':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs, :scope > ion-tab'
+//     );
+//     if (ionPage) {
+//         return ionPage;
+//     }
+//     return element;
+// };
 
 export const customAnimation = (_: HTMLElement, opts: any) => {
     // create root transition

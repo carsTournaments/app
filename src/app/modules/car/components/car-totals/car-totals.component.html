@@ -1,17 +1,26 @@
 <div class="card-trophy ion-text-center">
     <ion-row class="icons-line1">
-        <ion-col class="ion-no-padding ion-no-margin">
+        <ion-col
+            class="ion-no-padding ion-no-margin"
+            [ngClass]="{ 'ion-activatable': likes?.count > 0 }"
+            (click)="likes?.count > 0 ? clickItem.emit('likes') : null"
+        >
             <fa-icon icon="thumbs-up" class="like"></fa-icon>
             <p
                 class="number-trophy"
                 [countUp]="likes?.count ?? 0"
                 [duration]="1500"
             ></p>
+            <ion-ripple-effect type="bounded"></ion-ripple-effect>
         </ion-col>
 
         <ion-col
             class="ion-no-padding ion-no-margin"
+            [ngClass]="{ 'ion-activatable': inscriptions?.count > 0 }"
             style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+            (click)="
+                inscriptions?.count > 0 ? clickItem.emit('inscriptions') : null
+            "
         >
             <fa-icon icon="clipboard-check" class="inscriptions"></fa-icon>
             <p
@@ -19,10 +28,14 @@
                 [countUp]="inscriptions?.count ?? 0"
                 [duration]="1500"
             ></p>
+            <ion-ripple-effect type="bounded"></ion-ripple-effect>
         </ion-col>
+
         <ion-col
             class="ion-no-padding ion-no-margin"
+            [ngClass]="{ 'ion-activatable': votes?.count > 0 }"
             style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
+            (click)="votes?.count > 0 ? clickItem.emit('votes') : null"
         >
             <fa-icon icon="heart" class="like"></fa-icon>
             <p
@@ -30,6 +43,7 @@
                 [countUp]="votes?.count ?? 0"
                 [duration]="1500"
             ></p>
+            <ion-ripple-effect type="bounded"></ion-ripple-effect>
         </ion-col>
     </ion-row>
 
@@ -45,6 +59,7 @@
                 [duration]="1500"
             ></p>
         </ion-col>
+
         <ion-col class="ion-no-padding ion-no-margin">
             <fa-icon icon="trophy" class="silver"></fa-icon>
             <p
@@ -53,6 +68,7 @@
                 [duration]="1500"
             ></p>
         </ion-col>
+
         <ion-col
             class="ion-no-padding ion-no-margin"
             style="border-left: 1px solid rgba(0, 0, 0, 0.1)"

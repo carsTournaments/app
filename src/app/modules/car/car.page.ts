@@ -4,14 +4,17 @@ import {
     AuthService,
     CarService,
     ImageService,
+    InscriptionService,
     LikeService,
+    VoteService,
 } from 'src/app/services';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from 'src/app/pipes';
 import { CarViewModel } from './model/car.view-model';
 import { Like } from 'src/app/models/like.model';
 import { Car } from 'src/app/models';
+import { IonContent } from '@ionic/angular';
 
 @Component({
     selector: 'page-car',
@@ -19,6 +22,7 @@ import { Car } from 'src/app/models';
     styleUrls: ['./car.page.scss'],
 })
 export class CarPage implements OnInit {
+    @ViewChild(IonContent, { static: false }) content: IonContent;
     vm = new CarViewModel();
     constructor(
         private carService: CarService,
@@ -26,6 +30,8 @@ export class CarPage implements OnInit {
         private imagePipe: ImagePipe,
         private imageService: ImageService,
         private likeService: LikeService,
+        private inscriptionService: InscriptionService,
+        private voteService: VoteService,
         private authService: AuthService,
         private alertService: AlertService,
         private analyticsService: AnalyticsService
@@ -133,6 +139,70 @@ export class CarPage implements OnInit {
                     'Error',
                     'Error al eliminar el me gusta'
                 );
+            },
+        });
+    }
+
+    onClickTotalItem(event: string): void {
+        if (event === 'likes') {
+            this.vm.states.votes = false;
+            this.vm.states.inscriptions = false;
+            if (this.vm.likes.length === 0) {
+                this.getLikes();
+            }
+            this.vm.states.likes = !this.vm.states.likes;
+        } else if (event === 'inscriptions') {
+            this.vm.states.votes = false;
+            this.vm.states.likes = false;
+            if (this.vm.inscriptions.length === 0) {
+                this.getInscriptions();
+            }
+            this.vm.states.inscriptions = !this.vm.states.inscriptions;
+        } else if (event === 'votes') {
+            this.vm.states.likes = false;
+            this.vm.states.inscriptions = false;
+            if (this.vm.votes.length === 0) {
+                this.getVotes();
+            }
+            this.vm.states.votes = !this.vm.states.votes;
+        }
+
+        if (this.content) {
+            setTimeout(() => {
+                this.content.scrollToBottom(1500);
+            }, 100);
+        }
+    }
+
+    closeAllStates(): void {
+        this.vm.states.votes = false;
+        this.vm.states.likes = false;
+        this.vm.states.inscriptions = false;
+    }
+
+    getLikes() {
+        this.likeService.getAllOfCar({ id: this.vm.id, limit: '5' }).subscribe({
+            next: (data) => {
+                this.vm.likes = data;
+            },
+            error: () => {},
+        });
+    }
+
+    getInscriptions() {
+        this.inscriptionService
+            .getAllOfCar({ id: this.vm.id, limit: '5' })
+            .subscribe({
+                next: (data) => {
+                    this.vm.inscriptions = data;
+                },
+            });
+    }
+
+    getVotes() {
+        this.voteService.getAllOfCar({ id: this.vm.id, limit: '5' }).subscribe({
+            next: (data) => {
+                this.vm.votes = data;
             },
         });
     }

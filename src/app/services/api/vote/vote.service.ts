@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Vote } from 'src/app/models/vote.model';
 import { Observable } from 'rxjs';
 import { StorageService } from '../..';
+import { VoteGetAllOfCarDto } from './vote.dto';
 
 @Injectable({ providedIn: 'root' })
 export class VoteService {
@@ -14,13 +15,13 @@ export class VoteService {
         private storageService: StorageService
     ) {}
 
-    getAllOfCar(data: IdDto): Observable<Vote[]> {
-        return this.httpClient.post<Vote[]>(`${this.url}/allOfCar`, data);
+    getAllOfCar(data: VoteGetAllOfCarDto): Observable<Vote[]> {
+        return this.httpClient.post<Vote[]>(`${this.url}/getAllOfCar`, data);
     }
 
     getAllOfTournament(data: IdDto): Observable<Vote[]> {
         return this.httpClient.post<Vote[]>(
-            `${this.url}/allOfTournament`,
+            `${this.url}/getAllOfTournament`,
             data
         );
     }

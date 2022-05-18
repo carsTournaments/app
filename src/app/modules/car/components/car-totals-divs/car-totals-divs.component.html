@@ -1,0 +1,65 @@
+<div class="div-last" *ngIf="states.likes">
+    <hr />
+    <h1>
+        ULTIMOS ME GUSTAS
+        <fa-icon icon="thumbs-up" class="likevote"></fa-icon>
+    </h1>
+    <ion-item color="light" lines="full" *ngFor="let item of likes">
+        <ion-label slot="start">{{ item.user?.name ?? 'Anonimo' }}</ion-label>
+        <ion-label class="date" slot="end"
+            >{{ item.created | dateToTimeAgo | firstLetterCase }}
+        </ion-label>
+    </ion-item>
+</div>
+
+<div class="div-last" *ngIf="states.inscriptions">
+    <hr />
+    <h1>
+        ULTIMAS INSCRIPCIONES
+        <fa-icon icon="clipboard-check" class="inscriptions"></fa-icon>
+    </h1>
+    <ion-item
+        color="light"
+        lines="full"
+        *ngFor="let item of inscriptions"
+        button
+        [routerLink]="['/tournament', item.tournament?._id]"
+    >
+        <ion-avatar slot="start">
+            <img [src]="item.tournament?.image.url | image" />
+        </ion-avatar>
+        <ion-label
+            >{{ item.tournament?.name }}<br />
+            <ion-label class="date"
+                >{{ item.created | dateToTimeAgo | firstLetterCase }}
+            </ion-label>
+        </ion-label>
+    </ion-item>
+</div>
+
+<div class="div-last" *ngIf="states.votes">
+    <hr />
+    <h1>
+        ULTIMOS VOTOS
+        <fa-icon icon="heart" class="likevote"></fa-icon>
+    </h1>
+    <ion-item
+        color="light"
+        lines="full"
+        *ngFor="let item of votes"
+        button
+        [routerLink]="['/tournament', item.tournament?._id]"
+    >
+        <ion-avatar slot="start">
+            <img [src]="item.tournament?.image.url | image" />
+        </ion-avatar>
+        <ion-label>
+            {{ item.tournament?.name }}<br />
+            <strong>{{ item.user?.name ?? 'Anonimo' }}</strong
+            ><br />
+            <ion-label class="date"
+                >{{ item.created | dateToTimeAgo | firstLetterCase }}
+            </ion-label>
+        </ion-label>
+    </ion-item>
+</div>

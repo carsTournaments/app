@@ -4,3 +4,8 @@ export interface LikeGetAllDto {
     site: string;
     order: string[];
 }
+
+export interface LikeGetAllOfCarDto {
+    id: string;
+    limit: string;
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
-import { LikeGetAllDto } from './like.dto';
+import { LikeGetAllDto, LikeGetAllOfCarDto } from './like.dto';
 import { Like } from 'src/app/models/like.model';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -50,6 +50,12 @@ export class LikeService {
     getTopCars(limit: string): Observable<Car[]> {
         return this.httpClient
             .post<Car[]>(`${this.url}/getTopCars`, { limit })
+            .pipe(take(1));
+    }
+
+    getAllOfCar(data: LikeGetAllOfCarDto): Observable<Like[]> {
+        return this.httpClient
+            .post<Like[]>(`${this.url}/getAllOfCar`, data)
             .pipe(take(1));
     }
 

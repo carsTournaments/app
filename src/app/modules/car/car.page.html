@@ -2,6 +2,7 @@
 
 <ion-content
     [fullscreen]="true"
+    [scrollEvents]="true"
     class="animate__animated animate__fadeIn animate__faster"
 >
     <spinner [loading]="vm.loading"></spinner>
@@ -69,7 +70,15 @@
                         [gold]="vm.car?.gold"
                         [silver]="vm.car?.silver"
                         [bronze]="vm.car?.bronze"
+                        (clickItem)="onClickTotalItem($event)"
                     ></car-totals>
+
+                    <car-totals-divs
+                        [states]="vm.states"
+                        [likes]="vm.likes"
+                        [inscriptions]="vm.inscriptions"
+                        [votes]="vm.votes"
+                    ></car-totals-divs>
                 </ion-card-content>
             </ion-card>
 

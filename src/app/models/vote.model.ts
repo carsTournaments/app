@@ -4,6 +4,7 @@ export class Vote {
     round: any;
     tournament: any;
     car: any; // CarI;
+    user?: any;
     created?: string;
     updated?: string;
 
@@ -13,6 +14,7 @@ export class Vote {
         this.round = data?.round;
         this.tournament = data?.tournament;
         this.car = data?.car;
+        this.user = data?.user;
         this.created = data?.created;
         this.updated = data?.updated;
     }

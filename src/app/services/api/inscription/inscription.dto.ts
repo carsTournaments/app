@@ -14,3 +14,8 @@ export interface InscriptionsGetMyCarsForInscriptionDto {
     userId: string;
     tournamentId: string;
 }
+
+export interface InscriptionGetAllOfCarDto {
+    id: string;
+    limit: string;
+}

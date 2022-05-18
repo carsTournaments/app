@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'car-totals',
@@ -12,6 +12,7 @@ export class CarTotalsComponent implements OnInit {
     @Input() gold: { count: number } = { count: 0 };
     @Input() silver: { count: number } = { count: 0 };
     @Input() bronze: { count: number } = { count: 0 };
+    @Output() clickItem: EventEmitter<string> = new EventEmitter<string>();
     constructor() {}
 
     ngOnInit() {}

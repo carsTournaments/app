@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import {
     InscriptionCreateDto,
     InscriptionGetAllDto,
+    InscriptionGetAllOfCarDto,
     InscriptionsGetMyCarsForInscriptionDto,
 } from './inscription.dto';
 import { Car, Inscription, Tournament } from 'src/app/models';
@@ -36,7 +37,7 @@ export class InscriptionService {
             .pipe(take(1));
     }
 
-    getAllOfCar(data: IdDto): Observable<Inscription[]> {
+    getAllOfCar(data: InscriptionGetAllOfCarDto): Observable<Inscription[]> {
         return this.httpClient
             .post<Inscription[]>(`${this.url}/getAllOfCar`, data)
             .pipe(take(1));

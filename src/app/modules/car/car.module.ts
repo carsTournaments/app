@@ -8,6 +8,7 @@ import { ImagePipe } from 'src/app/pipes';
 import { CarPage } from './car.page';
 import { CarTotalsComponent } from './components/car-totals/car-totals.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarTotalsDivsComponent } from './components/car-totals-divs/car-totals-divs.component';
 @NgModule({
     imports: [
         IonicModule,
@@ -24,7 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
             },
         ]),
     ],
-    declarations: [CarPage, CarTotalsComponent],
+    declarations: [CarPage, CarTotalsComponent, CarTotalsDivsComponent],
     providers: [ImagePipe],
 })
 export class CarModule {}
