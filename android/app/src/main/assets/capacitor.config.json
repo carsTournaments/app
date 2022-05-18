@@ -1,6 +1,11 @@
 {
-	"appId": "com.josexs.ct",
-	"appName": "CarsTournaments",
-	"webDir": "www",
-	"bundledWebRuntime": false
+    "appId": "com.josexs.ct",
+    "appName": "CarsTournaments",
+    "webDir": "www",
+    "bundledWebRuntime": false,
+    "plugins": {
+        "PushNotifications": {
+            "presentationOptions": ["badge", "sound", "alert"]
+        }
+    }
 }

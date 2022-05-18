@@ -10,7 +10,7 @@
     mode="ios"
     class="option-item"
     *ngFor="let item of options"
-    (click)="onClickOption.emit(item)"
+    (click)="goTo.emit(item)"
     style="margin-top: -0.25rem"
 >
     <ion-item color="light" mode="ios" button lines="none">

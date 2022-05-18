@@ -2,7 +2,11 @@ import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
 import { AuthRegisterDto } from '../../../../services/api/auth/auth.dto';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/models';
-import { AlertService, AuthService } from 'src/app/services';
+import {
+    AlertService,
+    AuthService,
+    NotificationsPushService,
+} from 'src/app/services';
 import { AuthLogInDto } from 'src/app/services/api/auth/auth.dto';
 import { AuthViewModel } from './auth.view-model';
 
@@ -16,7 +20,8 @@ export class AuthComponent {
     vm = new AuthViewModel();
     constructor(
         private authService: AuthService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private notificationsPushService: NotificationsPushService
     ) {}
 
     login() {
@@ -75,6 +80,7 @@ export class AuthComponent {
     onLoginOrRegisterSuccess(response: LoginResponseI) {
         this.authService.setToken(response.token);
         this.authService.setUser(response.user);
+        this.notificationsPushService.registerFCM(response.user ?? null);
         this.clickLogin.emit();
     }
 }

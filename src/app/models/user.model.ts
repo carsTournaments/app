@@ -3,6 +3,7 @@ export class User {
     email: string;
     name: string;
     role: string;
+    fcm?: string;
     password?: string;
     created?: string;
     updated?: string;
@@ -12,6 +13,7 @@ export class User {
         this.email = data?.email || '';
         this.name = data?.name || '';
         this.role = data?.role || '';
+        this.fcm = data?.fcm || '';
         this.password = data?.password;
         this.created = data?.created;
         this.updated = data?.updated;
