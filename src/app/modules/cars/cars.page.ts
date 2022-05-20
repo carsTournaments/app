@@ -28,13 +28,13 @@ export class CarsPage {
     ) {}
 
     ionViewWillEnter(): void {
+        this.vm.loading.getCars = true;
         this.getCars();
         this.getTopSites();
         this.getBrands();
     }
 
     getCars(event?: any): void {
-        this.vm.loading.getCars = true;
         this.carService.getAll(this.vm.carsBody).subscribe({
             next: (res) => this.getCarsOnSuccess(res, event),
             error: () => {
