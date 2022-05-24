@@ -1,5 +1,5 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { TournamentGetAllOfAllStatesResponse } from 'src/app/services/api/tournament/tournament.responses';
+import { Header } from '@components/header/model/header.model';
+import { TournamentGetAllOfAllStatesResponse } from '@services/api/tournament/tournament.responses';
 
 export class TournamentsViewModel {
     header = new Header({

@@ -1,5 +1,5 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { Image, Pairing, User, Vote } from 'src/app/models';
+import { Header } from '@components/header/model/header.model';
+import { Image, Pairing, User, Vote } from '@models';
 
 export class PairingViewModel {
     id: string;

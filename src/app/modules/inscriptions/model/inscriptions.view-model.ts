@@ -1,7 +1,7 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { NoItemsModel } from 'src/app/components/no-items/no-items.model';
-import { InscriptionGetAllForDriverI } from 'src/app/interfaces/inscription.interface';
-import { User } from 'src/app/models';
+import { Header } from '@components/header/model/header.model';
+import { NoItemsModel } from '@components/no-items/no-items.model';
+import { InscriptionGetAllForDriverI } from '@interfaces/inscription.interface';
+import { User } from '@models';
 
 export class InscriptionsViewModel {
     header = new Header({

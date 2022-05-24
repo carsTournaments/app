@@ -8,15 +8,15 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { of, throwError } from 'rxjs';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { Tournament } from 'src/app/models';
-import { AnalyticsService, TournamentService } from 'src/app/services';
+import { Tournament } from '@models';
+import { AnalyticsService, TournamentService } from '@services';
 import {
     analyticsService,
     navCtrl,
     tournamentService,
-} from 'src/app/services/services.mock.spec';
+} from '@services/services.mock.spec';
 import { TournamentsPage } from './tournaments.page';
+import { SharedModule } from '@shared/shared.module';
 
 describe('TournamentsPage', () => {
     let component: TournamentsPage;
@@ -32,11 +32,7 @@ describe('TournamentsPage', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TournamentsPage],
-            imports: [
-                IonicModule.forRoot(),
-                RouterTestingModule,
-                ComponentsModule,
-            ],
+            imports: [RouterTestingModule, SharedModule],
             providers: [
                 { provide: TournamentService, useValue: tournamentService },
                 { provide: NavController, useValue: navCtrl },

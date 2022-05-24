@@ -1,8 +1,8 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
-import { Tournament } from 'src/app/models';
+import { Tournament } from '@models';
 import { TournamentsViewModel } from './model/tournaments.view-model';
-import { TournamentService, AnalyticsService } from 'src/app/services';
+import { TournamentService, AnalyticsService } from '@services';
 
 @Component({
     selector: 'page-tournaments',

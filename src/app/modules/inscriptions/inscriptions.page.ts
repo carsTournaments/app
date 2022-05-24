@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import {
-    AlertService,
-    AuthService,
-    InscriptionService,
-} from 'src/app/services';
-import { IdDto } from 'src/app/core/dtos/id.dto';
+import { AlertService, AuthService, InscriptionService } from '@services';
+import { IdDto } from '@core/dtos/id.dto';
 import {
     NavController,
     PopoverController,
     PopoverOptions,
 } from '@ionic/angular';
 import { InscriptionsViewModel } from './model/inscriptions.view-model';
-import { Inscription } from 'src/app/models';
+import { Inscription } from '@models';
 import { InscriptionsPopoverComponent } from './components/popover/inscriptions-popover.component';
 import { OverlayEventDetail } from '@ionic/core';
 

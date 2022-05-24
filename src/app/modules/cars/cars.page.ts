@@ -1,13 +1,13 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
-import { Brand, Car } from 'src/app/models';
+import { Brand, Car } from '@models';
 import {
     ActionSheetService,
     AnalyticsService,
     BrandService,
     CarService,
     LikeService,
-} from 'src/app/services';
+} from '@services';
 import { CarsViewModel } from './model/cars.view-model';
 
 @Component({

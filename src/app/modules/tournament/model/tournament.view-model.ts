@@ -1,9 +1,9 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { NoItemsModel } from 'src/app/components/no-items/no-items.model';
-import { Inscription, Tournament, User } from 'src/app/models';
-import { InscriptionsGetMyCarsForInscriptionDto } from 'src/app/services/api/inscription/inscription.dto';
-import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
-import { WinnerGetOfTournamentComplete } from 'src/app/services/api/winner/winner.responses';
+import { Header } from '@components/header/model/header.model';
+import { NoItemsModel } from '@components/no-items/no-items.model';
+import { Inscription, Tournament, User } from '@models';
+import { InscriptionsGetMyCarsForInscriptionDto } from '@services/api/inscription/inscription.dto';
+import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
+import { WinnerGetOfTournamentComplete } from '@services/api/winner/winner.responses';
 
 export class TournamentViewModel {
     id: string;

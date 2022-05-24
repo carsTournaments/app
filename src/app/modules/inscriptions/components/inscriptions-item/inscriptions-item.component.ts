@@ -1,6 +1,6 @@
 import { NavController } from '@ionic/angular';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Car, Tournament } from 'src/app/models';
+import { Car, Tournament } from '@models';
 
 @Component({
     selector: 'inscriptions-item',

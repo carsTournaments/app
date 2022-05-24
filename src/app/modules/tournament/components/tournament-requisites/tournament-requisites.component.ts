@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Tournament } from 'src/app/models';
+import { Tournament } from '@models';
 
 @Component({
     selector: 'tournament-requisites',

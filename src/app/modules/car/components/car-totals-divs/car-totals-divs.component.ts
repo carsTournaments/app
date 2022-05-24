@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Inscription, Like, Vote } from 'src/app/models';
+import { Inscription, Like, Vote } from '@models';
 
 @Component({
     selector: 'car-totals-divs',

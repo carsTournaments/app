@@ -1,20 +1,12 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule, PipesModule, ServicesModule } from 'src/app';
-import { ImagePipe } from 'src/app/pipes';
+import { ImagePipe } from '@pipes';
 import { PrivacyPolicyPage } from './privacy-policy.page';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
     imports: [
-        IonicModule,
-        CommonModule,
-        FormsModule,
-        ServicesModule,
-        ComponentsModule,
-        PipesModule,
+        SharedModule,
         RouterModule.forChild([
             {
                 path: '',

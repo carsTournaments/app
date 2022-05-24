@@ -9,10 +9,10 @@ import {
     ImageService,
     PairingService,
     VoteService,
-} from 'src/app/services';
-import { Car, Vote } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
-import { ReportModalComponent } from 'src/app/components/report-modal/report-modal.component';
+} from '@services';
+import { Car, Vote } from '@models';
+import { ImagePipe } from '@pipes';
+import { ReportModalComponent } from '@components/report-modal/report-modal.component';
 
 @Component({
     selector: 'page-pairing',

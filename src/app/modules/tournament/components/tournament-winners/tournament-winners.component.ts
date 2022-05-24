@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Car } from 'src/app/models';
-import { WinnerGetOfTournamentComplete } from 'src/app/services/api/winner/winner.responses';
+import { Car } from '@models';
+import { WinnerGetOfTournamentComplete } from '@services/api/winner/winner.responses';
 
 @Component({
     selector: 'tournament-winners',

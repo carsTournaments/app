@@ -7,7 +7,7 @@ import {
     HttpEvent,
     HttpInterceptor,
 } from '@angular/common/http';
-import { AuthService } from 'src/app/services';
+import { AuthService } from '@services';
 
 @Injectable({
     providedIn: 'root',

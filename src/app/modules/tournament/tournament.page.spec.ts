@@ -1,6 +1,7 @@
-import { car } from './../../models/models.mock.spec';
-import { Tournament } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
+import { SharedModule } from './../../shared/shared.module';
+import { car } from '@models/models.mock.spec';
+import { Tournament } from '@models';
+import { ImagePipe } from '@pipes';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -10,20 +11,20 @@ import {
     AuthService,
     InscriptionService,
     TournamentService,
-} from 'src/app/services';
+} from '@services';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentPage } from './tournament.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { user, inscription } from 'src/app/models/models.mock.spec';
+import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
+import { user, inscription } from '@models/models.mock.spec';
 import {
     analyticsService,
     authService,
     inscriptionService,
     navCtrl,
-} from 'src/app/services/services.mock.spec';
+} from '@services/services.mock.spec';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 const tournament = new Tournament({
     _id: '123',
@@ -67,10 +68,10 @@ describe('TournamentPage', () => {
         TestBed.configureTestingModule({
             declarations: [TournamentPage],
             imports: [
-                IonicModule.forRoot(),
+                IonicStorageModule.forRoot(),
+                SharedModule,
                 RouterTestingModule.withRoutes([]),
                 HttpClientTestingModule,
-                ComponentsModule,
             ],
             providers: [
                 { provide: AuthService, useValue: authService },
@@ -241,6 +242,7 @@ describe('TournamentPage', () => {
     });
 
     it('segmentChanged', () => {
+        spyOn(component, 'scrollToTop');
         component.segmentChanged({ detail: { value: 0 } });
         expect(component.vm.header.segments.selected).toBe(0);
     });

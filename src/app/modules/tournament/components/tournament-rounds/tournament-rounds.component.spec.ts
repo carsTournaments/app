@@ -1,4 +1,4 @@
-import { Round, Pairing } from 'src/app/models';
+import { Round, Pairing } from '@models';
 import {
     ComponentFixture,
     getTestBed,
@@ -7,13 +7,13 @@ import {
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavController } from '@ionic/angular';
-import { RoundService } from 'src/app/services';
+import { RoundService } from '@services';
 import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TournamentRoundsComponent } from './tournament-rounds.component';
-import { PipesModule } from 'src/app/pipes/pipes.module';
-import { ImagePipe } from 'src/app/pipes';
+import { ImagePipe } from '@pipes';
+import { SharedModule } from '@shared/shared.module';
 
 const round = new Round({
     _id: '123',
@@ -64,7 +64,7 @@ describe('TournamentRoundsComponent', () => {
             imports: [
                 RouterTestingModule,
                 HttpClientTestingModule,
-                PipesModule,
+                SharedModule,
             ],
             providers: [
                 { provide: RoundService, useValue: roundService },

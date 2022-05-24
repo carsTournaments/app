@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginGuard } from './core/guards/check-token.guard';
+import { LoginGuard } from '@core/guards/check-token.guard';
 
 const routes: Routes = [
     {

@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
-import { Car, Inscription } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
+import { Car, Inscription } from '@models';
+import { ImagePipe } from '@pipes';
 import {
     ActionSheetService,
     InscriptionService,
@@ -13,7 +13,7 @@ import {
     ImageService,
     AnalyticsService,
     UtilsService,
-} from 'src/app/services';
+} from '@services';
 import { TournamentViewModel } from './model/tournament.view-model';
 
 @Component({
@@ -146,6 +146,10 @@ export class TournamentPage {
             params: { value: event.detail.value },
         });
         this.vm.header.segments.selected = Number(event.detail.value);
+        this.scrollToTop();
+    }
+
+    scrollToTop() {
         if (this.content) {
             this.content.scrollToTop(1500);
         }

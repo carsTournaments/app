@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Tournament } from 'src/app/models';
+import { Tournament } from '@models';
 
 @Component({
     selector: 'tournament-info',

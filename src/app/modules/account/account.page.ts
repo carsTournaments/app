@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { OptionItemI } from 'src/app/interfaces/option-item.interface';
+import { OptionItemI } from '@interfaces/option-item.interface';
 import {
     AuthService,
     AlertService,
     UserService,
     AnalyticsService,
     AdmobService,
-} from 'src/app/services';
+} from '@services';
 import { AccountViewModel } from './model/account.view-model';
 
 @Component({

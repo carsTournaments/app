@@ -1,5 +1,5 @@
-import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
-import { User } from 'src/app/models';
+import { LoginResponseI } from '@interfaces/login-response.interface';
+import { User } from '@models';
 import {
     ComponentFixture,
     getTestBed,
@@ -8,11 +8,12 @@ import {
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
-import { AlertService, AuthService } from 'src/app/services';
-import { ComponentsModule } from '../../../../components/components.module';
+import { AlertService, AuthService } from '@services';
 import { AuthComponent } from './auth.component';
 import { of, throwError } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SharedModule } from '@shared/shared.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 describe('AuthComponent', () => {
     let component: AuthComponent;
@@ -28,9 +29,9 @@ describe('AuthComponent', () => {
         TestBed.configureTestingModule({
             declarations: [AuthComponent],
             imports: [
-                IonicModule.forRoot(),
                 RouterTestingModule,
-                ComponentsModule,
+                IonicStorageModule.forRoot(),
+                SharedModule,
             ],
             providers: [
                 { provide: AuthService, useValue: authService },
