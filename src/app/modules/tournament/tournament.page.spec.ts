@@ -1,12 +1,7 @@
 import { car } from './../../models/models.mock.spec';
 import { Tournament } from 'src/app/models';
 import { ImagePipe } from 'src/app/pipes';
-import {
-    ComponentFixture,
-    getTestBed,
-    TestBed,
-    waitForAsync,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
@@ -16,7 +11,7 @@ import {
     InscriptionService,
     TournamentService,
 } from 'src/app/services';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TournamentPage } from './tournament.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -56,7 +51,6 @@ describe('TournamentPage', () => {
     const tournamentService = jasmine.createSpyObj('TournamentService', [
         'getOne',
     ]);
-    let route: ActivatedRoute;
 
     authService.getUser = jasmine.createSpy().and.returnValue(user);
     inscriptionService.getAllOfTournament = jasmine
@@ -99,10 +93,10 @@ describe('TournamentPage', () => {
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
-        const testbed = getTestBed();
+        // const testbed = getTestBed();
         fixture = TestBed.createComponent(TournamentPage);
         component = fixture.componentInstance;
-        route = testbed.inject(ActivatedRoute);
+        // route = testbed.inject(ActivatedRoute);
 
         fixture.detectChanges();
     }));

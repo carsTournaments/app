@@ -5,7 +5,7 @@ import {
     HttpTestingController,
 } from '@angular/common/http/testing';
 import { InscriptionService } from '../..';
-import { Pairing, Inscription } from 'src/app/models';
+import { Inscription } from 'src/app/models';
 import {
     InscriptionGetAllDto,
     InscriptionsGetMyCarsForInscriptionDto,

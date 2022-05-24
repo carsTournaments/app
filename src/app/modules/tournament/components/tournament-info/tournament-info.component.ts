@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tournament } from 'src/app/models';
 
 @Component({
@@ -6,12 +6,9 @@ import { Tournament } from 'src/app/models';
     templateUrl: 'tournament-info.component.html',
     styleUrls: ['./tournament-info.component.scss'],
 })
-export class TournamentInfoComponent implements OnInit {
+export class TournamentInfoComponent {
     @Input() tournament: Tournament;
     @Input() cols: string;
     @Input() buttonInscription: boolean;
     @Output() inscriptionCarClick: EventEmitter<void> = new EventEmitter();
-    constructor() {}
-
-    ngOnInit() {}
 }

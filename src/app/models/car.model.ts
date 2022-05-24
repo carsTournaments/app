@@ -1,4 +1,3 @@
-import { Image } from './image.model';
 import { Tournament } from './tournament.model';
 
 export class Car {

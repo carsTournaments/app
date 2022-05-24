@@ -5,16 +5,15 @@ import {
 } from '@angular/common/http/testing';
 import { StorageService, VoteService } from '../..';
 import { Vote } from 'src/app/models';
-import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { ServicesModule } from '../../services.module';
 import { environment } from 'src/environments/environment';
 
-const paginator: PaginatorI = {
-    pageSize: 0,
-    currentPage: 0,
-    totalPages: 0,
-    total: 0,
-};
+// const paginator: PaginatorI = {
+//     pageSize: 0,
+//     currentPage: 0,
+//     totalPages: 0,
+//     total: 0,
+// };
 
 const item = new Vote();
 item.pairing = '1';

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Brand } from 'src/app/models';
 
 @Component({
@@ -6,10 +6,7 @@ import { Brand } from 'src/app/models';
     templateUrl: 'brand-item.component.html',
     styleUrls: ['./brand-item.component.scss'],
 })
-export class BrandItemComponent implements OnInit {
+export class BrandItemComponent {
     @Input() brand: Brand;
     @Output() clickItem: EventEmitter<Brand> = new EventEmitter<Brand>();
-    constructor() {}
-
-    ngOnInit() {}
 }

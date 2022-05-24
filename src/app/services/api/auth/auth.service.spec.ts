@@ -1,5 +1,4 @@
 import { environment } from 'src/environments/environment';
-import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { TestBed } from '@angular/core/testing';
 import {
     HttpClientTestingModule,

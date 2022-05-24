@@ -9,10 +9,6 @@ import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { Location } from '@angular/common';
-import { SettingsApp } from 'src/app/models/settings.model';
-import { Observable } from 'rxjs/internal/Observable';
-import { Subject } from 'rxjs/internal/Subject';
-import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {

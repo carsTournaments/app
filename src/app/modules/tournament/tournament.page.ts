@@ -162,7 +162,7 @@ export class TournamentPage {
                         this.vm.loading.getWinners = false;
                         this.vm.error.getWinners = false;
                     },
-                    error: (err) => {
+                    error: () => {
                         this.vm.loading.getWinners = false;
                         this.vm.error.getWinners = true;
                     },

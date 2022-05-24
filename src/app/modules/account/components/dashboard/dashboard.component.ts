@@ -13,5 +13,4 @@ export class DashboardComponent {
     @Input() user: User;
     @Input() options: OptionItemI[];
     @Output() goTo: EventEmitter<OptionItemI> = new EventEmitter();
-    constructor() {}
 }

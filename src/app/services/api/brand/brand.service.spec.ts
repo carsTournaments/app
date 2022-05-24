@@ -7,7 +7,7 @@ import {
     HttpTestingController,
 } from '@angular/common/http/testing';
 import { BrandService } from '../..';
-import { Car, Brand } from 'src/app/models';
+import { Brand } from 'src/app/models';
 import { BrandGetAllBrandsAndCarsDto } from './brand.dto';
 
 const paginator: PaginatorI = {
@@ -51,6 +51,7 @@ describe('BrandService', () => {
             pageSize: 0,
             site: 'app',
             order: [],
+            onlyWithPhoto: false,
         };
         service.getAll(data).subscribe((response) => {
             expect(response).not.toBe(null);
@@ -69,6 +70,7 @@ describe('BrandService', () => {
             page: 1,
             pageSize: 1,
             order: [],
+            onlyWithPhoto: false,
         };
         service.getAllBrandsAndCars(data).subscribe((response) => {
             expect(response).not.toBe(null);

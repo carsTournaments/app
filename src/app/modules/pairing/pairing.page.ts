@@ -1,4 +1,4 @@
-import { Component, ComponentRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController, ModalOptions, Platform } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';

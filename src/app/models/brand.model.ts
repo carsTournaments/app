@@ -1,4 +1,3 @@
-import { Car } from './car.model';
 import { Image } from './image.model';
 
 export class Brand {

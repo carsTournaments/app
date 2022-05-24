@@ -10,8 +10,6 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class AdmobService {
-    constructor() {}
-
     async init(): Promise<void> {
         const { status } = await AdMob.trackingAuthorizationStatus();
         if (status === 'notDetermined') {
@@ -58,7 +56,7 @@ export class AdmobService {
             adId: 'ca-app-pub-1868668305627051/1719310546',
         };
         await AdMob.prepareRewardVideoAd(options);
-        const rewardItem = await AdMob.showRewardVideoAd();
+        await AdMob.showRewardVideoAd();
     }
 
     hideBanner() {

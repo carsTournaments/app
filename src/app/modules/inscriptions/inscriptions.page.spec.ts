@@ -9,7 +9,7 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { AuthService, InscriptionService } from 'src/app/services';
-import { Inscription, Tournament } from 'src/app/models';
+import { Inscription } from 'src/app/models';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -17,26 +17,26 @@ import { InscriptionsPage } from './inscriptions.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { car, tournament, user } from 'src/app/models/models.mock.spec';
 
-const tournament2 = new Tournament({
-    _id: '123',
-    name: 'prueba',
-    status: 'InProgress',
-    startDate: '',
-    endDate: '',
-    info: '',
-    requisites: [],
-    maxParticipants: 0,
-});
-const tournament3 = new Tournament({
-    _id: '123',
-    name: 'prueba',
-    status: 'Completed',
-    startDate: '',
-    endDate: '',
-    info: '',
-    requisites: [],
-    maxParticipants: 0,
-});
+// const tournament2 = new Tournament({
+//     _id: '123',
+//     name: 'prueba',
+//     status: 'InProgress',
+//     startDate: '',
+//     endDate: '',
+//     info: '',
+//     requisites: [],
+//     maxParticipants: 0,
+// });
+// const tournament3 = new Tournament({
+//     _id: '123',
+//     name: 'prueba',
+//     status: 'Completed',
+//     startDate: '',
+//     endDate: '',
+//     info: '',
+//     requisites: [],
+//     maxParticipants: 0,
+// });
 
 const inscription = new Inscription({
     _id: '123',
@@ -55,7 +55,7 @@ describe('InscriptionsPage', () => {
     let component: InscriptionsPage;
     let fixture: ComponentFixture<InscriptionsPage>;
     const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
-    const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
+    // const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
     const inscriptionService = jasmine.createSpyObj('InscriptionService', [
         'getAllForDriver',
     ]);

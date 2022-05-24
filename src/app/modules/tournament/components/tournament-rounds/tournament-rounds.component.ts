@@ -36,7 +36,6 @@ export class TournamentRoundsComponent implements OnInit {
                     this.rounds = r;
                     this.filterRounds();
                 },
-                error: (err) => {},
             });
     }
 

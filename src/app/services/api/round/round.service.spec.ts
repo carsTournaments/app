@@ -5,7 +5,6 @@ import {
     HttpTestingController,
 } from '@angular/common/http/testing';
 import { RoundService } from '../..';
-import { Inscription } from 'src/app/models';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { RoundGetAllDto } from './round.dto';
 import { environment } from 'src/environments/environment';

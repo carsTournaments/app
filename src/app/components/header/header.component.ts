@@ -12,5 +12,4 @@ export class HeaderComponent {
     @Output() clickRightIcon: EventEmitter<any> = new EventEmitter();
     height: number;
     heightPx: string;
-    constructor() {}
 }

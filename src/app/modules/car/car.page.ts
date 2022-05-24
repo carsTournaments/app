@@ -185,7 +185,6 @@ export class CarPage implements OnInit {
             next: (data) => {
                 this.vm.likes = data;
             },
-            error: () => {},
         });
     }
 

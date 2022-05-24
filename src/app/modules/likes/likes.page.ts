@@ -45,7 +45,6 @@ export class LikesPage {
                 next: (response) => {
                     this.vm.likesSent = response;
                 },
-                error: (error) => {},
             });
     }
 

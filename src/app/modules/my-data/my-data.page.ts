@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MyDataViewModel } from './model/my-data.view-model';
 
 @Component({
@@ -6,9 +6,6 @@ import { MyDataViewModel } from './model/my-data.view-model';
     templateUrl: 'my-data.page.html',
     styleUrls: ['./my-data.page.scss'],
 })
-export class MyDataPage implements OnInit {
+export class MyDataPage {
     vm = new MyDataViewModel();
-    constructor() {}
-
-    ngOnInit() {}
 }

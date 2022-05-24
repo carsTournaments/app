@@ -9,7 +9,7 @@ import {
     InscriptionGetAllOfCarDto,
     InscriptionsGetMyCarsForInscriptionDto,
 } from './inscription.dto';
-import { Car, Inscription, Tournament } from 'src/app/models';
+import { Inscription } from 'src/app/models';
 import { IdDto } from 'src/app/core/dtos/id.dto';
 import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { take } from 'rxjs/operators';

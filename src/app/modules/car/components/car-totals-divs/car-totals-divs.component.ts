@@ -15,5 +15,4 @@ export class CarTotalsDivsComponent {
     @Input() likes: Like[];
     @Input() inscriptions: Inscription[];
     @Input() votes: Vote[];
-    constructor() {}
 }

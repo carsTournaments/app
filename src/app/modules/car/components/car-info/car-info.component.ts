@@ -8,5 +8,4 @@ import { Car } from 'src/app/models';
 })
 export class CarInfoComponent {
     @Input() car: Car;
-    constructor() {}
 }

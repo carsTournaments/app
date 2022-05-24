@@ -1,5 +1,5 @@
 import { ModalController } from '@ionic/angular';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import SwiperCore, { Zoom, SwiperOptions } from 'swiper';
 
 SwiperCore.use([Zoom]);
@@ -9,7 +9,7 @@ SwiperCore.use([Zoom]);
     templateUrl: 'viewer.component.html',
     styleUrls: ['./viewer.component.scss'],
 })
-export class ViewerComponent implements OnInit {
+export class ViewerComponent {
     @ViewChild('swiper') swiper: any;
     @Input() image: string;
     config: SwiperOptions = {
@@ -19,8 +19,6 @@ export class ViewerComponent implements OnInit {
         },
     };
     constructor(private modalCtrl: ModalController) {}
-
-    ngOnInit() {}
 
     close() {
         this.modalCtrl.dismiss();

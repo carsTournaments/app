@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Car } from 'src/app/models';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
 
@@ -7,12 +7,8 @@ import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services
     templateUrl: 'tournament-my-inscriptions.component.html',
     styleUrls: ['./tournament-my-inscriptions.component.scss'],
 })
-export class TournamentMyInscriptionsComponent implements OnInit {
+export class TournamentMyInscriptionsComponent {
     @Input() myCars: InscriptionGetMyCarsUserForInscriptionResponse;
     @Output() confirmDeleteInscriptionClick: EventEmitter<Car> =
         new EventEmitter();
-
-    constructor() {}
-
-    ngOnInit() {}
 }

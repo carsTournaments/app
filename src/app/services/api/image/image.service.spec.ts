@@ -5,22 +5,21 @@ import {
 } from '@angular/common/http/testing';
 import { ImageService } from '../..';
 import { Inscription } from 'src/app/models';
-import { PaginatorI } from 'src/app/interfaces/paginator.interface';
 import { Photo, Camera } from '@capacitor/camera';
 import { ModalController } from '@ionic/angular';
 
-const paginator: PaginatorI = {
-    pageSize: 0,
-    currentPage: 0,
-    totalPages: 0,
-    total: 0,
-};
+// const paginator: PaginatorI = {
+//     pageSize: 0,
+//     currentPage: 0,
+//     totalPages: 0,
+//     total: 0,
+// };
 
 const item = new Inscription();
-const res = {
-    items: [item],
-    paginator,
-};
+// const res = {
+//     items: [item],
+//     paginator,
+// };
 
 describe('ImageService', () => {
     let httpTestingController: HttpTestingController;
