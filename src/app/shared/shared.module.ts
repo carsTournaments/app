@@ -55,7 +55,6 @@ import {
 } from './pipes';
 
 const MODULES = [
-    BrowserModule,
     CommonModule,
     IonicModule,
     RouterModule,
