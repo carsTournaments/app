@@ -7,13 +7,13 @@ import {
     InscriptionService,
     LikeService,
     VoteService,
-} from 'src/app/services';
+} from '@services';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImagePipe } from 'src/app/pipes';
+import { ImagePipe } from '@pipes';
 import { CarViewModel } from './model/car.view-model';
-import { Like } from 'src/app/models/like.model';
-import { Car } from 'src/app/models';
+import { Like } from '@models/like.model';
+import { Car } from '@models';
 import { IonContent } from '@ionic/angular';
 
 @Component({
@@ -185,7 +185,6 @@ export class CarPage implements OnInit {
             next: (data) => {
                 this.vm.likes = data;
             },
-            error: () => {},
         });
     }
 

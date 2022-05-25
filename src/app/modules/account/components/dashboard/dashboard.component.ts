@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { OptionItemI } from 'src/app/interfaces/option-item.interface';
-import { User } from 'src/app/models';
-import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses';
+import { OptionItemI } from '@interfaces/option-item.interface';
+import { User } from '@models';
+import { UserGetResumeResponse } from '@services/api/user/user.responses';
 
 @Component({
     selector: 'dashboard',
@@ -13,5 +13,4 @@ export class DashboardComponent {
     @Input() user: User;
     @Input() options: OptionItemI[];
     @Output() goTo: EventEmitter<OptionItemI> = new EventEmitter();
-    constructor() {}
 }

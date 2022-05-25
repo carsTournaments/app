@@ -6,18 +6,18 @@ import {
     waitForAsync,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule, NavController } from '@ionic/angular';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { OptionItemI } from 'src/app/interfaces/option-item.interface';
-import { AuthService, AlertService, AnalyticsService } from 'src/app/services';
+import { NavController } from '@ionic/angular';
+import { OptionItemI } from '@interfaces/option-item.interface';
+import { AuthService, AlertService, AnalyticsService } from '@services';
 import {
     alertService,
     analyticsService,
     authService,
     navCtrl,
-} from 'src/app/services/services.mock.spec';
+} from '@services/services.mock.spec';
 
 import { AccountPage } from './account.page';
+import { SharedModule } from '@shared/shared.module';
 
 describe('DashboardPage', () => {
     let component: AccountPage;
@@ -26,11 +26,7 @@ describe('DashboardPage', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AccountPage],
-            imports: [
-                IonicModule.forRoot(),
-                RouterTestingModule,
-                ComponentsModule,
-            ],
+            imports: [SharedModule, RouterTestingModule],
             providers: [
                 AuthService,
                 AlertService,

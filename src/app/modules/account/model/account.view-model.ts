@@ -1,8 +1,8 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { OptionItemI } from 'src/app/interfaces/option-item.interface';
-import { User } from 'src/app/models';
-import { SettingsApp } from 'src/app/models/settings.model';
-import { UserGetResumeResponse } from 'src/app/services/api/user/user.responses';
+import { Header } from '@components/header/model/header.model';
+import { OptionItemI } from '@interfaces/option-item.interface';
+import { User } from '@models';
+import { SettingsApp } from '@models/settings.model';
+import { UserGetResumeResponse } from '@services/api/user/user.responses';
 
 export class AccountViewModel {
     header = new Header({

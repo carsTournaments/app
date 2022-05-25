@@ -7,7 +7,7 @@ import {
     AuthService,
     ImageService,
     UtilsService,
-} from 'src/app/services';
+} from '@services';
 import { GarageOneViewModel } from './model/garage-one.view-model';
 import { NavController } from '@ionic/angular';
 

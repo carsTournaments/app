@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { Car } from 'src/app/models';
+import { Car } from '@models';
 
 @Component({
     selector: 'pairing-modal',

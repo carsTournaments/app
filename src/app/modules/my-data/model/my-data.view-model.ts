@@ -1,4 +1,4 @@
-import { Header } from 'src/app/components/header/model/header.model';
+import { Header } from '@components/header/model/header.model';
 
 export class MyDataViewModel {
     header = new Header({

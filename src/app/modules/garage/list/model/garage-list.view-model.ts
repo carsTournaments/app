@@ -1,7 +1,7 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { NoItemsModel } from 'src/app/components/no-items/no-items.model';
-import { IdDto } from 'src/app/core/dtos/id.dto';
-import { Car, User } from 'src/app/models';
+import { Header } from '@components/header/model/header.model';
+import { NoItemsModel } from '@components/no-items/no-items.model';
+import { IdDto } from '@core/dtos/id.dto';
+import { Car, User } from '@models';
 
 export class GarageListViewModel {
     header = new Header({

@@ -1,7 +1,7 @@
-import { Car } from './../../models/car.model';
+import { Car } from '@models/car.model';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { AuthService, LikeService } from 'src/app/services';
+import { AuthService, LikeService } from '@services';
 import { LikesViewModel } from './model/likes.view-model';
 
 @Component({
@@ -45,7 +45,6 @@ export class LikesPage {
                 next: (response) => {
                     this.vm.likesSent = response;
                 },
-                error: (error) => {},
             });
     }
 

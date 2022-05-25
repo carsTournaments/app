@@ -1,6 +1,6 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { Car, Brand } from 'src/app/models';
-import { BrandGetAllDto } from 'src/app/services/api/brand/brand.dto';
+import { Header } from '@components/header/model/header.model';
+import { Car, Brand } from '@models';
+import { BrandGetAllDto } from '@services/api/brand/brand.dto';
 
 export class GarageOneViewModel {
     header = new Header({

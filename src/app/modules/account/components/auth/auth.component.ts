@@ -1,13 +1,7 @@
-import { LoginResponseI } from 'src/app/interfaces/login-response.interface';
-import { AuthRegisterDto } from '../../../../services/api/auth/auth.dto';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { User } from 'src/app/models';
-import {
-    AlertService,
-    AuthService,
-    NotificationsPushService,
-} from 'src/app/services';
-import { AuthLogInDto } from 'src/app/services/api/auth/auth.dto';
+import { LoginResponseI } from '@interfaces/login-response.interface';
+import { AlertService, AuthService, NotificationsPushService } from '@services';
+import { AuthLogInDto, AuthRegisterDto } from '@services/api/auth/auth.dto';
 import { AuthViewModel } from './auth.view-model';
 
 @Component({

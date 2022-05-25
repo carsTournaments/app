@@ -1,8 +1,8 @@
 import { NavController } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
-import { Car, Pairing, Round } from 'src/app/models';
-import { RoundService } from 'src/app/services';
-import { ImagePipe } from 'src/app/pipes';
+import { Car, Pairing, Round } from '@models';
+import { RoundService } from '@services';
+import { ImagePipe } from '@pipes';
 
 @Component({
     selector: 'tournament-rounds',
@@ -36,7 +36,6 @@ export class TournamentRoundsComponent implements OnInit {
                     this.rounds = r;
                     this.filterRounds();
                 },
-                error: (err) => {},
             });
     }
 

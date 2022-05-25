@@ -1,7 +1,7 @@
-import { Header } from 'src/app/components/header/model/header.model';
-import { NoItemsModel } from 'src/app/components/no-items/no-items.model';
-import { Like, User } from 'src/app/models';
-import { LikeGetAllReceivedForUserResponse } from 'src/app/services/api/like/like.response';
+import { Header } from '@components/header/model/header.model';
+import { NoItemsModel } from '@components/no-items/no-items.model';
+import { Like, User } from '@models';
+import { LikeGetAllReceivedForUserResponse } from '@services/api/like/like.response';
 
 export class LikesViewModel {
     header = new Header({

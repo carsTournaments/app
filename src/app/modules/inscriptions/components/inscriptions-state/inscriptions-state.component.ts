@@ -1,13 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { InscriptionGetAllForDriverItemI } from 'src/app/interfaces/inscription.interface';
-import { Car, Tournament } from 'src/app/models';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { InscriptionGetAllForDriverItemI } from '@interfaces/inscription.interface';
 
 @Component({
     selector: 'inscriptions-state',
     templateUrl: 'inscriptions-state.component.html',
     styleUrls: ['./inscriptions-state.component.scss'],
 })
-export class InscriptionsStateComponent implements OnInit {
+export class InscriptionsStateComponent {
     @Input() title: string;
     @Input() items: InscriptionGetAllForDriverItemI[] = [];
     @Input() type: string;
@@ -18,7 +17,4 @@ export class InscriptionsStateComponent implements OnInit {
         carId: string;
         tournamentId: string;
     }> = new EventEmitter();
-    constructor() {}
-
-    ngOnInit() {}
 }

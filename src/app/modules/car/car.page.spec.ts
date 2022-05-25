@@ -1,38 +1,41 @@
-import { analyticsService } from './../../services/services.mock.spec';
-import { ImagePipe } from 'src/app/pipes';
+import { ImagePipe } from '@pipes';
 import {
     ComponentFixture,
     getTestBed,
     TestBed,
     waitForAsync,
 } from '@angular/core/testing';
-import { IonicModule, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
-import { AnalyticsService, CarService } from 'src/app/services';
+import { AnalyticsService, CarService } from '@services';
 import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { carService, navCtrl } from 'src/app/services/services.mock.spec';
-import { car } from 'src/app/models/models.mock.spec';
+import {
+    analyticsService,
+    carService,
+    navCtrl,
+} from '@services/services.mock.spec';
+import { car } from '@models/models.mock.spec';
+import { SharedModule } from '@shared/shared.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 describe('CarPage', () => {
     let component: CarPage;
     let fixture: ComponentFixture<CarPage>;
     const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
     carService.getOne = jasmine.createSpy().and.returnValue(of(car));
-    let route: ActivatedRoute;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [CarPage, ImagePipe],
             imports: [
-                IonicModule.forRoot(),
                 RouterTestingModule,
                 HttpClientTestingModule,
-                ComponentsModule,
+                IonicStorageModule.forRoot(),
+                SharedModule,
             ],
             providers: [
                 { provide: CarService, useValue: carService },
@@ -44,7 +47,7 @@ describe('CarPage', () => {
                     useValue: {
                         snapshot: {
                             paramMap: {
-                                get: () => '1',
+                                get: () => '123',
                             },
                         },
                     },
@@ -53,10 +56,8 @@ describe('CarPage', () => {
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
-        const testbed = getTestBed();
         fixture = TestBed.createComponent(CarPage);
         component = fixture.componentInstance;
-        route = testbed.inject(ActivatedRoute);
 
         fixture.detectChanges();
     }));
@@ -68,12 +69,13 @@ describe('CarPage', () => {
     it('ngOnInit', async () => {
         spyOn(component, 'getOne');
         await component.ngOnInit();
-        expect(component.vm.id).toBe('1');
+        expect(component.vm.id).toBe('123');
         expect(component.getOne).toHaveBeenCalled();
     });
 
     describe('getOne', () => {
         it('OK', () => {
+            car._id = '123';
             carService.getOne = jasmine.createSpy().and.returnValue(of(car));
             spyOn(component, 'checkIsMyCar');
             component.getOne();

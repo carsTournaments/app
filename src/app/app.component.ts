@@ -1,4 +1,4 @@
-import { StorageService } from './services/ionic/storage.service';
+import { StorageService } from './shared/services/ionic/storage.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
@@ -7,9 +7,9 @@ import {
     AnalyticsService,
     NotificationsPushService,
     SettingsService,
-} from './services';
+} from './shared/services';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
-import { User } from './models';
+import { User } from '@models';
 
 @Component({
     selector: 'app-root',

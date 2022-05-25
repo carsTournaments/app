@@ -5,14 +5,9 @@ import {
     PopoverOptions,
 } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
-import { Car } from 'src/app/models';
-import {
-    AlertService,
-    CarService,
-    AuthService,
-    UtilsService,
-} from 'src/app/services';
-import { ImageService } from 'src/app/services/api/image/image.service';
+import { Car } from '@models';
+import { AlertService, CarService, AuthService, UtilsService } from '@services';
+import { ImageService } from '@services/api/image/image.service';
 import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
 

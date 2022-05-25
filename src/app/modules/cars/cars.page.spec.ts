@@ -1,16 +1,17 @@
-import { AnalyticsService } from '../../services/capacitor/analytics/analytics.service';
+import { AnalyticsService } from '../../shared/services/capacitor/analytics/analytics.service';
 import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { CarsPage } from './cars.page';
-import { CarService, BrandService } from 'src/app/services';
-import { Brand, Car } from 'src/app/models';
+import { CarService, BrandService } from '@services';
+import { Brand, Car } from '@models';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { analyticsService } from 'src/app/services/services.mock.spec';
-import { car } from 'src/app/models/models.mock.spec';
+import { analyticsService } from '@services/services.mock.spec';
+import { car } from '@models/models.mock.spec';
+import { SharedModule } from '@shared/shared.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 describe('CarsPage', () => {
     let component: CarsPage;
@@ -33,7 +34,8 @@ describe('CarsPage', () => {
             imports: [
                 RouterTestingModule,
                 HttpClientTestingModule,
-                ComponentsModule,
+                IonicStorageModule.forRoot(),
+                SharedModule,
             ],
             providers: [
                 { provide: CarService, useValue: carService },

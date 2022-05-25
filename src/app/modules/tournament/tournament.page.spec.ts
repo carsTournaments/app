@@ -1,12 +1,8 @@
-import { car } from './../../models/models.mock.spec';
-import { Tournament } from 'src/app/models';
-import { ImagePipe } from 'src/app/pipes';
-import {
-    ComponentFixture,
-    getTestBed,
-    TestBed,
-    waitForAsync,
-} from '@angular/core/testing';
+import { SharedModule } from './../../shared/shared.module';
+import { car } from '@models/models.mock.spec';
+import { Tournament } from '@models';
+import { ImagePipe } from '@pipes';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule, NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
@@ -15,20 +11,20 @@ import {
     AuthService,
     InscriptionService,
     TournamentService,
-} from 'src/app/services';
-import { ActivatedRoute, Route } from '@angular/router';
+} from '@services';
+import { ActivatedRoute } from '@angular/router';
 import { TournamentPage } from './tournament.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { InscriptionGetMyCarsUserForInscriptionResponse } from 'src/app/services/api/inscription/inscription.responses';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { user, inscription } from 'src/app/models/models.mock.spec';
+import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
+import { user, inscription } from '@models/models.mock.spec';
 import {
     analyticsService,
     authService,
     inscriptionService,
     navCtrl,
-} from 'src/app/services/services.mock.spec';
+} from '@services/services.mock.spec';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 const tournament = new Tournament({
     _id: '123',
@@ -56,7 +52,6 @@ describe('TournamentPage', () => {
     const tournamentService = jasmine.createSpyObj('TournamentService', [
         'getOne',
     ]);
-    let route: ActivatedRoute;
 
     authService.getUser = jasmine.createSpy().and.returnValue(user);
     inscriptionService.getAllOfTournament = jasmine
@@ -73,10 +68,10 @@ describe('TournamentPage', () => {
         TestBed.configureTestingModule({
             declarations: [TournamentPage],
             imports: [
-                IonicModule.forRoot(),
+                IonicStorageModule.forRoot(),
+                SharedModule,
                 RouterTestingModule.withRoutes([]),
                 HttpClientTestingModule,
-                ComponentsModule,
             ],
             providers: [
                 { provide: AuthService, useValue: authService },
@@ -99,10 +94,10 @@ describe('TournamentPage', () => {
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
 
-        const testbed = getTestBed();
+        // const testbed = getTestBed();
         fixture = TestBed.createComponent(TournamentPage);
         component = fixture.componentInstance;
-        route = testbed.inject(ActivatedRoute);
+        // route = testbed.inject(ActivatedRoute);
 
         fixture.detectChanges();
     }));
@@ -247,6 +242,7 @@ describe('TournamentPage', () => {
     });
 
     it('segmentChanged', () => {
+        spyOn(component, 'scrollToTop');
         component.segmentChanged({ detail: { value: 0 } });
         expect(component.vm.header.segments.selected).toBe(0);
     });

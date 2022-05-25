@@ -1,4 +1,4 @@
-import { StorageService } from './services/ionic/storage.service';
+import { StorageService } from './shared/services/ionic/storage.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
@@ -9,8 +9,7 @@ import {
 } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { ServicesModule } from './services/services.module';
-import { AlertService, AnalyticsService } from './services';
+import { AlertService, AnalyticsService } from './shared/services';
 import { NavController } from '@ionic/angular';
 import {
     navCtrl,
@@ -18,7 +17,9 @@ import {
     alertService,
     storageService,
     location,
-} from './services/services.mock.spec';
+} from './shared/services/services.mock.spec';
+import { SharedModule } from '@shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
     let component: AppComponent;
@@ -27,7 +28,11 @@ describe('AppComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
-            imports: [IonicStorageModule.forRoot(), ServicesModule],
+            imports: [
+                IonicStorageModule.forRoot(),
+                SharedModule,
+                RouterTestingModule,
+            ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             providers: [
                 { provide: AlertService, useValue: alertService },

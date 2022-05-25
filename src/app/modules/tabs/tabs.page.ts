@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AnalyticsService } from 'src/app/services';
+import { AnalyticsService } from '@services';
 
 @Component({
     selector: 'app-tabs',

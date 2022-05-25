@@ -1,4 +1,4 @@
-import { Car } from 'src/app/models';
+import { Car } from '@models';
 import {
     ComponentFixture,
     getTestBed,
@@ -13,13 +13,12 @@ import {
     CarService,
     ImageService,
     UtilsService,
-} from 'src/app/services';
+} from '@services';
 import { of, throwError } from 'rxjs';
 import { GarageListPage } from './garage-list.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { user, car } from 'src/app/models/models.mock.spec';
+import { user, car } from '@models/models.mock.spec';
 import {
     authService,
     carService,
@@ -28,7 +27,8 @@ import {
     navCtrl,
     popoverCtrl,
     utilsService,
-} from 'src/app/services/services.mock.spec';
+} from '@services/services.mock.spec';
+import { SharedModule } from '@shared/shared.module';
 
 describe('GarageListComponent', () => {
     let component: GarageListPage;
@@ -42,7 +42,7 @@ describe('GarageListComponent', () => {
             imports: [
                 RouterTestingModule,
                 HttpClientTestingModule,
-                ComponentsModule,
+                SharedModule,
             ],
             providers: [
                 { provide: AuthService, useValue: authService },

@@ -1,6 +1,6 @@
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from 'src/app/services';
+import { StorageService } from '@services';
 
 @Component({
     selector: 'app-home',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Car } from 'src/app/models';
+import { Car } from '@models';
 
 @Component({
     selector: 'car-info',
@@ -8,5 +8,4 @@ import { Car } from 'src/app/models';
 })
 export class CarInfoComponent {
     @Input() car: Car;
-    constructor() {}
 }
