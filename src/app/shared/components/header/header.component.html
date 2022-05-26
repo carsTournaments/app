@@ -34,18 +34,30 @@
             {{ options.title }}</ion-title
         >
 
-        <ion-segment
-            *ngIf="options.segments && options.segments.items.length > 0"
-            mode="ios"
-            [value]="options.segments.selected"
-            (ionChange)="segmentChanged.emit($event)"
+        <ion-row
+            style="padding: 0"
+            class="animate__animated animate__fadeIn animate__faster"
         >
-            <ion-segment-button
-                *ngFor="let item of options.segments.items; let i = index"
-                [value]="i"
-            >
-                <ion-label>{{ item }}</ion-label>
-            </ion-segment-button>
-        </ion-segment>
+            <ion-col style="padding: 0" size="12" sizeLg="8" offsetLg="2">
+                <ion-segment
+                    *ngIf="
+                        options.segments && options.segments.items.length > 0
+                    "
+                    mode="ios"
+                    [value]="options.segments.selected"
+                    (ionChange)="segmentChanged.emit($event)"
+                >
+                    <ion-segment-button
+                        *ngFor="
+                            let item of options.segments.items;
+                            let i = index
+                        "
+                        [value]="i"
+                    >
+                        <ion-label>{{ item }}</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
     </ion-toolbar>
 </ion-header>
