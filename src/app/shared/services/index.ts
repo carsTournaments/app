@@ -1,5 +1,5 @@
 // API
-export { AuthService } from './api/auth/auth.service';
+export { AuthService } from '../../core/auth/auth.service';
 export { BrandService } from './api/brand/brand.service';
 export { CarService } from './api/car/car.service';
 export { ImageService } from './api/image/image.service';

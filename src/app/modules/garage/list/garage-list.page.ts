@@ -6,7 +6,7 @@ import {
 } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { Car } from '@models';
-import { AlertService, CarService, AuthService, UtilsService } from '@services';
+import { AlertService, CarService, UtilsService, UserService } from '@services';
 import { ImageService } from '@services/api/image/image.service';
 import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
@@ -24,7 +24,7 @@ export class GarageListPage {
         private alertService: AlertService,
         private popoverCtrl: PopoverController,
         private imageService: ImageService,
-        private authService: AuthService,
+        private userService: UserService,
         private utilsService: UtilsService
     ) {}
 
@@ -33,7 +33,7 @@ export class GarageListPage {
     }
 
     async getAllCars() {
-        this.vm.user = await this.authService.getUser();
+        this.vm.user = this.userService.getUser();
         this.vm.bodyCars.id = this.vm.user._id;
         this.carService.getAllOfDriver(this.vm.bodyCars).subscribe({
             next: (response) => {

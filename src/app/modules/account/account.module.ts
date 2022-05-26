@@ -5,10 +5,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AccountPage } from './account.page';
 import { AuthComponent } from './components/auth/auth.component';
 import { SharedModule } from '@shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     imports: [
         SharedModule,
+        FontAwesomeModule,
         RouterModule.forChild([{ path: '', component: AccountPage }]),
     ],
     declarations: [

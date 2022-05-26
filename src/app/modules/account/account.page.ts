@@ -34,13 +34,14 @@ export class AccountPage {
     }
 
     async isAuthenticated(): Promise<void> {
-        this.logged = this.authService.isAuthenticated();
-        if (this.logged) {
-            this.vm.user = await this.authService.getUser();
+        this.vm.user = this.userService.getUser();
+        if (this.vm.user) {
             this.getResume();
+            this.logged = true;
         } else {
-            this.vm.loading = false;
+            this.logged = false;
         }
+        this.vm.loading = false;
     }
 
     getResume(): void {

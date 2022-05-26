@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { LoginResponseI } from '@interfaces/login-response.interface';
 import { AlertService, AuthService, NotificationsPushService } from '@services';
-import { AuthLogInDto, AuthRegisterDto } from '@services/api/auth/auth.dto';
+import { AuthLogInDto, AuthRegisterDto } from '@core/auth/auth.dto';
 import { AuthViewModel } from './auth.view-model';
 
 @Component({
@@ -25,7 +25,11 @@ export class AuthComponent {
                 password: this.vm.password,
             };
             this.authService.login(data).subscribe({
-                next: (response) => this.onLoginOrRegisterSuccess(response),
+                next: (response) => {
+                    if (response) {
+                        this.clickLogin.emit();
+                    }
+                },
                 error: (error) =>
                     this.alertService.presentAlert('Error', error),
             });
@@ -41,7 +45,11 @@ export class AuthComponent {
                 password: this.vm.password,
             };
             this.authService.register(data).subscribe({
-                next: (response) => this.onLoginOrRegisterSuccess(response),
+                next: (response) => {
+                    if (response) {
+                        this.clickLogin.emit();
+                    }
+                },
                 error: (error) =>
                     this.alertService.presentAlert('Error', error),
             });
@@ -72,9 +80,6 @@ export class AuthComponent {
     }
 
     onLoginOrRegisterSuccess(response: LoginResponseI) {
-        this.authService.setToken(response.token);
-        this.authService.setUser(response.user);
-        this.notificationsPushService.registerFCM(response.user ?? null);
         this.clickLogin.emit();
     }
 }
