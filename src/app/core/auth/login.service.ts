@@ -1,7 +1,6 @@
 import { LoginResponseI } from '@interfaces/login-response.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '@models';
 import { AuthLogInDto } from './auth.dto';
 import { environment } from '@env/environment';
 
@@ -14,13 +13,5 @@ export class LoginService {
 
     login(data: AuthLogInDto) {
         return this.http.post<LoginResponseI>(`${this.path}/login`, data);
-    }
-
-    logout() {
-        return this.http.post<any>('/auth/logout', {});
-    }
-
-    me() {
-        return this.http.post<User>('/auth/me', {});
     }
 }

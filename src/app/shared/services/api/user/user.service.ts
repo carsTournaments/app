@@ -28,14 +28,10 @@ export class UserService {
     }
 
     private get user(): User | undefined {
-        if (!this._user) {
-            this._user = this.localStorageService.get('user')
-                ? JSON.parse(this.localStorageService.get('user'))
-                : undefined;
-            return this._user;
-        } else {
-            return this._user;
-        }
+        this._user = this.localStorageService.get('user')
+            ? JSON.parse(this.localStorageService.get('user'))
+            : undefined;
+        return this._user;
     }
 
     change(): Observable<User | undefined> {

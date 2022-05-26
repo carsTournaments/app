@@ -37,8 +37,6 @@ export class TokenService {
     }
 
     valid(): boolean {
-        if (!this.token) {
-        }
         return this.token && this.token?.length > 0 ? true : false;
     }
 

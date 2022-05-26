@@ -1,22 +1,16 @@
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { environment } from '@env/environment';
 import { LoginResponseI } from '@interfaces/login-response.interface';
-import { map, share, switchMap, tap } from 'rxjs/operators';
+import { map, share, tap } from 'rxjs/operators';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';
-import { isEmptyObject } from './helpers';
 import { AuthLogInDto, AuthRegisterDto } from './auth.dto';
 import { NotificationsPushService, UserService } from '@services';
 import { RegisterService } from './register.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private url = `${environment.urlApi}/auth`;
     private user$ = new BehaviorSubject({});
-    private change$ = this.tokenService
-        .change()
-        .pipe(switchMap(() => this.assignUser()));
     constructor(
         private loginService: LoginService,
         private registerService: RegisterService,
@@ -24,16 +18,6 @@ export class AuthService {
         private userService: UserService,
         private notificationsPushService: NotificationsPushService
     ) {}
-
-    init() {
-        return new Promise<void>((resolve) =>
-            this.change$.subscribe(() => resolve())
-        );
-    }
-
-    change() {
-        return this.change$;
-    }
 
     check(): boolean {
         return this.tokenService.valid();
@@ -69,21 +53,5 @@ export class AuthService {
 
     user(): Observable<any> {
         return this.user$.pipe(share());
-    }
-
-    private assignUser(): any {
-        if (!this.check()) {
-            return of({}).pipe(
-                tap((user) => this.user$.next(user)),
-                share()
-            );
-        }
-        if (!isEmptyObject(this.user$.getValue())) {
-            return of(this.user$.getValue()).pipe(share());
-        }
-        return this.loginService.me().pipe(
-            tap((user) => this.user$.next(user)),
-            share()
-        );
     }
 }

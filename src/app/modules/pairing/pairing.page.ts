@@ -99,6 +99,9 @@ export class PairingPage implements OnInit {
 
     async vote(type: string) {
         this.vm.voteBody.car = this.vm.pairing[type]._id;
+        if (this.userService.getUser()) {
+            this.vm.voteBody.user = this.userService.getUser()._id;
+        }
         this.voteService.create(this.vm.voteBody).subscribe({
             next: (item) => this.onVoteSuccess(item),
             error: (error) => console.error(error),
