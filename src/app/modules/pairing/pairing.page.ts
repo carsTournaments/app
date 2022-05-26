@@ -5,7 +5,6 @@ import { PairingViewModel } from './model/pairing.view-model';
 import { PairingModalComponent } from './modal/pairing-modal.component';
 import {
     AlertService,
-    AuthService,
     ImageService,
     PairingService,
     UserService,

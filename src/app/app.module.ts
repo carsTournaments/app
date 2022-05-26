@@ -11,11 +11,6 @@ import { environment } from '../environments/environment';
 import { SharedModule } from '@shared/shared.module';
 import { ImagePipe } from '@shared/pipes';
 import { HttpClientModule } from '@angular/common/http';
-import {
-    BASE_URL,
-    IMAGES_URL,
-    httpInterceptorProviders,
-} from '@core/interceptors';
 
 @NgModule({
     declarations: [AppComponent],

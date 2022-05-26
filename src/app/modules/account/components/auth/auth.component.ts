@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { LoginResponseI } from '@interfaces/login-response.interface';
-import { AlertService, AuthService, NotificationsPushService } from '@services';
+import { AlertService, AuthService } from '@services';
 import { AuthLogInDto, AuthRegisterDto } from '@core/auth/auth.dto';
 import { AuthViewModel } from './auth.view-model';
 
@@ -14,8 +13,7 @@ export class AuthComponent {
     vm = new AuthViewModel();
     constructor(
         private authService: AuthService,
-        private alertService: AlertService,
-        private notificationsPushService: NotificationsPushService
+        private alertService: AlertService
     ) {}
 
     login() {
@@ -77,9 +75,5 @@ export class AuthComponent {
             }
         }
         return state;
-    }
-
-    onLoginOrRegisterSuccess(response: LoginResponseI) {
-        this.clickLogin.emit();
     }
 }
