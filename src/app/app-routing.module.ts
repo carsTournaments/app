@@ -5,6 +5,7 @@ import { AuthGuard } from '@core/guards/auth.guard';
 const routes: Routes = [
     {
         path: 'home',
+        data: { title: '' },
         loadChildren: () =>
             import('./modules/home/home.module').then((m) => m.HomeModule),
     },
@@ -15,6 +16,7 @@ const routes: Routes = [
     },
     {
         path: 'tournament/:id',
+        data: { title: 'Torneo' },
         loadChildren: () =>
             import('./modules/tournament/tournament.module').then(
                 (m) => m.TournamentModule
@@ -22,11 +24,13 @@ const routes: Routes = [
     },
     {
         path: 'car/:id',
+        data: { title: 'Coche' },
         loadChildren: () =>
             import('./modules/car/car.module').then((m) => m.CarModule),
     },
     {
         path: 'pairing/:id',
+        data: { title: 'Emparejamiento' },
         loadChildren: () =>
             import('./modules/pairing/pairing.module').then(
                 (m) => m.PairingModule
@@ -34,6 +38,7 @@ const routes: Routes = [
     },
     {
         path: 'garage',
+        data: { title: 'Garage' },
         loadChildren: () =>
             import('./modules/garage/garage.module').then(
                 (m) => m.GarageModule
@@ -42,6 +47,7 @@ const routes: Routes = [
     },
     {
         path: 'inscriptions',
+        data: { title: 'Inscripciones' },
         loadChildren: () =>
             import('./modules/inscriptions/inscriptions.module').then(
                 (m) => m.InscriptionsModule
@@ -50,12 +56,14 @@ const routes: Routes = [
     },
     {
         path: 'likes',
+        data: { title: 'Me gustas' },
         loadChildren: () =>
             import('./modules/likes/likes.module').then((m) => m.LikesModule),
         canActivate: [AuthGuard],
     },
     {
         path: 'my-data',
+        data: { title: 'Mis datos' },
         loadChildren: () =>
             import('./modules/my-data/my-data.module').then(
                 (m) => m.MyDataModule
@@ -64,6 +72,7 @@ const routes: Routes = [
     },
     {
         path: 'privacy-policy',
+        data: { title: 'Politica de privacidad' },
         loadChildren: () =>
             import('./modules/privacy-policy/privacy-policy.module').then(
                 (m) => m.PrivacyPolicyModule

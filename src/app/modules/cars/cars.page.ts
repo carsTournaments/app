@@ -116,10 +116,12 @@ export class CarsPage {
     }
 
     segmentChanged(ev: any): void {
-        this.analyticsService.logEvent('tournaments_segmentChanged', {
-            params: { segment: ev.detail.value },
-        });
         this.vm.header.segments.selected = Number(ev.detail.value);
+        this.analyticsService.logEvent(
+            `cars_segment_${
+                this.vm.header.segments.items[this.vm.header.segments.selected]
+            }`
+        );
         this.vm.header.rightButton.state =
             this.vm.header.segments.selected === 0 ||
             this.vm.header.segments.selected === 2
