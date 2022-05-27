@@ -14,6 +14,11 @@ export class TabsPage {
             icon: 'list-outline',
         },
         {
+            name: 'Calendario',
+            route: 'calendar',
+            icon: 'calendar-outline',
+        },
+        {
             name: 'Coches',
             route: 'cars',
             icon: 'car-outline',

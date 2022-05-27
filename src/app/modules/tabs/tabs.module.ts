@@ -20,6 +20,14 @@ import { SharedModule } from '@shared/shared.module';
                             ),
                     },
                     {
+                        path: 'calendar',
+                        data: { title: 'Calendario' },
+                        loadChildren: () =>
+                            import('../calendar/calendar.module').then(
+                                (m) => m.CalendarModule
+                            ),
+                    },
+                    {
                         path: 'cars',
                         data: { title: 'Coches' },
                         loadChildren: () =>
