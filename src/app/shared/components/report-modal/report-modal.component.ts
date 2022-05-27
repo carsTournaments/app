@@ -24,7 +24,6 @@ export class ReportModalComponent {
     ) {}
 
     checkReasons() {
-        console.log(this.report.reason);
         if (this.report.reason === 'Otro') {
             this.otherReason.state = true;
         } else {

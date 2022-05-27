@@ -1,7 +1,7 @@
 import { Car } from '@models/car.model';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { AuthService, LikeService } from '@services';
+import { LikeService, UserService } from '@services';
 import { LikesViewModel } from './model/likes.view-model';
 
 @Component({
@@ -12,12 +12,12 @@ export class LikesPage {
     vm = new LikesViewModel();
     constructor(
         private likesService: LikeService,
-        private authService: AuthService,
+        private userService: UserService,
         private navCtrl: NavController
     ) {}
 
     async ionViewWillEnter() {
-        this.vm.user = await this.authService.getUser();
+        this.vm.user = this.userService.getUser();
         this.getAllReceivedForUser();
         this.getAllSentForUser();
     }

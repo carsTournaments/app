@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { customAnimation } from './core/animations/animations';
-import { LoginGuard } from './core/guards/check-token.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SharedModule } from '@shared/shared.module';
 import { ImagePipe } from '@shared/pipes';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpInterceptorService } from '@core/interceptors/http.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent],
@@ -33,14 +29,8 @@ import { HttpInterceptorService } from '@core/interceptors/http.interceptor';
         }),
     ],
     providers: [
-        ImagePipe,
-        LoginGuard,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HttpInterceptorService,
-            multi: true,
-        },
+        ImagePipe,
     ],
     bootstrap: [AppComponent],
 })

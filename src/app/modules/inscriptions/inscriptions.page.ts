@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertService, AuthService, InscriptionService } from '@services';
+import { AlertService, InscriptionService, UserService } from '@services';
 import { IdDto } from '@core/dtos/id.dto';
 import {
     NavController,
@@ -20,19 +20,15 @@ export class InscriptionsPage {
     vm = new InscriptionsViewModel();
     constructor(
         private inscriptionService: InscriptionService,
-        private authService: AuthService,
+        private userService: UserService,
         private navCtrl: NavController,
         private popoverCtrl: PopoverController,
         private alertService: AlertService
     ) {}
 
     async ionViewWillEnter() {
-        await this.getUser();
+        this.vm.user = this.userService.getUser();
         this.getAll();
-    }
-
-    async getUser() {
-        this.vm.user = await this.authService.getUser();
     }
 
     getAll() {

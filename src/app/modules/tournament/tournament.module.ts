@@ -12,12 +12,7 @@ import { SharedModule } from '@shared/shared.module';
 @NgModule({
     imports: [
         SharedModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: TournamentPage,
-            },
-        ]),
+        RouterModule.forChild([{ path: '', component: TournamentPage }]),
     ],
     declarations: [
         TournamentPage,

@@ -1,11 +1,11 @@
 import {
     AlertService,
     AnalyticsService,
-    AuthService,
     CarService,
     ImageService,
     InscriptionService,
     LikeService,
+    UserService,
     VoteService,
 } from '@services';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -32,14 +32,14 @@ export class CarPage implements OnInit {
         private likeService: LikeService,
         private inscriptionService: InscriptionService,
         private voteService: VoteService,
-        private authService: AuthService,
+        private userService: UserService,
         private alertService: AlertService,
         private analyticsService: AnalyticsService
     ) {}
 
     async ngOnInit() {
         this.vm.id = this.route.snapshot.paramMap.get('id');
-        this.vm.user = await this.authService.getUser();
+        this.vm.user = this.userService.getUser();
         this.getOne();
     }
 

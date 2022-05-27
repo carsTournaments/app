@@ -4,9 +4,9 @@ import {
     CarService,
     BrandService,
     AlertService,
-    AuthService,
     ImageService,
     UtilsService,
+    UserService,
 } from '@services';
 import { GarageOneViewModel } from './model/garage-one.view-model';
 import { NavController } from '@ionic/angular';
@@ -22,7 +22,7 @@ export class GarageOnePage implements OnInit {
         private brandService: BrandService,
         private route: ActivatedRoute,
         private alertService: AlertService,
-        private authService: AuthService,
+        private userService: UserService,
         private navCtrl: NavController,
         private imageService: ImageService,
         private utilsService: UtilsService
@@ -69,7 +69,7 @@ export class GarageOnePage implements OnInit {
                 this.vm.car.driver = this.vm.car.driver._id;
                 this.createOrUpdate();
             } else {
-                this.vm.car.driver = (await this.authService.getUser())._id;
+                this.vm.car.driver = this.userService.getUser();
                 if (this.vm.car.driver) {
                     this.createOrUpdate();
                 } else {

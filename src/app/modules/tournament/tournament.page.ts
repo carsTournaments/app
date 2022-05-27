@@ -8,11 +8,11 @@ import {
     InscriptionService,
     TournamentService,
     AlertService,
-    AuthService,
     WinnerService,
     ImageService,
     AnalyticsService,
     UtilsService,
+    UserService,
 } from '@services';
 import { TournamentViewModel } from './model/tournament.view-model';
 
@@ -29,7 +29,7 @@ export class TournamentPage {
         private route: ActivatedRoute,
         private tournamentService: TournamentService,
         private inscriptionService: InscriptionService,
-        private authService: AuthService,
+        private userService: UserService,
         private navCtrl: NavController,
         private imagePipe: ImagePipe,
         private actionSheetService: ActionSheetService,
@@ -42,7 +42,7 @@ export class TournamentPage {
 
     async ionViewWillEnter(): Promise<void> {
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
-        this.vm.user = await this.authService.getUser();
+        this.vm.user = this.userService.getUser();
         this.getOne();
         this.getInscriptionsOfTournament();
     }

@@ -52,18 +52,15 @@ describe('AuthComponent', () => {
 
     describe('login', () => {
         it('OK', () => {
-            spyOn(component, 'onLoginOrRegisterSuccess');
             const response: LoginResponseI = {
                 user: new User(),
                 token: 'token',
             };
-            authService.login = jasmine
-                .createSpy()
-                .and.returnValue(of(response));
+            authService.login = jasmine.createSpy().and.returnValue(of(true));
             component.vm.email = 'prueba@prueba.es';
             component.vm.password = '123456';
             component.login();
-            expect(component.onLoginOrRegisterSuccess).toHaveBeenCalled();
+            expect(authService.login).toHaveBeenCalled();
         });
 
         it('KO', () => {

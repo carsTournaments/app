@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginGuard } from '@core/guards/check-token.guard';
+import { AuthGuard } from '@core/guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -38,7 +38,7 @@ const routes: Routes = [
             import('./modules/garage/garage.module').then(
                 (m) => m.GarageModule
             ),
-        canActivate: [LoginGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: 'inscriptions',
@@ -46,13 +46,13 @@ const routes: Routes = [
             import('./modules/inscriptions/inscriptions.module').then(
                 (m) => m.InscriptionsModule
             ),
-        canActivate: [LoginGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: 'likes',
         loadChildren: () =>
             import('./modules/likes/likes.module').then((m) => m.LikesModule),
-        canActivate: [LoginGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: 'my-data',
@@ -60,7 +60,7 @@ const routes: Routes = [
             import('./modules/my-data/my-data.module').then(
                 (m) => m.MyDataModule
             ),
-        canActivate: [LoginGuard],
+        canActivate: [AuthGuard],
     },
     {
         path: 'privacy-policy',

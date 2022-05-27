@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import {
     BrandItemComponent,
@@ -17,7 +16,17 @@ import {
     ViewerComponent,
     WinnerCarItemComponent,
 } from '@components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthGuard } from '@core/guards/auth.guard';
+import {
+    BASE_URL,
+    IMAGES_URL,
+    httpInterceptorProviders,
+} from '@core/interceptors';
+import { environment } from '@env/environment';
+import {
+    FaIconLibrary,
+    FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
 import { IonicModule } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import {
@@ -53,10 +62,12 @@ import {
     TruncateTextPipe,
     FirstLetterPipe,
 } from './pipes';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 const MODULES = [
-    CommonModule,
     IonicModule,
+    CommonModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
@@ -110,12 +121,22 @@ const SERVICES = [
     UtilsService,
     VoteService,
     WinnerService,
+    AuthGuard,
 ];
 
 @NgModule({
     imports: [...MODULES],
     exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES],
     declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
-    providers: [...SERVICES],
+    providers: [
+        ...SERVICES,
+        { provide: BASE_URL, useValue: environment.urlApi },
+        { provide: IMAGES_URL, useValue: environment.urlApi },
+        httpInterceptorProviders,
+    ],
 })
-export class SharedModule {}
+export class SharedModule {
+    constructor(library: FaIconLibrary) {
+        library.addIconPacks(fas, far);
+    }
+}
