@@ -94,7 +94,7 @@ export class CarPage implements OnInit {
     private like(like: Like): void {
         this.likeService.create(like).subscribe({
             next: async () => {
-                this.analyticsService.logEvent('car_like', {
+                this.analyticsService.logEvent('car_like_ok', {
                     params: { state: true },
                 });
                 this.vm.liked = true;
@@ -106,7 +106,7 @@ export class CarPage implements OnInit {
                 }
             },
             error: () => {
-                this.analyticsService.logEvent('car_like', {
+                this.analyticsService.logEvent('car_like_ko', {
                     params: { state: false },
                 });
                 this.alertService.presentAlert(
@@ -120,7 +120,7 @@ export class CarPage implements OnInit {
     private dislike() {
         this.likeService.deleteByCarId(this.vm.car._id).subscribe({
             next: async () => {
-                this.analyticsService.logEvent('car_dislike', {
+                this.analyticsService.logEvent('car_dislike_ok', {
                     params: { state: true },
                 });
                 this.likeService.removeLikeStorage(this.vm.car._id);
@@ -132,7 +132,7 @@ export class CarPage implements OnInit {
                 }
             },
             error: () => {
-                this.analyticsService.logEvent('car_dislike', {
+                this.analyticsService.logEvent('car_dislike_ko', {
                     params: { state: false },
                 });
                 this.alertService.presentAlert(
@@ -145,6 +145,7 @@ export class CarPage implements OnInit {
 
     onClickTotalItem(event: string): void {
         if (event === 'likes') {
+            this.analyticsService.logEvent('car_total_likes');
             this.vm.states.votes = false;
             this.vm.states.inscriptions = false;
             if (this.vm.likes.length === 0) {
@@ -152,6 +153,7 @@ export class CarPage implements OnInit {
             }
             this.vm.states.likes = !this.vm.states.likes;
         } else if (event === 'inscriptions') {
+            this.analyticsService.logEvent('car_total_inscriptions');
             this.vm.states.votes = false;
             this.vm.states.likes = false;
             if (this.vm.inscriptions.length === 0) {
@@ -159,6 +161,7 @@ export class CarPage implements OnInit {
             }
             this.vm.states.inscriptions = !this.vm.states.inscriptions;
         } else if (event === 'votes') {
+            this.analyticsService.logEvent('car_total_votes');
             this.vm.states.likes = false;
             this.vm.states.inscriptions = false;
             if (this.vm.votes.length === 0) {

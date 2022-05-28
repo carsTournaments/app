@@ -3,10 +3,12 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'truncateText',
 })
 export class TruncateTextPipe implements PipeTransform {
-    transform(value: string, maxLength = 10): string {
+    transform(value: string, maxLength = 10, points = true): string {
         if (value && value.length > maxLength) {
             value = value.slice(0, maxLength);
-            value += '...';
+            if (points) {
+                value += '...';
+            }
         }
 
         return value;

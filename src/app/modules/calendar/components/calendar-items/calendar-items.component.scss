@@ -1,0 +1,118 @@
+.warapper-calendar-tournaments {
+    padding: 0;
+
+    .title {
+        padding: 0 1rem;
+        margin: 0.5rem 0rem -0.5rem 0rem;
+        font-weight: 700;
+    }
+
+    .card-no-last-item {
+        padding-top: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .tournament {
+        padding-top: 0.75rem;
+        padding-bottom: 0.5rem;
+
+        .card-tournament {
+            margin: 0.5rem;
+        }
+
+        .avatar-tournament {
+            margin-right: 1rem;
+            width: 40px;
+            height: 40px;
+        }
+
+        .title-tournament {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .title-round {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ion-color-primary);
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .title-dates {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.5);
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .pairings {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.5rem 0;
+        padding: 0rem;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .col-pairing {
+        padding: 0 0.5rem;
+    }
+
+    .vs {
+        text-align: center;
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+    .percentages {
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 200;
+    }
+
+    .percentages-col {
+        line-height: 1.5;
+        padding-top: 0.5rem;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 20%);
+    }
+
+    .image-left {
+        border-radius: 10px 0;
+        width: 100%;
+        height: 40px;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+
+    .image-right {
+        border-radius: 0 10px;
+        width: 100%;
+        height: 40px;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+
+    .brand-model {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding-right: 0.25rem;
+        padding: 0.5rem 0;
+    }
+}

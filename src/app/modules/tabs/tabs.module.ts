@@ -13,13 +13,23 @@ import { SharedModule } from '@shared/shared.module';
                 children: [
                     {
                         path: 'tournaments',
+                        data: { title: 'Torneos' },
                         loadChildren: () =>
                             import('../tournaments/tournaments.module').then(
                                 (m) => m.TournamentsModule
                             ),
                     },
                     {
+                        path: 'calendar',
+                        data: { title: 'Calendario' },
+                        loadChildren: () =>
+                            import('../calendar/calendar.module').then(
+                                (m) => m.CalendarModule
+                            ),
+                    },
+                    {
                         path: 'cars',
+                        data: { title: 'Coches' },
                         loadChildren: () =>
                             import('../cars/cars.module').then(
                                 (m) => m.CarsPageModule
@@ -27,6 +37,7 @@ import { SharedModule } from '@shared/shared.module';
                     },
                     {
                         path: 'account',
+                        data: { title: 'Tu cuenta' },
                         loadChildren: () =>
                             import('../account/account.module').then(
                                 (m) => m.AccountModule

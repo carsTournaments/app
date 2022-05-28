@@ -61,6 +61,8 @@ import {
     MomentFormatAgoPipe,
     TruncateTextPipe,
     FirstLetterPipe,
+    DateToDayOrMonthPipe,
+    PercentagePipe,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -92,11 +94,13 @@ const COMPONENTS = [
 ];
 const PIPES = [
     ImagePipe,
+    DateToDayOrMonthPipe,
     DateToTimeAgoPipe,
     LastRoundPipe,
     MomentFormatAgoPipe,
     TruncateTextPipe,
     FirstLetterPipe,
+    PercentagePipe,
 ];
 const DIRECTIVES = [CountUpDirective];
 const SERVICES = [

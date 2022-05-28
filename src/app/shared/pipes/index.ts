@@ -1,3 +1,5 @@
+export { PercentagePipe } from './percentage/percentage.pipe';
+export { DateToDayOrMonthPipe } from './date-to-day-or-month/date-to-day-or-month.pipe';
 export { DateToTimeAgoPipe } from './timeago/timeago.pipe';
 export { FirstLetterPipe } from './first-letter-case/fist-letter-case.pipe';
 export { ImagePipe } from './image/image.pipe';
