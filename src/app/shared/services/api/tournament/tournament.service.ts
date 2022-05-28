@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Tournament } from '@models/tournament.model';
 import { take } from 'rxjs/operators';
 import { TournamentGetAllOfAllStatesResponse } from './tournament.responses';
+import { Round } from '@models';
 
 @Injectable({ providedIn: 'root' })
 export class TournamentService {
@@ -17,6 +18,18 @@ export class TournamentService {
                 `${this.url}/getAllOfAllStates`,
                 null
             )
+            .pipe(take(1));
+    }
+
+    getDaysForCalendar(): Observable<string[]> {
+        return this.httpClient
+            .post<string[]>(`${this.url}/getDaysForCalendar`, null)
+            .pipe(take(1));
+    }
+
+    getCalendarItems(date: string): Observable<Round[]> {
+        return this.httpClient
+            .post<Round[]>(`${this.url}/getCalendarItems`, { date })
             .pipe(take(1));
     }
 

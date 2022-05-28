@@ -1,0 +1,140 @@
+<div class="warapper-calendar-tournaments">
+    <h2 class="title">En curso</h2>
+
+    <!-- TORNEO -->
+    <div
+        class="tournament"
+        [ngClass]="{ 'card-no-last-item': i !== rounds.length - 1 }"
+        *ngFor="let item of rounds; let i = index"
+    >
+        <ion-card
+            mode="ios"
+            class="ion-no-margin card-tournament"
+            button
+            [routerLink]="['/tournament/', item.tournament?._id]"
+        >
+            <ion-item lines="none">
+                <ion-avatar class="avatar-tournament">
+                    <img [src]="item.tournament.image?.url | image" />
+                </ion-avatar>
+                <ion-label>
+                    <h2 class="title-tournament">{{ item.tournament.name }}</h2>
+                    <div>
+                        <span class="title-round">{{ item.name }}</span>
+                        <span class="title-dates">
+                            {{
+                                item.startDate
+                                    | momentFormat: 'MMMM'
+                                    | truncateText: 3:false
+                            }}
+                            {{ item.startDate | momentFormat: 'DD' }} -
+                            {{
+                                item.endDate
+                                    | momentFormat: 'MMMM'
+                                    | truncateText: 3:false
+                            }}
+                            {{ item.endDate | momentFormat: 'DD' }}</span
+                        >
+                    </div>
+                </ion-label>
+            </ion-item>
+        </ion-card>
+
+        <!-- EMPAREJAMIENTOS -->
+        <ion-row>
+            <ion-col
+                size="12"
+                sizeMd="6"
+                sizeLg="4"
+                class="col-pairing"
+                *ngFor="let pairing of item.pairings"
+            >
+                <ion-card
+                    mode="ios"
+                    class="pairings ion-no-margin"
+                    button
+                    [routerLink]="['/pairing/', pairing._id]"
+                >
+                    <ion-card-content class="ion-no-padding">
+                        <ion-row>
+                            <ion-col class="ion-no-padding" size="5">
+                                <div class="left-column">
+                                    <div>
+                                        <div
+                                            class="image-left"
+                                            style="background-image: url({{
+                                                pairing.car1.image?.url | image
+                                            }});"
+                                        ></div>
+                                        <div
+                                            class="brand-model ion-text-center"
+                                        >
+                                            <div>
+                                                {{
+                                                    pairing.car1.brand?.name
+                                                        | truncateText
+                                                }}
+                                            </div>
+                                            <div>
+                                                {{
+                                                    pairing.car1.model
+                                                        | truncateText
+                                                }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col size="2" class="percentages-col">
+                                <div>
+                                    <div class="percentages">
+                                        {{
+                                            pairing.votes
+                                                | percentage: pairing.car1._id
+                                        }}
+                                    </div>
+                                    <div class="vs">VS</div>
+                                    <div class="percentages">
+                                        {{
+                                            pairing.votes
+                                                | percentage: pairing.car2._id
+                                        }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col size="5" class="ion-no-padding">
+                                <div class="right-column">
+                                    <div>
+                                        <div
+                                            class="image-right"
+                                            style="background-image: url({{
+                                                pairing.car2.image?.url | image
+                                            }});"
+                                        ></div>
+
+                                        <div
+                                            class="brand-model ion-text-center"
+                                        >
+                                            <div>
+                                                {{
+                                                    pairing.car2.brand?.name
+                                                        | truncateText
+                                                }}
+                                            </div>
+                                            <div>
+                                                {{
+                                                    pairing.car2.model
+                                                        | truncateText
+                                                }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </div>
+</div>
