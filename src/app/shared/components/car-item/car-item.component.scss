@@ -29,7 +29,12 @@ ion-card-content {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
+.card-driver {
+}
+
 .card-driver-name {
+    display: flex;
+    line-height: 1.8;
     position: absolute;
     bottom: 0.6rem;
     font-size: 0.7rem;
@@ -41,6 +46,11 @@ ion-card-content {
     background: #000;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
+}
+
+.driver-image {
+    height: 20px;
+    margin-right: 0.35rem;
 }
 
 .normal {

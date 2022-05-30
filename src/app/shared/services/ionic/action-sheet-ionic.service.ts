@@ -6,7 +6,7 @@ import {
 } from '@ionic/angular';
 
 @Injectable({ providedIn: 'root' })
-export class ActionSheetService {
+export class ActionSheetIonicService {
     constructor(private actionSheetCtrl: ActionSheetController) {}
 
     async present(

@@ -77,8 +77,21 @@ ion-segment-button {
     border-radius: 10px;
     margin-bottom: 1rem;
     font-size: 16px;
-    padding: 0.05rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-item {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background: var(--ion-color-light);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: -0.5rem;
+    ion-label {
+        color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 ion-card {

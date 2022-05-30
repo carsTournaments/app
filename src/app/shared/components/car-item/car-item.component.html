@@ -12,7 +12,12 @@
                 {{ car.brand.name + ' ' + car.model | truncateText: 20 }}
             </div>
             <div *ngIf="car.driver" class="card-driver">
-                <div class="card-driver-name">{{ car.driver?.name }}</div>
+                <div class="card-driver-name">
+                    <img
+                        class="driver-image"
+                        [src]="car.driver.country ?? 'es' | flagByFile"
+                    />{{ car.driver?.name }}
+                </div>
             </div>
             <div *ngIf="car.brand.image" class="card-brand-image">
                 <img [src]="car?.brand?.image?.url | image" />
@@ -75,7 +80,12 @@
             </div>
 
             <div *ngIf="car.driver" class="card-driver">
-                <div class="card-driver-name">{{ car.driver?.name }}</div>
+                <div class="card-driver-name">
+                    <img
+                        class="driver-image"
+                        [src]="car.driver.country ?? 'es' | flagByFile"
+                    />{{ car.driver?.name }}
+                </div>
             </div>
 
             <div *ngIf="car.likes" class="card-likes">

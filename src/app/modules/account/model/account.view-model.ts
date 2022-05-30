@@ -10,14 +10,9 @@ export class AccountViewModel {
     });
     options: OptionItemI[] = [
         {
-            name: 'Cambiar nombre',
-            subtitle: '¿Tal vez hoy te apetece llamarte manolo?',
-            value: 'changeName',
-        },
-        {
-            name: 'Cambiar contraseña',
-            subtitle: 'Si necesitas cambiar tu contraseña...',
-            value: 'changePassword',
+            name: 'Mis datos',
+            subtitle: '¿Hoy te apetece llamarte Manolo?',
+            route: 'my-data',
         },
         {
             name: 'Garaje',

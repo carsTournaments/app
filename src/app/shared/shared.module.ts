@@ -30,7 +30,7 @@ import {
 import { IonicModule } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import {
-    ActionSheetService,
+    ActionSheetIonicService,
     AdmobService,
     AlertService,
     AnalyticsService,
@@ -46,6 +46,7 @@ import {
     RoundService,
     SettingsService,
     StorageService,
+    ToastIonicService,
     TournamentService,
     UserService,
     UtilsService,
@@ -63,6 +64,8 @@ import {
     FirstLetterPipe,
     DateToDayOrMonthPipe,
     PercentagePipe,
+    FlagByFilePipe,
+    VotesPipe,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -93,21 +96,24 @@ const COMPONENTS = [
     WinnerCarItemComponent,
 ];
 const PIPES = [
-    ImagePipe,
     DateToDayOrMonthPipe,
     DateToTimeAgoPipe,
+    FirstLetterPipe,
+    FlagByFilePipe,
+    ImagePipe,
     LastRoundPipe,
     MomentFormatAgoPipe,
-    TruncateTextPipe,
-    FirstLetterPipe,
     PercentagePipe,
+    TruncateTextPipe,
+    VotesPipe,
 ];
 const DIRECTIVES = [CountUpDirective];
 const SERVICES = [
-    ActionSheetService,
+    ActionSheetIonicService,
     AdmobService,
     AlertService,
     AnalyticsService,
+    AuthGuard,
     AuthService,
     BrandService,
     CarService,
@@ -120,12 +126,12 @@ const SERVICES = [
     RoundService,
     SettingsService,
     StorageService,
+    ToastIonicService,
     TournamentService,
     UserService,
     UtilsService,
     VoteService,
     WinnerService,
-    AuthGuard,
 ];
 
 @NgModule({

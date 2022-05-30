@@ -55,11 +55,7 @@ export class AccountPage {
     }
 
     onClickOption(item: OptionItemI): void {
-        this.analyticsService.logEvent('dashboard_clickOption', {
-            params: {
-                option: item.value,
-            },
-        });
+        this.analyticsService.logEvent(`dashboard_clickOption_${item.value}`);
         if (item.value) {
             if (item.value === 'changeName') {
                 this.changeName();
@@ -99,7 +95,7 @@ export class AccountPage {
     updateUser(): void {
         this.userService.update(this.vm.user).subscribe({
             next: () => {
-                this.analyticsService.logEvent('dashboard_changeName', {
+                this.analyticsService.logEvent('dashboard_changeName_OK', {
                     params: { status: true },
                 });
                 this.alertService.presentAlert(
@@ -108,9 +104,7 @@ export class AccountPage {
                 );
             },
             error: () => {
-                this.analyticsService.logEvent('dashboard_changeName', {
-                    params: { status: false },
-                });
+                this.analyticsService.logEvent('dashboard_changeName_KO');
                 this.alertService.presentAlert(
                     '¡Vaya!',
                     'No se ha podido cambiar el nombre.'
@@ -130,11 +124,11 @@ export class AccountPage {
         );
         const data = await alert.onDidDismiss();
         if (data.role === 'ok') {
-            this.analyticsService.logEvent('dashboard_logoutOk');
+            this.analyticsService.logEvent('dashboard_logout_OK');
             this.logged = false;
             this.authService.logout();
         } else {
-            this.analyticsService.logEvent('dashboard_logoutCancel');
+            this.analyticsService.logEvent('dashboard_logout_Cancel');
         }
     }
 

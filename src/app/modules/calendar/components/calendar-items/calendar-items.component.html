@@ -55,83 +55,54 @@
                     button
                     [routerLink]="['/pairing/', pairing._id]"
                 >
-                    <ion-card-content class="ion-no-padding">
-                        <ion-row>
-                            <ion-col class="ion-no-padding" size="5">
-                                <div class="left-column">
-                                    <div>
-                                        <div
-                                            class="image-left"
-                                            style="background-image: url({{
-                                                pairing.car1.image?.url | image
-                                            }});"
-                                        ></div>
-                                        <div
-                                            class="brand-model ion-text-center"
-                                        >
-                                            <div>
-                                                {{
-                                                    pairing.car1.brand?.name
-                                                        | truncateText
-                                                }}
-                                            </div>
-                                            <div>
-                                                {{
-                                                    pairing.car1.model
-                                                        | truncateText
-                                                }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ion-col>
-                            <ion-col size="2" class="percentages-col">
+                    <ion-card-content class="ion-no-padding wrapper-item">
+                        <div class="left-column">
+                            <div>
+                                <img
+                                    class="image-car image-car-1"
+                                    [src]="
+                                        pairing.car1.brand.image?.url | image
+                                    "
+                                />
+                            </div>
+                            <div class="brand-model ion-text-center">
                                 <div>
-                                    <div class="percentages">
-                                        {{
-                                            pairing.votes
-                                                | percentage: pairing.car1._id
-                                        }}
-                                    </div>
-                                    <div class="vs">VS</div>
-                                    <div class="percentages">
-                                        {{
-                                            pairing.votes
-                                                | percentage: pairing.car2._id
-                                        }}
-                                    </div>
+                                    {{
+                                        pairing.car1.brand?.name | truncateText
+                                    }}
                                 </div>
-                            </ion-col>
-                            <ion-col size="5" class="ion-no-padding">
-                                <div class="right-column">
-                                    <div>
-                                        <div
-                                            class="image-right"
-                                            style="background-image: url({{
-                                                pairing.car2.image?.url | image
-                                            }});"
-                                        ></div>
-
-                                        <div
-                                            class="brand-model ion-text-center"
-                                        >
-                                            <div>
-                                                {{
-                                                    pairing.car2.brand?.name
-                                                        | truncateText
-                                                }}
-                                            </div>
-                                            <div>
-                                                {{
-                                                    pairing.car2.model
-                                                        | truncateText
-                                                }}
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    {{ pairing.car1.model | truncateText }}
                                 </div>
-                            </ion-col>
-                        </ion-row>
+                            </div>
+                        </div>
+                        <div class="center-column">
+                            <div class="vs">
+                                {{ pairing.votes | votes: pairing.car1._id }}-{{
+                                    pairing.votes | votes: pairing.car2._id
+                                }}
+                            </div>
+                        </div>
+                        <div class="right-column">
+                            <div>
+                                <img
+                                    class="image-car image-car-2"
+                                    [src]="
+                                        pairing.car2.brand.image?.url | image
+                                    "
+                                />
+                            </div>
+                            <div class="brand-model ion-text-center">
+                                <div>
+                                    {{
+                                        pairing.car2.brand?.name | truncateText
+                                    }}
+                                </div>
+                                <div>
+                                    {{ pairing.car2.model | truncateText }}
+                                </div>
+                            </div>
+                        </div>
                     </ion-card-content>
                 </ion-card>
             </ion-col>

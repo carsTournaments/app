@@ -12,3 +12,17 @@ hr {
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.wrapper-driver {
+    display: inline-flex;
+    background: #000;
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.3rem 0.5rem 0rem 0.5rem;
+}
+
+.driver-name {
+    font-size: 1rem;
+    padding-top: 0.15rem;
+    padding-left: 0.25rem;
+}

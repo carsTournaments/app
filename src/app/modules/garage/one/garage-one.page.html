@@ -4,118 +4,134 @@
     <spinner [loading]="vm.loading"></spinner>
     <ion-row style="padding-top: 0" *ngIf="vm.car">
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <ion-card mode="ios">
-                <ion-card-content>
-                    <ion-item>
-                        <ion-label position="stacked">Marca</ion-label>
-                        <ion-select
-                            [(ngModel)]="vm.brandIdSelected"
-                            name="brandId"
-                            placeholder="Selecciona la marca"
+            <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
+                <ion-item lines="none" color="light">
+                    <ion-label color="primary" position="stacked"
+                        >Marca</ion-label
+                    >
+                    <ion-select
+                        [(ngModel)]="vm.brandIdSelected"
+                        name="brandId"
+                        placeholder="Selecciona la marca"
+                    >
+                        <ion-select-option
+                            *ngFor="let brand of vm.brands"
+                            [value]="brand._id"
                         >
-                            <ion-select-option
-                                *ngFor="let brand of vm.brands"
-                                [value]="brand._id"
-                            >
-                                {{brand.name}}
-                            </ion-select-option>
-                        </ion-select>
-                    </ion-item>
+                            {{brand.name}}
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked">Modelo</ion-label>
-                        <ion-input
-                            type="text"
-                            [(ngModel)]="vm.car.model"
-                            placeholder="Introduce el modelo"
-                        ></ion-input>
-                    </ion-item>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label position="stacked">Modelo</ion-label>
+                    <ion-input
+                        type="text"
+                        [(ngModel)]="vm.car.model"
+                        placeholder="Introduce el modelo"
+                    ></ion-input>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked">Traccion</ion-label>
-                        <ion-select
-                            [(ngModel)]="vm.car.traction"
-                            placeholder="Selecciona la traccion"
-                        >
-                            <ion-select-option>Delantera</ion-select-option>
-                            <ion-select-option>Trasera</ion-select-option>
-                            <ion-select-option>4x4</ion-select-option>
-                        </ion-select>
-                    </ion-item>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label color="primary" position="stacked"
+                        >Traccion</ion-label
+                    >
+                    <ion-select
+                        [(ngModel)]="vm.car.traction"
+                        placeholder="Selecciona la traccion"
+                    >
+                        <ion-select-option>Delantera</ion-select-option>
+                        <ion-select-option>Trasera</ion-select-option>
+                        <ion-select-option>4x4</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked">Combustible</ion-label>
-                        <ion-select
-                            [(ngModel)]="vm.car.fuel"
-                            placeholder="Selecciona el combustible"
-                        >
-                            <ion-select-option>Gasolina</ion-select-option>
-                            <ion-select-option>Diesel</ion-select-option>
-                            <ion-select-option>Hibrido</ion-select-option>
-                            <ion-select-option>Diesel</ion-select-option>
-                        </ion-select>
-                    </ion-item>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label color="primary" position="stacked"
+                        >Combustible</ion-label
+                    >
+                    <ion-select
+                        [(ngModel)]="vm.car.fuel"
+                        placeholder="Selecciona el combustible"
+                    >
+                        <ion-select-option>Gasolina</ion-select-option>
+                        <ion-select-option>Diesel</ion-select-option>
+                        <ion-select-option>Hibrido</ion-select-option>
+                        <ion-select-option>Diesel</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked"
-                            >Año de fabricacion</ion-label
-                        >
-                        <ion-input
-                            type="text"
-                            [(ngModel)]="vm.car.year"
-                            placeholder="Introduce el año"
-                        ></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="stacked"
-                            >Centimetros Cubicos (CC)</ion-label
-                        >
-                        <ion-input
-                            type="text"
-                            [(ngModel)]="vm.car.cc"
-                            placeholder="Introduce los CC"
-                        ></ion-input>
-                    </ion-item>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label position="stacked">Año de fabricacion</ion-label>
+                    <ion-input
+                        type="text"
+                        [(ngModel)]="vm.car.year"
+                        placeholder="Introduce el año"
+                    ></ion-input>
+                </ion-item>
+            </ion-card>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label position="stacked"
+                        >Centimetros Cubicos (CC)</ion-label
+                    >
+                    <ion-input
+                        type="text"
+                        [(ngModel)]="vm.car.cc"
+                        placeholder="Introduce los CC"
+                    ></ion-input>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked"
-                            >Caballos de potencia (CV)</ion-label
-                        >
-                        <ion-input
-                            type="text"
-                            [(ngModel)]="vm.car.cv"
-                            placeholder="Introduce los CV"
-                        ></ion-input>
-                    </ion-item>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label position="stacked"
+                        >Caballos de potencia (CV)</ion-label
+                    >
+                    <ion-input
+                        type="text"
+                        [(ngModel)]="vm.car.cv"
+                        placeholder="Introduce los CV"
+                    ></ion-input>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked">
-                            Coche de serie (Sin modificaciones)
-                        </ion-label>
-                        <ion-select
-                            [(ngModel)]="vm.car.stock"
-                            placeholder="Selecciona si o no"
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label position="stacked">
+                        Coche de serie (Sin modificaciones)
+                    </ion-label>
+                    <ion-select
+                        [(ngModel)]="vm.car.stock"
+                        placeholder="Selecciona si o no"
+                    >
+                        <ion-select-option [value]="true">Si</ion-select-option>
+                        <ion-select-option [value]="false"
+                            >No</ion-select-option
                         >
-                            <ion-select-option [value]="true"
-                                >Si</ion-select-option
-                            >
-                            <ion-select-option [value]="false"
-                                >No</ion-select-option
-                            >
-                        </ion-select>
-                    </ion-item>
+                    </ion-select>
+                </ion-item>
+            </ion-card>
 
-                    <ion-item>
-                        <ion-label position="stacked"
-                            >Informacion (Opcional)</ion-label
-                        >
-                        <ion-textarea
-                            [(ngModel)]="vm.car.info"
-                            placeholder="Introduce informacion adicional"
-                        >
-                        </ion-textarea>
-                    </ion-item>
-                </ion-card-content>
+            <ion-card mode="ios" class="form-item">
+                <ion-item lines="none" color="light">
+                    <ion-label position="stacked"
+                        >Informacion (Opcional)</ion-label
+                    >
+                    <ion-textarea
+                        [(ngModel)]="vm.car.info"
+                        placeholder="Introduce informacion adicional"
+                    >
+                    </ion-textarea>
+                </ion-item>
             </ion-card>
         </ion-col>
     </ion-row>

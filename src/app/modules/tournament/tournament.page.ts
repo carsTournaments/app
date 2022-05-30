@@ -4,7 +4,6 @@ import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
 import { Car, Inscription } from '@models';
 import { ImagePipe } from '@pipes';
 import {
-    ActionSheetService,
     InscriptionService,
     TournamentService,
     AlertService,
@@ -13,6 +12,7 @@ import {
     AnalyticsService,
     UtilsService,
     UserService,
+    ActionSheetIonicService,
 } from '@services';
 import { TournamentViewModel } from './model/tournament.view-model';
 
@@ -32,7 +32,7 @@ export class TournamentPage {
         private userService: UserService,
         private navCtrl: NavController,
         private imagePipe: ImagePipe,
-        private actionSheetService: ActionSheetService,
+        private actionSheetService: ActionSheetIonicService,
         private alertService: AlertService,
         private winnerService: WinnerService,
         private imageService: ImageService,
@@ -217,10 +217,7 @@ export class TournamentPage {
         this.inscriptionService.create(inscription).subscribe({
             next: (response) => {
                 this.analyticsService.logEvent(
-                    'tournament_createInscriptionConfirmation',
-                    {
-                        params: { state: true },
-                    }
+                    'tournament_createInscriptionConfirmation_OK'
                 );
                 this.checkButtonInscription();
                 this.getInscriptionsOfTournament();
@@ -232,10 +229,7 @@ export class TournamentPage {
             },
             error: (err) => {
                 this.analyticsService.logEvent(
-                    'tournament_createInscriptionConfirmation',
-                    {
-                        params: { state: false },
-                    }
+                    'tournament_createInscriptionConfirmation_KO'
                 );
                 this.alertService.presentAlert('Error', err);
             },
@@ -267,23 +261,31 @@ export class TournamentPage {
             })
             .subscribe({
                 next: () => {
-                    this.analyticsService.logEvent(
-                        'tournament_deleteInscription'
-                    );
                     this.getInscriptionsOfTournament();
                     this.getCarsUsersForInscription();
                     this.vm.tournament.inscriptions =
                         this.vm.tournament.inscriptions.filter(
-                            (inscription) => inscription.car._id !== car._id
+                            (inscription: Inscription) =>
+                                inscription.car._id !== car._id
                         );
                     this.vm.tournament.inscriptions =
                         this.vm.tournament.inscriptions.filter(
-                            (inscription) => inscription.car !== car._id
+                            (inscription: Inscription) =>
+                                inscription.car !== car._id
                         );
                     this.alertService.presentAlert(
                         'Inscripción',
                         `Se ha eliminado la inscripción correctamente`
                     );
+                    this.analyticsService.logEvent(
+                        'tournament_deleteInscription_OK'
+                    );
+                },
+                error: (err) => {
+                    this.analyticsService.logEvent(
+                        'tournament_deleteInscription_KO'
+                    );
+                    this.alertService.presentAlert('Error', err);
                 },
             });
     }

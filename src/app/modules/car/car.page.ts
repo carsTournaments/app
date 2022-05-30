@@ -94,7 +94,7 @@ export class CarPage implements OnInit {
     private like(like: Like): void {
         this.likeService.create(like).subscribe({
             next: async () => {
-                this.analyticsService.logEvent('car_like_ok', {
+                this.analyticsService.logEvent('car_like_OK', {
                     params: { state: true },
                 });
                 this.vm.liked = true;
@@ -106,7 +106,7 @@ export class CarPage implements OnInit {
                 }
             },
             error: () => {
-                this.analyticsService.logEvent('car_like_ko', {
+                this.analyticsService.logEvent('car_like_KO', {
                     params: { state: false },
                 });
                 this.alertService.presentAlert(
@@ -120,7 +120,7 @@ export class CarPage implements OnInit {
     private dislike() {
         this.likeService.deleteByCarId(this.vm.car._id).subscribe({
             next: async () => {
-                this.analyticsService.logEvent('car_dislike_ok', {
+                this.analyticsService.logEvent('car_dislike_OK', {
                     params: { state: true },
                 });
                 this.likeService.removeLikeStorage(this.vm.car._id);
@@ -132,7 +132,7 @@ export class CarPage implements OnInit {
                 }
             },
             error: () => {
-                this.analyticsService.logEvent('car_dislike_ko', {
+                this.analyticsService.logEvent('car_dislike_KO', {
                     params: { state: false },
                 });
                 this.alertService.presentAlert(

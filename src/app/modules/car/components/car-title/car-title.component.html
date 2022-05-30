@@ -2,11 +2,9 @@
     <p style="margin: 0.25rem">
         {{ car.brand?.name }} {{ car.model | firstLetterCase }}
     </p>
-    <div class="custom-chip custom-chip-dark driver">
-        <span>
-            <fa-icon icon="id-card"></fa-icon>
-            {{ car.driver.name }}
-        </span>
+    <div class="wrapper-driver">
+        <div><img [src]="car.driver.country ?? 'es' | flagByFile" /></div>
+        <div class="driver-name">{{ car.driver.name }}</div>
     </div>
     <hr style="margin-top: 1.25rem" />
 </ion-card-title>

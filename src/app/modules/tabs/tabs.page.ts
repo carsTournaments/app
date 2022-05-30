@@ -32,10 +32,6 @@ export class TabsPage {
     constructor(private analyticsService: AnalyticsService) {}
 
     clickTab(name: string) {
-        this.analyticsService.logEvent('tabs_clickTab', {
-            params: {
-                tab_name: name,
-            },
-        });
+        this.analyticsService.logEvent(`tabs_${name}`);
     }
 }
