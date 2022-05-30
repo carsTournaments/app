@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Tournament } from '@models';
+import { Inscription, Tournament } from '@models';
 
 @Component({
     selector: 'tournament-info',
@@ -10,5 +10,6 @@ export class TournamentInfoComponent {
     @Input() tournament: Tournament;
     @Input() cols: string;
     @Input() buttonInscription: boolean;
+    @Input() inscriptions: Inscription[] = [];
     @Output() inscriptionCarClick: EventEmitter<void> = new EventEmitter();
 }
