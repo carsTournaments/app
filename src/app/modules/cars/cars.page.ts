@@ -2,7 +2,7 @@ import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Brand, Car } from '@models';
 import {
-    ActionSheetService,
+    ActionSheetIonicService,
     AnalyticsService,
     BrandService,
     CarService,
@@ -24,7 +24,7 @@ export class CarsPage {
         private brandService: BrandService,
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
-        private actionSheetService: ActionSheetService
+        private actionSheetService: ActionSheetIonicService
     ) {}
 
     ionViewWillEnter(): void {

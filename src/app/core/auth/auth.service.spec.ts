@@ -7,7 +7,7 @@ import {
 import { User } from '@models';
 import { AuthLogInDto, AuthRegisterDto } from './auth.dto';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { StorageService } from '@services/ionic/storage.service';
+import { StorageService } from '@services/ionic/storage-ionic.service';
 import { AuthService } from './auth.service';
 import { SharedModule } from '@shared/shared.module';
 

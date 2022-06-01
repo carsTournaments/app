@@ -1,0 +1,103 @@
+import { Component, Input } from '@angular/core';
+import { Image, Pairing, Vote } from '@models';
+import {
+    ImageService,
+    ToastIonicService,
+    UserService,
+    VoteService,
+} from '@services';
+
+@Component({
+    selector: 'pairing-header',
+    templateUrl: 'pairing-header.component.html',
+    styleUrls: ['./pairing-header.component.scss'],
+})
+export class PairingHeaderComponent {
+    @Input() pairing: Pairing;
+    @Input() images: { car1: Image; car2: Image };
+    @Input() backButtonRoute: string;
+    @Input() rightButton: { state: boolean; icon: string };
+    @Input() voteBody: Vote;
+    @Input() voted: boolean;
+    image1: Image;
+    image2: Image;
+
+    constructor(
+        private userService: UserService,
+        private voteService: VoteService,
+        private imageService: ImageService,
+        private toastIonicService: ToastIonicService
+    ) {}
+
+    async vote(type: string) {
+        this.voteBody.car = this.pairing[type]._id;
+        if (this.userService.getUser()) {
+            this.voteBody.user = this.userService.getUser()._id;
+        }
+        this.voteService.create(this.voteBody).subscribe({
+            next: (item) => this.onVoteSuccess(item),
+            error: () =>
+                this.toastIonicService.error(
+                    'Ha ocurrido un error, intentalo mas tarde'
+                ),
+        });
+    }
+
+    onVoteSuccess(vote: Vote) {
+        const car = vote.car === this.pairing.car1._id ? 'car1' : 'car2';
+        this.voteService.setValidVote(vote);
+        this.pairing.votes.push(vote);
+        this.setObjectVotes(car);
+        this.voted = true;
+        this.toastIonicService.info(
+            'Tu voto se ha registrado correctamente, ¡gracias!'
+        );
+    }
+
+    setObjectVotes(force?: any): void {
+        const cars = {
+            car1: { votes: 0, percentage: 0 },
+            car2: { votes: 0, percentage: 0 },
+        };
+        for (const vote of this.pairing.votes) {
+            if (
+                vote.car === this.pairing.car1 ||
+                vote.car === this.pairing.car1._id
+            ) {
+                cars.car1.votes++;
+            } else {
+                cars.car2.votes++;
+            }
+        }
+        if (force) {
+            cars[force].votes++;
+        }
+
+        if (cars.car1.votes === 0 && cars.car2.votes === 0) {
+            cars.car1.percentage = 50;
+            cars.car2.percentage = 50;
+        } else {
+            cars.car1.percentage = Number(
+                (
+                    (cars.car1.votes * 100) /
+                    (cars.car1.votes + cars.car2.votes)
+                ).toFixed(0)
+            );
+            cars.car2.percentage = Number(
+                (
+                    (cars.car2.votes * 100) /
+                    (cars.car1.votes + cars.car2.votes)
+                ).toFixed(0)
+            );
+        }
+
+        this.pairing.car1.votes = cars.car1.votes;
+        this.pairing.car1.percentage = cars.car1.percentage;
+        this.pairing.car2.votes = cars.car2.votes;
+        this.pairing.car2.percentage = cars.car2.percentage;
+    }
+
+    openImage(image: string) {
+        this.imageService.openImage(image);
+    }
+}

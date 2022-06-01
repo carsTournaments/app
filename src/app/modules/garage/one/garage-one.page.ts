@@ -7,6 +7,7 @@ import {
     ImageService,
     UtilsService,
     UserService,
+    ToastIonicService,
 } from '@services';
 import { GarageOneViewModel } from './model/garage-one.view-model';
 import { NavController } from '@ionic/angular';
@@ -14,6 +15,7 @@ import { NavController } from '@ionic/angular';
 @Component({
     selector: 'page-garage-one',
     templateUrl: 'garage-one.page.html',
+    styleUrls: ['./garage-one.page.scss'],
 })
 export class GarageOnePage implements OnInit {
     vm = new GarageOneViewModel();
@@ -25,7 +27,8 @@ export class GarageOnePage implements OnInit {
         private userService: UserService,
         private navCtrl: NavController,
         private imageService: ImageService,
-        private utilsService: UtilsService
+        private utilsService: UtilsService,
+        private toastService: ToastIonicService
     ) {}
 
     ngOnInit() {
@@ -192,16 +195,14 @@ export class GarageOnePage implements OnInit {
                         ]
                     );
                 } else {
-                    this.alertService.presentAlert(
-                        '¡Listo!',
+                    this.toastService.info(
                         'El coche se ha actualizado correctamente'
                     );
                 }
             },
             error: () =>
-                this.alertService.presentAlert(
-                    '¡Vaya!',
-                    'No se pudo actualizar el coche'
+                this.toastService.error(
+                    'Ha ocurrido un error, intentalo mas tarde'
                 ),
         });
     }

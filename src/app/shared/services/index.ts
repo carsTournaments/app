@@ -20,9 +20,10 @@ export { AnalyticsService } from './capacitor/analytics/analytics.service';
 export { NotificationsPushService } from './capacitor/notifications-push/notifications-push.service';
 
 // Ionic
-export { AlertService } from './ionic/alert.service';
-export { ActionSheetService } from './ionic/action-sheet.service';
-export { StorageService } from './ionic/storage.service';
+export { AlertService } from './ionic/alert-ionic.service';
+export { ActionSheetIonicService } from './ionic/action-sheet-ionic.service';
+export { StorageService } from './ionic/storage-ionic.service';
+export { ToastIonicService } from './ionic/toast-ionic.service';
 
 // Various
 export { UtilsService } from './various/utils.service';

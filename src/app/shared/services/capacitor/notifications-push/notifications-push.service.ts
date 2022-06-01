@@ -10,8 +10,8 @@ import {
 import { Platform } from '@ionic/angular';
 import { User } from '@models';
 import { environment } from '@env/environment';
-import { AlertService } from '../../ionic/alert.service';
-import { StorageService } from '../../ionic/storage.service';
+import { AlertService } from '../../ionic/alert-ionic.service';
+import { StorageService } from '../../ionic/storage-ionic.service';
 import { Browser } from '@capacitor/browser';
 @Injectable({ providedIn: 'root' })
 export class NotificationsPushService {

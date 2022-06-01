@@ -1,4 +1,5 @@
 import { Header } from '@components/header/model/header.model';
+import { User } from '@models';
 
 export class MyDataViewModel {
     header = new Header({
@@ -8,4 +9,7 @@ export class MyDataViewModel {
             route: '/tab/account',
         },
     });
+    user: User;
+    countries: { id: string; name: string }[] = [];
+    countryIdSelected = 'es';
 }

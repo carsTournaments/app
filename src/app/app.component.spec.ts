@@ -1,4 +1,4 @@
-import { StorageService } from './shared/services/ionic/storage.service';
+import { StorageService } from './shared/services/ionic/storage-ionic.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {

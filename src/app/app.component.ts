@@ -1,4 +1,4 @@
-import { StorageService } from './shared/services/ionic/storage.service';
+import { StorageService } from './shared/services/ionic/storage-ionic.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
@@ -10,6 +10,8 @@ import {
 } from './shared/services';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { User } from '@models';
+import { CapacitorUpdater } from '@capgo/capacitor-updater';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
     selector: 'app-root',
@@ -37,6 +39,28 @@ export class AppComponent implements OnInit {
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
         this.checkUserLogged();
+        CapacitorUpdater.notifyAppReady();
+    }
+
+    async ota() {
+        let data = { version: '' };
+        App.addListener('appStateChange', async (state) => {
+            if (state.isActive) {
+                // Do the download during user active app time to prevent failed download
+                data = await CapacitorUpdater.download({
+                    url: 'https://carstournaments.carsites.es/uploads/ota/www.zip',
+                });
+            }
+            if (!state.isActive && data.version !== '') {
+                // Do the switch when user leave app
+                SplashScreen.show();
+                try {
+                    await CapacitorUpdater.set(data);
+                } catch (error) {
+                    SplashScreen.hide(); // in case the set fail, otherwise the new app will have to hide it
+                }
+            }
+        });
     }
 
     initializeDeepLinks(): void {

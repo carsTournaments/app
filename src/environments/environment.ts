@@ -1,9 +1,9 @@
 export const environment = {
     production: false,
-    // urlApi: 'https://carstournaments.carsites.es/api',
-    // urlImages: 'https://carstournaments.carsites.es/uploads',
-    urlApi: 'http://localhost:5454/api',
-    urlImages: 'http://localhost:5454/uploads',
+    urlApi: 'https://carstournaments.carsites.es/api',
+    urlImages: 'https://carstournaments.carsites.es/uploads',
+    // urlApi: 'http://localhost:5454/api',
+    // urlImages: 'http://localhost:5454/uploads',
     firebaseConfig: {
         apiKey: 'AIzaSyAeAhLenzvIWflK9wvvZwONkujWGTw0JUg',
         authDomain: 'carstournaments-ec272.firebaseapp.com',

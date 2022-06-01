@@ -27,6 +27,40 @@
 @import '~animate.css/animate.min.css';
 @import 'swiper/css/bundle';
 
+ion-header {
+    &.header-md:after {
+        background: none;
+    }
+}
+
+.back-button-segments {
+    z-index: 100;
+    position: absolute;
+    top: 0.1rem;
+    left: 0.5rem;
+}
+
+.back-button-no-segments {
+    z-index: 100;
+    position: absolute;
+    top: 0.3rem;
+    left: 0.5rem;
+}
+
+ion-title {
+    z-index: 1;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.ion-title-padding-top-segments {
+    padding-top: 0.8rem;
+}
+
+.ion-title-padding-top-no-segments {
+    margin-top: 0rem;
+}
+
 ion-segment {
     margin: 1rem 0 0.5rem 0;
     padding-left: 1rem;
@@ -77,8 +111,21 @@ ion-segment-button {
     border-radius: 10px;
     margin-bottom: 1rem;
     font-size: 16px;
-    padding: 0.05rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-item {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background: var(--ion-color-light);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: -0.5rem;
+    ion-label {
+        color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 ion-card {

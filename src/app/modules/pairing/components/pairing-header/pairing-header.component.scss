@@ -1,0 +1,75 @@
+ion-toolbar {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+.sub-header {
+    margin: 3rem 1rem 1.5rem 1rem;
+    text-align: center;
+}
+
+.pairing-name {
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 300;
+}
+
+.dates {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.div-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div-left {
+    width: 40%;
+
+    .image-car1 {
+        display: inline-flex;
+        height: 75px;
+        width: 75px;
+        border-radius: 100%;
+        border: 3px solid var(--ion-color-dark);
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+}
+
+.div-right {
+    width: 40%;
+    .image-car2 {
+        display: inline-flex;
+        height: 75px;
+        width: 75px;
+        border-radius: 100%;
+        border: 3px solid var(--ion-color-dark);
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+    }
+}
+
+.div-center {
+    width: 20%;
+}
+
+.p-brand {
+    font-weight: 600;
+    margin: 0;
+}
+
+.score-max {
+    font-size: 1.25rem;
+}
+
+.score {
+    font-size: 2rem;
+}
+
+.button-vote {
+    margin-top: 0.75rem;
+}

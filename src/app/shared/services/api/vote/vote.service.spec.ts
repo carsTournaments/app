@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { Vote } from '@models';
 import { environment } from '@env/environment';
-import { StorageService } from '@services/ionic/storage.service';
+import { StorageService } from '@services/ionic/storage-ionic.service';
 import { VoteService } from './vote.service';
 import { SharedModule } from '@shared/shared.module';
 

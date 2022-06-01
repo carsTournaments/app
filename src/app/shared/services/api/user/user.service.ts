@@ -24,7 +24,9 @@ export class UserService {
     }
 
     update(data: User): Observable<User> {
-        return this.httpClient.put<User>(`/update`, data).pipe(take(1));
+        return this.httpClient
+            .put<User>(`${this.path}/update`, data)
+            .pipe(take(1));
     }
 
     private get user(): User | undefined {

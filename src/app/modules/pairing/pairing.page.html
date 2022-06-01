@@ -1,123 +1,17 @@
-<custom-header
-    [options]="vm.header"
-    (clickRightIcon)="openReportModal()"
-></custom-header>
+<pairing-header
+    [pairing]="vm.pairing"
+    [images]="{car1: vm.image1, car2: vm.image2 }"
+    [backButtonRoute]="vm.backButtonRoute"
+    [voteBody]="vm.voteBody"
+    [voted]="vm.voted"
+></pairing-header>
+
+<spinner [loading]="vm.loading"></spinner>
 
 <ion-content
     [fullscreen]="true"
     *ngIf="vm.pairing"
     class="animate__animated animate__fadeIn animate__faster"
 >
-    <spinner [loading]="vm.loading"></spinner>
-    <ion-row style="padding-top: 0">
-        <ion-col
-            style="padding-top: 0; padding-top: 0px; padding-bottom: 0px"
-            size="12"
-            sizeLg="8"
-            offsetLg="2"
-        >
-            <ion-card
-                [ngStyle]="{'height': vm.totalHeight + 'px'}"
-                mode="ios"
-                style="margin-bottom: 0"
-                class="animate__animated animate__fadeIn animate__faster"
-            >
-                <div class="box-center">
-                    <div
-                        *ngIf="!vm.voted"
-                        class="button-love1 ion-activatable ripple-parent animate__animated animate__backInUp"
-                        (click)="vote('car1')"
-                    >
-                        <ion-icon
-                            name="heart"
-                            class="animate__animated animate__fadeIn animate__faster"
-                        >
-                        </ion-icon>
-                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-                    </div>
-
-                    <div
-                        *ngIf="vm.voted"
-                        class="button-love1 animate__animated animate__backInUp"
-                    >
-                        <p class="label-percentage">
-                            <span
-                                [countUp]="vm.votes.car1.percentage"
-                                [duration]="1500"
-                            ></span
-                            >%
-                        </p>
-                    </div>
-
-                    <div
-                        class="car-title1 ion-activatable ripple-parent animate__animated animate__backInDown"
-                        (click)="openInfoModal(vm.pairing.car1)"
-                    >
-                        <p>
-                            {{ vm.pairing.car1.brand.name | uppercase }} {{
-                            vm.pairing.car1.model | truncateText: 15 | uppercase
-                            }}
-                        </p>
-                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-                    </div>
-
-                    <!--  VS -->
-                    <div class="animate__animated animate__backInLeft vs">
-                        <p>VS</p>
-                    </div>
-
-                    <div
-                        class="car-title2 ion-activatable ripple-parent animate__animated animate__backInUp"
-                        (click)="openInfoModal(vm.pairing.car2)"
-                    >
-                        <p>
-                            {{ vm.pairing.car2.brand.name | uppercase }} {{
-                            vm.pairing.car2.model | truncateText: 15 | uppercase
-                            }}
-                        </p>
-                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-                    </div>
-
-                    <div
-                        *ngIf="!vm.voted"
-                        class="button-love2 ion-activatable ripple-parent animate__animated animate__backInUp"
-                        (click)="vote('car2')"
-                    >
-                        <ion-icon
-                            name="heart"
-                            class="animate__animated animate__fadeIn animate__faster"
-                        >
-                        </ion-icon>
-                        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-                    </div>
-                    <div
-                        *ngIf="vm.voted"
-                        class="button-love2 animate__animated animate__backInUp"
-                    >
-                        <p class="label-percentage">
-                            <span
-                                [countUp]="vm.votes.car2.percentage"
-                                [duration]="1500"
-                            ></span
-                            >%
-                        </p>
-                    </div>
-                </div>
-
-                <!--  Car 1 -->
-                <div
-                    class="image-car1"
-                    style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                    url({{vm.image1?.url}})"
-                ></div>
-
-                <!--  Car 2 -->
-                <div
-                    class="image-car2"
-                    style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
-                url({{vm.image2?.url}})"
-                ></div>
-            </ion-card>
-        </ion-col>
-    </ion-row>
+    <pairing-block-info [pairing]="vm.pairing"></pairing-block-info>
 </ion-content>

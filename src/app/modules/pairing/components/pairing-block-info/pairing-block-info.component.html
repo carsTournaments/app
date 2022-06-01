@@ -1,0 +1,83 @@
+<ion-card mode="ios">
+    <ion-card-content class="ion-no-padding">
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.year }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">Año</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.year }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.cc }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">CC</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.cc }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.cv }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">CV</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.cv }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.fuel }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">Motor</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.fuel }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.traction }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">Traccion</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.traction }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.stock ? 'Si' : 'No' }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">De serie</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">
+                    {{ pairing.car2.traction ? 'Si' : 'No' }}
+                </p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.driver.name }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">Piloto</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.driver.name }}</p>
+            </div>
+        </div>
+    </ion-card-content>
+</ion-card>

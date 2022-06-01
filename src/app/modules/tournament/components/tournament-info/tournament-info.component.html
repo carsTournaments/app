@@ -1,8 +1,26 @@
 <ion-card mode="ios">
     <ion-card-title class="title ion-text-center">
         {{ tournament?.name }}
+
+        <div
+            *ngIf="inscriptions && inscriptions.length > 0"
+            class="images-inscriptions"
+        >
+            <ion-card
+                button
+                *ngFor="let inscription of inscriptions"
+                class="image-inscription"
+                [routerLink]="['/car', inscription.car._id]"
+            >
+                <div
+                    class="image-inscription-div"
+                    style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), 
+                    url({{ inscription.car.image.url | image }})"
+                ></div>
+            </ion-card>
+        </div>
+
         <ng-container>
-            <br />
             <div class="custom-chip custom-chip-primary">
                 <span *ngIf="tournament.status === 'Completed'">
                     Completado</span
