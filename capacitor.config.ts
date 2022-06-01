@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
     webDir: 'www',
     bundledWebRuntime: false,
     plugins: {
-        capacitorUpdater: {
+        CapacitorUpdater: {
             autoUpdate: true,
             autoUpdateUrl:
                 'https://carstournaments.carsites.es/api/ota/getOtaAvailable/',

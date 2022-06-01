@@ -3,7 +3,7 @@ import { TournamentGetAllOfAllStatesResponse } from '@services/api/tournament/to
 
 export class TournamentsViewModel {
     header = new Header({
-        title: 'Torneosssss',
+        title: 'Torneos',
     });
     tournaments: TournamentGetAllOfAllStatesResponse;
     loading = true;
