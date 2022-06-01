@@ -36,10 +36,10 @@ export class AppComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
-        // await this.ota()
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
         this.checkUserLogged();
+        CapacitorUpdater.notifyAppReady();
     }
 
     async ota() {

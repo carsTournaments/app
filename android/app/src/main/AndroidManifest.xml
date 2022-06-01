@@ -23,14 +23,13 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="https"
                     android:host="carstournaments.carsites.es"
+                    android:scheme="https"
                 />
             </intent-filter>
         </activity>
@@ -45,7 +44,6 @@
                 android:resource="@xml/file_paths"
             />
         </provider>
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id"

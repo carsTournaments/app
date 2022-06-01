@@ -6,12 +6,6 @@ ion-toolbar {
     box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
 }
 
-ion-title {
-    z-index: 1;
-    text-align: center;
-    font-size: 1.25rem;
-}
-
 ion-card {
     --color: var(--ion-color-dark);
     --border-radius: 10px;
@@ -30,31 +24,9 @@ ion-card-content {
     padding-right: 1rem;
 }
 
-.back-button-segments {
-    z-index: 100;
-    position: absolute;
-    top: 0.1rem;
-    left: 0.5rem;
-}
-
-.back-button-no-segments {
-    z-index: 100;
-    position: absolute;
-    top: 0.3rem;
-    left: 0.5rem;
-}
-
 .icon-right-no-segments {
     z-index: 100;
     position: absolute;
     top: 0.3rem;
     right: 0.5rem;
-}
-
-.ion-title-padding-top-segments {
-    padding-top: 0.8rem;
-}
-
-.ion-title-padding-top-no-segments {
-    margin-top: 0rem;
 }

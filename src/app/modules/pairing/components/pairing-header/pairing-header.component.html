@@ -1,0 +1,70 @@
+<ion-header mode="md">
+    <ion-toolbar color="primary">
+        <ion-back-button
+            class="back-button-no-segments"
+            [defaultHref]="backButtonRoute"
+        ></ion-back-button>
+        <div class="sub-header">
+            <p class="pairing-name">{{ pairing?.round.name }}</p>
+            <p class="dates">28 MAY - 10 JUN</p>
+            <div class="div-flex">
+                <div class="div-left">
+                    <ion-card
+                        class="image-car1"
+                        style="background-image: url({{ images.car1?.url }})"
+                        button
+                        (click)="openImage(image1?.url)"
+                    ></ion-card>
+                    <p class="p-brand">{{ pairing?.car1.brand.name }}</p>
+                    <p style="margin: 0">
+                        {{
+                            pairing?.car1.model | firstLetterCase | truncateText
+                        }}
+                    </p>
+                    <ion-button
+                        [disabled]="voted"
+                        class="button-vote"
+                        mode="ios"
+                        size="small"
+                        color="dark"
+                        (click)="vote('car1')"
+                        >Votar</ion-button
+                    >
+                </div>
+
+                <div class="div-center">
+                    <!-- Si cualquiera de los dos tiene mas de un cero, poner clase score-max -->
+                    <p class="score">
+                        {{ pairing?.votes | votes: pairing?.car1._id }}-{{
+                            pairing?.votes | votes: pairing?.car2._id
+                        }}
+                    </p>
+                </div>
+
+                <div class="div-right">
+                    <ion-card
+                        class="image-car2"
+                        style="background-image: url({{ images.car2?.url }})"
+                        button
+                        (click)="openImage(image2?.url)"
+                    ></ion-card>
+                    <p class="p-brand">{{ pairing?.car2.brand.name }}</p>
+                    <p style="margin: 0">
+                        {{
+                            pairing?.car2.model | firstLetterCase | truncateText
+                        }}
+                    </p>
+                    <ion-button
+                        [disabled]="voted"
+                        class="button-vote"
+                        mode="ios"
+                        size="small"
+                        color="dark"
+                        (click)="vote('car2')"
+                        >Votar</ion-button
+                    >
+                </div>
+            </div>
+        </div>
+    </ion-toolbar>
+</ion-header>
