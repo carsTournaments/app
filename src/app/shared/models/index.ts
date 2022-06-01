@@ -6,6 +6,7 @@ export { Like } from './like.model';
 export { Pairing } from './pairing.model';
 export { Report } from './report.model';
 export { Round } from './round.model';
+export { Toggle } from './toggle.model';
 export { Tournament } from './tournament.model';
 export { User } from './user.model';
 export { Vote } from './vote.model';

@@ -69,6 +69,7 @@ import {
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { TogglesService } from '@core/toggles/toggles.service';
 
 const MODULES = [
     IonicModule,
@@ -127,6 +128,7 @@ const SERVICES = [
     SettingsService,
     StorageService,
     ToastIonicService,
+    TogglesService,
     TournamentService,
     UserService,
     UtilsService,

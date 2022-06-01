@@ -11,7 +11,7 @@ import {
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { User } from '@models';
 import { CapacitorUpdater } from '@capgo/capacitor-updater';
-import { SplashScreen } from '@capacitor/splash-screen';
+import { TogglesService } from '@core/toggles/toggles.service';
 
 @Component({
     selector: 'app-root',
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
         private notificationsPushService: NotificationsPushService,
+        private togglesService: TogglesService,
         public location: Location
     ) {
         this.initializeDeepLinks();
@@ -36,31 +37,19 @@ export class AppComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
+        await this.togglesService.getInitialsToggles();
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
         this.checkUserLogged();
-        CapacitorUpdater.notifyAppReady();
+        this.ota();
     }
 
     async ota() {
-        let data = { version: '' };
-        App.addListener('appStateChange', async (state) => {
-            if (state.isActive) {
-                // Do the download during user active app time to prevent failed download
-                data = await CapacitorUpdater.download({
-                    url: 'https://carstournaments.carsites.es/uploads/ota/www.zip',
-                });
+        if (this.togglesService.isActiveToggle('ota')) {
+            if (this.platform.is('capacitor')) {
+                CapacitorUpdater.notifyAppReady();
             }
-            if (!state.isActive && data.version !== '') {
-                // Do the switch when user leave app
-                SplashScreen.show();
-                try {
-                    await CapacitorUpdater.set(data);
-                } catch (error) {
-                    SplashScreen.hide(); // in case the set fail, otherwise the new app will have to hide it
-                }
-            }
-        });
+        }
     }
 
     initializeDeepLinks(): void {
