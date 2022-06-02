@@ -6,7 +6,6 @@ import {
     AlertService,
     UserService,
     AnalyticsService,
-    AdmobService,
 } from '@services';
 import { AccountViewModel } from './model/account.view-model';
 
@@ -24,8 +23,7 @@ export class AccountPage {
         private userService: UserService,
         private navCtrl: NavController,
         private alertService: AlertService,
-        private analyticsService: AnalyticsService,
-        private admobService: AdmobService
+        private analyticsService: AnalyticsService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -130,9 +128,5 @@ export class AccountPage {
         } else {
             this.analyticsService.logEvent('dashboard_logout_Cancel');
         }
-    }
-
-    async startAnouncement() {
-        this.admobService.showInterstitial();
     }
 }

@@ -37,7 +37,6 @@ export class AppComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
-        await this.togglesService.getInitialsToggles();
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
         this.checkUserLogged();
@@ -45,7 +44,7 @@ export class AppComponent implements OnInit {
     }
 
     async ota() {
-        if (this.togglesService.isActiveToggle('ota')) {
+        if (await this.togglesService.isActiveToggle('ota')) {
             if (this.platform.is('capacitor')) {
                 CapacitorUpdater.notifyAppReady();
             }
