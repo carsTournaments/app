@@ -106,4 +106,9 @@ export class AuthComponent {
         }
         return state;
     }
+
+    goToLoginMode() {
+        this.vm.normalMode = false;
+        this.vm.loginMode = true;
+    }
 }

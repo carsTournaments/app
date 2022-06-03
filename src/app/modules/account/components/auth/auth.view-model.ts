@@ -3,5 +3,6 @@ export class AuthViewModel {
     email = '';
     password = '';
     password2 = '';
-    loginMode = true;
+    normalMode = true;
+    loginMode = false;
 }
