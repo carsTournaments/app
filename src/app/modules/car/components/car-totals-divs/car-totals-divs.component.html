@@ -57,8 +57,8 @@
             {{ item.tournament?.name }}<br />
             <strong>{{ item.user?.name ?? 'Anonimo' }}</strong
             ><br />
-            <ion-label class="date"
-                >{{ item.created | dateToTimeAgo: false | firstLetterCase }}
+            <ion-label class="date">
+                {{ item.created | dateToTimeAgo: false | firstLetterCase }}
             </ion-label>
         </ion-label>
     </ion-item>

@@ -2,6 +2,38 @@
     <ion-card-content class="ion-no-padding">
         <div class="div-flex div-item">
             <div class="div-left item">
+                <p class="item-left">
+                    <img
+                        class="img"
+                        [src]="pairing.car1.brand.image?.url | image"
+                    />
+                </p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">Marca</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">
+                    <img
+                        class="img"
+                        [src]="pairing.car2.brand.image?.url | image"
+                    />
+                </p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <p class="item-left">{{ pairing.car1.model }}</p>
+            </div>
+            <div class="div-center">
+                <p class="item-center">Modelo</p>
+            </div>
+            <div class="div-right">
+                <p class="item-right">{{ pairing.car2.model }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
                 <p class="item-left">{{ pairing.car1.year }}</p>
             </div>
             <div class="div-center">
@@ -77,6 +109,17 @@
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.driver.name }}</p>
+            </div>
+        </div>
+        <div class="div-flex div-item">
+            <div class="div-left item">
+                <img [src]="pairing.car1.driver.country ?? 'es' | flagByFile" />
+            </div>
+            <div class="div-center">
+                <p class="item-center">Pais Piloto</p>
+            </div>
+            <div class="div-right">
+                <img [src]="pairing.car2.driver.country ?? 'es' | flagByFile" />
             </div>
         </div>
     </ion-card-content>

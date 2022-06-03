@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Image, Pairing, Vote } from '@models';
 import {
     ImageService,
@@ -12,7 +12,7 @@ import {
     templateUrl: 'pairing-header.component.html',
     styleUrls: ['./pairing-header.component.scss'],
 })
-export class PairingHeaderComponent {
+export class PairingHeaderComponent implements OnInit {
     @Input() pairing: Pairing;
     @Input() images: { car1: Image; car2: Image };
     @Input() backButtonRoute: string;
@@ -28,6 +28,12 @@ export class PairingHeaderComponent {
         private imageService: ImageService,
         private toastIonicService: ToastIonicService
     ) {}
+
+    ngOnInit(): void {
+        setTimeout(() => {
+            this.setScore();
+        }, 500);
+    }
 
     async vote(type: string) {
         this.voteBody.car = this.pairing[type]._id;
@@ -47,14 +53,14 @@ export class PairingHeaderComponent {
         const car = vote.car === this.pairing.car1._id ? 'car1' : 'car2';
         this.voteService.setValidVote(vote);
         this.pairing.votes.push(vote);
-        this.setObjectVotes(car);
+        this.setScore(car);
         this.voted = true;
         this.toastIonicService.info(
             'Tu voto se ha registrado correctamente, ¡gracias!'
         );
     }
 
-    setObjectVotes(force?: any): void {
+    setScore(force?: any): void {
         const cars = {
             car1: { votes: 0, percentage: 0 },
             car2: { votes: 0, percentage: 0 },
@@ -72,29 +78,8 @@ export class PairingHeaderComponent {
         if (force) {
             cars[force].votes++;
         }
-
-        if (cars.car1.votes === 0 && cars.car2.votes === 0) {
-            cars.car1.percentage = 50;
-            cars.car2.percentage = 50;
-        } else {
-            cars.car1.percentage = Number(
-                (
-                    (cars.car1.votes * 100) /
-                    (cars.car1.votes + cars.car2.votes)
-                ).toFixed(0)
-            );
-            cars.car2.percentage = Number(
-                (
-                    (cars.car2.votes * 100) /
-                    (cars.car1.votes + cars.car2.votes)
-                ).toFixed(0)
-            );
-        }
-
         this.pairing.car1.votes = cars.car1.votes;
-        this.pairing.car1.percentage = cars.car1.percentage;
         this.pairing.car2.votes = cars.car2.votes;
-        this.pairing.car2.percentage = cars.car2.percentage;
     }
 
     openImage(image: string) {

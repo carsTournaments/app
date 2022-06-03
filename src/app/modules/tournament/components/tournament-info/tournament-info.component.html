@@ -2,24 +2,6 @@
     <ion-card-title class="title ion-text-center">
         {{ tournament?.name }}
 
-        <div
-            *ngIf="inscriptions && inscriptions.length > 0"
-            class="images-inscriptions"
-        >
-            <ion-card
-                button
-                *ngFor="let inscription of inscriptions"
-                class="image-inscription"
-                [routerLink]="['/car', inscription.car._id]"
-            >
-                <div
-                    class="image-inscription-div"
-                    style="background-image:linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)),
-                    url({{ inscription.car?.image?.url | image }})"
-                ></div>
-            </ion-card>
-        </div>
-
         <ng-container>
             <div class="custom-chip custom-chip-primary">
                 <span *ngIf="tournament.status === 'Completed'">
@@ -40,6 +22,45 @@
                 </span>
             </div>
         </ng-container>
+        <hr *ngIf="inscriptions && inscriptions.length > 0" />
+
+        <div class="images-inscriptions">
+            <ng-container *ngIf="inscriptions.length < 8">
+                <ion-card
+                    *ngFor="let inscription of inscriptions"
+                    button
+                    class="image-inscription"
+                    [routerLink]="['/car', inscription.car._id]"
+                >
+                    <div
+                        class="image-inscription-div"
+                        style="background-image: url({{
+                            inscription.car?.image?.url | image
+                        }})"
+                    ></div>
+                </ion-card>
+            </ng-container>
+
+            <swiper [config]="slideOpts" *ngIf="inscriptions.length >= 8">
+                <ng-template
+                    swiperSlide
+                    *ngFor="let inscription of inscriptions"
+                >
+                    <ion-card
+                        button
+                        class="image-inscription"
+                        [routerLink]="['/car', inscription.car._id]"
+                    >
+                        <div
+                            class="image-inscription-div"
+                            style="background-image:url({{
+                                inscription.car?.image?.url | image
+                            }})"
+                        ></div>
+                    </ion-card>
+                </ng-template>
+            </swiper>
+        </div>
     </ion-card-title>
     <hr />
     <ion-card-content style="padding: 0.5rem; padding-bottom: 0.5rem">

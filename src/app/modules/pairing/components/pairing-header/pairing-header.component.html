@@ -5,6 +5,7 @@
             [defaultHref]="backButtonRoute"
         ></ion-back-button>
         <div class="sub-header">
+            <p class="tournament-name">{{ pairing?.tournament.name }}</p>
             <p class="pairing-name">{{ pairing?.round.name }}</p>
             <p class="dates">28 MAY - 10 JUN</p>
             <div class="div-flex">
@@ -15,29 +16,24 @@
                         button
                         (click)="openImage(image1?.url)"
                     ></ion-card>
-                    <p class="p-brand">{{ pairing?.car1.brand.name }}</p>
-                    <p style="margin: 0">
-                        {{
-                            pairing?.car1.model | firstLetterCase | truncateText
-                        }}
-                    </p>
+
                     <ion-button
                         [disabled]="voted"
                         class="button-vote"
                         mode="ios"
+                        expand="block"
                         size="small"
                         color="dark"
                         (click)="vote('car1')"
-                        >Votar</ion-button
                     >
+                        Votar
+                    </ion-button>
                 </div>
 
                 <div class="div-center">
                     <!-- Si cualquiera de los dos tiene mas de un cero, poner clase score-max -->
                     <p class="score">
-                        {{ pairing?.votes | votes: pairing?.car1._id }}-{{
-                            pairing?.votes | votes: pairing?.car2._id
-                        }}
+                        {{ pairing?.car1.votes }}-{{ pairing?.car2.votes }}
                     </p>
                 </div>
 
@@ -48,17 +44,13 @@
                         button
                         (click)="openImage(image2?.url)"
                     ></ion-card>
-                    <p class="p-brand">{{ pairing?.car2.brand.name }}</p>
-                    <p style="margin: 0">
-                        {{
-                            pairing?.car2.model | firstLetterCase | truncateText
-                        }}
-                    </p>
+
                     <ion-button
                         [disabled]="voted"
                         class="button-vote"
                         mode="ios"
                         size="small"
+                        expand="block"
                         color="dark"
                         (click)="vote('car2')"
                         >Votar</ion-button

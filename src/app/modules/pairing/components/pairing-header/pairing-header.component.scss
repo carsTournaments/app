@@ -7,15 +7,23 @@ ion-toolbar {
     text-align: center;
 }
 
+.tournament-name {
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
 .pairing-name {
     text-transform: uppercase;
     margin: 0;
     font-weight: 300;
+    font-size: 1rem;
 }
 
 .dates {
     margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 

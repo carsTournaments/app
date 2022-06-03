@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Inscription, Tournament } from '@models';
+import { SwiperOptions } from 'swiper';
 
 @Component({
     selector: 'tournament-info',
@@ -12,4 +13,12 @@ export class TournamentInfoComponent {
     @Input() buttonInscription: boolean;
     @Input() inscriptions: Inscription[] = [];
     @Output() inscriptionCarClick: EventEmitter<void> = new EventEmitter();
+    slideOpts: SwiperOptions = {
+        slidesPerView: 6.1,
+        spaceBetween: -10,
+        navigation: false,
+        fadeEffect: {
+            crossFade: true,
+        },
+    };
 }
