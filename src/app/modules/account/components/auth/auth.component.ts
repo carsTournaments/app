@@ -38,6 +38,22 @@ export class AuthComponent {
         }
     }
 
+    async loginGoogle() {
+        const data = await this.authService.loginGoogle();
+        data.subscribe({
+            next: (response) => {
+                if (response) {
+                    this.analyticsService.logEvent('auth_loginGoogle_OK');
+                    this.clickLogin.emit();
+                }
+            },
+            error: (error) => {
+                this.analyticsService.logEvent('auth_loginGoogle_KO');
+                this.alertService.presentAlert('Error', error);
+            },
+        });
+    }
+
     register() {
         if (this.validations('register')) {
             this.vm.loginMode = false;

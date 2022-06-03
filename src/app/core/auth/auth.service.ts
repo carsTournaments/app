@@ -5,7 +5,11 @@ import { map, share, tap } from 'rxjs/operators';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';
 import { AuthLogInDto, AuthRegisterDto } from './auth.dto';
-import { NotificationsPushService, UserService } from '@services';
+import {
+    GoogleAuthService,
+    NotificationsPushService,
+    UserService,
+} from '@services';
 import { RegisterService } from './register.service';
 
 @Injectable({ providedIn: 'root' })
@@ -16,7 +20,8 @@ export class AuthService {
         private registerService: RegisterService,
         private tokenService: TokenService,
         private userService: UserService,
-        private notificationsPushService: NotificationsPushService
+        private notificationsPushService: NotificationsPushService,
+        private googleAuthService: GoogleAuthService
     ) {}
 
     check(): boolean {
@@ -25,6 +30,18 @@ export class AuthService {
 
     login(data: AuthLogInDto): Observable<boolean> {
         return this.loginService.login(data).pipe(
+            tap((item: LoginResponseI) => {
+                this.tokenService.set(item.token);
+                this.userService.set(item.user);
+                this.notificationsPushService.registerFCM(item.user ?? null);
+            }),
+            map(() => this.check())
+        );
+    }
+
+    async loginGoogle(): Promise<Observable<boolean>> {
+        const user = await this.googleAuthService.login();
+        return this.loginService.loginGoogle(user).pipe(
             tap((item: LoginResponseI) => {
                 this.tokenService.set(item.token);
                 this.userService.set(item.user);

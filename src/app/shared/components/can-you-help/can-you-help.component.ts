@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TogglesService } from '@core/toggles/toggles.service';
 import { Platform } from '@ionic/angular';
-import { AdmobService, SettingsService } from '@services';
+import { AdmobService } from '@services';
 
 @Component({
     selector: 'can-you-help',
@@ -10,9 +11,9 @@ export class CanYouHelpComponent implements OnInit {
     state = false;
     noClick = false;
     constructor(
-        private settingsService: SettingsService,
         private admobService: AdmobService,
-        private platform: Platform
+        private platform: Platform,
+        private togglesService: TogglesService
     ) {}
 
     ngOnInit() {
@@ -21,10 +22,9 @@ export class CanYouHelpComponent implements OnInit {
 
     async checkShowOrHidden() {
         if (this.platform.is('capacitor')) {
-            const settings = await this.settingsService.getSettings();
-            if (settings.state) {
-                this.state = settings.state.admob;
-            }
+            (await this.togglesService.isActiveToggle('admob'))
+                ? (this.state = true)
+                : (this.state = false);
         }
     }
 

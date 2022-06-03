@@ -37,6 +37,7 @@ import {
     AuthService,
     BrandService,
     CarService,
+    GoogleAuthService,
     ImageService,
     InscriptionService,
     LikeService,
@@ -120,7 +121,6 @@ const SERVICES = [
     CarService,
     ImageService,
     InscriptionService,
-    LikeService,
     NotificationsPushService,
     PairingService,
     ReportService,
@@ -134,6 +134,8 @@ const SERVICES = [
     UtilsService,
     VoteService,
     WinnerService,
+    GoogleAuthService,
+    LikeService,
 ];
 
 @NgModule({

@@ -2,16 +2,18 @@ import { StorageService } from './shared/services/ionic/storage-ionic.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import {
-    AlertService,
-    AnalyticsService,
-    NotificationsPushService,
-    SettingsService,
-} from './shared/services';
+
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { User } from '@models';
 import { CapacitorUpdater } from '@capgo/capacitor-updater';
 import { TogglesService } from '@core/toggles/toggles.service';
+import {
+    AlertService,
+    AnalyticsService,
+    GoogleAuthService,
+    NotificationsPushService,
+    SettingsService,
+} from '@services';
 
 @Component({
     selector: 'app-root',
@@ -29,15 +31,16 @@ export class AppComponent implements OnInit {
         private analyticsService: AnalyticsService,
         private notificationsPushService: NotificationsPushService,
         private togglesService: TogglesService,
+        private googleAuthService: GoogleAuthService,
         public location: Location
     ) {
         this.initializeDeepLinks();
         this.analyticsService.start();
+        this.googleAuthService.init();
     }
 
     async ngOnInit(): Promise<void> {
         await this.storageService.startDB();
-        await this.togglesService.getInitialsToggles();
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
         this.checkUserLogged();
@@ -45,7 +48,7 @@ export class AppComponent implements OnInit {
     }
 
     async ota() {
-        if (this.togglesService.isActiveToggle('ota')) {
+        if (await this.togglesService.isActiveToggle('ota')) {
             if (this.platform.is('capacitor')) {
                 CapacitorUpdater.notifyAppReady();
             }

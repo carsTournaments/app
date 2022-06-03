@@ -52,7 +52,10 @@ export class TogglesService {
         this.save();
     }
 
-    isActiveToggle(name: string): boolean {
+    async isActiveToggle(name: string): Promise<boolean> {
+        if (this.toggles.length === 0) {
+            await this.getInitialsToggles();
+        }
         const toggle = this.toggles.find((t) => t.name === name);
         return toggle ? toggle.state : false;
     }

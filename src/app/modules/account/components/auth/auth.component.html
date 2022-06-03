@@ -9,7 +9,8 @@
                     [(ngModel)]="vm.email"
                     placeholder="Introduce tu Email"
                     ngDefaultControl
-                ></ion-input>
+                >
+                </ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Contraseña</ion-label>
@@ -24,6 +25,10 @@
             <hr />
             <ion-button expand="block" color="primary" (click)="login()">
                 Iniciar sesión
+            </ion-button>
+
+            <ion-button expand="block" color="primary" (click)="loginGoogle()">
+                Google Login
             </ion-button>
 
             <span class="divider line one-line">o</span>
@@ -62,7 +67,8 @@
                     [(ngModel)]="vm.email"
                     placeholder="Introduce tu Email"
                     ngDefaultControl
-                ></ion-input>
+                >
+                </ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Contraseña</ion-label>
