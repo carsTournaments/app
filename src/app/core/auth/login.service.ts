@@ -1,7 +1,7 @@
 import { LoginResponseI } from '@interfaces/login-response.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthLogInDto } from './auth.dto';
+import { AuthLogInDto, GoogleUserDto } from './auth.dto';
 import { environment } from '@env/environment';
 
 @Injectable({
@@ -13,5 +13,9 @@ export class LoginService {
 
     login(data: AuthLogInDto) {
         return this.http.post<LoginResponseI>(`${this.path}/login`, data);
+    }
+
+    loginGoogle(data: GoogleUserDto) {
+        return this.http.post<LoginResponseI>(`${this.path}/loginGoogle`, data);
     }
 }
