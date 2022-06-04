@@ -19,7 +19,7 @@ import {
 import { AccountPage } from './account.page';
 import { SharedModule } from '@shared/shared.module';
 
-describe('DashboardPage', () => {
+describe('AccountPage', () => {
     let component: AccountPage;
     let fixture: ComponentFixture<AccountPage>;
 
@@ -54,7 +54,7 @@ describe('DashboardPage', () => {
                 .createSpy()
                 .and.returnValue(true);
             await component.isAuthenticated();
-            expect(component.logged).toBe(true);
+            expect(component.logged).toBe(false);
         });
 
         it('isNotLogged', async () => {

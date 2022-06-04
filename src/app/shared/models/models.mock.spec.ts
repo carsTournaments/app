@@ -4,6 +4,7 @@ export const user = new User({
     _id: '123',
     name: 'prueba',
     email: 'prueba@prueba.es',
+    country: 'es',
     role: 'USER',
 });
 
