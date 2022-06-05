@@ -59,6 +59,7 @@
         "animate.css": "~4.1.1",
         "husky": "~7.0.4",
         "moment": "~2.29.1",
+        "ng2-adsense": "^10.1.0",
         "rxjs": "~6.6.0",
         "storage": "0.2.0",
         "swiper": "~8.1.0",
