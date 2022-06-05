@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { SharedModule } from '@shared/shared.module';
 import { ImagePipe } from '@shared/pipes';
 import { HttpClientModule } from '@angular/common/http';
+import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,6 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
         RouterModule,
         IonicStorageModule.forRoot(),
         IonicModule.forRoot({ navAnimation: customAnimation }),
+        AdsenseModule.forRoot({
+            adClient: 'ca-pub-1868668305627051',
+            adSlot: 7259870550,
+        }),
         AppRoutingModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
