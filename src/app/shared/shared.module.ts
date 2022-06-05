@@ -71,6 +71,7 @@ import {
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { TogglesService } from '@core/toggles/toggles.service';
+import { AdsenseModule } from 'ng2-adsense';
 
 const MODULES = [
     IonicModule,
@@ -82,6 +83,7 @@ const MODULES = [
     IonicStorageModule,
     SwiperModule,
     FontAwesomeModule,
+    AdsenseModule,
 ];
 const COMPONENTS = [
     BrandItemComponent,
