@@ -3,7 +3,7 @@ name: Build Android
 on:
     push:
         branches:
-            - market
+            - master
 
 jobs:
     build:

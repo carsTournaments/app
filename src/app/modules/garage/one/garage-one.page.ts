@@ -72,7 +72,7 @@ export class GarageOnePage implements OnInit {
                 this.vm.car.driver = this.vm.car.driver._id;
                 this.createOrUpdate();
             } else {
-                this.vm.car.driver = this.userService.getUser();
+                this.vm.car.driver = this.userService.getUser()._id;
                 if (this.vm.car.driver) {
                     this.createOrUpdate();
                 } else {
