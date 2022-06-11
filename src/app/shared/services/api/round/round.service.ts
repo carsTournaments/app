@@ -4,25 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Round } from '@models/round.model';
-import { RoundGetAllDto } from './round.dto';
-import { PaginatorI } from '@interfaces/paginator.interface';
 import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class RoundService {
     url = `${environment.urlApi}/rounds`;
     constructor(private httpClient: HttpClient) {}
-
-    getAll(
-        body: RoundGetAllDto
-    ): Observable<{ items: Round[]; paginator: PaginatorI }> {
-        return this.httpClient
-            .post<{ items: Round[]; paginator: PaginatorI }>(
-                `${this.url}/getAll`,
-                body
-            )
-            .pipe(take(1));
-    }
 
     getAllOfTournament(data: IdDto): Observable<Round[]> {
         return this.httpClient
