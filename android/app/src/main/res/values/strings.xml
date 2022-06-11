@@ -5,7 +5,7 @@
     <string name="package_name">com.josexs.ct</string>
     <string name="custom_url_scheme">com.josexs.ct</string>
     <string name="admob_app_id">ca-app-pub-1868668305627051~6315115384</string>
-    <string
-        name="server_client_id"
-    >432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com</string>
+    <stringname="server_client_id">
+    432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com
+    </string>
 </resources>

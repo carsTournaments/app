@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
     initializeDeepLinks(): void {
         App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
             this.zone.run(() => {
-                const domain = 'carstournaments.carsites.es';
+                const domain = 'carstournaments.com';
                 const pathArray = event.url.split(domain);
                 const appPath = pathArray.pop();
                 if (appPath) {
