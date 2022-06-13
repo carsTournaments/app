@@ -1,9 +1,9 @@
 ion-toolbar {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.15) !important;
+    // border-bottom: 2px solid rgba(0, 0, 0, 0.15) !important;
 }
 
 .sub-header {
-    margin: 3rem 1rem 1.5rem 1rem;
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem;
     text-align: center;
 }
 
@@ -80,4 +80,29 @@ ion-toolbar {
 
 .button-vote {
     margin-top: 0.75rem;
+}
+
+.icon-right {
+    z-index: 100;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.5rem;
+    margin-right: 0;
+}
+
+.icon-right2 {
+    z-index: 100;
+    position: absolute;
+    top: 0.3rem;
+    right: 1.5rem;
+    margin-right: 0;
+}
+
+ion-header {
+    background-color: var(--ion-color-primary);
+    color: #fff;
+}
+
+ion-toolbar {
+    border-bottom: none;
 }

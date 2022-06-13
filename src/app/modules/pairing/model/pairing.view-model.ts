@@ -3,9 +3,9 @@ import { Image, Pairing, User, Vote } from '@models';
 export class PairingViewModel {
     id: string;
     backButtonRoute = '';
-    rightButton = {
-        state: true,
-        icon: 'alert-circle-outline',
+    rightButton: {
+        state: true;
+        icon: 'arrow-redo-outline';
     };
     user: User;
     pairing: Pairing;

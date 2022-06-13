@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Image, Pairing, Vote } from '@models';
 import {
     ImageService,
@@ -19,6 +19,8 @@ export class PairingHeaderComponent implements OnInit {
     @Input() rightButton: { state: boolean; icon: string };
     @Input() voteBody: Vote;
     @Input() voted: boolean;
+    @Output() share = new EventEmitter();
+    @Output() report = new EventEmitter();
     image1: Image;
     image2: Image;
 

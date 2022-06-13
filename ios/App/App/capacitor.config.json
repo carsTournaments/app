@@ -1,19 +1,26 @@
 {
-    "appId": "com.josexs.ct",
-    "appName": "CarsTournaments",
-    "webDir": "www",
-    "bundledWebRuntime": false,
-    "plugins": {
-        "CapacitorUpdater": {
-            "autoUpdate": true,
-            "autoUpdateUrl": "https://carstournaments.carsites.es/api/ota/getOtaAvailable/"
-        },
-        "PushNotifications": {
-            "presentationOptions": ["badge", "sound", "alert"]
-        },
-        "GoogleAuth": {
-            "scopes": ["profile", "email"],
-            "serverClientId": "432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com"
-        }
-    }
+	"appId": "com.josexs.ct",
+	"appName": "CarsTournaments",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"CapacitorUpdater": {
+			"autoUpdate": true,
+			"autoUpdateUrl": "https://carstournaments.carsites.es/api/ota/getOtaAvailable/"
+		},
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		},
+		"GoogleAuth": {
+			"scopes": [
+				"profile",
+				"email"
+			],
+			"serverClientId": "432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com"
+		}
+	}
 }
