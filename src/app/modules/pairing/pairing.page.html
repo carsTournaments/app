@@ -4,6 +4,9 @@
     [backButtonRoute]="vm.backButtonRoute"
     [voteBody]="vm.voteBody"
     [voted]="vm.voted"
+    [rightButton]="vm.rightButton"
+    (report)="openReportModal()"
+    (share)="share()"
 ></pairing-header>
 
 <spinner [loading]="vm.loading"></spinner>

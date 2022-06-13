@@ -9,6 +9,10 @@ export class CarViewModel {
             state: true,
             route: '/tab/cars',
         },
+        rightButton: {
+            state: true,
+            icon: 'arrow-redo-outline',
+        },
     });
     user: User;
     car: Car;

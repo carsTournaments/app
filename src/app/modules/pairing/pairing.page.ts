@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController, ModalOptions } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
-import { PairingService, VoteService } from '@services';
+import { PairingService, SocialSharingService, VoteService } from '@services';
 import { ImagePipe } from '@pipes';
 import { ReportModalComponent } from '@components/report-modal/report-modal.component';
 
@@ -18,7 +18,8 @@ export class PairingPage implements OnInit {
         private pairingService: PairingService,
         private modalCtrl: ModalController,
         private imagePipe: ImagePipe,
-        private voteService: VoteService
+        private voteService: VoteService,
+        private socialSharingService: SocialSharingService
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -87,5 +88,22 @@ export class PairingPage implements OnInit {
         };
         const modal = await this.modalCtrl.create(options);
         modal.present();
+    }
+
+    share() {
+        this.socialSharingService.share(
+            `¡${this.vm.pairing.round.name} del torneo ${
+                this.vm.pairing.tournament.name
+            }! ${
+                this.vm.pairing.car1.brand.name +
+                ' ' +
+                this.vm.pairing.car1.model
+            } vs ${
+                this.vm.pairing.car2.brand.name +
+                ' ' +
+                this.vm.pairing.car2.model
+            }`,
+            `https://www.carstournaments.com/pairing/${this.vm.id}`
+        );
     }
 }

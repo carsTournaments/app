@@ -46,6 +46,7 @@ import {
     ReportService,
     RoundService,
     SettingsService,
+    SocialSharingService,
     StorageService,
     ToastIonicService,
     TournamentService,
@@ -138,6 +139,7 @@ const SERVICES = [
     WinnerService,
     GoogleAuthService,
     LikeService,
+    SocialSharingService,
 ];
 
 @NgModule({

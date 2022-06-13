@@ -5,6 +5,7 @@ import {
     ImageService,
     InscriptionService,
     LikeService,
+    SocialSharingService,
     UserService,
     VoteService,
 } from '@services';
@@ -34,7 +35,8 @@ export class CarPage implements OnInit {
         private voteService: VoteService,
         private userService: UserService,
         private alertService: AlertService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private socialSharingService: SocialSharingService
     ) {}
 
     async ngOnInit() {
@@ -207,5 +209,12 @@ export class CarPage implements OnInit {
                 this.vm.votes = data;
             },
         });
+    }
+
+    share() {
+        this.socialSharingService.share(
+            `${this.vm.car.brand.name} ${this.vm.car.model}`,
+            `https://www.carstournaments.com/car/${this.vm.id}`
+        );
     }
 }

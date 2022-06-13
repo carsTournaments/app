@@ -19,6 +19,7 @@ export { AdmobService } from './capacitor/admob/admob.service';
 export { AnalyticsService } from './capacitor/analytics/analytics.service';
 export { GoogleAuthService } from './capacitor/google-auth/google-auth.service';
 export { NotificationsPushService } from './capacitor/notifications-push/notifications-push.service';
+export { SocialSharingService } from './capacitor/social-sharing/social-sharing.service';
 
 // Ionic
 export { AlertService } from './ionic/alert-ionic.service';
