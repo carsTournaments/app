@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController, ModalOptions } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
-import { PairingService, SocialSharingService, VoteService } from '@services';
+import {
+    PairingService,
+    SocialSharingService,
+    UserService,
+    VoteService,
+} from '@services';
 import { ImagePipe } from '@pipes';
 import { ReportModalComponent } from '@components/report-modal/report-modal.component';
 
@@ -19,19 +24,17 @@ export class PairingPage implements OnInit {
         private modalCtrl: ModalController,
         private imagePipe: ImagePipe,
         private voteService: VoteService,
-        private socialSharingService: SocialSharingService
+        private socialSharingService: SocialSharingService,
+        private userService: UserService
     ) {}
 
     async ngOnInit(): Promise<void> {
         this.vm.loading = true;
         this.vm.id = this.route.snapshot.paramMap.get('id') as string;
-        // this.vm.user = this.userService.getUser();
-        // if (this.vm.user) {
-        //     this.vm.header.rightButton = {
-        //         state: true,
-        //         icon: 'alert-circle-outline',
-        //     };
-        // }
+        this.vm.user = this.userService.getUser();
+        if (this.vm.user) {
+            this.vm.reportState = true;
+        }
         this.getOne();
     }
 
