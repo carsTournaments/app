@@ -8,6 +8,7 @@ export class PairingViewModel {
         icon: 'arrow-redo-outline';
     };
     user: User;
+    reportState = false;
     pairing: Pairing;
     totalHeight = 500;
     image1: Image;

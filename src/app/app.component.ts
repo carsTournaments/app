@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
         private notificationsPushService: NotificationsPushService,
         private togglesService: TogglesService,
         private googleAuthService: GoogleAuthService,
-        public location: Location
+        private location: Location
     ) {
         this.initializeDeepLinks();
         this.analyticsService.start();
