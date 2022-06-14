@@ -16,9 +16,9 @@ export class PairingHeaderComponent implements OnInit {
     @Input() pairing: Pairing;
     @Input() images: { car1: Image; car2: Image };
     @Input() backButtonRoute: string;
-    @Input() rightButton: { state: boolean; icon: string };
     @Input() voteBody: Vote;
     @Input() voted: boolean;
+    @Input() reportState = false;
     @Output() share = new EventEmitter();
     @Output() report = new EventEmitter();
     image1: Image;

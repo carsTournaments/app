@@ -5,7 +5,7 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button color="light" fill="clear"
+      <ion-button *ngIf="reportState" color="light" fill="clear"
         (click)="report.emit()">
         <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
       </ion-button>
@@ -17,7 +17,7 @@
     </ion-buttons>
 
   </ion-toolbar>
-  <div class="sub-header">
+  <div class="sub-header" *ngIf="pairing">
     <p class="tournament-name">{{ pairing?.tournament.name }}</p>
     <p class="pairing-name">{{ pairing?.round.name }}</p>
     <p class="dates">28 MAY - 10 JUN</p>
