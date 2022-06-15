@@ -9,7 +9,7 @@ const config: CapacitorConfig = {
         CapacitorUpdater: {
             autoUpdate: true,
             autoUpdateUrl:
-                'https://carstournaments.carsites.es/api/ota/getOtaAvailable/',
+                'https://api.carstournaments.com/ota/getOtaAvailable/',
         },
         PushNotifications: {
             presentationOptions: ['badge', 'sound', 'alert'],

@@ -44,25 +44,6 @@ describe('RoundService', () => {
         expect(service).toBeTruthy();
     });
 
-    it('getAll', () => {
-        const data: RoundGetAllDto = {
-            page: 0,
-            pageSize: 0,
-            site: 'app',
-            order: [],
-        };
-        service.getAll(data).subscribe((response) => {
-            expect(response).not.toBe(null);
-            expect(JSON.stringify(response)).toEqual(
-                JSON.stringify(responsePaginator)
-            );
-        });
-        const req = httpTestingController.expectOne(
-            `${environment.urlApi}/rounds/getAll`
-        );
-        req.flush(responsePaginator);
-    });
-
     it('getAllOfTournament', () => {
         service.getAllOfTournament({ id: '1' }).subscribe((response) => {
             expect(response).not.toBe(null);

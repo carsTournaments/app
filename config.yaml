@@ -12,6 +12,6 @@ platforms:
 
                 entitlements:
                     - com.apple.developer.associated-domains:
-                          ['applinks:carstournaments.carsites.es']
+                          ['applinks:carstournaments.com']
     android:
         packageName: $PACKAGE_NAME

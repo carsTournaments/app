@@ -6,7 +6,7 @@
 	"plugins": {
 		"CapacitorUpdater": {
 			"autoUpdate": true,
-			"autoUpdateUrl": "https://carstournaments.carsites.es/api/ota/getOtaAvailable/"
+			"autoUpdateUrl": "https://api.carstournaments.com/ota/getOtaAvailable/"
 		},
 		"PushNotifications": {
 			"presentationOptions": [

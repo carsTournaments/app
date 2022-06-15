@@ -53,8 +53,10 @@ export class AccountPage {
     }
 
     onClickOption(item: OptionItemI): void {
-        this.analyticsService.logEvent(`dashboard_clickOption_${item.value}`);
         if (item.value) {
+            this.analyticsService.logEvent(
+                `dashboard_clickOption_${item.value}`
+            );
             if (item.value === 'changeName') {
                 this.changeName();
             } else if (item.value === 'changePassword') {
@@ -67,6 +69,9 @@ export class AccountPage {
                 this.logout();
             }
         } else {
+            this.analyticsService.logEvent(
+                `dashboard_clickOption_${item.route}`
+            );
             this.navCtrl.navigateForward(item.route);
         }
     }

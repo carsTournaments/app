@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:carstournaments.carsites.es</string>
+		<string>applinks:carstournaments.com</string>
 	</array>
 </dict>
 </plist>

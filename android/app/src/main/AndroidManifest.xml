@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="carstournaments.carsites.es"
+                    android:host="carstournaments.com"
                     android:scheme="https"
                 />
             </intent-filter>
