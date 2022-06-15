@@ -12,6 +12,7 @@ import { SharedModule } from '@shared/shared.module';
 import { ImagePipe } from '@shared/pipes';
 import { HttpClientModule } from '@angular/common/http';
 import { AdsenseModule } from 'ng2-adsense';
+import { appInitializerProviders } from '@core/initializers';
 
 @NgModule({
     declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { AdsenseModule } from 'ng2-adsense';
     providers: [
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         ImagePipe,
+        appInitializerProviders,
     ],
     bootstrap: [AppComponent],
 })

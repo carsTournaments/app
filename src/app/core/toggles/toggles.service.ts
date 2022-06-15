@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Toggle } from '@models';
 import { LocalStorageService } from '@services/various/local-storage.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TogglesService {
@@ -18,7 +17,7 @@ export class TogglesService {
     ) {}
 
     private get toggles(): Toggle[] {
-        if (!this._toggles) {
+        if (!this._toggles || this._toggles.length === 0) {
             this._toggles = this.store.get('toggles')
                 ? JSON.parse(this.store.get('toggles'))
                 : [];
@@ -39,10 +38,6 @@ export class TogglesService {
         });
     }
 
-    change(): Observable<Toggle[]> {
-        return this.change$.pipe(share());
-    }
-
     set(toggles: Toggle[]) {
         this.save(toggles);
         return this;
@@ -53,20 +48,13 @@ export class TogglesService {
     }
 
     async isActiveToggle(name: string): Promise<boolean> {
-        if (this.toggles.length === 0) {
-            await this.getInitialsToggles();
-        }
         const toggle = this.toggles.find((t) => t.name === name);
+        console.log(name, this.toggles);
         return toggle ? toggle.state : false;
-    }
-
-    getToggles(): Toggle[] {
-        return this.toggles;
     }
 
     private save(toggles?: Toggle[]): void {
         this._toggles = [];
-
         if (toggles.length === 0) {
             this.store.remove('toggles');
         } else {
