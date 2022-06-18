@@ -9,10 +9,10 @@ import { SwiperOptions } from 'swiper';
 })
 export class TournamentInfoComponent {
     @Input() tournament: Tournament;
-    @Input() cols: string;
     @Input() buttonInscription: boolean;
     @Input() inscriptions: Inscription[] = [];
     @Output() inscriptionCarClick: EventEmitter<void> = new EventEmitter();
+    cols = '4';
     slideOpts: SwiperOptions = {
         slidesPerView: 6.1,
         spaceBetween: -10,

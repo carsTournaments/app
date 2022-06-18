@@ -32,7 +32,6 @@ export class TournamentViewModel {
         tournamentId: '',
     };
     myCars: InscriptionGetMyCarsUserForInscriptionResponse;
-    cols = '6';
     loading = {
         getOne: true,
         getInscriptionsOfTournament: true,

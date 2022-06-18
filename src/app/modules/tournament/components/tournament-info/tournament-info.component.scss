@@ -2,10 +2,6 @@
     margin-bottom: -20px;
 }
 
-small {
-    font-weight: 900;
-}
-
 .title {
     font-size: 1.5rem;
     font-weight: 900;
@@ -35,4 +31,18 @@ small {
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: cover !important;
+}
+
+.tournament-info-value {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.tournament-info-key {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.border-right {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }

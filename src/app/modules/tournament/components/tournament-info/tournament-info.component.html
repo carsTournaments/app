@@ -1,157 +1,145 @@
 <ion-card mode="ios">
-    <ion-card-title class="title ion-text-center">
-        {{ tournament?.name }}
+  <ion-card-title class="title ion-text-center">
+    {{ tournament?.name }}
 
-        <ng-container>
-            <div class="custom-chip custom-chip-primary">
-                <span *ngIf="tournament.status === 'Completed'">
-                    Completado</span
-                >
-                <span *ngIf="tournament.status === 'InProgress'">
-                    {{ tournament.rounds | lastRound }}
-                </span>
+    <ng-container>
+      <div class="custom-chip custom-chip-primary">
+        <span *ngIf="tournament.status === 'Completed'">
+          Completado</span>
+        <span *ngIf="tournament.status === 'InProgress'">
+          {{ tournament.rounds | lastRound }}
+        </span>
 
-                <span
-                    *ngIf="
+        <span *ngIf="
                         tournament.status === 'Todo' &&
                         tournament.inscriptions.length ===
                             tournament.maxParticipants
-                    "
-                >
-                    Inscripciones completadas
-                </span>
-            </div>
-        </ng-container>
-        <hr *ngIf="inscriptions && inscriptions.length > 0" />
-
-        <div class="images-inscriptions">
-            <ng-container *ngIf="inscriptions.length < 8">
-                <ion-card
-                    *ngFor="let inscription of inscriptions"
-                    button
-                    class="image-inscription"
-                    [routerLink]="['/car', inscription.car._id]"
-                >
-                    <div
-                        class="image-inscription-div"
-                        style="background-image: url({{
-                            inscription.car?.image?.url | image
-                        }})"
-                    ></div>
-                </ion-card>
-            </ng-container>
-
-            <swiper [config]="slideOpts" *ngIf="inscriptions.length >= 8">
-                <ng-template
-                    swiperSlide
-                    *ngFor="let inscription of inscriptions"
-                >
-                    <ion-card
-                        button
-                        class="image-inscription"
-                        [routerLink]="['/car', inscription.car._id]"
-                    >
-                        <div
-                            class="image-inscription-div"
-                            style="background-image:url({{
-                                inscription.car?.image?.url | image
-                            }})"
-                        ></div>
-                    </ion-card>
-                </ng-template>
-            </swiper>
-        </div>
-    </ion-card-title>
-    <hr />
-    <ion-card-content style="padding: 0.5rem; padding-bottom: 0.5rem">
-        <ion-row>
-            <ion-col [size]="cols" class="ion-text-center">
-                <small>Inicio</small>
-                <p>
-                    {{
-                        tournament.startDate
-                            | dateToTimeAgo: true
-                            | firstLetterCase
-                    }}
-                </p>
-            </ion-col>
-            <ion-col
-                *ngIf="tournament.endDate"
-                [size]="cols"
-                class="ion-text-center"
-            >
-                <small>Fin</small>
-                <p>
-                    {{
-                        tournament.endDate
-                            | dateToTimeAgo: true
-                            | firstLetterCase
-                    }}
-                </p>
-            </ion-col>
-            <ion-col
-                *ngIf="!tournament.endDate"
-                [size]="cols"
-                class="ion-text-center"
-            >
-                <small>Duracion</small>
-                <p>{{ tournament.durationDays }} dias</p>
-            </ion-col>
-            <ion-col [size]="cols" class="ion-text-center">
-                <small>Participantes</small>
-                <p>
-                    <span
-                        [countUp]="tournament?.inscriptions.length"
-                        [duration]="1500"
-                    ></span
-                    >/<span
-                        [countUp]="tournament.maxParticipants"
-                        [duration]="1500"
-                    ></span>
-                </p>
-            </ion-col>
-            <ion-col
-                *ngIf="tournament.status !== 'Todo'"
-                [size]="cols"
-                class="ion-text-center"
-            >
-                <small>Votos</small>
-                <p>
-                    <span
-                        [countUp]="tournament?.votes.length"
-                        [duration]="1500"
-                    ></span>
-                </p>
-            </ion-col>
-        </ion-row>
-
-        <ng-container *ngIf="tournament.info && tournament.info !== ''">
-            <hr />
-            <p
-                style="padding-top: 1rem"
-                class="ion-text-center"
-                [ngStyle]="{
-                    'padding-bottom': buttonInscription ? '0px' : '10px'
-                }"
-            >
-                {{ tournament.info }}
-            </p>
-        </ng-container>
-
-        <tournament-requisites
-            [buttonInscription]="buttonInscription"
-            [tournament]="tournament"
-        >
-        </tournament-requisites>
-    </ion-card-content>
-
-    <ng-container *ngIf="buttonInscription">
-        <hr />
-        <ion-button
-            class="ion-margin"
-            expand="block"
-            (click)="inscriptionCarClick.emit()"
-            >Inscribirse
-        </ion-button>
+                    ">
+          Inscripciones completadas
+        </span>
+      </div>
     </ng-container>
+    <hr *ngIf="inscriptions && inscriptions.length > 0" />
+
+    <div class="images-inscriptions">
+      <ng-container *ngIf="inscriptions.length < 8">
+        <ion-card *ngFor="let inscription of inscriptions" button class="image-inscription"
+          [routerLink]="['/car', inscription.car._id]">
+          <div class="image-inscription-div" style="background-image: url({{
+                            inscription.car?.image?.url | image
+                        }})"></div>
+        </ion-card>
+      </ng-container>
+
+      <swiper [config]="slideOpts" *ngIf="inscriptions.length >= 8">
+        <ng-template swiperSlide *ngFor="let inscription of inscriptions">
+          <ion-card button class="image-inscription" [routerLink]="['/car', inscription.car._id]">
+            <div class="image-inscription-div" style="background-image:url({{
+                                inscription.car?.image?.url | image
+                            }})"></div>
+          </ion-card>
+        </ng-template>
+      </swiper>
+    </div>
+  </ion-card-title>
+  <hr />
+  <ion-card-content style="padding: 0.5rem; padding-bottom: 0.5rem">
+    <ng-container *ngIf="tournament.status === 'InProgress' || tournament.status === 'Completed'">
+      <ion-row>
+        <ion-col [size]="cols" class="ion-text-center border-right">
+          <p class="tournament-info-value">
+            {{
+            tournament.startDate
+            | momentFormat: 'DD MMMM'
+            }}
+          </p>
+          <small class="car-info-key">Inicio</small>
+        </ion-col>
+
+        <ion-col *ngIf="tournament.endDate" [size]="cols" class="ion-text-center border-right">
+          <p class="tournament-info-value">
+            {{
+            tournament.endDate
+            | momentFormat: 'DD MMMM'
+            }}
+          </p>
+          <small class="car-info-key">Fin</small>
+        </ion-col>
+
+        <ion-col [size]="cols" class="ion-text-center">
+          <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
+          <small class="car-info-key">Duracion</small>
+        </ion-col>
+      </ion-row>
+      <hr style="margin:0.5rem">
+      <ion-row>
+
+        <ion-col [size]="cols" class="ion-text-center border-right">
+          <p class="tournament-info-value">
+            <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
+              [countUp]="tournament.maxParticipants" [duration]="1500"></span>
+          </p>
+          <small class="car-info-key">Participantes</small>
+        </ion-col>
+
+        <ion-col *ngIf="tournament.rounds && tournament.rounds.length > 0" [size]="cols"
+          class="ion-text-center border-right">
+          <p class="tournament-info-value">
+            <span [countUp]="tournament.rounds.length" [duration]="1500"></span>
+          </p>
+          <small class="car-info-key">Rondas</small>
+        </ion-col>
+
+        <ion-col [size]="cols" class="ion-text-center">
+          <p class="tournament-info-value">
+            <span [countUp]="tournament?.votes.length" [duration]="1500"></span>
+          </p>
+          <small class="car-info-key">Votos</small>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+
+    <ng-container *ngIf="tournament.status === 'Todo'">
+      <ion-col [size]="cols" class="ion-text-center border-right">
+        <p class="tournament-info-value">
+          {{
+          tournament.startDate
+          | momentFormat: 'DD MMMM'
+          }}
+        </p>
+        <small class="car-info-key">Inicio</small>
+      </ion-col>
+
+      <ion-col [size]="cols" class="ion-text-center border-right">
+        <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
+        <small class="car-info-key">Duracion</small>
+      </ion-col>
+
+      <ion-col [size]="cols" class="ion-text-center">
+        <p class="tournament-info-value">
+          <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
+            [countUp]="tournament.maxParticipants" [duration]="1500"></span>
+        </p>
+        <small class="car-info-key">Participantes</small>
+      </ion-col>
+    </ng-container>
+
+    <ng-container *ngIf="tournament.info && tournament.info !== ''">
+      <hr />
+      <p style="padding-top: 1rem" class="ion-text-center" [ngStyle]="{
+                    'padding-bottom': buttonInscription ? '0px' : '10px'
+                }">
+        {{ tournament.info }}
+      </p>
+    </ng-container>
+
+    <tournament-requisites [buttonInscription]="buttonInscription" [tournament]="tournament">
+    </tournament-requisites>
+  </ion-card-content>
+
+  <ng-container *ngIf="buttonInscription">
+    <hr />
+    <ion-button class="ion-margin" expand="block" (click)="inscriptionCarClick.emit()">Inscribirse
+    </ion-button>
+  </ng-container>
 </ion-card>
