@@ -1,111 +1,74 @@
-<div class="warapper-calendar-tournaments">
-    <h2 class="title">En curso</h2>
+<div class="warapper-calendar-tournaments" *ngIf="tournaments.length > 0">
+  <h2 class="title">Hoy empieza...</h2>
 
-    <!-- TORNEO -->
-    <div
-        class="tournament"
-        [ngClass]="{ 'card-no-last-item': i !== rounds.length - 1 }"
-        *ngFor="let item of rounds; let i = index"
-    >
-        <ion-card
-            mode="ios"
-            class="ion-no-margin card-tournament"
-            button
-            [routerLink]="['/tournament/', item.tournament?._id]"
-        >
-            <ion-item lines="none">
-                <ion-avatar class="avatar-tournament">
-                    <img [src]="item.tournament.image?.url | image" />
-                </ion-avatar>
-                <ion-label>
-                    <h2 class="title-tournament">{{ item.tournament.name }}</h2>
-                    <div>
-                        <span class="title-round">{{ item.name }}</span>
-                        <span class="title-dates">
-                            {{
-                                item.startDate
-                                    | momentFormat: 'MMMM'
-                                    | truncateText: 3:false
-                            }}
-                            {{ item.startDate | momentFormat: 'DD' }} -
-                            {{
-                                item.endDate
-                                    | momentFormat: 'MMMM'
-                                    | truncateText: 3:false
-                            }}
-                            {{ item.endDate | momentFormat: 'DD' }}</span
-                        >
-                    </div>
-                </ion-label>
-            </ion-item>
-        </ion-card>
+  <!-- TORNEO -->
+  <div class="tournament" [ngClass]="{ 'card-no-last-item': i !== tournaments.length - 1 }"
+    *ngFor="let item of tournaments; let i = index">
 
-        <!-- EMPAREJAMIENTOS -->
-        <ion-row>
-            <ion-col
-                size="12"
-                sizeMd="6"
-                sizeLg="4"
-                class="col-pairing"
-                *ngFor="let pairing of item.pairings"
-            >
-                <ion-card
-                    mode="ios"
-                    class="pairings ion-no-margin"
-                    button
-                    [routerLink]="['/pairing/', pairing._id]"
-                >
-                    <ion-card-content class="ion-no-padding wrapper-item">
-                        <div class="left-column">
-                            <div>
-                                <img
-                                    class="image-car image-car-1"
-                                    [src]="
+    <calendar-item-tournament [tournament]="item"  [startDate]="item.startDate"
+      [endDate]="item.endDate"></calendar-item-tournament>
+
+  </div>
+</div>
+
+<div class="warapper-calendar-tournaments" *ngIf="rounds.length > 0">
+  <h2 class="title">En curso</h2>
+
+  <!-- TORNEO -->
+  <div class="tournament" [ngClass]="{ 'card-no-last-item': i !== rounds.length - 1 }"
+    *ngFor="let item of rounds; let i = index">
+
+    <calendar-item-tournament [tournament]="item.tournament" [round]="item" [startDate]="item.startDate"
+      [endDate]="item.endDate"></calendar-item-tournament>
+    <!-- EMPAREJAMIENTOS -->
+    <ion-row *ngIf="item.pairings">
+      <ion-col size="12" sizeMd="6" sizeLg="4" class="col-pairing" *ngFor="let pairing of item.pairings">
+        <ion-card mode="ios" class="pairings ion-no-margin" button [routerLink]="['/pairing/', pairing._id]">
+          <ion-card-content class="ion-no-padding wrapper-item">
+            <div class="left-column">
+              <div>
+                <img class="image-car image-car-1" [src]="
                                         pairing.car1.brand.image?.url | image
-                                    "
-                                />
-                            </div>
-                            <div class="brand-model ion-text-center">
-                                <div>
-                                    {{
-                                        pairing.car1.brand?.name | truncateText
-                                    }}
-                                </div>
-                                <div>
-                                    {{ pairing.car1.model | truncateText }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center-column">
-                            <div class="vs">
-                                {{ pairing.votes | votes: pairing.car1._id }}-{{
-                                    pairing.votes | votes: pairing.car2._id
-                                }}
-                            </div>
-                        </div>
-                        <div class="right-column">
-                            <div>
-                                <img
-                                    class="image-car image-car-2"
-                                    [src]="
+                                    " />
+              </div>
+              <div class="brand-model ion-text-center">
+                <div>
+                  {{
+                  pairing.car1.brand?.name | truncateText
+                  }}
+                </div>
+                <div>
+                  {{ pairing.car1.model | truncateText }}
+                </div>
+              </div>
+            </div>
+            <div class="center-column">
+              <div class="vs">
+                {{ pairing.votes | votes: pairing.car1._id }}-{{
+                pairing.votes | votes: pairing.car2._id
+                }}
+              </div>
+            </div>
+            <div class="right-column">
+              <div>
+                <img class="image-car image-car-2" [src]="
                                         pairing.car2.brand.image?.url | image
-                                    "
-                                />
-                            </div>
-                            <div class="brand-model ion-text-center">
-                                <div>
-                                    {{
-                                        pairing.car2.brand?.name | truncateText
-                                    }}
-                                </div>
-                                <div>
-                                    {{ pairing.car2.model | truncateText }}
-                                </div>
-                            </div>
-                        </div>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </div>
+                                    " />
+              </div>
+              <div class="brand-model ion-text-center">
+                <div>
+                  {{
+                  pairing.car2.brand?.name | truncateText
+                  }}
+                </div>
+                <div>
+                  {{ pairing.car2.model | truncateText }}
+                </div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
 </div>
