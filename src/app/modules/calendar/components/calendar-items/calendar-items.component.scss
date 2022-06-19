@@ -15,39 +15,38 @@
     .tournament {
         padding-top: 0.75rem;
         padding-bottom: 0.5rem;
+    }
+    .card-tournament {
+        margin: 0.5rem;
+    }
 
-        .card-tournament {
-            margin: 0.5rem;
-        }
+    .avatar-tournament {
+        margin-right: 1rem;
+        width: 40px;
+        height: 40px;
+    }
 
-        .avatar-tournament {
-            margin-right: 1rem;
-            width: 40px;
-            height: 40px;
-        }
+    .title-tournament {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
 
-        .title-tournament {
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 0;
-        }
+    .title-round {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--ion-color-primary);
+        margin-right: 0.5rem;
+        text-transform: uppercase;
+    }
 
-        .title-round {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--ion-color-primary);
-            margin-right: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .title-dates {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.5);
-            margin-right: 0.5rem;
-            text-transform: uppercase;
-        }
+    .title-dates {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        margin-right: 0.5rem;
+        text-transform: uppercase;
     }
 
     .pairings {

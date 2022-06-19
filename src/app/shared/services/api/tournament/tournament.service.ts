@@ -27,9 +27,14 @@ export class TournamentService {
             .pipe(take(1));
     }
 
-    getCalendarItems(date: string): Observable<Round[]> {
+    getCalendarItems(
+        date: string
+    ): Observable<{ rounds: Round[]; tournaments: Tournament[] }> {
         return this.httpClient
-            .post<Round[]>(`${this.url}/getCalendarItems`, { date })
+            .post<{ rounds: Round[]; tournaments: Tournament[] }>(
+                `${this.url}/getCalendarItems`,
+                { date }
+            )
             .pipe(take(1));
     }
 

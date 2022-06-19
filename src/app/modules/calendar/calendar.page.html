@@ -7,7 +7,7 @@
                 [dateSelected]="vm.dateSelected"
                 (dateSelectedEvent)="onDateSelected($event)"
             ></calendar-dates>
-            <calendar-items [rounds]="vm.rounds"></calendar-items>
+            <calendar-items [rounds]="vm.rounds" [tournaments]="vm.tournaments"></calendar-items>
         </ion-col>
     </ion-row>
 </ion-content>
