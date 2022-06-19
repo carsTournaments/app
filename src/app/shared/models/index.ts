@@ -3,6 +3,7 @@ export { Car } from './car.model';
 export { Image } from './image.model';
 export { Inscription } from './inscription.model';
 export { Like } from './like.model';
+export { Literal } from './literal.model';
 export { Pairing } from './pairing.model';
 export { Report } from './report.model';
 export { Round } from './round.model';

@@ -71,7 +71,7 @@ import {
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { TogglesService } from '@core/toggles/toggles.service';
+import { ToggleService } from '@core/services/toggle.service';
 import { AdsenseModule } from 'ng2-adsense';
 
 const MODULES = [
@@ -131,7 +131,7 @@ const SERVICES = [
     SettingsService,
     StorageService,
     ToastIonicService,
-    TogglesService,
+    ToggleService,
     TournamentService,
     UserService,
     UtilsService,

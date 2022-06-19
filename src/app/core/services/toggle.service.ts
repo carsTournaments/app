@@ -6,7 +6,7 @@ import { LocalStorageService } from '@services/various/local-storage.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class TogglesService {
+export class ToggleService {
     private change$ = new BehaviorSubject<Toggle[]>([]);
     private _toggles?: Toggle[] = [];
     private path = `${environment.urlApi}/toggles`;

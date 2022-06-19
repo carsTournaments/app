@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { User } from '@models';
 import { CapacitorUpdater } from '@capgo/capacitor-updater';
-import { TogglesService } from '@core/toggles/toggles.service';
+import { ToggleService } from '@core/services/toggle.service';
 import {
     AlertService,
     AnalyticsService,
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
         private notificationsPushService: NotificationsPushService,
-        private togglesService: TogglesService,
+        private togglesService: ToggleService,
         private googleAuthService: GoogleAuthService,
         private location: Location
     ) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TogglesService } from '@core/toggles/toggles.service';
+import { ToggleService } from '@core/services/toggle.service';
+import { TabI } from '@interfaces/tab.interface';
 import { AnalyticsService } from '@services';
-import { TabI } from './../../shared/interfaces/tab.interface';
 
 @Component({
     selector: 'app-tabs',
@@ -12,7 +12,7 @@ export class TabsPage implements OnInit {
     tabs = [];
     constructor(
         private analyticsService: AnalyticsService,
-        private togglesService: TogglesService
+        private togglesService: ToggleService
     ) {}
 
     ngOnInit() {
