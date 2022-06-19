@@ -54,7 +54,6 @@ export class PairingHeaderComponent implements OnInit {
     onVoteSuccess(vote: Vote) {
         const car = vote.car === this.pairing.car1._id ? 'car1' : 'car2';
         this.voteService.setValidVote(vote);
-        this.pairing.votes.push(vote);
         this.setScore(car);
         this.voted = true;
         this.toastIonicService.info(

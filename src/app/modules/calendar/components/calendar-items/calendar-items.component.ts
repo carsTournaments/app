@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Round } from '@models';
+import { Round, Tournament } from '@models';
 
 @Component({
     selector: 'calendar-items',
@@ -8,4 +8,5 @@ import { Round } from '@models';
 })
 export class CalendarItemsComponent {
     @Input() rounds: Round[] = [];
+    @Input() tournaments: Tournament[] = [];
 }

@@ -17,7 +17,8 @@ export class CalendarPage {
             .getCalendarItems(this.vm.dateSelected)
             .subscribe({
                 next: (response) => {
-                    this.vm.rounds = response;
+                    this.vm.rounds = response.rounds;
+                    this.vm.tournaments = response.tournaments;
                     this.vm.loading = false;
                 },
             });
