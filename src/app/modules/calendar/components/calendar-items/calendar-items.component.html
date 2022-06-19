@@ -1,5 +1,5 @@
 <div class="warapper-calendar-tournaments" *ngIf="tournaments.length > 0">
-  <h2 class="title">Hoy empieza...</h2>
+  <h2 class="title">{{ 'calendar.titleTournamentTodo' | translate }}</h2>
 
   <!-- TORNEO -->
   <div class="tournament" [ngClass]="{ 'card-no-last-item': i !== tournaments.length - 1 }"
@@ -12,7 +12,7 @@
 </div>
 
 <div class="warapper-calendar-tournaments" *ngIf="rounds.length > 0">
-  <h2 class="title">En curso</h2>
+  <h2 class="title">{{ 'calendar.titleTournamentInProgress' | translate }}</h2>
 
   <!-- TORNEO -->
   <div class="tournament" [ngClass]="{ 'card-no-last-item': i !== rounds.length - 1 }"

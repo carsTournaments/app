@@ -5,10 +5,7 @@ import { ToggleService } from '@core/services/toggle.service';
     providedIn: 'root',
 })
 export class StartupService {
-    constructor(
-        private togglesService: ToggleService
-    ) // private literalService: LiteralService
-    {}
+    constructor(private togglesService: ToggleService) {}
 
     load() {
         return this.togglesService.getInitialsToggles();

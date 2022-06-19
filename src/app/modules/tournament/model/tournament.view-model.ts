@@ -11,7 +11,7 @@ export class TournamentViewModel {
     header = new Header({
         title: 'Torneo',
         segments: {
-            items: ['Info', 'Inscripciones', 'Rondas'],
+            items: ['', '', ''],
             selected: 0,
         },
         backButton: {
