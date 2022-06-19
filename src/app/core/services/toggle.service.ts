@@ -49,7 +49,6 @@ export class ToggleService {
 
     async isActiveToggle(name: string): Promise<boolean> {
         const toggle = this.toggles.find((t) => t.name === name);
-        console.log(name, this.toggles);
         return toggle ? toggle.state : false;
     }
 

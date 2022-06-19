@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
 import { Car, Inscription } from '@models';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ImagePipe } from '@pipes';
 import {
     InscriptionService,
@@ -20,6 +21,7 @@ import { TournamentViewModel } from './model/tournament.view-model';
     selector: 'page-tournament',
     templateUrl: 'tournament.page.html',
     styleUrls: ['./tournament.page.scss'],
+    providers: [TranslatePipe],
 })
 export class TournamentPage {
     @ViewChild(IonContent, { static: false }) content: IonContent;

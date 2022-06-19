@@ -8,6 +8,7 @@ import { TournamentMyInscriptionsComponent } from './components/tournament-my-in
 import { TournamentRoundsComponent } from './components/tournament-rounds/tournament-rounds.component';
 import { TournamentWinnersComponent } from './components/tournament-winners/tournament-winners.component';
 import { SharedModule } from '@shared/shared.module';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -22,6 +23,6 @@ import { SharedModule } from '@shared/shared.module';
         TournamentRoundsComponent,
         TournamentWinnersComponent,
     ],
-    providers: [ImagePipe],
+    providers: [ImagePipe, TranslatePipe],
 })
 export class TournamentModule {}

@@ -6,9 +6,9 @@ import { ToggleService } from '@core/services/toggle.service';
 })
 export class StartupService {
     constructor(
-        private togglesService: ToggleService,
-        private literalService: LiteralService
-    ) {}
+        private togglesService: ToggleService
+    ) // private literalService: LiteralService
+    {}
 
     load() {
         return this.togglesService.getInitialsToggles();

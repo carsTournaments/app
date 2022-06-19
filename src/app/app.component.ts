@@ -14,6 +14,7 @@ import {
     NotificationsPushService,
     SettingsService,
 } from '@services';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-root',
@@ -32,7 +33,8 @@ export class AppComponent implements OnInit {
         private notificationsPushService: NotificationsPushService,
         private togglesService: ToggleService,
         private googleAuthService: GoogleAuthService,
-        private location: Location
+        private location: Location,
+        private translate: TranslateService
     ) {
         this.initializeDeepLinks();
         this.analyticsService.start();
@@ -40,6 +42,7 @@ export class AppComponent implements OnInit {
     }
 
     async ngOnInit(): Promise<void> {
+        this.translate.setDefaultLang('es');
         await this.storageService.startDB();
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
