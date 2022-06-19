@@ -2,36 +2,36 @@
   <ion-row>
     <ion-col size="4" class="ion-text-center border-right">
       <p class="car-info-value">{{ car.year }}</p>
-      <small class="car-info-key">Año</small>
+      <small class="car-info-key">{{ 'car.infoYear' | translate }}</small>
     </ion-col>
 
     <ion-col size="4" class="ion-text-center border-right">
       <p class="car-info-value">
         {{ car.fuel !== '' ? car.fuel : 'N/D' }}
       </p>
-      <small class="car-info-key">Combustible</small>
+      <small class="car-info-key">{{ 'car.infoFuel' | translate }}</small>
     </ion-col>
 
     <ion-col size="4" class="ion-text-center">
       <p class="car-info-value">{{ car.traction }}</p>
-      <small>Traccion</small>
+      <small class="car-info-key">{{ 'car.infoTraction' | translate }}</small>
     </ion-col>
   </ion-row>
   <hr style="margin:0.5rem">
   <ion-row>
     <ion-col size="4" class="ion-text-center border-right">
       <p class="car-info-value">{{ car.cc }}</p>
-      <small class="car-info-key">CC</small>
+      <small class="car-info-key">{{ 'car.infoCC' | translate }}</small>
     </ion-col>
 
     <ion-col size="4" class="ion-text-center border-right">
       <p class="car-info-value">{{ car.cv }}</p>
-      <small class="car-info-key">CV</small>
+      <small class="car-info-key">{{ 'car.infoCV' | translate }}</small>
     </ion-col>
 
     <ion-col size="4" class="ion-text-center">
       <p class="car-info-value">{{ car.stock ? 'Si' : 'No' }}</p>
-      <small class="car-info-key">De serie</small>
+      <small class="car-info-key">{{ 'car.infoStock' | translate }}</small>
     </ion-col>
   </ion-row>
 </ng-container>

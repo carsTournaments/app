@@ -10,9 +10,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SharedModule } from '@shared/shared.module';
 import { ImagePipe } from '@shared/pipes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AdsenseModule } from 'ng2-adsense';
 import { appInitializerProviders } from '@core/initializers';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { CustomTranslateLoader } from '@core/bootstrap/custom-translate-loader';
 
 @NgModule({
     declarations: [AppComponent],
@@ -33,7 +35,15 @@ import { appInitializerProviders } from '@core/initializers';
             enabled: environment.production,
             registrationStrategy: 'registerWhenStable:30000',
         }),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useClass: CustomTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
     ],
+    exports: [TranslateModule],
     providers: [
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         ImagePipe,

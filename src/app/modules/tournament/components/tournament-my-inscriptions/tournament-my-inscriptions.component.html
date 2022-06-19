@@ -1,39 +1,21 @@
 <ion-card mode="ios" *ngIf="myCars?.inscribed.length > 0">
-    <ion-card-title
-        class="ion-text-center"
-        style="padding-top: 1rem; font-size: 18px"
-    >
-        {{
-            myCars?.inscribed.length > 1
-                ? 'Tus coches inscritos'
-                : 'Tu coche inscrito'
-        }}
-    </ion-card-title>
-    <hr />
-    <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
-        <ion-list>
-            <ion-item
-                color="light"
-                style="margin: 0.5rem"
-                class="option-item"
-                [button]="true"
-                lines="none"
-                detail="false"
-                *ngFor="let car of myCars?.inscribed"
-                (click)="confirmDeleteInscriptionClick.emit(car)"
-            >
-                <ion-avatar slot="start" class="avatar-border">
-                    <img [src]="car.image?.url | image" />
-                </ion-avatar>
-                <ion-label style="font-size: 0.9rem"
-                    >{{ car.brand.name }} {{ car.model }}</ion-label
-                >
-                <ion-icon
-                    style="font-size: 1.2rem"
-                    slot="end"
-                    name="close"
-                ></ion-icon>
-            </ion-item>
-        </ion-list>
-    </ion-card-content>
+  <ion-card-title class="ion-text-center" style="padding-top: 1rem; font-size: 18px">
+    <span *ngIf="myCars?.inscribed.length > 1">{{'tournament.youCarsInscribed' | translate}}</span>
+    <span *ngIf="myCars?.inscribed.length === 1">{{'tournament.youCarInscribed' | translate}}</span>
+  </ion-card-title>
+  <hr />
+  <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
+    <ion-list>
+      <ion-item color="light" style="margin: 0.5rem" class="option-item" [button]="true" lines="none" detail="false"
+        *ngFor="let car of myCars?.inscribed" (click)="confirmDeleteInscriptionClick.emit(car)">
+        <ion-avatar slot="start" class="avatar-border">
+          <img [src]="car.image?.url | image" />
+        </ion-avatar>
+        <ion-label style="font-size: 0.9rem">
+          {{ car.brand.name }} {{ car.model }}
+        </ion-label>
+        <ion-icon style="font-size: 1.2rem" slot="end" name="close"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
 </ion-card>

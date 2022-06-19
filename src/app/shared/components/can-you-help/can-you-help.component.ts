@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TogglesService } from '@core/toggles/toggles.service';
+import { ToggleService } from '@core/services/toggle.service';
 import { Platform } from '@ionic/angular';
 import { AdmobService } from '@services';
 
@@ -13,7 +13,7 @@ export class CanYouHelpComponent implements OnInit {
     constructor(
         private admobService: AdmobService,
         private platform: Platform,
-        private togglesService: TogglesService
+        private togglesService: ToggleService
     ) {}
 
     ngOnInit() {

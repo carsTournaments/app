@@ -3,7 +3,7 @@ import { User } from '@models';
 
 export class MyDataViewModel {
     header = new Header({
-        title: 'Mis datos',
+        title: '',
         backButton: {
             state: true,
             route: '/tab/account',

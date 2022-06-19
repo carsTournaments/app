@@ -9,11 +9,13 @@ import {
     LikeService,
 } from '@services';
 import { CarsViewModel } from './model/cars.view-model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-cars',
     templateUrl: 'cars.page.html',
     styleUrls: ['./cars.page.scss'],
+    providers: [TranslatePipe],
 })
 export class CarsPage {
     vm = new CarsViewModel();
@@ -24,10 +26,12 @@ export class CarsPage {
         private brandService: BrandService,
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
-        private actionSheetService: ActionSheetIonicService
+        private actionSheetService: ActionSheetIonicService,
+        private translatePipe: TranslatePipe
     ) {}
 
     ionViewWillEnter(): void {
+        this.vm.header.title = this.translatePipe.transform('cars.title');
         this.vm.loading.getCars = true;
         this.getCars();
         this.getTopSites();

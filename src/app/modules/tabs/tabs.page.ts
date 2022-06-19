@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TogglesService } from '@core/toggles/toggles.service';
+import { ToggleService } from '@core/services/toggle.service';
+import { TabI } from '@interfaces/tab.interface';
 import { AnalyticsService } from '@services';
-import { TabI } from './../../shared/interfaces/tab.interface';
 
 @Component({
     selector: 'app-tabs',
@@ -12,7 +12,7 @@ export class TabsPage implements OnInit {
     tabs = [];
     constructor(
         private analyticsService: AnalyticsService,
-        private togglesService: TogglesService
+        private togglesService: ToggleService
     ) {}
 
     ngOnInit() {
@@ -23,25 +23,21 @@ export class TabsPage implements OnInit {
         this.tabs = [];
         const items: TabI[] = [
             {
-                name: 'Torneos',
                 route: 'tournaments',
                 icon: 'list-outline',
                 toggle: 'tab_tournaments',
             },
             {
-                name: 'Calendario',
                 route: 'calendar',
                 icon: 'calendar-outline',
                 toggle: 'tab_calendar',
             },
             {
-                name: 'Coches',
                 route: 'cars',
                 icon: 'car-outline',
                 toggle: 'tab_cars',
             },
             {
-                name: 'Tu cuenta',
                 route: 'account',
                 icon: 'person-circle-outline',
                 toggle: 'tab_account',
