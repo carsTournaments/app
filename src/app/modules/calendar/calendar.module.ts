@@ -14,8 +14,8 @@ import { CalendarItemTournamentComponent } from './components/calendar-item-tour
     declarations: [
         CalendarPage,
         CalendarDatesComponent,
-      CalendarItemsComponent,
-      CalendarItemTournamentComponent,
+        CalendarItemsComponent,
+        CalendarItemTournamentComponent,
     ],
 })
 export class CalendarModule {}
