@@ -8,11 +8,13 @@ import {
     AnalyticsService,
 } from '@services';
 import { AccountViewModel } from './model/account.view-model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-account',
     templateUrl: 'account.page.html',
     styleUrls: ['./account.page.scss'],
+    providers: [TranslatePipe],
 })
 export class AccountPage {
     vm = new AccountViewModel();
@@ -23,7 +25,8 @@ export class AccountPage {
         private userService: UserService,
         private navCtrl: NavController,
         private alertService: AlertService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private translatePipe: TranslatePipe
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -35,6 +38,7 @@ export class AccountPage {
         this.vm.user = this.userService.getUser();
         if (this.vm.user) {
             this.getResume();
+            this.setOptions();
             this.logged = true;
         } else {
             this.logged = false;
@@ -50,6 +54,49 @@ export class AccountPage {
             },
             error: (err) => console.error(err),
         });
+    }
+
+    setOptions() {
+        this.vm.header.title = this.translatePipe.transform('account.title');
+        this.vm.options = [
+            {
+                name: this.translatePipe.transform('account.itemTitleMyData'),
+                subtitle: this.translatePipe.transform(
+                    'account.itemSubtitleMyData'
+                ),
+                route: 'my-data',
+            },
+            {
+                name: this.translatePipe.transform('account.itemTitleGarage'),
+                subtitle: this.translatePipe.transform(
+                    'account.itemSubtitleGarage'
+                ),
+                route: 'garage',
+            },
+            {
+                name: this.translatePipe.transform(
+                    'account.itemTitleInscriptions'
+                ),
+                subtitle: this.translatePipe.transform(
+                    'account.itemSubtitleInscriptions'
+                ),
+                route: 'inscriptions',
+            },
+            {
+                name: this.translatePipe.transform('account.itemTitleLikes'),
+                subtitle: this.translatePipe.transform(
+                    'account.itemSubtitleLikes'
+                ),
+                route: 'likes',
+            },
+            {
+                name: this.translatePipe.transform('account.itemTitleLogout'),
+                subtitle: this.translatePipe.transform(
+                    'account.itemSubtitleLogout'
+                ),
+                value: 'logout',
+            },
+        ];
     }
 
     onClickOption(item: OptionItemI): void {

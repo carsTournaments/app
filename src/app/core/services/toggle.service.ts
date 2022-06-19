@@ -6,7 +6,7 @@ import { LocalStorageService } from '@services/various/local-storage.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class TogglesService {
+export class ToggleService {
     private change$ = new BehaviorSubject<Toggle[]>([]);
     private _toggles?: Toggle[] = [];
     private path = `${environment.urlApi}/toggles`;
@@ -49,7 +49,6 @@ export class TogglesService {
 
     async isActiveToggle(name: string): Promise<boolean> {
         const toggle = this.toggles.find((t) => t.name === name);
-        console.log(name, this.toggles);
         return toggle ? toggle.state : false;
     }
 

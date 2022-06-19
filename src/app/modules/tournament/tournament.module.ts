@@ -8,10 +8,12 @@ import { TournamentMyInscriptionsComponent } from './components/tournament-my-in
 import { TournamentRoundsComponent } from './components/tournament-rounds/tournament-rounds.component';
 import { TournamentWinnersComponent } from './components/tournament-winners/tournament-winners.component';
 import { SharedModule } from '@shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
         SharedModule,
+        TranslateModule,
         RouterModule.forChild([{ path: '', component: TournamentPage }]),
     ],
     declarations: [

@@ -1,22 +1,17 @@
 <ion-card mode="ios" style="margin-bottom: 1rem">
-    <ion-card-content>
-        <dashboard-resume [resume]="resume" [user]="user"></dashboard-resume>
-    </ion-card-content>
+  <ion-card-content>
+    <dashboard-resume [resume]="resume" [user]="user"></dashboard-resume>
+  </ion-card-content>
 </ion-card>
 
 <can-you-help></can-you-help>
 
-<ion-card
-    mode="ios"
-    class="option-item"
-    *ngFor="let item of options"
-    (click)="goTo.emit(item)"
-    style="margin-top: -0.25rem"
->
-    <ion-item color="light" mode="ios" button lines="none">
-        <ion-label
-            >{{ item.name }}
-            <small *ngIf="item.subtitle"><br />{{ item.subtitle }} </small>
-        </ion-label>
-    </ion-item>
+<ion-card mode="ios" class="option-item" *ngFor="let item of options" (click)="goTo.emit(item)"
+  style="margin-top: -0.25rem">
+  <ion-item color="light" mode="ios" button lines="none">
+    <ion-label>
+      {{ item.name }}
+      <small *ngIf="item.subtitle"><br />{{ item.subtitle }} </small>
+    </ion-label>
+  </ion-item>
 </ion-card>

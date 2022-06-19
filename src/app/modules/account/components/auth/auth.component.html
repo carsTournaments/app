@@ -5,7 +5,7 @@
                 <img src="./assets/images/logo.png" style="width: 200px" />
             </div>
             <ion-button expand="block" color="primary" (click)="loginGoogle()">
-                <ion-icon name="logo-google"></ion-icon>&nbsp; Entrar con Google
+                <ion-icon name="logo-google"></ion-icon>&nbsp; {{ 'account.login_google' | translate }}
             </ion-button>
             <span class="divider line one-line">o</span>
             <ion-button
@@ -14,43 +14,43 @@
                 fill="outline"
                 (click)="goToLoginMode()"
             >
-                <ion-icon name="log-in"></ion-icon>&nbsp; Entrar con Email
+                <ion-icon name="log-in"></ion-icon>&nbsp; {{ 'account.login_email' | translate }}
             </ion-button>
 
             <hr style="margin-top: 1.5rem" />
 
             <div class="link-privacy-policy">
                 <a [routerLink]="['/privacy-policy']">
-                    Politica de privacidad
+                    {{ 'account.policyPrivacy' | translate }}
                 </a>
             </div>
         </ng-container>
 
         <ng-container *ngIf="vm.loginMode && !vm.normalMode">
             <ion-item>
-                <ion-label position="floating">Email</ion-label>
+                <ion-label position="floating">{{ 'account.inputEmail' | translate }}</ion-label>
                 <ion-input
                     name="email"
                     type="email"
                     [(ngModel)]="vm.email"
-                    placeholder="Introduce tu Email"
+                    placeholder="{{ 'account.placeholderEmail' | translate }}"
                     ngDefaultControl
                 >
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">Contraseña</ion-label>
+              <ion-label position="floating">{{ 'account.inputPassword' | translate }}</ion-label>
                 <ion-input
                     name="password"
                     type="password"
                     [(ngModel)]="vm.password"
-                    placeholder="Introduce tu contraseña"
+                    placeholder="{{ 'account.placeholderPassword' | translate }}"
                     ngDefaultControl
                 ></ion-input>
             </ion-item>
             <hr />
             <ion-button expand="block" color="primary" (click)="login()">
-                Iniciar sesión
+                {{ 'account.buttonLogin' | translate }}
             </ion-button>
 
             <span class="divider line one-line">o</span>
@@ -61,50 +61,50 @@
                 fill="outline"
                 (click)="vm.loginMode = false"
             >
-                Registrate
+                {{ 'account.buttonRegister' | translate }}
             </ion-button>
         </ng-container>
 
         <ng-container *ngIf="!vm.loginMode && !vm.normalMode">
             <ion-item>
-                <ion-label position="floating">Nombre</ion-label>
+                <ion-label position="floating">{{ 'account.inputName' | translate }}</ion-label>
                 <ion-input
                     name="name"
                     [(ngModel)]="vm.name"
-                    placeholder="Introduce tu nombre"
+                    placeholder="{{ 'account.placeholderName' | translate }}"
                     ngDefaultControl
                 >
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">Email</ion-label>
+                <ion-label position="floating">{{ 'account.inputEmail' | translate }}</ion-label>
                 <ion-input
                     name="email"
                     type="email"
                     [(ngModel)]="vm.email"
-                    placeholder="Introduce tu Email"
+                    placeholder="{{ 'account.placeholderEmail' | translate }}"
                     ngDefaultControl
                 >
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">Contraseña</ion-label>
+                <ion-label position="floating">{{ 'account.inputPassword' | translate }}</ion-label>
                 <ion-input
                     name="password"
                     type="password"
                     [(ngModel)]="vm.password"
-                    placeholder="Introduce tu contraseña"
+                    placeholder="{{ 'account.placeholderPassword' | translate }}"
                     ngDefaultControl
                 ></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label position="floating">Repite Contraseña</ion-label>
+                <ion-label position="floating">{{ 'account.inputRepeatPassword' | translate }}</ion-label>
                 <ion-input
                     name="password2"
                     type="password"
                     [(ngModel)]="vm.password2"
-                    placeholder="Repite tu contraseña"
+                    placeholder="{{ 'account.placeholderRepeatPassword' | translate }}"
                     ngDefaultControl
                 ></ion-input>
             </ion-item>
@@ -112,7 +112,7 @@
             <hr />
 
             <ion-button expand="block" color="primary" (click)="register()">
-                Registrate
+                {{ 'account.buttonRegister' | translate }}
             </ion-button>
             <ion-button
                 expand="block"
@@ -120,7 +120,7 @@
                 fill="outline"
                 (click)="vm.loginMode = true"
             >
-                Volver
+                {{ 'generic.back' | translate }}
             </ion-button>
         </ng-container>
     </ion-card-content>

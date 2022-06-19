@@ -6,7 +6,7 @@ import { CarGetAllDto } from '@services/api/car/car.dto';
 
 export class CarsViewModel {
     header = new Header({
-        title: 'Coches',
+        title: '',
         segments: {
             items: ['Ultimos', 'Top', 'Marcas'],
             selected: 0,

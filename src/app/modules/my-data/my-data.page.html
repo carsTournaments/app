@@ -8,22 +8,22 @@
         <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
             <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
                 <ion-item lines="none" color="light">
-                    <ion-label position="stacked">Nombre</ion-label>
+                    <ion-label position="stacked">{{ 'myData.inputName' | translate }}</ion-label>
                     <ion-input
                         type="text"
                         [(ngModel)]="vm.user.name"
-                        placeholder="Introduce tu nombre"
+                        placeholder="{{ 'myData.placeholderName' | translate }}"
                     ></ion-input>
                 </ion-item>
             </ion-card>
 
             <ion-card mode="ios" class="form-item">
                 <ion-item lines="none" color="light">
-                    <ion-label position="stacked">Pais</ion-label>
+                    <ion-label position="stacked">{{ 'myData.inputCountry' | translate }}</ion-label>
                     <ion-select
                         [(ngModel)]="vm.countryIdSelected"
                         name="brandId"
-                        placeholder="Selecciona tu pais"
+                        placeholder="{{ 'myData.placeholderCountry' | translate }}"
                     >
                         <ion-select-option
                             *ngFor="let country of vm.countries"
@@ -42,4 +42,3 @@
         </ion-fab-button>
     </ion-fab>
 </ion-content>
-// cambiar nombre // contraseña // cambiar country

@@ -11,17 +11,17 @@
             <ion-card-content style="padding: 0.5rem 0.5rem 0 0.5rem;">
                 <ion-row>
                     <ion-col size="4" class="ion-text-center item-block-resume">
-                        <small>Inicio</small>
+                        <small>{{ 'tournament.infoStart' | translate }}</small>
                         <p>
                             {{ round.startDate | momentFormat: 'DD-MM-YY' }}
                         </p>
                     </ion-col>
                     <ion-col size="4" class="ion-text-center item-block-resume">
-                        <small>Votos</small>
+                        <small>{{ 'tournament.infoVotes' | translate }}</small>
                         <p>{{ round.votes.length }}</p>
                     </ion-col>
                     <ion-col size="4" class="ion-text-center item-block-resume">
-                        <small>Fin</small>
+                        <small>{{ 'tournament.infoEnd' | translate }}</small>
                         <p>
                             {{ round.endDate | momentFormat: 'DD-MM-YY' }}
                         </p>

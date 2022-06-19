@@ -5,7 +5,7 @@
     <ng-container>
       <div class="custom-chip custom-chip-primary">
         <span *ngIf="tournament.status === 'Completed'">
-          Completado</span>
+          {{ 'generic.completed' | translate }}</span>
         <span *ngIf="tournament.status === 'InProgress'">
           {{ tournament.rounds | lastRound }}
         </span>
@@ -15,7 +15,7 @@
                         tournament.inscriptions.length ===
                             tournament.maxParticipants
                     ">
-          Inscripciones completadas
+          {{ 'tournament.inscriptionsCompleted' | translate }}
         </span>
       </div>
     </ng-container>
@@ -53,7 +53,7 @@
             | momentFormat: 'DD MMMM'
             }}
           </p>
-          <small class="car-info-key">Inicio</small>
+          <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>
         </ion-col>
 
         <ion-col *ngIf="tournament.endDate" [size]="cols" class="ion-text-center border-right">
@@ -63,12 +63,12 @@
             | momentFormat: 'DD MMMM'
             }}
           </p>
-          <small class="car-info-key">Fin</small>
+          <small class="car-info-key">{{ 'tournament.infoEnd' | translate }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
           <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
-          <small class="car-info-key">Duracion</small>
+          <small class="car-info-key">{{ 'tournament.infoDuration' | translate }}</small>
         </ion-col>
       </ion-row>
       <hr style="margin:0.5rem">
@@ -79,7 +79,7 @@
             <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
               [countUp]="tournament.maxParticipants" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">Participantes</small>
+          <small class="car-info-key">{{ 'tournament.infoParticipants' | translate }}</small>
         </ion-col>
 
         <ion-col *ngIf="tournament.rounds && tournament.rounds.length > 0" [size]="cols"
@@ -87,14 +87,14 @@
           <p class="tournament-info-value">
             <span [countUp]="tournament.rounds.length" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">Rondas</small>
+          <small class="car-info-key">{{ 'tournament.infoRounds' | translate }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
           <p class="tournament-info-value">
             <span [countUp]="tournament?.votes.length" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">Votos</small>
+          <small class="car-info-key">{{ 'tournament.infoVotes' | translate }}</small>
         </ion-col>
       </ion-row>
     </ng-container>
@@ -108,12 +108,12 @@
             | momentFormat: 'DD MMMM'
             }}
           </p>
-          <small class="car-info-key">Inicio</small>
+          <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center border-right">
           <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
-          <small class="car-info-key">Duracion</small>
+          <small class="car-info-key">{{ 'tournament.infoDuration' | translate }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
@@ -121,7 +121,7 @@
             <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
               [countUp]="tournament.maxParticipants" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">Participantes</small>
+          <small class="car-info-key">{{ 'tournament.infoParticipants' | translate }}</small>
         </ion-col>
       </ion-row>
     </ng-container>

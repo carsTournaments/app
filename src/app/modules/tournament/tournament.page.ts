@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
 import { Car, Inscription } from '@models';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ImagePipe } from '@pipes';
 import {
     InscriptionService,
@@ -20,6 +21,7 @@ import { TournamentViewModel } from './model/tournament.view-model';
     selector: 'page-tournament',
     templateUrl: 'tournament.page.html',
     styleUrls: ['./tournament.page.scss'],
+    providers: [TranslatePipe],
 })
 export class TournamentPage {
     @ViewChild(IonContent, { static: false }) content: IonContent;
@@ -37,7 +39,8 @@ export class TournamentPage {
         private winnerService: WinnerService,
         private imageService: ImageService,
         private analyticsService: AnalyticsService,
-        private utilsService: UtilsService
+        private utilsService: UtilsService,
+        private translatePipe: TranslatePipe
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -45,6 +48,18 @@ export class TournamentPage {
         this.vm.user = this.userService.getUser();
         this.getOne();
         this.getInscriptionsOfTournament();
+    }
+
+    setTranslate() {
+        this.vm.header.segments[0] = this.translatePipe.transform(
+            'tournament.segment1'
+        );
+        this.vm.header.segments[1] = this.translatePipe.transform(
+            'tournament.segment2'
+        );
+        this.vm.header.segments[2] = this.translatePipe.transform(
+            'tournament.segment3'
+        );
     }
 
     getOne(): void {
@@ -132,11 +147,22 @@ export class TournamentPage {
 
     setSegments() {
         if (this.vm.tournament.status === 'Todo') {
-            this.vm.header.segments.items = ['Info', 'Inscripciones'];
+            this.vm.header.segments.items = [
+                this.translatePipe.transform('tournament.segment1'),
+                this.translatePipe.transform('tournament.segment2'),
+            ];
         } else if (this.vm.tournament.status === 'InProgress') {
-            this.vm.header.segments.items = ['Info', 'Inscripciones', 'Rondas'];
+            this.vm.header.segments.items = [
+                this.translatePipe.transform('tournament.segment1'),
+                this.translatePipe.transform('tournament.segment2'),
+                this.translatePipe.transform('tournament.segment3'),
+            ];
         } else if (this.vm.tournament.status === 'Completed') {
-            this.vm.header.segments.items = ['Info', 'Inscripciones', 'Rondas'];
+            this.vm.header.segments.items = [
+                this.translatePipe.transform('tournament.segment1'),
+                this.translatePipe.transform('tournament.segment2'),
+                this.translatePipe.transform('tournament.segment3'),
+            ];
         }
     }
 
@@ -192,8 +218,12 @@ export class TournamentPage {
 
     inscriptionConfirmation(car: Car) {
         this.alertService.presentAlertWithButtons(
-            'Confirmación',
-            `¿Estás seguro de inscribirte en este torneo con el coche ${car.brand.name} ${car.model}?`,
+            this.translatePipe.transform(
+                'tournament.inscriptionConfirmationTitle'
+            ),
+            `${this.translatePipe.transform(
+                'tournament.inscriptionConfirmationMessage'
+            )} ${car.brand.name} ${car.model}?`,
             [
                 {
                     text: 'Cancelar',
@@ -222,8 +252,12 @@ export class TournamentPage {
                 this.getInscriptionsOfTournament();
                 this.vm.tournament.inscriptions.push(response);
                 this.alertService.presentAlert(
-                    'Inscripción',
-                    `Te has inscrito correctamente con el coche ${car.brand.name} ${car.model}`
+                    this.translatePipe.transform(
+                        'tournament.inscriptionOkTitle'
+                    ),
+                    `${this.translatePipe.transform(
+                        'tournament.inscriptionOkMessage'
+                    )} ${car.brand.name} ${car.model}`
                 );
             },
             error: (err) => {
@@ -237,8 +271,12 @@ export class TournamentPage {
 
     confirmDeleteInscription(car: Car) {
         this.alertService.presentAlertWithButtons(
-            'Confirmación',
-            '¿Estás seguro de querer eliminar esta inscripción?',
+            this.translatePipe.transform(
+                'tournament.inscriptionDeleteConfirmationTitle'
+            ),
+            this.translatePipe.transform(
+                'tournament.inscriptionDeleteConfirmationMessage'
+            ),
             [
                 {
                     text: 'Cancelar',
@@ -273,8 +311,12 @@ export class TournamentPage {
                                 inscription.car !== car._id
                         );
                     this.alertService.presentAlert(
-                        'Inscripción',
-                        `Se ha eliminado la inscripción correctamente`
+                        this.translatePipe.transform(
+                            'tournament.inscriptionDeleteOkTitle'
+                        ),
+                        this.translatePipe.transform(
+                            'tournament.inscriptionDeleteOkMessage'
+                        )
                     );
                     this.analyticsService.logEvent(
                         'tournament_deleteInscription_OK'
