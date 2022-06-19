@@ -1,10 +1,7 @@
 <ion-card mode="ios" *ngIf="myCars?.inscribed.length > 0">
   <ion-card-title class="ion-text-center" style="padding-top: 1rem; font-size: 18px">
-    {{
-    myCars?.inscribed.length > 1
-    ? 'Tus coches inscritos'
-    : 'Tu coche inscrito'
-    }}
+    <span *ngIf="myCars?.inscribed.length > 1">{{'tournament.youCarsInscribed' | translate}}</span>
+    <span *ngIf="myCars?.inscribed.length === 1">{{'tournament.youCarInscribed' | translate}}</span>
   </ion-card-title>
   <hr />
   <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">

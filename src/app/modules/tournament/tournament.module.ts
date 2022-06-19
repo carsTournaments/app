@@ -8,11 +8,12 @@ import { TournamentMyInscriptionsComponent } from './components/tournament-my-in
 import { TournamentRoundsComponent } from './components/tournament-rounds/tournament-rounds.component';
 import { TournamentWinnersComponent } from './components/tournament-winners/tournament-winners.component';
 import { SharedModule } from '@shared/shared.module';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
-        SharedModule,
+    SharedModule,
+    TranslateModule,
         RouterModule.forChild([{ path: '', component: TournamentPage }]),
     ],
     declarations: [
@@ -23,6 +24,6 @@ import { TranslatePipe } from '@ngx-translate/core';
         TournamentRoundsComponent,
         TournamentWinnersComponent,
     ],
-    providers: [ImagePipe, TranslatePipe],
+    providers: [ImagePipe],
 })
 export class TournamentModule {}

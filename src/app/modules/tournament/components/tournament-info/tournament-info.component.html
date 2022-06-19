@@ -108,12 +108,12 @@
             | momentFormat: 'DD MMMM'
             }}
           </p>
-          <small class="car-info-key">Inicio</small>
+          <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center border-right">
           <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
-          <small class="car-info-key">Duracion</small>
+          <small class="car-info-key">{{ 'tournament.infoDuration' | translate }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
@@ -121,7 +121,7 @@
             <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
               [countUp]="tournament.maxParticipants" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">Participantes</small>
+          <small class="car-info-key">{{ 'tournament.infoParticipants' | translate }}</small>
         </ion-col>
       </ion-row>
     </ng-container>
