@@ -12,8 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
-    SharedModule,
-    TranslateModule,
+        SharedModule,
+        TranslateModule,
         RouterModule.forChild([{ path: '', component: TournamentPage }]),
     ],
     declarations: [

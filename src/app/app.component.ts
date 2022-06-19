@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     }
 
     async ngOnInit(): Promise<void> {
-        this.translate.setDefaultLang('en');
+        this.translate.setDefaultLang('es');
         await this.storageService.startDB();
         this.addEventBackButton();
         this.settingsService.getSettingsDB();
