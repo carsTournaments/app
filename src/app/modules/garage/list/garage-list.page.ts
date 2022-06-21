@@ -6,8 +6,14 @@ import {
 } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { Car } from '@models';
-import { AlertService, CarService, UtilsService, UserService } from '@services';
-import { ImageService } from '@services/api/image/image.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import {
+    AlertService,
+    CarService,
+    UtilsService,
+    UserService,
+    ImageService,
+} from '@services';
 import { GaragePopoverComponent } from '../popover/garage-popover.component';
 import { GarageListViewModel } from './model/garage-list.view-model';
 
@@ -15,6 +21,7 @@ import { GarageListViewModel } from './model/garage-list.view-model';
     selector: 'page-garage-list',
     templateUrl: 'garage-list.page.html',
     styleUrls: ['./garage-list.page.scss'],
+    providers: [TranslatePipe],
 })
 export class GarageListPage {
     vm = new GarageListViewModel();
@@ -25,14 +32,15 @@ export class GarageListPage {
         private popoverCtrl: PopoverController,
         private imageService: ImageService,
         private userService: UserService,
-        private utilsService: UtilsService
+        private utilsService: UtilsService,
+        private translatePipe: TranslatePipe
     ) {}
 
-    async ionViewWillEnter() {
+    async ionViewWillEnter(): Promise<void> {
         this.getAllCars();
     }
 
-    async getAllCars() {
+    async getAllCars(): Promise<void> {
         this.vm.user = this.userService.getUser();
         this.vm.bodyCars.id = this.vm.user._id;
         this.carService.getAllOfDriver(this.vm.bodyCars).subscribe({
@@ -48,7 +56,7 @@ export class GarageListPage {
         });
     }
 
-    async openPopover(e: any, car: Car) {
+    async openPopover(e: any, car: Car): Promise<void> {
         const options: PopoverOptions = {
             component: GaragePopoverComponent,
             event: e,
@@ -63,7 +71,7 @@ export class GarageListPage {
             .then((data) => this.onDidDismissPopover(data, car));
     }
 
-    onDidDismissPopover(data: OverlayEventDetail<any>, car) {
+    onDidDismissPopover(data: OverlayEventDetail<any>, car: Car): void {
         if (data.data) {
             if (data.data === 'viewProfile') {
                 this.navCtrl.navigateForward(`car/${car._id}`);
@@ -77,7 +85,7 @@ export class GarageListPage {
         }
     }
 
-    editCar(car: Car) {
+    editCar(car: Car): void {
         this.navCtrl.navigateForward(`garage/one/${car._id}`);
     }
 
@@ -90,11 +98,17 @@ export class GarageListPage {
 
     async deleteCar(car: Car): Promise<void> {
         await this.alertService.presentAlertWithButtons(
-            '¡Oye!',
-            '¿Estás seguro de eliminar este coche?',
+            this.translatePipe.transform('garageList.titleDeleteCar'),
+            this.translatePipe.transform('garageList.messageDeleteCar'),
             [
-                { text: 'No', role: 'cancel' },
-                { text: 'Sí', handler: () => this.deleteCarConfirmation(car) },
+                {
+                    text: this.translatePipe.transform('generic.no'),
+                    role: 'cancel',
+                },
+                {
+                    text: this.translatePipe.transform('generic.yes'),
+                    handler: () => this.deleteCarConfirmation(car),
+                },
             ]
         );
     }
@@ -104,8 +118,12 @@ export class GarageListPage {
             next: () => {
                 this.getAllCars();
                 this.alertService.presentAlert(
-                    '¡Eliminado!',
-                    'El coche ha sido eliminado correctamente'
+                    this.translatePipe.transform(
+                        'garageList.titleDeleteCarConfirmation'
+                    ),
+                    this.translatePipe.transform(
+                        'garageList.messageDeleteCarConfirmation'
+                    )
                 );
             },
             error: (error) => {
@@ -114,7 +132,7 @@ export class GarageListPage {
         });
     }
 
-    onClickAddCar() {
+    onClickAddCar(): void {
         this.navCtrl.navigateForward(`garage/create`);
     }
 }

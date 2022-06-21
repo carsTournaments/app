@@ -5,7 +5,7 @@ import { environment } from '@env/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { CarGetAllDto } from './car.dto';
 import { Car } from '@models/car.model';
-import { PaginatorI } from '@interfaces/paginator.interface';
+import { PaginatorI } from '@interfaces';
 import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })

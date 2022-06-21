@@ -5,7 +5,7 @@
             (click)="onClick('viewProfile')"
             [button]="true"
         >
-            <ion-label>Ver perfil</ion-label>
+            <ion-label>{{ 'inscriptions.viewProfile' | translate }}</ion-label>
         </ion-item>
         <ion-item
             color="primary"
@@ -13,7 +13,7 @@
             [button]="true"
             lines="none"
         >
-            <ion-label>Eliminar inscripcion</ion-label>
+            <ion-label>{{ 'inscriptions.deleteInscription' | translate }}</ion-label>
         </ion-item>
     </ion-list>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToggleService } from '@core/services/toggle.service';
-import { TabI } from '@interfaces/tab.interface';
+import { TabI } from '@interfaces';
 import { AnalyticsService } from '@services';
 
 @Component({

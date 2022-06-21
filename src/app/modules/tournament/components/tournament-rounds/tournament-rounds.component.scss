@@ -96,3 +96,13 @@ ion-segment-button {
         background: var(--ion-color-primary) !important;
     }
 }
+
+.round-value {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.round-key {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+}

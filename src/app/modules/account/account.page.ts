@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { OptionItemI } from '@interfaces/option-item.interface';
+import { OptionItemI } from '@interfaces';
 import {
     AuthService,
     AlertService,
@@ -104,15 +104,7 @@ export class AccountPage {
             this.analyticsService.logEvent(
                 `dashboard_clickOption_${item.value}`
             );
-            if (item.value === 'changeName') {
-                this.changeName();
-            } else if (item.value === 'changePassword') {
-                this.analyticsService.logEvent('dashboard_changePassword');
-                this.alertService.presentAlert(
-                    '¡Vaya!',
-                    'Esta función aún no está disponible.'
-                );
-            } else if (item.value === 'logout') {
+            if (item.value === 'logout') {
                 this.logout();
             }
         } else {
@@ -125,21 +117,6 @@ export class AccountPage {
 
     onLogged(): void {
         this.isAuthenticated();
-    }
-
-    async changeName(): Promise<void> {
-        const alert = await this.alertService.presentAlertWithInput(
-            'Cambiar nombre',
-            'Introduce nuevo nombre'
-        );
-
-        alert.onDidDismiss().then((data: any) => {
-            if (data.data.values.input) {
-                const inputData = data.data.values.input;
-                this.vm.user.name = inputData;
-                this.updateUser();
-            }
-        });
     }
 
     updateUser(): void {
@@ -165,11 +142,17 @@ export class AccountPage {
 
     async logout(): Promise<void> {
         const alert = await this.alertService.presentAlertWithButtons(
-            'Cerrar sesión',
-            '¿Estás seguro de cerrar sesión?',
+            this.translatePipe.transform('account.titleLogout'),
+            this.translatePipe.transform('account.messageLogout'),
             [
-                { text: 'Cancelar', role: 'cancel' },
-                { text: 'Aceptar', role: 'ok' },
+                {
+                    text: this.translatePipe.transform('generic.no'),
+                    role: 'cancel',
+                },
+                {
+                    text: this.translatePipe.transform('generic.yes'),
+                    role: 'ok',
+                },
             ]
         );
         const data = await alert.onDidDismiss();

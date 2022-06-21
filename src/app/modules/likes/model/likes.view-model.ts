@@ -5,9 +5,9 @@ import { LikeGetAllReceivedForUserResponse } from '@services/api/like/like.respo
 
 export class LikesViewModel {
     header = new Header({
-        title: 'Me gustas',
+        title: '',
         segments: {
-            items: ['Recibidos', 'Enviados'],
+            items: ['', ''],
             selected: 0,
         },
         backButton: {
@@ -21,11 +21,11 @@ export class LikesViewModel {
     loading = true;
     error = false;
     noitemsReceived = new NoItemsModel({
-        title: '¡Aqui no hay nada que ver!',
-        subtitle: 'No has recibido ningún me gusta',
+        title: '',
+        subtitle: '',
     });
     noitemsSent = new NoItemsModel({
-        title: '¡Vaya!',
-        subtitle: 'No has enviado ningún me gusta',
+        title: '',
+        subtitle: '',
     });
 }

@@ -68,6 +68,7 @@ import {
     PercentagePipe,
     FlagByFilePipe,
     VotesPipe,
+    MomentDateShortPipe,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -109,6 +110,7 @@ const PIPES = [
     FlagByFilePipe,
     ImagePipe,
     LastRoundPipe,
+    MomentDateShortPipe,
     MomentFormatAgoPipe,
     PercentagePipe,
     TruncateTextPipe,

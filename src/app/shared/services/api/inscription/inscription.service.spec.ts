@@ -10,7 +10,7 @@ import {
     InscriptionGetAllDto,
     InscriptionsGetMyCarsForInscriptionDto,
 } from './inscription.dto';
-import { PaginatorI } from '@interfaces/paginator.interface';
+import { PaginatorI } from '@interfaces';
 
 const paginator: PaginatorI = {
     pageSize: 0,

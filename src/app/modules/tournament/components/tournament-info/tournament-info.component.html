@@ -50,7 +50,7 @@
           <p class="tournament-info-value">
             {{
             tournament.startDate
-            | momentFormat: 'DD MMMM'
+            | momentDateShort
             }}
           </p>
           <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>
@@ -60,7 +60,7 @@
           <p class="tournament-info-value">
             {{
             tournament.endDate
-            | momentFormat: 'DD MMMM'
+            | momentDateShort
             }}
           </p>
           <small class="car-info-key">{{ 'tournament.infoEnd' | translate }}</small>
@@ -105,7 +105,7 @@
           <p class="tournament-info-value">
             {{
             tournament.startDate
-            | momentFormat: 'DD MMMM'
+            | momentDateShort
             }}
           </p>
           <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>

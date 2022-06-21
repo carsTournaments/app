@@ -12,18 +12,12 @@
     <ng-container *ngIf="tournament.status === 'Todo'">
       <div class="startDate">
         <span class="day">
-          {{ tournament?.startDate | momentFormat: 'DD-MM-YY' }}
+          {{ tournament?.startDate | momentDateShort }}
         </span>
       </div>
     </ng-container>
 
     <ng-container *ngIf="tournament.status === 'InProgress'">
-      <!-- <div *ngIf="!tournament.lastRound" class="startDate">
-        <span class="day">
-          {{ tournament?.startDate | momentFormat: 'DD-MM-YY' }}
-        </span>
-      </div> -->
-
       <div class="currentRound" >
         {{ tournament.lastRound }}
       </div>
@@ -32,16 +26,10 @@
     <ng-container *ngIf="tournament.status === 'Completed'">
       <div class="startDate">
         <span class="day">
-          {{ tournament?.endDate | momentFormat: 'DD-MM-YY' }}
+          {{ tournament?.endDate | momentDateShort }}
         </span>
       </div>
     </ng-container>
-
-
-
-
-
-
 
   </ion-card-content>
 </ion-card>
