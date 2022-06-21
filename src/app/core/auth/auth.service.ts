@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { LoginResponseI } from '@interfaces/login-response.interface';
+import { LoginResponseI } from '@interfaces';
 import { map, share, tap } from 'rxjs/operators';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';

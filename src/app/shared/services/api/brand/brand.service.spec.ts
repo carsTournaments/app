@@ -1,5 +1,5 @@
 import { environment } from '@env/environment';
-import { PaginatorI } from '@interfaces/paginator.interface';
+import { PaginatorI } from '@interfaces';
 import { CarGetAllDto } from '@services/api/car/car.dto';
 import { TestBed } from '@angular/core/testing';
 import {

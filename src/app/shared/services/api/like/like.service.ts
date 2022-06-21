@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { PaginatorI } from '@interfaces/paginator.interface';
+import { PaginatorI } from '@interfaces';
 import { LikeGetAllDto, LikeGetAllOfCarDto } from './like.dto';
 import { Like } from '@models/like.model';
 import { Observable } from 'rxjs';

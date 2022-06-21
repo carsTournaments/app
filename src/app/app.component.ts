@@ -14,12 +14,13 @@ import {
     NotificationsPushService,
     SettingsService,
 } from '@services';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.scss'],
+    providers: [TranslatePipe],
 })
 export class AppComponent implements OnInit {
     constructor(
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit {
         private togglesService: ToggleService,
         private googleAuthService: GoogleAuthService,
         private location: Location,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private translatePipe: TranslatePipe
     ) {
         this.initializeDeepLinks();
         this.analyticsService.start();
@@ -86,11 +88,17 @@ export class AppComponent implements OnInit {
         ) {
             this.analyticsService.logEvent('backButton', {});
             const alert = await this.alertService.presentAlertWithButtons(
-                'Salir',
-                '¿Estás seguro de salir?',
+                this.translatePipe.transform('app.titleExit'),
+                this.translatePipe.transform('app.messageExit'),
                 [
-                    { text: 'No', role: 'cancel' },
-                    { text: 'Si', role: 'ok' },
+                    {
+                        text: this.translatePipe.transform('generic.no'),
+                        role: 'cancel',
+                    },
+                    {
+                        text: this.translatePipe.transform('generic.yes'),
+                        role: 'ok',
+                    },
                 ]
             );
             const data = await alert.onDidDismiss();

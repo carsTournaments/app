@@ -11,9 +11,9 @@ import {
 } from './inscription.dto';
 import { Inscription } from '@models';
 import { IdDto } from '@core/dtos/id.dto';
-import { PaginatorI } from '@interfaces/paginator.interface';
+import { PaginatorI } from '@interfaces';
 import { take } from 'rxjs/operators';
-import { InscriptionGetAllForDriverI } from '@interfaces/inscription.interface';
+import { InscriptionGetAllForDriverI } from '@interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class InscriptionService {
