@@ -1,6 +1,6 @@
 import { Header } from '@components/header/model/header.model';
 import { NoItemsModel } from '@components/no-items/no-items.model';
-import { InscriptionGetAllForDriverI } from '@interfaces/inscription.interface';
+import { InscriptionGetAllForDriverI } from '@interfaces';
 import { User } from '@models';
 
 export class InscriptionsViewModel {
@@ -21,7 +21,7 @@ export class InscriptionsViewModel {
         completed: false,
     };
     noitems = new NoItemsModel({
-        title: '¡Vaya!',
-        subtitle: 'Todavia no te has inscrito a ningun torneo',
+        title: '',
+        subtitle: '',
     });
 }

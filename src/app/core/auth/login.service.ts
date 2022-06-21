@@ -1,4 +1,4 @@
-import { LoginResponseI } from '@interfaces/login-response.interface';
+import { LoginResponseI } from '@interfaces';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthLogInDto, GoogleUserDto } from './auth.dto';

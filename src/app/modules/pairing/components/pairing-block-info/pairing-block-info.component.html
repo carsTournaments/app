@@ -10,7 +10,7 @@
                 </p>
             </div>
             <div class="div-center">
-                <p class="item-center">Marca</p>
+                <p class="item-center">{{ 'pairing.brand' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">
@@ -26,7 +26,7 @@
                 <p class="item-left">{{ pairing.car1.model }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">Modelo</p>
+                <p class="item-center">{{ 'pairing.model' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.model }}</p>
@@ -37,7 +37,7 @@
                 <p class="item-left">{{ pairing.car1.year }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">Año</p>
+                <p class="item-center">{{ 'pairing.year' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.year }}</p>
@@ -48,7 +48,7 @@
                 <p class="item-left">{{ pairing.car1.cc }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">CC</p>
+                <p class="item-center">{{ 'pairing.cc' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.cc }}</p>
@@ -59,7 +59,7 @@
                 <p class="item-left">{{ pairing.car1.cv }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">CV</p>
+                <p class="item-center">{{ 'pairing.cv' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.cv }}</p>
@@ -70,7 +70,7 @@
                 <p class="item-left">{{ pairing.car1.fuel }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">Motor</p>
+                <p class="item-center">{{ 'pairing.fuel' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.fuel }}</p>
@@ -81,7 +81,7 @@
                 <p class="item-left">{{ pairing.car1.traction }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">Traccion</p>
+                <p class="item-center">{{ 'pairing.traction' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.traction }}</p>
@@ -92,11 +92,11 @@
                 <p class="item-left">{{ pairing.car1.stock ? 'Si' : 'No' }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">De serie</p>
+                <p class="item-center">{{ 'pairing.stock' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">
-                    {{ pairing.car2.traction ? 'Si' : 'No' }}
+                    {{ pairing.car2.stock ? 'Si' : 'No' }}
                 </p>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 <p class="item-left">{{ pairing.car1.driver.name }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">Piloto</p>
+                <p class="item-center">{{ 'pairing.nameDriver' | translate }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.driver.name }}</p>
@@ -116,7 +116,7 @@
                 <img [src]="pairing.car1.driver.country ?? 'es' | flagByFile" />
             </div>
             <div class="div-center">
-                <p class="item-center">Pais Piloto</p>
+                <p class="item-center">{{ 'pairing.countryDriver' | translate }}</p>
             </div>
             <div class="div-right">
                 <img [src]="pairing.car2.driver.country ?? 'es' | flagByFile" />

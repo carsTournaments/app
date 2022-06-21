@@ -1,4 +1,4 @@
-// import { LoginResponseI } from '@interfaces/login-response.interface';
+// import { LoginResponseI } from '@interfaces';
 // import { User } from '@models';
 // import {
 //     ComponentFixture,

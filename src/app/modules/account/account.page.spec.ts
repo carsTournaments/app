@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavController } from '@ionic/angular';
-import { OptionItemI } from '@interfaces/option-item.interface';
+import { OptionItemI } from '@interfaces';
 import { AuthService, AlertService, AnalyticsService } from '@services';
 import {
     alertService,

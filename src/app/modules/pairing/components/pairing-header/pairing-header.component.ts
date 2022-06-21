@@ -34,7 +34,7 @@ export class PairingHeaderComponent implements OnInit {
     ngOnInit(): void {
         setTimeout(() => {
             this.setScore();
-        }, 500);
+        }, 1000);
     }
 
     async vote(type: string) {
@@ -84,6 +84,7 @@ export class PairingHeaderComponent implements OnInit {
     }
 
     openImage(image: string) {
+        console.log(image);
         this.imageService.openImage(image);
     }
 }

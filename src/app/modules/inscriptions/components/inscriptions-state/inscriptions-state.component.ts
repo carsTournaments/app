@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { InscriptionGetAllForDriverItemI } from '@interfaces/inscription.interface';
+import { InscriptionGetAllForDriverItemI } from '@interfaces';
 
 @Component({
     selector: 'inscriptions-state',

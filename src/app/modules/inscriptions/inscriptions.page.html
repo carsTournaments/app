@@ -7,8 +7,8 @@
     <spinner [loading]="vm.loading"></spinner>
     <no-items
         *ngIf="
-        !vm.loading && 
-        vm.inscriptions && 
+        !vm.loading &&
+        vm.inscriptions &&
         vm.inscriptions.todo.length === 0 &&
         vm.inscriptions.inProgress.length === 0 &&
         vm.inscriptions.completed.length === 0
@@ -25,14 +25,14 @@
             style="padding-top: 0.5rem"
         >
             <inscriptions-state
-                title="En progreso"
+                [title]="'inscriptions.inProgress' | translate"
                 [items]="vm.inscriptions.inProgress"
                 [state]="vm.states.inProgress"
                 type="inProgress"
             ></inscriptions-state>
 
             <inscriptions-state
-                title="Proximamente"
+                [title]="'inscriptions.todo' | translate"
                 [items]="vm.inscriptions.todo"
                 [state]="vm.states.todo"
                 type="todo"
@@ -40,7 +40,7 @@
             ></inscriptions-state>
 
             <inscriptions-state
-                title="Completados"
+                [title]="'inscriptions.completed' | translate"
                 [items]="vm.inscriptions.completed"
                 [state]="vm.states.completed"
                 type="completed"

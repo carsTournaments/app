@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { OptionItemI } from '@interfaces/option-item.interface';
+import { OptionItemI } from '@interfaces';
 import { User } from '@models';
 import { UserGetResumeResponse } from '@services/api/user/user.responses';
 

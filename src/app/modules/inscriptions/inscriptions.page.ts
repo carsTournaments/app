@@ -10,11 +10,13 @@ import { InscriptionsViewModel } from './model/inscriptions.view-model';
 import { Inscription } from '@models';
 import { InscriptionsPopoverComponent } from './components/popover/inscriptions-popover.component';
 import { OverlayEventDetail } from '@ionic/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-inscriptions',
     templateUrl: 'inscriptions.page.html',
     styleUrls: ['./inscriptions.page.scss'],
+    providers: [TranslatePipe],
 })
 export class InscriptionsPage {
     vm = new InscriptionsViewModel();
@@ -23,12 +25,25 @@ export class InscriptionsPage {
         private userService: UserService,
         private navCtrl: NavController,
         private popoverCtrl: PopoverController,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private translatePipe: TranslatePipe
     ) {}
 
     async ionViewWillEnter() {
+        this.translate();
         this.vm.user = this.userService.getUser();
         this.getAll();
+    }
+
+    translate() {
+        this.vm.header.title =
+            this.translatePipe.transform('inscriptions.title');
+        this.vm.noitems.title = this.translatePipe.transform(
+            'inscriptions.titleNoItems'
+        );
+        this.vm.noitems.subtitle = this.translatePipe.transform(
+            'inscriptions.subtitleNoItems'
+        );
     }
 
     getAll() {

@@ -1,17 +1,15 @@
 <ion-header mode="md">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-    <ion-back-button  [defaultHref]="backButtonRoute"></ion-back-button>
+      <ion-back-button [defaultHref]="backButtonRoute"></ion-back-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button *ngIf="reportState" color="light" fill="clear"
-        (click)="report.emit()">
+      <ion-button *ngIf="reportState" color="light" fill="clear" (click)="report.emit()">
         <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
       </ion-button>
 
-      <ion-button color="light" fill="clear"
-        (click)="share.emit()">
+      <ion-button color="light" fill="clear" (click)="share.emit()">
         <ion-icon slot="icon-only" name="arrow-redo-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,15 +18,15 @@
   <div class="sub-header" *ngIf="pairing">
     <p class="tournament-name">{{ pairing?.tournament.name }}</p>
     <p class="pairing-name">{{ pairing?.round.name }}</p>
-    <p class="dates">28 MAY - 10 JUN</p>
+    <p class="dates">{{ pairing.round.startDate | momentDateShort: true }} - {{ pairing.round.endDate | momentDateShort: true }}</p>
     <div class="div-flex">
       <div class="div-left">
-        <ion-card class="image-car1" style="background-image: url({{ images.car1?.url }})" button
-          (click)="openImage(image1?.url)"></ion-card>
+        <ion-card class="image-car1" [ngStyle]="{'background-image': 'url(' + images.car1?.url + ')'}" button
+          (click)="openImage(images.car1?.url)"></ion-card>
 
         <ion-button [disabled]="voted" class="button-vote" mode="ios" expand="block" size="small" color="dark"
           (click)="vote('car1')">
-          Votar
+          {{ 'pairing.vote' | translate }}
         </ion-button>
       </div>
 
@@ -40,8 +38,8 @@
       </div>
 
       <div class="div-right">
-        <ion-card class="image-car2" style="background-image: url({{ images.car2?.url }})" button
-          (click)="openImage(image2?.url)"></ion-card>
+        <ion-card class="image-car2" [ngStyle]="{'background-image': 'url(' + images.car2?.url + ')'}" button
+          (click)="openImage(images.car2?.url)"></ion-card>
 
         <ion-button [disabled]="voted" class="button-vote" mode="ios" size="small" expand="block" color="dark"
           (click)="vote('car2')">Votar</ion-button>
