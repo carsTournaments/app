@@ -30,7 +30,7 @@ export class PairingPage implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.vm.loading = true;
-        this.vm.id = this.route.snapshot.paramMap.get('id');
+        this.vm.id = this.route.snapshot.paramMap.get('id')!;
         this.vm.user = this.userService.getUser();
         if (this.vm.user) {
             this.vm.reportState = true;
