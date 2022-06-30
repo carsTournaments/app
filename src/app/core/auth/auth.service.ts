@@ -30,11 +30,7 @@ export class AuthService {
 
     login(data: AuthLogInDto): Observable<boolean> {
         return this.loginService.login(data).pipe(
-            tap((item: LoginResponseI) => {
-                this.tokenService.set(item.token);
-                this.userService.set(item.user);
-                this.notificationsPushService.registerFCM(item.user ?? null);
-            }),
+            tap((item: LoginResponseI) => this.onLoginOrResponseSuccess(item)),
             map(() => this.check())
         );
     }
@@ -42,30 +38,27 @@ export class AuthService {
     async loginGoogle(): Promise<Observable<boolean>> {
         const user = await this.googleAuthService.login();
         return this.loginService.loginGoogle(user).pipe(
-            tap((item: LoginResponseI) => {
-                this.tokenService.set(item.token);
-                this.userService.set(item.user);
-                this.notificationsPushService.registerFCM(item.user ?? null);
-            }),
+            tap((item: LoginResponseI) => this.onLoginOrResponseSuccess(item)),
             map(() => this.check())
         );
     }
 
     register(data: AuthRegisterDto): Observable<boolean> {
         return this.registerService.register(data).pipe(
-            tap((item: LoginResponseI) => {
-                this.userService.set(item.user);
-                this.tokenService.set(item.token);
-                this.notificationsPushService.registerFCM(item.user ?? null);
-            }),
+            tap((item: LoginResponseI) => this.onLoginOrResponseSuccess(item)),
             map(() => this.check())
         );
+    }
+
+    onLoginOrResponseSuccess(item: LoginResponseI) {
+        this.userService.set(item.user);
+        this.tokenService.set(item.token);
+        this.notificationsPushService.registerFCM(item.user ?? null);
     }
 
     logout(): void {
         this.userService.clear();
         this.tokenService.clear();
-        !this.check();
     }
 
     user(): Observable<any> {

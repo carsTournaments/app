@@ -126,11 +126,13 @@ export class CarsPage {
                 this.vm.header.segments.items[this.vm.header.segments.selected]
             }`
         );
-        this.vm.header.rightButton.state =
+        this.vm.header.rightButton.state = false;
+        if (
             this.vm.header.segments.selected === 0 ||
             this.vm.header.segments.selected === 2
-                ? true
-                : false;
+        ) {
+            this.vm.header.rightButton.state = true;
+        }
     }
 
     onClickBrand(brand: Brand): void {
@@ -179,10 +181,14 @@ export class CarsPage {
         as.onDidDismiss().then((data) => {
             if (data) {
                 if (data.data === 'onlyWithPhoto' || data.data === 'all') {
-                    this.vm.carsBody.onlyWithPhoto =
-                        data.data === 'onlyWithPhoto' ? true : false;
-                    this.vm.brandsBody.onlyWithPhoto =
-                        data.data === 'onlyWithPhoto' ? true : false;
+                    this.vm.carsBody.onlyWithPhoto = false;
+                    if (data.data === 'onlyWithPhoto') {
+                        this.vm.carsBody.onlyWithPhoto = true;
+                    }
+                    this.vm.brandsBody.onlyWithPhoto = false;
+                    if (data.data === 'onlyWithPhoto') {
+                        this.vm.brandsBody.onlyWithPhoto = true;
+                    }
                     this.vm.carsBody.page = 1;
                     this.vm.brandsBody.page = 1;
                     this.getCars();

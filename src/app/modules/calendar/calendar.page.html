@@ -1,13 +1,17 @@
 <custom-header [options]="vm.header"></custom-header>
 <ion-content fullscreen="true">
-    <spinner [loading]="vm.loading"></spinner>
+  <spinner [loading]="vm.loading"></spinner>
+
+  <no-items *ngIf="!vm.loading && vm.noDays" [options]="vm.noItems"></no-items>
+
+  <ng-container *ngIf="!vm.loading && !vm.noDays">
     <ion-row style="padding-top: 0">
-        <ion-col size="12" sizeLg="8" offsetLg="2">
-            <calendar-dates
-                [dateSelected]="vm.dateSelected"
-                (dateSelectedEvent)="onDateSelected($event)"
-            ></calendar-dates>
-            <calendar-items [rounds]="vm.rounds" [tournaments]="vm.tournaments"></calendar-items>
-        </ion-col>
+      <ion-col size="12" sizeLg="8" offsetLg="2">
+        <calendar-dates [dates]="vm.dates" [dateSelected]="vm.dateSelected"
+          (dateSelectedEvent)="onDateSelected($event)">
+        </calendar-dates>
+        <calendar-items [rounds]="vm.rounds" [tournaments]="vm.tournaments"></calendar-items>
+      </ion-col>
     </ion-row>
+  </ng-container>
 </ion-content>

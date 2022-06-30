@@ -44,7 +44,7 @@ export class TournamentPage {
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
-        this.vm.id = this.route.snapshot.paramMap.get('id') as string;
+        this.vm.id = this.route.snapshot.paramMap.get('id');
         this.vm.user = this.userService.getUser();
         this.getOne();
         this.getInscriptionsOfTournament();
@@ -151,13 +151,10 @@ export class TournamentPage {
                 this.translatePipe.transform('tournament.segment1'),
                 this.translatePipe.transform('tournament.segment2'),
             ];
-        } else if (this.vm.tournament.status === 'InProgress') {
-            this.vm.header.segments.items = [
-                this.translatePipe.transform('tournament.segment1'),
-                this.translatePipe.transform('tournament.segment2'),
-                this.translatePipe.transform('tournament.segment3'),
-            ];
-        } else if (this.vm.tournament.status === 'Completed') {
+        } else if (
+            this.vm.tournament.status === 'InProgress' ||
+            this.vm.tournament.status === 'Completed'
+        ) {
             this.vm.header.segments.items = [
                 this.translatePipe.transform('tournament.segment1'),
                 this.translatePipe.transform('tournament.segment2'),

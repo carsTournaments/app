@@ -34,7 +34,7 @@ export class Car {
         this.traction = data?.traction;
         this.cv = data?.cv;
         this.cc = data?.cc;
-        this.stock = data?.stock || true;
+        this.stock = data.stock ?? true;
         this.info = data?.info;
         this.year = data?.year;
         this.tournaments = data?.tournaments;

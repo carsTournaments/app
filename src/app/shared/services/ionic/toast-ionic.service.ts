@@ -17,6 +17,7 @@ export class ToastIonicService {
     async error(message: string) {
         const toast = await this.toastCtrl.create({
             message,
+            cssClass: '',
             duration: 2000,
             position: 'top',
         });

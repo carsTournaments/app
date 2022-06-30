@@ -15,7 +15,7 @@ export class TokenService {
 
     private get token(): string | undefined {
         if (!this._token) {
-            this._token = this.store.get(this.key)!;
+            this._token = this.store.get(this.key);
             return this._token;
         } else {
             return this._token;
@@ -37,7 +37,11 @@ export class TokenService {
     }
 
     valid(): boolean {
-        return this.token && this.token?.length > 0 ? true : false;
+        if (this.token && this.token.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     getToken(): string {
