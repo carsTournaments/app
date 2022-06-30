@@ -82,7 +82,8 @@ export class AuthComponent {
         if (this.vm.email.length === 0 || this.vm.password.length === 0) {
             this.analyticsService.logEvent('auth_validations_generic_KO');
             this.alertService.presentAlert('Error', 'Revisa los datos');
-            return (state = false);
+            state = false;
+            return state;
         }
         if (type === 'register') {
             if (this.vm.name.length <= 3) {
@@ -90,7 +91,8 @@ export class AuthComponent {
                     'auth_validations_register_name_KO'
                 );
                 this.alertService.presentAlert('Error', 'Revisa los datos');
-                return (state = false);
+                state = false;
+                return state;
             }
 
             if (this.vm.password !== this.vm.password2) {
@@ -101,7 +103,8 @@ export class AuthComponent {
                     'Error',
                     'Las contraseñas no coinciden'
                 );
-                return (state = false);
+                state = false;
+                return state;
             }
         }
         return state;
