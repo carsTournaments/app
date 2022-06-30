@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
 import { Car, Inscription } from '@models';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ImagePipe } from '@pipes';
 import {
     InscriptionService,
@@ -21,7 +21,6 @@ import { TournamentViewModel } from './model/tournament.view-model';
     selector: 'page-tournament',
     templateUrl: 'tournament.page.html',
     styleUrls: ['./tournament.page.scss'],
-    providers: [TranslatePipe],
 })
 export class TournamentPage {
     @ViewChild(IonContent, { static: false }) content: IonContent;
@@ -40,7 +39,7 @@ export class TournamentPage {
         private imageService: ImageService,
         private analyticsService: AnalyticsService,
         private utilsService: UtilsService,
-        private translatePipe: TranslatePipe
+        private translate: TranslateService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -51,13 +50,13 @@ export class TournamentPage {
     }
 
     setTranslate() {
-        this.vm.header.segments[0] = this.translatePipe.transform(
+        this.vm.header.segments[0] = this.translate.instant(
             'tournament.segment1'
         );
-        this.vm.header.segments[1] = this.translatePipe.transform(
+        this.vm.header.segments[1] = this.translate.instant(
             'tournament.segment2'
         );
-        this.vm.header.segments[2] = this.translatePipe.transform(
+        this.vm.header.segments[2] = this.translate.instant(
             'tournament.segment3'
         );
     }
@@ -148,17 +147,17 @@ export class TournamentPage {
     setSegments() {
         if (this.vm.tournament.status === 'Todo') {
             this.vm.header.segments.items = [
-                this.translatePipe.transform('tournament.segment1'),
-                this.translatePipe.transform('tournament.segment2'),
+                this.translate.instant('tournament.segment1'),
+                this.translate.instant('tournament.segment2'),
             ];
         } else if (
             this.vm.tournament.status === 'InProgress' ||
             this.vm.tournament.status === 'Completed'
         ) {
             this.vm.header.segments.items = [
-                this.translatePipe.transform('tournament.segment1'),
-                this.translatePipe.transform('tournament.segment2'),
-                this.translatePipe.transform('tournament.segment3'),
+                this.translate.instant('tournament.segment1'),
+                this.translate.instant('tournament.segment2'),
+                this.translate.instant('tournament.segment3'),
             ];
         }
     }
@@ -215,10 +214,8 @@ export class TournamentPage {
 
     inscriptionConfirmation(car: Car) {
         this.alertService.presentAlertWithButtons(
-            this.translatePipe.transform(
-                'tournament.inscriptionConfirmationTitle'
-            ),
-            `${this.translatePipe.transform(
+            this.translate.instant('tournament.inscriptionConfirmationTitle'),
+            `${this.translate.instant(
                 'tournament.inscriptionConfirmationMessage'
             )} ${car.brand.name} ${car.model}?`,
             [
@@ -249,10 +246,8 @@ export class TournamentPage {
                 this.getInscriptionsOfTournament();
                 this.vm.tournament.inscriptions.push(response);
                 this.alertService.presentAlert(
-                    this.translatePipe.transform(
-                        'tournament.inscriptionOkTitle'
-                    ),
-                    `${this.translatePipe.transform(
+                    this.translate.instant('tournament.inscriptionOkTitle'),
+                    `${this.translate.instant(
                         'tournament.inscriptionOkMessage'
                     )} ${car.brand.name} ${car.model}`
                 );
@@ -268,10 +263,10 @@ export class TournamentPage {
 
     confirmDeleteInscription(car: Car) {
         this.alertService.presentAlertWithButtons(
-            this.translatePipe.transform(
+            this.translate.instant(
                 'tournament.inscriptionDeleteConfirmationTitle'
             ),
-            this.translatePipe.transform(
+            this.translate.instant(
                 'tournament.inscriptionDeleteConfirmationMessage'
             ),
             [
@@ -308,10 +303,10 @@ export class TournamentPage {
                                 inscription.car !== car._id
                         );
                     this.alertService.presentAlert(
-                        this.translatePipe.transform(
+                        this.translate.instant(
                             'tournament.inscriptionDeleteOkTitle'
                         ),
-                        this.translatePipe.transform(
+                        this.translate.instant(
                             'tournament.inscriptionDeleteOkMessage'
                         )
                     );

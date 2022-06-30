@@ -21,7 +21,8 @@
         "generate:bundle": "npm run build:prod && npx cap sync && cd android && ./gradlew bundleRelease",
         "livereload:android": "ionic capacitor run android --livereload --external",
         "livereload:ios": "ionic capacitor run ios --livereload --external",
-        "analyze": "ng build --stats-json && webpack-bundle-analyzer www/stats.json"
+        "analyze": "ng build --stats-json && webpack-bundle-analyzer www/stats.json",
+        "sonar": "sonar-scanner"
     },
     "private": true,
     "dependencies": {

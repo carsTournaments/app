@@ -32,7 +32,7 @@ import { SharedModule } from '@shared/shared.module';
                         data: { title: 'Coches' },
                         loadChildren: () =>
                             import('../cars/cars.module').then(
-                                (m) => m.CarsPageModule
+                                (m) => m.CarsModule
                             ),
                     },
                     {

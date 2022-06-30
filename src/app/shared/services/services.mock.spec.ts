@@ -20,6 +20,10 @@ export const imageService = jasmine.createSpyObj('ImageService', [
     'addNewToGallery',
 ]);
 
+export const likeService = jasmine.createSpyObj('LikeService', [
+    'getTopCars',
+]);
+
 export const inscriptionService = jasmine.createSpyObj('InscriptionService', [
     'getAllOfTournament',
     'getMyCarsForInscription',
@@ -74,4 +78,8 @@ export const analyticsService = jasmine.createSpyObj('AnalyticsService', [
 
 export const utilsService = jasmine.createSpyObj('UtilsService', [
     'reloadPage',
+]);
+
+export const translateService = jasmine.createSpyObj('TranslateService', [
+    'get',
 ]);

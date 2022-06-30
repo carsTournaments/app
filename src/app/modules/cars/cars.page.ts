@@ -9,13 +9,12 @@ import {
     LikeService,
 } from '@services';
 import { CarsViewModel } from './model/cars.view-model';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-cars',
     templateUrl: 'cars.page.html',
     styleUrls: ['./cars.page.scss'],
-    providers: [TranslatePipe],
 })
 export class CarsPage {
     vm = new CarsViewModel();
@@ -27,14 +26,14 @@ export class CarsPage {
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
         private actionSheetService: ActionSheetIonicService,
-        private translatePipe: TranslatePipe
+      private translate: TranslateService
     ) {}
 
     ionViewWillEnter(): void {
-        this.vm.header.title = this.translatePipe.transform('cars.title');
+        this.vm.header.title = this.translate.instant('cars.title');
         this.vm.loading.getCars = true;
         this.getCars();
-        this.getTopSites();
+        this.getTopCars();
         this.getBrands();
     }
 
@@ -66,7 +65,7 @@ export class CarsPage {
         this.vm.error.getCars = false;
     }
 
-    getTopSites(): void {
+    getTopCars(): void {
         this.vm.loading.getTop = true;
         this.likeService.getTopCars('25').subscribe({
             next: (res) => {

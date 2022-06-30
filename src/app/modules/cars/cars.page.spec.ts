@@ -1,27 +1,20 @@
-import { AnalyticsService } from '../../shared/services/capacitor/analytics/analytics.service';
 import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { CarsPage } from './cars.page';
-import { CarService, BrandService } from '@services';
+import { CarService, BrandService, LikeService, AnalyticsService } from '@services';
 import { Brand, Car } from '@models';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { analyticsService } from '@services/services.mock.spec';
+import { analyticsService, brandService, carService, likeService } from '@services/services.mock.spec';
 import { car } from '@models/models.mock.spec';
-import { SharedModule } from '@shared/shared.module';
-import { IonicStorageModule } from '@ionic/storage-angular';
+import { CarsModule } from './cars.module';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 describe('CarsPage', () => {
     let component: CarsPage;
     let fixture: ComponentFixture<CarsPage>;
 
-    const carService = jasmine.createSpyObj('CarService', ['getAll', 'delete']);
-    const brandService = jasmine.createSpyObj('BrandService', [
-        'getAllBrandsAndCars',
-        'delete',
-    ]);
     const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
     carService.getAll = jasmine.createSpy().and.returnValue(of([]));
     brandService.getAllBrandsAndCars = jasmine
@@ -32,16 +25,21 @@ describe('CarsPage', () => {
         TestBed.configureTestingModule({
             declarations: [CarsPage],
             imports: [
-                RouterTestingModule,
-                HttpClientTestingModule,
-                IonicStorageModule.forRoot(),
-                SharedModule,
+              RouterTestingModule,
+              CarsModule,
+              TranslateModule.forRoot({
+                loader: {
+                  provide: TranslateLoader,
+                  useClass: TranslateFakeLoader,
+                },
+              })
             ],
             providers: [
                 { provide: CarService, useValue: carService },
                 { provide: BrandService, useValue: brandService },
                 { provide: NavController, useValue: navCtrl },
-                { provide: AnalyticsService, useValue: analyticsService },
+              { provide: AnalyticsService, useValue: analyticsService },
+                { provide: LikeService, useValue: likeService }
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -61,9 +59,11 @@ describe('CarsPage', () => {
     it('ionViewWillEnter', () => {
         spyOn(component, 'getCars');
         spyOn(component, 'getBrands');
+      spyOn(component, 'getTopCars');
         component.ionViewWillEnter();
         expect(component.getCars).toHaveBeenCalled();
         expect(component.getBrands).toHaveBeenCalled();
+      expect(component.getTopCars).toHaveBeenCalled();
     });
 
     describe('getCars', () => {

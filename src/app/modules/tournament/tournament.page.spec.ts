@@ -1,9 +1,10 @@
+import { TournamentModule } from './tournament.module';
 import { SharedModule } from './../../shared/shared.module';
 import { car } from '@models/models.mock.spec';
 import { Tournament } from '@models';
 import { ImagePipe } from '@pipes';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import {
@@ -14,7 +15,6 @@ import {
 } from '@services';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentPage } from './tournament.page';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
 import { user, inscription } from '@models/models.mock.spec';
@@ -24,7 +24,11 @@ import {
     inscriptionService,
     navCtrl,
 } from '@services/services.mock.spec';
-import { IonicStorageModule } from '@ionic/storage-angular';
+import {
+    TranslateModule,
+    TranslateLoader,
+    TranslateFakeLoader,
+} from '@ngx-translate/core';
 
 const tournament = new Tournament({
     _id: '123',
@@ -68,10 +72,15 @@ describe('TournamentPage', () => {
         TestBed.configureTestingModule({
             declarations: [TournamentPage],
             imports: [
-                IonicStorageModule.forRoot(),
+                TournamentModule,
                 SharedModule,
-                RouterTestingModule.withRoutes([]),
-                HttpClientTestingModule,
+                RouterTestingModule,
+                TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useClass: TranslateFakeLoader,
+                    },
+                }),
             ],
             providers: [
                 { provide: AuthService, useValue: authService },

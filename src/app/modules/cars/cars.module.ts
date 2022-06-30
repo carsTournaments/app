@@ -16,4 +16,4 @@ import { SharedModule } from '@shared/shared.module';
     declarations: [CarsPage],
     providers: [ImagePipe],
 })
-export class CarsPageModule {}
+export class CarsModule {}

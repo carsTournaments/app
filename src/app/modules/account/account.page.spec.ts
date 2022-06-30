@@ -17,7 +17,12 @@ import {
 } from '@services/services.mock.spec';
 
 import { AccountPage } from './account.page';
-import { SharedModule } from '@shared/shared.module';
+import {
+    TranslateFakeLoader,
+    TranslateLoader,
+    TranslateModule,
+} from '@ngx-translate/core';
+import { AccountModule } from './account.module';
 
 describe('AccountPage', () => {
     let component: AccountPage;
@@ -26,10 +31,17 @@ describe('AccountPage', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AccountPage],
-            imports: [SharedModule, RouterTestingModule],
+            imports: [
+                AccountModule,
+                RouterTestingModule,
+                TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useClass: TranslateFakeLoader,
+                    },
+                }),
+            ],
             providers: [
-                AuthService,
-                AlertService,
                 { provide: AuthService, useValue: authService },
                 { provide: AlertService, useValue: alertService },
                 { provide: AnalyticsService, useValue: analyticsService },

@@ -8,13 +8,12 @@ import {
     AnalyticsService,
 } from '@services';
 import { AccountViewModel } from './model/account.view-model';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-account',
     templateUrl: 'account.page.html',
     styleUrls: ['./account.page.scss'],
-    providers: [TranslatePipe],
 })
 export class AccountPage {
     vm = new AccountViewModel();
@@ -26,7 +25,7 @@ export class AccountPage {
         private navCtrl: NavController,
         private alertService: AlertService,
         private analyticsService: AnalyticsService,
-        private translatePipe: TranslatePipe
+        private translate: TranslateService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -57,43 +56,33 @@ export class AccountPage {
     }
 
     setOptions() {
-        this.vm.header.title = this.translatePipe.transform('account.title');
+        this.vm.header.title = this.translate.instant('account.title');
         this.vm.options = [
             {
-                name: this.translatePipe.transform('account.itemTitleMyData'),
-                subtitle: this.translatePipe.transform(
-                    'account.itemSubtitleMyData'
-                ),
+                name: this.translate.instant('account.itemTitleMyData'),
+                subtitle: this.translate.instant('account.itemSubtitleMyData'),
                 route: 'my-data',
             },
             {
-                name: this.translatePipe.transform('account.itemTitleGarage'),
-                subtitle: this.translatePipe.transform(
-                    'account.itemSubtitleGarage'
-                ),
+                name: this.translate.instant('account.itemTitleGarage'),
+                subtitle: this.translate.instant('account.itemSubtitleGarage'),
                 route: 'garage',
             },
             {
-                name: this.translatePipe.transform(
-                    'account.itemTitleInscriptions'
-                ),
-                subtitle: this.translatePipe.transform(
+                name: this.translate.instant('account.itemTitleInscriptions'),
+                subtitle: this.translate.instant(
                     'account.itemSubtitleInscriptions'
                 ),
                 route: 'inscriptions',
             },
             {
-                name: this.translatePipe.transform('account.itemTitleLikes'),
-                subtitle: this.translatePipe.transform(
-                    'account.itemSubtitleLikes'
-                ),
+                name: this.translate.instant('account.itemTitleLikes'),
+                subtitle: this.translate.instant('account.itemSubtitleLikes'),
                 route: 'likes',
             },
             {
-                name: this.translatePipe.transform('account.itemTitleLogout'),
-                subtitle: this.translatePipe.transform(
-                    'account.itemSubtitleLogout'
-                ),
+                name: this.translate.instant('account.itemTitleLogout'),
+                subtitle: this.translate.instant('account.itemSubtitleLogout'),
                 value: 'logout',
             },
         ];
@@ -142,15 +131,15 @@ export class AccountPage {
 
     async logout(): Promise<void> {
         const alert = await this.alertService.presentAlertWithButtons(
-            this.translatePipe.transform('account.titleLogout'),
-            this.translatePipe.transform('account.messageLogout'),
+            this.translate.instant('account.titleLogout'),
+            this.translate.instant('account.messageLogout'),
             [
                 {
-                    text: this.translatePipe.transform('generic.no'),
+                    text: this.translate.instant('generic.no'),
                     role: 'cancel',
                 },
                 {
-                    text: this.translatePipe.transform('generic.yes'),
+                    text: this.translate.instant('generic.yes'),
                     role: 'ok',
                 },
             ]

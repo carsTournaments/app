@@ -1,3 +1,4 @@
+import { TournamentModule } from './../../tournament.module';
 import { Round, Pairing } from '@models';
 import {
     ComponentFixture,
@@ -5,15 +6,17 @@ import {
     TestBed,
     waitForAsync,
 } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { NavController } from '@ionic/angular';
 import { RoundService } from '@services';
 import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TournamentRoundsComponent } from './tournament-rounds.component';
 import { ImagePipe } from '@pipes';
-import { SharedModule } from '@shared/shared.module';
+import {
+    TranslateModule,
+    TranslateLoader,
+    TranslateFakeLoader,
+} from '@ngx-translate/core';
 
 const round = new Round({
     _id: '123',
@@ -62,9 +65,13 @@ describe('TournamentRoundsComponent', () => {
         TestBed.configureTestingModule({
             declarations: [TournamentRoundsComponent],
             imports: [
-                RouterTestingModule,
-                HttpClientTestingModule,
-                SharedModule,
+                TournamentModule,
+                TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useClass: TranslateFakeLoader,
+                    },
+                }),
             ],
             providers: [
                 { provide: RoundService, useValue: roundService },

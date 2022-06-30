@@ -3,26 +3,25 @@ import { Component } from '@angular/core';
 import { Tournament } from '@models';
 import { TournamentsViewModel } from './model/tournaments.view-model';
 import { TournamentService, AnalyticsService } from '@services';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-tournaments',
     templateUrl: 'tournaments.page.html',
     styleUrls: ['tournaments.page.scss'],
-    providers: [TranslatePipe],
 })
 export class TournamentsPage {
     vm = new TournamentsViewModel();
     constructor(
         private tournamentService: TournamentService,
         private navCtrl: NavController,
-        private analyticsService: AnalyticsService,
-        private translatePipe: TranslatePipe
+      private analyticsService: AnalyticsService,
+      private translate: TranslateService
     ) {}
 
     async ionViewWillEnter() {
         this.vm.header.title =
-            this.translatePipe.transform('tournaments.title');
+            this.translate.instant('tournaments.title');
         this.getItems();
     }
 
