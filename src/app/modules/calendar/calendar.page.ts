@@ -11,6 +11,25 @@ export class CalendarPage {
     vm = new CalendarViewModel();
     constructor(private tournamentService: TournamentService) {}
 
+    async ionViewWillEnter() {
+        this.getDates();
+    }
+
+    getDates() {
+        this.tournamentService.getDaysForCalendar().subscribe({
+            next: (dates) => {
+                this.vm.dates = dates;
+                if (this.vm.dates.length > 0) {
+                    this.vm.dateSelected = this.vm.dates[0];
+                    this.getItems();
+                } else {
+                    this.vm.noDays = true;
+                    this.vm.loading = false;
+                }
+            },
+        });
+    }
+
     getItems() {
         this.vm.loading = true;
         return this.tournamentService
