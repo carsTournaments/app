@@ -1,0 +1,1011 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AccountPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/account/account.page.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-account</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./account.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>account.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#logged" >logged</a>
+                            </li>
+                            <li>
+                                <a href="#vm" >vm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getResume" >getResume</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#isAuthenticated" >isAuthenticated</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#onClickOption" >onClickOption</a>
+                            </li>
+                            <li>
+                                <a href="#onLogged" >onLogged</a>
+                            </li>
+                            <li>
+                                <a href="#setOptions" >setOptions</a>
+                            </li>
+                            <li>
+                                <a href="#updateUser" >updateUser</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, navCtrl: NavController, alertService: <a href="../injectables/AlertService.html" target="_self">AlertService</a>, analyticsService: <a href="../injectables/AnalyticsService.html" target="_self">AnalyticsService</a>, translate: TranslateService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/account/account.page.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>analyticsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnalyticsService.html" target="_self" >AnalyticsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getResume"></a>
+                    <span class="name">
+                        <span ><b>getResume</b></span>
+                        <a href="#getResume"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getResume()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAuthenticated"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>isAuthenticated</b></span>
+                        <a href="#isAuthenticated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isAuthenticated()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>logout()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onClickOption"></a>
+                    <span class="name">
+                        <span ><b>onClickOption</b></span>
+                        <a href="#onClickOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onClickOption(item: <a href="../interfaces/OptionItemI.html" target="_self">OptionItemI</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:91</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../interfaces/OptionItemI.html" target="_self" >OptionItemI</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onLogged"></a>
+                    <span class="name">
+                        <span ><b>onLogged</b></span>
+                        <a href="#onLogged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onLogged()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:107</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOptions"></a>
+                    <span class="name">
+                        <span ><b>setOptions</b></span>
+                        <a href="#setOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setOptions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/app/modules/account/account.page.ts:111</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logged"></a>
+                    <span class="name">
+                        <span ><b>logged</b></span>
+                        <a href="#logged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/account/account.page.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm"></a>
+                    <span class="name">
+                        <span ><b>vm</b></span>
+                        <a href="#vm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new AccountViewModel()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/account/account.page.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { NavController } from &#x27;@ionic/angular&#x27;;
+import { OptionItemI } from &#x27;@interfaces&#x27;;
+import {
+    AuthService,
+    AlertService,
+    UserService,
+    AnalyticsService,
+} from &#x27;@services&#x27;;
+import { AccountViewModel } from &#x27;./model/account.view-model&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+
+@Component({
+    selector: &#x27;app-account&#x27;,
+    templateUrl: &#x27;account.page.html&#x27;,
+    styleUrls: [&#x27;./account.page.scss&#x27;],
+})
+export class AccountPage {
+    vm &#x3D; new AccountViewModel();
+    logged &#x3D; false;
+
+    constructor(
+        private authService: AuthService,
+        private userService: UserService,
+        private navCtrl: NavController,
+        private alertService: AlertService,
+        private analyticsService: AnalyticsService,
+        private translate: TranslateService
+    ) {}
+
+    async ionViewWillEnter(): Promise&lt;void&gt; {
+        this.vm.loading &#x3D; true;
+        await this.isAuthenticated();
+    }
+
+    async isAuthenticated(): Promise&lt;void&gt; {
+        this.vm.user &#x3D; this.userService.getUser();
+        if (this.vm.user) {
+            this.getResume();
+            this.setOptions();
+            this.logged &#x3D; true;
+        } else {
+            this.logged &#x3D; false;
+        }
+        this.vm.loading &#x3D; false;
+    }
+
+    getResume(): void {
+        this.userService.getResume().subscribe({
+            next: (res) &#x3D;&gt; {
+                this.vm.loading &#x3D; false;
+                this.vm.resume &#x3D; res;
+            },
+            error: (err) &#x3D;&gt; console.error(err),
+        });
+    }
+
+    setOptions() {
+        this.vm.header.title &#x3D; this.translate.instant(&#x27;account.title&#x27;);
+        this.vm.options &#x3D; [
+            {
+                name: this.translate.instant(&#x27;account.itemTitleMyData&#x27;),
+                subtitle: this.translate.instant(&#x27;account.itemSubtitleMyData&#x27;),
+                route: &#x27;my-data&#x27;,
+            },
+            {
+                name: this.translate.instant(&#x27;account.itemTitleGarage&#x27;),
+                subtitle: this.translate.instant(&#x27;account.itemSubtitleGarage&#x27;),
+                route: &#x27;garage&#x27;,
+            },
+            {
+                name: this.translate.instant(&#x27;account.itemTitleInscriptions&#x27;),
+                subtitle: this.translate.instant(
+                    &#x27;account.itemSubtitleInscriptions&#x27;
+                ),
+                route: &#x27;inscriptions&#x27;,
+            },
+            {
+                name: this.translate.instant(&#x27;account.itemTitleLikes&#x27;),
+                subtitle: this.translate.instant(&#x27;account.itemSubtitleLikes&#x27;),
+                route: &#x27;likes&#x27;,
+            },
+            {
+                name: this.translate.instant(&#x27;account.itemTitleLogout&#x27;),
+                subtitle: this.translate.instant(&#x27;account.itemSubtitleLogout&#x27;),
+                value: &#x27;logout&#x27;,
+            },
+        ];
+    }
+
+    onClickOption(item: OptionItemI): void {
+        if (item.value) {
+            this.analyticsService.logEvent(
+                &#x60;dashboard_clickOption_${item.value}&#x60;
+            );
+            if (item.value &#x3D;&#x3D;&#x3D; &#x27;logout&#x27;) {
+                this.logout();
+            }
+        } else {
+            this.analyticsService.logEvent(
+                &#x60;dashboard_clickOption_${item.route}&#x60;
+            );
+            this.navCtrl.navigateForward(item.route);
+        }
+    }
+
+    onLogged(): void {
+        this.isAuthenticated();
+    }
+
+    updateUser(): void {
+        this.userService.update(this.vm.user).subscribe({
+            next: () &#x3D;&gt; {
+                this.analyticsService.logEvent(&#x27;dashboard_changeName_OK&#x27;, {
+                    params: { status: true },
+                });
+                this.alertService.presentAlert(
+                    &#x27;¡Listo!&#x27;,
+                    &#x27;Nombre cambiado correctamente.&#x27;
+                );
+            },
+            error: () &#x3D;&gt; {
+                this.analyticsService.logEvent(&#x27;dashboard_changeName_KO&#x27;);
+                this.alertService.presentAlert(
+                    &#x27;¡Vaya!&#x27;,
+                    &#x27;No se ha podido cambiar el nombre.&#x27;
+                );
+            },
+        });
+    }
+
+    async logout(): Promise&lt;void&gt; {
+        const alert &#x3D; await this.alertService.presentAlertWithButtons(
+            this.translate.instant(&#x27;account.titleLogout&#x27;),
+            this.translate.instant(&#x27;account.messageLogout&#x27;),
+            [
+                {
+                    text: this.translate.instant(&#x27;generic.no&#x27;),
+                    role: &#x27;cancel&#x27;,
+                },
+                {
+                    text: this.translate.instant(&#x27;generic.yes&#x27;),
+                    role: &#x27;ok&#x27;,
+                },
+            ]
+        );
+        const data &#x3D; await alert.onDidDismiss();
+        if (data.role &#x3D;&#x3D;&#x3D; &#x27;ok&#x27;) {
+            this.analyticsService.logEvent(&#x27;dashboard_logout_OK&#x27;);
+            this.logged &#x3D; false;
+            this.authService.logout();
+        } else {
+            this.analyticsService.logEvent(&#x27;dashboard_logout_Cancel&#x27;);
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;custom-header [options]&#x3D;&quot;vm.header&quot;&gt;&lt;/custom-header&gt;
+
+&lt;ion-content
+    [fullscreen]&#x3D;&quot;true&quot;
+    class&#x3D;&quot;animate__animated animate__fadeIn animate__faster&quot;
+&gt;
+    &lt;spinner [loading]&#x3D;&quot;vm.loading&quot;&gt;&lt;/spinner&gt;
+    &lt;ion-row style&#x3D;&quot;padding-top: 0.5rem&quot;&gt;
+        &lt;ion-col style&#x3D;&quot;padding-top: 0&quot; size&#x3D;&quot;12&quot; sizeLg&#x3D;&quot;8&quot; offsetLg&#x3D;&quot;2&quot;&gt;
+            &lt;auth
+                (clickLogin)&#x3D;&quot;onLogged()&quot;
+                *ngIf&#x3D;&quot;!logged &amp;&amp; !vm.registerMode&quot;
+            &gt;&lt;/auth&gt;
+
+            &lt;ng-container
+                *ngIf&#x3D;&quot;logged &amp;&amp; 
+                       !vm.registerMode &amp;&amp; 
+                       vm.user &amp;&amp; 
+                       vm.resume&quot;
+            &gt;
+                &lt;dashboard
+                    [resume]&#x3D;&quot;vm.resume&quot;
+                    [user]&#x3D;&quot;vm.user&quot;
+                    [options]&#x3D;&quot;vm.options&quot;
+                    (goTo)&#x3D;&quot;onClickOption($event)&quot;
+                &gt;
+                &lt;/dashboard&gt;
+            &lt;/ng-container&gt;
+        &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./account.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">hr {
+    margin-bottom: 1.5rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><custom-header [options]="vm.header"></custom-header><ion-content    [fullscreen]="true"    class="animate__animated animate__fadeIn animate__faster">    <spinner [loading]="vm.loading"></spinner>    <ion-row style="padding-top: 0.5rem">        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">            <auth                (clickLogin)="onLogged()"                *ngIf="!logged && !vm.registerMode"            ></auth>            <ng-container                *ngIf="logged &&                        !vm.registerMode &&                        vm.user &&                        vm.resume"            >                <dashboard                    [resume]="vm.resume"                    [user]="vm.user"                    [options]="vm.options"                    (goTo)="onClickOption($event)"                >                </dashboard>            </ng-container>        </ion-col>    </ion-row></ion-content></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'AccountPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AccountPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

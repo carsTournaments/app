@@ -1,0 +1,634 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  CalendarPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/calendar/calendar.page.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-calendar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./calendar.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>calendar.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#vm" >vm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getDates" >getDates</a>
+                            </li>
+                            <li>
+                                <a href="#getItems" >getItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <a href="#onDateSelected" >onDateSelected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(tournamentService: <a href="../injectables/TournamentService.html" target="_self">TournamentService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/calendar/calendar.page.ts:11</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tournamentService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TournamentService.html" target="_self" >TournamentService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDates"></a>
+                    <span class="name">
+                        <span ><b>getDates</b></span>
+                        <a href="#getDates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDates()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/modules/calendar/calendar.page.ts:18</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getItems"></a>
+                    <span class="name">
+                        <span ><b>getItems</b></span>
+                        <a href="#getItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getItems()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/modules/calendar/calendar.page.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/app/modules/calendar/calendar.page.ts:14</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDateSelected"></a>
+                    <span class="name">
+                        <span ><b>onDateSelected</b></span>
+                        <a href="#onDateSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDateSelected(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/modules/calendar/calendar.page.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm"></a>
+                    <span class="name">
+                        <span ><b>vm</b></span>
+                        <a href="#vm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new CalendarViewModel()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/calendar/calendar.page.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { TournamentService } from &#x27;@services&#x27;;
+import { CalendarViewModel } from &#x27;./calendar.view-model&#x27;;
+
+@Component({
+    selector: &#x27;page-calendar&#x27;,
+    templateUrl: &#x27;calendar.page.html&#x27;,
+    styleUrls: [&#x27;./calendar.page.scss&#x27;],
+})
+export class CalendarPage {
+    vm &#x3D; new CalendarViewModel();
+    constructor(private tournamentService: TournamentService) {}
+
+    async ionViewWillEnter() {
+        this.getDates();
+    }
+
+    getDates() {
+        this.tournamentService.getDaysForCalendar().subscribe({
+            next: (dates) &#x3D;&gt; {
+                this.vm.dates &#x3D; dates;
+                if (this.vm.dates.length &gt; 0) {
+                    this.vm.dateSelected &#x3D; this.vm.dates[0];
+                    this.getItems();
+                } else {
+                    this.vm.noDays &#x3D; true;
+                    this.vm.loading &#x3D; false;
+                }
+            },
+        });
+    }
+
+    getItems() {
+        this.vm.loading &#x3D; true;
+        return this.tournamentService
+            .getCalendarItems(this.vm.dateSelected)
+            .subscribe({
+                next: (response) &#x3D;&gt; {
+                    this.vm.rounds &#x3D; response.rounds;
+                    this.vm.tournaments &#x3D; response.tournaments;
+                    this.vm.loading &#x3D; false;
+                },
+            });
+    }
+
+    onDateSelected(date: string) {
+        this.vm.dateSelected &#x3D; date;
+        this.getItems();
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;custom-header [options]&#x3D;&quot;vm.header&quot;&gt;&lt;/custom-header&gt;
+&lt;ion-content fullscreen&#x3D;&quot;true&quot;&gt;
+  &lt;spinner [loading]&#x3D;&quot;vm.loading&quot;&gt;&lt;/spinner&gt;
+
+  &lt;no-items *ngIf&#x3D;&quot;!vm.loading &amp;&amp; vm.noDays&quot; [options]&#x3D;&quot;vm.noItems&quot;&gt;&lt;/no-items&gt;
+
+  &lt;ng-container *ngIf&#x3D;&quot;!vm.loading &amp;&amp; !vm.noDays&quot;&gt;
+    &lt;ion-row style&#x3D;&quot;padding-top: 0&quot;&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot; sizeLg&#x3D;&quot;8&quot; offsetLg&#x3D;&quot;2&quot;&gt;
+        &lt;calendar-dates [dates]&#x3D;&quot;vm.dates&quot; [dateSelected]&#x3D;&quot;vm.dateSelected&quot;
+          (dateSelectedEvent)&#x3D;&quot;onDateSelected($event)&quot;&gt;
+        &lt;/calendar-dates&gt;
+        &lt;calendar-items [rounds]&#x3D;&quot;vm.rounds&quot; [tournaments]&#x3D;&quot;vm.tournaments&quot;&gt;&lt;/calendar-items&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+  &lt;/ng-container&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./calendar.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><custom-header [options]="vm.header"></custom-header><ion-content fullscreen="true">  <spinner [loading]="vm.loading"></spinner>  <no-items *ngIf="!vm.loading && vm.noDays" [options]="vm.noItems"></no-items>  <ng-container *ngIf="!vm.loading && !vm.noDays">    <ion-row style="padding-top: 0">      <ion-col size="12" sizeLg="8" offsetLg="2">        <calendar-dates [dates]="vm.dates" [dateSelected]="vm.dateSelected"          (dateSelectedEvent)="onDateSelected($event)">        </calendar-dates>        <calendar-items [rounds]="vm.rounds" [tournaments]="vm.tournaments"></calendar-items>      </ion-col>    </ion-row>  </ng-container></ion-content></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'CalendarPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CalendarPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

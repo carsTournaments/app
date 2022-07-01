@@ -1,0 +1,1626 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  CarsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/cars/cars.page.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-cars</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./cars.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>cars.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#vm" >vm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cleanFilter" >cleanFilter</a>
+                            </li>
+                            <li>
+                                <a href="#doRefresh" >doRefresh</a>
+                            </li>
+                            <li>
+                                <a href="#getBrands" >getBrands</a>
+                            </li>
+                            <li>
+                                <a href="#getBrandsOnSuccess" >getBrandsOnSuccess</a>
+                            </li>
+                            <li>
+                                <a href="#getCars" >getCars</a>
+                            </li>
+                            <li>
+                                <a href="#getCarsOnSuccess" >getCarsOnSuccess</a>
+                            </li>
+                            <li>
+                                <a href="#getTopCars" >getTopCars</a>
+                            </li>
+                            <li>
+                                <a href="#goToCar" >goToCar</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <a href="#loadMoreData" >loadMoreData</a>
+                            </li>
+                            <li>
+                                <a href="#onClickBrand" >onClickBrand</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openFilter" >openFilter</a>
+                            </li>
+                            <li>
+                                <a href="#segmentChanged" >segmentChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(carService: <a href="../injectables/CarService.html" target="_self">CarService</a>, likeService: <a href="../injectables/LikeService.html" target="_self">LikeService</a>, brandService: <a href="../injectables/BrandService.html" target="_self">BrandService</a>, navCtrl: NavController, analyticsService: <a href="../injectables/AnalyticsService.html" target="_self">AnalyticsService</a>, actionSheetService: <a href="../injectables/ActionSheetIonicService.html" target="_self">ActionSheetIonicService</a>, translate: TranslateService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/cars/cars.page.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>carService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CarService.html" target="_self" >CarService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>likeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LikeService.html" target="_self" >LikeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>brandService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BrandService.html" target="_self" >BrandService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>analyticsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnalyticsService.html" target="_self" >AnalyticsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actionSheetService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ActionSheetIonicService.html" target="_self" >ActionSheetIonicService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cleanFilter"></a>
+                    <span class="name">
+                        <span ><b>cleanFilter</b></span>
+                        <a href="#cleanFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cleanFilter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doRefresh"></a>
+                    <span class="name">
+                        <span ><b>doRefresh</b></span>
+                        <a href="#doRefresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>doRefresh(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="164"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:164</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBrands"></a>
+                    <span class="name">
+                        <span ><b>getBrands</b></span>
+                        <a href="#getBrands"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBrands(event?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBrandsOnSuccess"></a>
+                    <span class="name">
+                        <span ><b>getBrandsOnSuccess</b></span>
+                        <a href="#getBrandsOnSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBrandsOnSuccess(res: literal type, event?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>res</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCars"></a>
+                    <span class="name">
+                        <span ><b>getCars</b></span>
+                        <a href="#getCars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCars(event?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:40</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCarsOnSuccess"></a>
+                    <span class="name">
+                        <span ><b>getCarsOnSuccess</b></span>
+                        <a href="#getCarsOnSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCarsOnSuccess(res: literal type, event?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>res</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTopCars"></a>
+                    <span class="name">
+                        <span ><b>getTopCars</b></span>
+                        <a href="#getTopCars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTopCars()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToCar"></a>
+                    <span class="name">
+                        <span ><b>goToCar</b></span>
+                        <a href="#goToCar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToCar(item: <a href="../classes/Car.html" target="_self">Car</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/Car.html" target="_self" >Car</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMoreData"></a>
+                    <span class="name">
+                        <span ><b>loadMoreData</b></span>
+                        <a href="#loadMoreData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadMoreData(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:109</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onClickBrand"></a>
+                    <span class="name">
+                        <span ><b>onClickBrand</b></span>
+                        <a href="#onClickBrand"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onClickBrand(brand: <a href="../classes/Brand.html" target="_self">Brand</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>brand</td>
+                                    <td>
+                                                <code><a href="../classes/Brand.html" target="_self" >Brand</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openFilter"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>openFilter</b></span>
+                        <a href="#openFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openFilter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="segmentChanged"></a>
+                    <span class="name">
+                        <span ><b>segmentChanged</b></span>
+                        <a href="#segmentChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>segmentChanged(ev: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/modules/cars/cars.page.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ev</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm"></a>
+                    <span class="name">
+                        <span ><b>vm</b></span>
+                        <a href="#vm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new CarsViewModel()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/cars/cars.page.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NavController } from &#x27;@ionic/angular&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { Brand, Car } from &#x27;@models&#x27;;
+import {
+    ActionSheetIonicService,
+    AnalyticsService,
+    BrandService,
+    CarService,
+    LikeService,
+} from &#x27;@services&#x27;;
+import { CarsViewModel } from &#x27;./model/cars.view-model&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+
+@Component({
+    selector: &#x27;page-cars&#x27;,
+    templateUrl: &#x27;cars.page.html&#x27;,
+    styleUrls: [&#x27;./cars.page.scss&#x27;],
+})
+export class CarsPage {
+    vm &#x3D; new CarsViewModel();
+
+    constructor(
+        private carService: CarService,
+        private likeService: LikeService,
+        private brandService: BrandService,
+        private navCtrl: NavController,
+        private analyticsService: AnalyticsService,
+        private actionSheetService: ActionSheetIonicService,
+        private translate: TranslateService
+    ) {}
+
+    ionViewWillEnter(): void {
+        this.vm.header.title &#x3D; this.translate.instant(&#x27;cars.title&#x27;);
+        this.vm.loading.getCars &#x3D; true;
+        this.getCars();
+        this.getTopCars();
+        this.getBrands();
+    }
+
+    getCars(event?: any): void {
+        this.carService.getAll(this.vm.carsBody).subscribe({
+            next: (res) &#x3D;&gt; this.getCarsOnSuccess(res, event),
+            error: () &#x3D;&gt; {
+                this.vm.loading.getCars &#x3D; false;
+                this.vm.error.getCars &#x3D; true;
+                this.vm.noitems.subtitle &#x3D; this.vm.filter
+                    ? &#x27;Pulsa sobre la X para eliminar el filtro&#x27;
+                    : &#x27;Algo por aqui no ha ido bien...&#x27;;
+            },
+        });
+    }
+
+    getCarsOnSuccess(res: { items: Car[] }, event?: any): void {
+        if (event) {
+            if (res.items.length &gt; 0) {
+                this.vm.cars &#x3D; this.vm.cars.concat(res.items);
+                event.target.complete();
+            } else {
+                event.target.disabled &#x3D; true;
+            }
+        } else {
+            this.vm.cars &#x3D; res.items;
+        }
+        this.vm.loading.getCars &#x3D; false;
+        this.vm.error.getCars &#x3D; false;
+    }
+
+    getTopCars(): void {
+        this.vm.loading.getTop &#x3D; true;
+        this.likeService.getTopCars(&#x27;25&#x27;).subscribe({
+            next: (res) &#x3D;&gt; {
+                this.vm.topCars &#x3D; res;
+                this.vm.loading.getTop &#x3D; false;
+                this.vm.error.getTop &#x3D; false;
+            },
+            error: () &#x3D;&gt; {
+                this.vm.loading.getTop &#x3D; false;
+                this.vm.error.getTop &#x3D; true;
+            },
+        });
+    }
+
+    getBrands(event?: any): void {
+        this.vm.loading.getBrands &#x3D; true;
+        this.brandService.getAllBrandsAndCars(this.vm.brandsBody).subscribe({
+            next: (res) &#x3D;&gt; this.getBrandsOnSuccess(res, event),
+            error: () &#x3D;&gt; {
+                this.vm.loading.getBrands &#x3D; false;
+                this.vm.error.getBrands &#x3D; true;
+            },
+        });
+    }
+
+    getBrandsOnSuccess(res: { items: Brand[] }, event?: any): void {
+        if (event) {
+            if (res.items.length &gt; 0) {
+                this.vm.brands &#x3D; this.vm.brands.concat(res.items);
+                event.target.complete();
+            } else {
+                event.target.disabled &#x3D; true;
+            }
+        } else {
+            this.vm.brands &#x3D; res.items;
+        }
+        this.vm.loading.getBrands &#x3D; false;
+        this.vm.error.getBrands &#x3D; false;
+    }
+
+    loadMoreData(event: any, type: string): void {
+        if (type &#x3D;&#x3D;&#x3D; &#x27;cars&#x27;) {
+            this.analyticsService.logEvent(&#x27;cars_loadMoreCars&#x27;);
+            this.vm.carsBody.page++;
+            this.getCars(event);
+        } else {
+            this.analyticsService.logEvent(&#x27;cars_loadMoreBrands&#x27;);
+            this.vm.brandsBody.page++;
+            this.getBrands(event);
+        }
+    }
+
+    segmentChanged(ev: any): void {
+        this.vm.header.segments.selected &#x3D; Number(ev.detail.value);
+        this.analyticsService.logEvent(
+            &#x60;cars_segment_${
+                this.vm.header.segments.items[this.vm.header.segments.selected]
+            }&#x60;
+        );
+        this.vm.header.rightButton.state &#x3D; false;
+        if (
+            this.vm.header.segments.selected &#x3D;&#x3D;&#x3D; 0 ||
+            this.vm.header.segments.selected &#x3D;&#x3D;&#x3D; 2
+        ) {
+            this.vm.header.rightButton.state &#x3D; true;
+        }
+    }
+
+    onClickBrand(brand: Brand): void {
+        this.vm.carsBody.brand &#x3D; brand._id;
+        this.vm.carsBody.page &#x3D; 1;
+        this.vm.filter &#x3D; true;
+        this.vm.header.segments.selected &#x3D; 0;
+        this.getCars();
+    }
+
+    goToCar(item: Car): void {
+        this.analyticsService.logEvent(&#x27;cars_goToCar&#x27;, {
+            params: {
+                car_id: item._id,
+                car_name: &#x60;${item.brand.name} ${item.model}&#x60;,
+            },
+        });
+        this.navCtrl.navigateForward(&#x60;/car/${item._id}&#x60;);
+    }
+
+    cleanFilter(): void {
+        this.analyticsService.logEvent(&#x27;cars_cleanFilter&#x27;);
+        this.vm.carsBody.brand &#x3D; null;
+        this.vm.carsBody.page &#x3D; 1;
+        this.vm.filter &#x3D; false;
+        this.vm.header.segments.selected &#x3D; 0;
+        this.getCars();
+    }
+
+    doRefresh(event: any): void {
+        this.analyticsService.logEvent(&#x27;cars_refresh&#x27;);
+        this.getCars(event);
+    }
+
+    async openFilter() {
+        const buttons &#x3D; [
+            {
+                text: !this.vm.carsBody.onlyWithPhoto
+                    ? &#x27;Ver solo coches con foto&#x27;
+                    : &#x27;Ver todos los coches&#x27;,
+                data: !this.vm.carsBody.onlyWithPhoto ? &#x27;onlyWithPhoto&#x27; : &#x27;all&#x27;,
+            },
+        ];
+        const as &#x3D; await this.actionSheetService.present(&#x27;Filtro&#x27;, buttons);
+
+        as.onDidDismiss().then((data) &#x3D;&gt; {
+            if (data) {
+                if (data.data &#x3D;&#x3D;&#x3D; &#x27;onlyWithPhoto&#x27; || data.data &#x3D;&#x3D;&#x3D; &#x27;all&#x27;) {
+                    this.vm.carsBody.onlyWithPhoto &#x3D; false;
+                    if (data.data &#x3D;&#x3D;&#x3D; &#x27;onlyWithPhoto&#x27;) {
+                        this.vm.carsBody.onlyWithPhoto &#x3D; true;
+                    }
+                    this.vm.brandsBody.onlyWithPhoto &#x3D; false;
+                    if (data.data &#x3D;&#x3D;&#x3D; &#x27;onlyWithPhoto&#x27;) {
+                        this.vm.brandsBody.onlyWithPhoto &#x3D; true;
+                    }
+                    this.vm.carsBody.page &#x3D; 1;
+                    this.vm.brandsBody.page &#x3D; 1;
+                    this.getCars();
+                    this.getBrands();
+                }
+            }
+        });
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;custom-header
+    [options]&#x3D;&quot;vm.header&quot;
+    (segmentChanged)&#x3D;&quot;segmentChanged($event)&quot;
+    (clickRightIcon)&#x3D;&quot;openFilter()&quot;
+&gt;
+&lt;/custom-header&gt;
+
+&lt;ion-content [fullscreen]&#x3D;&quot;true&quot;&gt;
+    &lt;spinner [loading]&#x3D;&quot;vm.loading.getCars &amp;&amp; vm.loading.getBrands&quot;&gt;&lt;/spinner&gt;
+    &lt;no-items
+        *ngIf&#x3D;&quot;!vm.loading.getCars &amp;&amp; vm.cars.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; vm.header.segments.selected &#x3D;&#x3D;&#x3D; 0&quot;
+        [options]&#x3D;&quot;vm.noitems&quot;
+    &gt;&lt;/no-items&gt;
+
+    &lt;ion-refresher
+        *ngIf&#x3D;&quot;vm.header.segments.selected &#x3D;&#x3D;&#x3D; 0&quot;
+        slot&#x3D;&quot;fixed&quot;
+        (ionRefresh)&#x3D;&quot;doRefresh($event)&quot;
+        pullFactor&#x3D;&quot;0.8&quot;
+        pullMin&#x3D;&quot;60&quot;
+        pullMax&#x3D;&quot;120&quot;
+    &gt;
+        &lt;ion-refresher-content&gt;&lt;/ion-refresher-content&gt;
+    &lt;/ion-refresher&gt;
+
+    &lt;ion-row style&#x3D;&quot;padding-top: 0&quot;&gt;
+        &lt;ion-col
+            class&#x3D;&quot;ion-no-padding&quot;
+            style&#x3D;&quot;padding-top: 0&quot;
+            size&#x3D;&quot;12&quot;
+            sizeLg&#x3D;&quot;8&quot;
+            offsetLg&#x3D;&quot;2&quot;
+        &gt;
+            &lt;!-- LATEST CARS --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;vm.header.segments.selected &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+                &lt;ion-row
+                    *ngIf&#x3D;&quot;!vm.loading.getCars &amp;&amp; vm.cars.length &gt; 0&quot;
+                    style&#x3D;&quot;padding-top: 1rem&quot;
+                    class&#x3D;&quot;animate__animated animate__fadeIn animate__faster ion-no-padding&quot;
+                &gt;
+                    &lt;ion-col
+                        size&#x3D;&quot;12&quot;
+                        sizeMd&#x3D;&quot;6&quot;
+                        sizeLg&#x3D;&quot;6&quot;
+                        sizeXl&#x3D;&quot;6&quot;
+                        *ngFor&#x3D;&quot;let car of vm.cars&quot;
+                        class&#x3D;&quot;ion-no-padding ion-no-margin&quot;
+                        style&#x3D;&quot;margin-top: -1rem&quot;
+                    &gt;
+                        &lt;car-item
+                            [car]&#x3D;&quot;car&quot;
+                            (clickItem)&#x3D;&quot;goToCar($event)&quot;
+                        &gt;&lt;/car-item&gt;
+                    &lt;/ion-col&gt;
+                &lt;/ion-row&gt;
+
+                &lt;ion-infinite-scroll
+                    threshold&#x3D;&quot;100px&quot;
+                    (ionInfinite)&#x3D;&quot;loadMoreData($event, &#x27;cars&#x27;)&quot;
+                &gt;
+                    &lt;ion-infinite-scroll-content
+                        loadingSpinner&#x3D;&quot;bubbles&quot;
+                        loadingText&#x3D;&quot;Cargando...&quot;
+                    &gt;
+                    &lt;/ion-infinite-scroll-content&gt;
+                &lt;/ion-infinite-scroll&gt;
+            &lt;/ng-container&gt;
+
+            &lt;!-- TOP CARS --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;vm.header.segments.selected &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+                &lt;ion-row
+                    style&#x3D;&quot;padding-top: 1rem&quot;
+                    class&#x3D;&quot;animate__animated animate__fadeIn animate__faster ion-no-padding&quot;
+                &gt;
+                    &lt;ion-col
+                        size&#x3D;&quot;12&quot;
+                        sizeMd&#x3D;&quot;6&quot;
+                        sizeLg&#x3D;&quot;6&quot;
+                        sizeXl&#x3D;&quot;6&quot;
+                        *ngFor&#x3D;&quot;let car of vm.topCars&quot;
+                        class&#x3D;&quot;ion-no-padding ion-no-margin&quot;
+                        style&#x3D;&quot;margin-top: -1rem&quot;
+                    &gt;
+                        &lt;car-item
+                            [car]&#x3D;&quot;car&quot;
+                            type&#x3D;&quot;topCars&quot;
+                            (clickItem)&#x3D;&quot;goToCar($event)&quot;
+                        &gt;&lt;/car-item&gt;
+                    &lt;/ion-col&gt;
+                &lt;/ion-row&gt;
+            &lt;/ng-container&gt;
+
+            &lt;!-- BRANDS --&gt;
+            &lt;div
+                *ngIf&#x3D;&quot;vm.header.segments.selected &#x3D;&#x3D;&#x3D; 2&quot;
+                class&#x3D;&quot;animate__animated animate__fadeIn animate__faster&quot;
+            &gt;
+                &lt;ion-row
+                    style&#x3D;&quot;padding-top: 1rem&quot;
+                    class&#x3D;&quot;animate__animated animate__fadeIn animate__faster ion-no-padding&quot;
+                &gt;
+                    &lt;ion-col
+                        size&#x3D;&quot;12&quot;
+                        sizeMd&#x3D;&quot;6&quot;
+                        sizeLg&#x3D;&quot;6&quot;
+                        sizeXl&#x3D;&quot;6&quot;
+                        *ngFor&#x3D;&quot;let brand of vm.brands&quot;
+                        class&#x3D;&quot;ion-no-padding ion-no-margin&quot;
+                        style&#x3D;&quot;margin-top: -1rem&quot;
+                    &gt;
+                        &lt;brand-item
+                            [brand]&#x3D;&quot;brand&quot;
+                            (clickItem)&#x3D;&quot;onClickBrand($event)&quot;
+                        &gt;
+                        &lt;/brand-item&gt;
+                    &lt;/ion-col&gt;
+                    &lt;ion-infinite-scroll
+                        threshold&#x3D;&quot;100px&quot;
+                        (ionInfinite)&#x3D;&quot;loadMoreData($event, &#x27;brands&#x27;)&quot;
+                    &gt;
+                        &lt;ion-infinite-scroll-content
+                            loadingSpinner&#x3D;&quot;bubbles&quot;
+                            loadingText&#x3D;&quot;Cargando...&quot;
+                        &gt;
+                        &lt;/ion-infinite-scroll-content&gt;
+                    &lt;/ion-infinite-scroll&gt;
+                &lt;/ion-row&gt;
+            &lt;/div&gt;
+        &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-fab *ngIf&#x3D;&quot;vm.filter&quot; vertical&#x3D;&quot;bottom&quot; horizontal&#x3D;&quot;end&quot; slot&#x3D;&quot;fixed&quot;&gt;
+        &lt;ion-fab-button size&#x3D;&quot;small&quot; (click)&#x3D;&quot;cleanFilter()&quot;&gt;
+            &lt;ion-icon name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;
+        &lt;/ion-fab-button&gt;
+    &lt;/ion-fab&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./cars.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><custom-header    [options]="vm.header"    (segmentChanged)="segmentChanged($event)"    (clickRightIcon)="openFilter()"></custom-header><ion-content [fullscreen]="true">    <spinner [loading]="vm.loading.getCars && vm.loading.getBrands"></spinner>    <no-items        *ngIf="!vm.loading.getCars && vm.cars.length === 0 && vm.header.segments.selected === 0"        [options]="vm.noitems"    ></no-items>    <ion-refresher        *ngIf="vm.header.segments.selected === 0"        slot="fixed"        (ionRefresh)="doRefresh($event)"        pullFactor="0.8"        pullMin="60"        pullMax="120"    >        <ion-refresher-content></ion-refresher-content>    </ion-refresher>    <ion-row style="padding-top: 0">        <ion-col            class="ion-no-padding"            style="padding-top: 0"            size="12"            sizeLg="8"            offsetLg="2"        >            <!-- LATEST CARS -->            <ng-container *ngIf="vm.header.segments.selected === 0">                <ion-row                    *ngIf="!vm.loading.getCars && vm.cars.length > 0"                    style="padding-top: 1rem"                    class="animate__animated animate__fadeIn animate__faster ion-no-padding"                >                    <ion-col                        size="12"                        sizeMd="6"                        sizeLg="6"                        sizeXl="6"                        *ngFor="let car of vm.cars"                        class="ion-no-padding ion-no-margin"                        style="margin-top: -1rem"                    >                        <car-item                            [car]="car"                            (clickItem)="goToCar($event)"                        ></car-item>                    </ion-col>                </ion-row>                <ion-infinite-scroll                    threshold="100px"                    (ionInfinite)="loadMoreData($event, \'cars\')"                >                    <ion-infinite-scroll-content                        loadingSpinner="bubbles"                        loadingText="Cargando..."                    >                    </ion-infinite-scroll-content>                </ion-infinite-scroll>            </ng-container>            <!-- TOP CARS -->            <ng-container *ngIf="vm.header.segments.selected === 1">                <ion-row                    style="padding-top: 1rem"                    class="animate__animated animate__fadeIn animate__faster ion-no-padding"                >                    <ion-col                        size="12"                        sizeMd="6"                        sizeLg="6"                        sizeXl="6"                        *ngFor="let car of vm.topCars"                        class="ion-no-padding ion-no-margin"                        style="margin-top: -1rem"                    >                        <car-item                            [car]="car"                            type="topCars"                            (clickItem)="goToCar($event)"                        ></car-item>                    </ion-col>                </ion-row>            </ng-container>            <!-- BRANDS -->            <div                *ngIf="vm.header.segments.selected === 2"                class="animate__animated animate__fadeIn animate__faster"            >                <ion-row                    style="padding-top: 1rem"                    class="animate__animated animate__fadeIn animate__faster ion-no-padding"                >                    <ion-col                        size="12"                        sizeMd="6"                        sizeLg="6"                        sizeXl="6"                        *ngFor="let brand of vm.brands"                        class="ion-no-padding ion-no-margin"                        style="margin-top: -1rem"                    >                        <brand-item                            [brand]="brand"                            (clickItem)="onClickBrand($event)"                        >                        </brand-item>                    </ion-col>                    <ion-infinite-scroll                        threshold="100px"                        (ionInfinite)="loadMoreData($event, \'brands\')"                    >                        <ion-infinite-scroll-content                            loadingSpinner="bubbles"                            loadingText="Cargando..."                        >                        </ion-infinite-scroll-content>                    </ion-infinite-scroll>                </ion-row>            </div>        </ion-col>    </ion-row>    <ion-fab *ngIf="vm.filter" vertical="bottom" horizontal="end" slot="fixed">        <ion-fab-button size="small" (click)="cleanFilter()">            <ion-icon name="close"></ion-icon>        </ion-fab-button>    </ion-fab></ion-content></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'CarsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CarsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
