@@ -15,13 +15,12 @@ export class TournamentsPage {
     constructor(
         private tournamentService: TournamentService,
         private navCtrl: NavController,
-      private analyticsService: AnalyticsService,
-      private translate: TranslateService
+        private analyticsService: AnalyticsService,
+        private translate: TranslateService
     ) {}
 
     async ionViewWillEnter() {
-        this.vm.header.title =
-            this.translate.instant('tournaments.title');
+        this.vm.header.title = this.translate.instant('tournaments.title');
         this.getItems();
     }
 

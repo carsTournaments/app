@@ -26,7 +26,7 @@ export class CarsPage {
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
         private actionSheetService: ActionSheetIonicService,
-      private translate: TranslateService
+        private translate: TranslateService
     ) {}
 
     ionViewWillEnter(): void {
