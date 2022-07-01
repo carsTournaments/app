@@ -3,8 +3,8 @@
 
 npm run prettier:write ||
 (
-    echo -e "\n❌ Formateo Prettier KO!\n"
+    echo "\n❌ Formateo Prettier KO!\n"
     false;
 )
 
-echo -e "✅ Formateo Prettier OK!"
+echo "✅ Formateo Prettier OK!"

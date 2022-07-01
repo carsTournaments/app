@@ -28,9 +28,7 @@
     "livereload:ios": "ionic capacitor run ios --livereload --external",
     "analyze": "ng build --stats-json && webpack-bundle-analyzer www/stats.json",
     "sonar": "sonar-scanner",
-    "compodoc:build": "compodoc -p tsconfig.doc.json",
-    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
-    "compodoc:serve": "compodoc -s",
+    "compodoc": "compodoc -p tsconfig.app.json",
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "private": true,
