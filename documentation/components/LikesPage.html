@@ -1,0 +1,841 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  LikesPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/likes/likes.page.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>TranslatePipe</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-likes</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>likes.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#vm" >vm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAllReceivedForUser" >getAllReceivedForUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAllSentForUser" >getAllSentForUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <a href="#onClickCar" >onClickCar</a>
+                            </li>
+                            <li>
+                                <a href="#segmentChanged" >segmentChanged</a>
+                            </li>
+                            <li>
+                                <a href="#translate" >translate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(likesService: <a href="../injectables/LikeService.html" target="_self">LikeService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, navCtrl: NavController, translatePipe: TranslatePipe)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/likes/likes.page.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>likesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LikeService.html" target="_self" >LikeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translatePipe</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslatePipe</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllReceivedForUser"></a>
+                    <span class="name">
+                        <span ><b>getAllReceivedForUser</b></span>
+                        <a href="#getAllReceivedForUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllReceivedForUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/modules/likes/likes.page.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllSentForUser"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getAllSentForUser</b></span>
+                        <a href="#getAllSentForUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllSentForUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/app/modules/likes/likes.page.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/modules/likes/likes.page.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onClickCar"></a>
+                    <span class="name">
+                        <span ><b>onClickCar</b></span>
+                        <a href="#onClickCar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onClickCar(car: <a href="../classes/Car.html" target="_self">Car</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/modules/likes/likes.page.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>car</td>
+                                    <td>
+                                                <code><a href="../classes/Car.html" target="_self" >Car</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="segmentChanged"></a>
+                    <span class="name">
+                        <span ><b>segmentChanged</b></span>
+                        <a href="#segmentChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>segmentChanged(event: literal type)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/modules/likes/likes.page.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="translate"></a>
+                    <span class="name">
+                        <span ><b>translate</b></span>
+                        <a href="#translate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>translate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/modules/likes/likes.page.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm"></a>
+                    <span class="name">
+                        <span ><b>vm</b></span>
+                        <a href="#vm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new LikesViewModel()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/likes/likes.page.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Car } from &#x27;@models/car.model&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { NavController } from &#x27;@ionic/angular&#x27;;
+import { LikeService, UserService } from &#x27;@services&#x27;;
+import { LikesViewModel } from &#x27;./model/likes.view-model&#x27;;
+import { TranslatePipe } from &#x27;@ngx-translate/core&#x27;;
+
+@Component({
+    selector: &#x27;page-likes&#x27;,
+    templateUrl: &#x27;likes.page.html&#x27;,
+    providers: [TranslatePipe],
+})
+export class LikesPage {
+    vm &#x3D; new LikesViewModel();
+    constructor(
+        private likesService: LikeService,
+        private userService: UserService,
+        private navCtrl: NavController,
+        private translatePipe: TranslatePipe
+    ) {}
+
+    async ionViewWillEnter() {
+        this.translate();
+        this.vm.user &#x3D; this.userService.getUser();
+        this.getAllReceivedForUser();
+        this.getAllSentForUser();
+    }
+
+    translate() {
+        this.vm.header.title &#x3D; this.translatePipe.transform(&#x27;likes.title&#x27;);
+        this.vm.header.segments.items[0] &#x3D;
+            this.translatePipe.transform(&#x27;likes.segment1&#x27;);
+        this.vm.header.segments.items[1] &#x3D;
+            this.translatePipe.transform(&#x27;likes.segment2&#x27;);
+        this.vm.noitemsReceived.title &#x3D; this.translatePipe.transform(
+            &#x27;likes.titleNoitemsReceived&#x27;
+        );
+        this.vm.noitemsReceived.subtitle &#x3D; this.translatePipe.transform(
+            &#x27;likes.subtitleNoitemsReceived&#x27;
+        );
+        this.vm.noitemsSent.title &#x3D; this.translatePipe.transform(
+            &#x27;likes.titleNoitemsSent&#x27;
+        );
+        this.vm.noitemsSent.subtitle &#x3D; this.translatePipe.transform(
+            &#x27;likes.subtitleNoitemsSent&#x27;
+        );
+    }
+
+    getAllReceivedForUser() {
+        this.likesService
+            .getAllReceivedForUser({ id: this.vm.user._id })
+            .subscribe({
+                next: (response) &#x3D;&gt; {
+                    this.vm.likesReceived &#x3D; response;
+                    this.vm.loading &#x3D; false;
+                    this.vm.error &#x3D; false;
+                },
+                error: () &#x3D;&gt; {
+                    this.vm.loading &#x3D; false;
+                    this.vm.error &#x3D; true;
+                },
+            });
+    }
+
+    async getAllSentForUser() {
+        this.likesService
+            .getAllSentForUser({ id: this.vm.user._id })
+            .subscribe({
+                next: (response) &#x3D;&gt; {
+                    this.vm.likesSent &#x3D; response;
+                },
+            });
+    }
+
+    onClickCar(car: Car) {
+        this.navCtrl.navigateForward(&#x60;/car/${car._id}&#x60;);
+    }
+
+    segmentChanged(event: { detail: { value: any } }) {
+        this.vm.header.segments.selected &#x3D; Number(event.detail.value);
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;custom-header
+    [options]&#x3D;&quot;vm.header&quot;
+    (segmentChanged)&#x3D;&quot;segmentChanged($event)&quot;
+&gt;&lt;/custom-header&gt;
+
+&lt;ion-content [fullscreen]&#x3D;&quot;true&quot;&gt;
+    &lt;spinner [loading]&#x3D;&quot;vm.loading&quot;&gt;&lt;/spinner&gt;
+    &lt;no-items
+        *ngIf&#x3D;&quot;!vm.loading &amp;&amp; vm.likesReceived.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; vm.header.segments.selected &#x3D;&#x3D;&#x3D; 0&quot;
+        [options]&#x3D;&quot;vm.noitemsReceived&quot;
+    &gt;&lt;/no-items&gt;
+    &lt;no-items
+        *ngIf&#x3D;&quot;!vm.loading &amp;&amp; vm.likesSent.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; vm.header.segments.selected &#x3D;&#x3D;&#x3D; 1&quot;
+        [options]&#x3D;&quot;vm.noitemsSent&quot;
+    &gt;&lt;/no-items&gt;
+
+    &lt;ion-row style&#x3D;&quot;padding-top: 0&quot;&gt;
+        &lt;ion-col style&#x3D;&quot;padding-top: 0&quot; size&#x3D;&quot;12&quot; sizeLg&#x3D;&quot;8&quot; offsetLg&#x3D;&quot;2&quot;&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;vm.header.segments.selected &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+                &lt;ng-container
+                    *ngIf&#x3D;&quot;!vm.loading &amp;&amp; vm.likesReceived.length &gt; 0&quot;
+                &gt;
+                    &lt;div *ngFor&#x3D;&quot;let item of vm.likesReceived&quot;&gt;
+                        &lt;car-item
+                            [car]&#x3D;&quot;item.car&quot;
+                            type&#x3D;&quot;likesReceived&quot;
+                            [likesOptions]&#x3D;&quot;{likes: item.likes, lastLike: item.lastLike}&quot;
+                            (clickItem)&#x3D;&quot;onClickCar($event)&quot;
+                        &gt;
+                        &lt;/car-item&gt;
+                    &lt;/div&gt;
+                &lt;/ng-container&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container *ngIf&#x3D;&quot;vm.header.segments.selected &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+                &lt;div *ngFor&#x3D;&quot;let item of vm.likesSent&quot;&gt;
+                    &lt;car-item
+                        [car]&#x3D;&quot;item.car&quot;
+                        type&#x3D;&quot;likesSent&quot;
+                        [likesOptions]&#x3D;&quot;{ created: item.created }&quot;
+                        (clickItem)&#x3D;&quot;onClickCar($event)&quot;
+                    &gt;
+                    &lt;/car-item&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
+        &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><custom-header    [options]="vm.header"    (segmentChanged)="segmentChanged($event)"></custom-header><ion-content [fullscreen]="true">    <spinner [loading]="vm.loading"></spinner>    <no-items        *ngIf="!vm.loading && vm.likesReceived.length === 0 && vm.header.segments.selected === 0"        [options]="vm.noitemsReceived"    ></no-items>    <no-items        *ngIf="!vm.loading && vm.likesSent.length === 0 && vm.header.segments.selected === 1"        [options]="vm.noitemsSent"    ></no-items>    <ion-row style="padding-top: 0">        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">            <ng-container *ngIf="vm.header.segments.selected === 0">                <ng-container                    *ngIf="!vm.loading && vm.likesReceived.length > 0"                >                    <div *ngFor="let item of vm.likesReceived">                        <car-item                            [car]="item.car"                            type="likesReceived"                            [likesOptions]="{likes: item.likes, lastLike: item.lastLike}"                            (clickItem)="onClickCar($event)"                        >                        </car-item>                    </div>                </ng-container>            </ng-container>            <ng-container *ngIf="vm.header.segments.selected === 1">                <div *ngFor="let item of vm.likesSent">                    <car-item                        [car]="item.car"                        type="likesSent"                        [likesOptions]="{ created: item.created }"                        (clickItem)="onClickCar($event)"                    >                    </car-item>                </div>            </ng-container>        </ion-col>    </ion-row></ion-content></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'LikesPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LikesPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

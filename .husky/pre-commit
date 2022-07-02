@@ -1,4 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run lint
+npm run prettier:write ||
+(
+    echo "\n❌ Formateo Prettier KO!\n"
+    false;
+)
+
+echo "✅ Formateo Prettier OK!"

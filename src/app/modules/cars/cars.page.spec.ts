@@ -3,13 +3,27 @@ import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { CarsPage } from './cars.page';
-import { CarService, BrandService, LikeService, AnalyticsService } from '@services';
+import {
+    CarService,
+    BrandService,
+    LikeService,
+    AnalyticsService,
+} from '@services';
 import { Brand, Car } from '@models';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { analyticsService, brandService, carService, likeService } from '@services/services.mock.spec';
+import {
+    analyticsService,
+    brandService,
+    carService,
+    likeService,
+} from '@services/services.mock.spec';
 import { car } from '@models/models.mock.spec';
 import { CarsModule } from './cars.module';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import {
+    TranslateModule,
+    TranslateLoader,
+    TranslateFakeLoader,
+} from '@ngx-translate/core';
 
 describe('CarsPage', () => {
     let component: CarsPage;
@@ -25,21 +39,21 @@ describe('CarsPage', () => {
         TestBed.configureTestingModule({
             declarations: [CarsPage],
             imports: [
-              RouterTestingModule,
-              CarsModule,
-              TranslateModule.forRoot({
-                loader: {
-                  provide: TranslateLoader,
-                  useClass: TranslateFakeLoader,
-                },
-              })
+                RouterTestingModule,
+                CarsModule,
+                TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useClass: TranslateFakeLoader,
+                    },
+                }),
             ],
             providers: [
                 { provide: CarService, useValue: carService },
                 { provide: BrandService, useValue: brandService },
                 { provide: NavController, useValue: navCtrl },
-              { provide: AnalyticsService, useValue: analyticsService },
-                { provide: LikeService, useValue: likeService }
+                { provide: AnalyticsService, useValue: analyticsService },
+                { provide: LikeService, useValue: likeService },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -59,11 +73,11 @@ describe('CarsPage', () => {
     it('ionViewWillEnter', () => {
         spyOn(component, 'getCars');
         spyOn(component, 'getBrands');
-      spyOn(component, 'getTopCars');
+        spyOn(component, 'getTopCars');
         component.ionViewWillEnter();
         expect(component.getCars).toHaveBeenCalled();
         expect(component.getBrands).toHaveBeenCalled();
-      expect(component.getTopCars).toHaveBeenCalled();
+        expect(component.getTopCars).toHaveBeenCalled();
     });
 
     describe('getCars', () => {

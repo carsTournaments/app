@@ -1,0 +1,1536 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  CarPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/car/car.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-car</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./car.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>car.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#content" >content</a>
+                            </li>
+                            <li>
+                                <a href="#vm" >vm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkIsMyCar" >checkIsMyCar</a>
+                            </li>
+                            <li>
+                                <a href="#closeAllStates" >closeAllStates</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dislike" >dislike</a>
+                            </li>
+                            <li>
+                                <a href="#getInscriptions" >getInscriptions</a>
+                            </li>
+                            <li>
+                                <a href="#getLikes" >getLikes</a>
+                            </li>
+                            <li>
+                                <a href="#getOne" >getOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getOneSuccess" >getOneSuccess</a>
+                            </li>
+                            <li>
+                                <a href="#getVotes" >getVotes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#like" >like</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#likeOrDislike" >likeOrDislike</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onClickTotalItem" >onClickTotalItem</a>
+                            </li>
+                            <li>
+                                <a href="#openImage" >openImage</a>
+                            </li>
+                            <li>
+                                <a href="#share" >share</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(carService: <a href="../injectables/CarService.html" target="_self">CarService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, imagePipe: <a href="../classes/Image.html" target="_self">ImagePipe</a>, imageService: <a href="../injectables/ImageService.html" target="_self">ImageService</a>, likeService: <a href="../injectables/LikeService.html" target="_self">LikeService</a>, inscriptionService: <a href="../injectables/InscriptionService.html" target="_self">InscriptionService</a>, voteService: <a href="../injectables/VoteService.html" target="_self">VoteService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, alertService: <a href="../injectables/AlertService.html" target="_self">AlertService</a>, analyticsService: <a href="../injectables/AnalyticsService.html" target="_self">AnalyticsService</a>, socialSharingService: <a href="../injectables/SocialSharingService.html" target="_self">SocialSharingService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/car/car.page.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>carService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CarService.html" target="_self" >CarService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>imagePipe</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Image.html" target="_self" >ImagePipe</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>imageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ImageService.html" target="_self" >ImageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>likeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LikeService.html" target="_self" >LikeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>inscriptionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InscriptionService.html" target="_self" >InscriptionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>voteService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VoteService.html" target="_self" >VoteService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>analyticsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnalyticsService.html" target="_self" >AnalyticsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>socialSharingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SocialSharingService.html" target="_self" >SocialSharingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkIsMyCar"></a>
+                    <span class="name">
+                        <span ><b>checkIsMyCar</b></span>
+                        <a href="#checkIsMyCar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkIsMyCar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeAllStates"></a>
+                    <span class="name">
+                        <span ><b>closeAllStates</b></span>
+                        <a href="#closeAllStates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeAllStates()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:182</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dislike"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>dislike</b></span>
+                        <a href="#dislike"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dislike()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getInscriptions"></a>
+                    <span class="name">
+                        <span ><b>getInscriptions</b></span>
+                        <a href="#getInscriptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getInscriptions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:196</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLikes"></a>
+                    <span class="name">
+                        <span ><b>getLikes</b></span>
+                        <a href="#getLikes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLikes()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:188</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOne"></a>
+                    <span class="name">
+                        <span ><b>getOne</b></span>
+                        <a href="#getOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOne()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOneSuccess"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getOneSuccess</b></span>
+                        <a href="#getOneSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOneSuccess(data: <a href="../classes/Car.html" target="_self">Car</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="../classes/Car.html" target="_self" >Car</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getVotes"></a>
+                    <span class="name">
+                        <span ><b>getVotes</b></span>
+                        <a href="#getVotes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getVotes()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="like"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>like</b></span>
+                        <a href="#like"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>like(like: <a href="../classes/Like.html" target="_self">Like</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>like</td>
+                                    <td>
+                                                <code><a href="../classes/Like.html" target="_self" >Like</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="likeOrDislike"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>likeOrDislike</b></span>
+                        <a href="#likeOrDislike"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>likeOrDislike()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onClickTotalItem"></a>
+                    <span class="name">
+                        <span ><b>onClickTotalItem</b></span>
+                        <a href="#onClickTotalItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onClickTotalItem(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="148"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:148</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openImage"></a>
+                    <span class="name">
+                        <span ><b>openImage</b></span>
+                        <a href="#openImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openImage(image: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>image</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="share"></a>
+                    <span class="name">
+                        <span ><b>share</b></span>
+                        <a href="#share"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>share()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="214"
+                            class="link-to-prism">src/app/modules/car/car.page.ts:214</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="content"></a>
+                    <span class="name">
+                        <span ><b>content</b></span>
+                        <a href="#content"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IonContent</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(IonContent, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/car/car.page.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm"></a>
+                    <span class="name">
+                        <span ><b>vm</b></span>
+                        <a href="#vm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new CarViewModel()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/car/car.page.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    AlertService,
+    AnalyticsService,
+    CarService,
+    ImageService,
+    InscriptionService,
+    LikeService,
+    SocialSharingService,
+    UserService,
+    VoteService,
+} from &#x27;@services&#x27;;
+import { Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { ImagePipe } from &#x27;@pipes&#x27;;
+import { CarViewModel } from &#x27;./model/car.view-model&#x27;;
+import { Like } from &#x27;@models/like.model&#x27;;
+import { Car } from &#x27;@models&#x27;;
+import { IonContent } from &#x27;@ionic/angular&#x27;;
+
+@Component({
+    selector: &#x27;page-car&#x27;,
+    templateUrl: &#x27;car.page.html&#x27;,
+    styleUrls: [&#x27;./car.page.scss&#x27;],
+})
+export class CarPage implements OnInit {
+    @ViewChild(IonContent, { static: false }) content: IonContent;
+    vm &#x3D; new CarViewModel();
+    constructor(
+        private carService: CarService,
+        private route: ActivatedRoute,
+        private imagePipe: ImagePipe,
+        private imageService: ImageService,
+        private likeService: LikeService,
+        private inscriptionService: InscriptionService,
+        private voteService: VoteService,
+        private userService: UserService,
+        private alertService: AlertService,
+        private analyticsService: AnalyticsService,
+        private socialSharingService: SocialSharingService
+    ) {}
+
+    async ngOnInit() {
+        this.vm.id &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;)!;
+        this.vm.user &#x3D; this.userService.getUser();
+        this.getOne();
+    }
+
+    getOne(): void {
+        this.vm.loading &#x3D; true;
+        this.carService.getOne(this.vm.id).subscribe({
+            next: (data) &#x3D;&gt; this.getOneSuccess(data),
+            error: () &#x3D;&gt; {
+                this.vm.loading &#x3D; false;
+                this.vm.error &#x3D; true;
+            },
+        });
+    }
+
+    async getOneSuccess(data: Car): Promise&lt;void&gt; {
+        this.vm.car &#x3D; data;
+        this.vm.header.title &#x3D; &#x60;${data.brand?.name} ${data.model}&#x60;;
+        if (data &amp;&amp; data.image) {
+            this.vm.image &#x3D; this.imagePipe.transform(data.image.url);
+        }
+        if (data.liked) {
+            this.vm.liked &#x3D; true;
+        }
+        this.vm.liked &#x3D; await this.likeService.checkLikedStorage(this.vm.id);
+        this.checkIsMyCar();
+        this.vm.loading &#x3D; false;
+    }
+
+    checkIsMyCar(): void {
+        this.vm.isMyCar &#x3D; this.vm.car.driver?._id &#x3D;&#x3D;&#x3D; this.vm.user?._id;
+    }
+
+    openImage(image: string): void {
+        this.analyticsService.logEvent(&#x27;car_openImage&#x27;, { params: { image } });
+        this.imageService.openImage(image);
+    }
+
+    async likeOrDislike(): Promise&lt;void&gt; {
+        const like: Like &#x3D; {
+            car: this.vm.id,
+        };
+        if (this.vm.user) {
+            like.user &#x3D; this.vm.user._id;
+        }
+        if (!this.vm.liked) {
+            this.like(like);
+        } else {
+            this.dislike();
+        }
+    }
+
+    private like(like: Like): void {
+        this.likeService.create(like).subscribe({
+            next: async () &#x3D;&gt; {
+                this.analyticsService.logEvent(&#x27;car_like_OK&#x27;, {
+                    params: { state: true },
+                });
+                this.vm.liked &#x3D; true;
+                this.likeService.setLikedStorage(this.vm.car._id);
+                if (this.vm.car.likes) {
+                    this.vm.car.likes.count +&#x3D; 1;
+                } else {
+                    this.vm.car.likes &#x3D; { count: 1 };
+                }
+            },
+            error: () &#x3D;&gt; {
+                this.analyticsService.logEvent(&#x27;car_like_KO&#x27;, {
+                    params: { state: false },
+                });
+                this.alertService.presentAlert(
+                    &#x27;Error&#x27;,
+                    &#x27;Error al dar me gusta&#x27;
+                );
+            },
+        });
+    }
+
+    private dislike() {
+        this.likeService.deleteByCarId(this.vm.car._id).subscribe({
+            next: async () &#x3D;&gt; {
+                this.analyticsService.logEvent(&#x27;car_dislike_OK&#x27;, {
+                    params: { state: true },
+                });
+                this.likeService.removeLikeStorage(this.vm.car._id);
+                this.vm.liked &#x3D; false;
+                if (this.vm.car.likes) {
+                    this.vm.car.likes.count -&#x3D; 1;
+                } else {
+                    this.vm.car.likes &#x3D; { count: 0 };
+                }
+            },
+            error: () &#x3D;&gt; {
+                this.analyticsService.logEvent(&#x27;car_dislike_KO&#x27;, {
+                    params: { state: false },
+                });
+                this.alertService.presentAlert(
+                    &#x27;Error&#x27;,
+                    &#x27;Error al eliminar el me gusta&#x27;
+                );
+            },
+        });
+    }
+
+    onClickTotalItem(event: string): void {
+        if (event &#x3D;&#x3D;&#x3D; &#x27;likes&#x27;) {
+            this.analyticsService.logEvent(&#x27;car_total_likes&#x27;);
+            this.vm.states.votes &#x3D; false;
+            this.vm.states.inscriptions &#x3D; false;
+            if (this.vm.likes.length &#x3D;&#x3D;&#x3D; 0) {
+                this.getLikes();
+            }
+            this.vm.states.likes &#x3D; !this.vm.states.likes;
+        } else if (event &#x3D;&#x3D;&#x3D; &#x27;inscriptions&#x27;) {
+            this.analyticsService.logEvent(&#x27;car_total_inscriptions&#x27;);
+            this.vm.states.votes &#x3D; false;
+            this.vm.states.likes &#x3D; false;
+            if (this.vm.inscriptions.length &#x3D;&#x3D;&#x3D; 0) {
+                this.getInscriptions();
+            }
+            this.vm.states.inscriptions &#x3D; !this.vm.states.inscriptions;
+        } else if (event &#x3D;&#x3D;&#x3D; &#x27;votes&#x27;) {
+            this.analyticsService.logEvent(&#x27;car_total_votes&#x27;);
+            this.vm.states.likes &#x3D; false;
+            this.vm.states.inscriptions &#x3D; false;
+            if (this.vm.votes.length &#x3D;&#x3D;&#x3D; 0) {
+                this.getVotes();
+            }
+            this.vm.states.votes &#x3D; !this.vm.states.votes;
+        }
+
+        if (this.content) {
+            setTimeout(() &#x3D;&gt; {
+                this.content.scrollToBottom(1500);
+            }, 100);
+        }
+    }
+
+    closeAllStates(): void {
+        this.vm.states.votes &#x3D; false;
+        this.vm.states.likes &#x3D; false;
+        this.vm.states.inscriptions &#x3D; false;
+    }
+
+    getLikes() {
+        this.likeService.getAllOfCar({ id: this.vm.id, limit: &#x27;5&#x27; }).subscribe({
+            next: (data) &#x3D;&gt; {
+                this.vm.likes &#x3D; data;
+            },
+        });
+    }
+
+    getInscriptions() {
+        this.inscriptionService
+            .getAllOfCar({ id: this.vm.id, limit: &#x27;5&#x27; })
+            .subscribe({
+                next: (data) &#x3D;&gt; {
+                    this.vm.inscriptions &#x3D; data;
+                },
+            });
+    }
+
+    getVotes() {
+        this.voteService.getAllOfCar({ id: this.vm.id, limit: &#x27;5&#x27; }).subscribe({
+            next: (data) &#x3D;&gt; {
+                this.vm.votes &#x3D; data;
+            },
+        });
+    }
+
+    share() {
+        this.socialSharingService.share(
+            &#x60;${this.vm.car.brand.name} ${this.vm.car.model}&#x60;,
+            &#x60;https://www.carstournaments.com/car/${this.vm.id}&#x60;
+        );
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;custom-header [options]&#x3D;&quot;vm.header&quot; (clickRightIcon)&#x3D;&quot;share()&quot;&gt;&lt;/custom-header&gt;
+
+&lt;ion-content [fullscreen]&#x3D;&quot;true&quot; [scrollEvents]&#x3D;&quot;true&quot; class&#x3D;&quot;animate__animated animate__fadeIn animate__faster&quot;&gt;
+  &lt;spinner [loading]&#x3D;&quot;vm.loading&quot;&gt;&lt;/spinner&gt;
+  &lt;ion-row style&#x3D;&quot;padding-top: 0&quot; *ngIf&#x3D;&quot;vm.car&quot;&gt;
+    &lt;ion-col size&#x3D;&quot;12&quot; sizeLg&#x3D;&quot;8&quot; offsetLg&#x3D;&quot;2&quot;&gt;
+      &lt;ion-card mode&#x3D;&quot;ios&quot; (click)&#x3D;&quot;openImage(vm.image)&quot; button&gt;
+        &lt;div *ngIf&#x3D;&quot;vm.image&quot; class&#x3D;&quot;div-image-one&quot; [ngStyle]&#x3D;&quot;{&#x27;background-image&#x27;: &#x27;url(&#x27; + vm.image + &#x27;)&#x27;}&quot;&gt;&lt;/div&gt;
+      &lt;/ion-card&gt;
+
+      &lt;ion-card mode&#x3D;&quot;ios&quot;&gt;
+        &lt;car-title [car]&#x3D;&quot;vm.car&quot;&gt;&lt;/car-title&gt;
+
+        &lt;ion-card-content style&#x3D;&quot;padding: 0.5rem&quot;&gt;
+          &lt;car-info [car]&#x3D;&quot;vm.car&quot;&gt;&lt;/car-info&gt;
+          &lt;hr /&gt;
+
+          &lt;car-totals [likes]&#x3D;&quot;vm.car?.likes&quot; [inscriptions]&#x3D;&quot;vm.car?.inscriptions&quot; [votes]&#x3D;&quot;vm.car?.votes&quot;
+            [gold]&#x3D;&quot;vm.car?.gold&quot; [silver]&#x3D;&quot;vm.car?.silver&quot; [bronze]&#x3D;&quot;vm.car?.bronze&quot;
+            (clickItem)&#x3D;&quot;onClickTotalItem($event)&quot;&gt;&lt;/car-totals&gt;
+
+          &lt;car-totals-divs [states]&#x3D;&quot;vm.states&quot; [likes]&#x3D;&quot;vm.likes&quot; [inscriptions]&#x3D;&quot;vm.inscriptions&quot; [votes]&#x3D;&quot;vm.votes&quot;&gt;
+          &lt;/car-totals-divs&gt;
+        &lt;/ion-card-content&gt;
+      &lt;/ion-card&gt;
+
+      &lt;ng-container *ngIf&#x3D;&quot;!vm.isMyCar&quot;&gt;
+        &lt;ion-card mode&#x3D;&quot;ios&quot; class&#x3D;&quot;ion-no-padding option-item like&quot; button (click)&#x3D;&quot;likeOrDislike()&quot;&gt;
+          &lt;ion-item *ngIf&#x3D;&quot;!vm.liked || vm.liked &amp;&amp; vm.user &quot; lines&#x3D;&quot;none&quot; &gt;
+            &lt;fa-icon slot&#x3D;&quot;end&quot; [icon]&#x3D;&quot;vm.liked ? &#x27;ban&#x27;: &#x27;thumbs-up&#x27;&quot;&gt;&lt;/fa-icon&gt;
+            &lt;ion-label *ngIf&#x3D;&quot;!vm.liked&quot;&gt;{{ &#x27;car.likeTitle&#x27; | translate }}&lt;/ion-label&gt;
+            &lt;ion-label *ngIf&#x3D;&quot;vm.liked&quot;&gt;{{ &#x27;car.dislikeTitle&#x27; | translate }}&lt;/ion-label&gt;
+          &lt;/ion-item&gt;
+          &lt;/ion-card&gt;
+      &lt;/ng-container&gt;
+    &lt;/ion-col&gt;
+  &lt;/ion-row&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./car.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">small {
+    font-weight: 900;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.avatar-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.like {
+    fa-icon {
+        color: var(--ion-color-primary);
+    }
+
+    ion-label {
+        font-weight: 500;
+    }
+
+    small {
+        font-weight: 400;
+    }
+}
+
+.driver {
+    span {
+        padding-top: 0.25rem;
+        font-size: 0.8rem;
+    }
+    fa-icon {
+        color: var(--ion-color-light);
+        padding-right: 0.25rem;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><custom-header [options]="vm.header" (clickRightIcon)="share()"></custom-header><ion-content [fullscreen]="true" [scrollEvents]="true" class="animate__animated animate__fadeIn animate__faster">  <spinner [loading]="vm.loading"></spinner>  <ion-row style="padding-top: 0" *ngIf="vm.car">    <ion-col size="12" sizeLg="8" offsetLg="2">      <ion-card mode="ios" (click)="openImage(vm.image)" button>        <div *ngIf="vm.image" class="div-image-one" [ngStyle]="{\'background-image\': \'url(\' + vm.image + \')\'}"></div>      </ion-card>      <ion-card mode="ios">        <car-title [car]="vm.car"></car-title>        <ion-card-content style="padding: 0.5rem">          <car-info [car]="vm.car"></car-info>          <hr />          <car-totals [likes]="vm.car?.likes" [inscriptions]="vm.car?.inscriptions" [votes]="vm.car?.votes"            [gold]="vm.car?.gold" [silver]="vm.car?.silver" [bronze]="vm.car?.bronze"            (clickItem)="onClickTotalItem($event)"></car-totals>          <car-totals-divs [states]="vm.states" [likes]="vm.likes" [inscriptions]="vm.inscriptions" [votes]="vm.votes">          </car-totals-divs>        </ion-card-content>      </ion-card>      <ng-container *ngIf="!vm.isMyCar">        <ion-card mode="ios" class="ion-no-padding option-item like" button (click)="likeOrDislike()">          <ion-item *ngIf="!vm.liked || vm.liked && vm.user " lines="none" >            <fa-icon slot="end" [icon]="vm.liked ? \'ban\': \'thumbs-up\'"></fa-icon>            <ion-label *ngIf="!vm.liked">{{ \'car.likeTitle\' | translate }}</ion-label>            <ion-label *ngIf="vm.liked">{{ \'car.dislikeTitle\' | translate }}</ion-label>          </ion-item>          </ion-card>      </ng-container>    </ion-col>  </ion-row></ion-content></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'CarPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CarPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

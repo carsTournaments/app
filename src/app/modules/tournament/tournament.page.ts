@@ -43,7 +43,7 @@ export class TournamentPage {
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
-        this.vm.id = this.route.snapshot.paramMap.get('id');
+        this.vm.id = this.route.snapshot.paramMap.get('id')!;
         this.vm.user = this.userService.getUser();
         this.getOne();
         this.getInscriptionsOfTournament();

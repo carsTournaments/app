@@ -32,7 +32,7 @@ export class GarageOnePage implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.vm.id = this.route.snapshot.paramMap.get('id');
+        this.vm.id = this.route.snapshot.paramMap.get('id')!;
         this.getAllBrands();
         if (this.vm.id) {
             this.getOne();

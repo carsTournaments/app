@@ -40,7 +40,7 @@ export class CarPage implements OnInit {
     ) {}
 
     async ngOnInit() {
-        this.vm.id = this.route.snapshot.paramMap.get('id');
+        this.vm.id = this.route.snapshot.paramMap.get('id')!;
         this.vm.user = this.userService.getUser();
         this.getOne();
     }

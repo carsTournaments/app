@@ -1,0 +1,391 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  PrivacyPolicyPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/privacy-policy/privacy-policy.page.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-privacy-policy</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>privacy-policy.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#vm" >vm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm"></a>
+                    <span class="name">
+                        <span ><b>vm</b></span>
+                        <a href="#vm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new PrivacyPolicyViewModel()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/privacy-policy/privacy-policy.page.ts:9</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { PrivacyPolicyViewModel } from &#x27;./model/privacy-policy.view-model.model&#x27;;
+
+@Component({
+    selector: &#x27;page-privacy-policy&#x27;,
+    templateUrl: &#x27;privacy-policy.page.html&#x27;,
+})
+export class PrivacyPolicyPage {
+    vm &#x3D; new PrivacyPolicyViewModel();
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;custom-header [options]&#x3D;&quot;vm.header&quot;&gt;&lt;/custom-header&gt;
+
+&lt;ion-content
+    [fullscreen]&#x3D;&quot;true&quot;
+    class&#x3D;&quot;animate__animated animate__fadeIn animate__faster&quot;
+&gt;
+    &lt;ion-row&gt;
+        &lt;ion-col style&#x3D;&quot;padding: 0 1rem&quot;&gt;
+            &lt;h2&gt;1. Política de privacidad&lt;/h2&gt;
+            &lt;p&gt;
+                CarsTournaments informa a los usuarios del sitio web sobre su
+                política respecto del tratamiento y protección de los datos de
+                carácter personal de los usuarios y clientes que puedan ser
+                recabados por la navegación o contratación de servicios a través
+                de su sitio web. En este sentido, CarsTournaments garantiza el
+                cumplimiento de la normativa vigente en materia de protección de
+                datos personales, reflejada en la Ley Orgánica 15/1999 de 13 de
+                diciembre, de Protección de Datos de Carácter Personal y en el
+                Real Decreto 1720/2007, de 21 diciembre, por el que se aprueba
+                el Reglamento de Desarrollo de la LOPD. El uso de esta web
+                implica la aceptación de esta política de privacidad.
+            &lt;/p&gt;
+
+            &lt;h2&gt;2. Recogida, finalidad y tratamientos de datos&lt;/h2&gt;
+            &lt;p&gt;
+                CarsTournaments tiene el deber de informar a los usuarios de su
+                sitio web acerca de la recogida de datos de carácter personal
+                que pueden llevarse a cabo, bien sea mediante el envío de correo
+                electrónico o al cumplimentar los formularios incluidos en el
+                sitio web. En este sentido, CarsTournaments será considerada
+                como responsable de los datos recabados mediante los medios
+                anteriormente descritos. A su vez CarsTournaments informa a los
+                usuarios de que la finalidad del tratamiento de los datos
+                recabados contempla: La atención de solicitudes realizadas por
+                los usuarios, la inclusión en la agenda de contactos, la
+                prestación de servicios y la gestión de la relación comercial y
+                Las operaciones, gestiones y procedimientos técnicos que se
+                realicen de forma automatizada o no automatizada y que
+                posibiliten la recogida, el almacenamiento, la modificación, la
+                transferencia y otras acciones sobre datos de carácter personal,
+                tienen la consideración de tratamiento de datos personales.
+                Todos los datos personales, que sean recogidos a través del
+                sitio web de CarsTournaments, y por tanto tenga la consideración
+                de tratamiento de datos de carácter personal, serán incorporados
+                en los ficheros declarados ante la Agencia Española de
+                Protección de Datos por CarsTournaments.
+            &lt;/p&gt;
+
+            &lt;h2&gt;3. Comunicación de información a terceros&lt;/h2&gt;
+            &lt;p&gt;
+                CarsTournaments informa a los usuarios de que sus datos
+                personales no serán cedidos a terceras organizaciones, con la
+                salvedad de que dicha cesión de datos este amparada en una
+                obligación legal o cuando la prestación de un servicio implique
+                la necesidad de una relación contractual con un encargado de
+                tratamiento. En este último caso, solo se llevará a cabo la
+                cesión de datos al tercero cuando CarsTournaments disponga del
+                consentimiento expreso del usuario.
+            &lt;/p&gt;
+
+            &lt;h2&gt;4. Derechos de los usuarios&lt;/h2&gt;
+            &lt;p&gt;
+                La Ley Orgánica 15/1999, de 13 de diciembre, de Protección de
+                Datos de Carácter Personal concede a los interesados la
+                posibilidad de ejercer una serie de derechos relacionados con el
+                tratamiento de sus datos personales. En tanto en cuanto los
+                datos del usuario son objeto de tratamiento por parte de Empresa
+                A. Los usuarios podrán ejercer los derechos de acceso,
+                rectificación, cancelación y oposición de acuerdo con lo
+                previsto en la normativa legal vigente en materia de protección
+                de datos personales. Para hacer uso del ejercicio de estos
+                derechos, el usuario deberá dirigirse mediante comunicación
+                escrita, aportando documentación que acredite su identidad (DNI
+                o pasaporte), a la siguiente dirección de correo electronico:
+                XSkunk@gmail.com. Dicha comunicación deberá reflejar la
+                siguiente información: Nombre y apellidos del usuario, la
+                petición de solicitud, el domicilio y los datos acreditativos.
+                El ejercicio de derechos deberá ser realizado por el propio
+                usuario. No obstante, podrán ser ejecutados por una persona
+                autorizada como representante legal del autorizado. En tal caso,
+                se deberá aportar la documentación que acredite esta
+                representación del interesado.
+            &lt;/p&gt;
+        &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><custom-header [options]="vm.header"></custom-header><ion-content    [fullscreen]="true"    class="animate__animated animate__fadeIn animate__faster">    <ion-row>        <ion-col style="padding: 0 1rem">            <h2>1. Política de privacidad</h2>            <p>                CarsTournaments informa a los usuarios del sitio web sobre su                política respecto del tratamiento y protección de los datos de                carácter personal de los usuarios y clientes que puedan ser                recabados por la navegación o contratación de servicios a través                de su sitio web. En este sentido, CarsTournaments garantiza el                cumplimiento de la normativa vigente en materia de protección de                datos personales, reflejada en la Ley Orgánica 15/1999 de 13 de                diciembre, de Protección de Datos de Carácter Personal y en el                Real Decreto 1720/2007, de 21 diciembre, por el que se aprueba                el Reglamento de Desarrollo de la LOPD. El uso de esta web                implica la aceptación de esta política de privacidad.            </p>            <h2>2. Recogida, finalidad y tratamientos de datos</h2>            <p>                CarsTournaments tiene el deber de informar a los usuarios de su                sitio web acerca de la recogida de datos de carácter personal                que pueden llevarse a cabo, bien sea mediante el envío de correo                electrónico o al cumplimentar los formularios incluidos en el                sitio web. En este sentido, CarsTournaments será considerada                como responsable de los datos recabados mediante los medios                anteriormente descritos. A su vez CarsTournaments informa a los                usuarios de que la finalidad del tratamiento de los datos                recabados contempla: La atención de solicitudes realizadas por                los usuarios, la inclusión en la agenda de contactos, la                prestación de servicios y la gestión de la relación comercial y                Las operaciones, gestiones y procedimientos técnicos que se                realicen de forma automatizada o no automatizada y que                posibiliten la recogida, el almacenamiento, la modificación, la                transferencia y otras acciones sobre datos de carácter personal,                tienen la consideración de tratamiento de datos personales.                Todos los datos personales, que sean recogidos a través del                sitio web de CarsTournaments, y por tanto tenga la consideración                de tratamiento de datos de carácter personal, serán incorporados                en los ficheros declarados ante la Agencia Española de                Protección de Datos por CarsTournaments.            </p>            <h2>3. Comunicación de información a terceros</h2>            <p>                CarsTournaments informa a los usuarios de que sus datos                personales no serán cedidos a terceras organizaciones, con la                salvedad de que dicha cesión de datos este amparada en una                obligación legal o cuando la prestación de un servicio implique                la necesidad de una relación contractual con un encargado de                tratamiento. En este último caso, solo se llevará a cabo la                cesión de datos al tercero cuando CarsTournaments disponga del                consentimiento expreso del usuario.            </p>            <h2>4. Derechos de los usuarios</h2>            <p>                La Ley Orgánica 15/1999, de 13 de diciembre, de Protección de                Datos de Carácter Personal concede a los interesados la                posibilidad de ejercer una serie de derechos relacionados con el                tratamiento de sus datos personales. En tanto en cuanto los                datos del usuario son objeto de tratamiento por parte de Empresa                A. Los usuarios podrán ejercer los derechos de acceso,                rectificación, cancelación y oposición de acuerdo con lo                previsto en la normativa legal vigente en materia de protección                de datos personales. Para hacer uso del ejercicio de estos                derechos, el usuario deberá dirigirse mediante comunicación                escrita, aportando documentación que acredite su identidad (DNI                o pasaporte), a la siguiente dirección de correo electronico:                XSkunk@gmail.com. Dicha comunicación deberá reflejar la                siguiente información: Nombre y apellidos del usuario, la                petición de solicitud, el domicilio y los datos acreditativos.                El ejercicio de derechos deberá ser realizado por el propio                usuario. No obstante, podrán ser ejecutados por una persona                autorizada como representante legal del autorizado. En tal caso,                se deberá aportar la documentación que acredite esta                representación del interesado.            </p>        </ion-col>    </ion-row></ion-content></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'PrivacyPolicyPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PrivacyPolicyPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
