@@ -1,15 +1,15 @@
-import { PercentagePipe } from "./percentage.pipe";
+import { PercentagePipe } from './percentage.pipe';
 
 describe('MomentFormatAgoPipe', () => {
     it('create an instance', () => {
-      const pipe = new PercentagePipe();
+        const pipe = new PercentagePipe();
         expect(pipe).toBeTruthy();
     });
 
-  it('Pipe', () => {
-    const pipe = new PercentagePipe();
+    it('Pipe', () => {
+        const pipe = new PercentagePipe();
 
-    const result = pipe.transform([], '11');
+        const result = pipe.transform([], '11');
         expect(result).toBeDefined();
     });
 
