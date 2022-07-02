@@ -1,0 +1,1177 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cars-tournaments-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cars-tournaments-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TournamentRoundsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>tournament-rounds</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./tournament-rounds.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>tournament-rounds.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#rounds" >rounds</a>
+                            </li>
+                            <li>
+                                <a href="#roundSelected" >roundSelected</a>
+                            </li>
+                            <li>
+                                <a href="#segmentsRounds" >segmentsRounds</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filterRounds" >filterRounds</a>
+                            </li>
+                            <li>
+                                <a href="#getAllRoundsAndPairingsOfTournament" >getAllRoundsAndPairingsOfTournament</a>
+                            </li>
+                            <li>
+                                <a href="#getBackgroundImage" >getBackgroundImage</a>
+                            </li>
+                            <li>
+                                <a href="#goToPairing" >goToPairing</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#segmentChanged" >segmentChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#tournamentId" >tournamentId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(roundService: <a href="../injectables/RoundService.html" target="_self">RoundService</a>, navCtrl: NavController, imagePipe: <a href="../classes/Image.html" target="_self">ImagePipe</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>roundService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RoundService.html" target="_self" >RoundService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>imagePipe</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Image.html" target="_self" >ImagePipe</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tournamentId"></a>
+                        <b>tournamentId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:13</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterRounds"></a>
+                    <span class="name">
+                        <span ><b>filterRounds</b></span>
+                        <a href="#filterRounds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterRounds()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllRoundsAndPairingsOfTournament"></a>
+                    <span class="name">
+                        <span ><b>getAllRoundsAndPairingsOfTournament</b></span>
+                        <a href="#getAllRoundsAndPairingsOfTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllRoundsAndPairingsOfTournament()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBackgroundImage"></a>
+                    <span class="name">
+                        <span ><b>getBackgroundImage</b></span>
+                        <a href="#getBackgroundImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBackgroundImage(car: <a href="../classes/Car.html" target="_self">Car</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>car</td>
+                                    <td>
+                                                <code><a href="../classes/Car.html" target="_self" >Car</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToPairing"></a>
+                    <span class="name">
+                        <span ><b>goToPairing</b></span>
+                        <a href="#goToPairing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToPairing(pairing: <a href="../classes/Pairing.html" target="_self">Pairing</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pairing</td>
+                                    <td>
+                                                <code><a href="../classes/Pairing.html" target="_self" >Pairing</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:23</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="segmentChanged"></a>
+                    <span class="name">
+                        <span ><b>segmentChanged</b></span>
+                        <a href="#segmentChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>segmentChanged(event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rounds"></a>
+                    <span class="name">
+                        <span ><b>rounds</b></span>
+                        <a href="#rounds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Round.html" target="_self" >Round[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roundSelected"></a>
+                    <span class="name">
+                        <span ><b>roundSelected</b></span>
+                        <a href="#roundSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="segmentsRounds"></a>
+                    <span class="name">
+                        <span ><b>segmentsRounds</b></span>
+                        <a href="#segmentsRounds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/tournament/components/tournament-rounds/tournament-rounds.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NavController } from &#x27;@ionic/angular&#x27;;
+import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
+import { Car, Pairing, Round } from &#x27;@models&#x27;;
+import { RoundService } from &#x27;@services&#x27;;
+import { ImagePipe } from &#x27;@pipes&#x27;;
+
+@Component({
+    selector: &#x27;tournament-rounds&#x27;,
+    templateUrl: &#x27;tournament-rounds.component.html&#x27;,
+    styleUrls: [&#x27;./tournament-rounds.component.scss&#x27;],
+})
+export class TournamentRoundsComponent implements OnInit {
+    @Input() tournamentId: string;
+    rounds: Round[] &#x3D; [];
+    roundSelected &#x3D; &#x27;&#x27;;
+    segmentsRounds &#x3D; [];
+    constructor(
+        private roundService: RoundService,
+        private navCtrl: NavController,
+        private imagePipe: ImagePipe
+    ) {}
+
+    ngOnInit() {
+        this.getAllRoundsAndPairingsOfTournament();
+    }
+
+    ionViewWillEnter() {
+        this.getAllRoundsAndPairingsOfTournament();
+    }
+
+    getAllRoundsAndPairingsOfTournament() {
+        this.roundService
+            .getAllOfTournament({ id: this.tournamentId })
+            .subscribe({
+                next: (r) &#x3D;&gt; {
+                    this.rounds &#x3D; r;
+                    this.filterRounds();
+                },
+            });
+    }
+
+    filterRounds() {
+        this.rounds &#x3D; this.rounds.filter(
+            (r) &#x3D;&gt; r.status &#x3D;&#x3D;&#x3D; &#x27;InProgress&#x27; || r.status &#x3D;&#x3D;&#x3D; &#x27;Completed&#x27;
+        );
+        const round &#x3D; this.rounds.find(
+            (r) &#x3D;&gt; r.status &#x3D;&#x3D;&#x3D; &#x27;InProgress&#x27; || r.name &#x3D;&#x3D;&#x3D; &#x27;Final&#x27;
+        );
+        if (round) {
+            this.roundSelected &#x3D; round._id;
+        }
+    }
+
+    segmentChanged(event) {
+        this.roundSelected &#x3D; event.target.value;
+    }
+
+    goToPairing(pairing: Pairing) {
+        this.navCtrl.navigateForward(&#x60;/pairing/${pairing._id}&#x60;);
+    }
+
+    getBackgroundImage(car: Car) {
+        const image &#x3D; this.imagePipe.transform(
+            car.image &amp;&amp; car.image.url ? car.image.url : null
+        );
+        return &#x60;linear-gradient(rgba(0, 0, 0, 0.43),
+                rgba(0, 0, 0, 0.43)),
+                url(&#x27;${image}&#x27;)&#x60;;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let round of rounds&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;roundSelected &#x3D;&#x3D;&#x3D; round._id&quot;&gt;
+        &lt;ion-card mode&#x3D;&quot;ios&quot;&gt;
+            &lt;ion-card-title
+                class&#x3D;&quot;ion-text-center&quot;
+                style&#x3D;&quot;padding-top: 0.75rem&quot;
+            &gt;
+                {{ round.name }}
+            &lt;/ion-card-title&gt;
+            &lt;hr /&gt;
+            &lt;ion-card-content style&#x3D;&quot;padding: 0.5rem 0.5rem 0 0.5rem;&quot;&gt;
+                &lt;ion-row&gt;
+                    &lt;ion-col size&#x3D;&quot;4&quot; class&#x3D;&quot;ion-text-center item-block-resume&quot;&gt;
+                      &lt;p class&#x3D;&quot;round-value&quot;&gt;
+                        {{ round.startDate | momentDateShort }}
+                      &lt;/p&gt;
+                      &lt;small class&#x3D;&quot;round-key&quot;&gt;{{ &#x27;tournament.infoStart&#x27; | translate }}&lt;/small&gt;
+                    &lt;/ion-col&gt;
+                    &lt;ion-col size&#x3D;&quot;4&quot; class&#x3D;&quot;ion-text-center item-block-resume&quot;&gt;
+                      &lt;p class&#x3D;&quot;round-value&quot;&gt;{{ round.votes.length }}&lt;/p&gt;
+                      &lt;small class&#x3D;&quot;round-key&quot;&gt;{{ &#x27;tournament.infoVotes&#x27; | translate }}&lt;/small&gt;
+                    &lt;/ion-col&gt;
+                    &lt;ion-col size&#x3D;&quot;4&quot; class&#x3D;&quot;ion-text-center item-block-resume&quot;&gt;
+                      &lt;p class&#x3D;&quot;round-value&quot;&gt;
+                        {{ round.endDate | momentDateShort }}
+                      &lt;/p&gt;
+                      &lt;small class&#x3D;&quot;round-key&quot;&gt;{{ &#x27;tournament.infoEnd&#x27; | translate }}&lt;/small&gt;
+                    &lt;/ion-col&gt;
+                &lt;/ion-row&gt;
+                &lt;hr /&gt;
+                &lt;ion-segment
+                    *ngIf&#x3D;&quot;rounds.length &gt; 1&quot;
+                    mode&#x3D;&quot;md&quot;
+                    [value]&#x3D;&quot;roundSelected&quot;
+                    scrollable&#x3D;&quot;true&quot;
+                    (ionChange)&#x3D;&quot;segmentChanged($event)&quot;
+                &gt;
+                    &lt;ion-segment-button
+                        [value]&#x3D;&quot;round._id&quot;
+                        *ngFor&#x3D;&quot;let round of rounds&quot;
+                    &gt;
+                        &lt;ion-label&gt;{{ round.name }}&lt;/ion-label&gt;
+                    &lt;/ion-segment-button&gt;
+                &lt;/ion-segment&gt;
+            &lt;/ion-card-content&gt;
+        &lt;/ion-card&gt;
+
+        &lt;ion-card
+            *ngFor&#x3D;&quot;let pairing of round.pairings&quot;
+            [ngStyle]&#x3D;&quot;{ height: &#x27;350px&#x27; }&quot;
+            mode&#x3D;&quot;ios&quot;
+            style&#x3D;&quot;margin-bottom: 0&quot;
+            class&#x3D;&quot;animate__animated animate__fadeIn animate__faster ion-activatable&quot;
+            (click)&#x3D;&quot;goToPairing(pairing)&quot;
+        &gt;
+            &lt;div class&#x3D;&quot;box-center&quot;&gt;
+                &lt;div
+                    class&#x3D;&quot;car-title1&quot;
+                    [ngClass]&#x3D;&quot;{
+                        isWinner: pairing.car1._id &#x3D;&#x3D;&#x3D; pairing.winner
+                    }&quot;
+                &gt;
+                    &lt;p&gt;
+                        {{ pairing.car1.brand.name | uppercase }}
+                        {{ pairing.car1.model | truncateText: 15 | uppercase }}
+                        &lt;ion-icon
+                            *ngIf&#x3D;&quot;pairing.car1._id &#x3D;&#x3D;&#x3D; pairing.winner&quot;
+                            name&#x3D;&quot;trophy&quot;
+                        &gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;!--  VS --&gt;
+                &lt;div class&#x3D;&quot;vs&quot;&gt;
+                    &lt;p&gt;VS&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div
+                    class&#x3D;&quot;car-title2&quot;
+                    [ngClass]&#x3D;&quot;{
+                        isWinner: pairing.car2._id &#x3D;&#x3D;&#x3D; pairing.winner
+                    }&quot;
+                &gt;
+                    &lt;p&gt;
+                        {{ pairing.car2.brand.name | uppercase }}
+                        {{ pairing.car2.model | truncateText: 15 | uppercase }}
+                        &lt;ion-icon
+                            *ngIf&#x3D;&quot;pairing.car2._id &#x3D;&#x3D;&#x3D; pairing.winner&quot;
+                            name&#x3D;&quot;trophy&quot;
+                        &gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!--  Car 1 --&gt;
+            &lt;div
+                class&#x3D;&quot;image-car1&quot;
+                [ngStyle]&#x3D;&quot;{
+                    &#x27;background-image&#x27;: this.getBackgroundImage(pairing.car1)
+                }&quot;
+            &gt;&lt;/div&gt;
+
+            &lt;!--  Car 2 --&gt;
+            &lt;div
+                class&#x3D;&quot;image-car2&quot;
+                [ngStyle]&#x3D;&quot;{
+                    &#x27;background-image&#x27;: this.getBackgroundImage(pairing.car2)
+                }&quot;
+            &gt;&lt;/div&gt;
+
+            &lt;ion-ripple-effect type&#x3D;&quot;unbounded&quot;&gt;&lt;/ion-ripple-effect&gt;
+        &lt;/ion-card&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./tournament-rounds.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.image-car1 {
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    height: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-right: 1px solid var(--ion-color-medium);
+    z-index: 999;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.image-car2 {
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    height: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid var(--ion-color-medium);
+    z-index: 999;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.box-center {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+}
+
+.car-title1 {
+    p {
+        font-size: 1.2rem;
+        font-weight: 800;
+        padding: 1rem;
+        background: #000;
+        padding: 0.5rem 1rem;
+        box-shadow: 5px 2px 5px rgb(0 0 0 / 50%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    ion-icon {
+        font-size: 15px;
+        color: #ffd700;
+    }
+}
+
+.car-title2 {
+    p {
+        font-size: 1.2rem;
+        font-weight: 800;
+        padding: 1rem;
+        background: #000;
+        padding: 0.5rem 1rem;
+        box-shadow: 5px 2px 5px rgb(0 0 0 / 50%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    ion-icon {
+        font-size: 15px;
+        color: #ffd700;
+    }
+}
+
+.vs {
+    p {
+        padding: 1rem;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100%;
+        background: #000;
+        box-shadow: 5px 2px 5px rgb(0 0 0 / 50%);
+    }
+}
+
+ion-segment-button {
+    --color-checked: var(--ion-color-light);
+    --background-checked: var(--ion-color-primary);
+}
+
+.isWinner {
+    p {
+        background: var(--ion-color-primary) !important;
+    }
+}
+
+.round-value {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.round-key {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let round of rounds">    <div *ngIf="roundSelected === round._id">        <ion-card mode="ios">            <ion-card-title                class="ion-text-center"                style="padding-top: 0.75rem"            >                {{ round.name }}            </ion-card-title>            <hr />            <ion-card-content style="padding: 0.5rem 0.5rem 0 0.5rem;">                <ion-row>                    <ion-col size="4" class="ion-text-center item-block-resume">                      <p class="round-value">                        {{ round.startDate | momentDateShort }}                      </p>                      <small class="round-key">{{ \'tournament.infoStart\' | translate }}</small>                    </ion-col>                    <ion-col size="4" class="ion-text-center item-block-resume">                      <p class="round-value">{{ round.votes.length }}</p>                      <small class="round-key">{{ \'tournament.infoVotes\' | translate }}</small>                    </ion-col>                    <ion-col size="4" class="ion-text-center item-block-resume">                      <p class="round-value">                        {{ round.endDate | momentDateShort }}                      </p>                      <small class="round-key">{{ \'tournament.infoEnd\' | translate }}</small>                    </ion-col>                </ion-row>                <hr />                <ion-segment                    *ngIf="rounds.length > 1"                    mode="md"                    [value]="roundSelected"                    scrollable="true"                    (ionChange)="segmentChanged($event)"                >                    <ion-segment-button                        [value]="round._id"                        *ngFor="let round of rounds"                    >                        <ion-label>{{ round.name }}</ion-label>                    </ion-segment-button>                </ion-segment>            </ion-card-content>        </ion-card>        <ion-card            *ngFor="let pairing of round.pairings"            [ngStyle]="{ height: \'350px\' }"            mode="ios"            style="margin-bottom: 0"            class="animate__animated animate__fadeIn animate__faster ion-activatable"            (click)="goToPairing(pairing)"        >            <div class="box-center">                <div                    class="car-title1"                    [ngClass]="{                        isWinner: pairing.car1._id === pairing.winner                    }"                >                    <p>                        {{ pairing.car1.brand.name | uppercase }}                        {{ pairing.car1.model | truncateText: 15 | uppercase }}                        <ion-icon                            *ngIf="pairing.car1._id === pairing.winner"                            name="trophy"                        ></ion-icon>                    </p>                </div>                <!--  VS -->                <div class="vs">                    <p>VS</p>                </div>                <div                    class="car-title2"                    [ngClass]="{                        isWinner: pairing.car2._id === pairing.winner                    }"                >                    <p>                        {{ pairing.car2.brand.name | uppercase }}                        {{ pairing.car2.model | truncateText: 15 | uppercase }}                        <ion-icon                            *ngIf="pairing.car2._id === pairing.winner"                            name="trophy"                        ></ion-icon>                    </p>                </div>            </div>            <!--  Car 1 -->            <div                class="image-car1"                [ngStyle]="{                    \'background-image\': this.getBackgroundImage(pairing.car1)                }"            ></div>            <!--  Car 2 -->            <div                class="image-car2"                [ngStyle]="{                    \'background-image\': this.getBackgroundImage(pairing.car2)                }"            ></div>            <ion-ripple-effect type="unbounded"></ion-ripple-effect>        </ion-card>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AccountPage', 'selector': 'app-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'auth'},{'name': 'BrandItemComponent', 'selector': 'brand-item'},{'name': 'CalendarDatesComponent', 'selector': 'calendar-dates'},{'name': 'CalendarItemsComponent', 'selector': 'calendar-items'},{'name': 'CalendarItemTournamentComponent', 'selector': 'calendar-item-tournament'},{'name': 'CalendarPage', 'selector': 'page-calendar'},{'name': 'CanYouHelpComponent', 'selector': 'can-you-help'},{'name': 'CarInfoComponent', 'selector': 'car-info'},{'name': 'CarItemComponent', 'selector': 'car-item'},{'name': 'CarPage', 'selector': 'page-car'},{'name': 'CarsPage', 'selector': 'page-cars'},{'name': 'CarTitleComponent', 'selector': 'car-title'},{'name': 'CarTotalsComponent', 'selector': 'car-totals'},{'name': 'CarTotalsDivsComponent', 'selector': 'car-totals-divs'},{'name': 'DashboardComponent', 'selector': 'dashboard'},{'name': 'DashboardResumeComponent', 'selector': 'dashboard-resume'},{'name': 'GarageListPage', 'selector': 'page-garage-list'},{'name': 'GarageOnePage', 'selector': 'page-garage-one'},{'name': 'GaragePopoverComponent', 'selector': 'garage-popover'},{'name': 'HeaderComponent', 'selector': 'custom-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'InscriptionsItemComponent', 'selector': 'inscriptions-item'},{'name': 'InscriptionsPage', 'selector': 'page-inscriptions'},{'name': 'InscriptionsPopoverComponent', 'selector': 'inscriptions-popover'},{'name': 'InscriptionsStateComponent', 'selector': 'inscriptions-state'},{'name': 'LikesPage', 'selector': 'page-likes'},{'name': 'MyDataPage', 'selector': 'page-my-data'},{'name': 'NoItemsComponent', 'selector': 'no-items'},{'name': 'PairingBlockInfoComponent', 'selector': 'pairing-block-info'},{'name': 'PairingHeaderComponent', 'selector': 'pairing-header'},{'name': 'PairingModalComponent', 'selector': 'pairing-modal'},{'name': 'PairingPage', 'selector': 'page-pairing'},{'name': 'PrivacyPolicyPage', 'selector': 'page-privacy-policy'},{'name': 'ReportModalComponent', 'selector': 'report-modal'},{'name': 'SpinnerComponent', 'selector': 'spinner'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TournamentInfoComponent', 'selector': 'tournament-info'},{'name': 'TournamentItemComponent', 'selector': 'tournament-item'},{'name': 'TournamentMyInscriptionsComponent', 'selector': 'tournament-my-inscriptions'},{'name': 'TournamentPage', 'selector': 'page-tournament'},{'name': 'TournamentRequisitesComponent', 'selector': 'tournament-requisites'},{'name': 'TournamentRoundsComponent', 'selector': 'tournament-rounds'},{'name': 'TournamentsPage', 'selector': 'page-tournaments'},{'name': 'TournamentsSliderComponent', 'selector': 'tournaments-slider'},{'name': 'TournamentWinnersComponent', 'selector': 'tournament-winners'},{'name': 'ViewerComponent', 'selector': 'viewer'},{'name': 'WinnerCarItemComponent', 'selector': 'winner-car-item'}];
+    var DIRECTIVES = [{'name': 'CountUpDirective', 'selector': '[countUp]'}];
+    var ACTUAL_COMPONENT = {'name': 'TournamentRoundsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TournamentRoundsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
