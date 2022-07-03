@@ -35,9 +35,9 @@ export class AccountPage {
 
     async isAuthenticated(): Promise<void> {
         this.vm.user = this.userService.getUser();
+        this.setOptions();
         if (this.vm.user) {
             this.getResume();
-            this.setOptions();
             this.logged = true;
         } else {
             this.logged = false;

@@ -67,6 +67,7 @@ export class AuthService {
         this.tokenService.set(item.token);
         this.notificationsPushService.registerFCM(item.user ?? null);
         if (item.new) {
+            // TODO: Llevar a pagina con steepers
         }
     }
 
