@@ -49,10 +49,11 @@ export class AuthService {
     async loginGoogle(): Promise<Observable<boolean>> {
         const user = await this.googleAuthService.login();
         return this.loginService.loginGoogle(user).pipe(
-            tap((item: LoginGoogleResponseI) =>
-                this.onLoginGoogleSuccess(item)
-            ),
-            map(() => this.check())
+            tap((response: LoginGoogleResponseI) => {
+                this.onLoginGoogleSuccess(response);
+                this.check();
+            }),
+            map((response) => response.new)
         );
     }
 

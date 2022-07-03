@@ -1,0 +1,22 @@
+<div class="auth animate__animated animate__fadeIn animate__faster" mode="ios">
+  <div style="text-align: center; margin-bottom: 1rem">
+    <img src="./assets/images/people.svg" style="width: 225px" />
+  </div>
+  <br>
+  <ion-button expand="block" color="primary" (click)="loginGoogle()" style="width:100%">
+    <ion-icon name="logo-google"></ion-icon>&nbsp; {{ 'account.login_google' | translate }}
+  </ion-button>
+  <span class="divider line one-line">o</span>
+  <ion-button expand="block" color="primary" fill="outline" (click)="goToLogin.emit()" style="width:100%">
+    <ion-icon name="log-in"></ion-icon>&nbsp; {{ 'account.login_email' | translate }}
+  </ion-button>
+
+  <hr style="margin-top: 1.5rem" />
+
+  <div class="link-privacy-policy">
+    <a [routerLink]="['/privacy-policy']">
+      {{ 'account.policyPrivacy' | translate }}
+    </a>
+  </div>
+  <br>
+</div>
