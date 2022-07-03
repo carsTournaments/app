@@ -10,28 +10,24 @@ export class AuthComponent {
         normal: true,
         login: false,
         register: false,
+        afterRegister: false,
     };
 
-    goToMode(type: 'normal' | 'login' | 'register') {
-        if (type === 'normal') {
-            this.status.normal = true;
-            this.status.login = false;
-            this.status.register = false;
-        } else if (type === 'login') {
-            this.status.normal = false;
-            this.status.login = true;
-            this.status.register = false;
-        } else if (type === 'register') {
-            this.status.normal = false;
-            this.status.login = false;
-            this.status.register = true;
+    goToMode(type: 'normal' | 'login' | 'register' | 'afterRegister') {
+        for (const key in this.status) {
+            if (key === type) {
+                this.status[key] = true;
+            } else {
+                this.status[key] = false;
+            }
         }
     }
 
     checkGoogleLoginOrRegister(register: boolean) {
         if (register) {
+            this.registerSuccess(false);
         } else {
-            this.clickLogin.emit();
+            this.loginSuccess();
         }
     }
 
@@ -39,7 +35,11 @@ export class AuthComponent {
         this.clickLogin.emit();
     }
 
-    registerSuccess() {
-        // TODO: Llevar a modo register
+  registerSuccess(emailMode = true) {
+    if (emailMode) {
+      this.clickLogin.emit();
+    } else {
+      this.goToMode('afterRegister');
     }
+  }
 }

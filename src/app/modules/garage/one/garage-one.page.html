@@ -39,7 +39,7 @@
 
       <ion-card mode="ios" class="form-item">
         <ion-item lines="none" color="light">
-          <ion-label position="stacked">{{ 'garageOne.fuel' | translate }}</ion-label>
+          <ion-label position="stacked">{{ 'garageOne.inputFuel' | translate }}</ion-label>
           <ion-select [(ngModel)]="vm.car.fuel" [placeholder]="'garageOne.placeholderFuel' | translate">
             <ion-select-option value="Gasolina">{{ 'generic.gasoline' | translate }}</ion-select-option>
             <ion-select-option value="Diesel">{{ 'generic.diesel' | translate }}</ion-select-option>
@@ -66,7 +66,7 @@
       <ion-card mode="ios" class="form-item">
         <ion-item lines="none" color="light">
           <ion-label position="stacked">
-            {{ 'generic.inputCv' | translate }}
+            {{ 'garageOne.inputCv' | translate }}
           </ion-label>
           <ion-input type="text" [(ngModel)]="vm.car.cv" [placeholder]="'garageOne.placeholderCv' | translate"></ion-input>
         </ion-item>

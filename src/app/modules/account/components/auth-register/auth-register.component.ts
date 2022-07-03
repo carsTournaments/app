@@ -28,7 +28,7 @@ export class AuthRegisterComponent {
             this.authService.register(data).subscribe({
                 next: () => {
                     this.analyticsService.logEvent('auth_register_OK');
-                    // this.clickLogin.emit();
+                    this.registerSuccess.emit();
                 },
                 error: (error) => {
                     this.analyticsService.logEvent('auth_register_KO');

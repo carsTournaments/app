@@ -1,11 +1,10 @@
-<!-- SELECTION MODE -->
 <auth-selection *ngIf="status.normal" (loginGoogleSuccess)="checkGoogleLoginOrRegister($event)"
   (goToLogin)="goToMode('login')"></auth-selection>
 
-<!-- LOGIN MODE -->
 <auth-login *ngIf="status.login" (loginSuccess)="loginSuccess()" (goToRegister)="goToMode('register')"
   (goToSelect)="goToMode('normal')"></auth-login>
 
-<!-- REGISTER MODE -->
 <auth-register *ngIf="status.register" (registerSuccess)="registerSuccess()" (goToLogin)="goToMode('login')">
 </auth-register>
+
+<auth-after-register *ngIf="status.afterRegister" (afterRegisterSuccess)="clickLogin.emit()"></auth-after-register>

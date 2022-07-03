@@ -3,31 +3,38 @@
     <img src="./assets/images/register.svg" style="width: 225px" />
   </div>
   <br>
-  <ion-item style="width:100%">
-    <ion-label position="floating">{{ 'account.inputName' | translate }}</ion-label>
-    <ion-input name="name" [(ngModel)]="data.name" placeholder="{{ 'account.placeholderName' | translate }}"
-      ngDefaultControl>
-    </ion-input>
-  </ion-item>
-  <ion-item style="width:100%">
-    <ion-label position="floating">{{ 'account.inputEmail' | translate }}</ion-label>
-    <ion-input name="email" type="email" [(ngModel)]="data.email"
-      placeholder="{{ 'account.placeholderEmail' | translate }}" ngDefaultControl>
-    </ion-input>
-  </ion-item>
-  <ion-item style="width:100%">
-    <ion-label position="floating">{{ 'account.inputPassword' | translate }}</ion-label>
-    <ion-input name="password" type="password" [(ngModel)]="data.password"
-      placeholder="{{ 'account.placeholderPassword' | translate }}" ngDefaultControl></ion-input>
-  </ion-item>
+  <ion-card mode="ios" class="form-item" style="width:100%">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'account.inputName' | translate }}</ion-label>
+      <ion-input name="name" [(ngModel)]="data.name" placeholder="{{ 'account.placeholderName' | translate }}"
+        ngDefaultControl>
+      </ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-card mode="ios" class="form-item" style="width:100%">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'account.inputEmail' | translate }}</ion-label>
+      <ion-input name="email" type="email" [(ngModel)]="data.email"
+        placeholder="{{ 'account.placeholderEmail' | translate }}" ngDefaultControl>
+      </ion-input>
+    </ion-item>
+  </ion-card>
 
-  <ion-item style="width:100%">
-    <ion-label position="floating">{{ 'account.inputRepeatPassword' | translate }}</ion-label>
-    <ion-input name="password2" type="password" [(ngModel)]="data.password2"
-      placeholder="{{ 'account.placeholderRepeatPassword' | translate }}" ngDefaultControl></ion-input>
-  </ion-item>
+  <ion-card mode="ios" class="form-item" style="width:100%">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'account.inputPassword' | translate }}</ion-label>
+      <ion-input name="password" type="password" [(ngModel)]="data.password"
+        placeholder="{{ 'account.placeholderPassword' | translate }}" ngDefaultControl></ion-input>
+    </ion-item>
+  </ion-card>
 
-  <br>
+  <ion-card mode="ios" class="form-item" style="width:100%">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'account.inputRepeatPassword' | translate }}</ion-label>
+      <ion-input name="password2" type="password" [(ngModel)]="data.password2"
+        placeholder="{{ 'account.placeholderRepeatPassword' | translate }}" ngDefaultControl></ion-input>
+    </ion-item>
+  </ion-card>
 
   <ion-button expand="block" color="primary" (click)="register()" style="width:100%">
     {{ 'account.buttonRegister' | translate }}
