@@ -63,11 +63,9 @@ export class AuthComponent {
                 password: this.vm.password,
             };
             this.authService.register(data).subscribe({
-                next: (response) => {
-                    if (response) {
-                        this.analyticsService.logEvent('auth_register_OK');
-                        this.clickLogin.emit();
-                    }
+                next: () => {
+                    this.analyticsService.logEvent('auth_register_OK');
+                    this.clickLogin.emit();
                 },
                 error: (error) => {
                     this.analyticsService.logEvent('auth_register_KO');

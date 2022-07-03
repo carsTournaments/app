@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthRegisterDto } from './auth.dto';
-import { LoginResponseI } from '@interfaces';
+import { LoginOrRegisterResponseI } from '@interfaces';
 import { environment } from '@env/environment';
 
 @Injectable({
@@ -12,6 +12,9 @@ export class RegisterService {
     constructor(protected http: HttpClient) {}
 
     register(data: AuthRegisterDto) {
-        return this.http.post<LoginResponseI>(`${this.path}/register`, data);
+        return this.http.post<LoginOrRegisterResponseI>(
+            `${this.path}/register`,
+            data
+        );
     }
 }
