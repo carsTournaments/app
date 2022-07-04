@@ -6,11 +6,11 @@ import {
     PopoverController,
     PopoverOptions,
 } from '@ionic/angular';
-import { InscriptionsViewModel } from './model/inscriptions.view-model';
 import { Inscription } from '@models';
-import { InscriptionsPopoverComponent } from './components/popover/inscriptions-popover.component';
 import { OverlayEventDetail } from '@ionic/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { InscriptionsPopoverComponent } from '../../components/popover/inscriptions-popover.component';
+import { InscriptionsViewModel } from '../../model/inscriptions.view-model';
 
 @Component({
     selector: 'page-inscriptions',

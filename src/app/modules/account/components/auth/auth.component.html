@@ -1,10 +1,15 @@
 <auth-selection *ngIf="status.normal" (loginGoogleSuccess)="checkGoogleLoginOrRegister($event)"
-  (goToLogin)="goToMode('login')"></auth-selection>
+  (goToLogin)="goToMode('login')">
+</auth-selection>
 
 <auth-login *ngIf="status.login" (loginSuccess)="loginSuccess()" (goToRegister)="goToMode('register')"
-  (goToSelect)="goToMode('normal')"></auth-login>
+  (goToSelect)="goToMode('normal')">
+</auth-login>
 
 <auth-register *ngIf="status.register" (registerSuccess)="registerSuccess()" (goToLogin)="goToMode('login')">
 </auth-register>
 
-<auth-after-register *ngIf="status.afterRegister" (afterRegisterSuccess)="clickLogin.emit()"></auth-after-register>
+<auth-after-register *ngIf="status.afterRegisterUser" (afterRegisterSuccess)="loggedSuccess.emit()" (goToAfterCar)="goToMode('afterRegisterCar')">
+</auth-after-register>
+
+<car-add *ngIf="status.afterRegisterCar" (carAddSuccess)="loggedSuccess.emit()"></car-add>

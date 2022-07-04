@@ -8,8 +8,8 @@ import {
     CarService,
     LikeService,
 } from '@services';
-import { CarsViewModel } from './model/cars.view-model';
 import { TranslateService } from '@ngx-translate/core';
+import { CarsViewModel } from '../../model/cars.view-model';
 
 @Component({
     selector: 'page-cars',

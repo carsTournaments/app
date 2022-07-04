@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LikesPage } from './likes.page';
 import { SharedModule } from '@shared/shared.module';
+import { LikesPage } from './pages/likes/likes.page';
 
 @NgModule({
     imports: [

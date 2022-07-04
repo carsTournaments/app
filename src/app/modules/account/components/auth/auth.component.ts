@@ -5,15 +5,23 @@ import { Component, EventEmitter, Output } from '@angular/core';
     templateUrl: 'auth.component.html',
 })
 export class AuthComponent {
-    @Output() clickLogin: EventEmitter<void> = new EventEmitter<void>();
+    @Output() loggedSuccess: EventEmitter<void> = new EventEmitter<void>();
     status = {
         normal: true,
         login: false,
         register: false,
-        afterRegister: false,
+        afterRegisterUser: false,
+        afterRegisterCar: false,
     };
 
-    goToMode(type: 'normal' | 'login' | 'register' | 'afterRegister') {
+    goToMode(
+        type:
+            | 'normal'
+            | 'login'
+            | 'register'
+            | 'afterRegisterUser'
+            | 'afterRegisterCar'
+    ) {
         for (const key in this.status) {
             if (key === type) {
                 this.status[key] = true;
@@ -32,14 +40,14 @@ export class AuthComponent {
     }
 
     loginSuccess() {
-        this.clickLogin.emit();
+        this.loggedSuccess.emit();
     }
 
-  registerSuccess(emailMode = true) {
-    if (emailMode) {
-      this.clickLogin.emit();
-    } else {
-      this.goToMode('afterRegister');
+    registerSuccess(emailMode = true) {
+        if (emailMode) {
+            this.loggedSuccess.emit();
+        } else {
+            this.goToMode('afterRegisterUser');
+        }
     }
-  }
 }

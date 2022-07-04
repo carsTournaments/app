@@ -12,10 +12,10 @@ import {
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from '@pipes';
-import { CarViewModel } from './model/car.view-model';
 import { Like } from '@models/like.model';
 import { Car } from '@models';
 import { IonContent } from '@ionic/angular';
+import { CarViewModel } from '../../models/car.view-model';
 
 @Component({
     selector: 'page-car',

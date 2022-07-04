@@ -14,8 +14,8 @@ import {
     UserService,
     ImageService,
 } from '@services';
-import { GaragePopoverComponent } from '../popover/garage-popover.component';
-import { GarageListViewModel } from './model/garage-list.view-model';
+import { GaragePopoverComponent } from '../../components/popover/garage-popover.component';
+import { GarageListViewModel } from '../../models/garage-list.view-model';
 
 @Component({
     selector: 'page-garage-list',

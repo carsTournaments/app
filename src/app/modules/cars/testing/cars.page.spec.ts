@@ -2,7 +2,6 @@ import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { CarsPage } from './cars.page';
 import {
     CarService,
     BrandService,
@@ -18,12 +17,13 @@ import {
     likeService,
 } from '@services/services.mock.spec';
 import { car } from '@models/models.mock.spec';
-import { CarsModule } from './cars.module';
+import { CarsModule } from '../cars.module';
 import {
     TranslateModule,
     TranslateLoader,
     TranslateFakeLoader,
 } from '@ngx-translate/core';
+import { CarsPage } from '../pages/cars/cars.page';
 
 describe('CarsPage', () => {
     let component: CarsPage;

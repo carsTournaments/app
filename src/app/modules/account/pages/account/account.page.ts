@@ -7,8 +7,8 @@ import {
     UserService,
     AnalyticsService,
 } from '@services';
-import { AccountViewModel } from './model/account.view-model';
 import { TranslateService } from '@ngx-translate/core';
+import { AccountViewModel } from '../../model/account.view-model';
 
 @Component({
     selector: 'app-account',
@@ -33,7 +33,7 @@ export class AccountPage {
         await this.isAuthenticated();
     }
 
-    async isAuthenticated(): Promise<void> {
+    private async isAuthenticated(): Promise<void> {
         this.vm.user = this.userService.getUser();
         this.setOptions();
         if (this.vm.user) {

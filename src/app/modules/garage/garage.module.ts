@@ -1,9 +1,9 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { GarageOnePage } from './one/garage-one.page';
-import { GarageListPage } from './list/garage-list.page';
-import { GaragePopoverComponent } from './popover/garage-popover.component';
+import { GarageOnePage } from './pages/one/garage-one.page';
+import { GarageListPage } from './pages/list/garage-list.page';
 import { SharedModule } from '@shared/shared.module';
+import { GaragePopoverComponent } from './components/popover/garage-popover.component';
 
 @NgModule({
     imports: [

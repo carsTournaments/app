@@ -27,15 +27,11 @@
           <ion-card-content class="ion-no-padding wrapper-item">
             <div class="left-column">
               <div>
-                <img class="image-car image-car-1" [src]="
-                                        pairing?.car1.brand?.image?.url | image
-                                    " />
+                <img class="image-car image-car-1" [src]="pairing?.car1.brand?.image?.url | image" />
               </div>
               <div class="brand-model ion-text-center">
                 <div>
-                  {{
-                  pairing.car1.brand?.name | truncateText
-                  }}
+                  {{ pairing.car1.brand?.name | truncateText }}
                 </div>
                 <div>
                   {{ pairing.car1.model | truncateText }}

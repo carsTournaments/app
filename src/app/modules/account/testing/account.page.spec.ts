@@ -16,13 +16,13 @@ import {
     navCtrl,
 } from '@services/services.mock.spec';
 
-import { AccountPage } from './account.page';
+import { AccountPage } from '../pages/account/account.page';
 import {
     TranslateFakeLoader,
     TranslateLoader,
     TranslateModule,
 } from '@ngx-translate/core';
-import { AccountModule } from './account.module';
+import { AccountModule } from '../account.module';
 
 describe('AccountPage', () => {
     let component: AccountPage;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TournamentService } from '@services';
-import { CalendarViewModel } from './calendar.view-model';
+import { CalendarViewModel } from '../../models/calendar.view-model';
 
 @Component({
     selector: 'page-calendar',

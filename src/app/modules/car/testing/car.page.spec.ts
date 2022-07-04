@@ -1,11 +1,9 @@
-import { CarModule } from './car.module';
 import { ImagePipe } from '@pipes';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { AnalyticsService, CarService, StorageService } from '@services';
-import { CarPage } from './car.page';
 import { ActivatedRoute } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
@@ -20,6 +18,8 @@ import {
     TranslateLoader,
     TranslateFakeLoader,
 } from '@ngx-translate/core';
+import { CarModule } from '../car.module';
+import { CarPage } from '../pages/car/car.page';
 
 describe('CarPage', () => {
     let component: CarPage;

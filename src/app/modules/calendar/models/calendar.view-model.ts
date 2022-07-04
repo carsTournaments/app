@@ -1,4 +1,4 @@
-import { NoItemsModel } from './../../shared/components/no-items/no-items.model';
+import { NoItemsModel } from '@components/no-items/no-items.model';
 import { Header } from '@components/header/model/header.model';
 import { Round, Tournament } from '@models';
 

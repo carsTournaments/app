@@ -1,4 +1,4 @@
-import { InscriptionsModule } from './inscriptions.module';
+import { InscriptionsModule } from '../inscriptions.module';
 import { ImagePipe } from '@pipes';
 import {
     ComponentFixture,
@@ -12,13 +12,13 @@ import { AuthService, InscriptionService } from '@services';
 import { Inscription } from '@models';
 import { ActivatedRoute } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { InscriptionsPage } from './inscriptions.page';
 import { car, tournament, user } from '@models/models.mock.spec';
 import {
     TranslateModule,
     TranslateLoader,
     TranslateFakeLoader,
 } from '@ngx-translate/core';
+import { InscriptionsPage } from '../pages/inscriptions/inscriptions.page';
 
 const inscription = new Inscription({
     _id: '123',

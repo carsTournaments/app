@@ -2,8 +2,8 @@ import { Car } from '@models/car.model';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { LikeService, UserService } from '@services';
-import { LikesViewModel } from './model/likes.view-model';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LikesViewModel } from '../../models/likes.view-model';
 
 @Component({
     selector: 'page-likes',
