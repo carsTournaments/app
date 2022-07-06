@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from '@models';
 import { AlertService, ToastIonicService, UserService } from '@services';
 import { countries } from '../../../../../assets/json/countries';
-
+import { tap } from 'rxjs/operators';
 @Component({
     selector: 'auth-after-register',
     templateUrl: 'auth-after-register.component.html',
@@ -35,21 +35,24 @@ export class AuthAfterRegisterComponent implements OnInit {
 
     updateUser() {
         this.user.country = this.countryIdSelected;
-        this.userService.update(this.user).subscribe({
-            next: async () => {
-                if (this.type === 'type1') {
+        this.userService
+            .update(this.user)
+            .pipe(tap((user) => this.userService.set(user)))
+            .subscribe({
+                next: async () => {
+                    if (this.type === 'type1') {
+                        this.afterRegisterSuccess.emit();
+                    } else {
+                        await this.onDriverSelected();
+                    }
+                },
+                error: () => {
+                    this.toastIonicService.error(
+                        'No se han podido actualizar tus datos'
+                    );
                     this.afterRegisterSuccess.emit();
-                } else {
-                    await this.onDriverSelected();
-                }
-            },
-            error: () => {
-                this.toastIonicService.error(
-                    'No se han podido actualizar tus datos'
-                );
-                this.afterRegisterSuccess.emit();
-            },
-        });
+                },
+            });
     }
 
     async onDriverSelected() {
@@ -63,7 +66,6 @@ export class AuthAfterRegisterComponent implements OnInit {
         );
         const data = await alert.onDidDismiss();
         if (data.role === 'ok') {
-            // TODO: Despues de actualizar, mostrar ventana de quieres coche o no
             this.goToAfterCar.emit();
         } else {
             this.afterRegisterSuccess.emit();

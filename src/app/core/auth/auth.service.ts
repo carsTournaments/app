@@ -50,26 +50,19 @@ export class AuthService {
         const user = await this.googleAuthService.login();
         return this.loginService.loginGoogle(user).pipe(
             tap((response: LoginGoogleResponseI) => {
-                this.onLoginGoogleSuccess(response);
+                this.onLoginOrRegisterSuccess(response);
                 this.check();
             }),
             map((response) => response.new)
         );
     }
 
-    onLoginOrRegisterSuccess(item: LoginOrRegisterResponseI): void {
+    onLoginOrRegisterSuccess(
+        item: LoginOrRegisterResponseI | LoginGoogleResponseI
+    ): void {
         this.userService.set(item.user);
         this.tokenService.set(item.token);
         this.notificationsPushService.registerFCM(item.user ?? null);
-    }
-
-    onLoginGoogleSuccess(item: LoginGoogleResponseI): void {
-        this.userService.set(item.user);
-        this.tokenService.set(item.token);
-        this.notificationsPushService.registerFCM(item.user ?? null);
-        if (item.new) {
-            // TODO: Llevar a pagina con steepers
-        }
     }
 
     logout(): void {

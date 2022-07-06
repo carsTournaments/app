@@ -8,12 +8,18 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavController } from '@ionic/angular';
 import { OptionItemI } from '@interfaces';
-import { AuthService, AlertService, AnalyticsService } from '@services';
+import {
+    AuthService,
+    AlertService,
+    AnalyticsService,
+    UserService,
+} from '@services';
 import {
     alertService,
     analyticsService,
     authService,
     navCtrl,
+    userService,
 } from '@services/services.mock.spec';
 
 import { AccountPage } from '../pages/account/account.page';
@@ -23,6 +29,8 @@ import {
     TranslateModule,
 } from '@ngx-translate/core';
 import { AccountModule } from '../account.module';
+import { User } from '@models';
+import { of } from 'rxjs';
 
 describe('AccountPage', () => {
     let component: AccountPage;
@@ -45,6 +53,7 @@ describe('AccountPage', () => {
                 { provide: AuthService, useValue: authService },
                 { provide: AlertService, useValue: alertService },
                 { provide: AnalyticsService, useValue: analyticsService },
+                { provide: UserService, useValue: userService },
                 { provide: NavController, useValue: navCtrl },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -60,27 +69,36 @@ describe('AccountPage', () => {
         expect(component).toBeTruthy();
     });
 
-    describe('onInit', () => {
+    describe('ionViewWillEnter', () => {
         it('isLogged', async () => {
+            userService.getUser = jasmine
+                .createSpy()
+                .and.returnValue(new User());
             authService.isAuthenticated = jasmine
                 .createSpy()
                 .and.returnValue(true);
-            await component.isAuthenticated();
-            expect(component.logged).toBe(false);
+            spyOn(component, 'getResume');
+            component.ionViewWillEnter();
+            expect(component.getResume).toHaveBeenCalled();
+            expect(component.logged).toBe(true);
         });
 
         it('isNotLogged', async () => {
+            userService.getUser = jasmine.createSpy().and.returnValue(null);
             authService.isAuthenticated = jasmine
                 .createSpy()
                 .and.returnValue(false);
-            await component.isAuthenticated();
+            component.ionViewWillEnter();
             expect(component.logged).toBe(false);
         });
     });
 
-    it('logout', async () => {
-        await component.logout();
-        expect(alertService.presentAlertWithButtons).toHaveBeenCalled();
+    describe('getResume', () => {
+        it('should call userService.getResume', () => {
+            userService.getResume = jasmine.createSpy().and.returnValue(of({}));
+            component.getResume();
+            expect(userService.getResume).toHaveBeenCalled();
+        });
     });
 
     describe('onClickOption', () => {
@@ -104,5 +122,25 @@ describe('AccountPage', () => {
             component.onClickOption(item);
             expect(component.logout).toHaveBeenCalled();
         });
+    });
+
+    it('logout', async () => {
+        alertService.presentAlertWithButtons = jasmine
+            .createSpy()
+            .and.returnValue(
+                Promise.resolve({
+                    present: (): Promise<void> => Promise.resolve(),
+                    onDidDismiss: () => ({
+                        data: {
+                            data: { role: 'ok' },
+                        },
+                    }),
+                })
+            );
+        authService.logout = jasmine
+            .createSpy()
+            .and.returnValue(Promise.resolve());
+        await component.logout();
+        expect(alertService.presentAlertWithButtons).toHaveBeenCalled();
     });
 });

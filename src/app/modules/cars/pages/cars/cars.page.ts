@@ -68,26 +68,27 @@ export class CarsPage {
     getTopCars(): void {
         this.vm.loading.getTop = true;
         this.likeService.getTopCars('25').subscribe({
-            next: (res) => {
-                this.vm.topCars = res;
-                this.vm.loading.getTop = false;
-                this.vm.error.getTop = false;
-            },
-            error: () => {
-                this.vm.loading.getTop = false;
-                this.vm.error.getTop = true;
-            },
+            next: (res) => this.getTopCarsOnSuccess(res),
+            error: () => this.getTopCarsOnFailed(),
         });
+    }
+
+    getTopCarsOnSuccess(items: Car[]): void {
+        this.vm.topCars = items;
+        this.vm.loading.getTop = false;
+        this.vm.error.getTop = false;
+    }
+
+    getTopCarsOnFailed(): void {
+        this.vm.loading.getTop = false;
+        this.vm.error.getTop = true;
     }
 
     getBrands(event?: any): void {
         this.vm.loading.getBrands = true;
         this.brandService.getAllBrandsAndCars(this.vm.brandsBody).subscribe({
             next: (res) => this.getBrandsOnSuccess(res, event),
-            error: () => {
-                this.vm.loading.getBrands = false;
-                this.vm.error.getBrands = true;
-            },
+            error: () => this.getBrandsOnFailed(),
         });
     }
 
@@ -104,6 +105,11 @@ export class CarsPage {
         }
         this.vm.loading.getBrands = false;
         this.vm.error.getBrands = false;
+    }
+
+    getBrandsOnFailed() {
+        this.vm.loading.getBrands = false;
+        this.vm.error.getBrands = true;
     }
 
     loadMoreData(event: any, type: string): void {

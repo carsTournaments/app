@@ -28,8 +28,8 @@
         <ion-card mode="ios" class="ion-no-padding option-item like" button (click)="likeOrDislike()">
           <ion-item *ngIf="!vm.liked || vm.liked && vm.user " lines="none" >
             <fa-icon slot="end" [icon]="vm.liked ? 'ban': 'thumbs-up'"></fa-icon>
-            <ion-label *ngIf="!vm.liked">{{ 'car.likeTitle' | translate }}</ion-label>
-            <ion-label *ngIf="vm.liked">{{ 'car.dislikeTitle' | translate }}</ion-label>
+            <ion-label class="title" *ngIf="!vm.liked">{{ 'car.likeTitle' | translate }}</ion-label>
+            <ion-label class="title" *ngIf="vm.liked">{{ 'car.dislikeTitle' | translate }}</ion-label>
           </ion-item>
           </ion-card>
       </ng-container>
