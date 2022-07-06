@@ -7,6 +7,11 @@ export interface CarGetAllDto {
     brand?: string;
 }
 
+export interface CarGetGlobalRankingDto {
+    limit: number;
+    order: string[];
+}
+
 export interface CarGetOneDto {
     id: string;
     site: string;
