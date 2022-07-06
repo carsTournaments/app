@@ -1,8 +1,8 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ImagePipe } from '@pipes';
-import { CarsPage } from './cars.page';
 import { SharedModule } from '@shared/shared.module';
+import { CarsPage } from './pages/cars/cars.page';
 @NgModule({
     imports: [
         SharedModule,

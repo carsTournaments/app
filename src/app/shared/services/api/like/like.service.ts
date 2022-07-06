@@ -9,7 +9,7 @@ import { take } from 'rxjs/operators';
 import { LikeGetAllReceivedForUserResponse } from './like.response';
 import { IdDto } from '@core/dtos/id.dto';
 import { Car } from '@models';
-import { StorageService } from '../..';
+import { StorageService } from '@services';
 
 @Injectable({ providedIn: 'root' })
 export class LikeService {
@@ -85,7 +85,7 @@ export class LikeService {
         }
     }
 
-    async setLikedStorage(id: string) {
+    async setLikedStorage(id: string): Promise<void> {
         let likes = await this.storageService.get<string[]>('likes');
         if (likes) {
             likes.push(id);
@@ -95,7 +95,7 @@ export class LikeService {
         this.storageService.set('likes', likes);
     }
 
-    async removeLikeStorage(id: string) {
+    async removeLikeStorage(id: string): Promise<void> {
         let likes = await this.storageService.get<string[]>('likes');
         if (likes) {
             likes = likes.filter((l) => l !== id);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ToastIonicService, UserService } from '@services';
+import { tap } from 'rxjs/operators';
 import { countries } from '../../../assets/json/countries';
 import { MyDataViewModel } from './model/my-data.view-model';
 
@@ -32,6 +33,7 @@ export class MyDataPage implements OnInit {
 
     getUser() {
         this.vm.user = this.userService.getUser();
+        this.vm.countryIdSelected = this.vm.user.country;
     }
 
     getCountries() {
@@ -40,11 +42,14 @@ export class MyDataPage implements OnInit {
 
     updateUser() {
         this.vm.user.country = this.vm.countryIdSelected;
-        this.userService.update(this.vm.user).subscribe({
-            next: () => {
-                this.navCtrl.navigateBack('/tab/account');
-                this.toastService.info('Datos actualizados correctamente');
-            },
-        });
+        this.userService
+            .update(this.vm.user)
+            .pipe(tap((user) => this.userService.set(user)))
+            .subscribe({
+                next: () => {
+                    this.navCtrl.navigateBack('/tab/account');
+                    this.toastService.info('Datos actualizados correctamente');
+                },
+            });
     }
 }

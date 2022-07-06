@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { LoginResponseI } from '@interfaces';
+import { LoginGoogleResponseI, LoginOrRegisterResponseI } from '@interfaces';
 import { map, share, tap } from 'rxjs/operators';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';
@@ -30,7 +30,18 @@ export class AuthService {
 
     login(data: AuthLogInDto): Observable<boolean> {
         return this.loginService.login(data).pipe(
-            tap((item: LoginResponseI) => this.onLoginOrResponseSuccess(item)),
+            tap((item: LoginOrRegisterResponseI) =>
+                this.onLoginOrRegisterSuccess(item)
+            ),
+            map(() => this.check())
+        );
+    }
+
+    register(data: AuthRegisterDto): Observable<boolean> {
+        return this.registerService.register(data).pipe(
+            tap((item: LoginOrRegisterResponseI) =>
+                this.onLoginOrRegisterSuccess(item)
+            ),
             map(() => this.check())
         );
     }
@@ -38,19 +49,17 @@ export class AuthService {
     async loginGoogle(): Promise<Observable<boolean>> {
         const user = await this.googleAuthService.login();
         return this.loginService.loginGoogle(user).pipe(
-            tap((item: LoginResponseI) => this.onLoginOrResponseSuccess(item)),
-            map(() => this.check())
+            tap((response: LoginGoogleResponseI) => {
+                this.onLoginOrRegisterSuccess(response);
+                this.check();
+            }),
+            map((response) => response.new)
         );
     }
 
-    register(data: AuthRegisterDto): Observable<boolean> {
-        return this.registerService.register(data).pipe(
-            tap((item: LoginResponseI) => this.onLoginOrResponseSuccess(item)),
-            map(() => this.check())
-        );
-    }
-
-    onLoginOrResponseSuccess(item: LoginResponseI) {
+    onLoginOrRegisterSuccess(
+        item: LoginOrRegisterResponseI | LoginGoogleResponseI
+    ): void {
         this.userService.set(item.user);
         this.tokenService.set(item.token);
         this.notificationsPushService.registerFCM(item.user ?? null);

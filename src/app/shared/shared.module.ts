@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import {
     BrandItemComponent,
     CanYouHelpComponent,
+    CarAddComponent,
     CarItemComponent,
     HeaderComponent,
     NoItemsComponent,
@@ -90,6 +91,7 @@ const MODULES = [
     TranslateModule,
 ];
 const COMPONENTS = [
+    CarAddComponent,
     BrandItemComponent,
     CanYouHelpComponent,
     CarItemComponent,

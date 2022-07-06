@@ -1,44 +1,32 @@
 <custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true">
-    <ion-row
-        style="padding-top: 0"
-        class="animate__animated animate__fadeIn animate__faster"
-    >
-        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
-                <ion-item lines="none" color="light">
-                    <ion-label position="stacked">{{ 'myData.inputName' | translate }}</ion-label>
-                    <ion-input
-                        type="text"
-                        [(ngModel)]="vm.user.name"
-                        placeholder="{{ 'myData.placeholderName' | translate }}"
-                    ></ion-input>
-                </ion-item>
-            </ion-card>
+  <ion-row style="padding-top: 0" class="animate__animated animate__fadeIn animate__faster">
+    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+      <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
+        <ion-item lines="none" color="light">
+          <ion-label position="stacked">{{ 'myData.inputName' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="vm.user.name" placeholder="{{ 'myData.placeholderName' | translate }}">
+          </ion-input>
+        </ion-item>
+      </ion-card>
 
-            <ion-card mode="ios" class="form-item">
-                <ion-item lines="none" color="light">
-                    <ion-label position="stacked">{{ 'myData.inputCountry' | translate }}</ion-label>
-                    <ion-select
-                        [(ngModel)]="vm.countryIdSelected"
-                        name="brandId"
-                        placeholder="{{ 'myData.placeholderCountry' | translate }}"
-                    >
-                        <ion-select-option
-                            *ngFor="let country of vm.countries"
-                            [value]="country.id"
-                        >
-                            {{ country.name }}
-                        </ion-select-option>
-                    </ion-select>
-                </ion-item>
-            </ion-card>
-        </ion-col>
-    </ion-row>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="vm.user">
-        <ion-fab-button (click)="updateUser()">
-            <ion-icon size="small" name="save"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
+      <ion-card mode="ios" class="form-item">
+        <ion-item lines="none" color="light">
+          <ion-label position="stacked">{{ 'myData.inputCountry' | translate }}</ion-label>
+          <ion-select [(ngModel)]="vm.countryIdSelected" name="countryId"
+            placeholder="{{ 'myData.placeholderCountry' | translate }}">
+            <ion-select-option *ngFor="let country of vm.countries" [value]="country.id">
+              {{ country.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="vm.user">
+    <ion-fab-button (click)="updateUser()">
+      <ion-icon size="small" name="save"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

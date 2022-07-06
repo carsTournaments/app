@@ -1,6 +1,9 @@
 export { PaginatorI } from './paginator.interface';
 export { OptionItemI } from './option-item.interface';
-export { LoginResponseI } from './login-response.interface';
+export {
+    LoginOrRegisterResponseI,
+    LoginGoogleResponseI,
+} from './login-response.interface';
 export {
     InscriptionGetAllForDriverI,
     InscriptionGetAllForDriverItemI,
