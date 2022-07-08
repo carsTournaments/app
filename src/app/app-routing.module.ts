@@ -49,8 +49,8 @@ const routes: Routes = [
         path: config.routes.inscriptions,
         data: { title: 'Inscripciones' },
         loadChildren: () =>
-          import('./modules/inscriptions/inscriptions.module').then(
-            (m) => m.InscriptionsModule
+            import('./modules/inscriptions/inscriptions.module').then(
+                (m) => m.InscriptionsModule
             ),
     },
     {

@@ -12,11 +12,11 @@ export class TournamentViewModel {
         backButton: {
             state: true,
             route: '/tab/tournaments',
-      },
-      rightButton: {
-        state: true,
-        icon: 'arrow-redo-outline',
-      },
+        },
+        rightButton: {
+            state: true,
+            icon: 'arrow-redo-outline',
+        },
     });
 
     tournament: Tournament;
