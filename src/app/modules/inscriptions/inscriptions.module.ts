@@ -1,21 +1,19 @@
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { InscriptionsItemComponent } from './components/inscriptions-item/inscriptions-item.component';
-import { InscriptionsStateComponent } from './components/inscriptions-state/inscriptions-state.component';
-import { InscriptionsPopoverComponent } from './components/popover/inscriptions-popover.component';
+import { RouterModule } from '@angular/router';
+import { ImagePipe } from '@pipes';
 import { SharedModule } from '@shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 import { InscriptionsPage } from './pages/inscriptions/inscriptions.page';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([{ path: '', component: InscriptionsPage }]),
-    ],
-    declarations: [
-        InscriptionsPage,
-        InscriptionsStateComponent,
-        InscriptionsItemComponent,
-        InscriptionsPopoverComponent,
-    ],
+  imports: [
+    SharedModule,
+    TranslateModule,
+    RouterModule.forChild([{ path: '', component: InscriptionsPage }]),
+  ],
+  declarations: [
+    InscriptionsPage
+  ],
+  providers: [ImagePipe],
 })
-export class InscriptionsModule {}
+export class InscriptionsModule { }

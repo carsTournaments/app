@@ -23,21 +23,25 @@ export class TabsPage implements OnInit {
         this.tabs = [];
         const items: TabI[] = [
             {
+                name: 'Torneos',
                 route: 'tournaments',
                 icon: 'list-outline',
                 toggle: 'tab_tournaments',
             },
             {
+                name: 'Calendario',
                 route: 'calendar',
                 icon: 'calendar-outline',
                 toggle: 'tab_calendar',
             },
             {
+                name: 'Coches',
                 route: 'cars',
                 icon: 'car-outline',
                 toggle: 'tab_cars',
             },
             {
+                name: 'Tu cuenta',
                 route: 'account',
                 icon: 'person-circle-outline',
                 toggle: 'tab_account',

@@ -1,0 +1,26 @@
+<custom-header [options]="vm.header"></custom-header>
+
+<ion-content [fullscreen]="true" class="animate__animated animate__fadeIn animate__faster">
+  <ion-card mode="ios" class="option-item" *ngFor="let item of vm.ranking">
+    <ion-item color="light" mode="ios" button detail="false" lines="none">
+      <ion-avatar slot="start">
+        <img [src]="item.image.url | image" />
+      </ion-avatar>
+      <ion-row>
+        <ion-col style="width:200px" class="">
+          {{ item.brand.name | truncateText }}<br> {{ item.model | truncateText }}
+        </ion-col>
+        <ion-col>
+          <ion-label class="totals">
+            <span>{{ item.totalVotes }}</span>
+            <span>{{ item.totalPairings }}</span>
+            <span>{{ item.totalWinners }}</span>
+            <span>{{ item.totalGold }}</span>
+            <span>{{ item.totalSilver }}</span>
+            <span>{{ item.totalBronze }}</span>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-card>
+</ion-content>

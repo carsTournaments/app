@@ -29,8 +29,10 @@
       <ion-item lines="none" color="light">
         <ion-label color="primary" position="stacked">{{ 'garageOne.inputTraction' | translate }}</ion-label>
         <ion-select [(ngModel)]="car.traction" [placeholder]="'garageOne.placeholderTraction' | translate">
-          <ion-select-option value="Delantera">{{ 'generic.frontWheelDrive' | translate }}</ion-select-option>
-          <ion-select-option value="Trasera">{{ 'generic.rearWheelDrive' | translate }}</ion-select-option>
+          <ion-select-option value="FWD">{{ 'generic.frontWheelDrive' | translate }}</ion-select-option>
+          <ion-select-option value="RWD">{{ 'generic.rearWheelDrive' | translate }}</ion-select-option>
+          <ion-select-option value="AWD">{{ 'generic.totalDrive' | translate }}</ion-select-option>
+          <ion-select-option value="4WD">{{ 'generic.4x4ConectableDrive' | translate }}</ion-select-option>
           <ion-select-option value="4x4">{{ 'generic.4x4Drive' | translate }}</ion-select-option>
         </ion-select>
       </ion-item>

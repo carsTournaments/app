@@ -32,7 +32,7 @@ export class CarService {
 
     getGlobalRanking(data: CarGetGlobalRankingDto): Observable<CarRankingI[]> {
         return this.httpClient
-            .post<CarRankingI[]>(`${this.url}/getAllOfDriver`, data)
+            .post<CarRankingI[]>(`${this.url}/getGlobalRanking`, data)
             .pipe(take(1));
     }
 

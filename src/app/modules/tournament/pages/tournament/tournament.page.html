@@ -1,0 +1,47 @@
+<custom-header [options]="vm.header" (clickRightIcon)="share()"></custom-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+  <spinner [loading]="vm.loading.getOne"></spinner>
+  <ion-row style="padding-top: 0" *ngIf="vm.tournament">
+    <ion-col size="12" sizeLg="8" offsetLg="2">
+      <div class="animate__animated animate__fadeIn animate__faster">
+        <ion-card mode="ios" *ngIf="vm.image" (click)="openImage(vm.image)" button>
+          <div class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+        </ion-card>
+
+        <tournament-info *ngIf="vm.inscriptions" [buttonInscription]="vm.buttonInscription" [tournament]="vm.tournament"
+          [inscriptions]="vm.inscriptions" (inscriptionCarClick)="inscriptionCar()">
+        </tournament-info>
+
+        <tournament-winners *ngIf="vm.winners" [winners]="vm.winners" (clickItem)="goToCar($event)">
+        </tournament-winners>
+
+        <tournament-my-inscriptions *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Todo'"
+          [myCars]="vm.myCars" (confirmDeleteInscriptionClick)="confirmDeleteInscription($event)">
+        </tournament-my-inscriptions>
+
+          <ion-card mode="ios" *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Completed'">
+            <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="goToRounds()">
+              <ion-label>
+                <h2>{{ 'tournament.linkTitleRounds' | translate }}</h2>
+                <small class="min-text-weight">
+                  {{ 'tournament.linkSubtitleRound' | translate }}
+                </small>
+              </ion-label>
+            </ion-item>
+          </ion-card>
+
+          <ion-card mode="ios">
+            <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="goToInscriptions()">
+              <ion-label>
+                <h2>{{ 'tournament.linkTitleInscriptions' | translate }}</h2>
+                <small class="min-text-weight">
+                  {{ 'tournament.linkSubtitleInscriptions' | translate }}
+                </small>
+              </ion-label>
+            </ion-item>
+          </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -4,6 +4,7 @@ import { Tournament } from '@models';
 import { TournamentsViewModel } from './model/tournaments.view-model';
 import { TournamentService, AnalyticsService } from '@services';
 import { TranslateService } from '@ngx-translate/core';
+import { config } from '@config';
 
 @Component({
     selector: 'page-tournaments',
@@ -47,7 +48,9 @@ export class TournamentsPage {
                 tournament_name: item.name,
             },
         });
-        this.navCtrl.navigateForward(['/tournament', item._id]);
+        this.navCtrl.navigateForward(
+            config.routes.tournament.replace(':id', item._id)
+        );
     }
 
     doRefresh(event: any) {

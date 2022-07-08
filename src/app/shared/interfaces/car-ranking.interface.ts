@@ -6,4 +6,7 @@ export interface CarRankingI {
     totalVotes: number;
     totalPairings: number;
     totalWinners: number;
+    totalGold: number;
+    totalSilver: number;
+    totalBronze: number;
 }

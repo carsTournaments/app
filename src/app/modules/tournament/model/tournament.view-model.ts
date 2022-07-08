@@ -1,5 +1,4 @@
 import { Header } from '@components/header/model/header.model';
-import { NoItemsModel } from '@components/no-items/no-items.model';
 import { Inscription, Tournament, User } from '@models';
 import { InscriptionsGetMyCarsForInscriptionDto } from '@services/api/inscription/inscription.dto';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
@@ -10,19 +9,16 @@ export class TournamentViewModel {
     user: User;
     header = new Header({
         title: 'Torneo',
-        segments: {
-            items: ['', '', ''],
-            selected: 0,
-        },
         backButton: {
             state: true,
             route: '/tab/tournaments',
-        },
+      },
+      rightButton: {
+        state: true,
+        icon: 'arrow-redo-outline',
+      },
     });
-    noitems = new NoItemsModel({
-        title: 'No hay inscripciones',
-        subtitle: 'Todavia nadie se ha inscrito, ¿no quieres ser el primero?',
-    });
+
     tournament: Tournament;
     inscriptions: Inscription[] = [];
     image: string;

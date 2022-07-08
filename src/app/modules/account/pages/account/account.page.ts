@@ -9,6 +9,7 @@ import {
 } from '@services';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountViewModel } from '../../model/account.view-model';
+import { config } from '@config';
 
 @Component({
     selector: 'app-account',
@@ -61,24 +62,24 @@ export class AccountPage {
             {
                 name: this.translate.instant('account.itemTitleMyData'),
                 subtitle: this.translate.instant('account.itemSubtitleMyData'),
-                route: 'my-data',
+                route: config.routes.myData,
             },
             {
                 name: this.translate.instant('account.itemTitleGarage'),
                 subtitle: this.translate.instant('account.itemSubtitleGarage'),
-                route: 'garage',
+                route: config.routes.myGarage,
             },
             {
                 name: this.translate.instant('account.itemTitleInscriptions'),
                 subtitle: this.translate.instant(
                     'account.itemSubtitleInscriptions'
                 ),
-                route: 'inscriptions',
+                route: config.routes.myInscriptions,
             },
             {
                 name: this.translate.instant('account.itemTitleLikes'),
                 subtitle: this.translate.instant('account.itemSubtitleLikes'),
-                route: 'likes',
+                route: config.routes.myLikes,
             },
             {
                 name: this.translate.instant('account.itemTitleLogout'),

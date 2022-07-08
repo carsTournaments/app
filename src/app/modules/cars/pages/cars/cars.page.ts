@@ -1,3 +1,4 @@
+import { config } from '@config';
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Brand, Car } from '@models';
@@ -155,7 +156,9 @@ export class CarsPage {
                 car_name: `${item.brand.name} ${item.model}`,
             },
         });
-        this.navCtrl.navigateForward(`/car/${item._id}`);
+        this.navCtrl.navigateForward(
+            config.routes.car.replace(':id', item._id)
+        );
     }
 
     cleanFilter(): void {

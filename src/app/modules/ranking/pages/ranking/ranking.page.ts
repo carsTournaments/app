@@ -5,6 +5,7 @@ import { RankingViewModel } from '../../models/ranking.view-model';
 @Component({
     selector: 'page-ranking',
     templateUrl: 'ranking.page.html',
+    styleUrls: ['./ranking.page.scss'],
 })
 export class RankingPage {
     vm = new RankingViewModel();
