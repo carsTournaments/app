@@ -11,8 +11,24 @@ export class RankingViewModel {
         },
     });
     bodyRanking: CarGetGlobalRankingDto = {
-        limit: 10,
-        order: ['votes', 'desc'],
+        limit: 5,
+        order: 'pairings',
     };
     ranking: CarRankingI[] = [];
+    itemsOrder = [
+        { name: 'Carreras', value: 'pairings' },
+        { name: 'Victorias', value: 'pairingsWinners' },
+        { name: 'Votos', value: 'votes' },
+        { name: 'Oro/Plata/Bronce', value: 'tournamentsWinners' },
+        { name: 'Me Gustas', value: 'likes' },
+        { name: 'Inscripciones', value: 'inscriptions' },
+    ];
+    itemsOrderDefault = [
+        { name: 'Carreras', value: 'pairings' },
+        { name: 'Victorias', value: 'pairingsWinners' },
+        { name: 'Votos', value: 'votes' },
+        { name: 'Oro/Plata/Bronce', value: 'tournamentsWinners' },
+        { name: 'Me Gustas', value: 'likes' },
+        { name: 'Inscripciones', value: 'inscriptions' },
+    ];
 }
