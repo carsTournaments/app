@@ -1,3 +1,4 @@
+export { BannerRankingComponent } from './banner-ranking/banner-ranking.component';
 export { BrandItemComponent } from './brand-item/brand-item.component';
 export { CanYouHelpComponent } from './can-you-help/can-you-help.component';
 export { CarAddComponent } from './car-add/car-add.component';

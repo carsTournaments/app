@@ -15,7 +15,7 @@ export class RankingItemComponent {
 
     showOrHideItem(item: CarRankingI) {
         item.state = !item.state;
-        item.icon = item.state ? 'chevron-down' : 'chevron-up';
+        item.icon = !item.state ? 'chevron-down' : 'chevron-up';
         this.analyticsService.logEvent(
             `ranking_showOrHide_${item.state ? 'show' : 'hide'}`
         );

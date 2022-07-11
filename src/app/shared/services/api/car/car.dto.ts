@@ -9,7 +9,7 @@ export interface CarGetAllDto {
 
 export interface CarGetGlobalRankingDto {
     limit: number;
-    order: string[];
+    order: string;
 }
 
 export interface CarGetOneDto {
