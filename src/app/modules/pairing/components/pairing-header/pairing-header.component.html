@@ -1,49 +1,42 @@
-<ion-header mode="md">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button [defaultHref]="backButtonRoute"></ion-back-button>
-    </ion-buttons>
+<div class="sub-header" *ngIf="pairing">
 
-    <ion-buttons slot="end">
-      <ion-button *ngIf="reportState" color="light" fill="clear" (click)="report.emit()">
-        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+  <div class="div-flex">
+    <div class="div-left">
+      <ion-card class="image-car1" [ngStyle]="{'background-image': 'url(' + images.car1?.url + ')'}" button
+        (click)="openImage(images.car1?.url)"></ion-card>
+
+      <ion-button [disabled]="voted" class="button-vote" mode="ios" expand="block" size="small" color="dark"
+        (click)="vote('car1')">
+        {{ 'pairing.vote' | translate }}
       </ion-button>
+    </div>
 
-      <ion-button color="light" fill="clear" (click)="share.emit()">
-        <ion-icon slot="icon-only" name="arrow-redo-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
 
-  </ion-toolbar>
-  <div class="sub-header" *ngIf="pairing">
-    <p class="tournament-name">{{ pairing?.tournament.name }}</p>
-    <p class="pairing-name">{{ pairing?.round.name }}</p>
-    <p class="dates">{{ pairing.round.startDate | momentDateShort: true }} - {{ pairing.round.endDate | momentDateShort: true }}</p>
-    <div class="div-flex">
-      <div class="div-left">
-        <ion-card class="image-car1" [ngStyle]="{'background-image': 'url(' + images.car1?.url + ')'}" button
-          (click)="openImage(images.car1?.url)"></ion-card>
 
-        <ion-button [disabled]="voted" class="button-vote" mode="ios" expand="block" size="small" color="dark"
-          (click)="vote('car1')">
-          {{ 'pairing.vote' | translate }}
-        </ion-button>
-      </div>
+    <div class="div-center">
+      <!-- Si cualquiera de los dos tiene mas de un cero, poner clase score-max -->
+      <p class="score">
+        {{ pairing?.car1.votes }}-{{ pairing?.car2.votes }}
+      </p>
+    </div>
 
-      <div class="div-center">
-        <!-- Si cualquiera de los dos tiene mas de un cero, poner clase score-max -->
-        <p class="score">
-          {{ pairing?.car1.votes }}-{{ pairing?.car2.votes }}
-        </p>
-      </div>
+    <div class="div-right">
+      <ion-card class="image-car2" [ngStyle]="{'background-image': 'url(' + images.car2?.url + ')'}" button
+        (click)="openImage(images.car2?.url)"></ion-card>
 
-      <div class="div-right">
-        <ion-card class="image-car2" [ngStyle]="{'background-image': 'url(' + images.car2?.url + ')'}" button
-          (click)="openImage(images.car2?.url)"></ion-card>
-
-        <ion-button [disabled]="voted" class="button-vote" mode="ios" size="small" expand="block" color="dark"
-          (click)="vote('car2')">Votar</ion-button>
-      </div>
+      <ion-button [disabled]="voted" class="button-vote" mode="ios" size="small" expand="block" color="dark"
+        (click)="vote('car2')">Votar</ion-button>
     </div>
   </div>
-</ion-header>
+
+</div>
+
+<ion-card mode="ios">
+  <div class="ion-text-center" style="padding: .5rem">
+    <p class=" pairing-name">{{ pairing?.round.name }}
+
+    </p>
+    <span class="dates">{{ pairing.round.startDate | momentDateShort: true }} - {{ pairing.round.endDate | momentDateShort:
+      true }}</span>
+    </div>
+</ion-card>

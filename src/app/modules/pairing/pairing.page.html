@@ -1,20 +1,19 @@
-<pairing-header
-    [pairing]="vm.pairing"
-    [images]="{car1: vm.image1, car2: vm.image2 }"
-    [backButtonRoute]="vm.backButtonRoute"
-    [voteBody]="vm.voteBody"
-    [voted]="vm.voted"
-    [reportState]="vm.reportState"
-    (report)="openReportModal()"
-    (share)="share()"
-></pairing-header>
+<custom-header [options]="vm.header" (clickRightIcon)="share()"></custom-header>
+
 
 <spinner [loading]="vm.loading"></spinner>
 
-<ion-content
-    [fullscreen]="true"
-    *ngIf="vm.pairing"
-    class="animate__animated animate__fadeIn animate__faster"
->
-    <pairing-block-info [pairing]="vm.pairing"></pairing-block-info>
+<ion-content [fullscreen]="true" *ngIf="vm.pairing" class="animate__animated animate__fadeIn animate__faster">
+  <ion-row style="padding-top: 0">
+    <ion-col size="12" sizeLg="8" offsetLg="2">
+
+      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
+
+      <pairing-header [pairing]="vm.pairing" [images]="{car1: vm.image1, car2: vm.image2 }"
+        [backButtonRoute]="vm.backButtonRoute" [voteBody]="vm.voteBody" [voted]="vm.voted" (share)="share()">
+      </pairing-header>
+
+      <pairing-block-info [pairing]="vm.pairing" (report)="openReportModal()"></pairing-block-info>
+    </ion-col>
+  </ion-row>
 </ion-content>
