@@ -42,6 +42,7 @@ export class PairingPage implements OnInit {
         this.pairingService.getOne(this.vm.id).subscribe({
             next: async (item) => {
                 this.vm.pairing = item;
+                this.vm.header.title = this.vm.pairing.tournament.name;
                 this.vm.backButtonRoute = `tournament/${this.vm.pairing.tournament._id}`;
                 this.setImageForBackground('car1');
                 this.setImageForBackground('car2');

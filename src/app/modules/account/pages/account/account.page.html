@@ -4,7 +4,7 @@
   <spinner [loading]="vm.loading"></spinner>
 
   <ion-row style="padding-top: 0.5rem">
-    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+    <ion-col class="ion-no-padding" style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
       <custom-header-sub  [title]="vm.header.title" [buttons]="false"></custom-header-sub>
 
       <auth (changeTitle)="onChangeTitle($event)" (loggedSuccess)="onLogged()" *ngIf="!logged"></auth>

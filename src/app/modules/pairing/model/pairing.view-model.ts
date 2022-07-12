@@ -1,3 +1,4 @@
+import { Header } from '@components/header/model/header.model';
 import { Image, Pairing, User, Vote } from '@models';
 
 export class PairingViewModel {
@@ -7,6 +8,17 @@ export class PairingViewModel {
         state: true;
         icon: 'arrow-redo-outline';
     };
+    header = new Header({
+        title: '',
+        backButton: {
+            state: true,
+            route: '/tab/cars',
+        },
+        rightButton: {
+            state: true,
+            icon: 'arrow-redo-outline',
+        },
+    });
     user: User;
     reportState = false;
     pairing: Pairing;

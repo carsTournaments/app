@@ -42,7 +42,6 @@ export class InscriptionsPage {
     }
 
     goToCar(car: Car): void {
-        console.log(car);
         this.analyticsService.logEvent('tournament_goToCar');
         this.navCtrl.navigateForward(config.routes.car.replace(':id', car._id));
     }

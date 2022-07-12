@@ -18,9 +18,7 @@ export class PairingHeaderComponent implements OnInit {
     @Input() backButtonRoute: string;
     @Input() voteBody: Vote;
     @Input() voted: boolean;
-    @Input() reportState = false;
     @Output() share = new EventEmitter();
-    @Output() report = new EventEmitter();
     image1: Image;
     image2: Image;
 
@@ -84,7 +82,6 @@ export class PairingHeaderComponent implements OnInit {
     }
 
     openImage(image: string) {
-        console.log(image);
         this.imageService.openImage(image);
     }
 }

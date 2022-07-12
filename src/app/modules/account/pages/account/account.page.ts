@@ -174,7 +174,6 @@ export class AccountPage {
     }
 
     onChangeTitle(event: any): void {
-        console.log(event);
         this.vm.header.title = event;
     }
 }

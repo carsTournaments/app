@@ -14,7 +14,6 @@ export class CustomTranslateLoader implements TranslateLoader {
     constructor(private http: HttpClient) {}
     getTranslation(lang: string): Observable<any> {
         const path = environment.urlApi + '/literals/' + lang;
-        console.log(path);
         return this.http.get(path);
     }
 }

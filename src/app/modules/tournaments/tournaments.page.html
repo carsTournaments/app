@@ -7,7 +7,7 @@
   </ion-refresher>
 
   <ion-row style="padding-top: 0" class="animate__animated animate__fadeIn animate__faster">
-    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+    <ion-col class="ion-no-padding" style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
       <custom-header-sub [title]="vm.header.title"></custom-header-sub>
 
       <tournaments-slider [title]="'tournaments.title_inProgress' | translate"
@@ -22,7 +22,6 @@
         [tournaments]="vm.tournaments && vm.tournaments.completed" (clickItem)="goToTournament($event)">
       </tournaments-slider>
 
-      <!-- <banner-ranking></banner-ranking> -->
       <ion-card mode="ios">
         <ion-item color="light" mode="ios" [button]="true" lines="none" [routerLink]="['/ranking']" routerLinkActive="router-link-active" >
           <ion-label>
