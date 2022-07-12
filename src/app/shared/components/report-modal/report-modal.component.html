@@ -7,6 +7,8 @@
                 <ion-select
                     [(ngModel)]="report.carReported"
                     placeholder="Selecciona"
+                    okText="Aceptar"
+                    cancelText="Cancelar"
                 >
                     <ion-select-option [value]="pairing.car1._id">
                         {{ pairing.car1.brand.name }} {{ pairing.car1.model }}

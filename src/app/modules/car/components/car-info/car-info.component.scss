@@ -1,13 +1,10 @@
 .car-info-value {
     font-weight: 900;
     font-size: 1rem;
+    color: var(--ion-color-dark);
 }
 
 .car-info-key {
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.border-right {
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--ion-color-medium-shade);
 }

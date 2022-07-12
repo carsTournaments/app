@@ -29,9 +29,6 @@ ion-card-content {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
-.card-driver {
-}
-
 .card-driver-name {
     display: flex;
     line-height: 1.8;
@@ -39,7 +36,7 @@ ion-card-content {
     bottom: 0.6rem;
     font-size: 0.7rem;
     font-weight: 500;
-    color: var(--ion-color-light);
+    color: #fff;
     left: 0rem;
     padding: 0.25rem 1rem 0.25rem 0.8rem;
     border-radius: 0px 10px 10px 0px;
@@ -73,7 +70,7 @@ ion-card-content {
         bottom: 0.6rem;
         font-size: 0.7rem;
         font-weight: 500;
-        color: var(--ion-color-light);
+        color: #fff;
         left: 0rem;
         padding: 0.25rem 1rem 0.25rem 0.8rem;
         border-radius: 0px 10px 10px 0px;
@@ -88,7 +85,7 @@ ion-card-content {
         top: 0.6rem;
         font-size: 0.7rem;
         font-weight: 500;
-        color: var(--ion-color-light);
+        color: #fff;
         right: 0rem;
         padding: 0.25rem 1rem 0.25rem 0.8rem;
         border-radius: 10px 0px 0px 10px;
@@ -105,7 +102,7 @@ ion-card-content {
         top: 0.6rem;
         font-size: 0.7rem;
         font-weight: 500;
-        color: var(--ion-color-light);
+        color: #fff;
         right: 0rem;
         padding: 0.25rem 1rem 0.25rem 0.8rem;
         border-radius: 10px 0px 0px 10px;

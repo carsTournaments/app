@@ -5,7 +5,6 @@
   </ion-card-title>
   <hr />
   <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
-    <ion-list>
       <ion-item color="light" style="margin: 0.5rem" class="option-item" [button]="true" lines="none" detail="false"
         *ngFor="let car of myCars?.inscribed" (click)="confirmDeleteInscriptionClick.emit(car)">
         <ion-avatar slot="start" class="avatar-border">
@@ -16,6 +15,5 @@
         </ion-label>
         <ion-icon style="font-size: 1.2rem" slot="end" name="close"></ion-icon>
       </ion-item>
-    </ion-list>
   </ion-card-content>
 </ion-card>
