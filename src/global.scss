@@ -315,3 +315,7 @@ ion-title[size='large'] {
 .border-right {
     border-right: 1px solid var(--ion-color-medium);
 }
+
+ion-segment {
+    z-index: 9999;
+}

@@ -1,108 +1,106 @@
-<ion-row style="padding-top: 0" *ngIf="!loading">
-  <ion-col class="ion-no-padding" style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-    <div style="text-align: center; margin: 1rem">
-      <img src="./assets/images/car.svg" style="width: 100%" />
-    </div>
-    <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
-      <ion-item lines="none" color="light">
-        <ion-label color="primary" position="stacked">
-          {{ 'garageOne.inputBrand' | translate }}
-        </ion-label>
-        <ion-select [(ngModel)]="brandIdSelected" name="brandId"
-          [placeholder]="'garageOne.placeholderBrand' | translate" okText="Aceptar"
-                    cancelText="Cancelar">
-          <ion-select-option *ngFor="let brand of brands" [value]="brand._id">
-            {{brand.name}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card>
+<ng-container *ngIf="!loading">
+  <div style="text-align: center; margin: 1rem">
+    <img src="./assets/images/car.svg" style="width: 100%" />
+  </div>
+  <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
+    <ion-item lines="none" color="light">
+      <ion-label color="primary" position="stacked">
+        {{ 'garageOne.inputBrand' | translate }}
+      </ion-label>
+      <ion-select [(ngModel)]="brandIdSelected" name="brandId" [placeholder]="'garageOne.placeholderBrand' | translate"
+        okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option *ngFor="let brand of brands" [value]="brand._id">
+          {{brand.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">{{ 'garageOne.inputModel' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="car.model" [placeholder]="'garageOne.placeholderModel' | translate">
-        </ion-input>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'garageOne.inputModel' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="car.model" [placeholder]="'garageOne.placeholderModel' | translate">
+      </ion-input>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label color="primary" position="stacked">{{ 'garageOne.inputTraction' | translate }}</ion-label>
-        <ion-select [(ngModel)]="car.traction" [placeholder]="'garageOne.placeholderTraction' | translate" okText="Aceptar"
-                    cancelText="Cancelar">
-          <ion-select-option value="FWD">{{ 'generic.frontWheelDrive' | translate }}</ion-select-option>
-          <ion-select-option value="RWD">{{ 'generic.rearWheelDrive' | translate }}</ion-select-option>
-          <ion-select-option value="AWD">{{ 'generic.totalDrive' | translate }}</ion-select-option>
-          <ion-select-option value="4WD">{{ 'generic.4x4ConectableDrive' | translate }}</ion-select-option>
-          <ion-select-option value="4x4">{{ 'generic.4x4Drive' | translate }}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label color="primary" position="stacked">{{ 'garageOne.inputTraction' | translate }}</ion-label>
+      <ion-select [(ngModel)]="car.traction" [placeholder]="'garageOne.placeholderTraction' | translate"
+        okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option value="FWD">{{ 'generic.frontWheelDrive' | translate }}</ion-select-option>
+        <ion-select-option value="RWD">{{ 'generic.rearWheelDrive' | translate }}</ion-select-option>
+        <ion-select-option value="AWD">{{ 'generic.totalDrive' | translate }}</ion-select-option>
+        <ion-select-option value="4WD">{{ 'generic.4x4ConectableDrive' | translate }}</ion-select-option>
+        <ion-select-option value="4x4">{{ 'generic.4x4Drive' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">{{ 'garageOne.inputFuel' | translate }}</ion-label>
-        <ion-select [(ngModel)]="car.fuel" [placeholder]="'garageOne.placeholderFuel' | translate" okText="Aceptar"
-                    cancelText="Cancelar">
-          <ion-select-option value="Gasolina">{{ 'generic.gasoline' | translate }}</ion-select-option>
-          <ion-select-option value="Diesel">{{ 'generic.diesel' | translate }}</ion-select-option>
-          <ion-select-option value="Hibrido">{{ 'generic.hybrid' | translate }}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'garageOne.inputFuel' | translate }}</ion-label>
+      <ion-select [(ngModel)]="car.fuel" [placeholder]="'garageOne.placeholderFuel' | translate" okText="Aceptar"
+        cancelText="Cancelar">
+        <ion-select-option value="gasoline">{{ 'generic.gasoline' | translate }}</ion-select-option>
+        <ion-select-option value="diesel">{{ 'generic.diesel' | translate }}</ion-select-option>
+        <ion-select-option value="hybrid">{{ 'generic.hybrid' | translate }}</ion-select-option>
+        <ion-select-option value="electric">{{ 'generic.hybrid' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">{{ 'garageOne.inputYear' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="car.year" [placeholder]="'garageOne.placeholderYear' | translate">
-        </ion-input>
-      </ion-item>
-    </ion-card>
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">{{ 'garageOne.inputCc' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="car.cc" [placeholder]="'garageOne.placeholderCc' | translate">
-        </ion-input>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'garageOne.inputYear' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="car.year" [placeholder]="'garageOne.placeholderYear' | translate">
+      </ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">{{ 'garageOne.inputCc' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="car.cc" [placeholder]="'garageOne.placeholderCc' | translate">
+      </ion-input>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">
-          {{ 'garageOne.inputCv' | translate }}
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="car.cv" [placeholder]="'garageOne.placeholderCv' | translate">
-        </ion-input>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">
+        {{ 'garageOne.inputCv' | translate }}
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="car.cv" [placeholder]="'garageOne.placeholderCv' | translate">
+      </ion-input>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">
-          {{ 'garageOne.inputStock' | translate }}
-        </ion-label>
-        <ion-select [(ngModel)]="car.stock" [placeholder]="'garageOne.placeholderStock' | translate" okText="Aceptar"
-                    cancelText="Cancelar">
-          <ion-select-option [value]="true">Si</ion-select-option>
-          <ion-select-option [value]="false">No</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">
+        {{ 'garageOne.inputStock' | translate }}
+      </ion-label>
+      <ion-select [(ngModel)]="car.stock" [placeholder]="'garageOne.placeholderStock' | translate" okText="Aceptar"
+        cancelText="Cancelar">
+        <ion-select-option [value]="true">Si</ion-select-option>
+        <ion-select-option [value]="false">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
 
-    <ion-card mode="ios" class="form-item">
-      <ion-item lines="none" color="light">
-        <ion-label position="stacked">
-          {{ 'garageOne.inputInfo' | translate }}
-        </ion-label>
-        <ion-textarea [(ngModel)]="car.info" [placeholder]="'garageOne.placeholderInfo' | translate">
-        </ion-textarea>
-      </ion-item>
-    </ion-card>
+  <ion-card mode="ios" class="form-item">
+    <ion-item lines="none" color="light">
+      <ion-label position="stacked">
+        {{ 'garageOne.inputInfo' | translate }}
+      </ion-label>
+      <ion-textarea [(ngModel)]="car.info" [placeholder]="'garageOne.placeholderInfo' | translate">
+      </ion-textarea>
+    </ion-item>
+  </ion-card>
 
-    <ion-button mode="ios" expand="block" color="primary" (click)="createOrUpdateItem()">
-      <span *ngIf="!edit">{{ 'carAdd.create' | translate }}</span>
-      <span *ngIf="edit">{{ 'carAdd.update' | translate }}</span>
-    </ion-button>
-  </ion-col>
-</ion-row>
+  <ion-button mode="ios" expand="block" color="primary" (click)="createOrUpdateItem()">
+    <span *ngIf="!edit">{{ 'carAdd.create' | translate }}</span>
+    <span *ngIf="edit">{{ 'carAdd.update' | translate }}</span>
+  </ion-button>
+</ng-container>

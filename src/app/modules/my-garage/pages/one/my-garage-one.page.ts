@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { config } from '@config';
 import { NavController } from '@ionic/angular';
 import { Car } from '@models';
 import { CarService } from '@services';
@@ -48,6 +49,6 @@ export class MyGarageOnePage implements OnInit {
     }
 
     carAddSuccess() {
-        this.navCtrl.navigateBack(['/garage']);
+        this.navCtrl.navigateBack([config.routes.myGarage]);
     }
 }
