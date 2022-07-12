@@ -3,10 +3,6 @@ ion-tabs {
 }
 
 ion-tab-bar {
-    // bottom: 5px;
-    // position: relative;
-    // width: 95%;
-    // margin: 0 auto;
     box-shadow: rgb(0 0 0 / 50%) 2px 3px 3px;
     background: #111;
 }
@@ -31,9 +27,9 @@ ion-tab-button {
 ion-tab-button.tab-selected {
     ion-label {
         font-weight: 600;
-        color: var(--ion-color-light);
+        color: #fff;
     }
     ion-icon {
-        color: var(--ion-color-light);
+        color: #fff;
     }
 }

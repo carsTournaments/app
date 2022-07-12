@@ -9,7 +9,8 @@
           {{ 'garageOne.inputBrand' | translate }}
         </ion-label>
         <ion-select [(ngModel)]="brandIdSelected" name="brandId"
-          [placeholder]="'garageOne.placeholderBrand' | translate">
+          [placeholder]="'garageOne.placeholderBrand' | translate" okText="Aceptar"
+                    cancelText="Cancelar">
           <ion-select-option *ngFor="let brand of brands" [value]="brand._id">
             {{brand.name}}
           </ion-select-option>
@@ -28,7 +29,8 @@
     <ion-card mode="ios" class="form-item">
       <ion-item lines="none" color="light">
         <ion-label color="primary" position="stacked">{{ 'garageOne.inputTraction' | translate }}</ion-label>
-        <ion-select [(ngModel)]="car.traction" [placeholder]="'garageOne.placeholderTraction' | translate">
+        <ion-select [(ngModel)]="car.traction" [placeholder]="'garageOne.placeholderTraction' | translate" okText="Aceptar"
+                    cancelText="Cancelar">
           <ion-select-option value="FWD">{{ 'generic.frontWheelDrive' | translate }}</ion-select-option>
           <ion-select-option value="RWD">{{ 'generic.rearWheelDrive' | translate }}</ion-select-option>
           <ion-select-option value="AWD">{{ 'generic.totalDrive' | translate }}</ion-select-option>
@@ -41,7 +43,8 @@
     <ion-card mode="ios" class="form-item">
       <ion-item lines="none" color="light">
         <ion-label position="stacked">{{ 'garageOne.inputFuel' | translate }}</ion-label>
-        <ion-select [(ngModel)]="car.fuel" [placeholder]="'garageOne.placeholderFuel' | translate">
+        <ion-select [(ngModel)]="car.fuel" [placeholder]="'garageOne.placeholderFuel' | translate" okText="Aceptar"
+                    cancelText="Cancelar">
           <ion-select-option value="Gasolina">{{ 'generic.gasoline' | translate }}</ion-select-option>
           <ion-select-option value="Diesel">{{ 'generic.diesel' | translate }}</ion-select-option>
           <ion-select-option value="Hibrido">{{ 'generic.hybrid' | translate }}</ion-select-option>
@@ -79,7 +82,8 @@
         <ion-label position="stacked">
           {{ 'garageOne.inputStock' | translate }}
         </ion-label>
-        <ion-select [(ngModel)]="car.stock" [placeholder]="'garageOne.placeholderStock' | translate">
+        <ion-select [(ngModel)]="car.stock" [placeholder]="'garageOne.placeholderStock' | translate" okText="Aceptar"
+                    cancelText="Cancelar">
           <ion-select-option [value]="true">Si</ion-select-option>
           <ion-select-option [value]="false">No</ion-select-option>
         </ion-select>

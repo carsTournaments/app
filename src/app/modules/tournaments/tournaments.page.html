@@ -22,8 +22,8 @@
         [tournaments]="vm.tournaments && vm.tournaments.completed" (clickItem)="goToTournament($event)">
       </tournaments-slider>
 
-      <ion-card mode="ios">
-        <ion-item color="light" mode="ios" [button]="true" lines="none" [routerLink]="['/ranking']" routerLinkActive="router-link-active" >
+      <ion-card mode="ios" class="option-item">
+        <ion-item color="light" mode="ios" [button]="true" lines="none" [routerLink]="['/ranking']">
           <ion-label>
             <h2>{{ 'tournaments.linkTitleRanking' | translate }}</h2>
             <small class="min-text-weight">

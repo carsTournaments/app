@@ -2,15 +2,15 @@
     <ng-template swiperSlide *ngFor="let date of dates">
         <ion-card
             mode="ios"
-            class="date-item selected"
-            [ngClass]="{ selected: dateSelected === date }"
+            class="date-item"
+            [ngClass]="{ 'selected': dateSelected === date }"
             (click)="goToDate(date)"
         >
             <ion-card-content>
                 <ion-card-title>
                     <ion-label>
-                        <h2>{{ date | dateToDayOrMonth }}</h2>
-                        <h3>{{ date | dateToDayOrMonth: 'month' }}</h3>
+                        <h2 [ngClass]="{ 'selected': dateSelected === date }">{{ date | dateToDayOrMonth }}</h2>
+                        <h3 [ngClass]="{ 'selected': dateSelected === date }">{{ date | dateToDayOrMonth: 'month' }}</h3>
                     </ion-label>
                 </ion-card-title>
             </ion-card-content>

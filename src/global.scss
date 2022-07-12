@@ -35,6 +35,12 @@
     margin-bottom: 1rem;
     font-size: 16px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+
+    small {
+        color: var(--ion-color-medium-shade);
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
 }
 
 .form-item {
@@ -47,7 +53,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: -0.5rem;
     ion-label {
-        color: rgba(0, 0, 0, 0.5) !important;
+        color: var(--ion-color-medium-shade) !important;
     }
 }
 
@@ -64,7 +70,7 @@ hr {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--ion-color-medium);
 }
 
 .item-block-resume {
@@ -303,4 +309,9 @@ hr {
 ion-title[size='large'] {
     padding: 0;
     padding-left: 0.5rem;
+    color: var(--ion-color-dark);
+}
+
+.border-right {
+    border-right: 1px solid var(--ion-color-medium);
 }
