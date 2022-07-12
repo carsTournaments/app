@@ -1,6 +1,7 @@
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '@services';
+import { config } from '@config';
 
 @Component({
     selector: 'app-home',
@@ -27,6 +28,6 @@ export class HomePage implements OnInit {
 
     enter() {
         this.storageService.set('home', true);
-        this.navCtrl.navigateRoot('/tab');
+        this.navCtrl.navigateRoot(config.routes.tab);
     }
 }

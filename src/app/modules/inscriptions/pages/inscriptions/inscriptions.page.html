@@ -1,50 +1,16 @@
-<custom-header
-    [options]="vm.header"
-    (segmentChanged)="segmentChanged($event)"
-></custom-header>
+<custom-header [options]="vm.header"></custom-header>
 
-<ion-content [fullscreen]="true">
-    <spinner [loading]="vm.loading"></spinner>
-    <no-items
-        *ngIf="
-        !vm.loading &&
-        vm.inscriptions &&
-        vm.inscriptions.todo.length === 0 &&
-        vm.inscriptions.inProgress.length === 0 &&
-        vm.inscriptions.completed.length === 0
-        "
-        [options]="vm.noitems"
-    ></no-items>
-    <ion-row style="padding-top: 0">
-        <ion-col
-            style="padding-top: 0"
-            size="12"
-            sizeLg="8"
-            offsetLg="2"
-            *ngIf="vm.inscriptions"
-            style="padding-top: 0.5rem"
-        >
-            <inscriptions-state
-                [title]="'inscriptions.inProgress' | translate"
-                [items]="vm.inscriptions.inProgress"
-                [state]="vm.states.inProgress"
-                type="inProgress"
-            ></inscriptions-state>
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+  <spinner [loading]="vm.loading"></spinner>
+  <no-items *ngIf="!vm.loading && vm.inscriptions.length === 0" [options]="vm.noitems"></no-items>
 
-            <inscriptions-state
-                [title]="'inscriptions.todo' | translate"
-                [items]="vm.inscriptions.todo"
-                [state]="vm.states.todo"
-                type="todo"
-                (openPopover)="openPopover($event)"
-            ></inscriptions-state>
-
-            <inscriptions-state
-                [title]="'inscriptions.completed' | translate"
-                [items]="vm.inscriptions.completed"
-                [state]="vm.states.completed"
-                type="completed"
-            ></inscriptions-state>
-        </ion-col>
-    </ion-row>
+  <ion-row style="padding-top: 0">
+    <ion-col size="12" sizeLg="8" offsetLg="2">
+      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
+      <div class="animate__animated animate__fadeIn animate__faster" style="margin-top: -0.25rem">
+        <car-item *ngFor="let inscription of vm.inscriptions" [car]="inscription?.car" (clickItem)="goToCar($event)">
+        </car-item>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

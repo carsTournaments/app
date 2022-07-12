@@ -9,6 +9,8 @@ import {
 } from '@services';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountViewModel } from '../../model/account.view-model';
+import { config } from '@config';
+import { ToggleService } from '@core/services/toggle.service';
 
 @Component({
     selector: 'app-account',
@@ -25,7 +27,8 @@ export class AccountPage {
         private navCtrl: NavController,
         private alertService: AlertService,
         private analyticsService: AnalyticsService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private toggleService: ToggleService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -42,6 +45,7 @@ export class AccountPage {
         } else {
             this.logged = false;
         }
+        this.vm.header.title = 'Tu cuenta';
         this.vm.loading = false;
     }
 
@@ -55,35 +59,50 @@ export class AccountPage {
         });
     }
 
-    setOptions() {
+    async setOptions() {
         this.vm.header.title = this.translate.instant('account.title');
         this.vm.options = [
             {
                 name: this.translate.instant('account.itemTitleMyData'),
                 subtitle: this.translate.instant('account.itemSubtitleMyData'),
-                route: 'my-data',
+                route: config.routes.myData,
+                state: true,
             },
             {
                 name: this.translate.instant('account.itemTitleGarage'),
                 subtitle: this.translate.instant('account.itemSubtitleGarage'),
-                route: 'garage',
+                route: config.routes.myGarage,
+                state: true,
             },
             {
                 name: this.translate.instant('account.itemTitleInscriptions'),
                 subtitle: this.translate.instant(
                     'account.itemSubtitleInscriptions'
                 ),
-                route: 'inscriptions',
+                route: config.routes.myInscriptions,
+                state: true,
             },
             {
                 name: this.translate.instant('account.itemTitleLikes'),
                 subtitle: this.translate.instant('account.itemSubtitleLikes'),
-                route: 'likes',
+                route: config.routes.myLikes,
+                state: true,
+            },
+            {
+                name: this.translate.instant('account.itemTitleDarkMode'),
+                subtitle: this.translate.instant(
+                    'account.itemSubtitleDarkMode'
+                ),
+                value: 'darkMode',
+                state: await this.toggleService.isActiveToggle(
+                    'account_darkmode'
+                ),
             },
             {
                 name: this.translate.instant('account.itemTitleLogout'),
                 subtitle: this.translate.instant('account.itemSubtitleLogout'),
                 value: 'logout',
+                state: true,
             },
         ];
     }
@@ -152,5 +171,10 @@ export class AccountPage {
         } else {
             this.analyticsService.logEvent('dashboard_logout_Cancel');
         }
+    }
+
+    onChangeTitle(event: any): void {
+        console.log(event);
+        this.vm.header.title = event;
     }
 }

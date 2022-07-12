@@ -1,0 +1,112 @@
+.image-car1 {
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    height: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-right: 1px solid var(--ion-color-medium);
+    z-index: 999;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.image-car2 {
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    height: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid var(--ion-color-medium);
+    z-index: 999;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.box-center {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+}
+
+.car-title1 {
+    p {
+        font-size: 1.2rem;
+        font-weight: 800;
+        padding: 1rem;
+        background: #000;
+        padding: 0.5rem 1rem;
+        box-shadow: 5px 2px 5px rgb(0 0 0 / 50%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    ion-icon {
+        font-size: 15px;
+        color: #ffd700;
+    }
+}
+
+.car-title2 {
+    p {
+        font-size: 1.2rem;
+        font-weight: 800;
+        padding: 1rem;
+        background: #000;
+        padding: 0.5rem 1rem;
+        box-shadow: 5px 2px 5px rgb(0 0 0 / 50%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    ion-icon {
+        font-size: 15px;
+        color: #ffd700;
+    }
+}
+
+.vs {
+    p {
+        padding: 1rem;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100%;
+        background: #000;
+        box-shadow: 5px 2px 5px rgb(0 0 0 / 50%);
+    }
+}
+
+// ion-segment-button {
+//     --color-checked: var(--ion-color-light);
+//     --background-checked: var(--ion-color-primary);
+// }
+
+.isWinner {
+    p {
+        background: var(--ion-color-primary) !important;
+    }
+}
+
+.round-value {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.round-key {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.div-segments {
+    padding: 0.5rem;
+}

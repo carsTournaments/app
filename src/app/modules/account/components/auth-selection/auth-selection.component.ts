@@ -24,7 +24,6 @@ export class AuthSelectionComponent {
                     this.analyticsService.logEvent(
                         'auth_loginGoogle_register_OK'
                     );
-                    // TODO: enviar a nueva pagina de steps
                 } else {
                     this.analyticsService.logEvent('auth_loginGoogle_login_OK');
                 }

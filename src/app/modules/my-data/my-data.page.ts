@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { config } from '@config';
 import { NavController } from '@ionic/angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ToastIonicService, UserService } from '@services';
@@ -47,7 +48,7 @@ export class MyDataPage implements OnInit {
             .pipe(tap((user) => this.userService.set(user)))
             .subscribe({
                 next: () => {
-                    this.navCtrl.navigateBack('/tab/account');
+                    this.navCtrl.navigateBack(config.routes.account);
                     this.toastService.info('Datos actualizados correctamente');
                 },
             });

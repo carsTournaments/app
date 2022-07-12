@@ -11,3 +11,4 @@ export {
 export { GenericGetAllI } from './generic-getall.interface';
 export { ActionForOptionI } from './action-for-option.interface';
 export { TabI } from './tab.interface';
+export { CarRankingI } from './car-ranking.interface';

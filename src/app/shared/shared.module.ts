@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
+    BannerRankingComponent,
     BrandItemComponent,
     CanYouHelpComponent,
     CarAddComponent,
     CarItemComponent,
     HeaderComponent,
+    HeaderSubComponent,
     NoItemsComponent,
     ReportModalComponent,
     SpinnerComponent,
@@ -91,12 +93,14 @@ const MODULES = [
     TranslateModule,
 ];
 const COMPONENTS = [
-    CarAddComponent,
+    BannerRankingComponent,
     BrandItemComponent,
     CanYouHelpComponent,
+    CarAddComponent,
     CarItemComponent,
     CountUpDirective,
     HeaderComponent,
+    HeaderSubComponent,
     NoItemsComponent,
     ReportModalComponent,
     SpinnerComponent,

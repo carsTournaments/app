@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { CarGetAllDto } from './car.dto';
+import { CarGetAllDto, CarGetGlobalRankingDto } from './car.dto';
 import { Car } from '@models/car.model';
-import { PaginatorI } from '@interfaces';
+import { CarRankingI, PaginatorI } from '@interfaces';
 import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -27,6 +27,12 @@ export class CarService {
     getAllOfDriver(data: IdDto): Observable<Car[]> {
         return this.httpClient
             .post<Car[]>(`${this.url}/getAllOfDriver`, data)
+            .pipe(take(1));
+    }
+
+    getGlobalRanking(data: CarGetGlobalRankingDto): Observable<CarRankingI[]> {
+        return this.httpClient
+            .post<CarRankingI[]>(`${this.url}/getGlobalRanking`, data)
             .pipe(take(1));
     }
 

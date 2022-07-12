@@ -1,63 +1,18 @@
-<ion-header *ngIf="options" class="ion-no-border" mode="md">
-    <ion-toolbar>
-        <ng-container *ngIf="options.backButton?.state">
-            <ion-back-button
-                [ngClass]="{
-                    'back-button-segments': options.segments?.items.length > 0,
-                    'back-button-no-segments': !options.segments
-                }"
-                [defaultHref]="options.backButton?.route"
-            >
-            </ion-back-button>
-        </ng-container>
+<ion-header class="ion-no-border" mode="ios">
 
-        <ion-button
-            *ngIf="options.rightButton?.state"
-            color="light"
-            fill="clear"
-            class="icon-right-no-segments animate__animated animate__fadeIn"
-            (click)="clickRightIcon.emit()"
-        >
-            <ion-icon
-                slot="icon-only"
-                [name]="options.rightButton?.icon"
-            ></ion-icon>
-        </ion-button>
+  <ion-toolbar [mode]="'ios'">
+    <ng-container *ngIf="options.backButton?.state">
+      <ion-buttons slot="start">
+        <ion-back-button [defaultHref]="options.backButton?.route" [text]="''">
+        </ion-back-button>
+      </ion-buttons>
+    </ng-container>
+    <ion-buttons slot="end" *ngIf="options.rightButton?.state">
+      <ion-button fill="clear" (click)="clickRightIcon.emit()">
+        <ion-icon slot="icon-only" [name]="options.rightButton?.icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
-        <ion-title
-            [ngClass]="{
-                'ion-title-padding-top-segments':
-                    options.segments?.items.length > 0,
-                'ion-title-padding-top-no-segments': !options.segments
-            }"
-        >
-            {{ options.title }}</ion-title
-        >
-
-        <ion-row
-            style="padding: 0"
-            class="animate__animated animate__fadeIn animate__faster"
-        >
-            <ion-col style="padding: 0" size="12" sizeLg="8" offsetLg="2">
-                <ion-segment
-                    *ngIf="
-                        options.segments && options.segments.items.length > 0
-                    "
-                    mode="ios"
-                    [value]="options.segments.selected"
-                    (ionChange)="segmentChanged.emit($event)"
-                >
-                    <ion-segment-button
-                        *ngFor="
-                            let item of options.segments.items;
-                            let i = index
-                        "
-                        [value]="i"
-                    >
-                        <ion-label>{{ item }}</ion-label>
-                    </ion-segment-button>
-                </ion-segment>
-            </ion-col>
-        </ion-row>
-    </ion-toolbar>
+    <ion-title mode="ios">{{ options.title }}</ion-title>
+  </ion-toolbar>
 </ion-header>

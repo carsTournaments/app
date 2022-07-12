@@ -1,3 +1,4 @@
+import { config } from '@config';
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Brand, Car } from '@models';
@@ -32,6 +33,8 @@ export class CarsPage {
     ionViewWillEnter(): void {
         this.vm.header.title = this.translate.instant('cars.title');
         this.vm.loading.getCars = true;
+        this.vm.carsBody.page = 1;
+        this.vm.brandsBody.page = 1;
         this.getCars();
         this.getTopCars();
         this.getBrands();
@@ -132,11 +135,11 @@ export class CarsPage {
             }`
         );
         this.vm.header.rightButton.state = false;
-        if (
-            this.vm.header.segments.selected === 0 ||
-            this.vm.header.segments.selected === 2
-        ) {
+        if (this.vm.header.segments.selected === 0) {
             this.vm.header.rightButton.state = true;
+            this.vm.header.title = 'Coches';
+        } else {
+            this.vm.header.title = 'Marcas';
         }
     }
 
@@ -155,7 +158,9 @@ export class CarsPage {
                 car_name: `${item.brand.name} ${item.model}`,
             },
         });
-        this.navCtrl.navigateForward(`/car/${item._id}`);
+        this.navCtrl.navigateForward(
+            config.routes.car.replace(':id', item._id)
+        );
     }
 
     cleanFilter(): void {
