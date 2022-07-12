@@ -1,12 +1,13 @@
-<custom-header *ngIf="logged && vm.user && vm.resume" [options]="vm.header"></custom-header>
+<custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true" class="animate__animated animate__fadeIn animate__faster">
   <spinner [loading]="vm.loading"></spinner>
-  <auth (loggedSuccess)="onLogged()" *ngIf="!logged"></auth>
 
   <ion-row style="padding-top: 0.5rem">
     <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-      <custom-header-sub *ngIf="logged && vm.user && vm.resume" [title]="vm.header.title" [buttons]="false"></custom-header-sub>
+      <custom-header-sub  [title]="vm.header.title" [buttons]="false"></custom-header-sub>
+
+      <auth (changeTitle)="onChangeTitle($event)" (loggedSuccess)="onLogged()" *ngIf="!logged"></auth>
 
       <ng-container *ngIf="logged && vm.user && vm.resume">
         <dashboard [resume]="vm.resume" [user]="vm.user" [options]="vm.options" (goTo)="onClickOption($event)">

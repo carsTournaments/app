@@ -120,10 +120,17 @@ export class AppComponent implements OnInit {
         this.notificationsPushService.registerFCM(user ?? null);
     }
 
-    changeDarkMode() {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-        if (prefersDark.matches) {
-            document.body.classList.toggle('dark');
+    async changeDarkMode() {
+        const state = await this.togglesService.isActiveToggle(
+            'general_darkmode'
+        );
+        if (state) {
+            const prefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            );
+            if (prefersDark.matches) {
+                document.body.classList.toggle('dark');
+            }
         }
     }
 }

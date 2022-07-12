@@ -1,10 +1,10 @@
-<div class="auth animate__animated animate__fadeIn animate__faster" mode="ios" *ngIf="countries">
+<div class="animate__animated animate__fadeIn animate__faster" mode="ios" *ngIf="countries" style="margin-top: 1.5rem">
   <div style="text-align: center; margin-bottom: 1rem">
     <img src="./assets/images/after-register.svg" style="width: 225px" />
   </div>
   <br>
 
-  <ion-card mode="ios" class="form-item" style="width:100%">
+  <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputNameAfter' | translate }}</ion-label>
       <ion-input name="name" [(ngModel)]="user.name" placeholder="{{ 'account.placeholderName' | translate }}"
@@ -13,7 +13,7 @@
     </ion-item>
   </ion-card>
 
-  <ion-card mode="ios" class="form-item" style="width:100%">
+  <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputCountryAfter' | translate }}</ion-label>
       <ion-select [(ngModel)]="countryIdSelected" name="countryId"
@@ -25,7 +25,7 @@
     </ion-item>
   </ion-card>
 
-  <ion-card mode="ios" class="form-item" style="width:100%">
+  <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputTypeAfter' | translate }}</ion-label>
       <ion-select [(ngModel)]="type" name="typeId">
@@ -35,7 +35,7 @@
     </ion-item>
   </ion-card>
   <br>
-  <ion-button expand="block" color="primary" style="width:100%" (click)="updateUser()">
+  <ion-button expand="block" color="primary" (click)="updateUser()">
     {{ 'generic.continue' | translate }}
   </ion-button>
 </div>

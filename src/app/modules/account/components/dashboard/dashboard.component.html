@@ -5,15 +5,15 @@
 </ion-card>
 
 <can-you-help></can-you-help>
-
-<ion-card mode="ios" class="option-item" *ngFor="let item of options" (click)="goTo.emit(item)"
-  style="margin-top: -0.25rem">
-  <ion-item color="light" mode="ios" button lines="none" [detail]="!item.value || item.value !== 'darkMode'">
-    <ion-label>
-      {{ item.name }}
-      <small *ngIf="item.subtitle"><br />{{ item.subtitle }} </small>
-    </ion-label>
-    <ion-toggle *ngIf="item.value === 'darkMode'" slot="end" [ngModel]="darkMode" (ionChange)="changeMode()"></ion-toggle>
-  </ion-item>
-</ion-card>
-
+<ng-container *ngFor="let item of options">
+  <ion-card mode="ios" class="option-item" (click)="goTo.emit(item)" style="margin-top: -0.25rem" *ngIf="item.state">
+    <ion-item color="light" mode="ios" button lines="none" [detail]="!item.value || item.value !== 'darkMode'">
+      <ion-label>
+        {{ item.name }}
+        <small *ngIf="item.subtitle"><br />{{ item.subtitle }} </small>
+      </ion-label>
+      <ion-toggle *ngIf="item.value === 'darkMode'" slot="end" [ngModel]="darkMode" (ionChange)="changeMode()">
+      </ion-toggle>
+    </ion-item>
+  </ion-card>
+</ng-container>

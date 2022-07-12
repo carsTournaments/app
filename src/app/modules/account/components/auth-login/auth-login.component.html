@@ -1,9 +1,9 @@
-<div class="auth animate__animated animate__fadeIn animate__faster" mode="ios">
+<div class="animate__animated animate__fadeIn animate__faster" mode="ios" style="margin-top: 1.5rem">
   <div style="text-align: center; margin-bottom: 1rem">
     <img src="./assets/images/login.svg" style="width: 225px" />
   </div>
   <br>
-  <ion-card mode="ios" class="form-item" style="width:100%">
+  <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputEmail' | translate }}</ion-label>
       <ion-input name="email" type="email" [(ngModel)]="data.email"
@@ -12,23 +12,23 @@
     </ion-item>
   </ion-card>
 
-  <ion-card mode="ios" class="form-item" style="width:100%">
+  <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputPassword' | translate }}</ion-label>
       <ion-input name="password" type="password" [(ngModel)]="data.password"
         placeholder="{{ 'account.placeholderPassword' | translate }}" ngDefaultControl></ion-input>
     </ion-item>
   </ion-card>
-  <ion-button expand="block" color="primary" (click)="login()" style="width:100%">
+  <ion-button expand="block" color="primary" (click)="login()">
     {{ 'account.buttonLogin' | translate }}
   </ion-button>
-  <ion-button expand="block" color="primary" fill="outline" (click)="goToRegister.emit()" style="width:100%">
+  <ion-button expand="block" color="primary" fill="outline" (click)="goToRegister.emit()">
     {{ 'account.buttonRegister' | translate }}
   </ion-button>
 
   <span class="divider line one-line">o</span>
 
-  <ion-button expand="block" color="primary" (click)="goToSelect.emit()" style="width:100%">
+  <ion-button expand="block" color="primary" (click)="goToSelect.emit()">
     {{ 'generic.back' | translate }}
   </ion-button>
 </div>
