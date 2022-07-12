@@ -1,0 +1,9 @@
+<custom-header [options]="vm.header"></custom-header>
+
+<ion-content [fullscreen]="true">
+  <spinner [loading]="vm.loading"></spinner>
+
+  <car-add *ngIf="vm.car" [car]="vm.car" [brandIdSelected]="vm.brandIdSelected" (carAddSuccess)="carAddSuccess()">
+  </car-add>
+
+</ion-content>

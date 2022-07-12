@@ -7,18 +7,7 @@ import { TournamentService } from '../..';
 import { Inscription } from '@models';
 import { environment } from '@env/environment';
 
-// const paginator: PaginatorI = {
-//     pageSize: 0,
-//     currentPage: 0,
-//     totalPages: 0,
-//     total: 0,
-// };
-
 const item = new Inscription();
-// const res = {
-//     items: [item],
-//     paginator,
-// };
 
 describe('TournamentService', () => {
     let httpTestingController: HttpTestingController;
@@ -49,6 +38,26 @@ describe('TournamentService', () => {
         });
         const req = httpTestingController.expectOne(
             `${environment.urlApi}/tournaments/getAllOfAllStates`
+        );
+        req.flush(item);
+    });
+
+    it('getDaysForCalendar', () => {
+        service.getDaysForCalendar().subscribe((response) => {
+            expect(response).not.toBe(null);
+        });
+        const req = httpTestingController.expectOne(
+            `${environment.urlApi}/tournaments/getDaysForCalendar`
+        );
+        req.flush(item);
+    });
+
+    it('getCalendarItems', () => {
+        service.getCalendarItems('2022-10-01').subscribe((response) => {
+            expect(response).not.toBe(null);
+        });
+        const req = httpTestingController.expectOne(
+            `${environment.urlApi}/tournaments/getCalendarItems`
         );
         req.flush(item);
     });

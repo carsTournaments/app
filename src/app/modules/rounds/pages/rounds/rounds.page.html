@@ -1,0 +1,86 @@
+<custom-header [options]="vm.header" (segmentChanged)="segmentChanged($event)"></custom-header>
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+  <ion-row style="padding-top: 0">
+    <ion-col size="12" sizeLg="8" offsetLg="2">
+      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
+<div class="div-segments">
+  <ion-segment *ngIf="vm.rounds.length > 1" mode="ios" [value]="vm.roundSelected" scrollable="true"
+    (ionChange)="segmentChanged($event)">
+    <ion-segment-button [value]="round._id" *ngFor="let round of vm.rounds">
+      <ion-label>{{ round.name }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</div>
+      <div *ngFor="let round of vm.rounds">
+        <div *ngIf="vm.roundSelected === round._id">
+          <ion-card mode="ios">
+            <ion-card-content style="padding: 0.5rem 0.5rem 0 0.5rem;">
+              <ion-row>
+                <ion-col size="4" class="ion-text-center item-block-resume">
+                  <p class="round-value">
+                    {{ round.startDate | momentDateShort }}
+                  </p>
+                  <small class="round-key">{{ 'tournament.infoStart' | translate }}</small>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center item-block-resume">
+                  <p class="round-value">{{ round.votes.length }}</p>
+                  <small class="round-key">{{ 'tournament.infoVotes' | translate }}</small>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center item-block-resume">
+                  <p class="round-value">
+                    {{ round.endDate | momentDateShort }}
+                  </p>
+                  <small class="round-key">{{ 'tournament.infoEnd' | translate }}</small>
+                </ion-col>
+              </ion-row>
+
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card *ngFor="let pairing of round.pairings" [ngStyle]="{ height: '350px' }" mode="ios"
+            style="margin-bottom: 0" class="animate__animated animate__fadeIn animate__faster ion-activatable"
+            (click)="goToPairing(pairing)">
+            <div class="box-center">
+              <div class="car-title1" [ngClass]="{
+                        isWinner: pairing.car1._id === pairing.winner
+                    }">
+                <p>
+                  {{ pairing.car1.brand.name | uppercase }}
+                  {{ pairing.car1.model | truncateText: 15 | uppercase }}
+                  <ion-icon *ngIf="pairing.car1._id === pairing.winner" name="trophy"></ion-icon>
+                </p>
+              </div>
+
+              <!--  VS -->
+              <div class="vs">
+                <p>VS</p>
+              </div>
+
+              <div class="car-title2" [ngClass]="{
+                        isWinner: pairing.car2._id === pairing.winner
+                    }">
+                <p>
+                  {{ pairing.car2.brand.name | uppercase }}
+                  {{ pairing.car2.model | truncateText: 15 | uppercase }}
+                  <ion-icon *ngIf="pairing.car2._id === pairing.winner" name="trophy"></ion-icon>
+                </p>
+              </div>
+            </div>
+
+            <!--  Car 1 -->
+            <div class="image-car1" [ngStyle]="{
+                    'background-image': this.getBackgroundImage(pairing.car1)
+                }"></div>
+
+            <!--  Car 2 -->
+            <div class="image-car2" [ngStyle]="{
+                    'background-image': this.getBackgroundImage(pairing.car2)
+                }"></div>
+
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-card>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

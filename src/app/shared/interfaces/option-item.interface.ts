@@ -4,4 +4,5 @@ export interface OptionItemI {
     icon?: string;
     route?: string;
     value?: string;
+    state?: boolean;
 }

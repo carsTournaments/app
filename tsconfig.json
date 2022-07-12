@@ -16,6 +16,7 @@
         "paths": {
             "@core": ["app/core"],
             "@core/*": ["app/core/*"],
+            "@config": ["app/core/config"],
             "@components": ["app/shared/components"],
             "@components/*": ["app/shared/components/*"],
             "@services": ["app/shared/services"],

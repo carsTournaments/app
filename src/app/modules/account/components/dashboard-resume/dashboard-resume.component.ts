@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { User, Image } from '@models';
 import { ImageService } from '@services';
 import { UserGetResumeResponse } from '@services/api/user/user.responses';
+import { config } from '@config';
 
 @Component({
     selector: 'dashboard-resume',
@@ -23,7 +24,10 @@ export class DashboardResumeComponent {
     }
 
     goTo(type: string) {
-        const route = type === 'garage' ? '/garage' : '/inscriptions';
+        const route =
+            type === 'garage'
+                ? config.routes.myGarage
+                : config.routes.myInscriptions;
         this.navCtrl.navigateForward([route]);
     }
 }

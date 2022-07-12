@@ -1,41 +1,39 @@
 <custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true">
-    <spinner [loading]="vm.loading"></spinner>
-    <ion-refresher
-        slot="fixed"
-        (ionRefresh)="doRefresh($event)"
-        pullFactor="0.8"
-        pullMin="60"
-        pullMax="120"
-    >
-        <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
+  <spinner [loading]="vm.loading"></spinner>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-    <ion-row
-        style="padding-top: 0"
-        class="animate__animated animate__fadeIn animate__faster"
-    >
-        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
-            <tournaments-slider
-                [title]="'tournaments.title_inProgress' | translate"
-                [tournaments]="vm.tournaments && vm.tournaments.inProgress"
-                (clickItem)="goToTournament($event)"
-            ></tournaments-slider>
+  <ion-row style="padding-top: 0" class="animate__animated animate__fadeIn animate__faster">
+    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+      <custom-header-sub [title]="vm.header.title"></custom-header-sub>
 
-            <tournaments-slider
-                [title]="'tournaments.title_todo' | translate"
-                [tournaments]="vm.tournaments && vm.tournaments.todo"
-                (clickItem)="goToTournament($event)"
-            >
-            </tournaments-slider>
+      <tournaments-slider [title]="'tournaments.title_inProgress' | translate"
+        [tournaments]="vm.tournaments && vm.tournaments.inProgress" (clickItem)="goToTournament($event)">
+      </tournaments-slider>
 
-            <tournaments-slider
-                [title]="'tournaments.title_completed' | translate"
-                [tournaments]="vm.tournaments && vm.tournaments.completed"
-                (clickItem)="goToTournament($event)"
-            >
-            </tournaments-slider>
-        </ion-col>
-    </ion-row>
+      <tournaments-slider [title]="'tournaments.title_todo' | translate"
+        [tournaments]="vm.tournaments && vm.tournaments.todo" (clickItem)="goToTournament($event)">
+      </tournaments-slider>
+
+      <tournaments-slider [title]="'tournaments.title_completed' | translate"
+        [tournaments]="vm.tournaments && vm.tournaments.completed" (clickItem)="goToTournament($event)">
+      </tournaments-slider>
+
+      <!-- <banner-ranking></banner-ranking> -->
+      <ion-card mode="ios">
+        <ion-item color="light" mode="ios" [button]="true" lines="none" [routerLink]="['/ranking']" routerLinkActive="router-link-active" >
+          <ion-label>
+            <h2>{{ 'tournaments.linkTitleRanking' | translate }}</h2>
+            <small class="min-text-weight">
+              {{ 'tournaments.linkSubtitleRanking' | translate }}
+            </small>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
 </ion-content>

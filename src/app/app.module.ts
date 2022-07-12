@@ -5,7 +5,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { customAnimation } from './core/animations/animations';
+import { navAnimation } from './core/animations/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SharedModule } from '@shared/shared.module';
@@ -25,7 +25,10 @@ import { CustomTranslateLoader } from '@core/bootstrap/custom-translate-loader';
         HttpClientModule,
         RouterModule,
         IonicStorageModule.forRoot(),
-        IonicModule.forRoot({ navAnimation: customAnimation }),
+        IonicModule.forRoot({
+            navAnimation: navAnimation,
+            statusTap: true,
+        }),
         AdsenseModule.forRoot({
             adClient: 'ca-pub-1868668305627051',
             adSlot: 7259870550,

@@ -1,0 +1,8 @@
+<ion-header collapse="condense" mode="ios" [ngClass]="{
+  'margin-top': !platform.is('ios') && !buttons,
+  'margin-top-buttons': !platform.is('ios') && buttons
+}">
+  <ion-toolbar [mode]="!platform.is('ios') ? 'md': undefined">
+    <ion-title mode="ios" size="large">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>

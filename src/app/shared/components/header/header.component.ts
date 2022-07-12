@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { Header } from './model/header.model';
 
 @Component({
@@ -12,4 +13,6 @@ export class HeaderComponent {
     @Output() clickRightIcon: EventEmitter<any> = new EventEmitter();
     height: number;
     heightPx: string;
+
+    constructor(public platform: Platform) {}
 }

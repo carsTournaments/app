@@ -81,3 +81,10 @@ export const utilsService = jasmine.createSpyObj('UtilsService', [
 export const translateService = jasmine.createSpyObj('TranslateService', [
     'get',
 ]);
+
+export const actionSheetService = jasmine.createSpyObj(
+    'ActionSheetIonicService',
+    ['present']
+);
+
+export const userService = jasmine.createSpyObj('UserService', ['getUser']);

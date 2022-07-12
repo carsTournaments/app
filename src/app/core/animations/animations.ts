@@ -15,12 +15,11 @@ const animationCtrl = new AnimationController();
 //     return element;
 // };
 
-export const customAnimation = (_: HTMLElement, opts: any) => {
-    // create root transition
+export const navAnimation = (_: HTMLElement, opts: any) => {
     const rootTransition = animationCtrl
         .create()
         .duration(opts.duration || 333)
-        .easing('cubic-bezier(0.7,0,0.3,1)');
+        .easing('cubic-bezier(0.1,0,0.3,1)');
 
     const enterTransition = animationCtrl.create().addElement(opts.enteringEl);
     const exitTransition = animationCtrl.create().addElement(opts.leavingEl);
@@ -31,24 +30,20 @@ export const customAnimation = (_: HTMLElement, opts: any) => {
     if (opts.direction === 'forward') {
         enterTransition.fromTo(
             'transform',
-            'translateX(-1.5%)',
+            'translateX(-10%)',
             'translateX(0%)'
         );
-        exitTransition.fromTo(
-            'transform',
-            'translateX(0%)',
-            'translateX(1.5%)'
-        );
+        exitTransition.fromTo('transform', 'translateX(0%)', 'translateX(10%)');
     } else {
         enterTransition.fromTo(
             'transform',
-            'translateX(1.5%)',
+            'translateX(10%)',
             'translateX(0%)'
         );
         exitTransition.fromTo(
             'transform',
             'translateX(0%)',
-            'translateX(-1.5%)'
+            'translateX(-10%)'
         );
     }
 

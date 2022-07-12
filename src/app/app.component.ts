@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
         this.settingsService.getSettingsDB();
         this.checkUserLogged();
         this.ota();
+        this.changeDarkMode();
     }
 
     async ota() {
@@ -117,5 +118,19 @@ export class AppComponent implements OnInit {
     async checkUserLogged() {
         const user: User = await this.storageService.get('user');
         this.notificationsPushService.registerFCM(user ?? null);
+    }
+
+    async changeDarkMode() {
+        const state = await this.togglesService.isActiveToggle(
+            'general_darkmode'
+        );
+        if (state) {
+            const prefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            );
+            if (prefersDark.matches) {
+                document.body.classList.toggle('dark');
+            }
+        }
     }
 }
