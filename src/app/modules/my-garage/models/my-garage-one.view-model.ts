@@ -3,7 +3,7 @@ import { Car } from '@models';
 
 export class MyGarageOneViewModel {
     header = new Header({
-      title: 'Garaje',
+        title: 'Garaje',
         backButton: {
             state: true,
             route: 'garage',
