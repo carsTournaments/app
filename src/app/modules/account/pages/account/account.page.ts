@@ -82,6 +82,13 @@ export class AccountPage {
                 route: config.routes.myLikes,
             },
             {
+                name: this.translate.instant('account.itemTitleDarkMode'),
+                subtitle: this.translate.instant(
+                    'account.itemSubtitleDarkMode'
+                ),
+                value: 'darkMode',
+            },
+            {
                 name: this.translate.instant('account.itemTitleLogout'),
                 subtitle: this.translate.instant('account.itemSubtitleLogout'),
                 value: 'logout',

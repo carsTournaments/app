@@ -13,4 +13,9 @@ export class DashboardComponent {
     @Input() user: User;
     @Input() options: OptionItemI[];
     @Output() goTo: EventEmitter<OptionItemI> = new EventEmitter();
+    darkMode = false;
+
+    changeMode() {
+        document.body.classList.toggle('dark');
+    }
 }

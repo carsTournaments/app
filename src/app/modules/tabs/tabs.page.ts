@@ -55,7 +55,7 @@ export class TabsPage implements OnInit {
         }
     }
 
-    clickTab(name: string) {
-        this.analyticsService.logEvent(`tabs_${name}`);
+    clickTab(item: TabI) {
+        this.analyticsService.logEvent(`tabs_${item.toggle}`);
     }
 }

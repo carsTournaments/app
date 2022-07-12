@@ -5,7 +5,7 @@ import { Car, User } from '@models';
 
 export class MyGarageListViewModel {
     header = new Header({
-        title: 'Garage',
+        title: 'Garaje',
         backButton: {
             state: true,
             route: '/tab/account',
@@ -17,7 +17,7 @@ export class MyGarageListViewModel {
     error = false;
     loading = true;
     noitems = new NoItemsModel({
-        title: '¡No tienes ningun coche en tu garage!',
+        title: '¡No tienes ningun coche en tu garaje!',
         subtitle:
             'Puedes usar el boton de abajo a la derecha para añadir tu primer coche.',
     });

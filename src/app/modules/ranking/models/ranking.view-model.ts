@@ -31,5 +31,5 @@ export class RankingViewModel {
         { name: 'Me Gustas', value: 'likes' },
         { name: 'Inscripciones', value: 'inscriptions' },
     ];
-  loading = true;
+    loading = true;
 }

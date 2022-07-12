@@ -8,6 +8,7 @@
 
   <ion-row style="padding-top: 0" class="animate__animated animate__fadeIn animate__faster">
     <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
       <ion-item>
         <ion-label>Ordenar por:</ion-label>
         <ion-select [(ngModel)]="vm.bodyRanking.order" (ngModelChange)="changeOrder()" mode="ios" okText="Aceptar"

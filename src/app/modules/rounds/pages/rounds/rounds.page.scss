@@ -86,10 +86,10 @@
     }
 }
 
-ion-segment-button {
-    --color-checked: var(--ion-color-light);
-    --background-checked: var(--ion-color-primary);
-}
+// ion-segment-button {
+//     --color-checked: var(--ion-color-light);
+//     --background-checked: var(--ion-color-primary);
+// }
 
 .isWinner {
     p {
@@ -105,4 +105,8 @@ ion-segment-button {
 .round-key {
     font-weight: 500;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.div-segments {
+  padding: .5rem;
 }

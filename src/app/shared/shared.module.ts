@@ -10,6 +10,7 @@ import {
     CarAddComponent,
     CarItemComponent,
     HeaderComponent,
+    HeaderSubComponent,
     NoItemsComponent,
     ReportModalComponent,
     SpinnerComponent,
@@ -92,13 +93,14 @@ const MODULES = [
     TranslateModule,
 ];
 const COMPONENTS = [
-    CarAddComponent,
     BannerRankingComponent,
     BrandItemComponent,
     CanYouHelpComponent,
+    CarAddComponent,
     CarItemComponent,
     CountUpDirective,
     HeaderComponent,
+    HeaderSubComponent,
     NoItemsComponent,
     ReportModalComponent,
     SpinnerComponent,

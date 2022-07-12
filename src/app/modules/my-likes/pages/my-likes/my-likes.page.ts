@@ -9,6 +9,7 @@ import { config } from '@config';
 @Component({
     selector: 'page-my-likes',
     templateUrl: 'my-likes.page.html',
+    styleUrls: ['./my-likes.page.scss'],
     providers: [TranslatePipe],
 })
 export class MyLikesPage {
@@ -77,7 +78,7 @@ export class MyLikesPage {
         this.navCtrl.navigateForward(config.routes.car.replace(':id', car._id));
     }
 
-    segmentChanged(event: { detail: { value: any } }) {
+    segmentChanged(event: any) {
         this.vm.header.segments.selected = Number(event.detail.value);
     }
 }

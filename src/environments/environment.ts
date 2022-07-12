@@ -1,9 +1,9 @@
 export const environment = {
     production: false,
-    urlApi: 'http://localhost:5454',
-    urlImages: 'http://localhost:5454/uploads',
-    // urlApi: 'https://api.carstournaments.com',
-    // urlImages: 'https://api.carstournaments.com/uploads',
+    // urlApi: 'http://localhost:5454',
+    // urlImages: 'http://localhost:5454/uploads',
+    urlApi: 'https://api.carstournaments.com',
+    urlImages: 'https://api.carstournaments.com/uploads',
     clientId:
         '432785685251-2q1rfgi63ssrf8dhim75ao5dsudh3a6g.apps.googleusercontent.com',
     firebaseConfig: {
