@@ -5,7 +5,6 @@ import { CalendarViewModel } from '../../models/calendar.view-model';
 @Component({
     selector: 'page-calendar',
     templateUrl: 'calendar.page.html',
-    styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage {
     vm = new CalendarViewModel();

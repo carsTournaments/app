@@ -17,7 +17,7 @@
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputCountryAfter' | translate }}</ion-label>
       <ion-select [(ngModel)]="countryIdSelected" name="countryId"
-        placeholder="{{ 'myData.placeholderCountry' | translate }}">
+        placeholder="{{ 'myData.placeholderCountry' | translate }}" okText="Aceptar" cancelText="Cancelar">
         <ion-select-option *ngFor="let country of countries" [value]="country.id">
           {{ country.name }}
         </ion-select-option>
@@ -28,7 +28,8 @@
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputTypeAfter' | translate }}</ion-label>
-      <ion-select [(ngModel)]="type" name="typeId">
+      <ion-select [(ngModel)]="type" name="typeId" okText="Aceptar"
+                    cancelText="Cancelar">
         <ion-select-option value="type1">{{ 'account.typeAfter1' | translate }}</ion-select-option>
         <ion-select-option value="type2">{{ 'account.typeAfter2' | translate }}</ion-select-option>
       </ion-select>

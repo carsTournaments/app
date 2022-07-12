@@ -21,14 +21,14 @@ ion-card-content {
 
 .card-trophy {
     margin-top: 1rem;
-    background: #fff;
+    background: var(--ion-color-light);
     border-radius: 10px;
 
     .line-1 {
         padding-bottom: 1rem;
     }
     .line-2 {
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--ion-color-medium);
         padding-top: 1rem;
     }
 }
@@ -47,8 +47,4 @@ fa-icon {
 
 .car {
     zoom: 1.1;
-}
-
-.border-right {
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
