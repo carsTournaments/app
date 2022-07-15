@@ -34,3 +34,7 @@ npm-debug.log*
 /.firebase
 *.keystore
 /.scannerwork
+resources/android/icon
+resources/android/splash
+resources/ios/icon
+resources/ios/splash
