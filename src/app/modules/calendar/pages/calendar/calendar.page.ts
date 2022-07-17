@@ -20,7 +20,8 @@ export class CalendarPage {
                 this.vm.dates = dates;
                 if (this.vm.dates.length > 0) {
                     this.vm.dateSelected = this.vm.dates[0];
-                    this.getItems();
+                  this.getItems();
+                  this.vm.loading = false;
                 } else {
                     this.vm.noDays = true;
                     this.vm.loading = false;
@@ -30,14 +31,12 @@ export class CalendarPage {
     }
 
     getItems() {
-        this.vm.loading = true;
         return this.tournamentService
             .getCalendarItems(this.vm.dateSelected)
             .subscribe({
                 next: (response) => {
                     this.vm.rounds = response.rounds;
                     this.vm.tournaments = response.tournaments;
-                    this.vm.loading = false;
                 },
             });
     }
