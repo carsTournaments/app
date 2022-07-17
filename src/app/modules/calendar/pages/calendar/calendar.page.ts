@@ -20,8 +20,8 @@ export class CalendarPage {
                 this.vm.dates = dates;
                 if (this.vm.dates.length > 0) {
                     this.vm.dateSelected = this.vm.dates[0];
-                  this.getItems();
-                  this.vm.loading = false;
+                    this.getItems();
+                    this.vm.loading = false;
                 } else {
                     this.vm.noDays = true;
                     this.vm.loading = false;
