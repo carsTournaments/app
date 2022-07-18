@@ -6,6 +6,7 @@ export class PrivacyPolicyViewModel {
         backButton: {
             state: true,
             route: 'tab/tournaments',
+            default: true,
         },
     });
 }

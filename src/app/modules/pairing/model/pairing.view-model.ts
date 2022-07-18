@@ -13,6 +13,7 @@ export class PairingViewModel {
         backButton: {
             state: true,
             route: '/tab/cars',
+            default: true,
         },
         rightButton: {
             state: true,
@@ -27,6 +28,7 @@ export class PairingViewModel {
     image2: Image;
     voteBody = new Vote();
     voted = false;
+    votedNow = false;
     loading = true;
     error = false;
 }

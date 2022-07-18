@@ -9,6 +9,7 @@ export class MyInscriptionsViewModel {
         backButton: {
             state: true,
             route: '/tab/account',
+            default: true,
         },
     });
     user: User;

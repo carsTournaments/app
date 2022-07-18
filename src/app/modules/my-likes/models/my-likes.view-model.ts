@@ -13,6 +13,7 @@ export class MyLikesViewModel {
         backButton: {
             state: true,
             route: '/tab/account',
+            default: true,
         },
     });
     user: User;

@@ -8,6 +8,7 @@ export class CarViewModel {
         backButton: {
             state: true,
             route: '/tab/cars',
+            default: true,
         },
         rightButton: {
             state: true,

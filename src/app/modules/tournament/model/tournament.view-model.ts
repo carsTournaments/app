@@ -12,6 +12,7 @@ export class TournamentViewModel {
         backButton: {
             state: true,
             route: '/tab/tournaments',
+            default: true,
         },
         rightButton: {
             state: true,

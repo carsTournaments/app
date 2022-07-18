@@ -9,6 +9,7 @@ export class MyGarageListViewModel {
         backButton: {
             state: true,
             route: '/tab/account',
+            default: true,
         },
     });
     bodyCars: IdDto = { id: '' };

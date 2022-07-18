@@ -7,6 +7,7 @@ export class MyGarageOneViewModel {
         backButton: {
             state: true,
             route: 'garage',
+            default: true,
         },
     });
     id: string;

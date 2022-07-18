@@ -7,6 +7,7 @@ export class MyDataViewModel {
         backButton: {
             state: true,
             route: '/tab/account',
+            default: true,
         },
     });
     user: User;

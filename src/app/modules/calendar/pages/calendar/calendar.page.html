@@ -10,7 +10,7 @@
 
       <calendar-dates [dates]="vm.dates" [dateSelected]="vm.dateSelected" (dateSelectedEvent)="onDateSelected($event)">
       </calendar-dates>
-      <calendar-items [rounds]="vm.rounds" [tournaments]="vm.tournaments"></calendar-items>
+      <calendar-items [rounds]="vm.rounds" [tournaments]="vm.tournaments" (clickItem)="onClickPairing($event)"></calendar-items>
     </ion-col>
   </ion-row>
 </ion-content>

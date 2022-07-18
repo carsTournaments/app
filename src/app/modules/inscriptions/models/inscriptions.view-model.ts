@@ -9,6 +9,7 @@ export class InscriptionsViewModel {
         backButton: {
             state: true,
             route: '/tab/tournaments',
+            default: true,
         },
     });
     noitems = new NoItemsModel({

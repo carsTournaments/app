@@ -7,6 +7,7 @@ export class RoundsViewModel {
         backButton: {
             state: true,
             route: '/tab/tournaments',
+            default: true,
         },
     });
     tournamentId: string;

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController, ModalOptions } from '@ionic/angular';
+import { ModalController, ModalOptions, NavController } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import {
+    EventsService,
     PairingService,
     SocialSharingService,
     UserService,
@@ -15,7 +16,8 @@ import { ReportModalComponent } from '@components/report-modal/report-modal.comp
     selector: 'page-pairing',
     templateUrl: 'pairing.page.html',
 })
-export class PairingPage implements OnInit {
+export class PairingPage {
+    type: string;
     vm = new PairingViewModel();
 
     constructor(
@@ -25,10 +27,12 @@ export class PairingPage implements OnInit {
         private imagePipe: ImagePipe,
         private voteService: VoteService,
         private socialSharingService: SocialSharingService,
-        private userService: UserService
+        private userService: UserService,
+        private navCtrl: NavController,
+        private eventsService: EventsService
     ) {}
 
-    async ngOnInit(): Promise<void> {
+    async ionViewWillEnter(): Promise<void> {
         this.vm.loading = true;
         this.vm.id = this.route.snapshot.paramMap.get('id')!;
         this.vm.user = this.userService.getUser();
@@ -59,11 +63,25 @@ export class PairingPage implements OnInit {
                     this.vm.voted = true;
                 }
                 this.vm.loading = false;
+                this.setRoute();
             },
             error: (error) => {
                 this.vm.loading = false;
                 console.error(error);
             },
+        });
+    }
+
+    setRoute() {
+        this.route.queryParams.subscribe((params) => {
+            if (params.type) {
+                this.vm.header.backButton.default = false;
+                this.type = params['type'];
+                this.vm.header.backButton.route = `/tab/calendar`;
+            } else {
+                this.vm.header.backButton.default = true;
+                this.vm.header.backButton.route = `/rounds/${this.vm.pairing.tournament._id}`;
+            }
         });
     }
 
@@ -109,5 +127,12 @@ export class PairingPage implements OnInit {
             }`,
             `https://www.carstournaments.com/pairing/${this.vm.id}`
         );
+    }
+
+    onClickBackRoute() {
+        this.eventsService.publish('returnFromVote', {
+            voted: this.vm.votedNow,
+        });
+        this.navCtrl.navigateBack(this.vm.header.backButton.route);
     }
 }

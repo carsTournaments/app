@@ -8,6 +8,7 @@ export class RankingViewModel {
         backButton: {
             state: true,
             route: 'tab/tournaments',
+            default: true,
         },
     });
     bodyRanking: CarGetGlobalRankingDto = {

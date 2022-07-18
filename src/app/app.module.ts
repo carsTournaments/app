@@ -15,6 +15,7 @@ import { AdsenseModule } from 'ng2-adsense';
 import { appInitializerProviders } from '@core/initializers';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CustomTranslateLoader } from '@core/bootstrap/custom-translate-loader';
+import { EventsService } from '@services';
 
 @NgModule({
     declarations: [AppComponent],
@@ -50,6 +51,8 @@ import { CustomTranslateLoader } from '@core/bootstrap/custom-translate-loader';
     providers: [
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         ImagePipe,
+        EventsService,
+
         appInitializerProviders,
     ],
     bootstrap: [AppComponent],

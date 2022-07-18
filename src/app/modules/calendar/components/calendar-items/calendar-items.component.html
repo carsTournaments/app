@@ -23,7 +23,7 @@
     <!-- EMPAREJAMIENTOS -->
     <ion-row *ngIf="item.pairings">
       <ion-col size="12" sizeMd="6" sizeLg="4" class="col-pairing" *ngFor="let pairing of item.pairings">
-        <ion-card mode="ios" class="pairings ion-no-margin" button [routerLink]="['/pairing/', pairing._id]">
+        <ion-card mode="ios" class="pairings ion-no-margin" button (click)="clickItem.emit(pairing)">
           <ion-card-content class="ion-no-padding wrapper-item">
             <div class="left-column">
               <div>
