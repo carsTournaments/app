@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { config } from '@config';
 import { NavController } from '@ionic/angular';
 import { NavigationOptions } from '@ionic/angular/providers/nav-controller';
 import { Pairing } from '@models';
@@ -73,7 +74,10 @@ export class CalendarPage {
                 type: 'calendar',
             },
         };
-        this.navCtrl.navigateForward('/pairing/' + pairing._id, options);
+        this.navCtrl.navigateForward(
+            config.routes.pairing.replace(':id', pairing._id),
+            options
+        );
     }
 
     ngOnDestroy() {

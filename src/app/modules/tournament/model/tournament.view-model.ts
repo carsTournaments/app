@@ -3,6 +3,7 @@ import { Inscription, Tournament, User } from '@models';
 import { InscriptionsGetMyCarsForInscriptionDto } from '@services/api/inscription/inscription.dto';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
 import { WinnerGetOfTournamentComplete } from '@services/api/winner/winner.responses';
+import { config } from '@config';
 
 export class TournamentViewModel {
     id: string;
@@ -11,7 +12,7 @@ export class TournamentViewModel {
         title: 'Torneo',
         backButton: {
             state: true,
-            route: '/tab/tournaments',
+            route: config.routes.tournaments,
             default: true,
         },
         rightButton: {

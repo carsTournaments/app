@@ -1,13 +1,14 @@
 import { Header } from '@components/header/model/header.model';
 import { CarRankingI } from '@interfaces';
 import { CarGetGlobalRankingDto } from '@services/api/car/car.dto';
+import { config } from '@config';
 
 export class RankingViewModel {
     header = new Header({
         title: 'Ranking',
         backButton: {
             state: true,
-            route: 'tab/tournaments',
+            route: config.routes.tournaments,
             default: true,
         },
     });
