@@ -6,6 +6,7 @@ import { ImagePipe } from '@pipes';
 import { RoundsViewModel } from '../../models/rounds.view-model';
 import { ActivatedRoute } from '@angular/router';
 import { config } from '@config';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'page-rounds',
@@ -14,6 +15,7 @@ import { config } from '@config';
 })
 export class RoundsPage {
     vm = new RoundsViewModel();
+    event: Subscription;
     constructor(
         private roundService: RoundService,
         private navCtrl: NavController,
@@ -23,6 +25,10 @@ export class RoundsPage {
 
     ionViewWillEnter() {
         this.vm.tournamentId = this.route.snapshot.paramMap.get('id')!;
+        this.vm.header.backButton.route = config.routes.tournament.replace(
+            ':id',
+            this.vm.tournamentId
+        );
         this.getAllRoundsAndPairingsOfTournament();
     }
 
@@ -38,7 +44,7 @@ export class RoundsPage {
             });
     }
 
-    filterRounds() {
+    private filterRounds() {
         this.vm.rounds = this.vm.rounds.filter(
             (r) => r.status === 'InProgress' || r.status === 'Completed'
         );
@@ -48,6 +54,12 @@ export class RoundsPage {
         if (round) {
             this.vm.roundSelected = round._id;
         }
+    }
+
+    private setTitle() {
+        this.vm.header.title = `Rondas / ${
+            this.vm.rounds.find((r) => r._id === this.vm.roundSelected).name
+        }`;
     }
 
     segmentChanged(event) {
@@ -68,11 +80,5 @@ export class RoundsPage {
         return `linear-gradient(rgba(0, 0, 0, 0.43),
                 rgba(0, 0, 0, 0.43)),
                 url('${image}')`;
-    }
-
-    setTitle() {
-        this.vm.header.title = `Rondas / ${
-            this.vm.rounds.find((r) => r._id === this.vm.roundSelected).name
-        }`;
     }
 }

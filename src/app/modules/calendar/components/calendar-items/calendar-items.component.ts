@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Round, Tournament } from '@models';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Pairing, Round, Tournament } from '@models';
 
 @Component({
     selector: 'calendar-items',
@@ -7,6 +7,7 @@ import { Round, Tournament } from '@models';
     styleUrls: ['./calendar-items.component.scss'],
 })
 export class CalendarItemsComponent {
+    @Output() clickItem = new EventEmitter<Pairing>();
     @Input() rounds: Round[] = [];
     @Input() tournaments: Tournament[] = [];
 }

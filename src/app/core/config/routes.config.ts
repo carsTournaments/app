@@ -1,6 +1,7 @@
 export const routes = {
     account: 'tab/account',
     car: 'car/:id',
+    calendar: 'tab/calendar',
     cars: 'tab/cars',
     home: '',
     inscriptions: 'inscriptions/:id',

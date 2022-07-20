@@ -1,4 +1,5 @@
 import { Header } from '@components/header/model/header.model';
+import { config } from '@config';
 import { User } from '@models';
 
 export class MyDataViewModel {
@@ -6,7 +7,8 @@ export class MyDataViewModel {
         title: '',
         backButton: {
             state: true,
-            route: '/tab/account',
+            route: config.routes.account,
+            default: true,
         },
     });
     user: User;

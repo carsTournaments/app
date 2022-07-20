@@ -8,7 +8,7 @@ export class CarsViewModel {
     header = new Header({
         title: '',
         segments: {
-            items: ['Ultimos', 'Top', 'Marcas'],
+            items: ['Coches', 'Marcas'],
             selected: 0,
         },
         rightButton: {
@@ -35,16 +35,13 @@ export class CarsViewModel {
     };
     cars: Car[] = [];
     brands: Brand[] = [];
-    topCars: Car[] = [];
     filter = false;
     loading = {
         getCars: true,
         getBrands: true,
-        getTop: true,
     };
     error = {
         getCars: false,
         getBrands: false,
-        getTop: true,
     };
 }

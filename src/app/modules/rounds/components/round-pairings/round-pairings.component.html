@@ -1,0 +1,46 @@
+<div class="warapper-calendar-tournaments" *ngIf="pairings">
+<ion-row  class="animate__animated animate__fadeIn animate__faster">
+  <ion-col size="12" sizeMd="6" sizeLg="4" class="col-pairing" *ngFor="let pairing of pairings">
+    <ion-card mode="ios" class="pairings ion-no-margin" button (click)="clickItem.emit(pairing)">
+      <ion-card-content class="ion-no-padding wrapper-item">
+        <div class="left-column">
+          <div>
+            <img class="image-car image-car-1" [src]="pairing?.car1.brand?.image?.url | image" />
+          </div>
+          <div class="brand-model ion-text-center">
+            <div>
+              {{ pairing.car1.brand?.name | truncateText }}
+            </div>
+            <div>
+              {{ pairing.car1.model | truncateText }}
+            </div>
+          </div>
+        </div>
+        <div class="center-column">
+          <div class="vs">
+            {{ pairing.votes | votes: pairing.car1._id }}-{{
+            pairing.votes | votes: pairing.car2._id
+            }}
+          </div>
+        </div>
+        <div class="right-column">
+          <div>
+            <img class="image-car image-car-2" [src]="pairing?.car2.brand?.image?.url | image" />
+          </div>
+          <div class="brand-model ion-text-center">
+            <div>
+              {{
+              pairing.car2.brand?.name | truncateText
+              }}
+            </div>
+            <div>
+              {{ pairing.car2.model | truncateText }}
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+</div>

@@ -7,7 +7,6 @@ import {
     AnalyticsService,
     BrandService,
     CarService,
-    LikeService,
 } from '@services';
 import { TranslateService } from '@ngx-translate/core';
 import { CarsViewModel } from '../../model/cars.view-model';
@@ -22,7 +21,6 @@ export class CarsPage {
 
     constructor(
         private carService: CarService,
-        private likeService: LikeService,
         private brandService: BrandService,
         private navCtrl: NavController,
         private analyticsService: AnalyticsService,
@@ -36,7 +34,6 @@ export class CarsPage {
         this.vm.carsBody.page = 1;
         this.vm.brandsBody.page = 1;
         this.getCars();
-        this.getTopCars();
         this.getBrands();
     }
 
@@ -66,25 +63,6 @@ export class CarsPage {
         }
         this.vm.loading.getCars = false;
         this.vm.error.getCars = false;
-    }
-
-    getTopCars(): void {
-        this.vm.loading.getTop = true;
-        this.likeService.getTopCars('25').subscribe({
-            next: (res) => this.getTopCarsOnSuccess(res),
-            error: () => this.getTopCarsOnFailed(),
-        });
-    }
-
-    getTopCarsOnSuccess(items: Car[]): void {
-        this.vm.topCars = items;
-        this.vm.loading.getTop = false;
-        this.vm.error.getTop = false;
-    }
-
-    getTopCarsOnFailed(): void {
-        this.vm.loading.getTop = false;
-        this.vm.error.getTop = true;
     }
 
     getBrands(event?: any): void {

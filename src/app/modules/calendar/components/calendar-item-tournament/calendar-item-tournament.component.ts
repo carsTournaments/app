@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Round, Tournament } from '@models';
 
 @Component({
@@ -7,6 +7,7 @@ import { Round, Tournament } from '@models';
     styleUrls: ['./calendar-item-tournament.component.scss'],
 })
 export class CalendarItemTournamentComponent {
+    @Output() clickItem = new EventEmitter<Tournament>();
     @Input() tournament: Tournament;
     @Input() round: Round;
     @Input() startDate: string;

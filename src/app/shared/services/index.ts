@@ -28,4 +28,5 @@ export { StorageService } from './ionic/storage-ionic.service';
 export { ToastIonicService } from './ionic/toast-ionic.service';
 
 // Various
+export { EventsService } from './various/events.service';
 export { UtilsService } from './various/utils.service';

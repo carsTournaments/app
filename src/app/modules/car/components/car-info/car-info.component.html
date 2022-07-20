@@ -7,7 +7,7 @@
 
     <ion-col size="4" class="ion-text-center border-right">
       <p class="car-info-value">
-        {{ car.fuel !== '' ? car.fuel : 'N/D' }}
+        {{ car.fuel | fuel }}
       </p>
       <small class="car-info-key">{{ 'car.infoFuel' | translate }}</small>
     </ion-col>

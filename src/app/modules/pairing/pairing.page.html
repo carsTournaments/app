@@ -1,5 +1,4 @@
-<custom-header [options]="vm.header" (clickRightIcon)="share()"></custom-header>
-
+<custom-header [options]="vm.header" (clickRightIcon)="share()" (clickBackRoute)="onClickBackRoute()"></custom-header>
 
 <spinner [loading]="vm.loading"></spinner>
 
@@ -10,7 +9,7 @@
       <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
 
       <pairing-header [pairing]="vm.pairing" [images]="{car1: vm.image1, car2: vm.image2 }"
-        [backButtonRoute]="vm.backButtonRoute" [voteBody]="vm.voteBody" [voted]="vm.voted" (share)="share()">
+        [backButtonRoute]="vm.backButtonRoute" [voteBody]="vm.voteBody" [voted]="vm.voted" (share)="share()" (voteCar)="vm.votedNow = true">
       </pairing-header>
 
       <pairing-block-info [pairing]="vm.pairing" (report)="openReportModal()"></pairing-block-info>

@@ -72,6 +72,7 @@ import {
     FlagByFilePipe,
     VotesPipe,
     MomentDateShortPipe,
+    FuelPipe,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -114,6 +115,7 @@ const PIPES = [
     DateToTimeAgoPipe,
     FirstLetterPipe,
     FlagByFilePipe,
+    FuelPipe,
     ImagePipe,
     LastRoundPipe,
     MomentDateShortPipe,

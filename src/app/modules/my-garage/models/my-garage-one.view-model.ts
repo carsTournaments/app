@@ -1,4 +1,5 @@
 import { Header } from '@components/header/model/header.model';
+import { config } from '@config';
 import { Car } from '@models';
 
 export class MyGarageOneViewModel {
@@ -6,7 +7,8 @@ export class MyGarageOneViewModel {
         title: 'Garaje',
         backButton: {
             state: true,
-            route: 'garage',
+            route: config.routes.myGarage,
+            default: true,
         },
     });
     id: string;

@@ -2,6 +2,7 @@ import { Header } from '@components/header/model/header.model';
 import { NoItemsModel } from '@components/no-items/no-items.model';
 import { Like, User } from '@models';
 import { LikeGetAllReceivedForUserResponse } from '@services/api/like/like.response';
+import { config } from '@config';
 
 export class MyLikesViewModel {
     header = new Header({
@@ -12,7 +13,8 @@ export class MyLikesViewModel {
         },
         backButton: {
             state: true,
-            route: '/tab/account',
+            route: config.routes.account,
+            default: true,
         },
     });
     user: User;

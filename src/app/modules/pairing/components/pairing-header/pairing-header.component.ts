@@ -18,7 +18,8 @@ export class PairingHeaderComponent implements OnInit {
     @Input() backButtonRoute: string;
     @Input() voteBody: Vote;
     @Input() voted: boolean;
-    @Output() share = new EventEmitter();
+    @Output() share = new EventEmitter<void>();
+    @Output() voteCar = new EventEmitter<void>();
     image1: Image;
     image2: Image;
 
@@ -54,6 +55,7 @@ export class PairingHeaderComponent implements OnInit {
         this.voteService.setValidVote(vote);
         this.setScore(car);
         this.voted = true;
+        this.voteCar.emit();
         this.toastIonicService.info(
             'Tu voto se ha registrado correctamente, ¡gracias!'
         );
