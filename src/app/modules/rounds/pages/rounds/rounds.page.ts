@@ -24,7 +24,8 @@ export class RoundsPage {
     ) {}
 
     ionViewWillEnter() {
-        this.vm.tournamentId = this.route.snapshot.paramMap.get('id')!;
+      this.vm.tournamentId = this.route.snapshot.paramMap.get('id')!;
+      this.vm.header.backButton.route = config.routes.tournament.replace(':id', this.vm.tournamentId);
         this.getAllRoundsAndPairingsOfTournament();
     }
 
