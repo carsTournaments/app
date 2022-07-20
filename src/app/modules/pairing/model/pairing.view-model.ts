@@ -1,5 +1,6 @@
 import { Header } from '@components/header/model/header.model';
 import { Image, Pairing, User, Vote } from '@models';
+import { config } from '@config';
 
 export class PairingViewModel {
     id: string;
@@ -12,7 +13,8 @@ export class PairingViewModel {
         title: '',
         backButton: {
             state: true,
-            route: '/tab/cars',
+            route: config.routes.cars,
+            default: true,
         },
         rightButton: {
             state: true,
@@ -27,6 +29,7 @@ export class PairingViewModel {
     image2: Image;
     voteBody = new Vote();
     voted = false;
+    votedNow = false;
     loading = true;
     error = false;
 }

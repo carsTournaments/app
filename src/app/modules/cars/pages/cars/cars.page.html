@@ -18,10 +18,10 @@
       <div class="div-segments">
         <ion-segment mode="ios" [value]="vm.header.segments.selected" (ionChange)="segmentChanged($event)">
           <ion-segment-button [value]="0">
-            <ion-label>Coches</ion-label>
+            <ion-label>{{ vm.header.segments.items[0] }}</ion-label>
           </ion-segment-button>
           <ion-segment-button [value]="1">
-            <ion-label>Marcas</ion-label>
+            <ion-label>{{ vm.header.segments.items[1] }}</ion-label>
           </ion-segment-button>
         </ion-segment>
       </div>

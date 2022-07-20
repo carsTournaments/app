@@ -1,4 +1,5 @@
 import { Header } from '@components/header/model/header.model';
+import { config } from '@config';
 import { Car, Inscription, Like, User, Vote } from '@models';
 
 export class CarViewModel {
@@ -7,7 +8,8 @@ export class CarViewModel {
         title: 'Coches',
         backButton: {
             state: true,
-            route: '/tab/cars',
+            route: config.routes.cars,
+            default: true,
         },
         rightButton: {
             state: true,

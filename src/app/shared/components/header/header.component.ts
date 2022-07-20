@@ -11,6 +11,7 @@ export class HeaderComponent {
     @Input() options: Header;
     @Output() segmentChanged: EventEmitter<any> = new EventEmitter();
     @Output() clickRightIcon: EventEmitter<any> = new EventEmitter();
+    @Output() clickBackRoute: EventEmitter<void> = new EventEmitter();
     height: number;
     heightPx: string;
 

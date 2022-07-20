@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { config } from '@core/config';
 import { CarRankingI } from '@interfaces';
 import { NavController } from '@ionic/angular';
 import { AnalyticsService } from '@services';
@@ -18,6 +19,6 @@ export class RankingSubitemComponent {
 
     goToCar(id: string) {
         this.analyticsService.logEvent(`ranking_goToCar`);
-        this.navCtrl.navigateForward(['/car', id]);
+        this.navCtrl.navigateForward(config.routes.car.replace(':id', id));
     }
 }

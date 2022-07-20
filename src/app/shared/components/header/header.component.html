@@ -3,13 +3,19 @@
   <ion-toolbar [mode]="'ios'">
     <ng-container *ngIf="options.backButton?.state">
       <ion-buttons slot="start">
-        <ion-back-button [defaultHref]="options.backButton?.route" [text]="''">
+        <ion-back-button *ngIf="options.backButton?.default && options.backButton?.default === true" [defaultHref]="options.backButton?.route" [text]="''">
         </ion-back-button>
+        <ng-container *ngIf="!options.backButton?.default && options.backButton?.default === false">
+          <ion-button (click)="clickBackRoute.emit()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </ion-button>
+        </ng-container>
       </ion-buttons>
+
     </ng-container>
     <ion-buttons slot="end" *ngIf="options.rightButton?.state">
       <ion-button fill="clear" (click)="clickRightIcon.emit()">
-        <ion-icon slot="icon-only" [name]="options.rightButton?.icon"></ion-icon>
+        <ion-icon slot="icon-only" [name]="options?.rightButton?.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
 

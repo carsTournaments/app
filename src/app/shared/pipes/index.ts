@@ -2,6 +2,7 @@ export { DateToDayOrMonthPipe } from './date-to-day-or-month/date-to-day-or-mont
 export { DateToTimeAgoPipe } from './timeago/timeago.pipe';
 export { FirstLetterPipe } from './first-letter-case/fist-letter-case.pipe';
 export { FlagByFilePipe } from './flag-by-file/flag-by-file.pipe';
+export { FuelPipe } from './fuel/fuel.pipe';
 export { ImagePipe } from './image/image.pipe';
 export { LastRoundPipe } from './last-round/last-round.pipe';
 export { MomentDateShortPipe } from './moment-date-short/moment-date-short.pipe';

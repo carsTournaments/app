@@ -6,7 +6,8 @@ export class RoundsViewModel {
         title: 'Rondas',
         backButton: {
             state: true,
-            route: '/tab/tournaments',
+            route: '',
+            default: true,
         },
     });
     tournamentId: string;
