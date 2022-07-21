@@ -8,5 +8,4 @@ import { Round } from '@models';
 })
 export class RoundInfoComponent {
     @Input() round: Round;
-    constructor() {}
 }
