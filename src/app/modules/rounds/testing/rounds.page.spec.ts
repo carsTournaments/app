@@ -77,17 +77,17 @@ describe('RoundsComponent', () => {
             providers: [
                 { provide: RoundService, useValue: roundService },
                 { provide: NavController, useValue: navCtrl },
-              { provide: ImagePipe, useValue: imagePipe },
-              {
-                provide: ActivatedRoute,
-                useValue: {
-                  snapshot: {
-                    paramMap: {
-                      get: () => '1',
+                { provide: ImagePipe, useValue: imagePipe },
+                {
+                    provide: ActivatedRoute,
+                    useValue: {
+                        snapshot: {
+                            paramMap: {
+                                get: () => '1',
+                            },
+                        },
                     },
-                  },
                 },
-              },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -106,6 +106,6 @@ describe('RoundsComponent', () => {
         const pairing = new Pairing();
         pairing._id = '1';
         component.goToPairing(pairing);
-      expect(navCtrl.navigateForward).toHaveBeenCalledWith('pairing/1');
+        expect(navCtrl.navigateForward).toHaveBeenCalledWith('pairing/1');
     });
 });

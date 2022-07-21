@@ -119,7 +119,6 @@ describe('CarsPage', () => {
         });
     });
 
-
     describe('getBrands', () => {
         it('getBrands', () => {
             const response = {
