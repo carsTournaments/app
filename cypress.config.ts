@@ -2,6 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
+    projectId: "9jwmn3",
     baseUrl: 'http://localhost:8100',
     arch: 'arm64',
     browsers: [
@@ -16,7 +17,10 @@ export default defineConfig({
         majorVersion: 103,
       },
     ],
-    downloadsFolder: 'cypress/downloads',
-    videosFolder: 'cypress/videos',
+    env: {
+    //   url: 'https://carstournaments.com'
+    url: 'http://localhost:8100'
+
+    }
   },
 });

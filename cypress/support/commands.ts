@@ -36,10 +36,33 @@
 //   }
 // }
 
+import { Storage } from '@ionic/storage';
+import { routes } from './../../src/app/core/config/routes.config';
 
+const storage = new Storage;
+const url = Cypress.env().url;
 
-Cypress.Commands.add('openTournament', () => {
-  cy.viewport('iphone-x');
-  cy.visit('http://localhost:8100/tab/tournaments')
-  cy.get('.option-item').click();
+Cypress.Commands.add('setStorage', (name: string, value: any) => {
+  storage.set(name, value)
+})
+Cypress.Commands.add('getStorage', (name: string) => {
+  storage.get(name)
+})
+
+Cypress.Commands.add('openPage', (name: string) => {
+  cy.visit(`${url}/${routes[name]}`)
 });
+
+Cypress.Commands.add('loginEmail', (openPage = true) => {
+  if (openPage) {
+    cy.openPage('account');
+  }
+  cy.get('#loginEmail').click();
+  cy.get('#email')
+    .should('be.visible')
+    .type('xskunk@gmail.com')
+  cy.get('#password')
+    .should('be.visible')
+    .type('975865')
+  cy.get('#buttonLogin').click()
+})
