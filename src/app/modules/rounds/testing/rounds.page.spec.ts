@@ -17,6 +17,7 @@ import {
 } from '@ngx-translate/core';
 import { RoundsPage } from '../pages/rounds/rounds.page';
 import { RoundsModule } from '../rounds.module';
+import { ActivatedRoute } from '@angular/router';
 
 const round = new Round({
     _id: '123',
@@ -46,7 +47,7 @@ const round3 = new Round({
     status: 'Completed',
 });
 
-describe('TournamentRoundsComponent', () => {
+describe('RoundsComponent', () => {
     let component: RoundsPage;
     let fixture: ComponentFixture<RoundsPage>;
 
@@ -76,7 +77,17 @@ describe('TournamentRoundsComponent', () => {
             providers: [
                 { provide: RoundService, useValue: roundService },
                 { provide: NavController, useValue: navCtrl },
-                { provide: ImagePipe, useValue: imagePipe },
+              { provide: ImagePipe, useValue: imagePipe },
+              {
+                provide: ActivatedRoute,
+                useValue: {
+                  snapshot: {
+                    paramMap: {
+                      get: () => '1',
+                    },
+                  },
+                },
+              },
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
@@ -91,23 +102,10 @@ describe('TournamentRoundsComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('filterRounds', () => {
-        roundService.getAllOfTournament = jasmine
-            .createSpy()
-            .and.returnValue(of([round2]));
-        component.filterRounds();
-        expect(component.roundSelected).toBeDefined();
-    });
-
-    it('segmentChanged', () => {
-        component.segmentChanged({ target: { value: '0' } });
-        expect(component.roundSelected).toBe('0');
-    });
-
     it('goToPairing', () => {
         const pairing = new Pairing();
         pairing._id = '1';
         component.goToPairing(pairing);
-        expect(navCtrl.navigateForward).toHaveBeenCalledWith('/pairing/1');
+      expect(navCtrl.navigateForward).toHaveBeenCalledWith('pairing/1');
     });
 });
