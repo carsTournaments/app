@@ -19,7 +19,6 @@ import { EventsService } from '@services';
 
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [],
     imports: [
         SharedModule,
         BrowserModule,
@@ -52,9 +51,8 @@ import { EventsService } from '@services';
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         ImagePipe,
         EventsService,
-
         appInitializerProviders,
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
