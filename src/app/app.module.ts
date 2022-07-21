@@ -53,6 +53,6 @@ import { EventsService } from '@services';
         EventsService,
         appInitializerProviders,
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
