@@ -1,0 +1,10 @@
+<custom-header [options]="vm.header"></custom-header>
+
+<ion-content [fullscreen]="true" class="animate__animated animate__fadeIn animate__faster">
+  <ng-container *ngIf="vm.info">
+    <p class="description">Carstournaments es un proyecto personal de <strong>JoseXS</strong>, pero cabe mencionar la gran ayuda y paciencia de <strong>Noemi M.Y.</strong></p>
+
+    <p class="description">Cualquier duda o sugerencia: <a href="mailto:info@carstournaments.com">info@carstournaments.com</a></p>
+    <p class="item">Version: <span>{{ vm.info.version }}</span></p>
+  </ng-container>
+  </ion-content>

@@ -114,6 +114,12 @@ const routes: Routes = [
             ),
     },
     {
+        path: config.routes.about,
+        data: { title: 'Acerca de' },
+        loadChildren: () =>
+            import('./modules/about/about.module').then((m) => m.AboutModule),
+    },
+    {
         path: config.routes.home,
         redirectTo: 'home',
         pathMatch: 'full',
