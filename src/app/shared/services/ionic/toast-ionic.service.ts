@@ -8,7 +8,10 @@ export class ToastIonicService {
     async info(message: string) {
         const toast = await this.toastCtrl.create({
             message,
+            cssClass: 'toast-info',
             duration: 2000,
+            mode: 'ios',
+            icon: 'information-circle',
             position: 'top',
         });
         toast.present();
@@ -17,9 +20,11 @@ export class ToastIonicService {
     async error(message: string) {
         const toast = await this.toastCtrl.create({
             message,
-            cssClass: '',
+            cssClass: 'toast-error',
             duration: 2000,
             position: 'top',
+            mode: 'ios',
+            icon: 'bug',
         });
         toast.present();
     }

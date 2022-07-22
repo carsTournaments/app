@@ -9,5 +9,4 @@ import { Pairing } from '@models';
 export class RoundPairingsComponent {
     @Input() pairings: Pairing[];
     @Output() clickItem = new EventEmitter<Pairing>();
-    constructor() {}
 }
