@@ -77,38 +77,7 @@ describe('AccountPage - Logged', () => {
   })
 
   it('Add car without photo', () => {
-    cy.loginEmail(true);
-    cy.get('#option_myGarage').click();
-    cy.contains('Garaje');
-    cy.get('#garageAdd').click();
-    cy.contains('Garaje');
-
-    cy.get('#selectBrand').click();
-    cy.get('#alert-input-1-3').click();
-    cy.get('.alert-button').eq(1).click();
-
-    cy.get('#inputModel').type('FAKE');
-
-    cy.get('#selectTraction').click();
-    cy.get('#alert-input-2-1').click();
-    cy.get('.alert-button').eq(1).click();
-
-    cy.get('#selectFuel').click();
-    cy.get('#alert-input-3-1').click();
-    cy.get('.alert-button.ion-focusable.ion-activatable.sc-ion-alert-ios')
-      .eq(1).click();
-
-    cy.get('#selectStock').click();
-    cy.get('#alert-input-4-1').click();
-    cy.get('.alert-button.ion-focusable.ion-activatable.sc-ion-alert-ios').eq(1).click();
-
-    cy.get('#inputYear').type('2020');
-    cy.get('#inputCC').type('2000');
-    cy.get('#inputCV').type('150');
-    cy.get('#inputInfo').type('Prueba de añadir un coche');
-
-    cy.get('#buttonAdd').click();
-    cy.get('.alert-button-role-cancel').click();
+    cy.createCar();
   })
 
   it('Delete car', () => {
