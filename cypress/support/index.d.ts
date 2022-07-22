@@ -11,5 +11,6 @@ declare namespace Cypress {
     getStorage(name: string): Chainable<null>;
     openPage(name: string): Chainable<null>;
     loginEmail(openPage: boolean): Chainable<null>;
+    getPhoto(): Chainable<null>;
   }
 }

@@ -6,7 +6,7 @@
 
 <can-you-help></can-you-help>
 <ng-container *ngFor="let item of options">
-  <ion-card mode="ios" class="option-item" (click)="goTo.emit(item)" style="margin-top: -0.25rem" *ngIf="item.state">
+  <ion-card [id]="'option_' + item.id" mode="ios" class="option-item" (click)="goTo.emit(item)" style="margin-top: -0.25rem" *ngIf="item.state">
     <ion-item color="light" mode="ios" button lines="none" [detail]="!item.value || item.value !== 'darkMode'">
       <ion-label>
         {{ item.name }}
