@@ -133,27 +133,6 @@ export class AccountPage {
         this.isAuthenticated();
     }
 
-    updateUser(): void {
-        this.userService.update(this.vm.user).subscribe({
-            next: () => {
-                this.analyticsService.logEvent('dashboard_changeName_OK', {
-                    params: { status: true },
-                });
-                this.alertService.presentAlert(
-                    '¡Listo!',
-                    'Nombre cambiado correctamente.'
-                );
-            },
-            error: () => {
-                this.analyticsService.logEvent('dashboard_changeName_KO');
-                this.alertService.presentAlert(
-                    '¡Vaya!',
-                    'No se ha podido cambiar el nombre.'
-                );
-            },
-        });
-    }
-
     async logout(): Promise<void> {
         const alert = await this.alertService.presentAlertWithButtons(
             this.translate.instant('account.titleLogout'),

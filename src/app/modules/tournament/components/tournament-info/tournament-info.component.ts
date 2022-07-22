@@ -1,13 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Inscription, Tournament } from '@models';
-import { TranslatePipe } from '@ngx-translate/core';
 import { SwiperOptions } from 'swiper';
 
 @Component({
     selector: 'tournament-info',
     templateUrl: 'tournament-info.component.html',
     styleUrls: ['./tournament-info.component.scss'],
-    providers: [TranslatePipe],
 })
 export class TournamentInfoComponent {
     @Input() tournament: Tournament;

@@ -1,19 +1,18 @@
 import {
-    AlertService,
     AnalyticsService,
     CarService,
     ImageService,
     InscriptionService,
     LikeService,
     SocialSharingService,
+    ToastIonicService,
     UserService,
     VoteService,
 } from '@services';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from '@pipes';
-import { Like } from '@models/like.model';
-import { Car } from '@models';
+import { Car, Like } from '@models';
 import { IonContent } from '@ionic/angular';
 import { CarViewModel } from '../../models/car.view-model';
 
@@ -34,7 +33,7 @@ export class CarPage implements OnInit {
         private inscriptionService: InscriptionService,
         private voteService: VoteService,
         private userService: UserService,
-        private alertService: AlertService,
+        private toastIonicService: ToastIonicService,
         private analyticsService: AnalyticsService,
         private socialSharingService: SocialSharingService
     ) {}
@@ -111,10 +110,7 @@ export class CarPage implements OnInit {
                 this.analyticsService.logEvent('car_like_KO', {
                     params: { state: false },
                 });
-                this.alertService.presentAlert(
-                    'Error',
-                    'Error al dar me gusta'
-                );
+                this.toastIonicService.error('Error al dar me gusta');
             },
         });
     }
@@ -137,10 +133,7 @@ export class CarPage implements OnInit {
                 this.analyticsService.logEvent('car_dislike_KO', {
                     params: { state: false },
                 });
-                this.alertService.presentAlert(
-                    'Error',
-                    'Error al eliminar el me gusta'
-                );
+                this.toastIonicService.error('Error al eliminar el me gusta');
             },
         });
     }

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { Brand, Car } from '@models';
 import {
     AlertService,
@@ -8,7 +7,6 @@ import {
     ImageService,
     ToastIonicService,
     UserService,
-    UtilsService,
 } from '@services';
 import { BrandGetAllDto } from '@services/api/brand/brand.dto';
 
@@ -35,9 +33,8 @@ export class CarAddComponent implements OnInit {
         private userService: UserService,
         private carService: CarService,
         private alertService: AlertService,
-        private navCtrl: NavController,
         private imageService: ImageService,
-        private utilsService: UtilsService,
+        private toastIonicService: ToastIonicService,
         private toastService: ToastIonicService
     ) {}
 
@@ -70,8 +67,7 @@ export class CarAddComponent implements OnInit {
                 if (this.car.driver) {
                     this.createOrUpdate();
                 } else {
-                    this.alertService.presentAlert(
-                        'Vaya',
+                    this.toastIonicService.error(
                         'No se pudo obtener el usuario'
                     );
                 }
@@ -85,7 +81,7 @@ export class CarAddComponent implements OnInit {
         if (validations.state) {
             return true;
         } else {
-            this.alertService.presentAlert('¡Vaya!', validations.message);
+            this.toastIonicService.error(validations.message);
             return false;
         }
     }
@@ -221,7 +217,10 @@ export class CarAddComponent implements OnInit {
     async addImage(): Promise<void> {
         this.imageService.addNewToGallery('car', this.car._id).then(
             () => this.carAddSuccess.emit(),
-            (error) => this.alertService.presentAlert('Error', error)
+            () =>
+                this.toastService.error(
+                    'Ha ocurrido un error, intentalo mas tarde'
+                )
         );
     }
 }

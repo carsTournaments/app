@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthLogInDto } from '@core/auth/auth.dto';
 import { Login } from '@models';
-import { AlertService, AnalyticsService, AuthService } from '@services';
+import { AnalyticsService, AuthService, ToastIonicService } from '@services';
 
 @Component({
     selector: 'auth-login',
@@ -14,9 +14,9 @@ export class AuthLoginComponent {
     @Output() loginSuccess: EventEmitter<void> = new EventEmitter();
     data = new Login();
     constructor(
-        private alertService: AlertService,
         private authService: AuthService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private toastIonicService: ToastIonicService
     ) {}
 
     login() {
@@ -32,9 +32,11 @@ export class AuthLoginComponent {
                         this.loginSuccess.emit();
                     }
                 },
-                error: (error) => {
+                error: () => {
                     this.analyticsService.logEvent('auth_login_KO');
-                    this.alertService.presentAlert('Error', error);
+                    this.toastIonicService.error(
+                        'Error al iniciar sesión, intenta de nuevo mas tarde'
+                    );
                 },
             });
         }
@@ -44,7 +46,7 @@ export class AuthLoginComponent {
         let state = true;
         if (this.data.email.length === 0 || this.data.password.length === 0) {
             this.analyticsService.logEvent('auth_validations_generic_KO');
-            this.alertService.presentAlert('Error', 'Revisa los datos');
+            this.toastIonicService.error('Revisa los datos');
             state = false;
             return state;
         }

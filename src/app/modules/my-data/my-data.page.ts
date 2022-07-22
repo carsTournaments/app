@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from '@config';
 import { NavController } from '@ionic/angular';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastIonicService, UserService } from '@services';
 import { tap } from 'rxjs/operators';
 import { countries } from '../../../assets/json/countries';
@@ -11,7 +11,6 @@ import { MyDataViewModel } from './model/my-data.view-model';
     selector: 'page-my-data',
     templateUrl: 'my-data.page.html',
     styleUrls: ['./my-data.page.scss'],
-    providers: [TranslatePipe],
 })
 export class MyDataPage implements OnInit {
     vm = new MyDataViewModel();
@@ -20,7 +19,7 @@ export class MyDataPage implements OnInit {
         private userService: UserService,
         private toastService: ToastIonicService,
         private navCtrl: NavController,
-        private translatePipe: TranslatePipe
+        private translate: TranslateService
     ) {}
 
     ngOnInit() {
@@ -29,7 +28,7 @@ export class MyDataPage implements OnInit {
     }
 
     ionViewWillEnter() {
-        this.vm.header.title = this.translatePipe.transform('myData.title');
+        this.vm.header.title = this.translate.instant('myData.title');
     }
 
     getUser() {

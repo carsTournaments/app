@@ -2,7 +2,7 @@ import { Car } from '@models/car.model';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { LikeService, UserService } from '@services';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { MyLikesViewModel } from '../../models/my-likes.view-model';
 import { config } from '@config';
 
@@ -10,7 +10,6 @@ import { config } from '@config';
     selector: 'page-my-likes',
     templateUrl: 'my-likes.page.html',
     styleUrls: ['./my-likes.page.scss'],
-    providers: [TranslatePipe],
 })
 export class MyLikesPage {
     vm = new MyLikesViewModel();
@@ -18,32 +17,32 @@ export class MyLikesPage {
         private likesService: LikeService,
         private userService: UserService,
         private navCtrl: NavController,
-        private translatePipe: TranslatePipe
+        private translate: TranslateService
     ) {}
 
     async ionViewWillEnter() {
-        this.translate();
+        this.translateItems();
         this.vm.user = this.userService.getUser();
         this.getAllReceivedForUser();
         this.getAllSentForUser();
     }
 
-    translate() {
-        this.vm.header.title = this.translatePipe.transform('likes.title');
+    translateItems() {
+        this.vm.header.title = this.translate.instant('likes.title');
         this.vm.header.segments.items[0] =
-            this.translatePipe.transform('likes.segment1');
+            this.translate.instant('likes.segment1');
         this.vm.header.segments.items[1] =
-            this.translatePipe.transform('likes.segment2');
-        this.vm.noitemsReceived.title = this.translatePipe.transform(
+            this.translate.instant('likes.segment2');
+        this.vm.noitemsReceived.title = this.translate.instant(
             'likes.titleNoitemsReceived'
         );
-        this.vm.noitemsReceived.subtitle = this.translatePipe.transform(
+        this.vm.noitemsReceived.subtitle = this.translate.instant(
             'likes.subtitleNoitemsReceived'
         );
-        this.vm.noitemsSent.title = this.translatePipe.transform(
+        this.vm.noitemsSent.title = this.translate.instant(
             'likes.titleNoitemsSent'
         );
-        this.vm.noitemsSent.subtitle = this.translatePipe.transform(
+        this.vm.noitemsSent.subtitle = this.translate.instant(
             'likes.subtitleNoitemsSent'
         );
     }

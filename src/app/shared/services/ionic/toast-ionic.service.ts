@@ -9,7 +9,7 @@ export class ToastIonicService {
         const toast = await this.toastCtrl.create({
             message,
             cssClass: 'toast-info',
-            duration: 2000,
+            duration: 2500,
             mode: 'ios',
             icon: 'information-circle',
             position: 'top',
@@ -21,7 +21,7 @@ export class ToastIonicService {
         const toast = await this.toastCtrl.create({
             message,
             cssClass: 'toast-error',
-            duration: 2000,
+            duration: 2500,
             position: 'top',
             mode: 'ios',
             icon: 'bug',
