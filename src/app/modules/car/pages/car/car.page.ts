@@ -1,19 +1,18 @@
 import {
-    AlertService,
     AnalyticsService,
     CarService,
     ImageService,
     InscriptionService,
     LikeService,
     SocialSharingService,
+    ToastIonicService,
     UserService,
     VoteService,
 } from '@services';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePipe } from '@pipes';
-import { Like } from '@models/like.model';
-import { Car } from '@models';
+import { Car, Like } from '@models';
 import { IonContent } from '@ionic/angular';
 import { CarViewModel } from '../../models/car.view-model';
 
@@ -34,7 +33,7 @@ export class CarPage implements OnInit {
         private inscriptionService: InscriptionService,
         private voteService: VoteService,
         private userService: UserService,
-        private alertService: AlertService,
+        private toastIonicService: ToastIonicService,
         private analyticsService: AnalyticsService,
         private socialSharingService: SocialSharingService
     ) {}
@@ -65,84 +64,25 @@ export class CarPage implements OnInit {
         if (data.liked) {
             this.vm.liked = true;
         }
-        this.vm.liked = await this.likeService.checkLikedStorage(this.vm.id);
-        this.checkIsMyCar();
+
+        await this.checkIsMyCar();
         this.vm.loading = false;
     }
 
-    checkIsMyCar(): void {
+    async checkIsMyCar(): Promise<void> {
         this.vm.isMyCar = this.vm.car.driver?._id === this.vm.user?._id;
+        if (!this.vm.isMyCar) {
+            this.vm.liked = await this.likeService.checkLikedStorage(
+                this.vm.id
+            );
+            const icon = this.vm.liked ? 'heart' : 'heart-outline';
+            this.vm.header.rightButtons.unshift({ state: true, icon });
+        }
     }
 
     openImage(image: string): void {
         this.analyticsService.logEvent('car_openImage', { params: { image } });
         this.imageService.openImage(image);
-    }
-
-    async likeOrDislike(): Promise<void> {
-        const like: Like = {
-            car: this.vm.id,
-        };
-        if (this.vm.user) {
-            like.user = this.vm.user._id;
-        }
-        if (!this.vm.liked) {
-            this.like(like);
-        } else {
-            this.dislike();
-        }
-    }
-
-    private like(like: Like): void {
-        this.likeService.create(like).subscribe({
-            next: async () => {
-                this.analyticsService.logEvent('car_like_OK', {
-                    params: { state: true },
-                });
-                this.vm.liked = true;
-                this.likeService.setLikedStorage(this.vm.car._id);
-                if (this.vm.car.likes) {
-                    this.vm.car.likes.count += 1;
-                } else {
-                    this.vm.car.likes = { count: 1 };
-                }
-            },
-            error: () => {
-                this.analyticsService.logEvent('car_like_KO', {
-                    params: { state: false },
-                });
-                this.alertService.presentAlert(
-                    'Error',
-                    'Error al dar me gusta'
-                );
-            },
-        });
-    }
-
-    private dislike() {
-        this.likeService.deleteByCarId(this.vm.car._id).subscribe({
-            next: async () => {
-                this.analyticsService.logEvent('car_dislike_OK', {
-                    params: { state: true },
-                });
-                this.likeService.removeLikeStorage(this.vm.car._id);
-                this.vm.liked = false;
-                if (this.vm.car.likes) {
-                    this.vm.car.likes.count -= 1;
-                } else {
-                    this.vm.car.likes = { count: 0 };
-                }
-            },
-            error: () => {
-                this.analyticsService.logEvent('car_dislike_KO', {
-                    params: { state: false },
-                });
-                this.alertService.presentAlert(
-                    'Error',
-                    'Error al eliminar el me gusta'
-                );
-            },
-        });
     }
 
     onClickTotalItem(event: string): void {
@@ -211,10 +151,80 @@ export class CarPage implements OnInit {
         });
     }
 
+    onClickRightButton(event: number) {
+        if (event === 1) {
+            this.share();
+        } else {
+            this.likeOrDislike();
+        }
+    }
+
     share() {
         this.socialSharingService.share(
             `${this.vm.car.brand.name} ${this.vm.car.model}`,
             `https://www.carstournaments.com/car/${this.vm.id}`
         );
+    }
+
+    async likeOrDislike(): Promise<void> {
+        const like: Like = {
+            car: this.vm.id,
+        };
+        if (this.vm.user) {
+            like.user = this.vm.user._id;
+        }
+        if (!this.vm.liked) {
+            this.like(like);
+        } else {
+            this.dislike();
+        }
+    }
+
+    private like(like: Like): void {
+        this.likeService.create(like).subscribe({
+            next: async () => {
+                this.vm.header.rightButtons[0].icon = 'heart';
+                this.analyticsService.logEvent('car_like_OK', {
+                    params: { state: true },
+                });
+                this.vm.liked = true;
+                this.likeService.setLikedStorage(this.vm.car._id);
+                if (this.vm.car.likes) {
+                    this.vm.car.likes.count += 1;
+                } else {
+                    this.vm.car.likes = { count: 1 };
+                }
+            },
+            error: () => {
+                this.analyticsService.logEvent('car_like_KO', {
+                    params: { state: false },
+                });
+                this.toastIonicService.error('Error al dar me gusta');
+            },
+        });
+    }
+
+    private dislike() {
+        this.likeService.deleteByCarId(this.vm.car._id).subscribe({
+            next: async () => {
+                this.vm.header.rightButtons[0].icon = 'heart-outline';
+                this.analyticsService.logEvent('car_dislike_OK', {
+                    params: { state: true },
+                });
+                this.likeService.removeLikeStorage(this.vm.car._id);
+                this.vm.liked = false;
+                if (this.vm.car.likes) {
+                    this.vm.car.likes.count -= 1;
+                } else {
+                    this.vm.car.likes = { count: 0 };
+                }
+            },
+            error: () => {
+                this.analyticsService.logEvent('car_dislike_KO', {
+                    params: { state: false },
+                });
+                this.toastIonicService.error('Error al eliminar el me gusta');
+            },
+        });
     }
 }

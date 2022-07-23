@@ -1,3 +1,4 @@
+export { CountryByValue } from './country-by-value/country-by-value.pipe';
 export { DateToDayOrMonthPipe } from './date-to-day-or-month/date-to-day-or-month.pipe';
 export { DateToTimeAgoPipe } from './timeago/timeago.pipe';
 export { FirstLetterPipe } from './first-letter-case/fist-letter-case.pipe';

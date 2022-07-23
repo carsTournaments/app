@@ -15,14 +15,17 @@ hr {
 
 .wrapper-driver {
     display: inline-flex;
-    background: #000;
+    // background: #000;
     border-radius: 10px;
-    color: #fff;
-    padding: 0.3rem 0.5rem 0rem 0.5rem;
+    // color: #fff;
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
 }
 
 .driver-name {
     font-size: 1rem;
+    font-weight: 200;
+
     padding-top: 0.15rem;
     padding-left: 0.25rem;
+    // color: var(--ion-color-medium-shade);
 }

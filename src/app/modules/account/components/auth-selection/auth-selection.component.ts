@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AuthService, AlertService, AnalyticsService } from '@services';
+import { AuthService, AnalyticsService, ToastIonicService } from '@services';
 
 @Component({
     selector: 'auth-selection',
@@ -12,8 +12,8 @@ export class AuthSelectionComponent {
     @Output() goToLogin: EventEmitter<void> = new EventEmitter();
     constructor(
         private authService: AuthService,
-        private alertService: AlertService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private toastIonicService: ToastIonicService
     ) {}
 
     async loginGoogle() {
@@ -29,9 +29,11 @@ export class AuthSelectionComponent {
                 }
                 this.loginGoogleSuccess.emit(newUser);
             },
-            error: (error) => {
+            error: () => {
                 this.analyticsService.logEvent('auth_loginGoogle_KO');
-                this.alertService.presentAlert('Error', error);
+                this.toastIonicService.error(
+                    'Error al iniciar sesión, intenta de nuevo mas tarde'
+                );
             },
         });
     }

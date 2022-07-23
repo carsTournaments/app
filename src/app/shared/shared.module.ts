@@ -73,6 +73,7 @@ import {
     VotesPipe,
     MomentDateShortPipe,
     FuelPipe,
+    CountryByValue,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -111,6 +112,7 @@ const COMPONENTS = [
     WinnerCarItemComponent,
 ];
 const PIPES = [
+    CountryByValue,
     DateToDayOrMonthPipe,
     DateToTimeAgoPipe,
     FirstLetterPipe,

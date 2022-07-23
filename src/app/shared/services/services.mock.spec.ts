@@ -86,5 +86,16 @@ export const actionSheetService = jasmine.createSpyObj(
     'ActionSheetIonicService',
     ['present']
 );
+actionSheetService.present = jasmine.createSpy().and.returnValue(
+    Promise.resolve({
+        present: (): Promise<void> => Promise.resolve(),
+        onDidDismiss: () =>
+            Promise.resolve({
+                data: {
+                    data: {},
+                },
+            }),
+    })
+);
 
 export const userService = jasmine.createSpyObj('UserService', ['getUser']);

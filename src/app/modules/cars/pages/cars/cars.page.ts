@@ -112,9 +112,9 @@ export class CarsPage {
                 this.vm.header.segments.items[this.vm.header.segments.selected]
             }`
         );
-        this.vm.header.rightButton.state = false;
+        this.vm.header.rightButtons[0].state = false;
         if (this.vm.header.segments.selected === 0) {
-            this.vm.header.rightButton.state = true;
+            this.vm.header.rightButtons[0].state = true;
             this.vm.header.title = 'Coches';
         } else {
             this.vm.header.title = 'Marcas';

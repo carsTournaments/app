@@ -1,5 +1,4 @@
 <ion-header class="ion-no-border" mode="ios">
-
   <ion-toolbar [mode]="'ios'">
     <ng-container *ngIf="options.backButton?.state">
       <ion-buttons slot="start">
@@ -13,12 +12,12 @@
       </ion-buttons>
 
     </ng-container>
-    <ion-buttons slot="end" *ngIf="options.rightButton?.state">
-      <ion-button fill="clear" (click)="clickRightIcon.emit()">
-        <ion-icon slot="icon-only" [name]="options?.rightButton?.icon"></ion-icon>
+    <ion-buttons slot="end" *ngIf="options.rightButtons?.length > 0">
+      <ion-button *ngFor="let button of options.rightButtons; let i = index" fill="clear" (click)="clickRightIcon.emit(i)">
+        <ion-icon slot="icon-only" [name]="button.icon"></ion-icon>
       </ion-button>
     </ion-buttons>
 
-    <ion-title mode="ios">{{ options.title }}</ion-title>
+    <ion-title mode="ios">{{ options?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>

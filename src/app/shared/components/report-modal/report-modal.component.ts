@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Pairing, Report } from '@models';
 import { ModalController } from '@ionic/angular';
-import { ReportService, AlertService } from '@services';
+import { ReportService, AlertService, ToastIonicService } from '@services';
 
 @Component({
     selector: 'report-modal',
@@ -20,7 +20,8 @@ export class ReportModalComponent {
     constructor(
         private reportService: ReportService,
         private alertService: AlertService,
-        private modalCtrl: ModalController
+        private modalCtrl: ModalController,
+        private toastIonicService: ToastIonicService
     ) {}
 
     checkReasons() {
@@ -44,16 +45,16 @@ export class ReportModalComponent {
                     : this.pairing.car2.driver;
             this.reportService.create(this.report).subscribe({
                 next: () => {
-                    this.alertService.presentAlert('Info', 'Reporte creado');
+                    this.toastIonicService.info('Reporte creado');
                     this.modalCtrl.dismiss();
                 },
-                error: (err) => this.alertService.presentAlert('Error', err),
+                error: () =>
+                    this.toastIonicService.error(
+                        'Error, intentalo de nuevo mas tarde'
+                    ),
             });
         } else {
-            this.alertService.presentAlert(
-                'Error',
-                'Por favor, llena todos los campos'
-            );
+            this.toastIonicService.error('Por favor, llena todos los campos');
         }
     }
 }

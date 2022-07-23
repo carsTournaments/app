@@ -16,6 +16,7 @@ import {
     UserService,
     ActionSheetIonicService,
     SocialSharingService,
+    ToastIonicService,
 } from '@services';
 import { TournamentViewModel } from '../../model/tournament.view-model';
 
@@ -42,7 +43,8 @@ export class TournamentPage {
         private analyticsService: AnalyticsService,
         private utilsService: UtilsService,
         private translate: TranslateService,
-        private socialSharingService: SocialSharingService
+        private socialSharingService: SocialSharingService,
+        private toastIonicService: ToastIonicService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -191,18 +193,16 @@ export class TournamentPage {
                 this.checkButtonInscription();
                 this.checkButtonInscription();
                 this.vm.tournament.inscriptions.push(response);
-                this.alertService.presentAlert(
-                    this.translate.instant('tournament.inscriptionOkTitle'),
-                    `${this.translate.instant(
-                        'tournament.inscriptionOkMessage'
-                    )} ${car.brand.name} ${car.model}`
-                );
+                const message = `${this.translate.instant(
+                    'tournament.inscriptionOkMessage'
+                )} ${car.brand.name} ${car.model}`;
+                this.toastIonicService.info(message);
             },
-            error: (err) => {
+            error: () => {
                 this.analyticsService.logEvent(
                     'tournament_createInscriptionConfirmation_KO'
                 );
-                this.alertService.presentAlert('Error', err);
+                this.toastIonicService.error('Error al crear la inscripción');
             },
         });
     }
@@ -248,10 +248,7 @@ export class TournamentPage {
                             (inscription: Inscription) =>
                                 inscription.car !== car._id
                         );
-                    this.alertService.presentAlert(
-                        this.translate.instant(
-                            'tournament.inscriptionDeleteOkTitle'
-                        ),
+                    this.toastIonicService.info(
                         this.translate.instant(
                             'tournament.inscriptionDeleteOkMessage'
                         )
@@ -260,11 +257,13 @@ export class TournamentPage {
                         'tournament_deleteInscription_OK'
                     );
                 },
-                error: (err) => {
+                error: () => {
                     this.analyticsService.logEvent(
                         'tournament_deleteInscription_KO'
                     );
-                    this.alertService.presentAlert('Error', err);
+                    this.toastIonicService.error(
+                        'Error al eliminar la inscripción'
+                    );
                 },
             });
     }

@@ -319,3 +319,13 @@ ion-title[size='large'] {
 ion-segment {
     z-index: 9999;
 }
+
+.toast-info {
+    --background: rgba(46, 204, 113, 0.9);
+    color: #000;
+}
+
+.toast-error {
+    --background: rgba(204, 0, 0, 0.9);
+    color: #fff;
+}
