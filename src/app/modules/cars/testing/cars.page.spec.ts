@@ -79,11 +79,9 @@ describe('CarsPage', () => {
     it('ionViewWillEnter', () => {
         spyOn(component, 'getCars');
         spyOn(component, 'getBrands');
-        spyOn(component, 'getTopCars');
         component.ionViewWillEnter();
         expect(component.getCars).toHaveBeenCalled();
         expect(component.getBrands).toHaveBeenCalled();
-        expect(component.getTopCars).toHaveBeenCalled();
     });
 
     describe('getCars', () => {
@@ -118,28 +116,6 @@ describe('CarsPage', () => {
                 { target: { complete: () => {} } }
             );
             expect(component.vm.cars.length).toBe(2);
-        });
-    });
-
-    describe('getTopCars', () => {
-        it('getTopCars OK', () => {
-            const response = [];
-            likeService.getTopCars = jasmine
-                .createSpy()
-                .and.returnValue(of(response));
-            component.getTopCars();
-            expect(component.vm.topCars).not.toBeUndefined();
-            expect(component.vm.loading.getTop).toBe(false);
-            expect(component.vm.error.getTop).toBe(false);
-        });
-
-        it('getTopCars KO', () => {
-            likeService.getTopCars = jasmine
-                .createSpy()
-                .and.returnValue(throwError({ error: 'Error' }));
-            component.getTopCars();
-            expect(component.vm.loading.getTop).toBe(false);
-            expect(component.vm.error.getTop).toBe(true);
         });
     });
 

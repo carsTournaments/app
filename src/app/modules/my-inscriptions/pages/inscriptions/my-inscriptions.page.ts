@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { AlertService, InscriptionService, UserService } from '@services';
+import {
+    AlertService,
+    InscriptionService,
+    ToastIonicService,
+    UserService,
+} from '@services';
 import { IdDto } from '@core/dtos/id.dto';
 import {
     NavController,
@@ -8,7 +13,7 @@ import {
 } from '@ionic/angular';
 import { Inscription } from '@models';
 import { OverlayEventDetail } from '@ionic/core';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { MyInscriptionsPopoverComponent } from '../../components/my-inscriptions-popover/my-inscriptions-popover.component';
 import { MyInscriptionsViewModel } from '../../model/my-inscriptions.view-model';
 import { config } from '@config';
@@ -17,7 +22,6 @@ import { config } from '@config';
     selector: 'page-my-inscriptions',
     templateUrl: 'my-inscriptions.page.html',
     styleUrls: ['./my-inscriptions.page.scss'],
-    providers: [TranslatePipe],
 })
 export class MyInscriptionsPage {
     vm = new MyInscriptionsViewModel();
@@ -27,22 +31,22 @@ export class MyInscriptionsPage {
         private navCtrl: NavController,
         private popoverCtrl: PopoverController,
         private alertService: AlertService,
-        private translatePipe: TranslatePipe
+        private translate: TranslateService,
+        private toastIonicService: ToastIonicService
     ) {}
 
     async ionViewWillEnter() {
-        this.translate();
+        this.translateItems();
         this.vm.user = this.userService.getUser();
         this.getAll();
     }
 
-    translate() {
-        this.vm.header.title =
-            this.translatePipe.transform('inscriptions.title');
-        this.vm.noitems.title = this.translatePipe.transform(
+    translateItems() {
+        this.vm.header.title = this.translate.instant('inscriptions.title');
+        this.vm.noitems.title = this.translate.instant(
             'inscriptions.titleNoItems'
         );
-        this.vm.noitems.subtitle = this.translatePipe.transform(
+        this.vm.noitems.subtitle = this.translate.instant(
             'inscriptions.subtitleNoItems'
         );
     }
@@ -145,12 +149,10 @@ export class MyInscriptionsPage {
                 next: () => {
                     this.getAll();
                 },
-                error: () => {
-                    this.alertService.presentAlert(
-                        'Error',
-                        'No se pudo eliminar la inscripción'
-                    );
-                },
+                error: () =>
+                    this.toastIonicService.error(
+                        'Error al eliminar la inscripcion'
+                    ),
             });
     }
 }

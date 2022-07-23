@@ -63,18 +63,21 @@ export class AccountPage {
         this.vm.header.title = this.translate.instant('account.title');
         this.vm.options = [
             {
+                id: 'myData',
                 name: this.translate.instant('account.itemTitleMyData'),
                 subtitle: this.translate.instant('account.itemSubtitleMyData'),
                 route: config.routes.myData,
                 state: true,
             },
             {
+                id: 'myGarage',
                 name: this.translate.instant('account.itemTitleGarage'),
                 subtitle: this.translate.instant('account.itemSubtitleGarage'),
                 route: config.routes.myGarage,
                 state: true,
             },
             {
+                id: 'myInscriptions',
                 name: this.translate.instant('account.itemTitleInscriptions'),
                 subtitle: this.translate.instant(
                     'account.itemSubtitleInscriptions'
@@ -83,12 +86,14 @@ export class AccountPage {
                 state: true,
             },
             {
+                id: 'myLikes',
                 name: this.translate.instant('account.itemTitleLikes'),
                 subtitle: this.translate.instant('account.itemSubtitleLikes'),
                 route: config.routes.myLikes,
                 state: true,
             },
             {
+                id: 'darkMode',
                 name: this.translate.instant('account.itemTitleDarkMode'),
                 subtitle: this.translate.instant(
                     'account.itemSubtitleDarkMode'
@@ -99,6 +104,7 @@ export class AccountPage {
                 ),
             },
             {
+                id: 'logout',
                 name: this.translate.instant('account.itemTitleLogout'),
                 subtitle: this.translate.instant('account.itemSubtitleLogout'),
                 value: 'logout',
@@ -125,27 +131,6 @@ export class AccountPage {
 
     onLogged(): void {
         this.isAuthenticated();
-    }
-
-    updateUser(): void {
-        this.userService.update(this.vm.user).subscribe({
-            next: () => {
-                this.analyticsService.logEvent('dashboard_changeName_OK', {
-                    params: { status: true },
-                });
-                this.alertService.presentAlert(
-                    '¡Listo!',
-                    'Nombre cambiado correctamente.'
-                );
-            },
-            error: () => {
-                this.analyticsService.logEvent('dashboard_changeName_KO');
-                this.alertService.presentAlert(
-                    '¡Vaya!',
-                    'No se ha podido cambiar el nombre.'
-                );
-            },
-        });
     }
 
     async logout(): Promise<void> {

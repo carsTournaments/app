@@ -7,13 +7,14 @@ import {
 } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { Car } from '@models';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import {
     AlertService,
     CarService,
     UtilsService,
     UserService,
     ImageService,
+    ToastIonicService,
 } from '@services';
 import { GaragePopoverComponent } from '../../components/popover/garage-popover.component';
 import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
@@ -22,7 +23,6 @@ import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
     selector: 'page-my-garage-list',
     templateUrl: 'my-garage-list.page.html',
     styleUrls: ['./my-garage-list.page.scss'],
-    providers: [TranslatePipe],
 })
 export class MyGarageListPage {
     vm = new MyGarageListViewModel();
@@ -34,7 +34,8 @@ export class MyGarageListPage {
         private imageService: ImageService,
         private userService: UserService,
         private utilsService: UtilsService,
-        private translatePipe: TranslatePipe
+        private translate: TranslateService,
+        private toastIonicService: ToastIonicService
     ) {}
 
     async ionViewWillEnter(): Promise<void> {
@@ -97,21 +98,25 @@ export class MyGarageListPage {
     async addImage(car: Car): Promise<void> {
         this.imageService.addNewToGallery('car', car._id).then(
             () => this.utilsService.reloadPage(),
-            (error) => this.alertService.presentAlert('Error', error)
+            () =>
+                this.toastIonicService.error(
+                    'Error al añadir imagen, intentalo mas tarde'
+                )
         );
     }
 
     async deleteCar(car: Car): Promise<void> {
         await this.alertService.presentAlertWithButtons(
-            this.translatePipe.transform('garageList.titleDeleteCar'),
-            this.translatePipe.transform('garageList.messageDeleteCar'),
+            this.translate.instant('garageList.titleDeleteCar'),
+            this.translate.instant('garageList.messageDeleteCar'),
             [
                 {
-                    text: this.translatePipe.transform('generic.no'),
+                    text: this.translate.instant('generic.no'),
                     role: 'cancel',
                 },
                 {
-                    text: this.translatePipe.transform('generic.yes'),
+                    text: this.translate.instant('generic.yes'),
+                    role: 'ok',
                     handler: () => this.deleteCarConfirmation(car),
                 },
             ]
@@ -122,18 +127,13 @@ export class MyGarageListPage {
         this.carService.delete(car._id).subscribe({
             next: () => {
                 this.getAllCars();
-                this.alertService.presentAlert(
-                    this.translatePipe.transform(
-                        'garageList.titleDeleteCarConfirmation'
-                    ),
-                    this.translatePipe.transform(
+                this.toastIonicService.info(
+                    this.translate.instant(
                         'garageList.messageDeleteCarConfirmation'
                     )
                 );
             },
-            error: (error) => {
-                this.alertService.presentAlert('Error', error);
-            },
+            error: (error) => this.toastIonicService.error('Error: ' + error),
         });
     }
 

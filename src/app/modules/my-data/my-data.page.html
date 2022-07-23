@@ -8,7 +8,7 @@
       <ion-card mode="ios" class="form-item" style="margin-top: 0.5rem">
         <ion-item lines="none" color="light">
           <ion-label position="stacked">{{ 'myData.inputName' | translate }}</ion-label>
-          <ion-input type="text" [(ngModel)]="vm.user.name" placeholder="{{ 'myData.placeholderName' | translate }}">
+          <ion-input id="inputName" type="text" [(ngModel)]="vm.user.name" placeholder="{{ 'myData.placeholderName' | translate }}">
           </ion-input>
         </ion-item>
       </ion-card>
@@ -16,7 +16,7 @@
       <ion-card mode="ios" class="form-item">
         <ion-item lines="none" color="light">
           <ion-label position="stacked">{{ 'myData.inputCountry' | translate }}</ion-label>
-          <ion-select [(ngModel)]="vm.countryIdSelected" name="countryId"
+          <ion-select id="selectCountry" [(ngModel)]="vm.countryIdSelected" name="countryId"
             placeholder="{{ 'myData.placeholderCountry' | translate }}" okText="Aceptar" cancelText="Cancelar">
             <ion-select-option *ngFor="let country of vm.countries" [value]="country.id">
               {{ country.name }}
@@ -27,7 +27,7 @@
     </ion-col>
   </ion-row>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="vm.user">
-    <ion-fab-button (click)="updateUser()">
+    <ion-fab-button id="buttonSave" (click)="updateUser()">
       <ion-icon size="small" name="save"></ion-icon>
     </ion-fab-button>
   </ion-fab>

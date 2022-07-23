@@ -116,7 +116,6 @@ describe('TournamentPage', () => {
     });
 
     it('ionViewWillEnter', async () => {
-        spyOn(component, 'getInscriptionsOfTournament');
         spyOn(component, 'getOne');
         await component.ionViewWillEnter();
         expect(component.vm.id).toBe('1');
@@ -150,39 +149,6 @@ describe('TournamentPage', () => {
             component.getOne();
             expect(component.vm.loading.getOne).toBe(false);
             expect(component.vm.error.getOne).toBe(true);
-        });
-    });
-
-    describe('getInscriptionsOfTournament', () => {
-        it('OK', () => {
-            component.vm.id = '123';
-            inscriptionService.getAllOfTournament = jasmine
-                .createSpy()
-                .and.returnValue(of([inscription]));
-
-            spyOn(component, 'getCarsUsersForInscription');
-            spyOn(component, 'checkButtonInscription');
-            component.getInscriptionsOfTournament();
-            expect(component.vm.inscriptions).toEqual([inscription]);
-            expect(component.vm.error.getInscriptionsOfTournament).toEqual(
-                false
-            );
-            expect(component.vm.loading.getInscriptionsOfTournament).toEqual(
-                false
-            );
-        });
-        it('KO', () => {
-            spyOn(component, 'ionViewWillEnter');
-            inscriptionService.getAllOfTournament = jasmine
-                .createSpy()
-                .and.returnValue(throwError({ error: 400 }));
-            component.getInscriptionsOfTournament();
-            expect(component.vm.error.getInscriptionsOfTournament).toEqual(
-                true
-            );
-            expect(component.vm.loading.getInscriptionsOfTournament).toEqual(
-                false
-            );
         });
     });
 
@@ -250,9 +216,9 @@ describe('TournamentPage', () => {
         });
     });
 
-    it('segmentChanged', () => {
-        spyOn(component, 'scrollToTop');
-        component.segmentChanged({ detail: { value: 0 } });
-        expect(component.vm.header.segments.selected).toBe(0);
-    });
+    // it('segmentChanged', () => {
+    //     spyOn(component, 'scrollToTop');
+    //     component.segmentChanged({ detail: { value: 0 } });
+    //     expect(component.vm.header.segments.selected).toBe(0);
+    // });
 });

@@ -11,10 +11,12 @@ export class CarsViewModel {
             items: ['Coches', 'Marcas'],
             selected: 0,
         },
-        rightButton: {
-            icon: 'filter',
-            state: true,
-        },
+        rightButtons: [
+            {
+                icon: 'filter',
+                state: true,
+            },
+        ],
     });
     carsBody: CarGetAllDto = {
         page: 1,

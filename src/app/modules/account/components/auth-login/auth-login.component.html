@@ -6,7 +6,7 @@
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputEmail' | translate }}</ion-label>
-      <ion-input name="email" type="email" [(ngModel)]="data.email"
+      <ion-input id="email" name="email" type="email" [(ngModel)]="data.email"
         placeholder="{{ 'account.placeholderEmail' | translate }}" ngDefaultControl>
       </ion-input>
     </ion-item>
@@ -15,20 +15,20 @@
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'account.inputPassword' | translate }}</ion-label>
-      <ion-input name="password" type="password" [(ngModel)]="data.password"
+      <ion-input id="password" name="password" type="password" [(ngModel)]="data.password"
         placeholder="{{ 'account.placeholderPassword' | translate }}" ngDefaultControl></ion-input>
     </ion-item>
   </ion-card>
-  <ion-button expand="block" color="primary" (click)="login()">
+  <ion-button id="buttonLogin" expand="block" color="primary" (click)="login()">
     {{ 'account.buttonLogin' | translate }}
   </ion-button>
-  <ion-button expand="block" color="primary" fill="outline" (click)="goToRegister.emit()">
+  <ion-button id="buttonRegister" expand="block" color="primary" fill="outline" (click)="goToRegister.emit()">
     {{ 'account.buttonRegister' | translate }}
   </ion-button>
 
   <span class="divider line one-line">o</span>
 
-  <ion-button expand="block" color="primary" (click)="goToSelect.emit()">
+  <ion-button id="buttonBack" expand="block" color="primary" (click)="goToSelect.emit()">
     {{ 'generic.back' | translate }}
   </ion-button>
 </div>

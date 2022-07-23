@@ -3,11 +3,11 @@
     <img src="./assets/images/people.svg" style="width: 225px" />
   </div>
   <br>
-  <ion-button expand="block" color="primary" (click)="loginGoogle()">
+  <ion-button id="loginGoogle" expand="block" color="primary" (click)="loginGoogle()">
     <ion-icon name="logo-google"></ion-icon>&nbsp; {{ 'account.login_google' | translate }}
   </ion-button>
   <span class="divider line one-line">o</span>
-  <ion-button expand="block" color="primary" fill="outline" (click)="goToLogin.emit()">
+  <ion-button id="loginEmail" expand="block" color="primary" fill="outline" (click)="goToLogin.emit()">
     <ion-icon name="log-in"></ion-icon>&nbsp; {{ 'account.login_email' | translate }}
   </ion-button>
 

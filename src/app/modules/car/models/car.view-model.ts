@@ -11,10 +11,12 @@ export class CarViewModel {
             route: config.routes.cars,
             default: true,
         },
-        rightButton: {
-            state: true,
-            icon: 'arrow-redo-outline',
-        },
+        rightButtons: [
+            {
+                state: true,
+                icon: 'arrow-redo-outline',
+            },
+        ],
     });
     user: User;
     car: Car;

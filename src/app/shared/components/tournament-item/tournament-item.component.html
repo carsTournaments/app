@@ -1,4 +1,4 @@
-<ion-card mode="ios" (click)="clickItem.emit(tournament)" style="margin-left: 0.5rem; margin-right: 0.5rem" button>
+<ion-card id="tournament-item" mode="ios" (click)="clickItem.emit(tournament)" style="margin-left: 0.5rem; margin-right: 0.5rem" button>
   <ion-card-content [ngStyle]="{ backgroundImage: backgroundImage }">
     <div class="card-title-tournament">
       {{ tournament.name | truncateText: 23 }}

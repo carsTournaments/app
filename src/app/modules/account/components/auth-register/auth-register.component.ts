@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthRegisterDto } from '@core/auth/auth.dto';
 import { Register } from '@models';
-import { AlertService, AnalyticsService, AuthService } from '@services';
+import { AnalyticsService, AuthService, ToastIonicService } from '@services';
 
 @Component({
     selector: 'auth-register',
@@ -13,9 +13,9 @@ export class AuthRegisterComponent {
     @Output() goToLogin: EventEmitter<void> = new EventEmitter();
     data = new Register();
     constructor(
-        private alertService: AlertService,
         private authService: AuthService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private toastIonicService: ToastIonicService
     ) {}
 
     register() {
@@ -30,9 +30,11 @@ export class AuthRegisterComponent {
                     this.analyticsService.logEvent('auth_register_OK');
                     this.registerSuccess.emit();
                 },
-                error: (error) => {
+                error: () => {
                     this.analyticsService.logEvent('auth_register_KO');
-                    this.alertService.presentAlert('Error', error);
+                    this.toastIonicService.error(
+                        'Error al registrar usuario, intenta de nuevo mas tarde'
+                    );
                 },
             });
         }
@@ -42,7 +44,7 @@ export class AuthRegisterComponent {
         let state = true;
         if (this.data.name.length <= 3) {
             this.analyticsService.logEvent('auth_validations_register_name_KO');
-            this.alertService.presentAlert('Error', 'Revisa los datos');
+            this.toastIonicService.error('Revisa los datos');
             state = false;
             return state;
         }
@@ -51,10 +53,7 @@ export class AuthRegisterComponent {
             this.analyticsService.logEvent(
                 'auth_validations_register_password_KO'
             );
-            this.alertService.presentAlert(
-                'Error',
-                'Las contraseñas no coinciden'
-            );
+            this.toastIonicService.error('Las contraseñas no coinciden');
             state = false;
             return state;
         }

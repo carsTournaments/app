@@ -16,10 +16,12 @@ export class PairingViewModel {
             route: config.routes.cars,
             default: true,
         },
-        rightButton: {
-            state: true,
-            icon: 'arrow-redo-outline',
-        },
+        rightButtons: [
+            {
+                state: true,
+                icon: 'arrow-redo-outline',
+            },
+        ],
     });
     user: User;
     reportState = false;

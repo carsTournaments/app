@@ -1,4 +1,4 @@
-<custom-header [options]="vm.header" (clickRightIcon)="share()"></custom-header>
+<custom-header [options]="vm.header" (clickRightIcon)="onClickRightButton($event)"></custom-header>
 
 <ion-content [fullscreen]="true" [scrollEvents]="true" class="animate__animated animate__fadeIn animate__faster">
   <spinner [loading]="vm.loading"></spinner>
@@ -10,13 +10,17 @@
         <div *ngIf="vm.image" class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
       </ion-card>
 
+      <ion-title style="margin: 1rem 0 0.5rem 0;">Especificaciones</ion-title>
       <ion-card mode="ios">
-        <car-title [car]="vm.car"></car-title>
+        <ion-card-content style="padding: 0.5rem"  *ngIf="vm.car">
+          <car-info [car]="vm.car"></car-info>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-title style="margin: 1rem 0 0.5rem 0;">Totales</ion-title>
+      <ion-card mode="ios">
 
         <ion-card-content style="padding: 0.5rem">
-          <car-info [car]="vm.car"></car-info>
-          <hr />
-
           <car-totals [likes]="vm.car?.likes" [inscriptions]="vm.car?.inscriptions" [votes]="vm.car?.votes"
             [gold]="vm.car?.gold" [silver]="vm.car?.silver" [bronze]="vm.car?.bronze"
             (clickItem)="onClickTotalItem($event)"></car-totals>
@@ -26,15 +30,11 @@
         </ion-card-content>
       </ion-card>
 
-      <ng-container *ngIf="!vm.isMyCar">
-        <ion-card mode="ios" class="ion-no-padding option-item like" button (click)="likeOrDislike()">
-          <ion-item *ngIf="!vm.liked || vm.liked && vm.user " lines="none" >
-            <fa-icon slot="end" [icon]="vm.liked ? 'ban': 'thumbs-up'"></fa-icon>
-            <ion-label class="title" *ngIf="!vm.liked">{{ 'car.likeTitle' | translate }}</ion-label>
-            <ion-label class="title" *ngIf="vm.liked">{{ 'car.dislikeTitle' | translate }}</ion-label>
-          </ion-item>
-          </ion-card>
-      </ng-container>
+      <ion-title style="margin: 1rem 0 0.5rem 0;">Piloto</ion-title>
+      <ion-card mode="ios">
+        <car-driver [driver]="vm.car?.driver"></car-driver>
+      </ion-card>
+
     </ion-col>
   </ion-row>
 </ion-content>
