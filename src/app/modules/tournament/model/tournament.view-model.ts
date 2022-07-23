@@ -15,10 +15,12 @@ export class TournamentViewModel {
             route: config.routes.tournaments,
             default: true,
         },
-        rightButton: {
-            state: true,
-            icon: 'arrow-redo-outline',
-        },
+        rightButtons: [
+            {
+                state: true,
+                icon: 'arrow-redo-outline',
+            },
+        ],
     });
 
     tournament: Tournament;

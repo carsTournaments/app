@@ -1,5 +1,10 @@
 import { Image } from '@models/image.model';
 
+interface RightButtonI {
+    state: boolean;
+    icon: string;
+}
+
 export class Header {
     title: string;
     segments? = {
@@ -12,10 +17,7 @@ export class Header {
         route: '',
         default: true,
     };
-    rightButton? = {
-        state: false,
-        icon: '',
-    };
+    rightButtons?: RightButtonI[] = [];
     constructor(data?: Header) {
         this.title = data?.title;
         this.segments = data?.segments;
@@ -25,6 +27,6 @@ export class Header {
             this.backButton.route = data?.backButton?.route;
             this.backButton.default = data?.backButton.default ?? true;
         }
-        this.rightButton = data?.rightButton;
+        this.rightButtons = data?.rightButtons;
     }
 }

@@ -1,0 +1,12 @@
+<ion-item lines="none">
+  <ion-avatar slot="start">
+    <img [src]="driver.country ?? 'es' | flagByFile">
+  </ion-avatar>
+  <ion-label>
+    <h2>{{ driver.name }}</h2>
+    <p>{{ driver.country ?? 'es' | countryByValue }}</p>
+  </ion-label>
+  <ion-button slot="end" fill="clear" color="primary" size="small">
+    <ion-icon name="more"></ion-icon>
+  </ion-button>
+</ion-item>
