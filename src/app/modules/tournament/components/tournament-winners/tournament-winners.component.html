@@ -1,26 +1,6 @@
-<ion-card mode="ios" *ngIf="winners">
-    <ion-card-title
-        class="ion-text-center"
-        style="padding-top: 1rem; font-size: 18px"
-    >
-        <span class="ion-text-center">{{ 'tournament.titleWinners' | translate }}</span>
-    </ion-card-title>
-    <hr />
-    <ion-card-content style="padding: 0 0.5rem 0.5rem 0.5rem">
-        <winner-car-item
-            type="gold"
-            [car]="winners.gold.car"
-            (clickItem)="clickItem.emit($event)"
-        ></winner-car-item>
-        <winner-car-item
-            type="silver"
-            [car]="winners.silver.car"
-            (clickItem)="clickItem.emit($event)"
-        ></winner-car-item>
-        <winner-car-item
-            type="bronze"
-            [car]="winners.bronze.car"
-            (clickItem)="clickItem.emit($event)"
-        ></winner-car-item>
-    </ion-card-content>
-</ion-card>
+<ion-title style="margin: 1rem 0 0.5rem 0;">{{ 'tournament.titleWinners' | translate }}</ion-title>
+<ng-container mode="ios" *ngIf="winners">
+    <winner-car-item type="gold" [car]="winners.gold.car" (clickItem)="clickItem.emit($event)"></winner-car-item>
+    <winner-car-item type="silver" [car]="winners.silver.car" (clickItem)="clickItem.emit($event)"></winner-car-item>
+    <winner-car-item type="bronze" [car]="winners.bronze.car" (clickItem)="clickItem.emit($event)"></winner-car-item>
+</ng-container>

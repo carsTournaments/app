@@ -16,6 +16,7 @@ export class ActionSheetIonicService {
         const options: ActionSheetOptions = {
             header,
             buttons,
+            cssClass: 'action-sheet-primary',
             mode: 'ios',
         };
         const actionSheet = await this.actionSheetCtrl.create(options);

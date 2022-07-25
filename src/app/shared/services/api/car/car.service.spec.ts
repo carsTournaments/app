@@ -74,7 +74,7 @@ describe('CarService', () => {
     // });
 
     it('getAllOfDriver', () => {
-        service.getAllOfDriver({ id: '1' }).subscribe((response) => {
+        service.getAllDriverCars({ id: '1' }).subscribe((response) => {
             expect(response).not.toBe(null);
             expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
         });

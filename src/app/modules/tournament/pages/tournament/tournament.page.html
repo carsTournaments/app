@@ -22,28 +22,7 @@
           [myCars]="vm.myCars" (confirmDeleteInscriptionClick)="confirmDeleteInscription($event)">
         </tournament-my-inscriptions>
 
-        <ion-card mode="ios" class="option-item"
-          *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Completed'">
-          <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="goToRounds()">
-            <ion-label>
-              <h2>{{ 'tournament.linkTitleRounds' | translate }}</h2>
-              <small class="min-text-weight">
-                {{ 'tournament.linkSubtitleRound' | translate }}
-              </small>
-            </ion-label>
-          </ion-item>
-        </ion-card>
-
-        <ion-card mode="ios" class="option-item">
-          <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="goToInscriptions()">
-            <ion-label>
-              <h2>{{ 'tournament.linkTitleInscriptions' | translate }}</h2>
-              <small class="min-text-weight">
-                {{ 'tournament.linkSubtitleInscriptions' | translate }}
-              </small>
-            </ion-label>
-          </ion-item>
-        </ion-card>
+        <tournament-options [tournament]="vm.tournament" (clickOption)="onClickOption($event)"></tournament-options>
       </div>
     </ion-col>
   </ion-row>
