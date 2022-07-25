@@ -74,6 +74,7 @@ import {
     MomentDateShortPipe,
     FuelPipe,
     CountryByValue,
+    TractionPipe,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -123,6 +124,7 @@ const PIPES = [
     MomentDateShortPipe,
     MomentFormatAgoPipe,
     PercentagePipe,
+    TractionPipe,
     TruncateTextPipe,
     VotesPipe,
 ];
