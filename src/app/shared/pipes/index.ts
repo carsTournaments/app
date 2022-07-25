@@ -9,5 +9,6 @@ export { LastRoundPipe } from './last-round/last-round.pipe';
 export { MomentDateShortPipe } from './moment-date-short/moment-date-short.pipe';
 export { MomentFormatAgoPipe } from './moment-format/moment-format.pipe';
 export { PercentagePipe } from './percentage/percentage.pipe';
+export { TractionPipe } from './traction/traction.pipe';
 export { TruncateTextPipe } from './truncate-text/truncate-text.pipe';
 export { VotesPipe } from './votes/votes.pipe';
