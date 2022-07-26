@@ -11,9 +11,9 @@ export class RoundService {
     url = `${environment.urlApi}/rounds`;
     constructor(private httpClient: HttpClient) {}
 
-    getAllOfTournament(data: IdDto): Observable<Round[]> {
+    getAllTournamentRounds(data: IdDto): Observable<Round[]> {
         return this.httpClient
-            .post<Round[]>(`${this.url}/allOfTournament`, data)
+            .post<Round[]>(`${this.url}/getAllTournamentRounds`, data)
             .pipe(take(1));
     }
 

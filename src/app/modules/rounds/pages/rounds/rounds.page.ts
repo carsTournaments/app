@@ -29,12 +29,12 @@ export class RoundsPage {
             ':id',
             this.vm.tournamentId
         );
-        this.getAllRoundsAndPairingsOfTournament();
+        this.getAllTournamentRounds();
     }
 
-    getAllRoundsAndPairingsOfTournament() {
+    getAllTournamentRounds() {
         this.roundService
-            .getAllOfTournament({ id: this.vm.tournamentId })
+            .getAllTournamentRounds({ id: this.vm.tournamentId })
             .subscribe({
                 next: (r) => {
                     this.vm.rounds = r;

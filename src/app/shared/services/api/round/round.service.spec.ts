@@ -6,7 +6,6 @@ import {
 } from '@angular/common/http/testing';
 import { RoundService } from '../..';
 import { PaginatorI } from '@interfaces';
-import { RoundGetAllDto } from './round.dto';
 import { environment } from '@env/environment';
 
 const paginator: PaginatorI = {
@@ -44,8 +43,8 @@ describe('RoundService', () => {
         expect(service).toBeTruthy();
     });
 
-    it('getAllOfTournament', () => {
-        service.getAllOfTournament({ id: '1' }).subscribe((response) => {
+    it('getAllTournamentRounds', () => {
+        service.getAllTournamentRounds({ id: '1' }).subscribe((response) => {
             expect(response).not.toBe(null);
             expect(JSON.stringify(response)).toEqual(
                 JSON.stringify(responsePaginator)
