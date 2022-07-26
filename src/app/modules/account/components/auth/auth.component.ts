@@ -67,7 +67,7 @@ export class AuthComponent {
         if (item) {
             return item.status;
         } else {
-            false;
+            return false;
         }
     }
 
