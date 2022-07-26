@@ -16,7 +16,6 @@ export class FuelPipe implements PipeTransform {
                 return 'Eléctrico';
             default:
                 return 'N/D';
-                break;
         }
     }
 }

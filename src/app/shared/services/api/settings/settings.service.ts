@@ -16,11 +16,11 @@ export class SettingsService {
     settings: SettingsAppI;
     constructor(
         private httpClient: HttpClient,
-        public location: Location,
         private platform: Platform,
         private alertService: AlertService,
         private admobService: AdmobService,
-        private storageService: StorageService
+        private storageService: StorageService,
+        public location: Location,
     ) {}
 
     async getSettingsDB(): Promise<void> {

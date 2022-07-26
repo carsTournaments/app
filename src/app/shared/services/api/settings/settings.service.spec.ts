@@ -1,75 +1,54 @@
-// import { TestBed } from '@angular/core/testing';
-// import {
-//   HttpClientTestingModule,
-//   HttpTestingController,
-// } from '@angular/common/http/testing';
-// import { TournamentService } from '../..';
-// import { Inscription } from '@models';
-// import { environment } from '@env/environment';
+import { TestBed } from '@angular/core/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { AdmobService, AlertService, SettingsService, StorageService } from '@services';
+import { Like } from '@models';
+import { admobService, alertService, storageService } from '@services/services.mock.spec';
 
-// const item = new Inscription();
+const item = new Like();
 
-// describe('SettingsService', () => {
-//   let httpTestingController: HttpTestingController;
-//   let service: TournamentService;
+describe('SettingsService', () => {
+  let httpTestingController: HttpTestingController;
+  let service: SettingsService;
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       providers: [TournamentService],
-//       imports: [HttpClientTestingModule],
-//     });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        SettingsService,
+        { provide: StorageService, useValue: storageService },
+        { provide: AlertService, useValue: alertService },
+        { provide: AdmobService, useValue: admobService },
+      ],
+      imports: [HttpClientTestingModule],
+    });
 
-//     httpTestingController = TestBed.inject(HttpTestingController);
-//     service = TestBed.inject(TournamentService);
-//   });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(SettingsService);
+  });
 
-//   afterEach(() => {
-//     httpTestingController.verify();
-//   });
+  afterEach(() => {
+    httpTestingController.verify();
+  });
 
-//   it('should be created', () => {
-//     expect(service).toBeTruthy();
-//   });
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
 
-//   it('getAllOfAllStates', () => {
-//     service.getAllOfAllStates().subscribe((response) => {
-//       expect(response).not.toBe(null);
-//       expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
-//     });
-//     const req = httpTestingController.expectOne(
-//       `${environment.urlApi}/tournaments/getAllOfAllStates`
-//     );
-//     req.flush(item);
-//   });
+  it('getSettings in storage', async () => {
+    const settings: any = {}
+    storageService.get = jasmine.createSpy().and.returnValue(settings);
+    const data = await service.getSettings();
+    expect(data).toEqual(settings);
+  })
 
-//   it('getDaysForCalendar', () => {
-//     service.getDaysForCalendar().subscribe((response) => {
-//       expect(response).not.toBe(null);
-//     });
-//     const req = httpTestingController.expectOne(
-//       `${environment.urlApi}/tournaments/getDaysForCalendar`
-//     );
-//     req.flush(item);
-//   });
-
-//   it('getCalendarItems', () => {
-//     service.getCalendarItems('2022-10-01').subscribe((response) => {
-//       expect(response).not.toBe(null);
-//     });
-//     const req = httpTestingController.expectOne(
-//       `${environment.urlApi}/tournaments/getCalendarItems`
-//     );
-//     req.flush(item);
-//   });
-
-//   it('getOne', () => {
-//     service.getOne('1').subscribe((response) => {
-//       expect(response).not.toBe(null);
-//       expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
-//     });
-//     const req = httpTestingController.expectOne(
-//       `${environment.urlApi}/tournaments/getOne`
-//     );
-//     req.flush(item);
-//   });
-// });
+  // fit('getSettings not in storage', async () => {
+  //   spyOn(service, 'getSettingsDB');
+  //   spyOn(service, 'getSettings');
+  //   storageService.get = jasmine.createSpy().and.returnValue(undefined);
+  //   const data = await service.getSettings();
+  //   console.log(data);
+  //   expect(service.getSettingsDB).toHaveBeenCalled();
+  // })
+});
