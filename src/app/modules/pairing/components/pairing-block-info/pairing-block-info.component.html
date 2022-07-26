@@ -67,24 +67,24 @@
         </div>
         <div class="div-flex div-item">
             <div class="div-left item">
-                <p class="item-left">{{ pairing.car1.fuel }}</p>
+                <p class="item-left">{{ pairing.car1.fuel | fuel }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">{{ 'pairing.fuel' | translate }}</p>
+                <p class="item-center">{{ 'pairing.fuel' | translate | truncateText: 7 }}</p>
             </div>
             <div class="div-right">
-                <p class="item-right">{{ pairing.car2.fuel }}</p>
+                <p class="item-right">{{ pairing.car2.fuel | fuel }}</p>
             </div>
         </div>
         <div class="div-flex div-item">
             <div class="div-left item">
-                <p class="item-left">{{ pairing.car1.traction }}</p>
+                <p class="item-left">{{ pairing.car1.traction | traction }}</p>
             </div>
             <div class="div-center">
                 <p class="item-center">{{ 'pairing.traction' | translate }}</p>
             </div>
             <div class="div-right">
-                <p class="item-right">{{ pairing.car2.traction }}</p>
+                <p class="item-right">{{ pairing.car2.traction | traction }}</p>
             </div>
         </div>
         <div class="div-flex div-item">

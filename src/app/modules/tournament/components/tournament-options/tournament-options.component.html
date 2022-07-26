@@ -1,0 +1,23 @@
+<ion-title style="margin: 1rem 0 0.5rem 0;">{{ 'tournament.titleOptions' | translate }}</ion-title>
+<ion-card mode="ios" class="option-item"
+  *ngIf="tournament.status === 'InProgress' ||tournament.status === 'Completed'">
+  <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="clickOption.emit('goToRounds')">
+    <ion-label>
+      <h2>{{ 'tournament.linkTitleRounds' | translate }}</h2>
+      <small class="min-text-weight">
+        {{ 'tournament.linkSubtitleRound' | translate }}
+      </small>
+    </ion-label>
+  </ion-item>
+</ion-card>
+
+<ion-card mode="ios" class="option-item">
+  <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="clickOption.emit('goToInscriptions')">
+    <ion-label>
+      <h2>{{ 'tournament.linkTitleInscriptions' | translate }}</h2>
+      <small class="min-text-weight">
+        {{ 'tournament.linkSubtitleInscriptions' | translate }}
+      </small>
+    </ion-label>
+  </ion-item>
+</ion-card>

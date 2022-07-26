@@ -268,6 +268,14 @@ export class TournamentPage {
             });
     }
 
+    onClickOption(event: string) {
+        if (event === 'goToRounds') {
+            this.goToRounds();
+        } else {
+            this.goToInscriptions();
+        }
+    }
+
     goToRounds() {
         this.analyticsService.logEvent('tournament_goToRounds');
         this.navCtrl.navigateForward(

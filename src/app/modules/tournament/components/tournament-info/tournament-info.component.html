@@ -1,48 +1,6 @@
+<ion-title style="margin: 1rem 0 0.5rem 0;">Info</ion-title>
 <ion-card mode="ios">
-  <ion-card-title class="title ion-text-center">
-    {{ tournament?.name }}
 
-    <ng-container>
-      <div class="custom-chip custom-chip-primary">
-        <span *ngIf="tournament.status === 'Completed'">
-          {{ 'generic.completed' | translate }}</span>
-        <span *ngIf="tournament.status === 'InProgress'">
-          {{ tournament.rounds | lastRound }}
-        </span>
-
-        <span *ngIf="
-                        tournament.status === 'Todo' &&
-                        tournament.inscriptions.length ===
-                            tournament.maxParticipants
-                    ">
-          {{ 'tournament.inscriptionsCompleted' | translate }}
-        </span>
-      </div>
-    </ng-container>
-    <hr *ngIf="inscriptions && inscriptions.length > 0" />
-
-    <div class="images-inscriptions">
-      <ng-container *ngIf="inscriptions.length < 8">
-        <ion-card *ngFor="let inscription of inscriptions" button class="image-inscription"
-          [routerLink]="['/car', inscription.car._id]">
-          <div class="image-inscription-div" style="background-image: url({{
-                            inscription.car?.image?.url | image
-                        }})"></div>
-        </ion-card>
-      </ng-container>
-
-      <swiper [config]="slideOpts" *ngIf="inscriptions.length >= 8">
-        <ng-template swiperSlide *ngFor="let inscription of inscriptions">
-          <ion-card button class="image-inscription" [routerLink]="['/car', inscription.car._id]">
-            <div class="image-inscription-div" style="background-image:url({{
-                                inscription.car?.image?.url | image
-                            }})"></div>
-          </ion-card>
-        </ng-template>
-      </swiper>
-    </div>
-  </ion-card-title>
-  <hr />
   <ion-card-content style="padding: 0.5rem; padding-bottom: 0.5rem">
     <ng-container *ngIf="tournament.status === 'InProgress' || tournament.status === 'Completed'">
       <ion-row>
@@ -128,7 +86,7 @@
 
     <ng-container *ngIf="tournament.info && tournament.info !== ''">
       <hr />
-      <p style="padding-top: 1rem" class="ion-text-center" [ngStyle]="{
+      <p style="padding-top: .5rem" class="ion-text-center" [ngStyle]="{
                     'padding-bottom': buttonInscription ? '0px' : '10px'
                 }">
         {{ tournament.info }}
@@ -139,9 +97,11 @@
     </tournament-requisites>
   </ion-card-content>
 
+  </ion-card>
+
+  <ion-card mode="ios">
   <ng-container *ngIf="buttonInscription">
-    <hr />
-    <ion-button class="ion-margin" expand="block" (click)="inscriptionCarClick.emit()">Inscribirse
+    <ion-button mode="ios" class="ion-margin" expand="block" (click)="inscriptionCarClick.emit()">Inscribirse
     </ion-button>
   </ng-container>
 </ion-card>

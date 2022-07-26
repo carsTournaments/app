@@ -45,7 +45,7 @@ export class MyGarageListPage {
     async getAllCars(): Promise<void> {
         this.vm.user = this.userService.getUser();
         this.vm.bodyCars.id = this.vm.user._id;
-        this.carService.getAllOfDriver(this.vm.bodyCars).subscribe({
+        this.carService.getAllDriverCars(this.vm.bodyCars).subscribe({
             next: (response) => {
                 this.vm.cars = response;
                 this.vm.loading = false;

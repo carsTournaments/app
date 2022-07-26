@@ -80,6 +80,7 @@ export const utilsService = jasmine.createSpyObj('UtilsService', [
 
 export const translateService = jasmine.createSpyObj('TranslateService', [
     'get',
+    'instant',
 ]);
 
 export const actionSheetService = jasmine.createSpyObj(
@@ -99,3 +100,5 @@ actionSheetService.present = jasmine.createSpy().and.returnValue(
 );
 
 export const userService = jasmine.createSpyObj('UserService', ['getUser']);
+
+export const admobService = jasmine.createSpyObj('AdmobService', ['init']);
