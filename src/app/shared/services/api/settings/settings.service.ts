@@ -20,7 +20,7 @@ export class SettingsService {
         private alertService: AlertService,
         private admobService: AdmobService,
         private storageService: StorageService,
-        public location: Location,
+        public location: Location
     ) {}
 
     async getSettingsDB(): Promise<void> {

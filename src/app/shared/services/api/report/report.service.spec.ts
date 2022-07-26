@@ -15,9 +15,7 @@ describe('ReportService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [
-                ReportService,
-            ],
+            providers: [ReportService],
             imports: [HttpClientTestingModule],
         });
 
@@ -33,39 +31,37 @@ describe('ReportService', () => {
         expect(service).toBeTruthy();
     });
 
-  it('getAllOfRound', () => {
-    service.getAllOfRound({ id: '1' }).subscribe((response) => {
-      expect(response).not.toBe(null);
-      expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
+    it('getAllOfRound', () => {
+        service.getAllOfRound({ id: '1' }).subscribe((response) => {
+            expect(response).not.toBe(null);
+            expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
+        });
+        const req = httpTestingController.expectOne(
+            `${environment.urlApi}/reports/allOfRound`
+        );
+        req.flush(item);
     });
-    const req = httpTestingController.expectOne(
-      `${environment.urlApi}/reports/allOfRound`
-    );
-    req.flush(item);
-  });
 
-  it('getAllOfTournament', () => {
-    service.getAllOfTournament({ id: '1' }).subscribe((response) => {
-      expect(response).not.toBe(null);
-      expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
+    it('getAllOfTournament', () => {
+        service.getAllOfTournament({ id: '1' }).subscribe((response) => {
+            expect(response).not.toBe(null);
+            expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
+        });
+        const req = httpTestingController.expectOne(
+            `${environment.urlApi}/reports/allOfTournament`
+        );
+        req.flush(item);
     });
-    const req = httpTestingController.expectOne(
-      `${environment.urlApi}/reports/allOfTournament`
-    );
-    req.flush(item);
-  })
 
-  it('create', () => {
-    const report = new Report();
-    service.create(report).subscribe((response) => {
-      expect(response).not.toBe(null);
-      expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
+    it('create', () => {
+        const report = new Report();
+        service.create(report).subscribe((response) => {
+            expect(response).not.toBe(null);
+            expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
+        });
+        const req = httpTestingController.expectOne(
+            `${environment.urlApi}/reports/create`
+        );
+        req.flush(item);
     });
-    const req = httpTestingController.expectOne(
-      `${environment.urlApi}/reports/create`
-    );
-    req.flush(item);
-  });
-
-
 });

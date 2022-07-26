@@ -150,12 +150,12 @@ describe('LikeService', () => {
         expect(true).toBe(true);
     });
 
-  it('removeLikeStorage', async () => {
-    storageService.get = jasmine
-      .createSpy()
-      .and.returnValue(Promise.resolve(['1']));
-    storageService.remove = jasmine.createSpy();
-    await service.removeLikeStorage('1');
-    expect(true).toBe(true);
-  })
+    it('removeLikeStorage', async () => {
+        storageService.get = jasmine
+            .createSpy()
+            .and.returnValue(Promise.resolve(['1']));
+        storageService.remove = jasmine.createSpy();
+        await service.removeLikeStorage('1');
+        expect(true).toBe(true);
+    });
 });
