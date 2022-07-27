@@ -7,16 +7,16 @@ import { RankingSubitemComponent } from './components/ranking-subitem/ranking-su
 import { RankingPage } from './pages/ranking/ranking.page';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: RankingPage,
-            },
-        ]),
-    ],
-    declarations: [RankingPage, RankingItemComponent, RankingSubitemComponent],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: RankingPage,
+      },
+    ]),
+  ],
+  declarations: [RankingPage, RankingItemComponent, RankingSubitemComponent],
+  providers: [ImagePipe],
 })
 export class RankingModule {}

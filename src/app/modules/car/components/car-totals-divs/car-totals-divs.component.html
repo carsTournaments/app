@@ -2,7 +2,7 @@
   <hr />
   <h1>
     {{ 'car.statsLikesTitle' | translate | uppercase }}
-    <fa-icon icon="thumbs-up" class="likevote"></fa-icon>
+    <fa-icon icon="heart" class="likevote"></fa-icon>
   </h1>
   <ion-item color="light" lines="full" *ngFor="let item of likes; let i = index" [lines]="i !== likes.length -1 ? 'full' : 'none'">
     <ion-label slot="start">{{ item.user?.name ?? 'Anonimo' }}</ion-label>
@@ -16,7 +16,7 @@
   <hr />
   <h1>
     {{ 'car.statsInscriptionsTitle' | translate | uppercase }}
-    <fa-icon icon="clipboard-check" class="inscriptions"></fa-icon>
+    <fa-icon icon="list-check" class="inscriptions"></fa-icon>
   </h1>
   <ion-item color="light" lines="full" *ngFor="let item of inscriptions; let i = index" button
     [routerLink]="['/tournament', item.tournament?._id]" [lines]="i !== inscriptions.length -1 ? 'full' : 'none'">

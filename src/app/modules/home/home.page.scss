@@ -1,45 +1,45 @@
 .ion-content {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),
-        url('/assets/images/welcome.jpg');
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
-    height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),
+    url('/assets/images/welcome.jpg');
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+
+  .wrapper {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
     width: 100%;
-    align-items: center;
-    justify-items: center;
 
-    .wrapper {
-        position: absolute;
-        bottom: 0;
-        padding: 1rem;
-        width: 100%;
-
-        @media (min-width: 768px) {
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    @media (min-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
     }
+  }
 
-    .title {
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 0;
-        color: var(--ion-color-light);
-    }
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ion-color-light);
+  }
 
-    .description {
-        font-size: 1.2rem;
-        color: var(--ion-color-light);
-    }
+  .description {
+    font-size: 1.2rem;
+    color: var(--ion-color-light);
+  }
 }
 
 img {
-    top: 100px;
-    position: absolute;
-    width: 60%;
-    max-width: 300px;
-    height: auto;
-    left: 50%;
-    transform: translateX(-50%);
+  top: 100px;
+  position: absolute;
+  width: 60%;
+  max-width: 300px;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -7,54 +7,54 @@ import { TranslateService } from '@ngx-translate/core';
 import { config } from '@config';
 
 @Component({
-    selector: 'page-tournaments',
-    templateUrl: 'tournaments.page.html',
-    styleUrls: ['tournaments.page.scss'],
+  selector: 'page-tournaments',
+  templateUrl: 'tournaments.page.html',
+  styleUrls: ['tournaments.page.scss'],
 })
 export class TournamentsPage {
-    vm = new TournamentsViewModel();
-    constructor(
-        private tournamentService: TournamentService,
-        private navCtrl: NavController,
-        private analyticsService: AnalyticsService,
-        private translate: TranslateService
-    ) {}
+  vm = new TournamentsViewModel();
+  constructor(
+    private tournamentService: TournamentService,
+    private navCtrl: NavController,
+    private analyticsService: AnalyticsService,
+    private translate: TranslateService
+  ) {}
 
-    async ionViewWillEnter() {
-        this.vm.header.title = this.translate.instant('tournaments.title');
-        this.getItems();
-    }
+  async ionViewWillEnter() {
+    this.vm.header.title = this.translate.instant('tournaments.title');
+    this.getItems();
+  }
 
-    getItems(event?: any) {
-        this.tournamentService.getAllOfAllStates().subscribe({
-            next: (res) => {
-                this.vm.tournaments = res;
-                if (event) {
-                    event.target.complete();
-                }
-                this.vm.loading = false;
-            },
-            error: () => {
-                this.vm.loading = false;
-                this.vm.error = true;
-            },
-        });
-    }
+  getItems(event?: any) {
+    this.tournamentService.getAllOfAllStates().subscribe({
+      next: (res) => {
+        this.vm.tournaments = res;
+        if (event) {
+          event.target.complete();
+        }
+        this.vm.loading = false;
+      },
+      error: () => {
+        this.vm.loading = false;
+        this.vm.error = true;
+      },
+    });
+  }
 
-    goToTournament(item: Tournament) {
-        this.analyticsService.logEvent('tournaments_goToTournament', {
-            params: {
-                tournament_id: item._id,
-                tournament_name: item.name,
-            },
-        });
-        this.navCtrl.navigateForward(
-            config.routes.tournament.replace(':id', item._id)
-        );
-    }
+  goToTournament(item: Tournament) {
+    this.analyticsService.logEvent('tournaments_goToTournament', {
+      params: {
+        tournament_id: item._id,
+        tournament_name: item.name,
+      },
+    });
+    this.navCtrl.navigateForward(
+      config.routes.tournament.replace(':id', item._id)
+    );
+  }
 
-    doRefresh(event: any) {
-        this.analyticsService.logEvent('tournaments_refresh', {});
-        this.getItems(event);
-    }
+  doRefresh(event: any) {
+    this.analyticsService.logEvent('tournaments_refresh', {});
+    this.getItems(event);
+  }
 }

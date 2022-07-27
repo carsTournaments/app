@@ -11,19 +11,19 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TournamentOptionsComponent } from './components/tournament-options/tournament-options.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        TranslateModule,
-        RouterModule.forChild([{ path: '', component: TournamentPage }]),
-    ],
-    declarations: [
-        TournamentPage,
-        TournamentRequisitesComponent,
-        TournamentInfoComponent,
-        TournamentMyInscriptionsComponent,
-        TournamentWinnersComponent,
-        TournamentOptionsComponent,
-    ],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    TranslateModule,
+    RouterModule.forChild([{ path: '', component: TournamentPage }]),
+  ],
+  declarations: [
+    TournamentPage,
+    TournamentRequisitesComponent,
+    TournamentInfoComponent,
+    TournamentMyInscriptionsComponent,
+    TournamentWinnersComponent,
+    TournamentOptionsComponent,
+  ],
+  providers: [ImagePipe],
 })
 export class TournamentModule {}

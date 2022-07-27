@@ -1,7 +1,7 @@
 import { Car } from '@models';
 
 export interface InscriptionGetMyCarsUserForInscriptionResponse {
-    inscribed: Car[];
-    availables: Car[];
-    notAvailables: Car[];
+  inscribed: Car[];
+  availables: Car[];
+  notAvailables: Car[];
 }

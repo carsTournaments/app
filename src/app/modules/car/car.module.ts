@@ -8,22 +8,22 @@ import { CarDriverComponent } from './components/car-drive/car-driver.component'
 import { SharedModule } from '@shared/shared.module';
 import { CarPage } from './pages/car/car.page';
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: CarPage,
-            },
-        ]),
-    ],
-    declarations: [
-        CarPage,
-        CarDriverComponent,
-        CarInfoComponent,
-        CarTotalsComponent,
-        CarTotalsDivsComponent,
-    ],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: CarPage,
+      },
+    ]),
+  ],
+  declarations: [
+    CarPage,
+    CarDriverComponent,
+    CarInfoComponent,
+    CarTotalsComponent,
+    CarTotalsDivsComponent,
+  ],
+  providers: [ImagePipe],
 })
 export class CarModule {}

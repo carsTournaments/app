@@ -1,64 +1,33 @@
 <div class="card-trophy ion-text-center">
-    <ion-row class="line-1">
-        <ion-col
-            class="ion-no-padding ion-no-margin ion-activatable border-right"
-            [routerLink]="['/my-garage']"
-        >
-            <fa-icon icon="car"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="resume.cars"
-                [duration]="1500"
-            ></p>
-            <ion-ripple-effect></ion-ripple-effect>
-        </ion-col>
+  <ion-row class="line-1">
+    <ion-col class="ion-no-padding ion-no-margin ion-activatable border-right" [routerLink]="['/my-garage']">
+      <fa-icon icon="car"></fa-icon>
+      <p class="number-trophy" [countUp]="resume.cars" [duration]="1500"></p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-col>
 
-        <ion-col
-            class="ion-no-padding ion-no-margin ion-activatable"
-            [routerLink]="['/my-likes']"
-        >
-            <fa-icon icon="thumbs-up"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="resume.likes"
-                [duration]="1500"
-            ></p>
-            <ion-ripple-effect></ion-ripple-effect>
-        </ion-col>
-    </ion-row>
+    <ion-col class="ion-no-padding ion-no-margin ion-activatable" [routerLink]="['/my-likes']">
+      <fa-icon icon="thumbs-up"></fa-icon>
+      <p class="number-trophy" [countUp]="resume.likes" [duration]="1500"></p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-col>
+  </ion-row>
 
-    <ion-row class="line-2">
-        <ion-col
-            class="ion-no-padding ion-no-margin ion-activatable border-right"
-            [routerLink]="['/my-inscriptions']"
-        >
-            <fa-icon icon="clipboard-check"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="resume?.inscriptions"
-                [duration]="1500"
-            ></p>
-            <ion-ripple-effect></ion-ripple-effect>
-        </ion-col>
+  <ion-row class="line-2">
+    <ion-col class="ion-no-padding ion-no-margin ion-activatable border-right" [routerLink]="['/my-inscriptions']">
+      <fa-icon icon="clipboard-check"></fa-icon>
+      <p class="number-trophy" [countUp]="resume?.inscriptions" [duration]="1500"></p>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-col>
 
-        <ion-col
-            class="ion-no-padding ion-no-margin ion-activatable border-right"
-        >
-            <fa-icon icon="heart"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="resume?.votes"
-                [duration]="1500"
-            ></p>
-        </ion-col>
+    <ion-col class="ion-no-padding ion-no-margin ion-activatable border-right">
+      <fa-icon icon="heart"></fa-icon>
+      <p class="number-trophy" [countUp]="resume?.votes" [duration]="1500"></p>
+    </ion-col>
 
-        <ion-col class="ion-no-padding ion-no-margin">
-            <fa-icon icon="trophy"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="resume?.winner"
-                [duration]="1500"
-            ></p>
-        </ion-col>
-    </ion-row>
+    <ion-col class="ion-no-padding ion-no-margin">
+      <fa-icon icon="trophy"></fa-icon>
+      <p class="number-trophy" [countUp]="resume?.winner" [duration]="1500"></p>
+    </ion-col>
+  </ion-row>
 </div>

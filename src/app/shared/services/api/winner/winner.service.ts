@@ -8,17 +8,17 @@ import { WinnerGetOfTournamentComplete } from './winner.responses';
 
 @Injectable({ providedIn: 'root' })
 export class WinnerService {
-    url = `${environment.urlApi}/winners`;
-    constructor(private httpClient: HttpClient) {}
+  url = `${environment.urlApi}/winners`;
+  constructor(private httpClient: HttpClient) {}
 
-    getForTournamentComplete(
-        data: IdDto
-    ): Observable<WinnerGetOfTournamentComplete> {
-        return this.httpClient
-            .post<WinnerGetOfTournamentComplete>(
-                `${this.url}/forTournamentComplete`,
-                data
-            )
-            .pipe(take(1));
-    }
+  getForTournamentComplete(
+    data: IdDto
+  ): Observable<WinnerGetOfTournamentComplete> {
+    return this.httpClient
+      .post<WinnerGetOfTournamentComplete>(
+        `${this.url}/forTournamentComplete`,
+        data
+      )
+      .pipe(take(1));
+  }
 }

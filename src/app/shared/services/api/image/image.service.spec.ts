@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {
-    HttpClientTestingModule,
-    HttpTestingController,
+  HttpClientTestingModule,
+  HttpTestingController,
 } from '@angular/common/http/testing';
 import { ImageService } from '../..';
 import { Inscription } from '@models';
@@ -22,40 +22,40 @@ const item = new Inscription();
 // };
 
 describe('ImageService', () => {
-    let httpTestingController: HttpTestingController;
-    let service: ImageService;
-    const modalCtrl = jasmine.createSpyObj('ModalController', ['create']);
+  let httpTestingController: HttpTestingController;
+  let service: ImageService;
+  const modalCtrl = jasmine.createSpyObj('ModalController', ['create']);
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [
-                ImageService,
-                { provide: ModalController, useValue: modalCtrl },
-            ],
-            imports: [HttpClientTestingModule],
-        });
-
-        httpTestingController = TestBed.inject(HttpTestingController);
-        service = TestBed.inject(ImageService);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        ImageService,
+        { provide: ModalController, useValue: modalCtrl },
+      ],
+      imports: [HttpClientTestingModule],
     });
 
-    afterEach(() => {
-        httpTestingController.verify();
-    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(ImageService);
+  });
 
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
+  afterEach(() => {
+    httpTestingController.verify();
+  });
 
-    xit('addNewToGallery', async () => {
-        spyOn(service, 'upload');
-        spyOn(service, 'b64toBlob').and.returnValue(new Blob());
-        const photoMock: Photo = {
-            format: 'jpeg',
-            saved: true,
-            base64String: '',
-        };
-        spyOn(Camera, 'getPhoto').and.returnValue(Promise.resolve(photoMock));
-        await service.addNewToGallery('car', '1');
-    });
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  xit('addNewToGallery', async () => {
+    spyOn(service, 'upload');
+    spyOn(service, 'b64toBlob').and.returnValue(new Blob());
+    const photoMock: Photo = {
+      format: 'jpeg',
+      saved: true,
+      base64String: '',
+    };
+    spyOn(Camera, 'getPhoto').and.returnValue(Promise.resolve(photoMock));
+    await service.addNewToGallery('car', '1');
+  });
 });

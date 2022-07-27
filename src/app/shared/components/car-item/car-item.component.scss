@@ -1,37 +1,71 @@
 ion-card {
-    --color: var(--ion-color-dark);
-    --border-radius: 10px;
-    --box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    margin-top: 0.8rem;
-    margin-bottom: 0.8rem;
+  --color: var(--ion-color-dark);
+  --border-radius: 10px;
+  --box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 ion-card-content {
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
-    height: 120px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  height: 120px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card-title-car {
-    position: absolute;
-    bottom: 2.4rem;
-    left: 0;
-    padding: 0.25rem 0.8rem;
-    border-radius: 0px 10px 10px 0px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    background: #000;
-    color: #fff;
-    text-transform: uppercase;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 2.4rem;
+  left: 0;
+  padding: 0.25rem 0.8rem;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #000;
+  color: #fff;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .card-driver-name {
-    display: flex;
-    line-height: 1.8;
+  display: flex;
+  line-height: 1.8;
+  position: absolute;
+  bottom: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  left: 0rem;
+  padding: 0.25rem 1rem 0.25rem 0.8rem;
+  border-radius: 0px 10px 10px 0px;
+  background: #000;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
+
+.driver-image {
+  height: 20px;
+  margin-right: 0.35rem;
+}
+
+.normal {
+  .card-brand-image img {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid #000;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    background-color: var(--ion-color-dark);
+  }
+}
+
+.likes {
+  .card-likes {
     position: absolute;
     bottom: 0.6rem;
     font-size: 0.7rem;
@@ -43,74 +77,40 @@ ion-card-content {
     background: #000;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
-}
+  }
 
-.driver-image {
-    height: 20px;
-    margin-right: 0.35rem;
-}
-
-.normal {
-    .card-brand-image img {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 40;
-        height: 40px;
-        border-radius: 100%;
-        border: 2px solid #000;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        background-color: var(--ion-color-dark);
-    }
-}
-
-.likes {
-    .card-likes {
-        position: absolute;
-        bottom: 0.6rem;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: #fff;
-        left: 0rem;
-        padding: 0.25rem 1rem 0.25rem 0.8rem;
-        border-radius: 0px 10px 10px 0px;
-        background: #000;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        text-transform: uppercase;
-    }
-
-    .card-top-right {
-        text-align: center;
-        position: absolute;
-        top: 0.6rem;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: #fff;
-        right: 0rem;
-        padding: 0.25rem 1rem 0.25rem 0.8rem;
-        border-radius: 10px 0px 0px 10px;
-        background: #000;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        text-transform: uppercase;
-    }
+  .card-top-right {
+    text-align: center;
+    position: absolute;
+    top: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #fff;
+    right: 0rem;
+    padding: 0.25rem 1rem 0.25rem 0.8rem;
+    border-radius: 10px 0px 0px 10px;
+    background: #000;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+  }
 }
 
 .topCars {
-    .card-likes {
-        text-align: center;
-        position: absolute;
-        top: 0.6rem;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: #fff;
-        right: 0rem;
-        padding: 0.25rem 1rem 0.25rem 0.8rem;
-        border-radius: 10px 0px 0px 10px;
-        background: #000;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        text-transform: uppercase;
-        span {
-            font-weight: 900;
-        }
+  .card-likes {
+    text-align: center;
+    position: absolute;
+    top: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #fff;
+    right: 0rem;
+    padding: 0.25rem 1rem 0.25rem 0.8rem;
+    border-radius: 10px 0px 0px 10px;
+    background: #000;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    span {
+      font-weight: 900;
     }
+  }
 }

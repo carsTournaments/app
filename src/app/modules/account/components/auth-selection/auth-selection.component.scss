@@ -1,48 +1,48 @@
 .link-privacy-policy {
-    text-align: center;
-    padding-top: 1rem;
-    margin-bottom: 2rem;
-    a {
-        text-decoration: none;
-        color: #000;
-        font-weight: 400;
-    }
+  text-align: center;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
+  a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+  }
 }
 
 .divider {
-    display: flex;
+  display: flex;
 
-    &:before,
-    &:after {
-        content: '';
-        flex: 1;
-    }
+  &:before,
+  &:after {
+    content: '';
+    flex: 1;
+  }
 }
 
 .line {
-    align-items: center;
-    margin: 1em -1em;
-    color: #cccccc;
-    width: 100%;
+  align-items: center;
+  margin: 1em -1em;
+  color: #cccccc;
+  width: 100%;
 
-    &:before,
-    &:after {
-        height: 1px;
-        margin: 0 1em;
-    }
+  &:before,
+  &:after {
+    height: 1px;
+    margin: 0 1em;
+  }
 }
 
 .one-line {
-    &:before,
-    &:after {
-        background: #cccccc;
-    }
+  &:before,
+  &:after {
+    background: #cccccc;
+  }
 }
 
 hr {
-    width: 100%;
+  width: 100%;
 }
 
 .padding-5 {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }

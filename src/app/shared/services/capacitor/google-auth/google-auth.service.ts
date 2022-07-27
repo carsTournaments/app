@@ -5,23 +5,23 @@ import { Platform } from '@ionic/angular';
 
 @Injectable({ providedIn: 'root' })
 export class GoogleAuthService {
-    constructor(private platform: Platform) {}
+  constructor(private platform: Platform) {}
 
-    init(): void {
-        if (!this.platform.is('capacitor')) {
-            GoogleAuth.initialize({
-                clientId: environment.clientId,
-                scopes: ['profile', 'email'],
-                grantOfflineAccess: true,
-            });
-        }
+  init(): void {
+    if (!this.platform.is('capacitor')) {
+      GoogleAuth.initialize({
+        clientId: environment.clientId,
+        scopes: ['profile', 'email'],
+        grantOfflineAccess: true,
+      });
     }
+  }
 
-    login(): Promise<User> {
-        return GoogleAuth.signIn();
-    }
+  login(): Promise<User> {
+    return GoogleAuth.signIn();
+  }
 
-    logout(): Promise<void> {
-        return GoogleAuth.signOut();
-    }
+  logout(): Promise<void> {
+    return GoogleAuth.signOut();
+  }
 }

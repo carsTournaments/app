@@ -1,40 +1,60 @@
-<custom-header [options]="vm.header" (clickRightIcon)="onClickRightButton($event)"></custom-header>
+<custom-header
+  [options]="vm.header"
+  (clickRightIcon)="onClickRightButton($event)"
+></custom-header>
 
-<ion-content [fullscreen]="true" [scrollEvents]="true" class="animate__animated animate__fadeIn animate__faster">
+<ion-content
+  [fullscreen]="true"
+  [scrollEvents]="true"
+  class="animate__animated animate__fadeIn animate__faster"
+>
   <spinner [loading]="vm.loading"></spinner>
   <ion-row style="padding-top: 0" *ngIf="vm.car">
     <ion-col size="12" sizeLg="8" offsetLg="2">
-      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
 
       <ion-card mode="ios" (click)="openImage(vm.image)" button>
-        <div *ngIf="vm.image" class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+        <div
+          *ngIf="vm.image"
+          class="div-image-one"
+          [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
+        ></div>
       </ion-card>
 
-      <ion-title style="margin: 1rem 0 0.5rem 0;">Especificaciones</ion-title>
+      <ion-title style="margin: 1rem 0 0.5rem 0">Especificaciones</ion-title>
       <ion-card mode="ios">
-        <ion-card-content style="padding: 0.5rem"  *ngIf="vm.car">
+        <ion-card-content style="padding: 0.5rem" *ngIf="vm.car">
           <car-info [car]="vm.car"></car-info>
         </ion-card-content>
       </ion-card>
 
-      <ion-title style="margin: 1rem 0 0.5rem 0;">Totales</ion-title>
+      <ion-title style="margin: 1rem 0 0.5rem 0">Estadisticas</ion-title>
       <ion-card mode="ios">
-
         <ion-card-content style="padding: 0.5rem">
-          <car-totals [likes]="vm.car?.likes" [inscriptions]="vm.car?.inscriptions" [votes]="vm.car?.votes"
-            [gold]="vm.car?.gold" [silver]="vm.car?.silver" [bronze]="vm.car?.bronze"
-            (clickItem)="onClickTotalItem($event)"></car-totals>
+          <car-totals
+            [items]="vm.items"
+            [itemsOrder]="vm.itemsOrder"
+            (clickItem)="onClickTotalItem($event)"
+          >
+          </car-totals>
 
-          <car-totals-divs [states]="vm.states" [likes]="vm.likes" [inscriptions]="vm.inscriptions" [votes]="vm.votes">
+          <car-totals-divs
+            [states]="vm.states"
+            [likes]="vm.likes"
+            [inscriptions]="vm.inscriptions"
+            [votes]="vm.votes"
+          >
           </car-totals-divs>
         </ion-card-content>
       </ion-card>
 
-      <ion-title style="margin: 1rem 0 0.5rem 0;">Piloto</ion-title>
+      <ion-title style="margin: 1rem 0 0.5rem 0">Piloto</ion-title>
       <ion-card mode="ios">
         <car-driver [driver]="vm.car?.driver"></car-driver>
       </ion-card>
-
     </ion-col>
   </ion-row>
 </ion-content>

@@ -1,37 +1,51 @@
 .card-trophy {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .number-trophy {
-    font-size: 1rem;
-    font-weight: 500 !important;
-    display: inline-block;
-    padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 500 !important;
+  display: inline-block;
+  padding-left: 1rem;
 }
 
 ion-icon {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .like {
-    color: var(--ion-color-primary);
+  color: var(--ion-color-primary);
 }
 
 .icons-line1 {
-    border-bottom: 1px solid #e2e2e2;
-    padding: 0rem 0 0.75rem 0;
-    margin-top: -0.25rem;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 0rem 0 0.75rem 0;
+  margin-top: -0.25rem;
 }
 
 .icons-line2 {
-    padding: 0.75rem 0 0.5rem 0;
-    margin-bottom: -0.25rem;
+  padding: 0.75rem 0 0.5rem 0;
+  margin-bottom: -0.25rem;
 }
 
 .inscriptions {
-    color: var(--ion-color-dark);
+  color: var(--ion-color-dark);
 }
 
 fa-icon {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.car-info-value {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ion-color-dark);
+}
+
+.car-info-key {
+  font-weight: 500;
 }

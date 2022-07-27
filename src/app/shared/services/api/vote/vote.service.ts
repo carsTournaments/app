@@ -9,50 +9,50 @@ import { VoteGetAllOfCarDto } from './vote.dto';
 
 @Injectable({ providedIn: 'root' })
 export class VoteService {
-    url = `${environment.urlApi}/votes`;
-    constructor(
-        private httpClient: HttpClient,
-        private storageService: StorageService
-    ) {}
+  url = `${environment.urlApi}/votes`;
+  constructor(
+    private httpClient: HttpClient,
+    private storageService: StorageService
+  ) {}
 
-    getAllCarVotes(data: VoteGetAllOfCarDto): Observable<Vote[]> {
-        return this.httpClient.post<Vote[]>(`${this.url}/getAllCarVotes`, data);
-    }
+  getAllCarVotes(data: VoteGetAllOfCarDto): Observable<Vote[]> {
+    return this.httpClient.post<Vote[]>(`${this.url}/getAllCarVotes`, data);
+  }
 
-    getAllTournamentVotes(data: IdDto): Observable<Vote[]> {
-        return this.httpClient.post<Vote[]>(
-            `${this.url}/getAllTournamentVotes`,
-            data
-        );
-    }
+  getAllTournamentVotes(data: IdDto): Observable<Vote[]> {
+    return this.httpClient.post<Vote[]>(
+      `${this.url}/getAllTournamentVotes`,
+      data
+    );
+  }
 
-    create(data: Vote): Observable<Vote> {
-        return this.httpClient.post<Vote>(`${this.url}/create`, data);
-    }
+  create(data: Vote): Observable<Vote> {
+    return this.httpClient.post<Vote>(`${this.url}/create`, data);
+  }
 
-    delete(id: string): Observable<Vote> {
-        return this.httpClient.delete<Vote>(`${this.url}/one/${id}`);
-    }
+  delete(id: string): Observable<Vote> {
+    return this.httpClient.delete<Vote>(`${this.url}/one/${id}`);
+  }
 
-    async isValidVote(vote: Vote): Promise<boolean> {
-        const status = true;
-        const votes = await this.storageService.get<Vote[]>(`votes`);
-        if (votes) {
-            const voted = votes.find((v) => v.pairing === vote.pairing);
-            if (voted) {
-                return false;
-            }
-        }
-        return status;
+  async isValidVote(vote: Vote): Promise<boolean> {
+    const status = true;
+    const votes = await this.storageService.get<Vote[]>(`votes`);
+    if (votes) {
+      const voted = votes.find((v) => v.pairing === vote.pairing);
+      if (voted) {
+        return false;
+      }
     }
+    return status;
+  }
 
-    async setValidVote(vote: Vote): Promise<void> {
-        const votes = await this.storageService.get<Vote[]>(`votes`);
-        if (votes) {
-            votes.push(vote);
-            this.storageService.set(`votes`, votes);
-        } else {
-            this.storageService.set(`votes`, [vote]);
-        }
+  async setValidVote(vote: Vote): Promise<void> {
+    const votes = await this.storageService.get<Vote[]>(`votes`);
+    if (votes) {
+      votes.push(vote);
+      this.storageService.set(`votes`, votes);
+    } else {
+      this.storageService.set(`votes`, [vote]);
     }
+  }
 }

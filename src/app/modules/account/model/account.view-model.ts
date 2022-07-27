@@ -5,13 +5,13 @@ import { SettingsApp } from '@models/settings.model';
 import { UserGetResumeResponse } from '@services/api/user/user.responses';
 
 export class AccountViewModel {
-    header = new Header({
-        title: '',
-    });
-    options: OptionItemI[] = [];
-    registerMode = false;
-    user: User;
-    resume: UserGetResumeResponse;
-    settings: SettingsApp;
-    loading = true;
+  header = new Header({
+    title: '',
+  });
+  options: OptionItemI[] = [];
+  registerMode = false;
+  user: User;
+  resume: UserGetResumeResponse;
+  settings: SettingsApp;
+  loading = true;
 }

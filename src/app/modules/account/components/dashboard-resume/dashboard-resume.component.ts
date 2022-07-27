@@ -6,28 +6,26 @@ import { UserGetResumeResponse } from '@services/api/user/user.responses';
 import { config } from '@config';
 
 @Component({
-    selector: 'dashboard-resume',
-    templateUrl: 'dashboard-resume.component.html',
-    styleUrls: ['./dashboard-resume.component.scss'],
+  selector: 'dashboard-resume',
+  templateUrl: 'dashboard-resume.component.html',
+  styleUrls: ['./dashboard-resume.component.scss'],
 })
 export class DashboardResumeComponent {
-    @Input() resume: UserGetResumeResponse;
-    @Input() user: User;
-    image: Image;
-    constructor(
-        private imageService: ImageService,
-        private navCtrl: NavController
-    ) {}
+  @Input() resume: UserGetResumeResponse;
+  @Input() user: User;
+  image: Image;
+  constructor(
+    private imageService: ImageService,
+    private navCtrl: NavController
+  ) {}
 
-    openImage() {
-        this.imageService.openImage(this.image.url);
-    }
+  openImage() {
+    this.imageService.openImage(this.image.url);
+  }
 
-    goTo(type: string) {
-        const route =
-            type === 'garage'
-                ? config.routes.myGarage
-                : config.routes.myInscriptions;
-        this.navCtrl.navigateForward([route]);
-    }
+  goTo(type: string) {
+    const route =
+      type === 'garage' ? config.routes.myGarage : config.routes.myInscriptions;
+    this.navCtrl.navigateForward([route]);
+  }
 }

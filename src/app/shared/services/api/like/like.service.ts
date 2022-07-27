@@ -13,93 +13,91 @@ import { StorageService } from '@services';
 
 @Injectable({ providedIn: 'root' })
 export class LikeService {
-    url = `${environment.urlApi}/likes`;
-    constructor(
-        private httpClient: HttpClient,
-        private storageService: StorageService
-    ) {}
+  url = `${environment.urlApi}/likes`;
+  constructor(
+    private httpClient: HttpClient,
+    private storageService: StorageService
+  ) {}
 
-    getAll(
-        data: LikeGetAllDto
-    ): Observable<{ items: Like[]; paginator: PaginatorI }> {
-        return this.httpClient
-            .post<{ items: Like[]; paginator: PaginatorI }>(
-                `${this.url}/getAll`,
-                data
-            )
-            .pipe(take(1));
-    }
+  getAll(
+    data: LikeGetAllDto
+  ): Observable<{ items: Like[]; paginator: PaginatorI }> {
+    return this.httpClient
+      .post<{ items: Like[]; paginator: PaginatorI }>(
+        `${this.url}/getAll`,
+        data
+      )
+      .pipe(take(1));
+  }
 
-    getAllReceivedForUser(
-        data: IdDto
-    ): Observable<LikeGetAllReceivedForUserResponse[]> {
-        return this.httpClient
-            .post<LikeGetAllReceivedForUserResponse[]>(
-                `${this.url}/getAllReceivedForUser`,
-                data
-            )
-            .pipe(take(1));
-    }
+  getAllReceivedForUser(
+    data: IdDto
+  ): Observable<LikeGetAllReceivedForUserResponse[]> {
+    return this.httpClient
+      .post<LikeGetAllReceivedForUserResponse[]>(
+        `${this.url}/getAllReceivedForUser`,
+        data
+      )
+      .pipe(take(1));
+  }
 
-    getAllSentForUser(data: IdDto): Observable<Like[]> {
-        return this.httpClient
-            .post<Like[]>(`${this.url}/getAllSentForUser`, data)
-            .pipe(take(1));
-    }
+  getAllSentForUser(data: IdDto): Observable<Like[]> {
+    return this.httpClient
+      .post<Like[]>(`${this.url}/getAllSentForUser`, data)
+      .pipe(take(1));
+  }
 
-    getTopCars(limit: string): Observable<Car[]> {
-        return this.httpClient
-            .post<Car[]>(`${this.url}/getTopCars`, { limit })
-            .pipe(take(1));
-    }
+  getTopCars(limit: string): Observable<Car[]> {
+    return this.httpClient
+      .post<Car[]>(`${this.url}/getTopCars`, { limit })
+      .pipe(take(1));
+  }
 
-    getAllOfCar(data: LikeGetAllOfCarDto): Observable<Like[]> {
-        return this.httpClient
-            .post<Like[]>(`${this.url}/getAllOfCar`, data)
-            .pipe(take(1));
-    }
+  getAllCarLikes(data: LikeGetAllOfCarDto): Observable<Like[]> {
+    return this.httpClient
+      .post<Like[]>(`${this.url}/getAllCarLikes`, data)
+      .pipe(take(1));
+  }
 
-    create(data: Like): Observable<Like> {
-        return this.httpClient
-            .post<Like>(`${this.url}/create`, data)
-            .pipe(take(1));
-    }
+  create(data: Like): Observable<Like> {
+    return this.httpClient.post<Like>(`${this.url}/create`, data).pipe(take(1));
+  }
 
-    deleteByCarId(id: string): Observable<Like> {
-        return this.httpClient
-            .delete<Like>(`${this.url}/byCarId/${id}`)
-            .pipe(take(1));
-    }
+  deleteByCarId(id: string): Observable<Like> {
+    return this.httpClient
+      .delete<Like>(`${this.url}/byCarId/${id}`)
+      .pipe(take(1));
+  }
 
-    async checkLikedStorage(id: string): Promise<boolean> {
-        const likes = await this.storageService.get<string[]>('likes');
-        if (likes) {
-            const isLiked = likes.find((item) => item === id);
-            if (isLiked) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+  async checkLikedStorage(id: string): Promise<boolean> {
+    const likes = await this.storageService.get<string[]>('likes');
+    if (likes) {
+      const isLiked = likes.find((item) => item === id);
+      if (isLiked) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
+  }
 
-    async setLikedStorage(id: string): Promise<void> {
-        let likes = await this.storageService.get<string[]>('likes');
-        if (likes) {
-            likes.push(id);
-        } else {
-            likes = [id];
-        }
-        this.storageService.set('likes', likes);
+  async setLikedStorage(id: string): Promise<void> {
+    let likes = await this.storageService.get<string[]>('likes');
+    if (likes) {
+      likes.push(id);
+    } else {
+      likes = [id];
     }
+    this.storageService.set('likes', likes);
+  }
 
-    async removeLikeStorage(id: string): Promise<void> {
-        let likes = await this.storageService.get<string[]>('likes');
-        if (likes) {
-            likes = likes.filter((l) => l !== id);
-        }
-        this.storageService.set('likes', likes);
+  async removeLikeStorage(id: string): Promise<void> {
+    let likes = await this.storageService.get<string[]>('likes');
+    if (likes) {
+      likes = likes.filter((l) => l !== id);
     }
+    this.storageService.set('likes', likes);
+  }
 }

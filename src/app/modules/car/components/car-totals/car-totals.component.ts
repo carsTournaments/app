@@ -1,16 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CarTotalsI } from '@interfaces';
 
 @Component({
-    selector: 'car-totals',
-    templateUrl: 'car-totals.component.html',
-    styleUrls: ['./car-totals.component.scss'],
+  selector: 'car-totals',
+  templateUrl: 'car-totals.component.html',
+  styleUrls: ['./car-totals.component.scss'],
 })
 export class CarTotalsComponent {
-    @Input() votes: { count: number } = { count: 0 };
-    @Input() inscriptions: { count: number } = { count: 0 };
-    @Input() likes: { count: number } = { count: 0 };
-    @Input() gold: { count: number } = { count: 0 };
-    @Input() silver: { count: number } = { count: 0 };
-    @Input() bronze: { count: number } = { count: 0 };
-    @Output() clickItem: EventEmitter<string> = new EventEmitter<string>();
+  @Input() items: CarTotalsI;
+  @Input() itemsOrder: { name: string; value: string }[];
+  @Output() clickItem: EventEmitter<string> = new EventEmitter<string>();
 }
