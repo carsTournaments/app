@@ -5,20 +5,20 @@ import { NavController } from '@ionic/angular';
 import { AnalyticsService } from '@services';
 
 @Component({
-    selector: 'ranking-subitem',
-    templateUrl: 'ranking-subitem.component.html',
-    styleUrls: ['./ranking-subitem.component.scss'],
+  selector: 'ranking-subitem',
+  templateUrl: 'ranking-subitem.component.html',
+  styleUrls: ['./ranking-subitem.component.scss'],
 })
 export class RankingSubitemComponent {
-    @Input() ranking: CarRankingI;
-    @Input() itemsOrder: { name: string; value: string }[];
-    constructor(
-        private navCtrl: NavController,
-        private analyticsService: AnalyticsService
-    ) {}
+  @Input() ranking: CarRankingI;
+  @Input() itemsOrder: { name: string; value: string }[];
+  constructor(
+    private navCtrl: NavController,
+    private analyticsService: AnalyticsService
+  ) {}
 
-    goToCar(id: string) {
-        this.analyticsService.logEvent(`ranking_goToCar`);
-        this.navCtrl.navigateForward(config.routes.car.replace(':id', id));
-    }
+  goToCar(id: string) {
+    this.analyticsService.logEvent(`ranking_goToCar`);
+    this.navCtrl.navigateForward(config.routes.car.replace(':id', id));
+  }
 }

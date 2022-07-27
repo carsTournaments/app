@@ -5,25 +5,25 @@ import { User } from '@models';
 import { config } from '@config';
 
 export class MyInscriptionsViewModel {
-    header = new Header({
-        title: 'Inscripciones',
-        backButton: {
-            state: true,
-            route: config.routes.account,
-            default: true,
-        },
-    });
-    user: User;
-    inscriptions: InscriptionGetAllForDriverI;
-    loading = true;
-    error = false;
-    states = {
-        todo: false,
-        inProgress: true,
-        completed: false,
-    };
-    noitems = new NoItemsModel({
-        title: '',
-        subtitle: '',
-    });
+  header = new Header({
+    title: 'Inscripciones',
+    backButton: {
+      state: true,
+      route: config.routes.account,
+      default: true,
+    },
+  });
+  user: User;
+  inscriptions: InscriptionGetAllForDriverI;
+  loading = true;
+  error = false;
+  states = {
+    todo: false,
+    inProgress: true,
+    completed: false,
+  };
+  noitems = new NoItemsModel({
+    title: '',
+    subtitle: '',
+  });
 }

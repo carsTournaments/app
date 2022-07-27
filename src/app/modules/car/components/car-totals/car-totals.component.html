@@ -1,84 +1,53 @@
-<div class="card-trophy ion-text-center">
-    <ion-row class="icons-line1">
-        <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
-            [ngClass]="{ 'ion-activatable': likes?.count > 0 }"
-            (click)="likes?.count > 0 ? clickItem.emit('likes') : null"
+<ion-grid>
+  <ion-row class="ion-text-center">
+    <ng-container *ngFor="let item of itemsOrder | slice: 0:3; index as i">
+      <ion-col
+        size="4"
+        class="ion-text-center"
+        [ngClass]="{
+          'border-right': i !== 2,
+          'ion-activatable': items[item.value] > 0
+        }"
+        (click)="items[item.value] > 0 ? clickItem.emit(item.value) : null"
+      >
+        <p class="car-info-value">{{ items[item.value] }}</p>
+        <small
+          *ngIf="item.value !== 'tournamentsWinners'"
+          class="car-info-key"
+          >{{ item.name }}</small
         >
-            <fa-icon icon="thumbs-up" class="like"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="likes?.count ?? 0"
-                [duration]="1500"
-            ></p>
-            <ion-ripple-effect type="bounded"></ion-ripple-effect>
-        </ion-col>
+        <small *ngIf="item.value === 'tournamentsWinners'" class="car-info-key">
+          <ion-icon name="trophy" class="trophy gold"></ion-icon>
+          <ion-icon name="trophy" class="trophy silver"></ion-icon>
+          <ion-icon name="trophy" class="trophy bronze"></ion-icon>
+        </small>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-col>
+    </ng-container>
+  </ion-row>
 
-        <ion-col
-            class="ion-no-padding ion-no-margin"
-            [ngClass]="{ 'ion-activatable': inscriptions?.count > 0 }"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
-            (click)="
-                inscriptions?.count > 0 ? clickItem.emit('inscriptions') : null
-            "
+  <hr style="margin-top: 0.5rem" />
+  <ion-row class="ion-text-center">
+    <ng-container *ngFor="let item of itemsOrder | slice: 3:6; index as i">
+      <ion-col
+        size="4"
+        class="ion-text-center"
+        [ngClass]="{ 'border-right': i !== 2, pointer: items[item.value] > 0 }"
+        (click)="items[item.value] > 0 ? clickItem.emit(item.value) : null"
+      >
+        <p class="car-info-value">{{ items[item.value] }}</p>
+        <small
+          *ngIf="item.value !== 'tournamentsWinners'"
+          class="car-info-key"
+          >{{ item.name }}</small
         >
-            <fa-icon icon="clipboard-check" class="inscriptions"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="inscriptions?.count ?? 0"
-                [duration]="1500"
-            ></p>
-            <ion-ripple-effect type="bounded"></ion-ripple-effect>
-        </ion-col>
-
-        <ion-col
-            class="ion-no-padding ion-no-margin"
-            [ngClass]="{ 'ion-activatable': votes?.count > 0 }"
-            (click)="votes?.count > 0 ? clickItem.emit('votes') : null"
-        >
-            <fa-icon icon="heart" class="like"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="votes?.count ?? 0"
-                [duration]="1500"
-            ></p>
-            <ion-ripple-effect type="bounded"></ion-ripple-effect>
-        </ion-col>
-    </ion-row>
-
-    <ion-row class="icons-line2">
-        <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-right: 1px solid rgba(0, 0, 0, 0.1)"
-        >
-            <fa-icon icon="trophy" class="gold"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="gold?.count ?? 0"
-                [duration]="1500"
-            ></p>
-        </ion-col>
-
-        <ion-col class="ion-no-padding ion-no-margin">
-            <fa-icon icon="trophy" class="silver"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="silver?.count ?? 0"
-                [duration]="1500"
-            ></p>
-        </ion-col>
-
-        <ion-col
-            class="ion-no-padding ion-no-margin"
-            style="border-left: 1px solid rgba(0, 0, 0, 0.1)"
-        >
-            <fa-icon icon="trophy" class="bronze"></fa-icon>
-            <p
-                class="number-trophy"
-                [countUp]="bronze?.count ?? 0"
-                [duration]="1500"
-            ></p>
-        </ion-col>
-    </ion-row>
-</div>
+        <small *ngIf="item.value === 'tournamentsWinners'" class="car-info-key">
+          <ion-icon name="trophy" class="trophy gold"></ion-icon>
+          <ion-icon name="trophy" class="trophy silver"></ion-icon>
+          <ion-icon name="trophy" class="trophy bronze"></ion-icon>
+        </small>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-col>
+    </ng-container>
+  </ion-row>
+</ion-grid>

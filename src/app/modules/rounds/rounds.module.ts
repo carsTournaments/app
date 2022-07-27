@@ -8,12 +8,12 @@ import { RoundInfoComponent } from './components/round-info/round-info.component
 import { RoundPairingsComponent } from './components/round-pairings/round-pairings.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        TranslateModule,
-        RouterModule.forChild([{ path: '', component: RoundsPage }]),
-    ],
-    declarations: [RoundsPage, RoundInfoComponent, RoundPairingsComponent],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    TranslateModule,
+    RouterModule.forChild([{ path: '', component: RoundsPage }]),
+  ],
+  declarations: [RoundsPage, RoundInfoComponent, RoundPairingsComponent],
+  providers: [ImagePipe],
 })
 export class RoundsModule {}

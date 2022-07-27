@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class CustomTranslateLoader implements TranslateLoader {
-    contentHeader = new Headers({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-    });
+  contentHeader = new Headers({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  });
 
-    constructor(private http: HttpClient) {}
-    getTranslation(lang: string): Observable<any> {
-        const path = environment.urlApi + '/literals/' + lang;
-        return this.http.get(path);
-    }
+  constructor(private http: HttpClient) {}
+  getTranslation(lang: string): Observable<any> {
+    const path = environment.urlApi + '/literals/' + lang;
+    return this.http.get(path);
+  }
 }

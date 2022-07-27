@@ -7,15 +7,15 @@ import { CalendarItemTournamentComponent } from './components/calendar-item-tour
 import { CalendarPage } from './pages/calendar/calendar.page';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([{ path: '', component: CalendarPage }]),
-    ],
-    declarations: [
-        CalendarPage,
-        CalendarDatesComponent,
-        CalendarItemsComponent,
-        CalendarItemTournamentComponent,
-    ],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([{ path: '', component: CalendarPage }]),
+  ],
+  declarations: [
+    CalendarPage,
+    CalendarDatesComponent,
+    CalendarItemsComponent,
+    CalendarItemTournamentComponent,
+  ],
 })
 export class CalendarModule {}

@@ -7,15 +7,15 @@ import { SharedModule } from '@shared/shared.module';
 import { MyInscriptionsPage } from './pages/inscriptions/my-inscriptions.page';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([{ path: '', component: MyInscriptionsPage }]),
-    ],
-    declarations: [
-        MyInscriptionsPage,
-        MyInscriptionsStateComponent,
-        MyInscriptionsItemComponent,
-        MyInscriptionsPopoverComponent,
-    ],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([{ path: '', component: MyInscriptionsPage }]),
+  ],
+  declarations: [
+    MyInscriptionsPage,
+    MyInscriptionsStateComponent,
+    MyInscriptionsItemComponent,
+    MyInscriptionsPopoverComponent,
+  ],
 })
 export class MyInscriptionsModule {}

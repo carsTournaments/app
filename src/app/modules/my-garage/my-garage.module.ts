@@ -6,14 +6,14 @@ import { SharedModule } from '@shared/shared.module';
 import { GaragePopoverComponent } from './components/popover/garage-popover.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            { path: '', component: MyGarageListPage },
-            { path: 'one/:id', component: MyGarageOnePage },
-            { path: 'create', component: MyGarageOnePage },
-        ]),
-    ],
-    declarations: [MyGarageListPage, MyGarageOnePage, GaragePopoverComponent],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      { path: '', component: MyGarageListPage },
+      { path: 'one/:id', component: MyGarageOnePage },
+      { path: 'create', component: MyGarageOnePage },
+    ]),
+  ],
+  declarations: [MyGarageListPage, MyGarageOnePage, GaragePopoverComponent],
 })
 export class MyGarageModule {}

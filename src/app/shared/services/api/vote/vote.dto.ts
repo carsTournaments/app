@@ -1,4 +1,4 @@
 export interface VoteGetAllOfCarDto {
-    id: string;
-    limit: string;
+  id: string;
+  limit: string;
 }

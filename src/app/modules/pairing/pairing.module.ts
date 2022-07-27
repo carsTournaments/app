@@ -7,20 +7,20 @@ import { PairingHeaderComponent } from './components/pairing-header/pairing-head
 import { PairingBlockInfoComponent } from './components/pairing-block-info/pairing-block-info.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: PairingPage,
-            },
-        ]),
-    ],
-    declarations: [
-        PairingPage,
-        PairingHeaderComponent,
-        PairingBlockInfoComponent,
-    ],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: PairingPage,
+      },
+    ]),
+  ],
+  declarations: [
+    PairingPage,
+    PairingHeaderComponent,
+    PairingBlockInfoComponent,
+  ],
+  providers: [ImagePipe],
 })
 export class PairingModule {}

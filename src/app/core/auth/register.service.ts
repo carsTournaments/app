@@ -5,16 +5,16 @@ import { LoginOrRegisterResponseI } from '@interfaces';
 import { environment } from '@env/environment';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class RegisterService {
-    private path = `${environment.urlApi}/auth`;
-    constructor(protected http: HttpClient) {}
+  private path = `${environment.urlApi}/auth`;
+  constructor(protected http: HttpClient) {}
 
-    register(data: AuthRegisterDto) {
-        return this.http.post<LoginOrRegisterResponseI>(
-            `${this.path}/register`,
-            data
-        );
-    }
+  register(data: AuthRegisterDto) {
+    return this.http.post<LoginOrRegisterResponseI>(
+      `${this.path}/register`,
+      data
+    );
+  }
 }

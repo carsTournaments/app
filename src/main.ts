@@ -6,11 +6,11 @@ import { environment } from './environments/environment';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 if (environment.production) {
-    enableProdMode();
+  enableProdMode();
 }
 
 platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .catch((err) => console.error(err));
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
 
 defineCustomElements(window);
