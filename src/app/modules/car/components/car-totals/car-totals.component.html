@@ -6,14 +6,16 @@
         class="ion-text-center"
         [ngClass]="{
           'border-right': i !== 2,
-          'ion-activatable pointer': items[item.value] > 0
+          'ion-activatable': item[item.value] > 0
         }"
         (click)="items[item.value] > 0 ? clickItem.emit(item.value) : null"
       >
         <p class="car-info-value">{{ items[item.value] }}</p>
-        <small *ngIf="item.value !== 'tournamentsWinners'" class="car-info-key">
-          {{ item.name }}
-        </small>
+        <small
+          *ngIf="item.value !== 'tournamentsWinners'"
+          class="car-info-key"
+          >{{ item.name }}</small
+        >
         <small *ngIf="item.value === 'tournamentsWinners'" class="car-info-key">
           <ion-icon name="trophy" class="trophy gold"></ion-icon>
           <ion-icon name="trophy" class="trophy silver"></ion-icon>
@@ -30,10 +32,7 @@
       <ion-col
         size="4"
         class="ion-text-center"
-        [ngClass]="{
-          'border-right': i !== 2,
-          'ion-activatable pointer': items[item.value] > 0
-        }"
+        [ngClass]="{ 'border-right': i !== 2, pointer: items[item.value] > 0 }"
         (click)="items[item.value] > 0 ? clickItem.emit(item.value) : null"
       >
         <p class="car-info-value">{{ items[item.value] }}</p>

@@ -35,7 +35,7 @@
   <hr />
   <h1>
     {{ 'car.statsVotesTitle' | translate | uppercase }}
-    <fa-icon icon="heart" class="likevote"></fa-icon>
+    <fa-icon icon="check-to-slot" class="likevote"></fa-icon>
   </h1>
   <ion-item color="light" *ngFor="let item of votes; let i = index" button
     [routerLink]="['/tournament', item.tournament?._id]" [lines]="i !== votes.length -1 ? 'full' : 'none'">

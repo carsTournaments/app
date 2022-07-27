@@ -24,14 +24,14 @@
         ></div>
       </ion-card>
 
-      <ion-title style="margin: 1rem 0 0.5rem 0">Especificaciones</ion-title>
+      <ion-title mode="md" style="margin: 1rem 0 0.5rem 0">Especificaciones</ion-title>
       <ion-card mode="ios">
         <ion-card-content style="padding: 0.5rem" *ngIf="vm.car">
           <car-info [car]="vm.car"></car-info>
         </ion-card-content>
       </ion-card>
 
-      <ion-title style="margin: 1rem 0 0.5rem 0">Estadisticas</ion-title>
+      <ion-title mode="md" style="margin: 1rem 0 0.5rem 0">Estadisticas</ion-title>
       <ion-card mode="ios">
         <ion-card-content style="padding: 0.5rem">
           <car-totals
@@ -51,7 +51,7 @@
         </ion-card-content>
       </ion-card>
 
-      <ion-title style="margin: 1rem 0 0.5rem 0">Piloto</ion-title>
+      <ion-title mode="md" style="margin: 1rem 0 0.5rem 0">Piloto</ion-title>
       <ion-card mode="ios">
         <car-driver [driver]="vm.car?.driver"></car-driver>
       </ion-card>

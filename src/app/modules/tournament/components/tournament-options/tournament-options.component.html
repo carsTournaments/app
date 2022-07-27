@@ -1,4 +1,4 @@
-<ion-title style="margin: 1rem 0 0.5rem 0;">{{ 'tournament.titleOptions' | translate }}</ion-title>
+<ion-title mode="md" style="margin: 1rem 0 0.5rem 0;">{{ 'tournament.titleOptions' | translate }}</ion-title>
 <ion-card mode="ios" class="option-item"
   *ngIf="tournament.status === 'InProgress' ||tournament.status === 'Completed'">
   <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="clickOption.emit('goToRounds')">
