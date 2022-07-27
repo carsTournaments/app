@@ -1,43 +1,43 @@
 .tournament-image {
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
-    height: 150px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    border-right: 1px solid var(--ion-color-medium);
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  height: 150px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  border-right: 1px solid var(--ion-color-medium);
 }
 
 .car-wrapper {
-    background: #000;
-    position: absolute;
-    bottom: 0px;
-    border-radius: 10px;
+  background: #000;
+  position: absolute;
+  bottom: 0px;
+  border-radius: 10px;
 }
 
 .car-image {
-    border-left: 1px solid var(--ion-color-medium);
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
-    height: 50px;
-    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
-    width: 50px;
-    border-radius: 100%;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+  border-left: 1px solid var(--ion-color-medium);
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  height: 50px;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+  width: 50px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
 .car-title {
-    font-size: 1rem;
-    font-weight: 800;
-    position: relative;
-    left: 0;
-    bottom: 50;
+  font-size: 1rem;
+  font-weight: 800;
+  position: relative;
+  left: 0;
+  bottom: 50;
 
-    p {
-        color: #fff;
-        left: 10px;
-        position: relative;
-    }
+  p {
+    color: #fff;
+    left: 10px;
+    position: relative;
+  }
 }

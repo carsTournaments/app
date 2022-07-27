@@ -1,8 +1,8 @@
 import { environment } from '@env/environment';
 import { TestBed } from '@angular/core/testing';
 import {
-    HttpClientTestingModule,
-    HttpTestingController,
+  HttpClientTestingModule,
+  HttpTestingController,
 } from '@angular/common/http/testing';
 import { PairingService } from '../..';
 import { Pairing } from '@models';
@@ -10,35 +10,35 @@ import { Pairing } from '@models';
 const item = new Pairing();
 
 describe('PairingService', () => {
-    let httpTestingController: HttpTestingController;
-    let service: PairingService;
+  let httpTestingController: HttpTestingController;
+  let service: PairingService;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [PairingService],
-            imports: [HttpClientTestingModule],
-        });
-
-        httpTestingController = TestBed.inject(HttpTestingController);
-        service = TestBed.inject(PairingService);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [PairingService],
+      imports: [HttpClientTestingModule],
     });
 
-    afterEach(() => {
-        httpTestingController.verify();
-    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(PairingService);
+  });
 
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
+  afterEach(() => {
+    httpTestingController.verify();
+  });
 
-    it('getOne', () => {
-        service.getOne('1').subscribe((response) => {
-            expect(response).not.toBe(null);
-            expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
-        });
-        const req = httpTestingController.expectOne(
-            `${environment.urlApi}/pairings/one`
-        );
-        req.flush(item);
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('getOne', () => {
+    service.getOne('1').subscribe((response) => {
+      expect(response).not.toBe(null);
+      expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
     });
+    const req = httpTestingController.expectOne(
+      `${environment.urlApi}/pairings/one`
+    );
+    req.flush(item);
+  });
 });

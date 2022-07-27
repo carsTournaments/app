@@ -1,7 +1,8 @@
 export interface UserGetResumeResponse {
-    cars: number;
-    inscriptions: number;
-    winner: number;
-    likes: number;
-    votes: number;
+  votes: number;
+  inscriptions: number;
+  likes: number;
+  tournamentsWinners: string;
+  pairings: number;
+  pairingsWinners: number;
 }

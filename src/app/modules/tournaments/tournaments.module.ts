@@ -5,16 +5,16 @@ import { TournamentsPage } from './tournaments.page';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: TournamentsPage,
-            },
-        ]),
-    ],
-    declarations: [TournamentsPage],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: TournamentsPage,
+      },
+    ]),
+  ],
+  declarations: [TournamentsPage],
+  providers: [ImagePipe],
 })
 export class TournamentsModule {}

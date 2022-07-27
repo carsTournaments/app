@@ -1,48 +1,48 @@
 small {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 hr {
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .avatar-border {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .like {
-    fa-icon {
-        color: var(--ion-color-primary);
-    }
+  fa-icon {
+    color: var(--ion-color-primary);
+  }
 
-    ion-label {
-        font-weight: 500;
-    }
+  ion-label {
+    font-weight: 500;
+  }
 
-    small {
-        font-weight: 400;
-    }
+  small {
+    font-weight: 400;
+  }
 }
 
 .driver {
-    span {
-        padding-top: 0.25rem;
-        font-size: 0.8rem;
-    }
-    fa-icon {
-        color: var(--ion-color-light);
-        padding-right: 0.25rem;
-    }
+  span {
+    padding-top: 0.25rem;
+    font-size: 0.8rem;
+  }
+  fa-icon {
+    color: var(--ion-color-light);
+    padding-right: 0.25rem;
+  }
 }
 
 .title {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 2px;
-    font-size: 17px;
-    font-weight: 400 !important;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 17px;
+  font-weight: 400 !important;
 }

@@ -12,20 +12,20 @@ import { AuthSelectionComponent } from './components/auth-selection/auth-selecti
 import { AuthAfterRegisterComponent } from './components/auth-after-register/auth-after-register.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        FontAwesomeModule,
-        RouterModule.forChild([{ path: '', component: AccountPage }]),
-    ],
-    declarations: [
-        AccountPage,
-        DashboardComponent,
-        DashboardResumeComponent,
-        AuthComponent,
-        AuthSelectionComponent,
-        AuthLoginComponent,
-        AuthRegisterComponent,
-        AuthAfterRegisterComponent,
-    ],
+  imports: [
+    SharedModule,
+    FontAwesomeModule,
+    RouterModule.forChild([{ path: '', component: AccountPage }]),
+  ],
+  declarations: [
+    AccountPage,
+    DashboardComponent,
+    DashboardResumeComponent,
+    AuthComponent,
+    AuthSelectionComponent,
+    AuthLoginComponent,
+    AuthRegisterComponent,
+    AuthAfterRegisterComponent,
+  ],
 })
 export class AccountModule {}

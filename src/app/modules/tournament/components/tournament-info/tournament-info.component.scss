@@ -1,44 +1,44 @@
 .mb-20 {
-    margin-bottom: -20px;
+  margin-bottom: -20px;
 }
 
 .title {
-    font-size: 1.5rem;
-    font-weight: 900;
-    padding-top: 0.75rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  padding-top: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .images-inscriptions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0.25rem;
 }
 
 .image-inscription {
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    margin: 0.15rem;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin: 0.15rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .image-inscription-div {
-    width: 35px;
-    height: 35px;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
+  width: 35px;
+  height: 35px;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
 }
 
 .tournament-info-value {
-    font-weight: 900;
-    font-size: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ion-color-dark);
 }
 
 .tournament-info-key {
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
 }

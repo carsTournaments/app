@@ -1,3 +1,3 @@
 export interface ConfigI {
-    routes: any;
+  routes: any;
 }

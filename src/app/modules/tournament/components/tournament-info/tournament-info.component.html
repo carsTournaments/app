@@ -1,58 +1,81 @@
-<ion-title style="margin: 1rem 0 0.5rem 0;">Info</ion-title>
+<ion-title mode="md" style="margin: 1rem 0 0.5rem 0">Información</ion-title>
 <ion-card mode="ios">
-
   <ion-card-content style="padding: 0.5rem; padding-bottom: 0.5rem">
-    <ng-container *ngIf="tournament.status === 'InProgress' || tournament.status === 'Completed'">
+    <ng-container
+      *ngIf="
+        tournament.status === 'InProgress' || tournament.status === 'Completed'
+      "
+    >
       <ion-row>
         <ion-col [size]="cols" class="ion-text-center border-right">
           <p class="tournament-info-value">
-            {{
-            tournament.startDate
-            | momentDateShort
-            }}
+            {{ tournament.startDate | momentDateShort }}
           </p>
-          <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoStart' | translate
+          }}</small>
         </ion-col>
 
-        <ion-col *ngIf="tournament.endDate" [size]="cols" class="ion-text-center border-right">
+        <ion-col
+          *ngIf="tournament.endDate"
+          [size]="cols"
+          class="ion-text-center border-right"
+        >
           <p class="tournament-info-value">
-            {{
-            tournament.endDate
-            | momentDateShort
-            }}
+            {{ tournament.endDate | momentDateShort }}
           </p>
-          <small class="car-info-key">{{ 'tournament.infoEnd' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoEnd' | translate
+          }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
-          <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
-          <small class="car-info-key">{{ 'tournament.infoDuration' | translate }}</small>
+          <p class="tournament-info-value">
+            {{ tournament.durationDays }} dias
+          </p>
+          <small class="car-info-key">{{
+            'tournament.infoDuration' | translate
+          }}</small>
         </ion-col>
       </ion-row>
-      <hr style="margin:0.5rem">
+      <hr style="margin: 0.5rem" />
       <ion-row>
-
         <ion-col [size]="cols" class="ion-text-center border-right">
           <p class="tournament-info-value">
-            <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
-              [countUp]="tournament.maxParticipants" [duration]="1500"></span>
+            <span
+              [countUp]="tournament?.inscriptions.length"
+              [duration]="1500"
+            ></span
+            >/<span
+              [countUp]="tournament.maxParticipants"
+              [duration]="1500"
+            ></span>
           </p>
-          <small class="car-info-key">{{ 'tournament.infoParticipants' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoParticipants' | translate
+          }}</small>
         </ion-col>
 
-        <ion-col *ngIf="tournament.rounds && tournament.rounds.length > 0" [size]="cols"
-          class="ion-text-center border-right">
+        <ion-col
+          *ngIf="tournament.rounds && tournament.rounds.length > 0"
+          [size]="cols"
+          class="ion-text-center border-right"
+        >
           <p class="tournament-info-value">
             <span [countUp]="tournament.rounds.length" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">{{ 'tournament.infoRounds' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoRounds' | translate
+          }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
           <p class="tournament-info-value">
             <span [countUp]="tournament?.votes.length" [duration]="1500"></span>
           </p>
-          <small class="car-info-key">{{ 'tournament.infoVotes' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoVotes' | translate
+          }}</small>
         </ion-col>
       </ion-row>
     </ng-container>
@@ -61,47 +84,51 @@
       <ion-row>
         <ion-col [size]="cols" class="ion-text-center border-right">
           <p class="tournament-info-value">
-            {{
-            tournament.startDate
-            | momentDateShort
-            }}
+            {{ tournament.startDate | momentDateShort }}
           </p>
-          <small class="car-info-key">{{ 'tournament.infoStart' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoStart' | translate
+          }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center border-right">
-          <p class="tournament-info-value">{{ tournament.durationDays }} dias</p>
-          <small class="car-info-key">{{ 'tournament.infoDuration' | translate }}</small>
+          <p class="tournament-info-value">
+            {{ tournament.durationDays }} dias
+          </p>
+          <small class="car-info-key">{{
+            'tournament.infoDuration' | translate
+          }}</small>
         </ion-col>
 
         <ion-col [size]="cols" class="ion-text-center">
           <p class="tournament-info-value">
-            <span [countUp]="tournament?.inscriptions.length" [duration]="1500"></span>/<span
-              [countUp]="tournament.maxParticipants" [duration]="1500"></span>
+            <span
+              [countUp]="tournament?.inscriptions.length"
+              [duration]="1500"
+            ></span
+            >/<span
+              [countUp]="tournament.maxParticipants"
+              [duration]="1500"
+            ></span>
           </p>
-          <small class="car-info-key">{{ 'tournament.infoParticipants' | translate }}</small>
+          <small class="car-info-key">{{
+            'tournament.infoParticipants' | translate
+          }}</small>
         </ion-col>
       </ion-row>
     </ng-container>
 
     <ng-container *ngIf="tournament.info && tournament.info !== ''">
       <hr />
-      <p style="padding-top: .5rem" class="ion-text-center" [ngStyle]="{
-                    'padding-bottom': buttonInscription ? '0px' : '10px'
-                }">
+      <p
+        style="padding-top: 0.5rem"
+        class="ion-text-center"
+        [ngStyle]="{
+          'padding-bottom': buttonInscription ? '0px' : '10px'
+        }"
+      >
         {{ tournament.info }}
       </p>
     </ng-container>
-
-    <tournament-requisites [buttonInscription]="buttonInscription" [tournament]="tournament">
-    </tournament-requisites>
   </ion-card-content>
-
-  </ion-card>
-
-  <ion-card mode="ios">
-  <ng-container *ngIf="buttonInscription">
-    <ion-button mode="ios" class="ion-margin" expand="block" (click)="inscriptionCarClick.emit()">Inscribirse
-    </ion-button>
-  </ng-container>
 </ion-card>

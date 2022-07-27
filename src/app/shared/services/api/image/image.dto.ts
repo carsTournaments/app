@@ -1,4 +1,4 @@
 export interface ImageUploadDto {
-    type: string;
-    id: string;
+  type: string;
+  id: string;
 }

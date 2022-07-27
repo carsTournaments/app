@@ -12,93 +12,91 @@ import { Location } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
-    url = `${environment.urlApi}/settings`;
-    settings: SettingsAppI;
-    constructor(
-        private httpClient: HttpClient,
-        private platform: Platform,
-        private alertService: AlertService,
-        private admobService: AdmobService,
-        private storageService: StorageService,
-        public location: Location
-    ) {}
+  url = `${environment.urlApi}/settings`;
+  settings: SettingsAppI;
+  constructor(
+    private httpClient: HttpClient,
+    private platform: Platform,
+    private alertService: AlertService,
+    private admobService: AdmobService,
+    private storageService: StorageService,
+    public location: Location
+  ) {}
 
-    async getSettingsDB(): Promise<void> {
-        const data: SettingsAppDto = {};
-        if (this.platform.is('capacitor')) {
-            const info = await App.getInfo();
-            data.version = info.version;
-            data.platform = this.platform.is('android') ? 'android' : 'ios';
-        }
-        this.httpClient
-            .post<SettingsAppI>(`${this.url}/getSettingsForApp`, data)
-            .pipe(take(1))
-            .subscribe({
-                next: (response: SettingsAppI) => {
-                    this.setSettings(response);
-                    this.checkUpdate(response);
-                    this.checkStates(response);
-                },
-            });
+  async getSettingsDB(): Promise<void> {
+    const data: SettingsAppDto = {};
+    if (this.platform.is('capacitor')) {
+      const info = await App.getInfo();
+      data.version = info.version;
+      data.platform = this.platform.is('android') ? 'android' : 'ios';
     }
+    this.httpClient
+      .post<SettingsAppI>(`${this.url}/getSettingsForApp`, data)
+      .pipe(take(1))
+      .subscribe({
+        next: (response: SettingsAppI) => {
+          this.setSettings(response);
+          this.checkUpdate(response);
+          this.checkStates(response);
+        },
+      });
+  }
 
-    setSettings(data: SettingsAppI): void {
-        this.storageService.set('settings', data);
-    }
+  setSettings(data: SettingsAppI): void {
+    this.storageService.set('settings', data);
+  }
 
-    async getSettings(): Promise<SettingsAppI> {
-        const settings = await this.storageService.get<SettingsAppI>(
-            'settings'
-        );
-        if (settings) {
-            this.settings = settings;
-            return this.settings;
-        } else {
-            await this.getSettingsDB();
-            this.getSettings();
-        }
+  async getSettings(): Promise<SettingsAppI> {
+    const settings = await this.storageService.get<SettingsAppI>('settings');
+    if (settings) {
+      this.settings = settings;
+      return this.settings;
+    } else {
+      await this.getSettingsDB();
+      this.getSettings();
     }
+  }
 
-    private checkUpdate(data: SettingsAppI): void {
-        if (data.isNeedUpdate) {
-            if (data.isNeedUpdate.mandatory) {
-                this.onMandatoryUpdate(data.isNeedUpdate);
-            } else if (data.isNeedUpdate.update) {
-                this.isAvailableUpdate(data.isNeedUpdate);
-            }
-        }
+  private checkUpdate(data: SettingsAppI): void {
+    if (data.isNeedUpdate) {
+      if (data.isNeedUpdate.mandatory) {
+        this.onMandatoryUpdate(data.isNeedUpdate);
+      } else if (data.isNeedUpdate.update) {
+        this.isAvailableUpdate(data.isNeedUpdate);
+      }
     }
+  }
 
-    private onMandatoryUpdate(data: SettingsCheckUpdateI) {
-        this.alertService.presentAlertWithButtons(
-            'Actualización obligatoria',
-            'Es necesario actualizar la aplicación para poder continuar',
-            [{ text: 'Ok', handler: () => this.goToMarket(data) }]
-        );
-    }
+  private onMandatoryUpdate(data: SettingsCheckUpdateI) {
+    this.alertService.presentAlertWithButtons(
+      'Actualización obligatoria',
+      'Es necesario actualizar la aplicación para poder continuar',
+      [{ text: 'Ok', handler: () => this.goToMarket(data) }]
+    );
+  }
 
-    private isAvailableUpdate(data: SettingsCheckUpdateI): void {
-        this.alertService.presentAlertWithButtons(
-            'Actualización disponible',
-            '¿Quieres actualizar la aplicacion?',
-            [
-                { text: 'No', role: 'cancel' },
-                { text: 'Si', handler: () => this.goToMarket(data) },
-            ]
-        );
-    }
+  private isAvailableUpdate(data: SettingsCheckUpdateI): void {
+    this.alertService.presentAlertWithButtons(
+      'Actualización disponible',
+      '¿Quieres actualizar la aplicacion?',
+      [
+        { text: 'No', role: 'cancel' },
+        { text: 'Si', handler: () => this.goToMarket(data) },
+      ]
+    );
+  }
 
-    private async goToMarket(data: SettingsCheckUpdateI): Promise<void> {
-        Browser.open({ url: data.urlMarket }).then(() => {
-            App.exitApp();
-        });
-    }
+  private async goToMarket(data: SettingsCheckUpdateI): Promise<void> {
+    Browser.open({ url: data.urlMarket }).then(() => {
+      App.exitApp();
+    });
+  }
 
-    private checkStates(data: SettingsAppI): void {
-        if (data.state) {
-            if (data.state.admob) {
-                this.admobService.init();
-            }
-        }
+  private checkStates(data: SettingsAppI): void {
+    if (data.state) {
+      if (data.state.admob) {
+        this.admobService.init();
+      }
     }
+  }
 }
