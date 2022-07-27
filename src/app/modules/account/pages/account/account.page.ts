@@ -15,7 +15,6 @@ import { ToggleService } from '@core/services/toggle.service';
 @Component({
     selector: 'app-account',
     templateUrl: 'account.page.html',
-    styleUrls: ['./account.page.scss'],
 })
 export class AccountPage {
     vm = new AccountViewModel();
