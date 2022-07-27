@@ -11,8 +11,9 @@ import { config } from '@config';
   styleUrls: ['./dashboard-resume.component.scss'],
 })
 export class DashboardResumeComponent {
-  @Input() resume: UserGetResumeResponse;
+  @Input() items: UserGetResumeResponse;
   @Input() user: User;
+  @Input() itemsOrder: { name: string; value: string }[];
   image: Image;
   constructor(
     private imageService: ImageService,

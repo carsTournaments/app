@@ -13,5 +13,13 @@ export class AccountViewModel {
   user: User;
   resume: UserGetResumeResponse;
   settings: SettingsApp;
+  itemsOrder = [
+    { name: 'Carreras', value: 'pairings' },
+    { name: 'Victorias', value: 'pairingsWinners' },
+    { name: 'Votos', value: 'votes' },
+    { name: 'Inscripciones', value: 'inscriptions' },
+    { name: 'Me Gustas', value: 'likes' },
+    { name: 'Oro/Plata/Bronce', value: 'tournamentsWinners' },
+  ];
   loading = true;
 }

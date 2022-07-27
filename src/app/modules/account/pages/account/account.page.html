@@ -10,7 +10,7 @@
       <auth (changeTitle)="onChangeTitle($event)" (loggedSuccess)="onLogged()" *ngIf="!logged"></auth>
 
       <ng-container *ngIf="logged && vm.user && vm.resume">
-        <dashboard [resume]="vm.resume" [user]="vm.user" [options]="vm.options" (goTo)="onClickOption($event)">
+        <dashboard [resume]="vm.resume" [user]="vm.user" [options]="vm.options" [itemsOrder]="vm.itemsOrder" (goTo)="onClickOption($event)">
         </dashboard>
       </ng-container>
     </ion-col>

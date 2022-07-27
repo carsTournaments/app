@@ -6,7 +6,7 @@
         class="ion-text-center"
         [ngClass]="{
           'border-right': i !== 2,
-          'ion-activatable': item[item.value] > 0
+          'ion-activatable': items[item.value] > 0
         }"
         (click)="items[item.value] > 0 ? clickItem.emit(item.value) : null"
       >
