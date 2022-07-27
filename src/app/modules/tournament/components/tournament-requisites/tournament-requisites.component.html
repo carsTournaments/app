@@ -1,31 +1,19 @@
 <ng-container *ngIf="tournament.requisites?.length > 0">
-    <div [ngClass]="{ 'mb-20': buttonInscription }">
-        <hr />
-        <ion-accordion-group>
-            <ion-accordion>
-                <ion-item
-                    slot="header"
-                    class="option-item"
-                    style="margin-top: 0.75rem"
-                >
-                    <p class="requirement-title">Requisitos de inscripcion</p>
-                </ion-item>
+  <ion-title mode="md" style="margin: 1rem 0 0.5rem 0">Requisitos</ion-title>
 
-                <ion-list slot="content">
-                    <ion-item
-                        class="option-item"
-                        *ngFor="let item of tournament.requisites"
-                        lines="none"
-                    >
-                        <ion-icon
-                            slot="end"
-                            class="requirement-item-icon"
-                            name="checkmark-circle"
-                        ></ion-icon>
-                        <p>{{ item.name }}</p>
-                    </ion-item>
-                </ion-list>
-            </ion-accordion>
-        </ion-accordion-group>
-    </div>
+  <ion-card
+    mode="ios"
+    *ngFor="let item of tournament.requisites"
+    class="option-item"
+  >
+    <ion-item color="light" mode="ios" lines="none" detailIcon="alert-circle-outline" detail>
+      <ion-icon
+        slot="end"
+
+      ></ion-icon>
+      <ion-label
+        ><h2>{{ item.name }}</h2></ion-label
+      >
+    </ion-item>
+  </ion-card>
 </ng-container>

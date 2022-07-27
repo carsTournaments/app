@@ -4,25 +4,58 @@
   <spinner [loading]="vm.loading.getOne"></spinner>
   <ion-row style="padding-top: 0" *ngIf="vm.tournament">
     <ion-col size="12" sizeLg="8" offsetLg="2">
-      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
 
       <div class="animate__animated animate__fadeIn animate__faster">
-        <ion-card mode="ios" *ngIf="vm.image" (click)="openImage(vm.image)" button>
-          <div class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+        <ion-card
+          mode="ios"
+          *ngIf="vm.image"
+          (click)="openImage(vm.image)"
+          button
+        >
+          <div
+            class="div-image-one"
+            [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
+          ></div>
         </ion-card>
 
-        <tournament-info *ngIf="vm.inscriptions" [buttonInscription]="vm.buttonInscription" [tournament]="vm.tournament"
-          [inscriptions]="vm.inscriptions" (inscriptionCarClick)="inscriptionCar()">
+        <tournament-info
+          *ngIf="vm.inscriptions"
+          [buttonInscription]="vm.buttonInscription"
+          [tournament]="vm.tournament"
+          [inscriptions]="vm.inscriptions"
+          (inscriptionCarClick)="inscriptionCar()"
+        >
         </tournament-info>
 
-        <tournament-winners *ngIf="vm.winners" [winners]="vm.winners" (clickItem)="goToCar($event)">
+        <tournament-requisites
+          [buttonInscription]="vm.buttonInscription"
+          [tournament]="vm.tournament"
+        >
+        </tournament-requisites>
+
+        <tournament-winners
+          *ngIf="vm.winners"
+          [winners]="vm.winners"
+          (clickItem)="goToCar($event)"
+        >
         </tournament-winners>
 
-        <tournament-my-inscriptions *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Todo'"
-          [myCars]="vm.myCars" (confirmDeleteInscriptionClick)="confirmDeleteInscription($event)">
-        </tournament-my-inscriptions>
+        <tournament-my-cars
+          *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Todo'"
+          [myCars]="vm.myCars"
+          (inscriptionClick)="createInscription($event)"
+          (deleteInscriptionClick)="confirmDeleteInscription($event)"
+        >
+        </tournament-my-cars>
 
-        <tournament-options [tournament]="vm.tournament" (clickOption)="onClickOption($event)"></tournament-options>
+        <tournament-options
+          [tournament]="vm.tournament"
+          (clickOption)="onClickOption($event)"
+        ></tournament-options>
       </div>
     </ion-col>
   </ion-row>

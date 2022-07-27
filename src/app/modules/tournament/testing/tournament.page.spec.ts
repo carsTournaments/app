@@ -45,7 +45,7 @@ const responseGetMyCarsForInscription: InscriptionGetMyCarsUserForInscriptionRes
   {
     inscribed: [],
     availables: [],
-    notAvailables: [],
+    unavailable: [],
   };
 
 describe('TournamentPage', () => {

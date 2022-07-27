@@ -18,6 +18,7 @@ import {
   SocialSharingService,
   ToastIonicService,
 } from '@services';
+import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
 import { TournamentViewModel } from '../../model/tournament.view-model';
 
 @Component({
@@ -93,26 +94,30 @@ export class TournamentPage {
     this.inscriptionService
       .getMyCarsForInscription(this.vm.inscriptionsBody)
       .subscribe({
-        next: (data) => {
-          this.vm.myCars = data;
-          if (
-            (this.vm.tournament?.inscriptions &&
-              this.vm.tournament?.inscriptions.length ===
-                this.vm.tournament.maxParticipants) ||
-            data.availables.length === 0
-          ) {
-            this.vm.buttonInscription = false;
-          } else {
-            this.vm.buttonInscription = true;
-          }
-          this.vm.loading.getCarsUsersForInscription = false;
-          this.vm.error.getCarsUsersForInscription = false;
-        },
+        next: (data) => this.getCarsUsersForInscriptionOnSuccess(data),
         error: () => {
           this.vm.loading.getCarsUsersForInscription = false;
           this.vm.error.getCarsUsersForInscription = true;
         },
       });
+  }
+
+  getCarsUsersForInscriptionOnSuccess(
+    data: InscriptionGetMyCarsUserForInscriptionResponse
+  ) {
+    this.vm.myCars = data;
+    if (
+      (this.vm.tournament?.inscriptions &&
+        this.vm.tournament?.inscriptions.length ===
+          this.vm.tournament.maxParticipants) ||
+      data.availables.length === 0
+    ) {
+      this.vm.buttonInscription = false;
+    } else {
+      this.vm.buttonInscription = true;
+    }
+    this.vm.loading.getCarsUsersForInscription = false;
+    this.vm.error.getCarsUsersForInscription = false;
   }
 
   scrollToTop() {
