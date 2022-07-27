@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Inscription, Tournament } from '@models';
+import { Component, Input } from '@angular/core';
+import { Tournament } from '@models';
 import { SwiperOptions } from 'swiper';
 
 @Component({
@@ -9,9 +9,6 @@ import { SwiperOptions } from 'swiper';
 })
 export class TournamentInfoComponent {
   @Input() tournament: Tournament;
-  @Input() buttonInscription: boolean;
-  @Input() inscriptions: Inscription[] = [];
-  @Output() inscriptionCarClick: EventEmitter<void> = new EventEmitter();
   cols = '4';
   slideOpts: SwiperOptions = {
     slidesPerView: 6.1,
