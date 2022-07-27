@@ -45,7 +45,7 @@ describe('VoteService', () => {
     });
 
     it('getAllOfCar', () => {
-        service.getAllOfCar({ id: '1', limit: '10' }).subscribe((response) => {
+        service.getAllCarVotes({ id: '1', limit: '10' }).subscribe((response) => {
             expect(response).not.toBe(null);
             expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
         });
@@ -56,7 +56,7 @@ describe('VoteService', () => {
     });
 
     it('getAllOfTournament', () => {
-        service.getAllOfTournament({ id: '1' }).subscribe((response) => {
+        service.getAllTournamentVotes({ id: '1' }).subscribe((response) => {
             expect(response).not.toBe(null);
             expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
         });

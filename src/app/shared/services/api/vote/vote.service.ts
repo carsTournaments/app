@@ -15,13 +15,13 @@ export class VoteService {
         private storageService: StorageService
     ) {}
 
-    getAllOfCar(data: VoteGetAllOfCarDto): Observable<Vote[]> {
-        return this.httpClient.post<Vote[]>(`${this.url}/getAllOfCar`, data);
+    getAllCarVotes(data: VoteGetAllOfCarDto): Observable<Vote[]> {
+        return this.httpClient.post<Vote[]>(`${this.url}/getAllCarVotes`, data);
     }
 
-    getAllOfTournament(data: IdDto): Observable<Vote[]> {
+    getAllTournamentVotes(data: IdDto): Observable<Vote[]> {
         return this.httpClient.post<Vote[]>(
-            `${this.url}/getAllOfTournament`,
+            `${this.url}/getAllTournamentVotes`,
             data
         );
     }

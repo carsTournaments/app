@@ -144,7 +144,7 @@ export class CarPage implements OnInit {
     }
 
     getVotes() {
-        this.voteService.getAllOfCar({ id: this.vm.id, limit: '5' }).subscribe({
+        this.voteService.getAllCarVotes({ id: this.vm.id, limit: '5' }).subscribe({
             next: (data) => {
                 this.vm.votes = data;
             },
