@@ -22,6 +22,8 @@ export class Car {
   bronze?: { count: number };
   inscriptions?: { count: number };
   votes?: { count: number };
+  pairings: { count: number };
+  pairingsWinners: { count: number };
   created?: string;
   updated?: string;
 
@@ -47,6 +49,8 @@ export class Car {
     this.bronze = data?.bronze;
     this.inscriptions = data?.inscriptions;
     this.votes = data?.votes;
+    this.pairings = data?.pairings;
+    this.pairingsWinners = data?.pairingsWinners;
     this.created = data?.created;
     this.updated = data?.updated;
   }

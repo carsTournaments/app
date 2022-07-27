@@ -81,8 +81,8 @@ export class CarPage implements OnInit {
 
   setTotalsItem() {
     this.vm.items = {
-      pairings: 0,
-      pairingsWinners: 0,
+      pairings: this.vm.car.pairings?.count ?? 0,
+      pairingsWinners: this.vm.car.pairingsWinners?.count ?? 0,
       likes: this.vm.car.likes?.count ?? 0,
       inscriptions: this.vm.car.inscriptions?.count ?? 0,
       votes: this.vm.car.votes?.count ?? 0,
