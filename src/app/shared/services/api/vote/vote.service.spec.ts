@@ -45,10 +45,12 @@ describe('VoteService', () => {
     });
 
     it('getAllOfCar', () => {
-        service.getAllCarVotes({ id: '1', limit: '10' }).subscribe((response) => {
-            expect(response).not.toBe(null);
-            expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
-        });
+        service
+            .getAllCarVotes({ id: '1', limit: '10' })
+            .subscribe((response) => {
+                expect(response).not.toBe(null);
+                expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
+            });
         const req = httpTestingController.expectOne(
             `${environment.urlApi}/votes/getAllOfCar`
         );

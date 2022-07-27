@@ -144,11 +144,13 @@ export class CarPage implements OnInit {
     }
 
     getVotes() {
-        this.voteService.getAllCarVotes({ id: this.vm.id, limit: '5' }).subscribe({
-            next: (data) => {
-                this.vm.votes = data;
-            },
-        });
+        this.voteService
+            .getAllCarVotes({ id: this.vm.id, limit: '5' })
+            .subscribe({
+                next: (data) => {
+                    this.vm.votes = data;
+                },
+            });
     }
 
     onClickRightButton(event: number) {
