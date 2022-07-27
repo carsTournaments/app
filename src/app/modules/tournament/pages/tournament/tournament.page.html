@@ -47,7 +47,7 @@
         <tournament-my-cars
           *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Todo'"
           [myCars]="vm.myCars"
-          (inscriptionClick)="createInscription($event)"
+          (inscriptionClick)="inscriptionConfirmation($event)"
           (deleteInscriptionClick)="confirmDeleteInscription($event)"
         >
         </tournament-my-cars>

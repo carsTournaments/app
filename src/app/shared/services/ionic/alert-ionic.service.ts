@@ -5,23 +5,6 @@ import { AlertController } from '@ionic/angular';
 export class AlertService {
   constructor(private alertCtrl: AlertController) {}
 
-  async presentAlert(
-    header: string,
-    message: string,
-    cssClass = 'alert-custom',
-    backdropDismiss = false
-  ): Promise<void> {
-    const alert = await this.alertCtrl.create({
-      header,
-      message,
-      cssClass,
-      backdropDismiss,
-      mode: 'ios',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
-
   async presentAlertWithInput(
     header: string,
     message: string,

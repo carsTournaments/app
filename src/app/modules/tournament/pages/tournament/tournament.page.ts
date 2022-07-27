@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { config } from '@config';
-import { ActionSheetButton, IonContent, NavController } from '@ionic/angular';
+import { IonContent, NavController } from '@ionic/angular';
 import { Car, Inscription } from '@models';
 import { TranslateService } from '@ngx-translate/core';
 import { ImagePipe } from '@pipes';
@@ -14,7 +14,6 @@ import {
   AnalyticsService,
   UtilsService,
   UserService,
-  ActionSheetIonicService,
   SocialSharingService,
   ToastIonicService,
 } from '@services';
@@ -37,7 +36,6 @@ export class TournamentPage {
     private userService: UserService,
     private navCtrl: NavController,
     private imagePipe: ImagePipe,
-    private actionSheetService: ActionSheetIonicService,
     private alertService: AlertService,
     private winnerService: WinnerService,
     private imageService: ImageService,
@@ -142,23 +140,6 @@ export class TournamentPage {
             this.vm.error.getWinners = true;
           },
         });
-    }
-  }
-
-  inscriptionCar() {
-    if (this.vm.myCars.availables.length > 1) {
-      const buttons: ActionSheetButton[] = [];
-      for (const car of this.vm.myCars.availables) {
-        buttons.push({
-          text: car.brand.name + ' ' + car.model,
-          handler: () => this.createInscription(car),
-        });
-      }
-      this.analyticsService.logEvent('tournament_inscriptionCarMultiple');
-      this.actionSheetService.present('Elige el coche', buttons);
-    } else if (this.vm.myCars.availables.length === 1) {
-      this.analyticsService.logEvent('tournament_inscriptionCarOne');
-      this.inscriptionConfirmation(this.vm.myCars.availables[0]);
     }
   }
 

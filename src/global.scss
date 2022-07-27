@@ -211,17 +211,19 @@ hr {
 }
 
 .alert-custom-with-buttons {
-  --background: var(--ion-color-primary);
+  --background: var(--ion-color-light);
   --border-radius: 10px;
+  --border-color: var(--ion-color-primary);
+  --color: var(--ion-color-dark);
 
   .alert-wrapper {
-    --border-color: #000;
+    border: 2px solid var(--ion-color-primary);
   }
 
   .alert-title,
   .alert-message,
   .alert-button {
-    color: #fff;
+    // color: #fff;
   }
 
   .alert-message {
@@ -239,9 +241,9 @@ hr {
   }
 
   .alert-button {
-    background: #000 !important;
+    font-size: 1rem;
+    background: var(--ion-color-primary) !important;
     color: #fff;
-    padding: 1rem;
     border-radius: 10px;
     margin: 0.5rem;
   }
