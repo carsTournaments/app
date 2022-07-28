@@ -1,6 +1,6 @@
-import { CarTotalsI } from './../../../shared/interfaces/car-totals.interface';
 import { Header } from '@components/header/model/header.model';
 import { config } from '@config';
+import { CarTotalsI } from '@interfaces';
 import { Car, Inscription, Like, User, Vote } from '@models';
 
 export class CarViewModel {

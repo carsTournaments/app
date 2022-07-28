@@ -11,12 +11,10 @@ import { TranslateService } from '@ngx-translate/core';
 import {
   AlertService,
   CarService,
-  UtilsService,
   UserService,
-  ImageService,
   ToastIonicService,
 } from '@services';
-import { GaragePopoverComponent } from '../../components/popover/garage-popover.component';
+import { MyGaragePopoverComponent } from '../../components/popover-garage/my-garage-popover.component';
 import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
 
 @Component({
@@ -31,14 +29,12 @@ export class MyGarageListPage {
     private navCtrl: NavController,
     private alertService: AlertService,
     private popoverCtrl: PopoverController,
-    private imageService: ImageService,
     private userService: UserService,
-    private utilsService: UtilsService,
     private translate: TranslateService,
     private toastIonicService: ToastIonicService
   ) {}
 
-  async ionViewWillEnter(): Promise<void> {
+  ionViewWillEnter(): void {
     this.getAllCars();
   }
 
@@ -60,7 +56,7 @@ export class MyGarageListPage {
 
   async openPopover(e: any, car: Car): Promise<void> {
     const options: PopoverOptions = {
-      component: GaragePopoverComponent,
+      component: MyGaragePopoverComponent,
       event: e,
       mode: 'ios',
       cssClass: 'popover-garage',
@@ -78,7 +74,9 @@ export class MyGarageListPage {
       } else if (data.data === 'edit') {
         this.editCar(car);
       } else if (data.data === 'image') {
-        this.addImage(car);
+        this.navCtrl.navigateForward(
+          config.routes.myGarageImages.replace(':id', car._id)
+        );
       } else {
         this.deleteCar(car);
       }
@@ -88,16 +86,6 @@ export class MyGarageListPage {
   editCar(car: Car): void {
     this.navCtrl.navigateForward(
       config.routes.myGarageOne.replace(':id', car._id)
-    );
-  }
-
-  async addImage(car: Car): Promise<void> {
-    this.imageService.addNewToGallery('car', car._id).then(
-      () => this.utilsService.reloadPage(),
-      () =>
-        this.toastIonicService.error(
-          'Error al añadir imagen, intentalo mas tarde'
-        )
     );
   }
 

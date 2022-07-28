@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 
 @Component({
-  selector: 'garage-popover',
-  templateUrl: 'garage-popover.component.html',
+  selector: 'my-garage-image-popover',
+  templateUrl: 'my-garage-image-popover.component.html',
 })
-export class GaragePopoverComponent {
+export class MyGarageImagePopoverComponent {
   constructor(private popoverCtrl: PopoverController) {}
 
   async onClick(type: string) {

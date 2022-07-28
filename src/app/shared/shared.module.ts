@@ -61,20 +61,21 @@ import {
 import { SwiperModule } from 'swiper/angular';
 import { CountUpDirective } from './directives/count-up/count-up.directive';
 import {
-  ImagePipe,
-  DateToTimeAgoPipe,
-  LastRoundPipe,
-  MomentFormatAgoPipe,
-  TruncateTextPipe,
-  FirstLetterPipe,
-  DateToDayOrMonthPipe,
-  PercentagePipe,
-  FlagByFilePipe,
-  VotesPipe,
-  MomentDateShortPipe,
-  FuelPipe,
   CountryByValue,
+  DateToDayOrMonthPipe,
+  DateToTimeAgoPipe,
+  FirstLetterPipe,
+  FlagByFilePipe,
+  FuelPipe,
+  ImageCarPipe,
+  ImagePipe,
+  LastRoundPipe,
+  MomentDateShortPipe,
+  MomentFormatAgoPipe,
+  PercentagePipe,
   TractionPipe,
+  TruncateTextPipe,
+  VotesPipe,
 } from './pipes';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -120,6 +121,7 @@ const PIPES = [
   FlagByFilePipe,
   FuelPipe,
   ImagePipe,
+  ImageCarPipe,
   LastRoundPipe,
   MomentDateShortPipe,
   MomentFormatAgoPipe,
