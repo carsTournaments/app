@@ -1,15 +1,15 @@
-@import "~@ionic/angular/css/core.css";
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
-@import "~@ionic/angular/css/display.css";
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
-@import "~animate.css/animate.min.css";
-@import "swiper/css/bundle";
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import '~animate.css/animate.min.css';
+@import 'swiper/css/bundle';
 
 .ripple-parent {
   position: relative;
@@ -304,7 +304,7 @@ hr {
   padding: 0.5rem;
 }
 
-ion-title[size="large"] {
+ion-title[size='large'] {
   padding: 0;
   padding-left: 0.5rem;
   color: var(--ion-color-dark);
