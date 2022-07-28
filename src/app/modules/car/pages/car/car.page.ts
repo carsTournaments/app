@@ -11,7 +11,7 @@ import {
 } from '@services';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImagePipe } from '@pipes';
+import { ImageCarPipe } from '@pipes';
 import { Car, Like } from '@models';
 import { IonContent } from '@ionic/angular';
 import { CarViewModel } from '../../models/car.view-model';
@@ -20,6 +20,7 @@ import { CarViewModel } from '../../models/car.view-model';
   selector: 'page-car',
   templateUrl: 'car.page.html',
   styleUrls: ['./car.page.scss'],
+  providers: [ImageCarPipe],
 })
 export class CarPage implements OnInit {
   @ViewChild(IonContent, { static: false }) content: IonContent;
@@ -27,7 +28,7 @@ export class CarPage implements OnInit {
   constructor(
     private carService: CarService,
     private route: ActivatedRoute,
-    private imagePipe: ImagePipe,
+    private imageCarPipe: ImageCarPipe,
     private imageService: ImageService,
     private likeService: LikeService,
     private inscriptionService: InscriptionService,
@@ -58,8 +59,8 @@ export class CarPage implements OnInit {
   async getOneSuccess(data: Car): Promise<void> {
     this.vm.car = data;
     this.vm.header.title = `${data.brand?.name} ${data.model}`;
-    if (data && data.image) {
-      this.vm.image = this.imagePipe.transform(data.image.url);
+    if (data && data.images) {
+      this.vm.image = this.imageCarPipe.transform(data.images);
     }
     if (data.liked) {
       this.vm.liked = true;

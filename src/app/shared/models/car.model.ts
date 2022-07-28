@@ -14,6 +14,7 @@ export class Car {
   year: number;
   tournaments?: Tournament[];
   image?: any;
+  images?: any;
   liked?: boolean;
   likes?: { count: number };
   lastLike?: string;
@@ -41,6 +42,7 @@ export class Car {
     this.year = data?.year;
     this.tournaments = data?.tournaments;
     this.image = data?.image;
+    this.images = data?.image;
     this.liked = data?.liked;
     this.likes = data?.likes;
     this.lastLike = data?.lastLike;

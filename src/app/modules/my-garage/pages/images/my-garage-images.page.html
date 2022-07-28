@@ -1,0 +1,50 @@
+<custom-header [options]="vm.header"></custom-header>
+
+<ion-content
+  [fullscreen]="true"
+  class="animate__animated animate__fadeIn animate__faster"
+>
+  <ion-row style="padding-top: 0">
+    <ion-col
+      class="ion-no-padding"
+      style="padding-top: 0"
+      size="12"
+      sizeLg="8"
+      offsetLg="2"
+    >
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
+      <ion-row style="margin:0.5rem">
+        <ion-col size="4" class="item">
+          <ion-card
+            mode="ios"
+            button
+            class="ion-no-margin item-add"
+            (click)="addImage()"
+          >
+            <ion-icon name="add"></ion-icon>
+          </ion-card>
+        </ion-col>
+
+        <ion-col
+          size="4"
+          class="item"
+          *ngFor="let image of vm.images; let i = index"
+        >
+          <ion-card
+            mode="ios"
+            button
+            class="ion-no-margin"
+            [ngStyle]="{
+              'background-image': 'url(' + getImage(image) + ')'
+            }"
+            (click)="openPopover($event, image)"
+          >
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

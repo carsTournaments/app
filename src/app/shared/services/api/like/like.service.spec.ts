@@ -61,7 +61,7 @@ describe('LikeService', () => {
   });
 
   it('getAllSentForUser', () => {
-    service.getAllSentForUser({ id: '1' }).subscribe((response) => {
+    service.getAllUserSubmittedLikes({ id: '1' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
     });

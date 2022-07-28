@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Car, Image } from '@models';
-import { ImagePipe } from '@pipes';
+import { ImageCarPipe } from '@pipes';
 
 @Component({
   selector: 'car-item',
   templateUrl: 'car-item.component.html',
   styleUrls: ['./car-item.component.scss'],
+  providers: [ImageCarPipe],
 })
 export class CarItemComponent implements OnInit {
   @Input() car: Car;
@@ -19,7 +20,7 @@ export class CarItemComponent implements OnInit {
   @Output() clickItem: EventEmitter<Car> = new EventEmitter<Car>();
   image: Image;
   backgroundImage: string;
-  constructor(private imagePipe: ImagePipe) {}
+  constructor(private imageCarPipe: ImageCarPipe) {}
 
   ngOnInit() {
     this.setImageForBackground();
@@ -28,8 +29,8 @@ export class CarItemComponent implements OnInit {
   setImageForBackground() {
     if (this.car) {
       this.image = {
-        url: this.imagePipe.transform(
-          this.car.image && this.car.image.url ? this.car.image.url : null
+        url: this.imageCarPipe.transform(
+          this.car.images && this.car.images.length > 0 ? this.car.images : null
         ),
       };
       this.backgroundImage = `

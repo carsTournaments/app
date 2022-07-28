@@ -16,13 +16,7 @@
         [buttons]="true"
       ></custom-header-sub>
 
-      <ion-card mode="ios" (click)="openImage(vm.image)" button>
-        <div
-          *ngIf="vm.image"
-          class="div-image-one"
-          [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"
-        ></div>
-      </ion-card>
+      <car-images [images]="vm.car.images" (openImage)="openImage($event)"></car-images>
 
       <ion-title mode="md" style="margin: 1rem 0 0.5rem 0">
         Especificaciones
