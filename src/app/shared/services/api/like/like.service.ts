@@ -41,9 +41,9 @@ export class LikeService {
       .pipe(take(1));
   }
 
-  getAllSentForUser(data: IdDto): Observable<Like[]> {
+  getAllUserSubmittedLikes(data: IdDto): Observable<Like[]> {
     return this.httpClient
-      .post<Like[]>(`${this.url}/getAllSentForUser`, data)
+      .post<Like[]>(`${this.url}/getAllUserSubmittedLikes`, data)
       .pipe(take(1));
   }
 

@@ -10,6 +10,7 @@ export const routes = {
   myGarage: 'my-garage',
   myGarageCreate: 'my-garage/create',
   myGarageOne: 'my-garage/one/:id',
+  myGarageImages: 'my-garage/images/:id',
   myInscriptions: 'my-inscriptions',
   myLikes: 'my-likes',
   pairing: 'pairing/:id',

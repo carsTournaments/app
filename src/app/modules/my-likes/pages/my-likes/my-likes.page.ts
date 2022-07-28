@@ -62,11 +62,13 @@ export class MyLikesPage {
   }
 
   async getAllSentForUser() {
-    this.likesService.getAllSentForUser({ id: this.vm.user._id }).subscribe({
-      next: (response) => {
-        this.vm.likesSent = response;
-      },
-    });
+    this.likesService
+      .getAllUserSubmittedLikes({ id: this.vm.user._id })
+      .subscribe({
+        next: (response) => {
+          this.vm.likesSent = response;
+        },
+      });
   }
 
   onClickCar(car: Car) {
