@@ -34,13 +34,8 @@ export class MyGarageImagesPage {
     private analyticsService: AnalyticsService
   ) {}
   ionViewWillEnter(): void {
-    this.getAllImagesCar();
-  }
-
-  ngOnInit() {
     this.vm.id = this.route.snapshot.paramMap.get('id')!;
-    if (this.vm.id) {
-    }
+    this.getAllImagesCar();
   }
 
   getAllImagesCar() {
