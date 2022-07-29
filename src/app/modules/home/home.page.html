@@ -1,35 +1,28 @@
 <ion-content>
-    <div class="ion-content" *ngIf="!loading">
-        <img [src]="logo" />
-        <div class="wrapper ion-text-center">
-            <!-- <p class="title">CarsTournaments</p> -->
-            <p class="description">
-                Torneos de coches ficticios basados en popularidad. ¿Que como va
-                esto? <br />¡Aqui no gana el que mas corre, si no el que mas
-                apoyo tiene!
-            </p>
-            <br />
-            <ion-row
-                style="padding-top: 0"
-                class="animate__animated animate__fadeIn animate__faster"
-            >
-                <ion-col
-                    style="padding-top: 0"
-                    size="12"
-                    sizeLg="8"
-                    offsetLg="2"
-                >
-                    <ion-button
-                        style="margin-top: 0.5rem"
-                        mode="ios"
-                        color="primary"
-                        expand="block"
-                        (click)="enter()"
-                    >
-                        Entrar
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </div>
+  <div class="ion-content" *ngIf="!loading">
+    <img [src]="logo" />
+    <div class="wrapper ion-text-center">
+      <p class="description">
+        {{ 'home.descriptionOne' | translate }}<br />
+        {{ 'home.descriptionTwo' | translate }}
+      </p>
+      <br />
+      <ion-row
+        style="padding-top: 0"
+        class="animate__animated animate__fadeIn animate__faster"
+      >
+        <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
+          <ion-button
+            style="margin-top: 0.5rem"
+            mode="ios"
+            color="primary"
+            expand="block"
+            (click)="enter()"
+          >
+            {{ 'home.buttonEnter' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </div>
+  </div>
 </ion-content>

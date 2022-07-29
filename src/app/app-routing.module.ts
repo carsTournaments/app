@@ -103,7 +103,7 @@ const routes: Routes = [
   },
   {
     path: config.routes.home,
-    redirectTo: 'home',
+    redirectTo: '',
     pathMatch: 'full',
   },
 ];
