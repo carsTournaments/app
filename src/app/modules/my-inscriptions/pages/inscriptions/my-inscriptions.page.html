@@ -18,7 +18,7 @@
         [state]="vm.states.inProgress" type="inProgress"></my-inscriptions-state>
 
       <my-inscriptions-state [title]="'inscriptions.todo' | translate" [items]="vm.inscriptions.todo"
-        [state]="vm.states.todo" type="todo" (openPopover)="openPopover($event)"></my-inscriptions-state>
+        [state]="vm.states.todo" type="todo" (openOptions)="openOptions($event)"></my-inscriptions-state>
 
       <my-inscriptions-state [title]="'inscriptions.completed' | translate" [items]="vm.inscriptions.completed"
         [state]="vm.states.completed" type="completed"></my-inscriptions-state>

@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { config } from '@config';
-import {
-  NavController,
-  PopoverController,
-  PopoverOptions,
-} from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { Car } from '@models';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,8 +9,8 @@ import {
   CarService,
   UserService,
   ToastIonicService,
+  ActionSheetIonicService,
 } from '@services';
-import { MyGaragePopoverComponent } from '../../components/popover-garage/my-garage-popover.component';
 import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
 
 @Component({
@@ -28,10 +24,10 @@ export class MyGarageListPage {
     private carService: CarService,
     private navCtrl: NavController,
     private alertService: AlertService,
-    private popoverCtrl: PopoverController,
     private userService: UserService,
     private translate: TranslateService,
-    private toastIonicService: ToastIonicService
+    private toastIonicService: ToastIonicService,
+    private actionSheetService: ActionSheetIonicService
   ) {}
 
   ionViewWillEnter(): void {
@@ -54,30 +50,45 @@ export class MyGarageListPage {
     });
   }
 
-  async openPopover(e: any, car: Car): Promise<void> {
-    const options: PopoverOptions = {
-      component: MyGaragePopoverComponent,
-      event: e,
-      mode: 'ios',
-      cssClass: 'popover-garage',
-      reference: 'event',
-    };
-    const popover = await this.popoverCtrl.create(options);
-    popover.present();
-    popover.onDidDismiss().then((data) => this.onDidDismissPopover(data, car));
+  async openOptions(car: Car) {
+    const buttons = [
+      {
+        text: this.translate.instant('garageList.viewProfile'),
+        data: 'viewProfile',
+        icon: 'eye-outline',
+      },
+      {
+        text: this.translate.instant('garageList.editCar'),
+        data: 'edit',
+        icon: 'create-outline',
+      },
+      {
+        text: this.translate.instant('garageList.images'),
+        data: 'images',
+        icon: 'images-outline',
+      },
+      {
+        text: this.translate.instant('garageList.deleteCar'),
+        data: 'deleteCar',
+        icon: 'close-outline',
+      },
+    ];
+
+    const as = await this.actionSheetService.present('Opciones', buttons);
+    as.onDidDismiss().then((data) => this.onDidDismissOptions(data, car));
   }
 
-  onDidDismissPopover(data: OverlayEventDetail<any>, car: Car): void {
+  onDidDismissOptions(data: OverlayEventDetail<any>, car: Car): void {
     if (data.data) {
       if (data.data === 'viewProfile') {
         this.navCtrl.navigateForward(config.routes.car.replace(':id', car._id));
       } else if (data.data === 'edit') {
         this.editCar(car);
-      } else if (data.data === 'image') {
+      } else if (data.data === 'images') {
         this.navCtrl.navigateForward(
           config.routes.myGarageImages.replace(':id', car._id)
         );
-      } else {
+      } else if (data.data === 'deleteCar') {
         this.deleteCar(car);
       }
     }

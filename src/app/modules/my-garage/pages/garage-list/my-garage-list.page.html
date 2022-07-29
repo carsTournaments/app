@@ -11,7 +11,7 @@
       <ng-container> </ng-container>
       <ng-container *ngIf="vm.cars.length > 0">
         <ng-container *ngFor="let car of vm.cars; let i = index">
-          <div (click)="openPopover($event, car)">
+          <div (click)="openOptions(car)">
             <car-item [car]="car"> </car-item>
           </div>
         </ng-container>

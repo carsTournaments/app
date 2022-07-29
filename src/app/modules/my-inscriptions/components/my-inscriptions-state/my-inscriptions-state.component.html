@@ -21,7 +21,7 @@
         <my-inscriptions-item
             *ngFor="let item of items"
             [item]="item"
-            (openPopover)="openPopover.emit($event)"
+            (openOptions)="openOptions.emit($event)"
         >
         </my-inscriptions-item>
     </ng-container>
