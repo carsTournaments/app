@@ -7,7 +7,7 @@
 //     getTestBed,
 // } from '@angular/core/testing';
 // import { RouterTestingModule } from '@angular/router/testing';
-// import { NavController, PopoverController } from '@ionic/angular';
+// import { NavController } from '@ionic/angular';
 // import { of, throwError } from 'rxjs';
 // import { ComponentsModule } from 'src/app/components/components.module';
 // import { car, user } from 'src/app/models/models.mock.spec';
@@ -21,7 +21,7 @@
 // } from 'src/app/services';
 // import {
 //authService, brandService,
-// alertService, carService, imageService, navCtrl, popoverCtrl, utilsService } from 'src/app/services/services.mock.spec';
+// alertService, carService, imageService, navCtrl, utilsService } from 'src/app/services/services.mock.spec';
 // import { GarageOnePage } from './garage-one.page';
 
 // xdescribe('GarageOnePage', () => {
@@ -45,7 +45,6 @@
 //                 { provide: CarService, useValue: carService },
 //                 { provide: ImageService, useValue: imageService },
 //                 { provide: NavController, useValue: navCtrl },
-//                 { provide: PopoverController, useValue: popoverCtrl },
 //                 { provide: UtilsService, useValue: utilsService },
 //             ],
 //             schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -13,8 +13,7 @@ export class MyInscriptionsItemComponent {
     tournament: Tournament;
     cars: Car[];
   };
-  @Output() openPopover: EventEmitter<{
-    event: any;
+  @Output() openOptions: EventEmitter<{
     carId: string;
     tournamentId: string;
   }> = new EventEmitter();
@@ -26,9 +25,9 @@ export class MyInscriptionsItemComponent {
     );
   }
 
-  clickCar(e: any, carId: string, tournamentId: string): void {
+  clickCar(carId: string, tournamentId: string): void {
     if (this.item.tournament.status === 'Todo') {
-      this.openPopover.emit({ event: e, carId, tournamentId });
+      this.openOptions.emit({ carId, tournamentId });
     } else {
       this.navCtrl.navigateForward(config.routes.car.replace(':id', carId));
     }

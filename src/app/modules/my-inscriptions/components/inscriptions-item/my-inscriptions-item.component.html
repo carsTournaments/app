@@ -10,7 +10,7 @@
                 class="option-item"
                 *ngFor="let car of item?.cars"
                 button
-                (click)="clickCar($event, car._id, item.tournament._id)"
+                (click)="clickCar(car._id, item.tournament._id)"
                 [detail]="item.tournament.status === 'Todo' ? false : true"
                 lines="none"
             >

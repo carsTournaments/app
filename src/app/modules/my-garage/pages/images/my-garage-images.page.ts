@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Image } from '@models';
 import {
+  ActionSheetIonicService,
   AlertService,
   AnalyticsService,
   ImageService,
@@ -10,8 +11,6 @@ import {
 } from '@services';
 import { ImageCarPipe } from '@pipes';
 import { MyGarageImagesViewModel } from '../../models/my-garage-images.view-model';
-import { PopoverController, PopoverOptions } from '@ionic/angular';
-import { MyGarageImagePopoverComponent } from '../../components/popover-image/my-garage-image-popover.component';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from '@env/environment';
 
@@ -28,10 +27,10 @@ export class MyGarageImagesPage {
     private toastIonicService: ToastIonicService,
     private route: ActivatedRoute,
     private imageCarPipe: ImageCarPipe,
-    private popoverCtrl: PopoverController,
     private translate: TranslateService,
     private alertService: AlertService,
-    private analyticsService: AnalyticsService
+    private analyticsService: AnalyticsService,
+    private actionSheetService: ActionSheetIonicService
   ) {}
   ionViewWillEnter(): void {
     this.vm.id = this.route.snapshot.paramMap.get('id')!;
@@ -64,28 +63,36 @@ export class MyGarageImagesPage {
     return this.imageCarPipe.transform([image]);
   }
 
-  async openPopover(e: any, image: Image): Promise<void> {
-    const options: PopoverOptions = {
-      component: MyGarageImagePopoverComponent,
-      event: e,
-      mode: 'ios',
-      cssClass: 'popover-garage',
-      reference: 'event',
-    };
-    const popover = await this.popoverCtrl.create(options);
-    popover.present();
-    popover
-      .onDidDismiss()
-      .then((data) => this.onDidDismissPopover(data, image));
+  async openOptions(image: Image) {
+    const buttons = [
+      {
+        text: this.translate.instant('garageImages.firstImage'),
+        data: 'firstImage',
+        icon: 'star-outline',
+      },
+      {
+        text: this.translate.instant('garageImages.viewImage'),
+        data: 'viewImage',
+        icon: 'eye-outline',
+      },
+      {
+        text: this.translate.instant('garageImages.deleteImage'),
+        data: 'deleteImage',
+        icon: 'close-outline',
+      },
+    ];
+
+    const as = await this.actionSheetService.present('Opciones', buttons);
+    as.onDidDismiss().then((data) => this.onDidDismissOptions(data, image));
   }
 
-  onDidDismissPopover(data: OverlayEventDetail<any>, image: Image): void {
+  onDidDismissOptions(data: OverlayEventDetail<any>, image: Image): void {
     if (data.data) {
       if (data.data === 'viewImage') {
         this.openImage(image);
       } else if (data.data === 'firstImage') {
         this.setFirstImage(image);
-      } else {
+      } else if (data.data === 'deleteImage') {
         this.deleteImage(image);
       }
     }

@@ -83,16 +83,6 @@ hr {
   cursor: pointer;
 }
 
-.popover-garage {
-  &::part(content) {
-    border: 2px solid var(--ion-color-primary);
-  }
-
-  &::part(arrow) {
-    --background: var(--ion-color-primary);
-  }
-}
-
 .modal-pairing {
   --width: 80%;
   --max-height: 190px;
@@ -340,14 +330,17 @@ ion-segment {
 
 .action-sheet-primary {
   --background: var(--ion-color-medium);
-  --color: #000;
-  --button-color: #000;
-  --button-color-activated: var(--ion-color-primary);
-  --button-color-focused: var(--ion-color-primary);
+  --color: var(--ion-color-dark);
+  --button-color: var(--ion-color-dark);
+  --button-color-activated: var(--ion-color-dark-shade);
+  --button-color-focused: var(--ion-color-dark-shade);
   --button-background: var(--ion-color-light);
   --button-background-activated: var(--ion-color-light-shade);
   --button-background-focused: var(--ion-color-light-shade);
   .action-sheet-button.sc-ion-action-sheet-ios {
-    border: 1px solid #fff !important;
+    border: 1px solid var(--ion-color-light);
+  }
+  .action-sheet-icon {
+    color: var(--ion-color-medium-shade);
   }
 }
