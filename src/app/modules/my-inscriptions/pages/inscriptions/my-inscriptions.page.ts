@@ -83,27 +83,6 @@ export class MyInscriptionsPage {
     );
   }
 
-  // async openPopover(body: {
-  //   event: any;
-  //   carId: string;
-  //   tournamentId: string;
-  // }): Promise<void> {
-  //   const options: PopoverOptions = {
-  //     component: MyInscriptionsPopoverComponent,
-  //     event: body.event,
-  //     mode: 'ios',
-  //     cssClass: 'popover-garage',
-  //     reference: 'event',
-  //   };
-  //   const popover = await this.popoverCtrl.create(options);
-  //   popover.present();
-  //   popover
-  //     .onDidDismiss()
-  //     .then((data) =>
-  //       this.onDidDismissPopover(data, body.carId, body.tournamentId)
-  //     );
-  // }
-
   async openOptions(data: { carId: string; tournamentId: string }) {
     const buttons = [
       {

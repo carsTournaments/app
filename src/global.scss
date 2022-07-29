@@ -83,16 +83,6 @@ hr {
   cursor: pointer;
 }
 
-.popover-garage {
-  &::part(content) {
-    border: 2px solid var(--ion-color-primary);
-  }
-
-  &::part(arrow) {
-    --background: var(--ion-color-primary);
-  }
-}
-
 .modal-pairing {
   --width: 80%;
   --max-height: 190px;

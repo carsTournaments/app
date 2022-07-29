@@ -32,11 +32,6 @@ export const tournamentService = jasmine.createSpyObj('TournamentService', [
   'delete',
 ]);
 
-// Ionic
-export const popoverCtrl = jasmine.createSpyObj('PopoverController', [
-  'create',
-]);
-
 export const alertService = jasmine.createSpyObj('AlertService', [
   'presentAlert',
   'presentAlertWithButtons',
