@@ -183,12 +183,16 @@ export class CarAddComponent implements OnInit {
         if (!this.car.image) {
           this.carNoImage();
         } else {
-          this.toastIonicService.info('El coche se ha actualizado correctamente');
+          this.toastIonicService.info(
+            'El coche se ha actualizado correctamente'
+          );
           this.carAddSuccess.emit();
         }
       },
       error: () => {
-        this.toastIonicService.error('Ha ocurrido un error, intentalo mas tarde');
+        this.toastIonicService.error(
+          'Ha ocurrido un error, intentalo mas tarde'
+        );
         this.analyticsService.logEvent(
           `${this.pageLog}_${this.edit ? 'edit' : 'create'}_KO`,
           {

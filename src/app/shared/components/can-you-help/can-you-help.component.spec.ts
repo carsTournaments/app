@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Platform } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  AdmobService,
-} from '@services';
+import { AdmobService } from '@services';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
-  admobService, platform, toggleService,
+  admobService,
+  platform,
+  toggleService,
 } from '@services/services.mock.spec';
 import {
   TranslateModule,
@@ -51,5 +51,4 @@ describe('CanYouHelpComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

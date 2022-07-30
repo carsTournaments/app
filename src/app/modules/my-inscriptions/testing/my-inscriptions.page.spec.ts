@@ -19,7 +19,12 @@ import {
   TranslateFakeLoader,
 } from '@ngx-translate/core';
 import { MyInscriptionsPage } from '../pages/inscriptions/my-inscriptions.page';
-import { analyticsService, authService, inscriptionService, navCtrl } from '@services/services.mock.spec';
+import {
+  analyticsService,
+  authService,
+  inscriptionService,
+  navCtrl,
+} from '@services/services.mock.spec';
 
 const inscription = new Inscription({
   _id: '123',

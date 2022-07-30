@@ -11,11 +11,31 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ImagePipe } from '@pipes';
 import { SharedModule } from '@shared/shared.module';
 import { CarAddComponent } from './car-add.component';
-import { AlertService, AnalyticsService, BrandService, CarService, ImageService, ToastIonicService } from '@services';
-import { alertService, analyticsService, brandService, carService, imageService, toastIonicService, translateService } from '@services/services.mock.spec';
+import {
+  AlertService,
+  AnalyticsService,
+  BrandService,
+  CarService,
+  ImageService,
+  ToastIonicService,
+} from '@services';
+import {
+  alertService,
+  analyticsService,
+  brandService,
+  carService,
+  imageService,
+  toastIonicService,
+  translateService,
+} from '@services/services.mock.spec';
 import { imagePipe } from '@shared/pipes/pipes.mock.spec';
 import { of } from 'rxjs';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  TranslateFakeLoader,
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 
 const tournament = new Tournament({
   _id: '123',
