@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Brand, Car } from '@models';
 import {
   AlertService,
+  AnalyticsService,
   BrandService,
   CarService,
   ImageService,
@@ -17,6 +18,7 @@ import { BrandGetAllDto } from '@services/api/brand/brand.dto';
 export class CarAddComponent implements OnInit {
   @Input() car: Car = new Car();
   @Input() brandIdSelected = '';
+  @Input() myGarage = false;
   @Output() carAddSuccess: EventEmitter<void> = new EventEmitter();
   brands: Brand[] = [];
   brandsBody: BrandGetAllDto = {
@@ -27,6 +29,7 @@ export class CarAddComponent implements OnInit {
   };
   edit = false;
   loading = true;
+  pageLog: string;
 
   constructor(
     private brandService: BrandService,
@@ -35,7 +38,8 @@ export class CarAddComponent implements OnInit {
     private alertService: AlertService,
     private imageService: ImageService,
     private toastIonicService: ToastIonicService,
-    private toastService: ToastIonicService
+    private toastService: ToastIonicService,
+    private analyticsService: AnalyticsService
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +58,7 @@ export class CarAddComponent implements OnInit {
     if (this.brandIdSelected !== '') {
       this.edit = true;
     }
+    this.pageLog = this.myGarage ? 'myGarageOne' : 'auth_register';
     this.loading = false;
   }
 
@@ -166,6 +171,14 @@ export class CarAddComponent implements OnInit {
     observable.subscribe({
       next: (newCar) => {
         this.car = newCar;
+        if (this.edit) {
+          this.analyticsService.logEvent(
+            `${this.pageLog}_${this.edit ? 'edit' : 'create'}_OK`,
+            {
+              car: this.car._id,
+            }
+          );
+        }
         this.edit = true;
         if (!this.car.image) {
           this.carNoImage();
@@ -174,8 +187,15 @@ export class CarAddComponent implements OnInit {
           this.carAddSuccess.emit();
         }
       },
-      error: () =>
-        this.toastService.error('Ha ocurrido un error, intentalo mas tarde'),
+      error: () => {
+        this.toastService.error('Ha ocurrido un error, intentalo mas tarde');
+        this.analyticsService.logEvent(
+          `${this.pageLog}_${this.edit ? 'edit' : 'create'}_KO`,
+          {
+            car: this.car._id,
+          }
+        );
+      },
     });
   }
 

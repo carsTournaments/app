@@ -24,6 +24,9 @@ export class MyInscriptionsItemComponent {
   ) {}
 
   goToTournament(tournament: Tournament): void {
+    this.analyticsService.logEvent('myInscriptions_goToTournament', {
+      tournament: tournament._id,
+    });
     this.navCtrl.navigateForward(
       config.routes.tournament.replace(':id', tournament._id)
     );
@@ -31,10 +34,12 @@ export class MyInscriptionsItemComponent {
 
   clickCar(carId: string, tournamentId: string): void {
     if (this.item.tournament.status === 'Todo') {
-      this.analyticsService.logEvent('clickCarOptions', { car: carId });
+      this.analyticsService.logEvent('myInscriptions_clickCarOptions', {
+        car: carId,
+      });
       this.openOptions.emit({ carId, tournamentId });
     } else {
-      this.analyticsService.logEvent('goToCar', { car: carId });
+      this.analyticsService.logEvent('myInscriptions_goToCar', { car: carId });
       this.navCtrl.navigateForward(config.routes.car.replace(':id', carId));
     }
   }

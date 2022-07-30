@@ -94,7 +94,7 @@ export class CarPage implements OnInit {
   }
 
   openImage(image: string): void {
-    this.analyticsService.logEvent('car_openImage', { params: { image } });
+    this.analyticsService.logEvent('car_openImage');
     this.imageService.openImage(image);
   }
 
@@ -173,6 +173,7 @@ export class CarPage implements OnInit {
   }
 
   share() {
+    this.analyticsService.logEvent('car_share');
     this.socialSharingService.share(
       `${this.vm.car.brand.name} ${this.vm.car.model}`,
       `https://www.carstournaments.com/car/${this.vm.id}`
