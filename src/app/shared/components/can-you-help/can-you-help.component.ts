@@ -13,7 +13,7 @@ export class CanYouHelpComponent implements OnInit {
   constructor(
     private admobService: AdmobService,
     private platform: Platform,
-    private togglesService: ToggleService
+    private toggleService: ToggleService
   ) {}
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class CanYouHelpComponent implements OnInit {
 
   async checkShowOrHidden() {
     if (this.platform.is('capacitor')) {
-      (await this.togglesService.isActiveToggle('admob'))
+      (await this.toggleService.isActiveToggle('admob'))
         ? (this.state = true)
         : (this.state = false);
     }

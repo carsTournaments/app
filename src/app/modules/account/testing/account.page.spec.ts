@@ -13,12 +13,14 @@ import {
   AlertService,
   AnalyticsService,
   UserService,
+  StorageService,
 } from '@services';
 import {
   alertService,
   analyticsService,
   authService,
   navCtrl,
+  storageService,
   userService,
 } from '@services/services.mock.spec';
 
@@ -55,6 +57,7 @@ describe('AccountPage', () => {
         { provide: AnalyticsService, useValue: analyticsService },
         { provide: UserService, useValue: userService },
         { provide: NavController, useValue: navCtrl },
+        { provide: StorageService, useValue: storageService },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
