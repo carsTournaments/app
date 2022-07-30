@@ -3,12 +3,18 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
-import { AnalyticsService, CarService, StorageService } from '@services';
+import {
+  AnalyticsService,
+  CarService,
+  ImageService,
+  StorageService,
+} from '@services';
 import { ActivatedRoute } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   analyticsService,
   carService,
+  imageService,
   navCtrl,
   storageService,
 } from '@services/services.mock.spec';
@@ -45,6 +51,7 @@ describe('CarPage', () => {
         { provide: NavController, useValue: navCtrl },
         { provide: ImagePipe, useValue: imagePipe },
         { provide: AnalyticsService, useValue: analyticsService },
+        { provide: ImageService, useValue: imageService },
         { provide: StorageService, useValue: storageService },
         {
           provide: ActivatedRoute,
@@ -80,6 +87,11 @@ describe('CarPage', () => {
   describe('getOne', () => {
     it('OK', () => {
       car._id = '123';
+      car.images = [];
+      car.liked = true;
+      car.driver = {
+        _id: '12',
+      };
       carService.getOne = jasmine.createSpy().and.returnValue(of(car));
       spyOn(component, 'checkIsMyCar');
       component.getOne();
@@ -92,6 +104,21 @@ describe('CarPage', () => {
       component.getOne();
       expect(component.vm.loading).toBe(false);
       expect(component.vm.error).toBe(true);
+    });
+  });
+
+  it('openImage', () => {
+    spyOn(component, 'getLikes');
+    component.openImage('11');
+    expect(analyticsService.logEvent).toHaveBeenCalled();
+    expect(imageService.openImage).toHaveBeenCalled();
+  });
+
+  describe('onClickTotalItem', () => {
+    it('likes', () => {
+      component.onClickTotalItem('likes');
+      expect(analyticsService.logEvent).toHaveBeenCalled();
+      expect(component.vm.states.votes).toBe(false);
     });
   });
 });

@@ -3,3 +3,5 @@ export const translatePipe = jasmine.createSpyObj('TranslatePipe', [
 ]);
 
 export const imagePipe = jasmine.createSpyObj('ImagePipe', ['transform']);
+
+export const fuelPipe = jasmine.createSpyObj('FuelPipe', ['transform']);

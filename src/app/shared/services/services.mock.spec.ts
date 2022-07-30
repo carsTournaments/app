@@ -24,11 +24,15 @@ export const carService = jasmine.createSpyObj('CarService', [
 export const imageService = jasmine.createSpyObj('ImageService', [
   'addNewToGallery',
   'update',
+  'openImage',
   'setFirstImage',
   'deleteOne',
 ]);
 
-export const likeService = jasmine.createSpyObj('LikeService', ['getTopCars']);
+export const likeService = jasmine.createSpyObj('LikeService', [
+  'getTopCars',
+  'checkLikedStorage',
+]);
 
 export const inscriptionService = jasmine.createSpyObj('InscriptionService', [
   'getAllTournamentInscriptions',
