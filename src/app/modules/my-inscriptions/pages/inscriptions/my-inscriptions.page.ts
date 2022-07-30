@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
 import {
+  ActionSheetIonicService,
   AlertService,
+  AnalyticsService,
   InscriptionService,
   ToastIonicService,
   UserService,
 } from '@services';
 import { IdDto } from '@core/dtos/id.dto';
-import {
-  NavController,
-  PopoverController,
-  PopoverOptions,
-} from '@ionic/angular';
-import { Inscription } from '@models';
+import { NavController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MyInscriptionsPopoverComponent } from '../../components/my-inscriptions-popover/my-inscriptions-popover.component';
 import { MyInscriptionsViewModel } from '../../model/my-inscriptions.view-model';
 import { config } from '@config';
 
@@ -29,10 +25,11 @@ export class MyInscriptionsPage {
     private inscriptionService: InscriptionService,
     private userService: UserService,
     private navCtrl: NavController,
-    private popoverCtrl: PopoverController,
     private alertService: AlertService,
     private translate: TranslateService,
-    private toastIonicService: ToastIonicService
+    private toastIonicService: ToastIonicService,
+    private actionSheetService: ActionSheetIonicService,
+    private analyticsService: AnalyticsService
   ) {}
 
   async ionViewWillEnter() {
@@ -53,7 +50,7 @@ export class MyInscriptionsPage {
     const body: IdDto = {
       id: this.vm.user._id,
     };
-    this.inscriptionService.getAllForDriver(body).subscribe({
+    this.inscriptionService.getAllDriverInscriptions(body).subscribe({
       next: (inscriptions) => {
         this.vm.inscriptions = inscriptions;
         this.checkStates();
@@ -76,48 +73,45 @@ export class MyInscriptionsPage {
     }
   }
 
-  segmentChanged(ev: any): void {
-    const segment = Number(ev.detail.value);
-    this.vm.header.segments.selected = Number(segment);
+  async openOptions(data: { carId: string; tournamentId: string }) {
+    const buttons = [
+      {
+        text: this.translate.instant('inscriptions.viewProfile'),
+        data: 'viewProfile',
+        icon: 'star-outline',
+      },
+      {
+        text: this.translate.instant('inscriptions.deleteInscription'),
+        data: 'deleteInscription',
+        icon: 'close-outline',
+      },
+    ];
+
+    const as = await this.actionSheetService.present('Opciones', buttons);
+    as.onDidDismiss().then((res) => this.onDidDismissOptions(res, data));
   }
 
-  goToTournament(inscription: Inscription): void {
-    this.navCtrl.navigateForward(
-      config.routes.tournament.replace(':id', inscription.tournament._id)
-    );
-  }
-
-  async openPopover(body: {
-    event: any;
-    carId: string;
-    tournamentId: string;
-  }): Promise<void> {
-    const options: PopoverOptions = {
-      component: MyInscriptionsPopoverComponent,
-      event: body.event,
-      mode: 'ios',
-      cssClass: 'popover-garage',
-      reference: 'event',
-    };
-    const popover = await this.popoverCtrl.create(options);
-    popover.present();
-    popover
-      .onDidDismiss()
-      .then((data) =>
-        this.onDidDismissPopover(data, body.carId, body.tournamentId)
-      );
-  }
-
-  onDidDismissPopover(
-    data: OverlayEventDetail<any>,
-    carId: string,
-    tournamentId: string
+  onDidDismissOptions(
+    res: OverlayEventDetail<any>,
+    data: {
+      carId: string;
+      tournamentId: string;
+    }
   ): void {
-    if (data.data) {
-      if (data.data === 'viewProfile') {
-        this.navCtrl.navigateForward(config.routes.car.replace(':id', carId));
-      } else {
-        this.deleteInscriptionConfirmation(carId, tournamentId);
+    if (res.data) {
+      if (res.data === 'viewProfile') {
+        this.analyticsService.logEvent('myInscriptions_goToCarTodo', {
+          carId: data.carId,
+        });
+        this.navCtrl.navigateForward(
+          config.routes.car.replace(':id', data.carId)
+        );
+      } else if (res.data === 'deleteInscription') {
+        this.analyticsService.logEvent('myInscriptions_deleteInscription', {
+          carId: data.carId,
+          tournamentId: data.tournamentId,
+        });
+        this.deleteInscriptionConfirmation(data.carId, data.tournamentId);
       }
     }
   }
@@ -127,13 +121,28 @@ export class MyInscriptionsPage {
       '¿Estás seguro?',
       'Vas a eliminar la inscripcion al torneo',
       [
-        { text: 'No', role: 'cancel' },
-        { text: 'Si', role: 'ok' },
+        {
+          text: this.translate.instant('generic.no'),
+          role: 'cancel',
+        },
+        {
+          text: this.translate.instant('generic.yes'),
+          role: 'ok',
+        },
       ]
     );
     alert.onDidDismiss().then(async (data) => {
       if (data.role === 'ok') {
+        this.analyticsService.logEvent(
+          'myInscriptions_deleteInscriptionConfirmation',
+          { carId, tournamentId }
+        );
         this.deleteInscription(carId, tournamentId);
+      } else {
+        this.analyticsService.logEvent(
+          'myInscriptions_deleteInscriptionCancelled',
+          { carId, tournamentId }
+        );
       }
     });
   }

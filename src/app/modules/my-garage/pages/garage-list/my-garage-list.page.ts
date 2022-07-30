@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { config } from '@config';
-import {
-  NavController,
-  PopoverController,
-  PopoverOptions,
-} from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { Car } from '@models';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,8 +9,9 @@ import {
   CarService,
   UserService,
   ToastIonicService,
+  ActionSheetIonicService,
+  AnalyticsService,
 } from '@services';
-import { MyGaragePopoverComponent } from '../../components/popover-garage/my-garage-popover.component';
 import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
 
 @Component({
@@ -28,10 +25,11 @@ export class MyGarageListPage {
     private carService: CarService,
     private navCtrl: NavController,
     private alertService: AlertService,
-    private popoverCtrl: PopoverController,
     private userService: UserService,
     private translate: TranslateService,
-    private toastIonicService: ToastIonicService
+    private toastIonicService: ToastIonicService,
+    private actionSheetService: ActionSheetIonicService,
+    private analyticsService: AnalyticsService
   ) {}
 
   ionViewWillEnter(): void {
@@ -54,30 +52,57 @@ export class MyGarageListPage {
     });
   }
 
-  async openPopover(e: any, car: Car): Promise<void> {
-    const options: PopoverOptions = {
-      component: MyGaragePopoverComponent,
-      event: e,
-      mode: 'ios',
-      cssClass: 'popover-garage',
-      reference: 'event',
-    };
-    const popover = await this.popoverCtrl.create(options);
-    popover.present();
-    popover.onDidDismiss().then((data) => this.onDidDismissPopover(data, car));
+  async openOptions(car: Car) {
+    const buttons = [
+      {
+        text: this.translate.instant('garageList.viewProfile'),
+        data: 'viewProfile',
+        icon: 'eye-outline',
+      },
+      {
+        text: this.translate.instant('garageList.editCar'),
+        data: 'edit',
+        icon: 'create-outline',
+      },
+      {
+        text: this.translate.instant('garageList.images'),
+        data: 'images',
+        icon: 'images-outline',
+      },
+      {
+        text: this.translate.instant('garageList.deleteCar'),
+        data: 'deleteCar',
+        icon: 'close-outline',
+      },
+    ];
+
+    const as = await this.actionSheetService.present('Opciones', buttons);
+    as.onDidDismiss().then((data) => this.onDidDismissOptions(data, car));
   }
 
-  onDidDismissPopover(data: OverlayEventDetail<any>, car: Car): void {
+  onDidDismissOptions(data: OverlayEventDetail<any>, car: Car): void {
     if (data.data) {
       if (data.data === 'viewProfile') {
+        this.analyticsService.logEvent('myGarage_goToCar', {
+          carId: car._id,
+        });
         this.navCtrl.navigateForward(config.routes.car.replace(':id', car._id));
       } else if (data.data === 'edit') {
+        this.analyticsService.logEvent('myGarage_goToEditCar', {
+          carId: car._id,
+        });
         this.editCar(car);
-      } else if (data.data === 'image') {
+      } else if (data.data === 'images') {
+        this.analyticsService.logEvent('myGarage_goToImages', {
+          carId: car._id,
+        });
         this.navCtrl.navigateForward(
           config.routes.myGarageImages.replace(':id', car._id)
         );
-      } else {
+      } else if (data.data === 'deleteCar') {
+        this.analyticsService.logEvent('myGarage_deleteCar', {
+          carId: car._id,
+        });
         this.deleteCar(car);
       }
     }
@@ -90,7 +115,7 @@ export class MyGarageListPage {
   }
 
   async deleteCar(car: Car): Promise<void> {
-    await this.alertService.presentAlertWithButtons(
+    const alert = await this.alertService.presentAlertWithButtons(
       this.translate.instant('garageList.titleDeleteCar'),
       this.translate.instant('garageList.messageDeleteCar'),
       [
@@ -101,10 +126,23 @@ export class MyGarageListPage {
         {
           text: this.translate.instant('generic.yes'),
           role: 'ok',
-          handler: () => this.deleteCarConfirmation(car),
         },
       ]
     );
+    alert.onDidDismiss().then(async (data) => this.onDidDismiss(data, car));
+  }
+
+  async onDidDismiss(data: OverlayEventDetail<any>, car: Car): Promise<void> {
+    if (data.role === 'ok') {
+      this.analyticsService.logEvent('myGarage_deleteCarConfirmation', {
+        carId: car._id,
+      });
+      await this.deleteCarConfirmation(car);
+    } else {
+      this.analyticsService.logEvent('myGarage_cancelDeleteCar', {
+        carId: car._id,
+      });
+    }
   }
 
   async deleteCarConfirmation(car: Car): Promise<void> {
@@ -120,6 +158,7 @@ export class MyGarageListPage {
   }
 
   onClickAddCar(): void {
+    this.analyticsService.logEvent('myGarage_goToAddCar');
     this.navCtrl.navigateForward(config.routes.myGarageCreate);
   }
 }

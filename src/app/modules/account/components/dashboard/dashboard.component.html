@@ -23,19 +23,11 @@
       mode="ios"
       button
       lines="none"
-      [detail]="!item.value || item.value !== 'darkMode'"
     >
       <ion-label>
         {{ item.name }}
         <small *ngIf="item.subtitle"><br />{{ item.subtitle }} </small>
       </ion-label>
-      <ion-toggle
-        *ngIf="item.value === 'darkMode'"
-        slot="end"
-        [ngModel]="darkMode"
-        (ionChange)="changeMode()"
-      >
-      </ion-toggle>
     </ion-item>
   </ion-card>
 </ng-container>

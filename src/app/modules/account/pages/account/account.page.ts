@@ -1,3 +1,4 @@
+import { ActionSheetIonicService } from './../../../../shared/services/ionic/action-sheet-ionic.service';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { OptionItemI } from '@interfaces';
@@ -6,6 +7,7 @@ import {
   AlertService,
   UserService,
   AnalyticsService,
+  StorageService,
 } from '@services';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountViewModel } from '../../model/account.view-model';
@@ -27,7 +29,9 @@ export class AccountPage {
     private alertService: AlertService,
     private analyticsService: AnalyticsService,
     private translate: TranslateService,
-    private toggleService: ToggleService
+    private toggleService: ToggleService,
+    private storageService: StorageService,
+    private actionSheetService: ActionSheetIonicService
   ) {}
 
   async ionViewWillEnter(): Promise<void> {
@@ -108,9 +112,14 @@ export class AccountPage {
 
   onClickOption(item: OptionItemI): void {
     if (item.value) {
-      this.analyticsService.logEvent(`dashboard_clickOption_${item.value}`);
       if (item.value === 'logout') {
-        this.logout();
+        this.analyticsService.logEvent(`dashboard_clickOption_${item.value}`);
+        if (item.value === 'logout') {
+          this.logout();
+        }
+      } else if (item.value === 'darkMode') {
+        this.analyticsService.logEvent(`dashboard_clickOption_${item.value}`);
+        this.openDarkModeOptions();
       }
     } else {
       this.analyticsService.logEvent(`dashboard_clickOption_${item.route}`);
@@ -149,5 +158,64 @@ export class AccountPage {
 
   onChangeTitle(event: any): void {
     this.vm.header.title = event;
+  }
+
+  async openDarkModeOptions() {
+    const darkModeStatus = await this.storageService.getDarkMode();
+    const buttons = [
+      {
+        text: 'Activar',
+        data: 'yes',
+        icon: 'checkmark',
+      },
+      {
+        text: 'Desactivar',
+        data: 'no',
+        icon: 'close',
+      },
+      {
+        text: 'Sistema',
+        data: 'systemOn',
+        icon: 'settings-outline',
+      },
+    ];
+    if (darkModeStatus === 'yes') {
+      buttons.splice(0, 1);
+    } else if (darkModeStatus === 'no') {
+      buttons.splice(1, 1);
+    } else {
+      buttons.splice(0, 3);
+      buttons.push({
+        text: 'Desactivar modo sistema',
+        data: 'systemOff',
+        icon: 'settings',
+      });
+    }
+    const as = await this.actionSheetService.present('Modo oscuro', buttons);
+    as.onDidDismiss().then((data) => {
+      if (data) {
+        this.darkMode(data.data);
+      }
+    });
+  }
+
+  darkMode(data: 'yes' | 'no' | 'systemOn' | 'systemOff'): void {
+    if (data === 'yes' || data === 'no') {
+      document.body.classList.toggle('dark');
+      this.storageService.setDarkMode(data);
+    } else if (data === 'systemOn') {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      if (prefersDark.matches) {
+        document.body.classList.toggle('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+      this.storageService.setDarkMode('system');
+    } else {
+      if (document.body.classList.contains('dark')) {
+        document.body.classList.remove('dark');
+      }
+      this.storageService.setDarkMode('no');
+    }
   }
 }

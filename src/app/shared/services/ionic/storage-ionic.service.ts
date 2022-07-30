@@ -28,4 +28,12 @@ export class StorageService {
   clear(): void {
     this.storage.clear();
   }
+
+  setDarkMode(value: 'yes' | 'no' | 'system'): void {
+    this.set('darkMode', value);
+  }
+
+  getDarkMode(): Promise<string> {
+    return this.get<string>('darkMode');
+  }
 }

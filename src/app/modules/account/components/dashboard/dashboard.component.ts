@@ -6,7 +6,6 @@ import { UserGetResumeResponse } from '@services/api/user/user.responses';
 @Component({
   selector: 'dashboard',
   templateUrl: 'dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
   @Input() resume: UserGetResumeResponse;
@@ -15,8 +14,4 @@ export class DashboardComponent {
   @Input() itemsOrder: { name: string; value: string }[];
   @Output() goTo: EventEmitter<OptionItemI> = new EventEmitter();
   darkMode = false;
-
-  changeMode() {
-    document.body.classList.toggle('dark');
-  }
 }

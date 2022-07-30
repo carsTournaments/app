@@ -12,8 +12,7 @@ export class MyInscriptionsStateComponent {
   @Input() type: string;
   @Input() state = false;
   @Output() showOrHide: EventEmitter<string> = new EventEmitter<string>();
-  @Output() openPopover: EventEmitter<{
-    event: any;
+  @Output() openOptions: EventEmitter<{
     carId: string;
     tournamentId: string;
   }> = new EventEmitter();

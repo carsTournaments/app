@@ -1,20 +1,6 @@
 import { AnimationController } from '@ionic/angular';
 const animationCtrl = new AnimationController();
 
-// export const getIonPageElement = (element: HTMLElement) => {
-//     if (element.classList.contains('ion-page')) {
-//         return element;
-//     }
-
-//     const ionPage = element.querySelector(
-//         ':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs, :scope > ion-tab'
-//     );
-//     if (ionPage) {
-//         return ionPage;
-//     }
-//     return element;
-// };
-
 export const navAnimation = (_: HTMLElement, opts: any) => {
   const rootTransition = animationCtrl
     .create()

@@ -2,6 +2,7 @@ import { NavController } from '@ionic/angular';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Car, Tournament } from '@models';
 import { config } from '@config';
+import { AnalyticsService } from '@services';
 
 @Component({
   selector: 'my-inscriptions-item',
@@ -13,23 +14,32 @@ export class MyInscriptionsItemComponent {
     tournament: Tournament;
     cars: Car[];
   };
-  @Output() openPopover: EventEmitter<{
-    event: any;
+  @Output() openOptions: EventEmitter<{
     carId: string;
     tournamentId: string;
   }> = new EventEmitter();
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private analyticsService: AnalyticsService
+  ) {}
 
   goToTournament(tournament: Tournament): void {
+    this.analyticsService.logEvent('myInscriptions_goToTournament', {
+      tournament: tournament._id,
+    });
     this.navCtrl.navigateForward(
       config.routes.tournament.replace(':id', tournament._id)
     );
   }
 
-  clickCar(e: any, carId: string, tournamentId: string): void {
+  clickCar(carId: string, tournamentId: string): void {
     if (this.item.tournament.status === 'Todo') {
-      this.openPopover.emit({ event: e, carId, tournamentId });
+      this.analyticsService.logEvent('myInscriptions_clickCarOptions', {
+        car: carId,
+      });
+      this.openOptions.emit({ carId, tournamentId });
     } else {
+      this.analyticsService.logEvent('myInscriptions_goToCar', { car: carId });
       this.navCtrl.navigateForward(config.routes.car.replace(':id', carId));
     }
   }

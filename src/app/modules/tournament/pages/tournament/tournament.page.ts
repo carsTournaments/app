@@ -253,7 +253,7 @@ export class TournamentPage {
   }
 
   goToInscriptions() {
-    this.analyticsService.logEvent('tournament_goToRounds');
+    this.analyticsService.logEvent('tournament_goToInscriptions');
     this.navCtrl.navigateForward(
       config.routes.inscriptions.replace(':id', this.vm.id)
     );
@@ -272,6 +272,7 @@ export class TournamentPage {
   }
 
   share() {
+    this.analyticsService.logEvent('tournament_share');
     this.socialSharingService.share(
       `${this.vm.tournament.name}`,
       `https://www.carstournaments.com/tournament/${this.vm.id}`

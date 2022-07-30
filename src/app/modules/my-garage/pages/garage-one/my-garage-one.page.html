@@ -6,7 +6,7 @@
     <ion-col class="ion-no-padding" style="padding-top: 0" size="12" sizeLg="8" offsetLg="2">
       <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
 
-      <car-add *ngIf="vm.car" [car]="vm.car" [brandIdSelected]="vm.brandIdSelected" (carAddSuccess)="carAddSuccess()">
+      <car-add *ngIf="vm.car" [car]="vm.car" [brandIdSelected]="vm.brandIdSelected" [myGarage]="true" (carAddSuccess)="carAddSuccess()">
       </car-add>
     </ion-col>
   </ion-row>

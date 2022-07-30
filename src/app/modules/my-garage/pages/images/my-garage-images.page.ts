@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Image } from '@models';
 import {
+  ActionSheetIonicService,
   AlertService,
   AnalyticsService,
   ImageService,
@@ -10,8 +11,6 @@ import {
 } from '@services';
 import { ImageCarPipe } from '@pipes';
 import { MyGarageImagesViewModel } from '../../models/my-garage-images.view-model';
-import { PopoverController, PopoverOptions } from '@ionic/angular';
-import { MyGarageImagePopoverComponent } from '../../components/popover-image/my-garage-image-popover.component';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from '@env/environment';
 
@@ -28,10 +27,10 @@ export class MyGarageImagesPage {
     private toastIonicService: ToastIonicService,
     private route: ActivatedRoute,
     private imageCarPipe: ImageCarPipe,
-    private popoverCtrl: PopoverController,
     private translate: TranslateService,
     private alertService: AlertService,
-    private analyticsService: AnalyticsService
+    private analyticsService: AnalyticsService,
+    private actionSheetService: ActionSheetIonicService
   ) {}
   ionViewWillEnter(): void {
     this.vm.id = this.route.snapshot.paramMap.get('id')!;
@@ -64,28 +63,40 @@ export class MyGarageImagesPage {
     return this.imageCarPipe.transform([image]);
   }
 
-  async openPopover(e: any, image: Image): Promise<void> {
-    const options: PopoverOptions = {
-      component: MyGarageImagePopoverComponent,
-      event: e,
-      mode: 'ios',
-      cssClass: 'popover-garage',
-      reference: 'event',
-    };
-    const popover = await this.popoverCtrl.create(options);
-    popover.present();
-    popover
-      .onDidDismiss()
-      .then((data) => this.onDidDismissPopover(data, image));
+  async openOptions(image: Image) {
+    const buttons = [
+      {
+        text: this.translate.instant('garageImages.firstImage'),
+        data: 'firstImage',
+        icon: 'star-outline',
+      },
+      {
+        text: this.translate.instant('garageImages.viewImage'),
+        data: 'viewImage',
+        icon: 'eye-outline',
+      },
+      {
+        text: this.translate.instant('garageImages.deleteImage'),
+        data: 'deleteImage',
+        icon: 'close-outline',
+      },
+    ];
+
+    if (this.vm.images.length === 1) {
+      buttons.splice(0, 1);
+    }
+
+    const as = await this.actionSheetService.present('Opciones', buttons);
+    as.onDidDismiss().then((data) => this.onDidDismissOptions(data, image));
   }
 
-  onDidDismissPopover(data: OverlayEventDetail<any>, image: Image): void {
+  onDidDismissOptions(data: OverlayEventDetail<any>, image: Image): void {
     if (data.data) {
       if (data.data === 'viewImage') {
         this.openImage(image);
       } else if (data.data === 'firstImage') {
         this.setFirstImage(image);
-      } else {
+      } else if (data.data === 'deleteImage') {
         this.deleteImage(image);
       }
     }
@@ -93,7 +104,9 @@ export class MyGarageImagesPage {
 
   openImage(image: Image): void {
     const url = `${environment.urlImages}/${image.url}`;
-    this.analyticsService.logEvent('car_openImage', { params: { url } });
+    this.analyticsService.logEvent('myGarageImages_openImage', {
+      params: { url },
+    });
     this.imageService.openImage(url);
   }
 
@@ -101,14 +114,18 @@ export class MyGarageImagesPage {
     this.imageService.setFirstImage(image._id, this.vm.id).subscribe({
       next: () => {
         this.getAllImagesCar();
+        this.analyticsService.logEvent('myGarageImages_setFirstImage_OK');
         this.toastIonicService.info('Imagen actualizada');
       },
-      error: () => this.toastIonicService.error('Error al actualizar'),
+      error: () => {
+        this.analyticsService.logEvent('myGarageImages_setFirstImage_KO');
+        this.toastIonicService.error('Error al actualizar');
+      },
     });
   }
 
   async deleteImage(image: Image): Promise<void> {
-    await this.alertService.presentAlertWithButtons(
+    const alert = await this.alertService.presentAlertWithButtons(
       this.translate.instant('garageImages.titleDeleteImage'),
       this.translate.instant('garageImages.messageDeleteImage'),
       [
@@ -123,6 +140,20 @@ export class MyGarageImagesPage {
         },
       ]
     );
+
+    alert.onDidDismiss().then(async (data) => this.onDidDismiss(data, image));
+  }
+
+  async onDidDismiss(
+    data: OverlayEventDetail<any>,
+    image: Image
+  ): Promise<void> {
+    if (data.role === 'ok') {
+      this.analyticsService.logEvent('myGarageImages_deleteImage_Confirmation');
+      this.deleteImageConfirmation(image);
+    } else {
+      this.analyticsService.logEvent('myGarageImages_deleteImage_Cancel');
+    }
   }
 
   deleteImageConfirmation(image: Image) {
@@ -143,8 +174,13 @@ export class MyGarageImagesPage {
     }
     this.imageService.deleteOne(image._id).subscribe({
       next: () => {
+        this.analyticsService.logEvent('myGarageImages_deleteImage_OK');
         this.toastIonicService.info('Imagen eliminada');
         this.getAllImagesCar();
+      },
+      error: () => {
+        this.analyticsService.logEvent('myGarageImages_deleteImage_KO');
+        this.toastIonicService.error('Error al eliminar');
       },
     });
   }
