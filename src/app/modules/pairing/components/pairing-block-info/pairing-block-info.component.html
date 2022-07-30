@@ -70,7 +70,7 @@
                 <p class="item-left">{{ pairing.car1.fuel | fuel }}</p>
             </div>
             <div class="div-center">
-                <p class="item-center">{{ 'pairing.fuel' | translate | truncateText: 7 }}</p>
+                <p class="item-center">{{ 'pairing.fuel' | translate | truncateText: 6 }}</p>
             </div>
             <div class="div-right">
                 <p class="item-right">{{ pairing.car2.fuel | fuel }}</p>
@@ -125,13 +125,4 @@
     </ion-card-content>
 </ion-card>
 
-<ion-card mode="ios" class="option-item">
-  <ion-item color="light" mode="ios" [button]="true" lines="none" (click)="report.emit()">
-    <ion-label>
-      <h2>{{ 'pairing.linkTitleReport' | translate }}</h2>
-      <small class="min-text-weight">
-        {{ 'pairing.linkSubtitleReport' | translate }}
-      </small>
-    </ion-label>
-  </ion-item>
-</ion-card>
+

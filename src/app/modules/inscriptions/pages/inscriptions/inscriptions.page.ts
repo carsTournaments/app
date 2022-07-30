@@ -26,17 +26,19 @@ export class InscriptionsPage {
 
   getInscriptionsOfTournament() {
     this.vm.loading = true;
-    this.inscriptionService.getAllOfTournament({ id: this.vm.id }).subscribe({
-      next: (data) => {
-        this.vm.inscriptions = data;
-        this.vm.loading = false;
-        this.vm.error = false;
-      },
-      error: () => {
-        this.vm.loading = false;
-        this.vm.error = true;
-      },
-    });
+    this.inscriptionService
+      .getAllTournamentInscriptions({ id: this.vm.id })
+      .subscribe({
+        next: (data) => {
+          this.vm.inscriptions = data;
+          this.vm.loading = false;
+          this.vm.error = false;
+        },
+        error: () => {
+          this.vm.loading = false;
+          this.vm.error = true;
+        },
+      });
   }
 
   goToCar(car: Car): void {

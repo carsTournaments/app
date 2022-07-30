@@ -2,6 +2,7 @@ import { NavController } from '@ionic/angular';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Car, Tournament } from '@models';
 import { config } from '@config';
+import { AnalyticsService } from '@services';
 
 @Component({
   selector: 'my-inscriptions-item',
@@ -17,7 +18,10 @@ export class MyInscriptionsItemComponent {
     carId: string;
     tournamentId: string;
   }> = new EventEmitter();
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private analyticsService: AnalyticsService
+  ) {}
 
   goToTournament(tournament: Tournament): void {
     this.navCtrl.navigateForward(
@@ -27,8 +31,10 @@ export class MyInscriptionsItemComponent {
 
   clickCar(carId: string, tournamentId: string): void {
     if (this.item.tournament.status === 'Todo') {
+      this.analyticsService.logEvent('clickCarOptions', { car: carId });
       this.openOptions.emit({ carId, tournamentId });
     } else {
+      this.analyticsService.logEvent('goToCar', { car: carId });
       this.navCtrl.navigateForward(config.routes.car.replace(':id', carId));
     }
   }

@@ -31,21 +31,28 @@ export class InscriptionService {
       .pipe(take(1));
   }
 
-  getAllOfTournament(data: IdDto): Observable<Inscription[]> {
+  getAllTournamentInscriptions(data: IdDto): Observable<Inscription[]> {
     return this.httpClient
-      .post<Inscription[]>(`${this.url}/getAllOfTournament`, data)
+      .post<Inscription[]>(`${this.url}/getAllTournamentInscriptions`, data)
       .pipe(take(1));
   }
 
-  getAllOfCar(data: InscriptionGetAllOfCarDto): Observable<Inscription[]> {
+  getAllCarInscriptions(
+    data: InscriptionGetAllOfCarDto
+  ): Observable<Inscription[]> {
     return this.httpClient
-      .post<Inscription[]>(`${this.url}/getAllOfCar`, data)
+      .post<Inscription[]>(`${this.url}/getAllCarInscriptions`, data)
       .pipe(take(1));
   }
 
-  getAllForDriver(data: IdDto): Observable<InscriptionGetAllForDriverI> {
+  getAllDriverInscriptions(
+    data: IdDto
+  ): Observable<InscriptionGetAllForDriverI> {
     return this.httpClient
-      .post<InscriptionGetAllForDriverI>(`${this.url}/getAllForDriver`, data)
+      .post<InscriptionGetAllForDriverI>(
+        `${this.url}/getAllDriverInscriptions`,
+        data
+      )
       .pipe(take(1));
   }
 

@@ -28,6 +28,7 @@ import { EventsService } from '@services';
     IonicModule.forRoot({
       navAnimation: navAnimation,
       statusTap: true,
+      mode: 'ios',
     }),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-1868668305627051',

@@ -49,7 +49,7 @@ export class MyInscriptionsPage {
     const body: IdDto = {
       id: this.vm.user._id,
     };
-    this.inscriptionService.getAllForDriver(body).subscribe({
+    this.inscriptionService.getAllDriverInscriptions(body).subscribe({
       next: (inscriptions) => {
         this.vm.inscriptions = inscriptions;
         this.checkStates();

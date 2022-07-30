@@ -148,7 +148,7 @@ export class CarPage implements OnInit {
 
   getInscriptions() {
     this.inscriptionService
-      .getAllOfCar({ id: this.vm.id, limit: '5' })
+      .getAllCarInscriptions({ id: this.vm.id, limit: '5' })
       .subscribe({
         next: (data) => {
           this.vm.inscriptions = data;
