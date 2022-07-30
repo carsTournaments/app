@@ -51,7 +51,7 @@ describe('RoundService', () => {
       );
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/rounds/allOfTournament`
+      `${environment.urlApi}/rounds/getAllTournamentRounds`
     );
     req.flush(responsePaginator);
   });

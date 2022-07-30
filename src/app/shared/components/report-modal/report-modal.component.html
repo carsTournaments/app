@@ -10,11 +10,11 @@
                     okText="Aceptar"
                     cancelText="Cancelar"
                 >
-                    <ion-select-option [value]="pairing.car1._id">
-                        {{ pairing.car1.brand.name }} {{ pairing.car1.model }}
+                    <ion-select-option [value]="pairing.car1?._id">
+                        {{ pairing.car1?.brand.name }} {{ pairing.car1.model }}
                     </ion-select-option>
-                    <ion-select-option [value]="pairing.car2._id">
-                        {{ pairing.car2.brand.name }} {{ pairing.car2.model }}
+                    <ion-select-option [value]="pairing.car2?._id">
+                        {{ pairing.car2?.brand.name }} {{ pairing.car2.model }}
                     </ion-select-option>
                 </ion-select>
             </ion-item>

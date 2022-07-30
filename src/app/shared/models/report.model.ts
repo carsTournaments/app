@@ -4,7 +4,7 @@ export class Report {
   userReported: any;
   carReported: any;
   reason: string;
-  state: boolean;
+  state?: boolean;
   created?: string;
   updated?: string;
   constructor(data?: Report) {

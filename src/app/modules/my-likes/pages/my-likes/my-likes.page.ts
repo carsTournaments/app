@@ -24,7 +24,7 @@ export class MyLikesPage {
     this.translateItems();
     this.vm.user = this.userService.getUser();
     this.getAllReceivedForUser();
-    this.getAllSentForUser();
+    this.getAllUserSubmittedLikes();
   }
 
   translateItems() {
@@ -61,7 +61,7 @@ export class MyLikesPage {
       });
   }
 
-  async getAllSentForUser() {
+  async getAllUserSubmittedLikes() {
     this.likesService
       .getAllUserSubmittedLikes({ id: this.vm.user._id })
       .subscribe({

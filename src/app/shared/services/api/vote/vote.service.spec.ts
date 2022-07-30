@@ -41,24 +41,24 @@ describe('VoteService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('getAllOfCar', () => {
+  it('getAllCarVotes', () => {
     service.getAllCarVotes({ id: '1', limit: '10' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/votes/getAllOfCar`
+      `${environment.urlApi}/votes/getAllCarVotes`
     );
     req.flush([]);
   });
 
-  it('getAllOfTournament', () => {
+  it('getAllTournamentVotes', () => {
     service.getAllTournamentVotes({ id: '1' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/votes/getAllOfTournament`
+      `${environment.urlApi}/votes/getAllTournamentVotes`
     );
     req.flush([]);
   });

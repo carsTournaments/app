@@ -60,13 +60,13 @@ describe('LikeService', () => {
     req.flush(item);
   });
 
-  it('getAllSentForUser', () => {
+  it('getAllUserSubmittedLikes', () => {
     service.getAllUserSubmittedLikes({ id: '1' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/likes/getAllSentForUser`
+      `${environment.urlApi}/likes/getAllUserSubmittedLikes`
     );
     req.flush(item);
   });
@@ -82,13 +82,13 @@ describe('LikeService', () => {
     req.flush(item);
   });
 
-  it('getAllOfCar', () => {
+  it('getAllCarLikes', () => {
     service.getAllCarLikes({ id: '', limit: '10' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/likes/getAllOfCar`
+      `${environment.urlApi}/likes/getAllCarLikes`
     );
     req.flush(item);
   });

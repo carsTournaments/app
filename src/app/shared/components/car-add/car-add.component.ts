@@ -14,6 +14,7 @@ import { BrandGetAllDto } from '@services/api/brand/brand.dto';
 @Component({
   selector: 'car-add',
   templateUrl: 'car-add.component.html',
+  providers: [ImageService],
 })
 export class CarAddComponent implements OnInit {
   @Input() car: Car = new Car();
@@ -38,7 +39,6 @@ export class CarAddComponent implements OnInit {
     private alertService: AlertService,
     private imageService: ImageService,
     private toastIonicService: ToastIonicService,
-    private toastService: ToastIonicService,
     private analyticsService: AnalyticsService
   ) {}
 
@@ -183,12 +183,12 @@ export class CarAddComponent implements OnInit {
         if (!this.car.image) {
           this.carNoImage();
         } else {
-          this.toastService.info('El coche se ha actualizado correctamente');
+          this.toastIonicService.info('El coche se ha actualizado correctamente');
           this.carAddSuccess.emit();
         }
       },
       error: () => {
-        this.toastService.error('Ha ocurrido un error, intentalo mas tarde');
+        this.toastIonicService.error('Ha ocurrido un error, intentalo mas tarde');
         this.analyticsService.logEvent(
           `${this.pageLog}_${this.edit ? 'edit' : 'create'}_KO`,
           {
@@ -228,7 +228,10 @@ export class CarAddComponent implements OnInit {
   async addImage(): Promise<void> {
     this.imageService.addNewToGallery('car', this.car._id).then(
       () => this.carAddSuccess.emit(),
-      () => this.toastService.error('Ha ocurrido un error, intentalo mas tarde')
+      () =>
+        this.toastIonicService.error(
+          'Ha ocurrido un error, intentalo mas tarde'
+        )
     );
   }
 }

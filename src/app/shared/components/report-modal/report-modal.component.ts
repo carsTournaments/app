@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Pairing, Report } from '@models';
 import { ModalController } from '@ionic/angular';
-import { ReportService, AlertService, ToastIonicService } from '@services';
+import { ReportService, ToastIonicService } from '@services';
 
 @Component({
   selector: 'report-modal',
@@ -19,7 +19,6 @@ export class ReportModalComponent {
   };
   constructor(
     private reportService: ReportService,
-    private alertService: AlertService,
     private modalCtrl: ModalController,
     private toastIonicService: ToastIonicService
   ) {}
@@ -40,9 +39,9 @@ export class ReportModalComponent {
     ) {
       this.report.userReporter = this.userId;
       this.report.userReported =
-        this.report.carReported === this.pairing.car1._id
-          ? this.pairing.car1.driver
-          : this.pairing.car2.driver;
+        this.report.carReported === this.pairing.car1?._id
+          ? this.pairing.car1?.driver
+          : this.pairing.car2?.driver;
       this.reportService.create(this.report).subscribe({
         next: () => {
           this.toastIonicService.info('Reporte creado');

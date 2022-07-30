@@ -64,18 +64,18 @@ describe('InscriptionService', () => {
     req.flush(res);
   });
 
-  it('getAllOfTournament', () => {
+  it('getAllTournamentInscriptions', () => {
     service.getAllTournamentInscriptions({ id: '1' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/inscriptions/getAllOfTournament`
+      `${environment.urlApi}/inscriptions/getAllTournamentInscriptions`
     );
     req.flush([]);
   });
 
-  it('getAllOfCar', () => {
+  it('getAllCarInscriptions', () => {
     service
       .getAllCarInscriptions({ id: '1', limit: '10' })
       .subscribe((response) => {
@@ -83,18 +83,18 @@ describe('InscriptionService', () => {
         expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
       });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/inscriptions/getAllOfCar`
+      `${environment.urlApi}/inscriptions/getAllCarInscriptions`
     );
     req.flush([]);
   });
 
-  it('getAllForDriver', () => {
+  it('getAllDriverInscriptions', () => {
     service.getAllDriverInscriptions({ id: '1' }).subscribe((response) => {
       expect(response).not.toBe(null);
       expect(JSON.stringify(response)).toEqual(JSON.stringify([]));
     });
     const req = httpTestingController.expectOne(
-      `${environment.urlApi}/inscriptions/getAllForDriver`
+      `${environment.urlApi}/inscriptions/getAllDriverInscriptions`
     );
     req.flush([]);
   });

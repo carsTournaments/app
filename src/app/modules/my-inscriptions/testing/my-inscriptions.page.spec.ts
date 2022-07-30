@@ -8,7 +8,7 @@ import {
 } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 import { of, throwError } from 'rxjs';
-import { AuthService, InscriptionService } from '@services';
+import { AnalyticsService, AuthService, InscriptionService } from '@services';
 import { Inscription } from '@models';
 import { ActivatedRoute } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -19,6 +19,7 @@ import {
   TranslateFakeLoader,
 } from '@ngx-translate/core';
 import { MyInscriptionsPage } from '../pages/inscriptions/my-inscriptions.page';
+import { analyticsService, authService, inscriptionService, navCtrl } from '@services/services.mock.spec';
 
 const inscription = new Inscription({
   _id: '123',
@@ -33,15 +34,9 @@ const getAllForDriverResponse = {
   completed: [{ tournament, cars: [car] }],
 };
 
-describe('InscriptionsPage', () => {
+describe('MyInscriptionsPage', () => {
   let component: MyInscriptionsPage;
   let fixture: ComponentFixture<MyInscriptionsPage>;
-  const navCtrl = jasmine.createSpyObj('NavController', ['navigateForward']);
-  const inscriptionService = jasmine.createSpyObj('InscriptionService', [
-    'getAllForDriver',
-  ]);
-  const authService = jasmine.createSpyObj('AuthService', ['getUser']);
-
   inscriptionService.getAllForDriver = jasmine
     .createSpy()
     .and.returnValue(of(getAllForDriverResponse));
@@ -64,6 +59,7 @@ describe('InscriptionsPage', () => {
         { provide: InscriptionService, useValue: inscriptionService },
         { provide: NavController, useValue: navCtrl },
         { provide: AuthService, useValue: authService },
+        { provide: AnalyticsService, useValue: analyticsService },
         {
           provide: ActivatedRoute,
           useValue: {
@@ -94,34 +90,23 @@ describe('InscriptionsPage', () => {
     it('OK', () => {
       component.vm.user = user;
       component.vm.user._id = '1';
-      inscriptionService.getAllForDriver = jasmine
+      inscriptionService.getAllDriverInscriptions = jasmine
         .createSpy()
         .and.returnValue(of(getAllForDriverResponse));
       component.getAll();
-      expect(inscriptionService.getAllForDriver).toHaveBeenCalled();
+      expect(inscriptionService.getAllDriverInscriptions).toHaveBeenCalled();
       expect(component.vm.inscriptions).toEqual(getAllForDriverResponse);
     });
+
     it('KO', () => {
       component.vm.user = user;
       component.vm.user._id = '1';
-      inscriptionService.getAllForDriver = jasmine
+      inscriptionService.getAllDriverInscriptions = jasmine
         .createSpy()
         .and.returnValue(throwError('error'));
       component.getAll();
       expect(component.vm.loading).toBe(false);
       expect(component.vm.error).toBe(true);
     });
-  });
-
-  // it('segmentChanged', () => {
-  //     component.segmentChanged({ detail: { value: 0 } });
-  //     expect(component.vm.header.segments.selected).toEqual(0);
-  // });
-
-  it('goToTournament', () => {
-    component.goToTournament(inscription);
-    expect(navCtrl.navigateForward).toHaveBeenCalledWith(
-      `tournament/${inscription.tournament._id}`
-    );
   });
 });

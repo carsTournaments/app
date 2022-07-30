@@ -94,7 +94,7 @@ export class ImageService {
       .pipe(take(1));
   }
 
-  deleteOne(id: string): Observable<{ message: string }> {
+  delete(id: string): Observable<{ message: string }> {
     const url = `${this.url}/one/${id}`;
     return this.httpClient.delete<{ message: string }>(url).pipe(take(1));
   }
