@@ -10,6 +10,7 @@ import {
   UserService,
   ToastIonicService,
   ActionSheetIonicService,
+  AnalyticsService,
 } from '@services';
 import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
 
@@ -27,7 +28,8 @@ export class MyGarageListPage {
     private userService: UserService,
     private translate: TranslateService,
     private toastIonicService: ToastIonicService,
-    private actionSheetService: ActionSheetIonicService
+    private actionSheetService: ActionSheetIonicService,
+    private analyticsService: AnalyticsService
   ) {}
 
   ionViewWillEnter(): void {
@@ -81,14 +83,26 @@ export class MyGarageListPage {
   onDidDismissOptions(data: OverlayEventDetail<any>, car: Car): void {
     if (data.data) {
       if (data.data === 'viewProfile') {
+        this.analyticsService.logEvent('myGarage_goToCar', {
+          carId: car._id,
+        });
         this.navCtrl.navigateForward(config.routes.car.replace(':id', car._id));
       } else if (data.data === 'edit') {
+        this.analyticsService.logEvent('myGarage_goToEditCar', {
+          carId: car._id,
+        });
         this.editCar(car);
       } else if (data.data === 'images') {
+        this.analyticsService.logEvent('myGarage_goToImages', {
+          carId: car._id,
+        });
         this.navCtrl.navigateForward(
           config.routes.myGarageImages.replace(':id', car._id)
         );
       } else if (data.data === 'deleteCar') {
+        this.analyticsService.logEvent('myGarage_deleteCar', {
+          carId: car._id,
+        });
         this.deleteCar(car);
       }
     }
@@ -101,7 +115,7 @@ export class MyGarageListPage {
   }
 
   async deleteCar(car: Car): Promise<void> {
-    await this.alertService.presentAlertWithButtons(
+    const alert = await this.alertService.presentAlertWithButtons(
       this.translate.instant('garageList.titleDeleteCar'),
       this.translate.instant('garageList.messageDeleteCar'),
       [
@@ -112,10 +126,23 @@ export class MyGarageListPage {
         {
           text: this.translate.instant('generic.yes'),
           role: 'ok',
-          handler: () => this.deleteCarConfirmation(car),
         },
       ]
     );
+    alert.onDidDismiss().then(async (data) => this.onDidDismiss(data, car));
+  }
+
+  async onDidDismiss(data: OverlayEventDetail<any>, car: Car): Promise<void> {
+    if (data.role === 'ok') {
+      this.analyticsService.logEvent('myGarage_deleteCarConfirmation', {
+        carId: car._id,
+      });
+      await this.deleteCarConfirmation(car);
+    } else {
+      this.analyticsService.logEvent('myGarage_cancelDeleteCar', {
+        carId: car._id,
+      });
+    }
   }
 
   async deleteCarConfirmation(car: Car): Promise<void> {
@@ -131,6 +158,7 @@ export class MyGarageListPage {
   }
 
   onClickAddCar(): void {
+    this.analyticsService.logEvent('myGarage_goToAddCar');
     this.navCtrl.navigateForward(config.routes.myGarageCreate);
   }
 }

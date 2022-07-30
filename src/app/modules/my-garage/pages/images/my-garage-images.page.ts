@@ -82,6 +82,10 @@ export class MyGarageImagesPage {
       },
     ];
 
+    if (this.vm.images.length === 1) {
+      buttons.splice(0, 1);
+    }
+
     const as = await this.actionSheetService.present('Opciones', buttons);
     as.onDidDismiss().then((data) => this.onDidDismissOptions(data, image));
   }
@@ -100,7 +104,9 @@ export class MyGarageImagesPage {
 
   openImage(image: Image): void {
     const url = `${environment.urlImages}/${image.url}`;
-    this.analyticsService.logEvent('car_openImage', { params: { url } });
+    this.analyticsService.logEvent('myGarageImages_openImage', {
+      params: { url },
+    });
     this.imageService.openImage(url);
   }
 
@@ -108,14 +114,18 @@ export class MyGarageImagesPage {
     this.imageService.setFirstImage(image._id, this.vm.id).subscribe({
       next: () => {
         this.getAllImagesCar();
+        this.analyticsService.logEvent('myGarageImages_setFirstImage_OK');
         this.toastIonicService.info('Imagen actualizada');
       },
-      error: () => this.toastIonicService.error('Error al actualizar'),
+      error: () => {
+        this.analyticsService.logEvent('myGarageImages_setFirstImage_KO');
+        this.toastIonicService.error('Error al actualizar');
+      },
     });
   }
 
   async deleteImage(image: Image): Promise<void> {
-    await this.alertService.presentAlertWithButtons(
+    const alert = await this.alertService.presentAlertWithButtons(
       this.translate.instant('garageImages.titleDeleteImage'),
       this.translate.instant('garageImages.messageDeleteImage'),
       [
@@ -130,6 +140,20 @@ export class MyGarageImagesPage {
         },
       ]
     );
+
+    alert.onDidDismiss().then(async (data) => this.onDidDismiss(data, image));
+  }
+
+  async onDidDismiss(
+    data: OverlayEventDetail<any>,
+    image: Image
+  ): Promise<void> {
+    if (data.role === 'ok') {
+      this.analyticsService.logEvent('myGarageImages_deleteImage_Confirmation');
+      this.deleteImageConfirmation(image);
+    } else {
+      this.analyticsService.logEvent('myGarageImages_deleteImage_Cancel');
+    }
   }
 
   deleteImageConfirmation(image: Image) {
@@ -150,8 +174,13 @@ export class MyGarageImagesPage {
     }
     this.imageService.deleteOne(image._id).subscribe({
       next: () => {
+        this.analyticsService.logEvent('myGarageImages_deleteImage_OK');
         this.toastIonicService.info('Imagen eliminada');
         this.getAllImagesCar();
+      },
+      error: () => {
+        this.analyticsService.logEvent('myGarageImages_deleteImage_KO');
+        this.toastIonicService.error('Error al eliminar');
       },
     });
   }

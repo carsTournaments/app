@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import {
   ActionSheetIonicService,
   AlertService,
+  AnalyticsService,
   InscriptionService,
   ToastIonicService,
   UserService,
 } from '@services';
 import { IdDto } from '@core/dtos/id.dto';
 import { NavController } from '@ionic/angular';
-import { Inscription } from '@models';
 import { OverlayEventDetail } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MyInscriptionsViewModel } from '../../model/my-inscriptions.view-model';
@@ -28,7 +28,8 @@ export class MyInscriptionsPage {
     private alertService: AlertService,
     private translate: TranslateService,
     private toastIonicService: ToastIonicService,
-    private actionSheetService: ActionSheetIonicService
+    private actionSheetService: ActionSheetIonicService,
+    private analyticsService: AnalyticsService
   ) {}
 
   async ionViewWillEnter() {
@@ -49,7 +50,7 @@ export class MyInscriptionsPage {
     const body: IdDto = {
       id: this.vm.user._id,
     };
-    this.inscriptionService.getAllForDriver(body).subscribe({
+    this.inscriptionService.getAllDriverInscriptions(body).subscribe({
       next: (inscriptions) => {
         this.vm.inscriptions = inscriptions;
         this.checkStates();
@@ -70,17 +71,6 @@ export class MyInscriptionsPage {
         this.vm.states.completed = true;
       }
     }
-  }
-
-  segmentChanged(ev: any): void {
-    const segment = Number(ev.detail.value);
-    this.vm.header.segments.selected = Number(segment);
-  }
-
-  goToTournament(inscription: Inscription): void {
-    this.navCtrl.navigateForward(
-      config.routes.tournament.replace(':id', inscription.tournament._id)
-    );
   }
 
   async openOptions(data: { carId: string; tournamentId: string }) {
@@ -110,10 +100,17 @@ export class MyInscriptionsPage {
   ): void {
     if (res.data) {
       if (res.data === 'viewProfile') {
+        this.analyticsService.logEvent('myInscriptions_goToCarTodo', {
+          carId: data.carId,
+        });
         this.navCtrl.navigateForward(
           config.routes.car.replace(':id', data.carId)
         );
       } else if (res.data === 'deleteInscription') {
+        this.analyticsService.logEvent('myInscriptions_deleteInscription', {
+          carId: data.carId,
+          tournamentId: data.tournamentId,
+        });
         this.deleteInscriptionConfirmation(data.carId, data.tournamentId);
       }
     }
@@ -124,13 +121,28 @@ export class MyInscriptionsPage {
       '¿Estás seguro?',
       'Vas a eliminar la inscripcion al torneo',
       [
-        { text: 'No', role: 'cancel' },
-        { text: 'Si', role: 'ok' },
+        {
+          text: this.translate.instant('generic.no'),
+          role: 'cancel',
+        },
+        {
+          text: this.translate.instant('generic.yes'),
+          role: 'ok',
+        },
       ]
     );
     alert.onDidDismiss().then(async (data) => {
       if (data.role === 'ok') {
+        this.analyticsService.logEvent(
+          'myInscriptions_deleteInscriptionConfirmation',
+          { carId, tournamentId }
+        );
         this.deleteInscription(carId, tournamentId);
+      } else {
+        this.analyticsService.logEvent(
+          'myInscriptions_deleteInscriptionCancelled',
+          { carId, tournamentId }
+        );
       }
     });
   }

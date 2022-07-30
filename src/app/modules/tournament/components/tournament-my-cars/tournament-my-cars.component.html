@@ -5,7 +5,7 @@
     myCars?.unavailable.length > 0
   "
 >
-  <ion-title mode="md" style="margin: 1rem 0 0.5rem 0">
+  <h1 class="title-custom">
     <span
       *ngIf="
         myCars?.availables.length > 1 ||
@@ -25,7 +25,7 @@
     >
       {{ 'tournament.youCar' | translate }}
     </span>
-  </ion-title>
+  </h1>
 
   <ion-card
     mode="ios"
