@@ -33,10 +33,4 @@ export class BrandService {
       )
       .pipe(take(1));
   }
-
-  getOne(id: string): Observable<Brand> {
-    return this.httpClient
-      .post<Brand>(`${this.url}/one`, { id, site: 'app' })
-      .pipe(take(1));
-  }
 }

@@ -83,15 +83,4 @@ describe('BrandService', () => {
     );
     req.flush(responsePaginator);
   });
-
-  it('getOne', () => {
-    service.getOne('1').subscribe((response) => {
-      expect(response).not.toBe(null);
-      expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
-    });
-    const req = httpTestingController.expectOne(
-      `${environment.urlApi}/brands/one`
-    );
-    req.flush(item);
-  });
 });

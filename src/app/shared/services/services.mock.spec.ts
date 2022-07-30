@@ -6,10 +6,15 @@ export const authService = jasmine.createSpyObj('AuthService', [
   'getToken',
   'isAuthenticated',
 ]);
-export const brandService = jasmine.createSpyObj('BrandService', ['getAll']);
+export const brandService = jasmine.createSpyObj('BrandService', [
+  'getAll',
+  'getAllBrandsAndCars',
+]);
 
 export const carService = jasmine.createSpyObj('CarService', [
-  'getAllOfDriver',
+  'getAll',
+  'getAllDriverCars',
+  'getGlobalRanking',
   'getOne',
   'create',
   'update',
@@ -18,13 +23,23 @@ export const carService = jasmine.createSpyObj('CarService', [
 
 export const imageService = jasmine.createSpyObj('ImageService', [
   'addNewToGallery',
+  'update',
+  'openImage',
+  'setFirstImage',
+  'deleteOne',
 ]);
 
-export const likeService = jasmine.createSpyObj('LikeService', ['getTopCars']);
+export const likeService = jasmine.createSpyObj('LikeService', [
+  'getTopCars',
+  'checkLikedStorage',
+]);
 
 export const inscriptionService = jasmine.createSpyObj('InscriptionService', [
-  'getAllOfTournament',
+  'getAllTournamentInscriptions',
+  'getAllCarInscriptions',
+  'getAllDriverInscriptions',
   'getMyCarsForInscription',
+  'getOne',
 ]);
 
 export const tournamentService = jasmine.createSpyObj('TournamentService', [
@@ -73,6 +88,11 @@ export const utilsService = jasmine.createSpyObj('UtilsService', [
   'reloadPage',
 ]);
 
+export const toggleService = jasmine.createSpyObj('ToggleService', [
+  'getToggle',
+  'setToggle',
+]);
+
 export const translateService = jasmine.createSpyObj('TranslateService', [
   'get',
   'instant',
@@ -97,3 +117,16 @@ actionSheetService.present = jasmine.createSpy().and.returnValue(
 export const userService = jasmine.createSpyObj('UserService', ['getUser']);
 
 export const admobService = jasmine.createSpyObj('AdmobService', ['init']);
+
+export const toastIonicService = jasmine.createSpyObj('ToastIonicService', [
+  'info',
+  'error',
+]);
+
+export const platform = jasmine.createSpyObj('Platform', ['is']);
+
+export const reportService = jasmine.createSpyObj('ReportService', ['create']);
+export const modalCtrl = jasmine.createSpyObj('ModalController', [
+  'create',
+  'dismiss',
+]);

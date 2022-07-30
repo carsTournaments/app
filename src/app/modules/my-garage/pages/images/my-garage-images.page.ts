@@ -172,7 +172,7 @@ export class MyGarageImagesPage {
           .subscribe(() => null);
       }
     }
-    this.imageService.deleteOne(image._id).subscribe({
+    this.imageService.delete(image._id).subscribe({
       next: () => {
         this.analyticsService.logEvent('myGarageImages_deleteImage_OK');
         this.toastIonicService.info('Imagen eliminada');

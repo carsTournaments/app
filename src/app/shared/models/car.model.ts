@@ -23,8 +23,8 @@ export class Car {
   bronze?: { count: number };
   inscriptions?: { count: number };
   votes?: { count: number };
-  pairings: { count: number };
-  pairingsWinners: { count: number };
+  pairings?: { count: number };
+  pairingsWinners?: { count: number };
   created?: string;
   updated?: string;
 
