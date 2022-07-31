@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {
+  ActionPerformed,
   PushNotifications,
   PushNotificationSchema,
   Token,
@@ -15,7 +16,6 @@ import { Browser } from '@capacitor/browser';
 @Injectable({ providedIn: 'root' })
 export class NotificationsPushService {
   url = `${environment.urlApi}/notifications`;
-  pushNotificationToken: any; // I save the token to database because i need it in my backend code.
 
   constructor(
     private platform: Platform,
@@ -31,6 +31,7 @@ export class NotificationsPushService {
         this.requestPermissions();
         this.addListenerRegistration(user);
         this.addEventListenerPushNotificationReceived();
+        this.addPushNotificationActionPerformed();
       }
     } catch (error) {
       console.error(error);
@@ -41,8 +42,6 @@ export class NotificationsPushService {
     PushNotifications.requestPermissions().then((permission) => {
       if (permission.receive) {
         PushNotifications.register();
-      } else {
-        // No permission for push granted
       }
     });
   }
@@ -56,33 +55,47 @@ export class NotificationsPushService {
         );
         this.storageService.set('user', userForStorage);
       }
-      this.pushNotificationToken = JSON.stringify(token.value);
     });
   }
-
-  private addEventListenerPushNotificationReceived() {
-    PushNotifications.addListener(
-      'pushNotificationReceived',
-      async (notification: PushNotificationSchema) => {
-        const alert = await this.alertService.presentAlertWithButtons(
-          notification.title,
-          notification.body,
-          [
-            {
-              text: notification.data.titleButton,
-              handler: () => this.onPushNotificationClick(notification),
-            },
-          ]
-        );
-        await alert.present();
+  private async addPushNotificationActionPerformed() {
+    // APP Cerrada o segundo plano
+    await PushNotifications.addListener(
+      'pushNotificationActionPerformed',
+      (action: ActionPerformed) => {
+        this.openAlertNotification(action.notification);
       }
     );
   }
 
-  private onPushNotificationClick(notification: PushNotificationSchema) {
+  private addEventListenerPushNotificationReceived() {
+    // APP Abierta
+    PushNotifications.addListener(
+      'pushNotificationReceived',
+      async (notification: PushNotificationSchema) =>
+        this.openAlertNotification(notification)
+    );
+  }
+
+  private async openAlertNotification(notification: PushNotificationSchema) {
+    const alertItem = await this.alertService.presentAlertWithButtons(
+      notification.title ? notification.title : notification.data.title,
+      notification.body ? notification.body : notification.data.message,
+      [
+        {
+          text: notification.data.titleButton,
+          handler: () => this.onPushNotificationClick(notification),
+        },
+      ]
+    );
+    await alertItem.present();
+  }
+
+  private async onPushNotificationClick(notification: PushNotificationSchema) {
     if (notification.data.link && notification.data.linkType) {
       if (notification.data.linkType === 'external') {
-        Browser.open({ url: notification.data.link });
+        Browser.open({ url: notification.data.link }).catch((error) =>
+          alert(error)
+        );
       } else {
         this.router.navigate([notification.data.link]);
       }
