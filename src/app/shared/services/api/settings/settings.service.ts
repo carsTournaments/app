@@ -7,8 +7,8 @@ import { SettingsAppI, SettingsCheckUpdateI } from './settings.response';
 import { AdmobService, AlertService, StorageService } from '../..';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
-import { Browser } from '@capacitor/browser';
 import { Location } from '@angular/common';
+import { NativeMarket } from '@capgo/native-market';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
@@ -60,36 +60,36 @@ export class SettingsService {
   private checkUpdate(data: SettingsAppI): void {
     if (data.isNeedUpdate) {
       if (data.isNeedUpdate.mandatory) {
-        this.onMandatoryUpdate(data.isNeedUpdate);
+        this.onMandatoryUpdate();
       } else if (data.isNeedUpdate.update) {
-        this.isAvailableUpdate(data.isNeedUpdate);
+        this.isAvailableUpdate();
       }
     }
   }
 
-  private onMandatoryUpdate(data: SettingsCheckUpdateI) {
+  private onMandatoryUpdate() {
     this.alertService.presentAlertWithButtons(
       'Actualización obligatoria',
       'Es necesario actualizar la aplicación para poder continuar',
-      [{ text: 'Ok', handler: () => this.goToMarket(data) }]
+      [{ text: 'Ok', handler: () => this.goToMarket() }]
     );
   }
 
-  private isAvailableUpdate(data: SettingsCheckUpdateI): void {
+  private isAvailableUpdate(): void {
     this.alertService.presentAlertWithButtons(
       'Actualización disponible',
       '¿Quieres actualizar la aplicacion?',
       [
         { text: 'No', role: 'cancel' },
-        { text: 'Si', handler: () => this.goToMarket(data) },
+        { text: 'Si', handler: () => this.goToMarket() },
       ]
     );
   }
 
-  private async goToMarket(data: SettingsCheckUpdateI): Promise<void> {
-    Browser.open({ url: data.urlMarket }).then(() => {
-      App.exitApp();
-    });
+  private async goToMarket(): Promise<void> {
+    NativeMarket.openStoreListing({
+      appId: 'com.josexs.ct',
+    }).then(() => App.exitApp());
   }
 
   private checkStates(data: SettingsAppI): void {
