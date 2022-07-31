@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { SettingsAppDto } from './settings.dto';
-import { SettingsAppI, SettingsCheckUpdateI } from './settings.response';
+import { SettingsAppI } from './settings.response';
 import { AdmobService, AlertService, StorageService } from '../..';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
