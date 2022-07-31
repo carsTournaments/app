@@ -7,7 +7,7 @@ import * as moment from 'moment';
 export class DateToDayOrMonthPipe implements PipeTransform {
   transform(value: string, dayOrMonth = 'day'): string {
     return dayOrMonth === 'day'
-      ? moment(value).format('DD')
-      : moment(value).format('MMM');
+      ? moment(value).locale('es').format('DD').substring(0, 2)
+      : moment(value).locale('es').format('MMM').substring(0, 3);
   }
 }
