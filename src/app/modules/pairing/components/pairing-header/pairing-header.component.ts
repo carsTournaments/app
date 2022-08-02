@@ -37,17 +37,21 @@ export class PairingHeaderComponent implements OnInit {
   }
 
   async vote(type: string) {
-    this.voteBody.car = this.pairing[type]._id;
     if (this.userService.getUser()) {
-      this.voteBody.user = this.userService.getUser()._id;
+      this.voteBody.car = this.pairing[type]._id;
+      if (this.userService.getUser()) {
+        this.voteBody.user = this.userService.getUser()._id;
+      }
+      this.voteService.create(this.voteBody).subscribe({
+        next: (item) => this.onVoteSuccess(item),
+        error: (error) =>
+          this.toastIonicService.error(
+            error ?? 'Ha ocurrido un error al votar'
+          ),
+      });
+    } else {
+      this.toastIonicService.error('Debes iniciar sesión para votar');
     }
-    this.voteService.create(this.voteBody).subscribe({
-      next: (item) => this.onVoteSuccess(item),
-      error: () =>
-        this.toastIonicService.error(
-          'Ha ocurrido un error, intentalo mas tarde'
-        ),
-    });
   }
 
   onVoteSuccess(vote: Vote) {
