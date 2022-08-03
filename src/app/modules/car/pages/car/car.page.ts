@@ -209,11 +209,11 @@ export class CarPage implements OnInit {
           this.vm.car.likes = { count: 1 };
         }
       },
-      error: () => {
+      error: (error) => {
         this.analyticsService.logEvent('car_like_KO', {
           params: { state: false },
         });
-        this.toastIonicService.error('Error al dar me gusta');
+        this.toastIonicService.error(error ?? 'Error al dar me gusta');
       },
     });
   }

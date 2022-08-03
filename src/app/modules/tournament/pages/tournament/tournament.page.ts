@@ -181,11 +181,11 @@ export class TournamentPage {
         )} ${car.brand.name} ${car.model}`;
         this.toastIonicService.info(message);
       },
-      error: () => {
+      error: (error) => {
         this.analyticsService.logEvent(
           'tournament_createInscriptionConfirmation_KO'
         );
-        this.toastIonicService.error('Error al crear la inscripción');
+        this.toastIonicService.error(error ?? 'Error al crear la inscripción');
       },
     });
   }
