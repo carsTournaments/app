@@ -4,13 +4,17 @@ import { ModalController, ModalOptions, NavController } from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import {
   EventsService,
+  ImageService,
   PairingService,
   SocialSharingService,
+  ToastIonicService,
   UserService,
   VoteService,
 } from '@services';
 import { ImagePipe } from '@pipes';
 import { ReportModalComponent } from '@components/report-modal/report-modal.component';
+import { Pairing, Vote } from '@models';
+import { Device } from '@capacitor/device';
 
 @Component({
   selector: 'page-pairing',
@@ -29,7 +33,9 @@ export class PairingPage {
     private socialSharingService: SocialSharingService,
     private userService: UserService,
     private navCtrl: NavController,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private imageService: ImageService,
+    private toastIonicService: ToastIonicService
   ) {}
 
   async ionViewWillEnter(): Promise<void> {
@@ -40,36 +46,43 @@ export class PairingPage {
       this.vm.reportState = true;
     }
     this.getOne();
+    this.vm.info = await Device.getInfo();
+    console.log(await Device.getId());
   }
 
   getOne() {
     this.pairingService.getOne(this.vm.id).subscribe({
-      next: async (item) => {
-        this.vm.pairing = item;
-        this.vm.header.title = this.vm.pairing.tournament.name;
-        this.vm.backButtonRoute = `tournament/${this.vm.pairing.tournament._id}`;
-        this.setImageForBackground('car1');
-        this.setImageForBackground('car2');
-        this.vm.voteBody.pairing = this.vm.pairing._id;
-        this.vm.voteBody.tournament = this.vm.pairing.tournament._id;
-        this.vm.voteBody.round = this.vm.pairing.round._id;
-        if (await this.voteService.isValidVote(this.vm.voteBody)) {
-          this.vm.voted = false;
-        } else {
-          this.vm.voted = true;
-        }
-
-        if (this.vm.pairing.round.status === 'Completed') {
-          this.vm.voted = true;
-        }
-        this.vm.loading = false;
-        this.setRoute();
-      },
-      error: (error) => {
-        this.vm.loading = false;
-        console.error(error);
-      },
+      next: async (item) => this.getOneOnSuccess(item),
+      error: (error) => this.getOneOnError(error),
     });
+  }
+
+  async getOneOnSuccess(item: Pairing) {
+    this.vm.pairing = item;
+    this.vm.header.title = this.vm.pairing.tournament.name;
+    this.vm.backButtonRoute = `tournament/${this.vm.pairing.tournament._id}`;
+    this.setImageForBackground('car1');
+    this.setImageForBackground('car2');
+    this.vm.voteBody.pairing = this.vm.pairing._id;
+    this.vm.voteBody.tournament = this.vm.pairing.tournament._id;
+    this.vm.voteBody.round = this.vm.pairing.round._id;
+    this.setScore();
+    if (await this.voteService.isValidVote(this.vm.voteBody)) {
+      this.vm.voted = false;
+    } else {
+      this.vm.voted = true;
+    }
+
+    if (this.vm.pairing.round.status === 'Completed') {
+      this.vm.voted = true;
+    }
+    this.vm.loading = false;
+    this.setRoute();
+  }
+
+  getOneOnError(error) {
+    this.toastIonicService.error(error ?? 'Error al obtener la información');
+    this.vm.loading = false;
   }
 
   setRoute() {
@@ -129,5 +142,59 @@ export class PairingPage {
       voted: this.vm.votedNow,
     });
     this.navCtrl.navigateBack(this.vm.header.backButton.route);
+  }
+
+  async vote(type: string) {
+    if (this.userService.getUser()) {
+      this.vm.voteBody.car = this.vm.pairing[type]._id;
+      if (this.userService.getUser()) {
+        this.vm.voteBody.user = this.userService.getUser()._id;
+      }
+      this.voteService.create(this.vm.voteBody).subscribe({
+        next: (item) => this.onVoteSuccess(item),
+        error: (error) =>
+          this.toastIonicService.error(
+            error ?? 'Ha ocurrido un error al votar'
+          ),
+      });
+    } else {
+      this.toastIonicService.error('Debes iniciar sesión para votar');
+    }
+  }
+
+  onVoteSuccess(vote: Vote) {
+    const car = vote.car === this.vm.pairing.car1._id ? 'car1' : 'car2';
+    this.voteService.setValidVote(vote);
+    this.setScore(car);
+    this.vm.voted = true;
+    this.toastIonicService.info(
+      'Tu voto se ha registrado correctamente, ¡gracias!'
+    );
+  }
+
+  setScore(force?: any): void {
+    const cars = {
+      car1: { votes: 0, percentage: 0 },
+      car2: { votes: 0, percentage: 0 },
+    };
+    for (const vote of this.vm.pairing.votes) {
+      if (
+        vote.car === this.vm.pairing.car1 ||
+        vote.car === this.vm.pairing.car1._id
+      ) {
+        cars.car1.votes++;
+      } else {
+        cars.car2.votes++;
+      }
+    }
+    if (force) {
+      cars[force].votes++;
+    }
+    this.vm.pairing.car1.votes = cars.car1.votes;
+    this.vm.pairing.car2.votes = cars.car2.votes;
+  }
+
+  openImage(image: string) {
+    this.imageService.openImage(image);
   }
 }

@@ -1,7 +1,7 @@
 import { Header } from '@components/header/model/header.model';
 import { Image, Pairing, User, Vote } from '@models';
 import { config } from '@config';
-
+import { DeviceInfo } from '@capacitor/device';
 export class PairingViewModel {
   id: string;
   backButtonRoute = '';
@@ -32,6 +32,7 @@ export class PairingViewModel {
   voteBody = new Vote();
   voted = false;
   votedNow = false;
+  info: DeviceInfo;
   loading = true;
   error = false;
 }

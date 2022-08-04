@@ -67,7 +67,9 @@ export class CarPage implements OnInit {
     }
 
     this.setTotalsItem();
-    await this.checkIsMyCar();
+    if (this.userService.getUser()) {
+      await this.checkIsMyCar();
+    }
     this.vm.loading = false;
   }
 

@@ -22,10 +22,10 @@
         [pairing]="vm.pairing"
         [images]="{car1: vm.image1, car2: vm.image2 }"
         [backButtonRoute]="vm.backButtonRoute"
-        [voteBody]="vm.voteBody"
         [voted]="vm.voted"
         (share)="share()"
-        (voteCar)="vm.votedNow = true"
+        (openImage)="openImage($event)"
+        (vote)="vote($event)"
       >
       </pairing-header>
 

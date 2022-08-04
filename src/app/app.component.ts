@@ -120,10 +120,8 @@ export class AppComponent implements OnInit {
 
   async changeDarkMode() {
     const state = await this.togglesService.isActiveToggle('general_darkmode');
-    console.log(state);
     if (state) {
       const darkModeStorage = await this.storageService.getDarkMode();
-      console.log(darkModeStorage);
       if (darkModeStorage === 'yes') {
         document.body.classList.toggle('dark');
       } else if (darkModeStorage === 'no') {

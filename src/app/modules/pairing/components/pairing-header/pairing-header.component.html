@@ -3,15 +3,13 @@
   <div class="div-flex">
     <div class="div-left">
       <ion-card class="image-car1" [ngStyle]="{'background-image': 'url(' + images.car1?.url + ')'}" button
-        (click)="openImage(images.car1?.url)"></ion-card>
+        (click)="openImage.emit(images.car1?.url)"></ion-card>
 
       <ion-button [disabled]="voted" class="button-vote" mode="ios" expand="block" size="small" color="dark"
-        (click)="vote('car1')">
+        (click)="vote.emit('car1')">
         {{ 'pairing.vote' | translate }}
       </ion-button>
     </div>
-
-
 
     <div class="div-center">
       <!-- Si cualquiera de los dos tiene mas de un cero, poner clase score-max -->
@@ -22,10 +20,10 @@
 
     <div class="div-right">
       <ion-card class="image-car2" [ngStyle]="{'background-image': 'url(' + images.car2?.url + ')'}" button
-        (click)="openImage(images.car2?.url)"></ion-card>
+        (click)="openImage.emit(images.car2?.url)"></ion-card>
 
       <ion-button [disabled]="voted" class="button-vote" mode="ios" size="small" expand="block" color="dark"
-        (click)="vote('car2')">Votar</ion-button>
+        (click)="vote.emit('car2')">Votar</ion-button>
     </div>
   </div>
 
