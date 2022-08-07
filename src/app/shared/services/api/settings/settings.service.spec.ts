@@ -57,7 +57,6 @@ describe('SettingsService', () => {
   //   spyOn(service, 'getSettings');
   //   storageService.get = jasmine.createSpy().and.returnValue(undefined);
   //   const data = await service.getSettings();
-  //   console.log(data);
   //   expect(service.getSettingsDB).toHaveBeenCalled();
   // })
 });

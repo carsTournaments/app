@@ -69,5 +69,24 @@
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>[Why you use NSUserTracking. ex: This identifier will be used to deliver personalized ads to you.]</string>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>com.googleusercontent.apps.432785685251-n65naf61ooso3kmmjqid38pvb9l4kfgh</string>
+        </array>
+    </dict>
+    <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>***Something here***</string>
+        </array>
+    </dict>
+</array>
 </dict>
 </plist>
