@@ -155,7 +155,10 @@ export class PairingPage {
       return this.toastIonicService.error('Debes iniciar sesión para votar');
     } else if (this.platform.is('capacitor') && !user) {
       this.vm.voteBody.uuid = this.vm.uuid;
-    } else if (this.platform.is('capacitor') && user || !this.platform.is('capacitor') && user) {
+    } else if (
+      (this.platform.is('capacitor') && user) ||
+      (!this.platform.is('capacitor') && user)
+    ) {
       this.vm.voteBody.user = user._id;
     }
     this.vm.voteBody.car = this.vm.pairing[type]._id;
