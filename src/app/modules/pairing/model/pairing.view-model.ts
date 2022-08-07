@@ -33,6 +33,7 @@ export class PairingViewModel {
   voted = false;
   votedNow = false;
   info: DeviceInfo;
+  uuid: string;
   loading = true;
   error = false;
 }

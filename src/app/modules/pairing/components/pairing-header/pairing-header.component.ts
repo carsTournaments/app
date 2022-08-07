@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Image, Pairing, Vote } from '@models';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Image, Pairing } from '@models';
 
 @Component({
   selector: 'pairing-header',

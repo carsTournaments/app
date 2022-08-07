@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController, ModalOptions, NavController } from '@ionic/angular';
+import {
+  ModalController,
+  ModalOptions,
+  NavController,
+  Platform,
+} from '@ionic/angular';
 import { PairingViewModel } from './model/pairing.view-model';
 import {
   EventsService,
@@ -35,7 +40,8 @@ export class PairingPage {
     private navCtrl: NavController,
     private eventsService: EventsService,
     private imageService: ImageService,
-    private toastIonicService: ToastIonicService
+    private toastIonicService: ToastIonicService,
+    private platform: Platform
   ) {}
 
   async ionViewWillEnter(): Promise<void> {
@@ -46,8 +52,7 @@ export class PairingPage {
       this.vm.reportState = true;
     }
     this.getOne();
-    this.vm.info = await Device.getInfo();
-    console.log(await Device.getId());
+    this.vm.uuid = (await Device.getId()).uuid;
   }
 
   getOne() {
@@ -145,21 +150,20 @@ export class PairingPage {
   }
 
   async vote(type: string) {
-    if (this.userService.getUser()) {
-      this.vm.voteBody.car = this.vm.pairing[type]._id;
-      if (this.userService.getUser()) {
-        this.vm.voteBody.user = this.userService.getUser()._id;
-      }
-      this.voteService.create(this.vm.voteBody).subscribe({
-        next: (item) => this.onVoteSuccess(item),
-        error: (error) =>
-          this.toastIonicService.error(
-            error ?? 'Ha ocurrido un error al votar'
-          ),
-      });
-    } else {
-      this.toastIonicService.error('Debes iniciar sesión para votar');
+    const user = this.userService.getUser();
+    if (!this.platform.is('capacitor') && !user) {
+      return this.toastIonicService.error('Debes iniciar sesión para votar');
+    } else if (this.platform.is('capacitor') && !user) {
+      this.vm.voteBody.uuid = this.vm.uuid;
+    } else if (this.platform.is('capacitor') && user || !this.platform.is('capacitor') && user) {
+      this.vm.voteBody.user = user._id;
     }
+    this.vm.voteBody.car = this.vm.pairing[type]._id;
+    this.voteService.create(this.vm.voteBody).subscribe({
+      next: (item) => this.onVoteSuccess(item),
+      error: (error) =>
+        this.toastIonicService.error(error ?? 'Ha ocurrido un error al votar'),
+    });
   }
 
   onVoteSuccess(vote: Vote) {
