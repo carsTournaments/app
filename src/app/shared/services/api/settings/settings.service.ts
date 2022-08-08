@@ -8,7 +8,7 @@ import { AdmobService, AlertService, StorageService } from '../..';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { Location } from '@angular/common';
-import { NativeMarket } from '@capgo/native-market';
+// import { NativeMarket } from '@capgo/native-market';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
@@ -87,9 +87,9 @@ export class SettingsService {
   }
 
   private async goToMarket(): Promise<void> {
-    NativeMarket.openStoreListing({
-      appId: 'com.josexs.ct',
-    }).then(() => App.exitApp());
+    // NativeMarket.openStoreListing({
+    //   appId: 'com.josexs.ct',
+    // }).then(() => App.exitApp());
   }
 
   private checkStates(data: SettingsAppI): void {
