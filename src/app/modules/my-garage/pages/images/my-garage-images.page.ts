@@ -161,7 +161,6 @@ export class MyGarageImagesPage {
       const firstImage = this.vm.images.filter(
         (img) => img._id !== image._id
       )[0];
-      console.log(firstImage);
       if (firstImage && !firstImage.firstImage) {
         this.imageService
           .update({

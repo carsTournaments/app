@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { FirebaseAnalytics } from '@capacitor-community/firebase-analytics';
+import { FirebaseAnalytics } from '@capacitor-firebase/analytics';
 import { Platform } from '@ionic/angular';
 import { filter } from 'rxjs/operators';
-import { environment } from '@env/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AnalyticsService {
@@ -12,7 +11,6 @@ export class AnalyticsService {
   constructor(private router: Router, private platform: Platform) {}
 
   start() {
-    this.initFb();
     this.router.events
       .pipe(filter((e: RouterEvent) => e instanceof NavigationEnd))
       .subscribe((e: RouterEvent) => {
@@ -20,14 +18,8 @@ export class AnalyticsService {
       });
   }
 
-  async initFb(): Promise<void> {
-    if (!this.platform.is('capacitor')) {
-      FirebaseAnalytics.initializeFirebase(environment.firebaseConfig);
-    }
-  }
-
   setScreenName(screenName: string): void {
-    FirebaseAnalytics.setScreenName({
+    FirebaseAnalytics.setCurrentScreen({
       screenName,
     });
   }
@@ -47,7 +39,7 @@ export class AnalyticsService {
 
   toggleAnalytics(): void {
     this.analyticsEnabled = !this.analyticsEnabled;
-    FirebaseAnalytics.setCollectionEnabled({
+    FirebaseAnalytics.setEnabled({
       enabled: this.analyticsEnabled,
     });
   }

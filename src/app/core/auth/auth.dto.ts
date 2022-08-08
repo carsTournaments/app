@@ -10,13 +10,11 @@ export interface AuthRegisterDto {
 }
 
 export interface GoogleUserDto {
-  id: string;
-  email: string;
-  name?: string;
   displayName?: string;
-  familyName: string;
-  givenName: string;
-  imageUrl: string;
-  serverAuthCode: string;
-  authentication: any;
+  email?: string;
+  emailVerified?: boolean;
+  isAnonymous?: boolean;
+  photoUrl?: string;
+  providerId?: string;
+  uid?: string;
 }

@@ -5,12 +5,12 @@ import { Location } from '@angular/common';
 
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { User } from '@models';
-import { CapacitorUpdater } from '@capgo/capacitor-updater';
 import { ToggleService } from '@core/services/toggle.service';
 import {
   AlertService,
   AnalyticsService,
-  GoogleAuthService,
+  AppUpdateService,
+  FirebaseAuthenticationService,
   NotificationsPushService,
   SettingsService,
 } from '@services';
@@ -32,13 +32,14 @@ export class AppComponent implements OnInit {
     private analyticsService: AnalyticsService,
     private notificationsPushService: NotificationsPushService,
     private togglesService: ToggleService,
-    private googleAuthService: GoogleAuthService,
+    private firebaseAuthenticationService: FirebaseAuthenticationService,
     private location: Location,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private appUpdateService: AppUpdateService
   ) {
     this.initializeDeepLinks();
     this.analyticsService.start();
-    this.googleAuthService.init();
+    this.firebaseAuthenticationService.init();
   }
 
   async ngOnInit(): Promise<void> {
@@ -47,15 +48,13 @@ export class AppComponent implements OnInit {
     this.addEventBackButton();
     this.settingsService.getSettingsDB();
     this.checkUserLogged();
-    this.ota();
+    this.checkUpdate();
     this.changeDarkMode();
   }
 
-  async ota() {
-    if (await this.togglesService.isActiveToggle('ota')) {
-      if (this.platform.is('capacitor')) {
-        CapacitorUpdater.notifyAppReady();
-      }
+  async checkUpdate() {
+    if (this.platform.is('capacitor')) {
+      await this.appUpdateService.performImmediateUpdate();
     }
   }
 
@@ -120,10 +119,8 @@ export class AppComponent implements OnInit {
 
   async changeDarkMode() {
     const state = await this.togglesService.isActiveToggle('general_darkmode');
-    console.log(state);
     if (state) {
       const darkModeStorage = await this.storageService.getDarkMode();
-      console.log(darkModeStorage);
       if (darkModeStorage === 'yes') {
         document.body.classList.toggle('dark');
       } else if (darkModeStorage === 'no') {

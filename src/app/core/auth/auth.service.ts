@@ -4,9 +4,9 @@ import { LoginGoogleResponseI, LoginOrRegisterResponseI } from '@interfaces';
 import { map, share, tap } from 'rxjs/operators';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';
-import { AuthLogInDto, AuthRegisterDto } from './auth.dto';
+import { AuthLogInDto, AuthRegisterDto, GoogleUserDto } from './auth.dto';
 import {
-  GoogleAuthService,
+  FirebaseAuthenticationService,
   NotificationsPushService,
   UserService,
 } from '@services';
@@ -21,7 +21,7 @@ export class AuthService {
     private tokenService: TokenService,
     private userService: UserService,
     private notificationsPushService: NotificationsPushService,
-    private googleAuthService: GoogleAuthService
+    private firebaseAuthenticationService: FirebaseAuthenticationService
   ) {}
 
   check(): boolean {
@@ -47,14 +47,19 @@ export class AuthService {
   }
 
   async loginGoogle(): Promise<Observable<boolean>> {
-    const user = await this.googleAuthService.login();
-    return this.loginService.loginGoogle(user).pipe(
-      tap((response: LoginGoogleResponseI) => {
-        this.onLoginOrRegisterSuccess(response);
-        this.check();
-      }),
-      map((response) => response.new)
-    );
+    try {
+      const user: GoogleUserDto =
+        await this.firebaseAuthenticationService.login();
+      return this.loginService.loginGoogle(user).pipe(
+        tap((response: LoginGoogleResponseI) => {
+          this.onLoginOrRegisterSuccess(response);
+          this.check();
+        }),
+        map((response) => response.new)
+      );
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   onLoginOrRegisterSuccess(
