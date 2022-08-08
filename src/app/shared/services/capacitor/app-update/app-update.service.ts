@@ -7,7 +7,6 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class AppUpdateService {
-
   getCurrentAppVersion = async () => {
     const result = await AppUpdate.getAppUpdateInfo();
     return result.currentVersion;
