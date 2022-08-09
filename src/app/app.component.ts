@@ -54,7 +54,12 @@ export class AppComponent implements OnInit {
 
   async checkUpdate() {
     if (this.platform.is('capacitor')) {
-      await this.appUpdateService.performImmediateUpdate();
+      const state = await this.togglesService.isActiveToggle(
+        'general_appUpdate'
+      );
+      if (this.platform.is('android') && state) {
+        await this.appUpdateService.performImmediateUpdate();
+      }
     }
   }
 

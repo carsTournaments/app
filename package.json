@@ -22,6 +22,7 @@
     "prettier:write": "prettier --write \"./{e2e,src}/**/*.{scss,ts}\"",
     "prepare": "husky install",
     "generate:apk": "npm run build:prod && npx cap sync && cd android && ./gradlew assembleDebug",
+    "generate:aab": "npm run build:prod && npx cap sync && cd android && ./gradlew bundle",
     "generate:apk:release": "npm run build:prod && npx cap sync && cd android && ./gradlew assembleRelease",
     "generate:apk:run": "ionic capacitor run android --prod",
     "generate:bundle": "npm run build:prod && npx cap sync && cd android && ./gradlew bundleRelease",
