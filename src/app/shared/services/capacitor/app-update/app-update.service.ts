@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { App } from '@capacitor/app';
 import {
   AppUpdate,
   AppUpdateInfo,
   AppUpdateAvailability,
+  AppUpdateResultCode,
 } from '@capawesome/capacitor-app-update';
 
 @Injectable({ providedIn: 'root' })
@@ -31,7 +33,10 @@ export class AppUpdateService {
       return;
     }
     if (result.immediateUpdateAllowed) {
-      await AppUpdate.performImmediateUpdate();
+      const resultUpdate = await AppUpdate.performImmediateUpdate();
+      if (resultUpdate.code === AppUpdateResultCode.CANCELED) {
+        App.exitApp();
+      }
     }
   }
 
