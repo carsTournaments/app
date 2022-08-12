@@ -94,6 +94,13 @@ export class AccountPage {
         state: true,
       },
       {
+        id: 'myTrophies',
+        name: this.translate.instant('account.itemTitleMyTrophies'),
+        subtitle: this.translate.instant('account.itemSubtitleMyTrophies'),
+        route: config.routes.myTrophies,
+        state: true,
+      },
+      {
         id: 'darkMode',
         name: this.translate.instant('account.itemTitleDarkMode'),
         subtitle: this.translate.instant('account.itemSubtitleDarkMode'),

@@ -4,16 +4,13 @@
             (click)="state = !state"
             button
             (click)="showOrHide.emit(type)"
-            detail="false"
+            detail="true"
+            [detailIcon]="state ? 'chevron-up' : 'chevron-down'"
             [lines]="!state ? 'none' : 'full'"
         >
             <ion-label
                 >{{ title }} <small>({{ items.length }})</small></ion-label
             >
-            <ion-icon
-                slot="end"
-                [name]="state ? 'chevron-up' : 'chevron-down'"
-            ></ion-icon>
         </ion-item>
     </ion-card>
 

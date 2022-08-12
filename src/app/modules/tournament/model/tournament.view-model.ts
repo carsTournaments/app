@@ -2,7 +2,7 @@ import { Header } from '@components/header/model/header.model';
 import { Inscription, Tournament, User } from '@models';
 import { InscriptionsGetMyCarsForInscriptionDto } from '@services/api/inscription/inscription.dto';
 import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/inscription/inscription.responses';
-import { WinnerGetOfTournamentComplete } from '@services/api/winner/winner.responses';
+import { WinnerGetOfTournamentCompleteResponse } from '@services/api/winner/winner.responses';
 import { config } from '@config';
 
 export class TournamentViewModel {
@@ -44,5 +44,5 @@ export class TournamentViewModel {
     getCarsUsersForInscription: false,
     getWinners: false,
   };
-  winners: WinnerGetOfTournamentComplete;
+  winners: WinnerGetOfTournamentCompleteResponse;
 }

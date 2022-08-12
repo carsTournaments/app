@@ -5,7 +5,7 @@
 
     <div class="wrapper-item">
       <div class="position">{{ i + 1}}</div>
-      <img src="{{ ranking.image | image }}" class="image">
+      <img src="{{ ranking.images | imageCar }}" class="image">
 
       <ion-label>
         {{ ranking.name | truncateText:15 }}

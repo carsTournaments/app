@@ -1,0 +1,9 @@
+<ion-card button (click)="goToTournament.emit(tournament._id)">
+  <ion-card-content class="ion-text-center">
+    <ion-icon class="icon" [ngClass]="type" name="trophy"></ion-icon>
+    <br />
+    <ion-label class="text-center">{{ tournament.name }}</ion-label>
+    <br />
+    <small>{{ tournament.endDate | date: 'dd-MM-yy' }}</small>
+  </ion-card-content>
+</ion-card>

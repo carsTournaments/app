@@ -32,11 +32,9 @@ export class AuthLoginComponent {
             this.loginSuccess.emit();
           }
         },
-        error: () => {
+        error: (e) => {
           this.analyticsService.logEvent('auth_login_KO');
-          this.toastIonicService.error(
-            'Error al iniciar sesión, intenta de nuevo mas tarde'
-          );
+          this.toastIonicService.error(e);
         },
       });
     }

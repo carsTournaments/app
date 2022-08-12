@@ -8,6 +8,8 @@ import { InscriptionGetMyCarsUserForInscriptionResponse } from '@services/api/in
   styleUrls: ['./tournament-my-cars.component.scss'],
 })
 export class TournamentMyCarsomponent {
+  @Input() completeInscriptions: boolean;
+  @Input() statusTournament: string;
   @Input() myCars: InscriptionGetMyCarsUserForInscriptionResponse;
   @Output() inscriptionClick: EventEmitter<Car> = new EventEmitter();
   @Output() deleteInscriptionClick: EventEmitter<Car> = new EventEmitter();

@@ -47,12 +47,6 @@ export class LikeService {
       .pipe(take(1));
   }
 
-  getTopCars(limit: string): Observable<Car[]> {
-    return this.httpClient
-      .post<Car[]>(`${this.url}/getTopCars`, { limit })
-      .pipe(take(1));
-  }
-
   getAllCarLikes(data: LikeGetAllOfCarDto): Observable<Like[]> {
     return this.httpClient
       .post<Like[]>(`${this.url}/getAllCarLikes`, data)

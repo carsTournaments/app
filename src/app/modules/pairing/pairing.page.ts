@@ -107,8 +107,10 @@ export class PairingPage {
     if (this.vm.pairing[type]) {
       this.vm[type === 'car1' ? 'image1' : 'image2'] = {
         url: this.imagePipe.transform(
-          this.vm.pairing[type].image && this.vm.pairing[type].image.url
-            ? this.vm.pairing[type].image.url
+          this.vm.pairing[type].images &&
+            this.vm.pairing[type].images.length > 0 &&
+            this.vm.pairing[type].images[0].url
+            ? this.vm.pairing[type].images[0].url
             : null
         ),
       };

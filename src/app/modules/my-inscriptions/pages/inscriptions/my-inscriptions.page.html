@@ -1,27 +1,51 @@
 <custom-header [options]="vm.header"></custom-header>
 
 <ion-content [fullscreen]="true">
-
   <spinner [loading]="vm.loading"></spinner>
-  <no-items *ngIf="
+  <no-items
+    *ngIf="
         !vm.loading &&
         vm.inscriptions &&
         vm.inscriptions.todo.length === 0 &&
         vm.inscriptions.inProgress.length === 0 &&
         vm.inscriptions.completed.length === 0
-        " [options]="vm.noitems"></no-items>
+        "
+    [options]="vm.noitems"
+  ></no-items>
   <ion-row style="padding-top: 0">
-    <ion-col style="padding-top: 0" size="12" sizeLg="8" offsetLg="2" *ngIf="vm.inscriptions"
-      style="padding-top: 0.5rem">
-      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
-      <my-inscriptions-state [title]="'inscriptions.inProgress' | translate" [items]="vm.inscriptions.inProgress"
-        [state]="vm.states.inProgress" type="inProgress"></my-inscriptions-state>
+    <ion-col
+      style="padding-top: 0"
+      size="12"
+      sizeLg="8"
+      offsetLg="2"
+      *ngIf="vm.inscriptions"
+      style="padding-top: 0.5rem"
+    >
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
+      <my-inscriptions-state
+        [title]="'inscriptions.inProgress' | translate"
+        [items]="vm.inscriptions.inProgress"
+        [state]="vm.states.inProgress"
+        type="inProgress"
+      ></my-inscriptions-state>
 
-      <my-inscriptions-state [title]="'inscriptions.todo' | translate" [items]="vm.inscriptions.todo"
-        [state]="vm.states.todo" type="todo" (openOptions)="openOptions($event)"></my-inscriptions-state>
+      <my-inscriptions-state
+        [title]="'inscriptions.todo' | translate"
+        [items]="vm.inscriptions.todo"
+        [state]="vm.states.todo"
+        type="todo"
+        (openOptions)="openOptions($event)"
+      ></my-inscriptions-state>
 
-      <my-inscriptions-state [title]="'inscriptions.completed' | translate" [items]="vm.inscriptions.completed"
-        [state]="vm.states.completed" type="completed"></my-inscriptions-state>
+      <my-inscriptions-state
+        [title]="'inscriptions.completed' | translate"
+        [items]="vm.inscriptions.completed"
+        [state]="vm.states.completed"
+        type="completed"
+      ></my-inscriptions-state>
     </ion-col>
   </ion-row>
 </ion-content>
