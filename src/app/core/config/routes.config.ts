@@ -13,6 +13,7 @@ export const routes = {
   myGarageImages: 'my-garage/images/:id',
   myInscriptions: 'my-inscriptions',
   myLikes: 'my-likes',
+  myTrophies: 'my-trophies',
   pairing: 'pairing/:id',
   privaciPolicy: 'privacy-policy',
   ranking: 'ranking',

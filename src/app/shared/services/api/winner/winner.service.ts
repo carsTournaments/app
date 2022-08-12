@@ -1,10 +1,13 @@
-import { IdDto } from '../../../../core/dtos/id.dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { environment } from '@env/environment';
-import { WinnerGetOfTournamentComplete } from './winner.responses';
+import {
+  WinnerGetAllUserWinnersI,
+  WinnerGetOfTournamentCompleteResponse,
+} from './winner.responses';
+import { IdDto } from '@core/dtos/id.dto';
 
 @Injectable({ providedIn: 'root' })
 export class WinnerService {
@@ -13,12 +16,18 @@ export class WinnerService {
 
   getForTournamentComplete(
     data: IdDto
-  ): Observable<WinnerGetOfTournamentComplete> {
+  ): Observable<WinnerGetOfTournamentCompleteResponse> {
     return this.httpClient
-      .post<WinnerGetOfTournamentComplete>(
+      .post<WinnerGetOfTournamentCompleteResponse>(
         `${this.url}/forTournamentComplete`,
         data
       )
+      .pipe(take(1));
+  }
+
+  getAllUserWinners(data: IdDto): Observable<WinnerGetAllUserWinnersI[]> {
+    return this.httpClient
+      .post<WinnerGetAllUserWinnersI[]>(`${this.url}/getAllUserWinners`, data)
       .pipe(take(1));
   }
 }

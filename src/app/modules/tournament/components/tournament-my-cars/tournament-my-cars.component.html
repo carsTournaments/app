@@ -26,20 +26,26 @@
       {{ 'tournament.youCar' | translate }}
     </span>
   </h1>
-
   <ion-card
     mode="ios"
     class="option-item"
     *ngFor="let car of myCars?.availables"
-    (click)="inscriptionClick.emit(car)"
+    [button]="statusTournament === 'Todo' && !completeInscriptions"
+    (click)="
+      statusTournament === 'Todo' && !completeInscriptions
+        ? inscriptionClick.emit(car)
+        : null
+    "
   >
-    <ion-item color="light" mode="ios" button lines="none" [detail]="false">
+    <ion-item color="light" mode="ios" lines="none" [detail]="false">
       <ion-avatar slot="start" class="avatar-border">
-        <img [src]="car.image?.url | image" />
+        <img [src]="car.images | imageCar" />
       </ion-avatar>
       <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
       <ion-label slot="end">
-        <small>Inscribir</small>
+        <small>{{
+          statusTournament === 'Todo' ? 'Inscribir' : 'Inscrito'
+        }}</small>
       </ion-label>
     </ion-item>
   </ion-card>
@@ -48,11 +54,13 @@
     mode="ios"
     class="option-item"
     *ngFor="let car of myCars?.inscribed"
-    (click)="deleteInscriptionClick.emit(car)"
+    (click)="
+      statusTournament === 'Todo' ? deleteInscriptionClick.emit(car) : null
+    "
   >
     <ion-item color="light" mode="ios" button lines="none" [detail]="false">
       <ion-avatar slot="start" class="avatar-border">
-        <img [src]="car.image?.url | image" />
+        <img [src]="car.images | imageCar" />
       </ion-avatar>
       <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
       <ion-label slot="end">
@@ -68,7 +76,7 @@
   >
     <ion-item color="light" mode="ios" lines="none" [detail]="false">
       <ion-avatar slot="start" class="avatar-border">
-        <img [src]="car.image?.url | image" />
+        <img [src]="car.images | imageCar" />
       </ion-avatar>
       <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
       <ion-label slot="end">

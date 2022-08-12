@@ -71,17 +71,6 @@ describe('LikeService', () => {
     req.flush(item);
   });
 
-  it('getTopCars', () => {
-    service.getTopCars('10').subscribe((response) => {
-      expect(response).not.toBe(null);
-      expect(JSON.stringify(response)).toEqual(JSON.stringify(item));
-    });
-    const req = httpTestingController.expectOne(
-      `${environment.urlApi}/likes/getTopCars`
-    );
-    req.flush(item);
-  });
-
   it('getAllCarLikes', () => {
     service.getAllCarLikes({ id: '', limit: '10' }).subscribe((response) => {
       expect(response).not.toBe(null);

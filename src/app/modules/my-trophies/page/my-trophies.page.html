@@ -1,0 +1,43 @@
+<custom-header [options]="vm.header"></custom-header>
+
+<ion-content [fullscreen]="true">
+  <spinner [loading]="vm.loading"></spinner>
+  <no-items
+    *ngIf="!vm.loading && this.vm.items.length === 0"
+    [options]="vm.noItems"
+  ></no-items>
+
+  <ion-row style="padding-top: 0">
+    <ion-col
+      class="ion-no-padding"
+      style="padding-top: 0"
+      size="12"
+      sizeLg="8"
+      offsetLg="2"
+    >
+      <ion-refresher
+        slot="fixed"
+        pullFactor="0.8"
+        pullMin="60"
+        pullMax="120"
+        (ionRefresh)="doRefresh($event)"
+      >
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
+
+      <ng-container>
+        <my-trophies-item
+          *ngFor="let item of vm.items; let i = index"
+          [item]="item"
+          [open]="i === 0 ? true : false"
+          (goToTournament)="goToTourament($event)"
+        ></my-trophies-item>
+      </ng-container>
+    </ion-col>
+  </ion-row>
+</ion-content>
