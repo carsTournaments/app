@@ -30,7 +30,6 @@ export const imageService = jasmine.createSpyObj('ImageService', [
 ]);
 
 export const likeService = jasmine.createSpyObj('LikeService', [
-  'getTopCars',
   'checkLikedStorage',
 ]);
 

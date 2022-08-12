@@ -22,10 +22,7 @@
           ></div>
         </ion-card>
 
-        <tournament-info
-          *ngIf="vm.inscriptions"
-          [tournament]="vm.tournament"
-        >
+        <tournament-info *ngIf="vm.inscriptions" [tournament]="vm.tournament">
         </tournament-info>
 
         <tournament-requisites
@@ -42,7 +39,8 @@
         </tournament-winners>
 
         <tournament-my-cars
-          *ngIf="vm.tournament.status === 'InProgress' || vm.tournament.status === 'Todo'"
+          [completeInscriptions]="vm.tournament.maxParticipants === vm.tournament.inscriptions.length"
+          [statusTournament]="vm.tournament.status"
           [myCars]="vm.myCars"
           (inscriptionClick)="inscriptionConfirmation($event)"
           (deleteInscriptionClick)="confirmDeleteInscription($event)"

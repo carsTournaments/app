@@ -1,7 +1,7 @@
 <ion-card mode="ios" class="option-item">
   <ion-item detail="false" lines="none" button (click)="clickItem.emit(car)">
     <ion-avatar slot="start">
-      <img [src]="car.image?.url | image" />
+      <img [src]="car.images | imageCar" />
     </ion-avatar>
     <ion-avatar slot="end">
       <ion-icon name="trophy" style="font-size: 2rem" [ngClass]="type"></ion-icon>

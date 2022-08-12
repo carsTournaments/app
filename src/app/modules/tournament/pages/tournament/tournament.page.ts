@@ -174,7 +174,6 @@ export class TournamentPage {
           'tournament_createInscriptionConfirmation_OK'
         );
         this.checkButtonInscription();
-        this.checkButtonInscription();
         this.vm.tournament.inscriptions.push(response);
         const message = `${this.translate.instant(
           'tournament.inscriptionOkMessage'

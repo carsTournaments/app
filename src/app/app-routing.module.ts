@@ -87,6 +87,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: config.routes.myTrophies,
+    data: { title: 'Mis Trofeos' },
+    loadChildren: () =>
+      import('./modules/my-trophies/my-trophies.module').then(
+        (m) => m.MyTrophiesModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: config.routes.myData,
     data: { title: 'Mis datos' },
     loadChildren: () =>

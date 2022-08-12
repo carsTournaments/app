@@ -10,6 +10,7 @@ export class MyLikesViewModel {
     segments: {
       items: ['', ''],
       selected: 0,
+      state: true,
     },
     backButton: {
       state: true,
