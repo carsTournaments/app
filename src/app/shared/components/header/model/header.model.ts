@@ -10,7 +10,7 @@ export class Header {
   segments? = {
     items: [],
     selected: 0,
-    state: true
+    state: true,
   };
   image?: Image;
   backButton? = {

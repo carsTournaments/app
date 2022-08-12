@@ -1,7 +1,7 @@
-import { Header } from "@components/header/model/header.model";
-import { NoItemsModel } from "@components/no-items/no-items.model";
-import { config } from "@core/config";
-import { WinnerGetAllUserWinnersI } from "@services/api/winner/winner.responses";
+import { Header } from '@components/header/model/header.model';
+import { NoItemsModel } from '@components/no-items/no-items.model';
+import { config } from '@core/config';
+import { WinnerGetAllUserWinnersI } from '@services/api/winner/winner.responses';
 
 export class MyTournamentsWonViewModel {
   header = new Header({

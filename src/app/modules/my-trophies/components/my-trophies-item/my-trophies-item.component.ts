@@ -12,7 +12,7 @@ import { ImageCarPipe } from '@shared/pipes';
 export class MyTrophiesItemComponent implements OnInit {
   @Input() item: WinnerGetAllUserWinnersI;
   @Input() tournament: Tournament;
-  @Input() open = false
+  @Input() open = false;
   backgroundImage: string;
   @Output() goToTournament: EventEmitter<string> = new EventEmitter<string>();
   constructor(private imageCarPipe: ImageCarPipe) {}

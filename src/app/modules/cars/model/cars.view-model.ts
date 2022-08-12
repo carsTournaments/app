@@ -10,7 +10,7 @@ export class CarsViewModel {
     segments: {
       items: ['Coches', 'Marcas'],
       selected: 0,
-      state: true
+      state: true,
     },
     rightButtons: [
       {

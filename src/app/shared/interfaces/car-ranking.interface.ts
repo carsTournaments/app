@@ -1,4 +1,4 @@
-import { Image } from "@models";
+import { Image } from '@models';
 
 export interface CarRankingI {
   _id: string;

@@ -52,12 +52,12 @@ export class AuthRegisterComponent {
       return state;
     }
 
-     if (!this.isEmail(this.data.email)) {
-       this.analyticsService.logEvent('auth_validations_register_email_KO');
-       this.toastIonicService.error('El email no es valido');
-       state = false;
-       return state;
-     }
+    if (!this.isEmail(this.data.email)) {
+      this.analyticsService.logEvent('auth_validations_register_email_KO');
+      this.toastIonicService.error('El email no es valido');
+      state = false;
+      return state;
+    }
 
     if (this.data.password.length < 6) {
       this.analyticsService.logEvent('auth_validations_register_password_KO');
@@ -74,7 +74,6 @@ export class AuthRegisterComponent {
       state = false;
       return state;
     }
-
 
     return state;
   }
