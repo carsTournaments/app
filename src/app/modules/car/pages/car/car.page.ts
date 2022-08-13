@@ -62,9 +62,7 @@ export class CarPage implements OnInit {
     if (data && data.images) {
       this.vm.image = this.imageCarPipe.transform(data.images);
     }
-    if (data.liked) {
-      this.vm.liked = true;
-    }
+    this.vm.liked = data.liked;
 
     this.setTotalsItem();
     if (this.userService.getUser()) {
@@ -76,7 +74,6 @@ export class CarPage implements OnInit {
   async checkIsMyCar(): Promise<void> {
     this.vm.isMyCar = this.vm.car.driver?._id === this.vm.user?._id;
     if (!this.vm.isMyCar) {
-      this.vm.liked = await this.likeService.checkLikedStorage(this.vm.id);
       const icon = this.vm.liked ? 'heart' : 'heart-outline';
       this.vm.header.rightButtons.unshift({ state: true, icon });
     }
@@ -204,7 +201,6 @@ export class CarPage implements OnInit {
           params: { state: true },
         });
         this.vm.liked = true;
-        this.likeService.setLikedStorage(this.vm.car._id);
         if (this.vm.car.likes) {
           this.vm.car.likes.count += 1;
         } else {
@@ -227,7 +223,6 @@ export class CarPage implements OnInit {
         this.analyticsService.logEvent('car_dislike_OK', {
           params: { state: true },
         });
-        this.likeService.removeLikeStorage(this.vm.car._id);
         this.vm.liked = false;
         if (this.vm.car.likes) {
           this.vm.car.likes.count -= 1;

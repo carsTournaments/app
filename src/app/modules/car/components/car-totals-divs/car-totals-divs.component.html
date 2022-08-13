@@ -4,7 +4,12 @@
     {{ 'car.statsLikesTitle' | translate | uppercase }}
     <fa-icon icon="heart" class="likevote"></fa-icon>
   </h1>
-  <ion-item color="light" lines="full" *ngFor="let item of likes; let i = index" [lines]="i !== likes.length -1 ? 'full' : 'none'">
+  <ion-item
+    color="light"
+    lines="full"
+    *ngFor="let item of likes; let i = index"
+    [lines]="i !== likes.length - 1 ? 'full' : 'none'"
+  >
     <ion-label slot="start">{{ item.user?.name ?? 'Anonimo' }}</ion-label>
     <ion-label class="date" slot="end">
       {{ item.created | dateToTimeAgo: false | firstLetterCase }}
@@ -12,18 +17,32 @@
   </ion-item>
 </div>
 
-<div class="div-last" *ngIf="states.inscriptions">
+<div class="div-last" *ngIf="states.inscriptions && inscriptions.length > 0">
   <hr />
   <h1>
     {{ 'car.statsInscriptionsTitle' | translate | uppercase }}
     <fa-icon icon="list-check" class="inscriptions"></fa-icon>
   </h1>
-  <ion-item color="light" lines="full" *ngFor="let item of inscriptions; let i = index" button
-    [routerLink]="['/tournament', item.tournament?._id]" [lines]="i !== inscriptions.length -1 ? 'full' : 'none'">
+  <ion-item
+    color="light"
+    lines="full"
+    *ngFor="let item of inscriptions; let i = index"
+    button
+    [routerLink]="['/tournament', item.tournament?._id]"
+    [lines]="i !== inscriptions.length - 1 ? 'full' : 'none'"
+  >
     <ion-avatar slot="start">
-      <img [src]="item.tournament?.image.url | image" />
+      <img
+        *ngIf="item.tournament"
+        [src]="
+          item.tournament?.image
+            ? (item.tournament?.image.url | image)
+            : ('' | image)
+        "
+      />
     </ion-avatar>
-    <ion-label>{{ item.tournament?.name }}<br />
+    <ion-label
+      >{{ item.tournament?.name }}<br />
       <ion-label class="date">
         {{ item.created | dateToTimeAgo: false | firstLetterCase }}
       </ion-label>
@@ -37,14 +56,20 @@
     {{ 'car.statsVotesTitle' | translate | uppercase }}
     <fa-icon icon="check-to-slot" class="likevote"></fa-icon>
   </h1>
-  <ion-item color="light" *ngFor="let item of votes; let i = index" button
-    [routerLink]="['/tournament', item.tournament?._id]" [lines]="i !== votes.length -1 ? 'full' : 'none'">
+  <ion-item
+    color="light"
+    *ngFor="let item of votes; let i = index"
+    button
+    [routerLink]="['/tournament', item.tournament?._id]"
+    [lines]="i !== votes.length - 1 ? 'full' : 'none'"
+  >
     <ion-avatar slot="start">
       <img [src]="item.tournament?.image.url | image" />
     </ion-avatar>
     <ion-label>
       {{ item.tournament?.name }}<br />
-      <strong>{{ item.user?.name ?? 'Anonimo' }}</strong><br />
+      <strong>{{ item.user?.name ?? 'Anonimo' }}</strong
+      ><br />
       <ion-label class="date">
         {{ item.created | dateToTimeAgo: false | firstLetterCase }}
       </ion-label>
