@@ -18,43 +18,42 @@ import { CustomTranslateLoader } from '@core/bootstrap/custom-translate-loader';
 import { EventsService } from '@services';
 
 @NgModule({
-    declarations: [AppComponent],
-    entryComponents: [],
-    imports: [
-        SharedModule,
-        BrowserModule,
-        HttpClientModule,
-        RouterModule,
-        IonicStorageModule.forRoot(),
-        IonicModule.forRoot({
-            navAnimation: navAnimation,
-            statusTap: true,
-        }),
-        AdsenseModule.forRoot({
-            adClient: 'ca-pub-1868668305627051',
-            adSlot: 7259870550,
-        }),
-        AppRoutingModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production,
-            registrationStrategy: 'registerWhenStable:30000',
-        }),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useClass: CustomTranslateLoader,
-                deps: [HttpClient],
-            },
-        }),
-    ],
-    exports: [TranslateModule],
-    providers: [
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-        ImagePipe,
-        EventsService,
-
-        appInitializerProviders,
-    ],
-    bootstrap: [AppComponent],
+  declarations: [AppComponent],
+  imports: [
+    SharedModule,
+    BrowserModule,
+    HttpClientModule,
+    RouterModule,
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot({
+      navAnimation: navAnimation,
+      statusTap: true,
+      mode: 'ios',
+    }),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-1868668305627051',
+      adSlot: 7259870550,
+    }),
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: CustomTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+  ],
+  exports: [TranslateModule],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ImagePipe,
+    EventsService,
+    appInitializerProviders,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

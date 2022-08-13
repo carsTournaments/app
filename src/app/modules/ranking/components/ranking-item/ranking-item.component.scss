@@ -1,26 +1,26 @@
 .wrapper-item {
-    display: flex;
-    padding: 0.5rem 0;
+  display: flex;
+  padding: 0.5rem 0;
 }
 
 .image {
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    margin-right: 1rem;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin-right: 1rem;
 }
 
 .position {
-    font-size: 1.8rem;
-    margin-right: 1rem;
-    color: var(--ion-color-medium-shade);
+  font-size: 1.8rem;
+  margin-right: 1rem;
+  color: var(--ion-color-medium-shade);
 }
 
 .driver {
-    color: var(--ion-color-medium-shade);
-    display: block;
+  color: var(--ion-color-medium-shade);
+  display: block;
 }
 
 .option-item {
-    margin-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
 }

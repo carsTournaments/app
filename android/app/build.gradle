@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 def versionMajor = 0
-def versionMinor = 3
-def versionPatch = 3
+def versionMinor = 4
+def versionPatch = 6
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -34,6 +34,8 @@ repositories {
 }
 
 dependencies {
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation project(':capacitor-android')

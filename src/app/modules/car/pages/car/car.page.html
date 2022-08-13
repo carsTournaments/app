@@ -1,40 +1,54 @@
-<custom-header [options]="vm.header" (clickRightIcon)="share()"></custom-header>
+<custom-header
+  [options]="vm.header"
+  (clickRightIcon)="onClickRightButton($event)"
+></custom-header>
 
-<ion-content [fullscreen]="true" [scrollEvents]="true" class="animate__animated animate__fadeIn animate__faster">
+<ion-content
+  [fullscreen]="true"
+  [scrollEvents]="true"
+  class="animate__animated animate__fadeIn animate__faster"
+>
   <spinner [loading]="vm.loading"></spinner>
   <ion-row style="padding-top: 0" *ngIf="vm.car">
     <ion-col size="12" sizeLg="8" offsetLg="2">
-      <custom-header-sub [title]="vm.header.title" [buttons]="true"></custom-header-sub>
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
 
-      <ion-card mode="ios" (click)="openImage(vm.image)" button>
-        <div *ngIf="vm.image" class="div-image-one" [ngStyle]="{'background-image': 'url(' + vm.image + ')'}"></div>
+      <car-images [images]="vm.car.images" (openImage)="openImage($event)"></car-images>
+
+      <h1 class="title-custom">Especificaciones</h1>
+      <ion-card mode="ios">
+        <ion-card-content style="padding: 0.5rem" *ngIf="vm.car">
+          <car-info [car]="vm.car"></car-info>
+        </ion-card-content>
       </ion-card>
 
+      <h1 class="title-custom">Estadisticas</h1>
       <ion-card mode="ios">
-        <car-title [car]="vm.car"></car-title>
-
         <ion-card-content style="padding: 0.5rem">
-          <car-info [car]="vm.car"></car-info>
-          <hr />
+          <car-totals
+            [items]="vm.items"
+            [itemsOrder]="vm.itemsOrder"
+            (clickItem)="onClickTotalItem($event)"
+          >
+          </car-totals>
 
-          <car-totals [likes]="vm.car?.likes" [inscriptions]="vm.car?.inscriptions" [votes]="vm.car?.votes"
-            [gold]="vm.car?.gold" [silver]="vm.car?.silver" [bronze]="vm.car?.bronze"
-            (clickItem)="onClickTotalItem($event)"></car-totals>
-
-          <car-totals-divs [states]="vm.states" [likes]="vm.likes" [inscriptions]="vm.inscriptions" [votes]="vm.votes">
+          <car-totals-divs
+            [states]="vm.states"
+            [likes]="vm.likes"
+            [inscriptions]="vm.inscriptions"
+            [votes]="vm.votes"
+          >
           </car-totals-divs>
         </ion-card-content>
       </ion-card>
 
-      <ng-container *ngIf="!vm.isMyCar">
-        <ion-card mode="ios" class="ion-no-padding option-item like" button (click)="likeOrDislike()">
-          <ion-item *ngIf="!vm.liked || vm.liked && vm.user " lines="none" >
-            <fa-icon slot="end" [icon]="vm.liked ? 'ban': 'thumbs-up'"></fa-icon>
-            <ion-label class="title" *ngIf="!vm.liked">{{ 'car.likeTitle' | translate }}</ion-label>
-            <ion-label class="title" *ngIf="vm.liked">{{ 'car.dislikeTitle' | translate }}</ion-label>
-          </ion-item>
-          </ion-card>
-      </ng-container>
+      <h1 class="title-custom">Piloto</h1>
+      <ion-card mode="ios">
+        <car-driver [driver]="vm.car?.driver"></car-driver>
+      </ion-card>
     </ion-col>
   </ion-row>
 </ion-content>

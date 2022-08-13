@@ -1,0 +1,87 @@
+<ng-container
+  *ngIf="
+    myCars?.availables.length > 0 ||
+    myCars?.inscribed.length > 0 ||
+    myCars?.unavailable.length > 0
+  "
+>
+  <h1 class="title-custom">
+    <span
+      *ngIf="
+        myCars?.availables.length > 1 ||
+        myCars?.inscribed.length > 1 ||
+        myCars?.unavailable.length > 1
+      "
+    >
+      {{ 'tournament.youCars' | translate }}
+    </span>
+    <span
+      *ngIf="
+        myCars?.availables.length +
+          myCars?.inscribed.length +
+          myCars?.unavailable.length ===
+        0
+      "
+    >
+      {{ 'tournament.youCar' | translate }}
+    </span>
+  </h1>
+  <ion-card
+    mode="ios"
+    class="option-item"
+    *ngFor="let car of myCars?.availables"
+    [button]="statusTournament === 'Todo' && !completeInscriptions"
+    (click)="
+      statusTournament === 'Todo' && !completeInscriptions
+        ? inscriptionClick.emit(car)
+        : null
+    "
+  >
+    <ion-item color="light" mode="ios" lines="none" [detail]="false">
+      <ion-avatar slot="start" class="avatar-border">
+        <img [src]="car.images | imageCar" />
+      </ion-avatar>
+      <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
+      <ion-label slot="end">
+        <small>{{
+          statusTournament === 'Todo' ? 'Inscribir' : 'Inscrito'
+        }}</small>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card
+    mode="ios"
+    class="option-item"
+    *ngFor="let car of myCars?.inscribed"
+    (click)="
+      statusTournament === 'Todo' ? deleteInscriptionClick.emit(car) : null
+    "
+  >
+    <ion-item color="light" mode="ios" button lines="none" [detail]="false">
+      <ion-avatar slot="start" class="avatar-border">
+        <img [src]="car.images | imageCar" />
+      </ion-avatar>
+      <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
+      <ion-label slot="end">
+        <small>Desinscribir</small>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card
+    mode="ios"
+    class="option-item"
+    *ngFor="let car of myCars?.unavailable"
+  >
+    <ion-item color="light" mode="ios" lines="none" [detail]="false">
+      <ion-avatar slot="start" class="avatar-border">
+        <img [src]="car.images | imageCar" />
+      </ion-avatar>
+      <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
+      <ion-label slot="end">
+        <small>No disponible</small>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+</ng-container>

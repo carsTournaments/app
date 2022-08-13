@@ -15,6 +15,12 @@
 				"alert"
 			]
 		},
+		"FirebaseAuthentication": {
+			"skipNativeAuth": false,
+			"providers": [
+				"google.com"
+			]
+		},
 		"GoogleAuth": {
 			"scopes": [
 				"profile",

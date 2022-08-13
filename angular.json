@@ -1,7 +1,6 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
-    "defaultProject": "app",
     "newProjectRoot": "projects",
     "projects": {
         "app": {
@@ -14,38 +13,36 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "www",
-                        "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
-                        "tsConfig": "tsconfig.app.json",
-                        "assets": [
-                            {
-                                "glob": "**/*",
-                                "input": "src/assets",
-                                "output": "assets"
-                            },
-                            {
-                                "glob": "**/*.svg",
-                                "input": "node_modules/ionicons/dist/ionicons/svg",
-                                "output": "./svg"
-                            },
-                            "src/manifest.webmanifest"
-                        ],
-                        "styles": [
-                            "src/theme/variables.scss",
-                            "src/global.scss"
-                        ],
-                        "scripts": [],
-                        "aot": false,
-                        "vendorChunk": true,
-                        "extractLicenses": false,
-                        "buildOptimizer": false,
-                        "sourceMap": true,
-                        "optimization": false,
-                        "namedChunks": true,
-                        "serviceWorker": true,
-                        "ngswConfigPath": "ngsw-config.json"
+                      "outputPath": "www",
+                      "index": "src/index.html",
+                      "main": "src/main.ts",
+                      "polyfills": "src/polyfills.ts",
+                      "tsConfig": "tsconfig.app.json",
+                      "assets": [
+                        {
+                          "glob": "**/*",
+                          "input": "src/assets",
+                          "output": "assets"
+                        },
+                        {
+                          "glob": "**/*.svg",
+                          "input": "node_modules/ionicons/dist/ionicons/svg",
+                          "output": "./svg"
+                        },
+                        "src/manifest.webmanifest"
+                      ],
+                      "styles": ["src/theme/variables.scss", "src/global.scss"],
+                      "scripts": [],
+                      "aot": false,
+                      "vendorChunk": true,
+                      "extractLicenses": false,
+                      "buildOptimizer": false,
+                      "sourceMap": true,
+                      "optimization": false,
+                      "namedChunks": true,
+                      "serviceWorker": true,
+                      "ngswConfigPath": "ngsw-config.json",
+                      "allowedCommonJsDependencies": ["moment", "localforage"]
                     },
                     "configurations": {
                         "production": {
@@ -151,7 +148,10 @@
         }
     },
     "cli": {
-        "defaultCollection": "@ionic/angular-toolkit"
+      "schematicCollections": [
+          "@ionic/angular-toolkit"
+        ],
+        "analytics": false
     },
     "schematics": {
         "@ionic/angular-toolkit:component": {

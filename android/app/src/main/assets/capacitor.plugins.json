@@ -4,8 +4,12 @@
 		"classpath": "com.getcapacitor.community.admob.AdMob"
 	},
 	{
-		"pkg": "@capacitor-community/firebase-analytics",
-		"classpath": "com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics"
+		"pkg": "@capacitor-firebase/analytics",
+		"classpath": "dev.robingenz.capacitorjs.plugins.firebase.analytics.FirebaseAnalyticsPlugin"
+	},
+	{
+		"pkg": "@capacitor-firebase/authentication",
+		"classpath": "dev.robingenz.capacitorjs.plugins.firebase.authentication.FirebaseAuthenticationPlugin"
 	},
 	{
 		"pkg": "@capacitor/app",
@@ -18,6 +22,10 @@
 	{
 		"pkg": "@capacitor/camera",
 		"classpath": "com.capacitorjs.plugins.camera.CameraPlugin"
+	},
+	{
+		"pkg": "@capacitor/device",
+		"classpath": "com.capacitorjs.plugins.device.DevicePlugin"
 	},
 	{
 		"pkg": "@capacitor/haptics",
@@ -44,11 +52,7 @@
 		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
 	},
 	{
-		"pkg": "@capgo/capacitor-updater",
-		"classpath": "ee.forgr.capacitor_updater.CapacitorUpdaterPlugin"
-	},
-	{
-		"pkg": "@codetrix-studio/capacitor-google-auth",
-		"classpath": "com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth"
+		"pkg": "@capawesome/capacitor-app-update",
+		"classpath": "io.capawesome.capacitorjs.plugins.appupdate.AppUpdatePlugin"
 	}
 ]

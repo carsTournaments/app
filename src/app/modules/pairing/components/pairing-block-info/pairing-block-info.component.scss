@@ -1,47 +1,52 @@
 .div-item {
-    text-align: center;
-    margin: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.div-item-no-line {
+  text-align: center;
+  margin: 1rem;
 }
 
 .item-center {
-    font-weight: 300;
-    margin: 0;
-    font-size: 0.8rem;
+  font-weight: 300;
+  margin: 0;
+  font-size: 0.8rem;
 }
 
 .item-left {
-    font-weight: 500;
-    margin: 0;
-    font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 .item-right {
-    font-weight: 500;
-    margin: 0;
-    font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 .div-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .div-left {
-    width: 40%;
+  width: 40%;
 }
 
 .div-right {
-    width: 40%;
+  width: 40%;
 }
 
 .div-center {
-    width: 20%;
+  width: 20%;
 }
 
 .img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }

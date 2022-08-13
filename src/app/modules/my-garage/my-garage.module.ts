@@ -1,19 +1,20 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { MyGarageOnePage } from './pages/one/my-garage-one.page';
-import { MyGarageListPage } from './pages/list/my-garage-list.page';
+import { MyGarageListPage } from './pages/garage-list/my-garage-list.page';
 import { SharedModule } from '@shared/shared.module';
-import { GaragePopoverComponent } from './components/popover/garage-popover.component';
+import { MyGarageImagesPage } from './pages/images/my-garage-images.page';
+import { MyGarageOnePage } from './pages/garage-one/my-garage-one.page';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild([
-            { path: '', component: MyGarageListPage },
-            { path: 'one/:id', component: MyGarageOnePage },
-            { path: 'create', component: MyGarageOnePage },
-        ]),
-    ],
-    declarations: [MyGarageListPage, MyGarageOnePage, GaragePopoverComponent],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      { path: '', component: MyGarageListPage },
+      { path: 'one/:id', component: MyGarageOnePage },
+      { path: 'create', component: MyGarageOnePage },
+      { path: 'images/:id', component: MyGarageImagesPage },
+    ]),
+  ],
+  declarations: [MyGarageListPage, MyGarageOnePage, MyGarageImagesPage],
 })
 export class MyGarageModule {}

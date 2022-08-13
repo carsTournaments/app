@@ -1,0 +1,50 @@
+<ion-card>
+  <ion-item [detailIcon]="open ? 'chevron-up' : 'chevron-down'" (click)="open = !open" detail>
+    <ion-avatar slot="start">
+      <img [src]="item.car.images | imageCar" />
+    </ion-avatar>
+    <ion-label>
+    {{ item.car.brand.name + ' ' + item.car.model }}
+    </ion-label>
+  </ion-item>
+</ion-card>
+
+<ion-row *ngIf="open">
+  <ion-col size="6" *ngFor="let tournament of item.gold">
+    <my-trophies-item-trophy
+      type="gold"
+      [tournament]="tournament"
+      (goToTournament)="goToTournament.emit($event)"
+    ></my-trophies-item-trophy>
+  </ion-col>
+
+  <ion-col size="6" *ngFor="let tournament of item.silver">
+    <my-trophies-item-trophy
+      type="silver"
+      [tournament]="tournament"
+      (goToTournament)="goToTournament.emit($event)"
+    ></my-trophies-item-trophy>
+  </ion-col>
+
+  <ion-col size="6" *ngFor="let tournament of item.bronze">
+    <my-trophies-item-trophy
+      type="bronze"
+      [tournament]="tournament"
+      (goToTournament)="goToTournament.emit($event)"
+    ></my-trophies-item-trophy>
+  </ion-col>
+</ion-row>
+
+<!-- <ion-card mode="ios" button class="option-item" *ngFor="let tournament of item.silver">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img [src]="tournament.image?.url | image" />
+    </ion-avatar>
+    <ion-label>{{ tournament.name }}
+    </ion-label>
+    <ion-label class="ion-text-right">
+      {{ tournament.endDate | date: 'dd/MM/yyyy' }}
+    </ion-label>
+  </ion-item>
+  <div class="tournament-item"></div>
+</ion-card> -->

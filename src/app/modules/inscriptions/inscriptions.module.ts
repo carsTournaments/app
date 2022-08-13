@@ -6,12 +6,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { InscriptionsPage } from './pages/inscriptions/inscriptions.page';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        TranslateModule,
-        RouterModule.forChild([{ path: '', component: InscriptionsPage }]),
-    ],
-    declarations: [InscriptionsPage],
-    providers: [ImagePipe],
+  imports: [
+    SharedModule,
+    TranslateModule,
+    RouterModule.forChild([{ path: '', component: InscriptionsPage }]),
+  ],
+  declarations: [InscriptionsPage],
+  providers: [ImagePipe],
 })
 export class InscriptionsModule {}

@@ -1,8 +1,8 @@
 ---
-name: Feature
-about: Feature
+name: ⭐️ Mejora
+about: Solicita una nueva mejora
 title: ''
-labels: feature
+labels: Evolutivo
 assignees: josexs
 
 ---

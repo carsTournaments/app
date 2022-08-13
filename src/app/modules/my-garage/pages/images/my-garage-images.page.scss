@@ -1,0 +1,19 @@
+.item {
+  ion-card {
+    height: 110px;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+}
+
+.item-add {
+  text-align: center;
+  ion-icon {
+    height: 110px;
+    font-size: 3rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}

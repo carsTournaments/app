@@ -8,18 +8,18 @@ import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class RoundService {
-    url = `${environment.urlApi}/rounds`;
-    constructor(private httpClient: HttpClient) {}
+  url = `${environment.urlApi}/rounds`;
+  constructor(private httpClient: HttpClient) {}
 
-    getAllOfTournament(data: IdDto): Observable<Round[]> {
-        return this.httpClient
-            .post<Round[]>(`${this.url}/allOfTournament`, data)
-            .pipe(take(1));
-    }
+  getAllTournamentRounds(data: IdDto): Observable<Round[]> {
+    return this.httpClient
+      .post<Round[]>(`${this.url}/getAllTournamentRounds`, data)
+      .pipe(take(1));
+  }
 
-    getOne(id: string): Observable<Round> {
-        return this.httpClient
-            .post<Round>(`${this.url}/one`, { id, site: 'app' })
-            .pipe(take(1));
-    }
+  getOne(id: string): Observable<Round> {
+    return this.httpClient
+      .post<Round>(`${this.url}/one`, { id, site: 'app' })
+      .pipe(take(1));
+  }
 }

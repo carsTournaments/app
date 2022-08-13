@@ -7,13 +7,13 @@ import { Pairing } from '@models';
 
 @Injectable({ providedIn: 'root' })
 export class PairingService {
-    url = `${environment.urlApi}/pairings`;
-    headers = { headers: null };
-    constructor(private httpClient: HttpClient) {}
+  url = `${environment.urlApi}/pairings`;
+  headers = { headers: null };
+  constructor(private httpClient: HttpClient) {}
 
-    getOne(id: string): Observable<Pairing> {
-        return this.httpClient
-            .post<Pairing>(`${this.url}/one`, { id, site: 'app' })
-            .pipe(take(1));
-    }
+  getOne(id: string): Observable<Pairing> {
+    return this.httpClient
+      .post<Pairing>(`${this.url}/one`, { id, site: 'app' })
+      .pipe(take(1));
+  }
 }

@@ -1,0 +1,33 @@
+<ng-container *ngIf="images && images.length === 1">
+  <ion-card
+    mode="ios"
+    (click)="openImage.emit(path + '/' + images[0].url)"
+    button
+  >
+    <div
+      class="div-image-one"
+      [ngStyle]="{
+        'background-image': 'url(' + getImage(images[0]) + ')'
+      }"
+    ></div>
+  </ion-card>
+</ng-container>
+
+<ng-container *ngIf="images && images.length > 1">
+  <swiper mode="ios" [config]="slideOpts">
+    <ng-template swiperSlide *ngFor="let img of images; let i = index">
+      <ion-card
+        mode="ios"
+        (click)="openImage.emit(path + '/' + images[i].url)"
+        button
+      >
+        <div
+          class="div-image-one"
+          [ngStyle]="{
+            'background-image': 'url(' + getImage(images[i]) + ')'
+          }"
+        ></div>
+      </ion-card>
+    </ng-template>
+  </swiper>
+</ng-container>

@@ -47,9 +47,12 @@ jobs:
             - name: Sign dev build
               run: jarsigner -keystore android/release.decrypted.keystore -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar ./android/app/build/outputs/bundle/release/app-release-signed.aab ./android/app/build/outputs/bundle/release/app-release.aab carsTournaments
 
-            - name: Upload release bundle
-              uses: actions/upload-artifact@v2
+            - name: Upload Android Release to Play Store
+              uses: r0adkll/upload-google-play@v1.0.17
               with:
-                  name: app-release
-                  path: android/app/build/outputs/bundle/release/app-release-signed.aab
-                  retention-days: 60
+                  releaseFiles: ./android/app/build/outputs/bundle/release/app-release-signed.aab
+                  serviceAccountJsonPlainText: "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}"
+                  packageName: com.josexs.ct
+                  track: internal
+
+

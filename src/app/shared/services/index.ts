@@ -17,7 +17,8 @@ export { WinnerService } from './api/winner/winner.service';
 // Capacitor
 export { AdmobService } from './capacitor/admob/admob.service';
 export { AnalyticsService } from './capacitor/analytics/analytics.service';
-export { GoogleAuthService } from './capacitor/google-auth/google-auth.service';
+export { AppUpdateService } from './capacitor/app-update/app-update.service';
+export { FirebaseAuthenticationService } from './capacitor/firebase-authentication/firebase-authentication.service';
 export { NotificationsPushService } from './capacitor/notifications-push/notifications-push.service';
 export { SocialSharingService } from './capacitor/social-sharing/social-sharing.service';
 
