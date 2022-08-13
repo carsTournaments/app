@@ -1,4 +1,4 @@
-import { AppInfo } from '@capacitor/app';
+import { AppUpdateInfo } from '@capawesome/capacitor-app-update';
 import { Header } from '@components/header/model/header.model';
 import { config } from '@config';
 
@@ -11,5 +11,6 @@ export class AboutViewModel {
       default: true,
     },
   });
-  info: AppInfo;
+  info: AppUpdateInfo;
+  stateButtonsUpdate = false;
 }

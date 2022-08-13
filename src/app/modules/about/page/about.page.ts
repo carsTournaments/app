@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { App } from '@capacitor/app';
+import { ToggleService } from '@core/services/toggle.service';
 import { Platform } from '@ionic/angular';
+import { AppUpdateService } from '@services';
 import { AboutViewModel } from '../model/about.view-model';
 
 @Component({
@@ -10,20 +11,32 @@ import { AboutViewModel } from '../model/about.view-model';
 })
 export class AboutPage {
   vm = new AboutViewModel();
-  constructor(private platform: Platform) {}
+  constructor(
+    private platform: Platform,
+    private appUpdateService: AppUpdateService,
+    private toggleService: ToggleService
+  ) {}
 
   ionViewWillEnter() {
     this.getInfo();
   }
 
   async getInfo() {
-    if (this.platform.is('capacitor')) {
-      try {
-        const info = await App.getInfo();
-        this.vm.info = info;
-      } catch (error) {
-        console.log(error);
+    if (await this.toggleService.isActiveToggle('account_aboutUpdate')) {
+      if (this.platform.is('capacitor')) {
+        this.vm.info = await this.appUpdateService.getAppUpdateInfo();
+        this.vm.stateButtonsUpdate =
+          Number(this.vm.info.currentVersion) <
+          Number(this.vm.info.availableVersion);
       }
+    }
+  }
+
+  forceUpdate(type: string) {
+    if (type === 'immediate') {
+      this.appUpdateService.performImmediateUpdate();
+    } else {
+      this.appUpdateService.startFlexibleUpdate();
     }
   }
 }

@@ -1,10 +1,66 @@
 <custom-header [options]="vm.header"></custom-header>
 
-<ion-content [fullscreen]="true" class="animate__animated animate__fadeIn animate__faster">
-  <ng-container *ngIf="vm.info">
-    <p class="description">Carstournaments es un proyecto personal de <strong>JoseXS</strong>, pero cabe mencionar la gran ayuda y paciencia de <strong>Noemi M.Y.</strong></p>
+<ion-content [fullscreen]="true">
+  <ion-row style="padding-top: 0">
+    <ion-col
+      class="ion-no-padding"
+      style="padding-top: 0"
+      size="12"
+      sizeLg="8"
+      offsetLg="2"
+    >
+      <custom-header-sub
+        [title]="vm.header.title"
+        [buttons]="true"
+      ></custom-header-sub>
+      <ng-container>
+        <div class="wrapper-logo">
+          <img src="./assets/images/logo.png" class="logo" />
+        </div>
+        <p class="description">
+          Carstournaments es un proyecto personal de <strong>JoseXS</strong>,
+          pero cabe mencionar la gran ayuda y paciencia de
+          <strong>Noemi M.Y.</strong>
+        </p>
 
-    <p class="description">Cualquier duda o sugerencia: <a href="mailto:info@carstournaments.com">info@carstournaments.com</a></p>
-    <p class="item">Version: <span>{{ vm.info.version }}</span></p>
-  </ng-container>
-  </ion-content>
+        <p class="description">
+          Cualquier duda o sugerencia:
+          <a href="mailto:info@carstournaments.com">info@carstournaments.com</a>
+        </p>
+
+        <ion-card *ngIf="vm.info" class="ion-no-padding">
+          <ion-item>
+            <ion-label>Mi version</ion-label>
+            <ion-label class="ion-text-right"
+              >{{ vm.info.currentVersion}}</ion-label
+            >
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>Version actual</ion-label>
+            <ion-label class="ion-text-right">
+              {{ vm.info.availableVersion }}</ion-label
+            >
+          </ion-item>
+        </ion-card>
+
+        <div class="padding-05" *ngIf="vm.stateButtonsUpdate">
+          <ion-button
+            expand="block"
+            color="primary"
+            (click)="forceUpdate('inmediate')"
+          >
+            Forzar Actualizacion Inmediata
+          </ion-button>
+          <ion-button
+            expand="block"
+            color="primary"
+            (click)="forceUpdate('flexible')"
+          >
+            Forzar Actualizacion Flexible
+          </ion-button>
+        </div>
+      </ng-container>
+    </ion-col>
+  </ion-row>
+</ion-content>
