@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Car, Tournament } from '@models';
+import { Tournament } from '@models';
 import { WinnerGetAllUserWinnersI } from '@services/api/winner/winner.responses';
 import { ImageCarPipe } from '@shared/pipes';
 
