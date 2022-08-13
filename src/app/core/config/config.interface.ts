@@ -13,6 +13,7 @@ export interface ConfigI {
     myGarageCreate: string;
     myGarageOne: string;
     myInscriptions: string;
+    myTrophies: string;
     myLikes: string;
     pairing: string;
     privaciPolicy: string;
