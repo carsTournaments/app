@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { LikeGetAllReceivedForUserResponse } from './like.response';
 import { IdDto } from '@core/dtos/id.dto';
-import { Car } from '@models';
 import { StorageService } from '@services';
 
 @Injectable({ providedIn: 'root' })

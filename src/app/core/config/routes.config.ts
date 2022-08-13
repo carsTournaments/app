@@ -1,4 +1,5 @@
 export const routes = {
+  about: 'about',
   account: 'tab/account',
   car: 'car/:id',
   calendar: 'tab/calendar',
