@@ -104,47 +104,4 @@ describe('LikeService', () => {
     );
     req.flush(item);
   });
-
-  it('checkLikedStorage OK', async () => {
-    storageService.get = jasmine
-      .createSpy()
-      .and.returnValue(Promise.resolve(['1']));
-    const result = await service.checkLikedStorage('1');
-    expect(result).toBe(true);
-  });
-
-  it('checkLikedStorage KO', async () => {
-    storageService.get = jasmine
-      .createSpy()
-      .and.returnValue(Promise.resolve(['2']));
-    const result = await service.checkLikedStorage('1');
-    expect(result).toBe(false);
-  });
-
-  it('setLikedStorage no exist', async () => {
-    storageService.get = jasmine
-      .createSpy()
-      .and.returnValue(Promise.resolve(['1']));
-    storageService.set = jasmine.createSpy();
-    await service.setLikedStorage('1');
-    expect(true).toBe(true);
-  });
-
-  it('setLikedStorage exist', async () => {
-    storageService.get = jasmine
-      .createSpy()
-      .and.returnValue(Promise.resolve(['1']));
-    storageService.set = jasmine.createSpy();
-    await service.setLikedStorage('1');
-    expect(true).toBe(true);
-  });
-
-  it('removeLikeStorage', async () => {
-    storageService.get = jasmine
-      .createSpy()
-      .and.returnValue(Promise.resolve(['1']));
-    storageService.remove = jasmine.createSpy();
-    await service.removeLikeStorage('1');
-    expect(true).toBe(true);
-  });
 });

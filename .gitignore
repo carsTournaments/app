@@ -40,3 +40,4 @@ resources/ios/icon
 resources/ios/splash
 /cypress/videos
 /cypress/screenshots
+/android/release.keystore.base64

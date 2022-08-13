@@ -61,36 +61,4 @@ export class LikeService {
       .delete<Like>(`${this.url}/byCarId/${id}`)
       .pipe(take(1));
   }
-
-  async checkLikedStorage(id: string): Promise<boolean> {
-    const likes = await this.storageService.get<string[]>('likes');
-    if (likes) {
-      const isLiked = likes.find((item) => item === id);
-      if (isLiked) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
-
-  async setLikedStorage(id: string): Promise<void> {
-    let likes = await this.storageService.get<string[]>('likes');
-    if (likes) {
-      likes.push(id);
-    } else {
-      likes = [id];
-    }
-    this.storageService.set('likes', likes);
-  }
-
-  async removeLikeStorage(id: string): Promise<void> {
-    let likes = await this.storageService.get<string[]>('likes');
-    if (likes) {
-      likes = likes.filter((l) => l !== id);
-    }
-    this.storageService.set('likes', likes);
-  }
 }
