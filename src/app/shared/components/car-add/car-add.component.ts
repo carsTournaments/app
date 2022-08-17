@@ -180,7 +180,7 @@ export class CarAddComponent implements OnInit {
           );
         }
         this.edit = true;
-        if (!this.car.image) {
+        if (this.car.images.length === 0) {
           this.carNoImage();
         } else {
           this.toastIonicService.info(

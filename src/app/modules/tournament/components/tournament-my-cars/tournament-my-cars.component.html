@@ -17,10 +17,9 @@
     </span>
     <span
       *ngIf="
-        myCars?.availables.length +
-          myCars?.inscribed.length +
-          myCars?.unavailable.length ===
-        0
+        myCars?.availables.length > 0 ||
+        myCars?.inscribed.length > 0 ||
+        myCars?.unavailable.length > 0
       "
     >
       {{ 'tournament.youCar' | translate }}
@@ -64,7 +63,9 @@
       </ion-avatar>
       <ion-label> {{ car.brand.name }} {{ car.model }} </ion-label>
       <ion-label slot="end">
-        <small>Desinscribir</small>
+        <small>{{
+          statusTournament === 'Todo' ? 'Desinscribir' : 'Inscrito'
+        }}</small>
       </ion-label>
     </ion-item>
   </ion-card>

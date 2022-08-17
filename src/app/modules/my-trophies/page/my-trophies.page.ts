@@ -49,14 +49,14 @@ export class MyTrophiesPage {
   segmentChanged(ev: any): void {
     this.vm.header.segments.selected = Number(ev.detail.value);
     this.analyticsService.logEvent(
-      `myTrophies__segment_${
+      `myTrophies_segment_${
         this.vm.header.segments.items[this.vm.header.segments.selected]
       }`
     );
   }
 
   goToTourament(tournamentId: any): void {
-    this.analyticsService.logEvent('myTrophies_goToTourament');
+    this.analyticsService.logEvent('myTrophies_goToTournament');
     this.navCtrl.navigateForward(
       config.routes.tournament.replace(':id', tournamentId)
     );
