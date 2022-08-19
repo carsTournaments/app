@@ -61,7 +61,7 @@
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
       <ion-label position="stacked">{{ 'garageOne.inputCc' | translate }}</ion-label>
-      <ion-input id="inputCC" type="text" [(ngModel)]="car.cc" [placeholder]="'garageOne.placeholderCc' | translate">
+      <ion-input id="inputCC" type="number" [(ngModel)]="car.cc" [placeholder]="'garageOne.placeholderCc' | translate">
       </ion-input>
     </ion-item>
   </ion-card>
@@ -71,7 +71,7 @@
       <ion-label position="stacked">
         {{ 'garageOne.inputCv' | translate }}
       </ion-label>
-      <ion-input id="inputCV" type="text" [(ngModel)]="car.cv" [placeholder]="'garageOne.placeholderCv' | translate">
+      <ion-input id="inputCV" type="number" [(ngModel)]="car.cv" [placeholder]="'garageOne.placeholderCv' | translate">
       </ion-input>
     </ion-item>
   </ion-card>
