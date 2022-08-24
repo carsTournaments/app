@@ -73,6 +73,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "animate.css": "~4.1.1",
+    "lint-staged": "^13.0.3",
     "moment": "~2.29.1",
     "ng2-adsense": "^10.1.0",
     "rxjs": "~6.6.0",
@@ -127,6 +128,9 @@
   "eslintIgnore": [
     "*.spec.ts"
   ],
+  "lint-staged": {
+    "*.ts": "eslint --fix"
+  },
   "keywords": [
     "CarsTournaments",
     "Angular",

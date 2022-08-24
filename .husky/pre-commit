@@ -1,12 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run prettier:write ||
-(
-    echo "\n❌ Formateo Prettier KO!\n"
-    false;
-)
-
-echo "✅ Formateo Prettier OK!"
-
-
+npx pretty-quick --staged
+npx lint-staged
