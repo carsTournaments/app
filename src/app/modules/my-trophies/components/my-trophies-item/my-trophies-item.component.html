@@ -1,10 +1,15 @@
 <ion-card>
-  <ion-item [detailIcon]="open ? 'chevron-up' : 'chevron-down'" (click)="open = !open" detail>
+  <ion-item
+    [detailIcon]="open ? 'chevron-up' : 'chevron-down'"
+    (click)="open = !open"
+    detail
+    lines="none"
+  >
     <ion-avatar slot="start">
       <img [src]="item.car.images | imageCar" />
     </ion-avatar>
     <ion-label>
-    {{ item.car.brand.name + ' ' + item.car.model }}
+      {{ item.car.brand.name + ' ' + item.car.model }}
     </ion-label>
   </ion-item>
 </ion-card>
