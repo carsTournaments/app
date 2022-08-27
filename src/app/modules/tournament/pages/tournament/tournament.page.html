@@ -2,7 +2,7 @@
 
 <ion-content [fullscreen]="true" [scrollEvents]="true">
   <spinner [loading]="vm.loading.getOne"></spinner>
-  <ion-row style="padding-top: 0" *ngIf="vm.tournament">
+  <ion-row style="padding-top: 0; padding-bottom: 0.5rem" *ngIf="vm.tournament">
     <ion-col size="12" sizeLg="8" offsetLg="2">
       <custom-header-sub
         [title]="vm.header.title"
