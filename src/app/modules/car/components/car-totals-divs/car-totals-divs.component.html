@@ -39,6 +39,7 @@
             ? (item.tournament?.image.url | image)
             : ('' | image)
         "
+        alt=""
       />
     </ion-avatar>
     <ion-label
@@ -64,7 +65,7 @@
     [lines]="i !== votes.length - 1 ? 'full' : 'none'"
   >
     <ion-avatar slot="start">
-      <img [src]="item.tournament?.image.url | image" />
+      <img [src]="item.tournament?.image.url | image" alt="" />
     </ion-avatar>
     <ion-label>
       {{ item.tournament?.name }}<br />

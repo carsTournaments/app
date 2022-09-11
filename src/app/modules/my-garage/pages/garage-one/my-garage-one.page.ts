@@ -9,7 +9,6 @@ import { MyGarageOneViewModel } from '../../models/my-garage-one.view-model';
 @Component({
   selector: 'page-my-garage-one',
   templateUrl: 'my-garage-one.page.html',
-  styleUrls: ['./my-garage-one.page.scss'],
 })
 export class MyGarageOnePage implements OnInit {
   vm = new MyGarageOneViewModel();

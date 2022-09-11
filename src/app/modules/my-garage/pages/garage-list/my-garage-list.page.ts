@@ -17,7 +17,6 @@ import { MyGarageListViewModel } from '../../models/my-garage-list.view-model';
 @Component({
   selector: 'page-my-garage-list',
   templateUrl: 'my-garage-list.page.html',
-  styleUrls: ['./my-garage-list.page.scss'],
 })
 export class MyGarageListPage {
   vm = new MyGarageListViewModel();

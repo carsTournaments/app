@@ -1,24 +1,45 @@
-<div class="animate__animated animate__fadeIn animate__faster padding-05" mode="ios" *ngIf="countries" style="margin-top: 1.5rem">
+<div
+  class="animate__animated animate__fadeIn animate__faster padding-05"
+  mode="ios"
+  *ngIf="countries"
+  style="margin-top: 1.5rem"
+>
   <div style="text-align: center; margin-bottom: 1rem">
-    <img src="./assets/images/after-register.svg" style="width: 225px" />
+    <img src="./assets/images/after-register.svg" style="width: 225px" alt="" />
   </div>
-  <br>
+  <br />
 
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
-      <ion-label position="stacked">{{ 'account.inputNameAfter' | translate }}</ion-label>
-      <ion-input name="name" [(ngModel)]="user.name" placeholder="{{ 'account.placeholderName' | translate }}"
-        ngDefaultControl>
+      <ion-label position="stacked">{{
+        'account.inputNameAfter' | translate
+      }}</ion-label>
+      <ion-input
+        name="name"
+        [(ngModel)]="user.name"
+        placeholder="{{ 'account.placeholderName' | translate }}"
+        ngDefaultControl
+      >
       </ion-input>
     </ion-item>
   </ion-card>
 
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
-      <ion-label position="stacked">{{ 'account.inputCountryAfter' | translate }}</ion-label>
-      <ion-select [(ngModel)]="countryIdSelected" name="countryId"
-        placeholder="{{ 'myData.placeholderCountry' | translate }}" okText="Aceptar" cancelText="Cancelar">
-        <ion-select-option *ngFor="let country of countries" [value]="country.id">
+      <ion-label position="stacked">{{
+        'account.inputCountryAfter' | translate
+      }}</ion-label>
+      <ion-select
+        [(ngModel)]="countryIdSelected"
+        name="countryId"
+        placeholder="{{ 'myData.placeholderCountry' | translate }}"
+        okText="Aceptar"
+        cancelText="Cancelar"
+      >
+        <ion-select-option
+          *ngFor="let country of countries"
+          [value]="country.id"
+        >
           {{ country.name }}
         </ion-select-option>
       </ion-select>
@@ -27,15 +48,25 @@
 
   <ion-card mode="ios" class="form-item">
     <ion-item lines="none" color="light">
-      <ion-label position="stacked">{{ 'account.inputTypeAfter' | translate }}</ion-label>
-      <ion-select [(ngModel)]="type" name="typeId" okText="Aceptar"
-                    cancelText="Cancelar">
-        <ion-select-option value="type1">{{ 'account.typeAfter1' | translate }}</ion-select-option>
-        <ion-select-option value="type2">{{ 'account.typeAfter2' | translate }}</ion-select-option>
+      <ion-label position="stacked">{{
+        'account.inputTypeAfter' | translate
+      }}</ion-label>
+      <ion-select
+        [(ngModel)]="type"
+        name="typeId"
+        okText="Aceptar"
+        cancelText="Cancelar"
+      >
+        <ion-select-option value="type1">{{
+          'account.typeAfter1' | translate
+        }}</ion-select-option>
+        <ion-select-option value="type2">{{
+          'account.typeAfter2' | translate
+        }}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-card>
-  <br>
+  <br />
   <ion-button expand="block" color="primary" (click)="updateUser()">
     {{ 'generic.continue' | translate }}
   </ion-button>

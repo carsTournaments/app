@@ -1,14 +1,31 @@
-<div class="animate__animated animate__fadeIn animate__faster padding-05" mode="ios" style="margin-top: 1.5rem">
+<div
+  class="animate__animated animate__fadeIn animate__faster padding-05"
+  mode="ios"
+  style="margin-top: 1.5rem"
+>
   <div style="text-align: center; margin-bottom: 1rem">
-    <img src="./assets/images/people.svg" style="width: 225px" />
+    <img src="./assets/images/people.svg" style="width: 225px" alt="" />
   </div>
-  <br>
-  <ion-button id="loginGoogle" expand="block" color="primary" (click)="loginGoogle()">
-    <ion-icon name="logo-google"></ion-icon>&nbsp; {{ 'account.login_google' | translate }}
+  <br />
+  <ion-button
+    id="loginGoogle"
+    expand="block"
+    color="primary"
+    (click)="loginGoogle()"
+  >
+    <ion-icon name="logo-google"></ion-icon>&nbsp;
+    {{ 'account.login_google' | translate }}
   </ion-button>
   <span class="divider line one-line">o</span>
-  <ion-button id="loginEmail" expand="block" color="primary" fill="outline" (click)="goToLogin.emit()">
-    <ion-icon name="log-in"></ion-icon>&nbsp; {{ 'account.login_email' | translate }}
+  <ion-button
+    id="loginEmail"
+    expand="block"
+    color="primary"
+    fill="outline"
+    (click)="goToLogin.emit()"
+  >
+    <ion-icon name="log-in"></ion-icon>&nbsp;
+    {{ 'account.login_email' | translate }}
   </ion-button>
 
   <hr style="margin-top: 1.5rem" />
@@ -21,5 +38,5 @@
       {{ 'account.about' | translate }}
     </a>
   </div>
-  <br>
+  <br />
 </div>

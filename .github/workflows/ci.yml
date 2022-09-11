@@ -1,11 +1,10 @@
-name: APP CI
+name: App CI
 on:
   push:
     branches:
       - main
       - develop
       - feature/testing
-      - feature/correcciones
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -20,3 +19,15 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  codecov:
+    name: Codecov
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          verbose: true

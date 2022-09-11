@@ -17,12 +17,13 @@
           <img
             class="driver-image"
             [src]="car.driver.country ?? 'es' | flagByFile"
+            alt=""
           />
           {{ car.driver?.name }}
         </div>
       </div>
       <div *ngIf="car.brand.image" class="card-brand-image">
-        <img [src]="car?.brand?.image?.url | image" />
+        <img [src]="car?.brand?.image?.url | image" alt="" />
       </div>
     </div>
 
@@ -60,6 +61,7 @@
           <img
             class="driver-image"
             [src]="car.driver.country ?? 'es' | flagByFile"
+            alt=""
           />{{ car.driver?.name }}
         </div>
       </div>
@@ -68,6 +70,5 @@
         {{ likesOptions.created | dateToTimeAgo | uppercase }}
       </div>
     </div>
-
   </ion-card-content>
 </ion-card>

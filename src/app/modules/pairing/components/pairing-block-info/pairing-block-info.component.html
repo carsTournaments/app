@@ -5,7 +5,11 @@
     <div class="div-flex div-item">
       <div class="div-left item">
         <p class="item-left">
-          <img class="img" [src]="pairing?.car1.brand?.image?.url | image" />
+          <img
+            class="img"
+            [src]="pairing?.car1.brand?.image?.url | image"
+            alt=""
+          />
         </p>
       </div>
       <div class="div-center">
@@ -13,7 +17,11 @@
       </div>
       <div class="div-right">
         <p class="item-right">
-          <img class="img" [src]="pairing?.car2.brand?.image?.url | image" />
+          <img
+            class="img"
+            [src]="pairing?.car2.brand?.image?.url | image"
+            alt=""
+          />
         </p>
       </div>
     </div>
@@ -98,7 +106,6 @@
         </p>
       </div>
     </div>
-
   </ion-card-content>
 </ion-card>
 
@@ -119,13 +126,13 @@
     </div>
     <div class="div-flex div-item-no-line">
       <div class="div-left item">
-        <img [src]="pairing.car1.driver.country ?? 'es' | flagByFile" />
+        <img [src]="pairing.car1.driver.country ?? 'es' | flagByFile" alt="" />
       </div>
       <div class="div-center">
         <p class="item-center">{{ 'pairing.countryDriver' | translate }}</p>
       </div>
       <div class="div-right">
-        <img [src]="pairing.car2.driver.country ?? 'es' | flagByFile" />
+        <img [src]="pairing.car2.driver.country ?? 'es' | flagByFile" alt="" />
       </div>
     </div>
   </ion-card-content>

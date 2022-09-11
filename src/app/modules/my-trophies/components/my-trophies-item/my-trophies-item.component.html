@@ -6,7 +6,7 @@
     lines="none"
   >
     <ion-avatar slot="start">
-      <img [src]="item.car.images | imageCar" />
+      <img [src]="item.car.images | imageCar" alt="" />
     </ion-avatar>
     <ion-label>
       {{ item.car.brand.name + ' ' + item.car.model }}
@@ -20,7 +20,8 @@
       type="gold"
       [tournament]="tournament"
       (goToTournament)="goToTournament.emit($event)"
-    ></my-trophies-item-trophy>
+    >
+    </my-trophies-item-trophy>
   </ion-col>
 
   <ion-col size="6" *ngFor="let tournament of item.silver">
@@ -28,7 +29,8 @@
       type="silver"
       [tournament]="tournament"
       (goToTournament)="goToTournament.emit($event)"
-    ></my-trophies-item-trophy>
+    >
+    </my-trophies-item-trophy>
   </ion-col>
 
   <ion-col size="6" *ngFor="let tournament of item.bronze">
@@ -36,20 +38,7 @@
       type="bronze"
       [tournament]="tournament"
       (goToTournament)="goToTournament.emit($event)"
-    ></my-trophies-item-trophy>
+    >
+    </my-trophies-item-trophy>
   </ion-col>
 </ion-row>
-
-<!-- <ion-card mode="ios" button class="option-item" *ngFor="let tournament of item.silver">
-  <ion-item lines="none">
-    <ion-avatar slot="start">
-      <img [src]="tournament.image?.url | image" />
-    </ion-avatar>
-    <ion-label>{{ tournament.name }}
-    </ion-label>
-    <ion-label class="ion-text-right">
-      {{ tournament.endDate | date: 'dd/MM/yyyy' }}
-    </ion-label>
-  </ion-item>
-  <div class="tournament-item"></div>
-</ion-card> -->
