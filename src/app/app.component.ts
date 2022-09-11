@@ -1,13 +1,9 @@
 import { StorageService } from './shared/services/ionic/storage-ionic.service';
-import { Component, NgZone, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
-import { Location } from '@angular/common';
-
-import { App, URLOpenListenerEvent } from '@capacitor/app';
+import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { User } from '@models';
 import { ToggleService } from '@core/services/toggle.service';
 import {
-  AlertService,
   AnalyticsService,
   AppUpdateService,
   FirebaseAuthenticationService,
@@ -15,28 +11,27 @@ import {
   SettingsService,
 } from '@services';
 import { TranslateService } from '@ngx-translate/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  providers: [AppService],
 })
 export class AppComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private platform: Platform,
-    private alertService: AlertService,
     private settingsService: SettingsService,
-    private zone: NgZone,
-    private navCtrl: NavController,
     private analyticsService: AnalyticsService,
     private notificationsPushService: NotificationsPushService,
     private togglesService: ToggleService,
     private firebaseAuthenticationService: FirebaseAuthenticationService,
-    private location: Location,
     private translate: TranslateService,
-    private appUpdateService: AppUpdateService
+    private appUpdateService: AppUpdateService,
+    private appService: AppService
   ) {
-    this.initializeDeepLinks();
+    this.appService.initializeDeepLinks();
     this.analyticsService.start();
     this.firebaseAuthenticationService.init();
   }
@@ -62,58 +57,12 @@ export class AppComponent implements OnInit {
     }
   }
 
-  initializeDeepLinks(): void {
-    App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
-      this.zone.run(() => {
-        const domain = 'carstournaments.com';
-        const pathArray = event.url.split(domain);
-        const appPath = pathArray.pop();
-        if (appPath) {
-          this.navCtrl.navigateRoot(appPath);
-        }
-      });
-    });
-  }
-
   addEventBackButton(): void {
     this.platform.backButton.subscribeWithPriority(
       10,
-      async (processNextHandler) => this.onBackButton(processNextHandler)
+      async (processNextHandler) =>
+        this.appService.onBackButton(processNextHandler)
     );
-  }
-
-  async onBackButton(processNextHandler: any): Promise<void> {
-    if (
-      this.location.isCurrentPathEqualTo('/tab/tournaments') ||
-      this.location.isCurrentPathEqualTo('/tab/cars') ||
-      this.location.isCurrentPathEqualTo('/tab/account')
-    ) {
-      this.analyticsService.logEvent('backButton', {});
-      const alert = await this.alertService.presentAlertWithButtons(
-        this.translate.instant('app.titleExit'),
-        this.translate.instant('app.messageExit'),
-        [
-          {
-            text: this.translate.instant('generic.no'),
-            role: 'cancel',
-          },
-          {
-            text: this.translate.instant('generic.yes'),
-            role: 'ok',
-          },
-        ]
-      );
-      const data = await alert.onDidDismiss();
-      if (data.role === 'ok') {
-        this.analyticsService.logEvent('backButton_exit', {});
-        App.exitApp();
-      } else {
-        this.analyticsService.logEvent('backButton_canceled', {});
-        processNextHandler();
-      }
-    } else {
-      this.location.back();
-    }
   }
 
   async checkUserLogged() {
