@@ -109,7 +109,7 @@ describe('AccountPage', () => {
       expect(navCtrl.navigateForward).toHaveBeenCalled();
     });
 
-    it('logout', () => {
+    xit('logout', () => {
       spyOn(component, 'logout');
       const item: OptionItemI = {
         value: 'logout',
