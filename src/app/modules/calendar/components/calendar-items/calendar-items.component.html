@@ -2,12 +2,17 @@
   <h2 class="title">{{ 'calendar.titleTournamentTodo' | translate }}</h2>
 
   <!-- TORNEO -->
-  <div class="tournament" [ngClass]="{ 'card-no-last-item': i !== tournaments.length - 1 }"
-    *ngFor="let item of tournaments; let i = index">
-
-    <calendar-item-tournament [tournament]="item"  [startDate]="item.startDate"
-      [endDate]="item.endDate"></calendar-item-tournament>
-
+  <div
+    class="tournament"
+    [ngClass]="{ 'card-no-last-item': i !== tournaments.length - 1 }"
+    *ngFor="let item of tournaments; let i = index"
+  >
+    <calendar-item-tournament
+      [tournament]="item"
+      [startDate]="item.startDate"
+      [endDate]="item.endDate"
+    >
+    </calendar-item-tournament>
   </div>
 </div>
 
@@ -15,19 +20,43 @@
   <h2 class="title">{{ 'calendar.titleTournamentInProgress' | translate }}</h2>
 
   <!-- TORNEO -->
-  <div class="tournament" [ngClass]="{ 'card-no-last-item': i !== rounds.length - 1 }"
-    *ngFor="let item of rounds; let i = index">
-
-    <calendar-item-tournament [tournament]="item.tournament" [round]="item" [startDate]="item.startDate"
-      [endDate]="item.endDate"></calendar-item-tournament>
+  <div
+    class="tournament"
+    [ngClass]="{ 'card-no-last-item': i !== rounds.length - 1 }"
+    *ngFor="let item of rounds; let i = index"
+  >
+    <calendar-item-tournament
+      [tournament]="item.tournament"
+      [round]="item"
+      [startDate]="item.startDate"
+      [endDate]="item.endDate"
+    ></calendar-item-tournament>
     <!-- EMPAREJAMIENTOS -->
-    <ion-row *ngIf="item.pairings" class="animate__animated animate__fadeIn animate__faster">
-      <ion-col size="12" sizeMd="6" sizeLg="4" class="col-pairing" *ngFor="let pairing of item.pairings">
-        <ion-card mode="ios" class="pairings ion-no-margin" button (click)="clickItem.emit(pairing)">
+    <ion-row
+      *ngIf="item.pairings"
+      class="animate__animated animate__fadeIn animate__faster"
+    >
+      <ion-col
+        size="12"
+        sizeMd="6"
+        sizeLg="4"
+        class="col-pairing"
+        *ngFor="let pairing of item.pairings"
+      >
+        <ion-card
+          mode="ios"
+          class="pairings ion-no-margin"
+          button
+          (click)="clickItem.emit(pairing)"
+        >
           <ion-card-content class="ion-no-padding wrapper-item">
             <div class="left-column">
               <div>
-                <img class="image-car image-car-1" [src]="pairing?.car1.brand?.image?.url | image" />
+                <img
+                  class="image-car image-car-1"
+                  [src]="pairing?.car1.brand?.image?.url | image"
+                  alt=""
+                />
               </div>
               <div class="brand-model ion-text-center">
                 <div>
@@ -41,21 +70,21 @@
             <div class="center-column">
               <div class="vs">
                 {{ pairing.votes | votes: pairing.car1._id }}-{{
-                pairing.votes | votes: pairing.car2._id
+                  pairing.votes | votes: pairing.car2._id
                 }}
               </div>
             </div>
             <div class="right-column">
               <div>
-                <img class="image-car image-car-2" [src]="
-                                        pairing?.car2.brand?.image?.url | image
-                                    " />
+                <img
+                  class="image-car image-car-2"
+                  [src]="pairing?.car2.brand?.image?.url | image"
+                  alt=""
+                />
               </div>
               <div class="brand-model ion-text-center">
                 <div>
-                  {{
-                  pairing.car2.brand?.name | truncateText
-                  }}
+                  {{ pairing.car2.brand?.name | truncateText }}
                 </div>
                 <div>
                   {{ pairing.car2.model | truncateText }}
