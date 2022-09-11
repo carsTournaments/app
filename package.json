@@ -1,6 +1,6 @@
 {
   "name": "cars-tournaments-app",
-  "version": "0.2.8",
+  "version": "0.5.0",
   "author": "JoseXS",
   "description": "CarsTournaments",
   "homepage": "https://carstournaments.com",
@@ -11,8 +11,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ionic serve",
+    "start:prod": "ionic serve --configuration=production",
     "build": "ng build",
-    "build:prod": "ng build --configuration production",
+    "build:prod": "ng build --configuration=production",
     "test": "ng test --code-coverage",
     "test:no-watch": "ng test --no-watch --code-coverage",
     "e2e": "npx cypress run --config-file cypress.config.ts --browser chrome",
@@ -29,12 +30,9 @@
     "livereload:android": "ionic capacitor run android --livereload --external",
     "livereload:ios": "ionic capacitor run ios --livereload --external",
     "analyze": "ng build --stats-json && webpack-bundle-analyzer www/stats.json",
-    "sonar": "sonar-scanner",
     "compodoc": "compodoc -p tsconfig.app.json",
-    "version": "auto-changelog -p && git add CHANGELOG.md",
-    "webpackBundleAnalyzer": "ng build --stats-json && webpack-bundle-analyzer www/stats.json"
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
@@ -80,7 +78,6 @@
     "storage": "0.2.0",
     "swiper": "~8.1.0",
     "tslib": "~2.2.0",
-    "webpack-bundle-analyzer": "^4.5.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -123,7 +120,8 @@
     "prettier": "2.7.1",
     "pretty-quick": "~3.1.3",
     "ts-node": "~8.3.0",
-    "typescript": "~4.7.4"
+    "typescript": "~4.7.4",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "eslintIgnore": [
     "*.spec.ts"
