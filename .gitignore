@@ -24,7 +24,6 @@ npm-debug.log*
 /.sourcemaps
 /.versions
 /.vscode
-/coverage
 /documentation
 /dist
 /node_modules
@@ -41,3 +40,4 @@ resources/ios/splash
 /cypress/videos
 /cypress/screenshots
 /android/release.keystore.base64
+coverage/ngv/lcov-report/
