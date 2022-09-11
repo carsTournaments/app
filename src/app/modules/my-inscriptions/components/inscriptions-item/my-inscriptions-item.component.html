@@ -2,7 +2,8 @@
   [tournament]="item.tournament"
   type="inscriptions"
   (clickItem)="goToTournament($event)"
-></tournament-item>
+>
+</tournament-item>
 
 <ion-card mode="ios" class="option-item" *ngFor="let car of item?.cars">
   <ion-item
@@ -12,7 +13,7 @@
     lines="none"
   >
     <ion-avatar slot="start">
-      <img [src]="car.images | imageCar" />
+      <img [src]="car.images | imageCar" alt="" />
     </ion-avatar>
     <ion-label>{{ car.brand.name + ' ' + car.model }}</ion-label>
     <ion-icon

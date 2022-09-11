@@ -1,19 +1,25 @@
 <ion-card mode="ios" class="option-item">
-
-  <ion-item color="light" mode="ios" [button]="true" lines="none" [detailIcon]="ranking.icon!"
-    (click)="showOrHideItem(ranking)">
-
+  <ion-item
+    color="light"
+    mode="ios"
+    [button]="true"
+    lines="none"
+    [detailIcon]="ranking.icon!"
+    (click)="showOrHideItem(ranking)"
+  >
     <div class="wrapper-item">
-      <div class="position">{{ i + 1}}</div>
-      <img src="{{ ranking.images | imageCar }}" class="image">
+      <div class="position">{{ i + 1 }}</div>
+      <img src="{{ ranking.images | imageCar }}" class="image" alt="" />
 
       <ion-label>
-        {{ ranking.name | truncateText:15 }}
+        {{ ranking.name | truncateText: 15 }}
         <small class="driver">{{ ranking.driver | truncateText: 20 }}</small>
       </ion-label>
     </div>
-
   </ion-item>
-  <ranking-subitem *ngIf="itemsOrder" [itemsOrder]="itemsOrder" [ranking]="ranking"></ranking-subitem>
-
+  <ranking-subitem
+    *ngIf="itemsOrder"
+    [itemsOrder]="itemsOrder"
+    [ranking]="ranking"
+  ></ranking-subitem>
 </ion-card>

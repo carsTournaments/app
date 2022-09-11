@@ -1,19 +1,28 @@
-<swiper mode="ios" [config]="slideOpts" class="animate__animated animate__fadeIn animate__faster">
-    <ng-template swiperSlide *ngFor="let date of dates">
-        <ion-card
-            mode="ios"
-            class="date-item"
-            [ngClass]="{ 'selected': dateSelected === date }"
-            (click)="goToDate(date)"
-        >
-            <ion-card-content>
-                <ion-card-title>
-                    <ion-label>
-                        <h2 [ngClass]="{ 'selected': dateSelected === date }">{{ date | dateToDayOrMonth }}</h2>
-                        <h3 [ngClass]="{ 'selected': dateSelected === date }">{{ date | dateToDayOrMonth: 'month' }}</h3>
-                    </ion-label>
-                </ion-card-title>
-            </ion-card-content>
-        </ion-card>
-    </ng-template>
+<swiper
+  mode="ios"
+  [config]="slideOpts"
+  class="animate__animated animate__fadeIn animate__faster"
+  style="margin-top: 0.5rem"
+>
+  <ng-template swiperSlide *ngFor="let date of dates">
+    <ion-card
+      mode="ios"
+      class="date-item"
+      [ngClass]="{ selected: dateSelected === date }"
+      (click)="goToDate(date)"
+    >
+      <ion-card-content>
+        <ion-card-title>
+          <ion-label>
+            <h2 [ngClass]="{ selected: dateSelected === date }">
+              {{ date | dateToDayOrMonth }}
+            </h2>
+            <h3 [ngClass]="{ selected: dateSelected === date }">
+              {{ date | dateToDayOrMonth: 'month' }}
+            </h3>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
 </swiper>

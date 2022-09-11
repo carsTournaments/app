@@ -1,29 +1,29 @@
-<ion-card mode="ios" class="ion-no-margin card-tournament animate__animated animate__fadeIn animate__faster" button [routerLink]="['/tournament/', tournament?._id]">
+<ion-card
+  mode="ios"
+  class="ion-no-margin card-tournament animate__animated animate__fadeIn animate__faster"
+  button
+  [routerLink]="['/tournament/', tournament?._id]"
+>
   <ion-item lines="none">
     <ion-avatar class="avatar-tournament">
-      <img [src]="tournament.image?.url | image" />
+      <img [src]="tournament.image?.url | image" alt="" />
     </ion-avatar>
     <ion-label>
       <h2 class="title-tournament">{{ tournament.name }}</h2>
       <div>
         <span *ngIf="round" class="title-round">{{ round.name }}</span>
         <span class="title-dates">
-          {{
-          startDate
-          | momentFormat: 'MMMM'
-          | truncateText: 3:false
-          }}
+          {{ startDate | momentFormat: 'MMMM' | truncateText: 3:false }}
           {{ startDate | momentFormat: 'DD' }}
-          <span *ngIf="endDate">-
-            {{
-            endDate
-            | momentFormat: 'MMMM'
-            | truncateText: 3:false
-            }}
+          <span *ngIf="endDate"
+            >-
+            {{ endDate | momentFormat: 'MMMM' | truncateText: 3:false }}
             {{ endDate | momentFormat: 'DD' }}
           </span>
-          <span *ngIf="tournament.durationDays">-
-            {{ tournament.durationDays }} {{ tournament.durationDays === 1 ? 'dia' : 'dias' }}</span>
+          <span *ngIf="tournament.durationDays"
+            >- {{ tournament.durationDays }}
+            {{ tournament.durationDays === 1 ? 'dia' : 'dias' }}</span
+          >
         </span>
       </div>
     </ion-label>
