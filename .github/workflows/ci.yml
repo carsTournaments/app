@@ -2,7 +2,7 @@ name: APP CI
 on:
   push:
     branches:
-      - master
+      - main
       - develop
       - feature/testing
       - feature/correcciones
