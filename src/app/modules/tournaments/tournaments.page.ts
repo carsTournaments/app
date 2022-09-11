@@ -9,7 +9,6 @@ import { config } from '@config';
 @Component({
   selector: 'page-tournaments',
   templateUrl: 'tournaments.page.html',
-  styleUrls: ['tournaments.page.scss'],
 })
 export class TournamentsPage {
   vm = new TournamentsViewModel();

@@ -1,5 +1,4 @@
 import { Injectable, NgZone } from '@angular/core';
-// import { GoogleAuth, User } from '@codetrix-studio/capacitor-google-auth';
 import { environment } from '@env/environment';
 import { Platform } from '@ionic/angular';
 import {
@@ -57,7 +56,6 @@ export class FirebaseAuthenticationService {
   }
 
   async logout(): Promise<void> {
-    return await FirebaseAuthentication.signOut();
-    // return GoogleAuth.signOut();
+    return FirebaseAuthentication.signOut();
   }
 }

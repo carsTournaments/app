@@ -6,7 +6,6 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'auth-after-register',
   templateUrl: 'auth-after-register.component.html',
-  styleUrls: ['./auth-after-register.component.scss'],
 })
 export class AuthAfterRegisterComponent implements OnInit {
   @Output() afterRegisterSuccess: EventEmitter<void> = new EventEmitter();

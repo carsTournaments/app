@@ -23,7 +23,6 @@ import { TournamentViewModel } from '../../model/tournament.view-model';
 @Component({
   selector: 'page-tournament',
   templateUrl: 'tournament.page.html',
-  styleUrls: ['./tournament.page.scss'],
 })
 export class TournamentPage {
   @ViewChild(IonContent, { static: false }) content: IonContent;
