@@ -20,22 +20,20 @@ export class CanYouHelpComponent implements OnInit {
     this.checkShowOrHidden();
   }
 
-  async checkShowOrHidden() {
+  async checkShowOrHidden(): Promise<void> {
     if (this.platform.is('capacitor')) {
-      (await this.toggleService.isActiveToggle('admob'))
-        ? (this.state = true)
-        : (this.state = false);
+      this.state = await this.toggleService.isActiveToggle('admob');
     }
   }
 
-  clickToHelp() {
+  clickToHelp(): void {
     if (!this.noClick) {
       this.admobService.showInterstitial();
       this.antiClick();
     }
   }
 
-  antiClick() {
+  antiClick(): void {
     this.noClick = true;
     setTimeout(() => {
       this.noClick = false;

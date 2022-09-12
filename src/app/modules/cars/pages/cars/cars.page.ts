@@ -163,23 +163,23 @@ export class CarsPage {
       },
     ];
     const as = await this.actionSheetService.present('Filtro', buttons);
-
+    this.onDidDismissActionSheet(as);
+  }
+  onDidDismissActionSheet(as: HTMLIonActionSheetElement) {
     as.onDidDismiss().then((data) => {
-      if (data) {
-        if (data.data === 'onlyWithPhoto' || data.data === 'all') {
-          this.vm.carsBody.onlyWithPhoto = false;
-          if (data.data === 'onlyWithPhoto') {
-            this.vm.carsBody.onlyWithPhoto = true;
-          }
-          this.vm.brandsBody.onlyWithPhoto = false;
-          if (data.data === 'onlyWithPhoto') {
-            this.vm.brandsBody.onlyWithPhoto = true;
-          }
-          this.vm.carsBody.page = 1;
-          this.vm.brandsBody.page = 1;
-          this.getCars();
-          this.getBrands();
+      if ((data && data.data === 'onlyWithPhoto') || data.data === 'all') {
+        this.vm.carsBody.onlyWithPhoto = false;
+        if (data.data === 'onlyWithPhoto') {
+          this.vm.carsBody.onlyWithPhoto = true;
         }
+        this.vm.brandsBody.onlyWithPhoto = false;
+        if (data.data === 'onlyWithPhoto') {
+          this.vm.brandsBody.onlyWithPhoto = true;
+        }
+        this.vm.carsBody.page = 1;
+        this.vm.brandsBody.page = 1;
+        this.getCars();
+        this.getBrands();
       }
     });
   }

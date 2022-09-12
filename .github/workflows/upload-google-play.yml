@@ -1,4 +1,4 @@
-name: Upload release to Play Store
+name: Upload to Google Play
 
 on:
   push:
