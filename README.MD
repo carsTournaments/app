@@ -13,7 +13,7 @@
 
 ![GitHub issues by-label](https://img.shields.io/github/issues/carstournaments/app/bug?label=Bugs&style=plastic)
 
-<a href="https://twitter.com/CarsTournaments"><img src="https://img.shields.io/twitter/follow/CarsTournaments" /></a>
+[![Twitter](https://img.shields.io/twitter/follow/CarsTournaments)](https://twitter.com/CarsTournaments)
 
 [![HitCount](https://hits.dwyl.com/carsTournaments/app.svg?style=flat-square)](http://hits.dwyl.com/carsTournaments/app)
 
