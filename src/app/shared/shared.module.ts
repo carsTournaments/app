@@ -20,11 +20,7 @@ import {
   WinnerCarItemComponent,
 } from '@components';
 import { AuthGuard } from '@core/guards/auth.guard';
-import {
-  BASE_URL,
-  IMAGES_URL,
-  httpInterceptorProviders,
-} from '@core/interceptors';
+import { httpInterceptorProviders } from '@core/interceptors';
 import { environment } from '@env/environment';
 import {
   FaIconLibrary,
@@ -166,12 +162,7 @@ const SERVICES = [
   imports: [...MODULES],
   exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES],
   declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
-  providers: [
-    ...SERVICES,
-    { provide: BASE_URL, useValue: environment.urlApi },
-    { provide: IMAGES_URL, useValue: environment.urlApi },
-    httpInterceptorProviders,
-  ],
+  providers: [...SERVICES, httpInterceptorProviders],
 })
 export class SharedModule {
   constructor(library: FaIconLibrary) {

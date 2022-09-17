@@ -1,23 +1,23 @@
 <ng-container *ngIf="tournaments && tournaments.length > 0">
-    <h1 class="title">{{ title }}</h1>
+  <h1 class="title">{{ title }}</h1>
 
-    <ng-container *ngIf="tournaments.length === 1">
+  <ng-container *ngIf="tournaments.length === 1">
+    <tournament-item
+      (clickItem)="clickItem.emit(tournament)"
+      *ngFor="let tournament of tournaments"
+      [tournament]="tournament"
+    ></tournament-item>
+  </ng-container>
+
+  <ng-container *ngIf="tournaments.length > 1">
+    <swiper mode="ios" [config]="slideOpts" class="swiper-wrapper">
+      <ng-template swiperSlide *ngFor="let tournament of tournaments">
         <tournament-item
-            (clickItem)="clickItem.emit(tournament)"
-            *ngFor="let tournament of tournaments"
-            [tournament]="tournament"
+          (clickItem)="clickItem.emit(tournament)"
+          [tournament]="tournament"
+          style="width: 100%"
         ></tournament-item>
-    </ng-container>
-
-    <ng-container *ngIf="tournaments.length > 1">
-        <swiper mode="ios" [config]="slideOpts">
-            <ng-template swiperSlide *ngFor="let tournament of tournaments">
-                <tournament-item
-                    (clickItem)="clickItem.emit(tournament)"
-                    [tournament]="tournament"
-                    style="width: 100%"
-                ></tournament-item>
-            </ng-template>
-        </swiper>
-    </ng-container>
+      </ng-template>
+    </swiper>
+  </ng-container>
 </ng-container>
