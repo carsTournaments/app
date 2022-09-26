@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { CarGetAllDto, CarGetGlobalRankingDto } from './car.dto';
-import { Car } from '@models/car.model';
+import { Car } from '@models';
 import { CarRankingI, PaginatorI } from '@interfaces';
 import { take } from 'rxjs/operators';
 

@@ -1,4 +1,4 @@
-import { Image } from '@models/image.model';
+import { Image } from '@models';
 
 export class Header {
   title: string;

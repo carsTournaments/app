@@ -9,6 +9,7 @@ export { Pairing } from './pairing.model';
 export { Register } from './register.model';
 export { Report } from './report.model';
 export { Round } from './round.model';
+export { SettingsApp } from './settings.model';
 export { Toggle } from './toggle.model';
 export { Tournament } from './tournament.model';
 export { User } from './user.model';

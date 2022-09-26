@@ -21,7 +21,6 @@ import {
 } from '@components';
 import { AuthGuard } from '@core/guards/auth.guard';
 import { httpInterceptorProviders } from '@core/interceptors';
-import { environment } from '@env/environment';
 import {
   FaIconLibrary,
   FontAwesomeModule,
