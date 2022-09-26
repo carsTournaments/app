@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { Report } from '@models/report.model';
+import { Report } from '@models';
 import { take } from 'rxjs/operators';
 import { IdDto } from '@core/dtos/id.dto';
 

@@ -1,7 +1,7 @@
 import { Header } from '@components/header/model/header.model';
 import { OptionItemI } from '@interfaces';
 import { User } from '@models';
-import { SettingsApp } from '@models/settings.model';
+import { SettingsApp } from '@models';
 import { UserGetResumeResponse } from '@services/api/user/user.responses';
 
 export class AccountViewModel {

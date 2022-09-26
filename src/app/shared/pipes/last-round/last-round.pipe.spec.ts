@@ -1,4 +1,4 @@
-import { Round } from '@models/round.model';
+import { Round } from '@models';
 import { LastRoundPipe } from '..';
 
 describe('LastRoundPipe', () => {
