@@ -1,4 +1,4 @@
-import { Car } from '@models/car.model';
+import { Car } from '@models';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { LikeService, UserService } from '@services';

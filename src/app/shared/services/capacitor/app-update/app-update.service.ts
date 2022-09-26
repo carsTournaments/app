@@ -46,8 +46,7 @@ export class AppUpdateService {
       return;
     }
     if (result.flexibleUpdateAllowed) {
-      const result = await AppUpdate.startFlexibleUpdate();
-      console.log(result);
+      await AppUpdate.startFlexibleUpdate();
     }
   };
 
