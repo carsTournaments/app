@@ -107,13 +107,6 @@ xdescribe('CarPage', () => {
     });
   });
 
-  it('openImage', () => {
-    spyOn(component, 'getLikes');
-    component.openImage('11');
-    expect(analyticsService.logEvent).toHaveBeenCalled();
-    expect(imageService.openImage).toHaveBeenCalled();
-  });
-
   describe('onClickTotalItem', () => {
     it('likes', () => {
       component.onClickTotalItem('likes');
