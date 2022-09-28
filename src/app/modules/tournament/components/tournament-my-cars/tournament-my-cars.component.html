@@ -1,6 +1,6 @@
 <ng-container
   *ngIf="
-    myCars?.availables.length > 0 ||
+    (myCars && myCars?.availables.length > 0) ||
     myCars?.inscribed.length > 0 ||
     myCars?.unavailable.length > 0
   "
@@ -17,9 +17,10 @@
     </span>
     <span
       *ngIf="
-        myCars?.availables.length > 0 ||
-        myCars?.inscribed.length > 0 ||
-        myCars?.unavailable.length > 0
+        myCars?.availables.length +
+          myCars?.inscribed.length +
+          myCars?.unavailable.length ===
+        1
       "
     >
       {{ 'tournament.youCar' | translate }}

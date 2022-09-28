@@ -1,3 +1,6 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IonContent } from '@ionic/angular';
 import {
   AnalyticsService,
   CarService,
@@ -6,10 +9,7 @@ import {
   ToastIonicService,
   UserService,
 } from '@services';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Car, Like } from '@models';
-import { IonContent } from '@ionic/angular';
 import { CarViewModel } from '../../models/car.view-model';
 
 @Component({
@@ -112,7 +112,7 @@ export class CarPage implements OnInit {
   }
 
   onClickRightButton(event: number) {
-    if (this.vm.header.rightButtons.length === 1) {
+    if (this.vm.header.rightButtons.length === 1 || this.vm.isMyCar) {
       this.share();
     } else {
       if (event === 1) {
