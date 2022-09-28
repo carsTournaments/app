@@ -1,9 +1,5 @@
 <ng-container *ngIf="images && images.length === 1">
-  <ion-card
-    mode="ios"
-    (click)="openImage.emit(path + '/' + images[0].url)"
-    button
-  >
+  <ion-card mode="ios" (click)="openImage(path + '/' + images[0].url)" button>
     <div
       class="div-image-one"
       [ngStyle]="{
@@ -18,7 +14,7 @@
     <ng-template swiperSlide *ngFor="let img of images; let i = index">
       <ion-card
         mode="ios"
-        (click)="openImage.emit(path + '/' + images[i].url)"
+        (click)="openImage(path + '/' + images[i].url)"
         button
       >
         <div

@@ -1,17 +1,13 @@
 import {
   AnalyticsService,
   CarService,
-  ImageService,
-  InscriptionService,
   LikeService,
   SocialSharingService,
   ToastIonicService,
   UserService,
-  VoteService,
 } from '@services';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImageCarPipe } from '@pipes';
 import { Car, Like } from '@models';
 import { IonContent } from '@ionic/angular';
 import { CarViewModel } from '../../models/car.view-model';
@@ -20,7 +16,6 @@ import { CarViewModel } from '../../models/car.view-model';
   selector: 'page-car',
   templateUrl: 'car.page.html',
   styleUrls: ['./car.page.scss'],
-  providers: [ImageCarPipe],
 })
 export class CarPage implements OnInit {
   @ViewChild(IonContent, { static: false }) content: IonContent;
@@ -28,11 +23,7 @@ export class CarPage implements OnInit {
   constructor(
     private carService: CarService,
     private route: ActivatedRoute,
-    private imageCarPipe: ImageCarPipe,
-    private imageService: ImageService,
     private likeService: LikeService,
-    private inscriptionService: InscriptionService,
-    private voteService: VoteService,
     private userService: UserService,
     private toastIonicService: ToastIonicService,
     private analyticsService: AnalyticsService,
@@ -59,9 +50,6 @@ export class CarPage implements OnInit {
   async getOneSuccess(data: Car): Promise<void> {
     this.vm.car = data;
     this.vm.header.title = `${data.brand?.name} ${data.model}`;
-    if (data && data.images) {
-      this.vm.image = this.imageCarPipe.transform(data.images);
-    }
     this.vm.liked = data.liked;
 
     this.setTotalsItem();
@@ -92,35 +80,21 @@ export class CarPage implements OnInit {
     };
   }
 
-  openImage(image: string): void {
-    this.analyticsService.logEvent('car_openImage');
-    this.imageService.openImage(image);
-  }
-
   onClickTotalItem(event: string): void {
     if (event === 'likes') {
       this.analyticsService.logEvent('car_total_likes');
       this.vm.states.votes = false;
       this.vm.states.inscriptions = false;
-      if (this.vm.likes.length === 0) {
-        this.getLikes();
-      }
       this.vm.states.likes = !this.vm.states.likes;
     } else if (event === 'inscriptions') {
       this.analyticsService.logEvent('car_total_inscriptions');
       this.vm.states.votes = false;
       this.vm.states.likes = false;
-      if (this.vm.inscriptions.length === 0) {
-        this.getInscriptions();
-      }
       this.vm.states.inscriptions = !this.vm.states.inscriptions;
     } else if (event === 'votes') {
       this.analyticsService.logEvent('car_total_votes');
       this.vm.states.likes = false;
       this.vm.states.inscriptions = false;
-      if (this.vm.votes.length === 0) {
-        this.getVotes();
-      }
       this.vm.states.votes = !this.vm.states.votes;
     }
 
@@ -137,37 +111,15 @@ export class CarPage implements OnInit {
     this.vm.states.inscriptions = false;
   }
 
-  getLikes() {
-    this.likeService.getAllCarLikes({ id: this.vm.id, limit: '5' }).subscribe({
-      next: (data) => {
-        this.vm.likes = data;
-      },
-    });
-  }
-
-  getInscriptions() {
-    this.inscriptionService
-      .getAllCarInscriptions({ id: this.vm.id, limit: '5' })
-      .subscribe({
-        next: (data) => {
-          this.vm.inscriptions = data;
-        },
-      });
-  }
-
-  getVotes() {
-    this.voteService.getAllCarVotes({ id: this.vm.id, limit: '5' }).subscribe({
-      next: (data) => {
-        this.vm.votes = data;
-      },
-    });
-  }
-
   onClickRightButton(event: number) {
-    if (event === 1) {
+    if (this.vm.header.rightButtons.length === 1) {
       this.share();
     } else {
-      this.likeOrDislike();
+      if (event === 1) {
+        this.share();
+      } else {
+        this.likeOrDislike();
+      }
     }
   }
 

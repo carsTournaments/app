@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { environment } from '@env/environment';
 import { Image } from '@models';
+import { AnalyticsService, ImageService } from '@services';
 import { ImageCarPipe } from '@shared/pipes';
 import { SwiperOptions } from 'swiper';
 
@@ -11,7 +12,6 @@ import { SwiperOptions } from 'swiper';
 })
 export class CarImagesComponent {
   @Input() images: Image[];
-  @Output() openImage = new EventEmitter<string>();
   image: string;
   slideOpts: SwiperOptions = {
     slidesPerView: 1.1,
@@ -25,9 +25,18 @@ export class CarImagesComponent {
     },
   };
   path = environment.urlImages;
-  constructor(private imageCarPipe: ImageCarPipe) {}
+  constructor(
+    private imageCarPipe: ImageCarPipe,
+    private analyticsService: AnalyticsService,
+    private imageService: ImageService
+  ) {}
 
   getImage(image: Image): string {
     return this.imageCarPipe.transform([image]);
+  }
+
+  openImage(image: string): void {
+    this.analyticsService.logEvent('car_openImage');
+    this.imageService.openImage(image);
   }
 }

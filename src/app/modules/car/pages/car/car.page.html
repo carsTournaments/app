@@ -16,7 +16,7 @@
         [buttons]="true"
       ></custom-header-sub>
 
-      <car-images [images]="vm.car.images" (openImage)="openImage($event)"></car-images>
+      <car-images [images]="vm.car.images"></car-images>
 
       <h1 class="title-custom">Especificaciones</h1>
       <ion-card mode="ios">
@@ -35,13 +35,7 @@
           >
           </car-totals>
 
-          <car-totals-divs
-            [states]="vm.states"
-            [likes]="vm.likes"
-            [inscriptions]="vm.inscriptions"
-            [votes]="vm.votes"
-          >
-          </car-totals-divs>
+          <car-totals-divs [id]="vm.id" [states]="vm.states"> </car-totals-divs>
         </ion-card-content>
       </ion-card>
 

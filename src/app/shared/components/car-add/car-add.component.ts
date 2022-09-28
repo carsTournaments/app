@@ -97,35 +97,50 @@ export class CarAddComponent implements OnInit {
   }
 
   validations(): { state: boolean; message: string } {
-    const data = {
-      state: true,
-      message: '',
-    };
+    const data = { state: true, message: '' };
+    this.validationBrand(data);
+    this.validationModel(data);
+    this.validationTraction(data);
+    this.validationFuel(data);
+    this.validationYear(data);
+    this.validationCC(data);
+    this.validationCV(data);
+    return data;
+  }
 
+  private validationBrand(data: { state: boolean; message: string }) {
     if (!this.car.brand) {
       data.state = false;
       data.message = 'La marca es obligatoria';
       return data;
     }
+  }
 
+  private validationModel(data: { state: boolean; message: string }) {
     if (!this.car.model) {
       data.state = false;
       data.message = 'El modelo es obligatorio';
       return data;
     }
+  }
 
+  private validationTraction(data: { state: boolean; message: string }) {
     if (!this.car.traction) {
       data.state = false;
       data.message = 'La traccion es obligatoria';
       return data;
     }
+  }
 
+  private validationFuel(data: { state: boolean; message: string }) {
     if (!this.car.fuel) {
       data.state = false;
       data.message = 'El combustible es obligatorio';
       return data;
     }
+  }
 
+  private validationYear(data: { state: boolean; message: string }) {
     if (this.car.year) {
       if (this.car.year < 1900 || this.car.year > new Date().getFullYear()) {
         data.state = false;
@@ -137,19 +152,9 @@ export class CarAddComponent implements OnInit {
       data.message = 'El año es obligatorio';
       return data;
     }
+  }
 
-    if (this.car.cv) {
-      if (this.car.cv < 0 || this.car.cv > 1000) {
-        data.state = false;
-        data.message = 'Los CV no son válidos';
-        return data;
-      }
-    } else {
-      data.state = false;
-      data.message = 'Los CV son obligatorios';
-      return data;
-    }
-
+  private validationCC(data: { state: boolean; message: string }) {
     if (this.car.cc) {
       if (this.car.cc < 0 || this.car.cc > 5000) {
         data.state = false;
@@ -161,7 +166,20 @@ export class CarAddComponent implements OnInit {
       data.message = 'Los CC son obligatorios';
       return data;
     }
-    return data;
+  }
+
+  private validationCV(data: { state: boolean; message: string }) {
+    if (this.car.cv) {
+      if (this.car.cv < 0 || this.car.cv > 1000) {
+        data.state = false;
+        data.message = 'Los CV no son válidos';
+        return data;
+      }
+    } else {
+      data.state = false;
+      data.message = 'Los CV son obligatorios';
+      return data;
+    }
   }
 
   createOrUpdate(): void {
